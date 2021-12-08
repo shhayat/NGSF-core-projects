@@ -35,7 +35,7 @@ names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_ma
 #write.table(res, "/globalhome/hxo752/HPC/projects/20-1JOHO-001_htseq_counts.txt", sep="\t", quote=FALSE, , row.names=FALSE)
 write.table(res, "/globalhome/hxo752/HPC/projects/20-1JOHO-001_htseq_counts_v1.txt", sep="\t", quote=FALSE, , row.names=FALSE)
 
-library("biomaRt")
+#library("biomaRt")
 #ensembl <- useMart(host = "feb2021.archive.ensembl.org", biomart = "ENSEMBL_MART_ENSEMBL", dataset='rnorvegicus_gene_ensembl') 
 #attributes = biomaRt::listAttributes(ensembl)
 #ensembl <- useDataset(dataset = "rnorvegicus_gene_ensembl", mart = ensembl)
