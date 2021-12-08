@@ -32,8 +32,8 @@ names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_ma
                "treated_male_R57","control_female_R58","control_male_R59","treated_male_R60",
                "control_male_R61","treated_female_R62","treated_male_R63","treated_male_R64")
 
-#write.table(res, "/globalhome/hxo752/HPC/projects/20-1JOHO-001_htseq_counts.txt", sep="\t", quote=FALSE, , row.names=FALSE)
-write.table(res, "/globalhome/hxo752/HPC/projects/20-1JOHO-001_htseq_counts_v1.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+#write.table(res, "/globalhome/hxo752/HPC/projects/20-1JOHO-001/20-1JOHO-001_htseq_counts.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+write.table(res, "/globalhome/hxo752/HPC/projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_v1.txt", sep="\t", quote=FALSE, , row.names=FALSE)
 
 #library("biomaRt")
 #ensembl <- useMart(host = "feb2021.archive.ensembl.org", biomart = "ENSEMBL_MART_ENSEMBL", dataset='rnorvegicus_gene_ensembl') 
