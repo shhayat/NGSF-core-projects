@@ -82,3 +82,17 @@ setwd("/Users/shahina/Projects/20-1JOHO-001")
 #object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_v2.txt', pca = TRUE, fit='limma', plot = TRUE)
 object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_v3.txt', pca = TRUE, fit='limma', plot = TRUE)
 
+
+
+
+
+
+#Contrasts
+1. Male Treated - Female Treated
+2. Male Treated - Male Control
+3. Female Treated - Female Control
+4. intersection of 2 and 3
+5. Male Treated High - Male Treated low
+6. Female Treated High - Female Treated low
+7. Male control High - Male control low
+8. Female control hight - Female control low
