@@ -107,7 +107,7 @@ names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_ma
 
 write.table(res, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M_F.txt", sep="\t", quote=FALSE, , row.names=FALSE)
 
-object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_treated_control_M_F.txt', pca = TRUE, fit='limma', plot = TRUE)
+object <-  read_rnaseq_counts(file ='/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M_F.txt', pca = TRUE, fit='limma', plot = TRUE)
 
 #5.Male Treated High - Male Treated low
 #6.Female Treated High - Female Treated low
