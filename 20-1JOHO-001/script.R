@@ -83,8 +83,16 @@ setwd("/Users/shahina/Projects/20-1JOHO-001")
 object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_v3.txt', pca = TRUE, fit='limma', plot = TRUE)
 
 
-
-
+names(res) <-c("gene_name","treated_female_low_R25","treated_female_high_R26","control_male_low_R27","treated_male_high_R28",
+               "control_male_low_R29","control_female_high_R30","treated_female_high_R31","control_female_low_R32",
+               "treated_female_high_R33","control_female_high_R34","treated_female_low_R35","control_male_low_R36",
+               "control_male_low_R37","control_male_high_R38","control_male_low_R39","treated_male_high_R40",
+               "control_female_low_R41","control_female_low_R42","treated_female_high_R43","control_female_high_R44",
+               "treated_female_high_R45","control_female_high_R46","treated_male_low_R47","treated_male_high_R48",
+               "treated_female_high_R49","treated_male_high_R50","treated_male_high_R51","control_female_low_R52",
+               "treated_female_low_R53","treated_female_high_R54","treated_male_low_R55","control_male_low_R56",
+               "treated_male_high_R57","control_female_high_R58","control_male_low_R59","treated_male_high_R60",
+               "control_male_low_R61","treated_female_high_R62","treated_male_low_R63","treated_male_low_R64")
 
 
 #Contrasts
@@ -96,3 +104,15 @@ object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_v3.txt', pca = TR
 6. Female Treated High - Female Treated low
 7. Male control High - Male control low
 8. Female control hight - Female control low
+
+# control female, control_male, treated_male, treated_female
+names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_male_R27","treated_male_R28",
+               "control_male_R29","control_female_R30","treated_female_R31","control_female_R32",
+               "treated_female_R33","control_female_R34","treated_female_R35","control_male_R36",
+               "control_male_R37","control_male_R38","control_male_R39","treated_male_R40",
+               "control_female_R41","control_female_R42","treated_female_R43","control_female_R44",
+               "treated_female_R45","control_female_R46","treated_male_R47","treated_male_R48",
+               "treated_female_R49","treated_male_R50","treated_male_R51","control_female_R52",
+               "treated_female_R53","treated_female_R54","treated_male_R55","control_male_R56",
+               "treated_male_R57","control_female_R58","control_male_R59","treated_male_R60",
+               "control_male_R61","treated_female_R62","treated_male_R63","treated_male_R64")
