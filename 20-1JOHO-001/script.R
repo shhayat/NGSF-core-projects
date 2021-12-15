@@ -86,14 +86,11 @@ object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_v3.txt', pca = TR
 ################################################
 #RUN AUTONOMICS WITH FOLLOWING CONTRAST
 ################################################
+
 library("autonomics")
 setwd("/Users/shahina/Projects/20-1JOHO-001")
 res <- read.table("20-1JOHO-001_htseq_counts.txt", head=TRUE)
 #Contrasts
-#1. Male Treated - Female Treated
-#2. Male Treated - Male Control
-#3. Female Treated - Female Control
-#4. intersection of 2 and 3
 names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_male_R27","treated_male_R28",
                "control_male_R29","control_female_R30","treated_female_R31","control_female_R32",
                "treated_female_R33","control_female_R34","treated_female_R35","control_male_R36",
@@ -105,14 +102,14 @@ names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_ma
                "treated_male_R57","control_female_R58","control_male_R59","treated_male_R60",
                "control_male_R61","treated_female_R62","treated_male_R63","treated_male_R64")
 
-write.table(res, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M_F.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+#1. Male Treated - Female Treated
+treated_male_female <- data.frame(res[1], res[grep("treated_male",names(res))], res[grep("treated_female",names(res))])
+#2. Male Treated - Male Control
+res_treated_and_control_male <- data.frame(res[1], res[grep("treated_male",names(res))], res[grep("control_male",names(res))])
+#3. Female Treated - Female Control
+res_treated_and_control_female <- data.frame(res[1], res[grep("treated_female",names(res))], res[grep("control_female",names(res))])
 
-object <-  read_rnaseq_counts(file ='/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M_F.txt', pca = TRUE, fit='limma', plot = TRUE)
 
-#5.Male Treated High - Male Treated low
-#6.Female Treated High - Female Treated low
-#7.Male control High - Male control low
-#8.Female control hight - Female control low
 names(res) <-c("gene_name","treated_female_low_R25","treated_female_high_R26","control_male_low_R27","treated_male_high_R28",
                "control_male_low_R29","control_female_high_R30","treated_female_high_R31","control_female_low_R32",
                "treated_female_high_R33","control_female_high_R34","treated_female_low_R35","control_male_low_R36",
@@ -124,8 +121,44 @@ names(res) <-c("gene_name","treated_female_low_R25","treated_female_high_R26","c
                "treated_male_high_R57","control_female_high_R58","control_male_low_R59","treated_male_high_R60",
                "control_male_low_R61","treated_female_high_R62","treated_male_low_R63","treated_male_low_R64")
 
-write.table(res, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_low_high_M_F.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+
+#4.Male Treated High - Male Treated low
+res_treated_high_low_male <- data.frame(res[1], res[grep("treated_male_low",names(res))], res[grep("treated_male_high",names(res))])
+#5.Female Treated High - Female Treated low
+res_treated_high_low_female <- data.frame(res[1], res[grep("treated_female_low",names(res))], res[grep("treated_female_high",names(res))])
+#6.Male control High - Male control low
+res_control_high_low_male <- data.frame(res[1], res[grep("control_male_low",names(res))], res[grep("control_male_high",names(res))])
+#7.Female control High - Female control low
+res_control_high_low_female <- data.frame(res[1], res[grep("control_female_low",names(res))], res[grep("control_female_high",names(res))])
+
+write.table(res_treated_male_female, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_M_F.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+write.table(res_treated_and_control_male, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+write.table(res_treated_and_control_female, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_F.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+
+write.table(res_treated_high_low_male, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_high_low_M.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+write.table(res_treated_high_low_female, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_high_low_F.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+write.table(res_control_high_low_male, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_M.txt", sep="\t", quote=FALSE, , row.names=FALSE)
+write.table(res_control_high_low_female, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_F.txt", sep="\t", quote=FALSE, , row.names=FALSE)
 
 
-object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_treated_control_low_high_M_F.txt', pca = TRUE, fit='limma', plot = TRUE)
+autonomics_read_rnaseq_counts <- function(file, contrast_name){
+                                             pdf(paste0("/Users/shahina/Projects/20-1JOHO-001/results/",contrast_name,".pdf"))
+                                             object <-  read_rnaseq_counts(file =file, 
+                                                                            pca = TRUE, 
+                                                                            fit='limma', 
+                                                                            plot = TRUE)
+                                             dev.off()
+                                             fdata1 <- data.frame(fdata(object))
+                                             fdata1_filtered_pval <- fdata1[fdata1[8] <=0.05,]
+                                             fdata1_select <- fdata1_filtered_pval[c(2,6,8,10)]
+                                             write.csv(fdata1_select,paste0("/Users/shahina/Projects/20-1JOHO-001/results/",contrast_name,".csv"))
+                                             }                                           
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_M_F.txt","treated_male_female")
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M.txt","treated_and_control_male")
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_F.txt", "treated_and_control_female")
+
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_high_low_M.txt","res_treated_high_low_male")
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_high_low_F.txt","res_treated_high_low_female")
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_M.txt", "res_control_high_low_male")
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_F.txt", "res_control_high_low_female")
 
