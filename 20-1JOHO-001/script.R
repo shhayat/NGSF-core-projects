@@ -74,21 +74,6 @@ write.table(res1, "/globalhome/hxo752/HPC/projects/20-1JOHO-001_htseq_counts_v3.
 ################
 library("autonomics")
 setwd("/Users/shahina/Projects/20-1JOHO-001")
-#res <- read.table("20-1JOHO-001_htseq_counts.txt", head=TRUE)
-#write.table(res[1:21], "20-1JOHO-001_htseq_counts_v1.txt", sep="\t", quote=FALSE, , row.names=FALSE)
-
-#object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts.txt', pca = TRUE, fit='limma', plot = TRUE)
-#object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_v1.txt', pca = TRUE, fit='limma', plot = TRUE)
-#object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_v2.txt', pca = TRUE, fit='limma', plot = TRUE)
-object <-  read_rnaseq_counts(file ='20-1JOHO-001_htseq_counts_v3.txt', pca = TRUE, fit='limma', plot = TRUE)
-
-
-################################################
-#RUN AUTONOMICS WITH FOLLOWING CONTRAST
-################################################
-
-library("autonomics")
-setwd("/Users/shahina/Projects/20-1JOHO-001")
 res <- read.table("20-1JOHO-001_htseq_counts.txt", head=TRUE)
 #Contrasts
 names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_male_R27","treated_male_R28",
@@ -162,3 +147,13 @@ autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001
 autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_M.txt", "res_control_high_low_male")
 autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_F.txt", "res_control_high_low_female")
 
+
+
+object <-  read_rnaseq_counts(file =file,  pca = TRUE , plot = FALSE)
+
+object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated_female - subgrouptreated_male'))
+
+is_sig(object1)
+#for venn diagram
+limma::vennDiagram(is_sig(object1), include=c('up','down','both'))
+plot_contrast_venn(is_sig(object1))
