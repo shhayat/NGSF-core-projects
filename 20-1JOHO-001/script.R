@@ -88,7 +88,7 @@ names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_ma
                "control_male_R61","treated_female_R62","treated_male_R63","treated_male_R64")
 
 #1. Male Treated - Female Treated
-treated_male_female <- data.frame(res[1], res[grep("treated_male",names(res))], res[grep("treated_female",names(res))])
+res_treated_male_female <- data.frame(res[1], res[grep("treated_male",names(res))], res[grep("treated_female",names(res))])
 #2. Male Treated - Male Control
 res_treated_and_control_male <- data.frame(res[1], res[grep("treated_male",names(res))], res[grep("control_male",names(res))])
 #3. Female Treated - Female Control
@@ -126,34 +126,35 @@ write.table(res_control_high_low_male, "/Users/shahina/Projects/20-1JOHO-001/20-
 write.table(res_control_high_low_female, "/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_F.txt", sep="\t", quote=FALSE, , row.names=FALSE)
 
 
-autonomics_read_rnaseq_counts <- function(file, contrast_name){
+autonomics_read_rnaseq_counts <- function(file, contrast_name,contrastdefs){
                                              pdf(paste0("/Users/shahina/Projects/20-1JOHO-001/results/",contrast_name,".pdf"))
-                                             object <-  read_rnaseq_counts(file =file, 
-                                                                            pca = TRUE, 
-                                                                            fit='limma', 
-                                                                            plot = TRUE)
+                                                object <-  read_rnaseq_counts(file =file,  pca = TRUE , plot = TRUE)
+                                                object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = contrastdefs, plot = TRUE)
+                                                #plot_volcano(object1, ntop = 10)
                                              dev.off()
-                                             fdata1 <- data.frame(fdata(object))
-                                             fdata1_filtered_pval <- fdata1[fdata1[8] <=0.05,]
-                                             fdata1_select <- fdata1_filtered_pval[c(2,6,8,10)]
-                                             write.csv(fdata1_select,paste0("/Users/shahina/Projects/20-1JOHO-001/results/",contrast_name,".csv"))
+                                                fdata1 <- data.frame(fdt(object1))
+                                                fdata1_select <- fdata1[c(2,5,6,7)]
+                                                fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
+                                                #nrow(fdata1_pval)
+                                                #fdata1_fdr=fdata1_select[fdata1_select[4] <=0.05,]
+                                                #nrow(fdata1_fdr)
+                                                names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
+                                                write.csv(fdata1_pval,paste0("/Users/shahina/Projects/20-1JOHO-001/results/",contrast_name,".csv"))
                                              }                                           
-autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_M_F.txt","treated_male_female")
-autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M.txt","treated_and_control_male")
-autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_F.txt", "treated_and_control_female")
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_M_F.txt","treated_male_female", c('subgrouptreated_male - subgrouptreated_female'))
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M.txt","treated_and_control_male", c('subgrouptreated_male - subgroupcontrol_male'))
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_F.txt", "treated_and_control_female", c('subgrouptreated_female - subgroupcontrol_female'))
 
-autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_high_low_M.txt","res_treated_high_low_male")
-autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_high_low_F.txt","res_treated_high_low_female")
-autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_M.txt", "res_control_high_low_male")
-autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_F.txt", "res_control_high_low_female")
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_high_low_M.txt","res_treated_high_low_male", c('subgrouptreated_male_high - subgrouptreated_male_low'))
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_high_low_F.txt","res_treated_high_low_female", c('subgrouptreated_female_high - subgrouptreated_female_low'))
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_M.txt", "res_control_high_low_male", c('subgroupcontrol_male_high - subgroupcontrol_male_low'))
+autonomics_read_rnaseq_counts("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_control_high_low_F.txt", "res_control_high_low_female", c('subgroupcontrol_female_high - subgroupcontrol_female_low'))
 
 
 
-object <-  read_rnaseq_counts(file =file,  pca = TRUE , plot = FALSE)
-
-object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated_female - subgrouptreated_male'))
-
-is_sig(object1)
+#object <-  read_rnaseq_counts(file =file,  pca = TRUE , plot = FALSE)
+#object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated_female - subgrouptreated_male'))
+#is_sig(object1)
 #for venn diagram
-limma::vennDiagram(is_sig(object1), include=c('up','down','both'))
-plot_contrast_venn(is_sig(object1))
+#limma::vennDiagram(is_sig(object1), include=c('up','down','both'))
+#plot_contrast_venn(is_sig(object1))
