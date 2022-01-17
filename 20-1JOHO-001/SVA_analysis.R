@@ -1,7 +1,6 @@
 library(sva)
 library(magrittr)
 library(DESeq2)
-library(rafalib)
 library(ggplot2)
 ###################
 #SVA ON ALL GENES
