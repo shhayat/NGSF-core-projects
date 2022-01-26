@@ -6,7 +6,7 @@ res1 <- subset(res1,!symbol == "NA")
 res1$direction <- ifelse(res1$log2FoldChange < -0.5, "down_reg", 
                                ifelse(res1$log2FoldChange > 0.5, "up_reg", "not_signf" ))
 
-pdf(sprintf("DESEQ2/Volcano_plot_%s%s_vs_%s%s.pdf",num2,cond2,num1,cond1))
+pdf("Volcano_plot.pdf")
                 ggplot(res1, aes(log2FoldChange, -log10(pvalue))) +
                 geom_point(aes(col=direction),
                                size=0.7,
