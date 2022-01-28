@@ -1,8 +1,4 @@
-###############
-#Venn Diagram
-###############
 library(autonomics)
-library(eulerr)
 setwd("/Users/shahina/Projects/20-1JOHO-001")
 DF <- read.table("/Users/shahina/Projects/20-1JOHO-001/20-1JOHO-001_htseq_counts_treated_control_M.txt", head=TRUE)
 #5 SAMPLES REMOVED AFTER CHECKING THE ORIGINAL MALE PCA
@@ -34,6 +30,7 @@ nrow(fdata1_pval_f)
 fdata1_fdr_f=fdata1[fdata1[7] <=0.05,]
 nrow(fdata1_fdr_f)
 
+library(eulerr)
 
 png("plots/VennDiagram_Males_Females_fdr0.05.png")
 s4 <- list(Male = fdata1_fdr_m$feature_name,
@@ -55,4 +52,3 @@ s2 <- list(Male = fdata1_fdr_m$feature_name,
             Female = fdata1_pval_f$feature_name)
 plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .2))
 dev.off()
-
