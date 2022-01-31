@@ -1,6 +1,5 @@
 library(dplyr)
 library(pheatmap)
-library(eulerr)
 setwd("/Users/shahina/Projects/22-1KELA-001")
 
 
@@ -48,7 +47,7 @@ write.table(CD4_IFNa2_IFNa14, "/Users/shahina/Desktop/CD4_IFNa2_IFNa14.txt", sep
 #################
 #VENN DIAGRAM
 #################
-library(BioVenn)
+library(eulerr)
 
 setwd("/Users/shahina/Projects/22-1KELA-001")
 
