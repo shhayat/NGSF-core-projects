@@ -1,5 +1,6 @@
 library(dplyr)
 library(pheatmap)
+library(eulerr)
 setwd("/Users/shahina/Projects/22-1KELA-001")
 
 
@@ -69,25 +70,26 @@ leukocyte_IFNa14 <- leukocyte_IFNa14[-1,]
 CD4_IFNa2 <- CD4_IFNa2[-1,]
 CD4_IFNa14 <- CD4_IFNa14[-1,]
 #filter on 0.05 pvalue
-leukocyte_IFNa2_f <- filter(leukocyte_IFNa2, pvalue <= 0.05)
-leukocyte_IFNa14_f <- filter(leukocyte_IFNa14, pvalue <= 0.05)
-CD4_IFNa2_f <- filter(CD4_IFNa2, pvalue <= 0.05)
-CD4_IFNa14_f <- filter(CD4_IFNa14, pvalue <= 0.05)
+leukocyte_IFNa2_f <- filter(leukocyte_IFNa2, padj <= 0.05)
+leukocyte_IFNa14_f <- filter(leukocyte_IFNa14, padj <= 0.05)
+CD4_IFNa2_f <- filter(CD4_IFNa2, padj <= 0.05)
+CD4_IFNa14_f <- filter(CD4_IFNa14, padj <= 0.05)
 
 
-png("plots/VennDiagram_leukocyte.png")
-leukocyte_IFNa2_list <- leukocyte_IFNa2_f$gene
-leukocyte_IFNa14_list <- leukocyte_IFNa14_f$gene
-empty_list <- c()
+png("plots/VennDiagram_leukocyte_fdr0.05.png")
+leukocyte <- list(FNa2 = leukocyte_IFNa2_f$gene,
+                  IFNa14 = leukocyte_IFNa14_f$gene)
 
-biovenn <- draw.venn(leukocyte_IFNa2_list, leukocyte_IFNa14_list, empty_list,title="Leukocyte",
-                     subtitle="", nrtype="abs", xtitle="IFNa2" , ytitle="IFNa14")
+plot(euler(leukocyte, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .3))
 dev.off()
 
-png("plots/VennDiagram_CD4.png")
-CD4_IFNa2_list <- CD4_IFNa2_f$gene
-CD4_IFNa14_list = CD4_IFNa14_f$gene
+png("plots/VennDiagram_CD4_fdr0.05.png")
+CD4 <- list(FNa2 = CD4_IFNa2_f$gene,
+            IFNa14 = CD4_IFNa14_f$gene)
 
-biovenn <- draw.venn(CD4_IFNa2_list, CD4_IFNa14_list, empty_list,title="CD4",
-                     subtitle="", nrtype="abs", xtitle="IFNa2" , ytitle="IFNa14")
+plot(euler(CD4, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .3))
+
 dev.off()
+
+
+
