@@ -69,10 +69,10 @@ leukocyte_IFNa14 <- leukocyte_IFNa14[-1,]
 CD4_IFNa2 <- CD4_IFNa2[-1,]
 CD4_IFNa14 <- CD4_IFNa14[-1,]
 #filter on 0.05 pvalue
-leukocyte_IFNa2_f <- filter(leukocyte_IFNa2, "padj" <= 0.05)
-leukocyte_IFNa14_f <- filter(leukocyte_IFNa14, "padj" <= 0.05)
-CD4_IFNa2_f <- filter(CD4_IFNa2, "padj" <= 0.05)
-CD4_IFNa14_f <- filter(CD4_IFNa14, "padj" <= 0.05)
+leukocyte_IFNa2_f <- filter(leukocyte_IFNa2, padj <= 0.05)
+leukocyte_IFNa14_f <- filter(leukocyte_IFNa14, padj <= 0.05)
+CD4_IFNa2_f <- filter(CD4_IFNa2, padj <= 0.05)
+CD4_IFNa14_f <- filter(CD4_IFNa14, padj <= 0.05)
 
 
 png("plots/VennDiagram_leukocyte_fdr0.05.png")
