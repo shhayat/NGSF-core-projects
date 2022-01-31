@@ -75,20 +75,17 @@ CD4_IFNa2_f <- filter(CD4_IFNa2, padj <= 0.05)
 CD4_IFNa14_f <- filter(CD4_IFNa14, padj <= 0.05)
 
 
-png("plots/VennDiagram_leukocyte_fdr0.05.png")
-leukocyte <- list(FNa2 = leukocyte_IFNa2_f$gene,
+png("plots/VennDiagram_leukocyte_fdr0.05.png", width=550)
+leukocyte <- list(IFNa2 = leukocyte_IFNa2_f$gene,
                   IFNa14 = leukocyte_IFNa14_f$gene)
 
-plot(euler(leukocyte, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .3))
+plot(euler(leukocyte, shape = "ellipse"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .3), title="Leukocyte")
 dev.off()
 
-png("plots/VennDiagram_CD4_fdr0.05.png")
-CD4 <- list(FNa2 = CD4_IFNa2_f$gene,
+png("plots/VennDiagram_CD4_fdr0.05.png" , width=550)
+CD4 <- list(IFNa2 = CD4_IFNa2_f$gene,
             IFNa14 = CD4_IFNa14_f$gene)
 
 plot(euler(CD4, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .3))
 
 dev.off()
-
-
-
