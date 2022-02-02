@@ -89,3 +89,45 @@ CD4 <- list(IFNa2 = CD4_IFNa2_f$gene,
 plot(euler(CD4, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .3))
 
 dev.off()
+
+
+#############
+#vOLCANO PLOT
+#############
+library(ggplot2)
+setwd("/Users/shahina/Projects/22-1KELA-001/")
+
+diff_genes<- read.csv("diff_genes.csv")
+leukocyte_IFNa2 <- diff_genes[c(1,4,5,6)]
+leukocyte_IFNa14 <- diff_genes[c(1,9,10,11)]
+
+CD4_IFNa2 <- diff_genes[c(1,19,20,21)]
+CD4_IFNa14 <- diff_genes[c(1,24,25,26)]
+
+plot_volcano <- function(condition_df, condition_name){
+  
+  colnames(condition_df) <- as.character(condition_df[1,])
+  condition_df <- condition_df[-1,]
+
+  #remove rows if padj is NA
+  condition_df <- condition_df[!is.na(condition_df$padj), ]
+  #assign up and down regulation and non signif based on log2fc
+  condition_df$direction <- ifelse(as.numeric(condition_df$log2FoldChange) < -0.6, "down_regulated", 
+                               ifelse(as.numeric(condition_df$log2FoldChange) > 0.6, "up_regulated", "signif" ))
+
+  png(paste0("plots/Volcano_plot_",condition_name,".png"),res=120)
+   p1  <- ggplot(condition_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+             geom_point(aes(col=direction),size=0.2,show.legend = FALSE) +
+             scale_color_manual(values=c("blue", "gray", "red")) +
+      theme(axis.text.x = element_text(size=11),
+            axis.text.y = element_text(size=11),
+            text = element_text(size=11)) +
+            xlab("log2(FC)") +
+            ylab("-log10(FDR)") 
+   print(p1)
+  dev.off()
+}
+plot_volcano(leukocyte_IFNa2, "leukocyte_IFNa2")
+plot_volcano(leukocyte_IFNa14, "leukocyte_IFNa14")
+plot_volcano(CD4_IFNa2, "CD4_IFNa2")
+plot_volcano(CD4_IFNa14, "CD4_IFNa14")
