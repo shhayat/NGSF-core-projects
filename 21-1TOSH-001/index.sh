@@ -13,6 +13,7 @@ set -eux
 #loading required modules
 module load star
 
+echo $(pwd)
 GENOME=/datastore/NGSF001/analysis/references/bison/jhered/esab003/
 REF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/sequence.fasta
 OUT_TMP=/globalhome/hxo752/HPC
