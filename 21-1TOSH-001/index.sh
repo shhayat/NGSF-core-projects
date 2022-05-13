@@ -16,6 +16,5 @@ module load star
 echo $(pwd)
 GENOME=/datastore/NGSF001/analysis/references/bison/jhered/esab003/
 REF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/sequence.fasta
-OUT_TMP=/globalhome/hxo752
 
-STAR --runMode genomeGenerate --genomeDir $GENOME --genomeFastaFiles $REF --outTmpDir $OUT_TMP --runThreadN 4
+STAR --runMode genomeGenerate --genomeDir $GENOME --genomeFastaFiles $REF --runThreadN 4
