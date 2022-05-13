@@ -15,6 +15,6 @@ module load star
 
 GENOME=/datastore/NGSF001/analysis/references/bison/jhered/esab003/
 REF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/sequence.fasta
-OUT_TMP=/globalhome/hxo752/HPC/slurm_logs
+OUT_TMP=/globalhome/hxo752/HPC/
 
 STAR --runMode genomeGenerate --genomeDir $GENOME --genomeFastaFiles $REF --outTmpDir $OUT_TMP --runThreadN 4
