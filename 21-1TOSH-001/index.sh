@@ -17,4 +17,8 @@ echo $(pwd)
 GENOME=/datastore/NGSF001/analysis/references/bison/jhered/esab003/
 REF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/sequence.fasta
 
-STAR --runMode genomeGenerate --genomeDir $GENOME --genomeFastaFiles $REF --runThreadN 4
+STAR --runThreadN 8 \
+    --runMode genomeGenerate \
+    --genomeDir $GENOME \
+    --genomeFastaFiles $REF \
+    --sjdbOverhang 75
