@@ -20,5 +20,4 @@ REF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/sequence.fasta
 STAR --runThreadN 8 \
     --runMode genomeGenerate \
     --genomeDir $GENOME \
-    --genomeFastaFiles $REF \
-    --sjdbOverhang 75
+    --genomeFastaFiles $REF
