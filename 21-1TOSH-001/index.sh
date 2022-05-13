@@ -11,13 +11,19 @@
 set -eux
 
 #loading required modules
-module load star
+module load star/2.7.9a 
 
-echo $(pwd)
-GENOME=/datastore/NGSF001/analysis/references/bison/jhered/esab003/
-REF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/sequence.fasta
+sync -avzP /datastore/NGSF001/analysis/references/bison/jhered/esab003/sequence.fasta ${SLURM_TMPDIR}/
+rsync -avzP /datastore/NGSF001/analysis/references/bison/jhered/esab003/bison.liftoff.chromosomes.gff ${SLURM_TMPDIR}/
+
+mkdir -p ${SLURM_TMPDIR}/star-2.7.9a
+
+#GENOME=/datastore/NGSF001/analysis/references/bison/jhered/esab003/
+
+
+REF=${SLURM_TMPDIR}/sequence.fasta
 
 STAR --runThreadN 8 \
     --runMode genomeGenerate \
-    --genomeDir $GENOME \
+    --genomeDir ${SLURM_TMPDIR}/star-index-2.7.9a \
     --genomeFastaFiles $REF
