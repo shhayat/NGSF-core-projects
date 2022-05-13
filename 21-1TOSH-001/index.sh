@@ -13,9 +13,8 @@ set -eux
 #loading required modules
 module load star
 
-$NCPU = 4
 GENOME=/datastore/NGSF001/analysis/references/bison/jhered/esab003/
 REF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/sequence.fasta
 $OUT_TMP=/globalhome/hxo752/HPC
 
-STAR --runMode genomeGenerate --genomeDir $GENOME --genomeFastaFiles $REF --outTmpDir $OUT_TMP --runThreadN $NCPU
+STAR --runMode genomeGenerate --genomeDir $GENOME --genomeFastaFiles $REF --outTmpDir $OUT_TMP --runThreadN 4
