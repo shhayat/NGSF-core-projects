@@ -14,7 +14,7 @@ set -eux
 module load star/2.7.9a 
 
 
-DATA=/data/labs/bioinformatics_lab/raw_data/RNAseq/mazloum_nayef/UHRF1_knockout
+DATA=/datastore/NGSF001/projects/21-1TOSH-001/fastq/21-1TOSH-001
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices
 GFF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/bison.liftoff.chromosomes.gff
 OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/STAR_alignment
@@ -25,8 +25,8 @@ OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/ST
         #R2=${R1##*/};
         #fq1=${R1}_S1_R1_001.fastq.gz
 	#fq2=${R1}_S1_R2_001.fastq.gz
-	fq1=R2200001_S1_R1_001.fastq.gz
-	fq2=R2200001_S1_R2_001.fastq.gz
+	fq1=$DATA/R2200001_S1_R1_001.fastq.gz
+	fq2=$DATA/R2200001_S1_R2_001.fastq.gz
 	mkdir -p $OUTDATA/R2200001_star
 	mkdir -p $OUTDATA/R2200001_star/tmp 
 	#mkdir -p $OUTDATA/${R2}_star
