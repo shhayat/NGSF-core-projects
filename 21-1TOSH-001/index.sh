@@ -28,4 +28,4 @@ STAR --runThreadN 8 \
     --genomeDir ${SLURM_TMPDIR}/star-index-2.7.9a \
     --genomeFastaFiles $REF
 
-rsync -rvzP ${SLURM_TMPDIR}/star-index-2.7.9a /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices/jhered.esab003/
+rsync -rvzP ${SLURM_TMPDIR}/star-index-2.7.9a /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices
