@@ -32,5 +32,5 @@ OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/ST
 	#mkdir -p $OUTDATA/${R2}_star
         #mkdir -p $OUTDATA/${R2}_star/tmp 
 
-	$STAR --genomeDir $GENOME --readFilesCommand zcat --readFilesIn $fq1 $fq2 --sjdbGTFfile $GFF --sjdbGTFtagExonParentTranscript Parent --outSAMstrandField intronMotif --outFileNamePrefix $OUTDATA/${R2}_star/star_ --outSAMtype BAM SortedByCoordinate --outFilterIntronMotifs RemoveNoncanonical --runThreadN 2 && samtools index $OUTDATA/${R2}_star/star_Aligned.sortedByCoord.out.bam 
+	STAR --genomeDir $GENOME --readFilesCommand zcat --readFilesIn $fq1 $fq2 --sjdbGTFfile $GFF --sjdbGTFtagExonParentTranscript Parent --outSAMstrandField intronMotif --outFileNamePrefix $OUTDATA/${R2}_star/star_ --outSAMtype BAM SortedByCoordinate --outFilterIntronMotifs RemoveNoncanonical --runThreadN 2 && samtools index $OUTDATA/${R2}_star/star_Aligned.sortedByCoord.out.bam 
 #done
