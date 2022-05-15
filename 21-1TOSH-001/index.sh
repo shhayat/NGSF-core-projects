@@ -23,9 +23,12 @@ mkdir -p ${SLURM_TMPDIR}/star-2.7.9a
 
 REF=${SLURM_TMPDIR}/sequence.fasta
 
+
+
 STAR --runThreadN 8 \
     --runMode genomeGenerate \
     --genomeDir ${SLURM_TMPDIR}/star-index-2.7.9a \
-    --genomeFastaFiles $REF
+    --genomeFastaFiles $REF \
+    --sjdbGTFfile ${SLURM_TMPDIR}/bison.liftoff.chromosomes.gff
 
 rsync -rvzP ${SLURM_TMPDIR}/star-index-2.7.9a /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices
