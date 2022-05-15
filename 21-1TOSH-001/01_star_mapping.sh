@@ -5,7 +5,7 @@
 #SBATCH --job-name=star_mapping
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --time=1:00:00
+#SBATCH --time=2:00:00
 #SBATCH --mem=4G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
