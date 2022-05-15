@@ -12,7 +12,7 @@ set -eux
 
 #loading required modules
 module load star/2.7.9a 
-
+module load samtools
 
 DATA=/datastore/NGSF001/projects/21-1TOSH-001/fastq/21-1TOSH-001
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices
@@ -32,5 +32,15 @@ OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/ST
 	#mkdir -p $OUTDATA/${R2}_star
         #mkdir -p $OUTDATA/${R2}_star/tmp 
 
-	STAR --genomeDir $GENOME --readFilesCommand zcat --readFilesIn $fq1 $fq2 --sjdbGTFfile $GFF --sjdbGTFtagExonParentTranscript Parent --outSAMstrandField intronMotif --outFileNamePrefix $OUTDATA/R2200001_star/star_ --outSAMtype BAM SortedByCoordinate --outFilterIntronMotifs RemoveNoncanonical --runThreadN 2 && samtools index $OUTDATA/R2200001_star/star_Aligned.sortedByCoord.out.bam 
+	STAR --genomeDir $GENOME \
+	--readFilesCommand zcat \
+	--readFilesIn $fq1 $fq2 \
+	--sjdbGTFfile $GFF \
+	--sjdbGTFtagExonParentTranscript Parent \
+	--outSAMstrandField intronMotif \
+	--outFileNamePrefix $OUTDATA/R2200001_star/star_ \
+	--outSAMtype BAM SortedByCoordinate \
+	--outFilterIntronMotifs RemoveNoncanonical \
+	--runThreadN 2 \
+	&& samtools index $OUTDATA/R2200001_star/star_Aligned.sortedByCoord.out.bam 
 #done
