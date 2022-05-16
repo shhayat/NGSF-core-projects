@@ -31,4 +31,4 @@ STAR --runThreadN 8 \
     --genomeFastaFiles $REF \
     --sjdbGTFfile ${SLURM_TMPDIR}/bison.liftoff.chromosomes.gff
 
-rsync -rvzP ${SLURM_TMPDIR}/star-index-2.7.9a /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices
+rsync -rvzP ${SLURM_TMPDIR}/star-index-2.7.9a /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices1
