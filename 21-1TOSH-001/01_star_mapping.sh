@@ -41,6 +41,6 @@ OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/ST
 	--outFileNamePrefix $OUTDATA/R2200001_star/star_ \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
-	--runThreadN 2 \
+	--runThreadN 4 \
 	&& samtools index $OUTDATA/R2200001_star/star_Aligned.sortedByCoord.out.bam 
 #done
