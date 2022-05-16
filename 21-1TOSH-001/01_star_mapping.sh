@@ -35,6 +35,7 @@ OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/ST
 	--readFilesIn $fq1 $fq2 \
 	--sjdbGTFfile $GFF \
 	--sjdbGTFtagExonParentTranscript Parent \
+	--sjdbGTFtagExonParentGene ID \
 	--outSAMstrandField intronMotif \
 	--outFileNamePrefix $OUTDATA/R2200001_star/star_ \
 	--outSAMtype BAM SortedByCoordinate \
