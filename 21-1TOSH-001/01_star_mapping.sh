@@ -1,12 +1,10 @@
 #!/bin/bash
 
-#SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
-#SBATCH --job-name=star_mapping
+#SBATCH --job-name=star-mapping
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=2:00:00
-#SBATCH --mem=2G
+#SBATCH --mem=4G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
