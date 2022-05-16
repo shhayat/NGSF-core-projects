@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=star_mapping
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=2
 #SBATCH --time=2:00:00
-#SBATCH --mem=4G
+#SBATCH --mem=2G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
@@ -41,6 +41,6 @@ OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/ST
 	--outFileNamePrefix $OUTDATA/R2200001_star/star_ \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
-	--runThreadN 4 \
+	--runThreadN 2 \
 	&& samtools index $OUTDATA/R2200001_star/star_Aligned.sortedByCoord.out.bam 
 #done
