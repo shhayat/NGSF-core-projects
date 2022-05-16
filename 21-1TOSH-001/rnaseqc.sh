@@ -20,4 +20,4 @@ OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/ST
 ${SLURM_TMPDIR}/rnaseqc.v2.4.2.linux ${GTF} \
                         ${OUTDATA}/R2200001_star/star_Aligned.sortedByCoord.out.bam \
                         --sample="R2200001" \
-                        output ${OUTDATA}
+                        ${OUTDATA}
