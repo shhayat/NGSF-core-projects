@@ -6,5 +6,5 @@ docker pull quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0
 
 #step:2 bison.liftoff.gff was load/mount within container agat:0.9.1 and the conversion was done using agat_convert_sp_gff2gtf.pl function. The 
 #output is stored in 
-docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o /tmp/bison.liftoff.gtf
+docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o agat/bison.liftoff.gtf
  
