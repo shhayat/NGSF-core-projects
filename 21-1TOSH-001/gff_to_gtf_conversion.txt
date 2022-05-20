@@ -2,9 +2,15 @@
 
 #Following steps were used
 #step1: Docker image was pulled for agat version 0.9.1
-docker pull quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 
+> docker pull quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 
 
-#step:2 bison.liftoff.gff was load/mount within container agat:0.9.1 and the conversion was done using agat_convert_sp_gff2gtf.pl function. The 
+#step:2 - keep bison.liftoff.gff in /tmp directory
+
+> cp bison.liftoff.gff /tmp
+
+#step:3 - bison.liftoff.gff was load/mount within container agat:0.9.1 and the conversion was done using agat_convert_sp_gff2gtf.pl function. The 
 #output is stored in 
-docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o agat/bison.liftoff.gtf
+> cd /tmp
+
+> docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o agat/bison.liftoff.gtf
  
