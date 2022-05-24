@@ -21,3 +21,9 @@ docker exec --workdir /tmp quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 pw
 #step3 was crashing after parsing 59% of the file. This was because all memeory was comsumed (4GB) while pasrsing file. In order to increase memory go to docker Preferences -> Resources -> Advanced and increase CPU 6 , MEMORY 8GB, DISK IMAGE SIZE 120GB -> apply and reset and then run step step 3 with new settings
 
 > docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o agat/bison.liftoff.gtf
+
+#after running above command without any error I checked the output file and it was empty. not sure why it is empty.
+
+#In Next try I pulled AGAT pacakge from git and set it up for running by isntalling all dependecies and used following command under installed AGAT directory
+
+> agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o bison.liftoff.gtf 
