@@ -14,12 +14,6 @@
 
 > docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o agat/bison.liftoff.gtf
 
-#step3 was exisitng after parsing 59% of the file. it generated following error
+#step3 was crashing after parsing 59% of the file. This was because all memeory was comsumed (4GB) while pasrsing file. In order to increase memory go to docker Preferences -> Resources -> Advanced and increase CPU 6 , MEMORY 8GB, DISK IMAGE SIZE 120GB -> apply and reset and then run step step 3 with new settings
 
-gff3 reader warning: primary_tag error @ telomerase_rna still not taken in account! Please modify the json files to define the feature in one of the levels
-
-#There were two lines in gff file with this information. Lines with telomerase_rna information was removed from gff file and reran step 3
-
-> grep -vwE "telomerase_RNA" bison.liftoff.gff > bison.liftoff_rm_telomerase_RNA.gff 
-
-> docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff_rm_telomerase_RNA.gff --relax > bison.liftoff_rm_telomerase_RNA.gtf
+> docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o agat/bison.liftoff.gtf
