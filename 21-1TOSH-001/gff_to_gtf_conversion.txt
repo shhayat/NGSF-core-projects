@@ -8,6 +8,10 @@
 
 > cp bison.liftoff.gff /tmp
 
+
+docker exec --workdir /tmp quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 pwd
+
+
 #step:3 - bison.liftoff.gff was load/mount within container agat:0.9.1 and the conversion was done using agat_convert_sp_gff2gtf.pl function. The 
 #output is stored in 
 > cd /tmp
