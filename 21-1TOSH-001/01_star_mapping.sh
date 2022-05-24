@@ -14,7 +14,8 @@ module load samtools
 
 DATA=/datastore/NGSF001/projects/21-1TOSH-001/fastq/21-1TOSH-001
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices/star-index-2.7.9a
-GFF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/bison.liftoff.chromosomes.gff
+#GFF=/datastore/NGSF001/analysis/references/bison/jhered/esab003/bison.liftoff.chromosomes.gff
+GTF=/globalhome/hxo752/HPC/bison.liftoff.gtf
 OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/STAR_alignment
 
 #for i in $DATA/R2200001_S1_R1_001.fastq.gz
