@@ -14,7 +14,9 @@ set -eux
 cp /datastore/NGSF001/software/src/rnaseqc.v2.4.2.linux ${SLURM_TMPDIR}
 chmod u+x ${SLURM_TMPDIR}/rnaseqc.v2.4.2.linux
 
-GTF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/bison.liftoff.chromosomes.gtf
+
+#GTF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/bison.liftoff.chromosomes.gtf
+GTF=/globalhome/hxo752/HPC/bison.liftoff.gtf
 OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/STAR_alignment
 
 ${SLURM_TMPDIR}/rnaseqc.v2.4.2.linux ${GTF} \
