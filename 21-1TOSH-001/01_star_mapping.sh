@@ -39,6 +39,7 @@ STAR --genomeDir $GENOME \
 	--outFileNamePrefix $OUTDATA/R2200001_star/star_ \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
+	--sjdbGTFfeatureExon exon \
 	--runThreadN 4 \
 	&& samtools index $OUTDATA/R2200001_star/star_Aligned.sortedByCoord.out.bam 
 	
