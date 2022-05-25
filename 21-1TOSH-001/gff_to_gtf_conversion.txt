@@ -26,4 +26,9 @@ docker exec --workdir /tmp quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 pw
 
 #In Next try I pulled AGAT pacakge from git and set it up for running by isntalling all dependecies and used following command under installed AGAT directory
 
-> agat_convert_sp_gff2gtf.pl --gff bison.liftoff.gff -o bison.liftoff.gtf 
+> agat_convert_sp_gff2gtf.pl --gff bison.liftoff.gff -o bison.liftoff.agat.gff
+
+#bison.liftoff.agat.gff was in gff3 format and it was not a gtf file. In order to convert it into GTF file function from cufflink pacakge was used
+
+> gffread bison.liftoff.agat.gff -T -o bison.liftoff.gffread.gtf
+
