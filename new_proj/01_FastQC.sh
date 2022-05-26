@@ -10,16 +10,15 @@ set -eux
 
 module load fastqc
 DATA=
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/new_proj
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/new_proj/fastqc
 
-OUTDIR=/data/labs/bioinformatics_lab/processed/RNAseq/mazloum_nayef/KIF4a_knockout/FastQC_and_MultiQC
-DIR=/data/labs/bioinformatics_lab/shared/RNASeq/mazloum_nayef/KIF4a_knockout
-mkdir -p $RESULT_FOLDER
+OUTDIR=$1
+FASTQ_FILE=$2
 
+#fastqc
+fastqc -o $OUTDIR --extract ${FASTQ_FILE}
 
-for fastq in $DATA/*.fastq.gz
-do
-     echo "fastqc -o $RESULT_FOLDER --extract ${fastq}" >> $DIR/run_fastqc.sh
-done
+wait
 
-echo "multiqc $RESULT_FOLDER/*_fastqc.zip" -o  $RESULT_FOLDER >> $DIR/run_mutiqc.sh
+#multiqc
+multiqc $OUTDIR/*_fastqc.zip" -o  $OUTDIR
