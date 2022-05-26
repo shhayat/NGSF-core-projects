@@ -15,8 +15,3 @@ FASTQ_FILE=$1
 
 #fastqc
 fastqc -o $OUTDIR --extract ${FASTQ_FILE}
-
-wait
-
-#multiqc
-~/.local/bin/multiqc $OUTDIR/*_fastqc.zip" -o  $OUTDIR
