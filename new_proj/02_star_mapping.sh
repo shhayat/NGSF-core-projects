@@ -13,32 +13,25 @@ set -eux
 module load star/2.7.9a 
 module load samtools
 
-DATA=/datastore/NGSF001/projects/21-1TOSH-001/fastq/21-1TOSH-001
-GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices/star-index-2.7.9a
-GTF=/globalhome/hxo752/HPC/bison.liftoff.gffread.mod.gtf
-OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/new_proj
+DATA=
+GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices/gencode-40
+GTF=
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/new_proj/star_alignment
+NCPU=4
 
-#for i in $DATA/R2200001_S1_R1_001.fastq.gz
-#do
-        #R1="${i%_R1*}";
-        #R2=${R1##*/};
-        #fq1=${R1}_S1_R1_001.fastq.gz
-	#fq2=${R1}_S1_R2_001.fastq.gz
-	fq1=$DATA/R2200001_S1_R1_001.fastq.gz
-	fq2=$DATA/R2200001_S1_R2_001.fastq.gz
-	mkdir -p $OUTDATA/R2200001_star
-	mkdir -p $OUTDATA/R2200001_star/tmp 
-	#mkdir -p $OUTDATA/${R2}_star
-        #mkdir -p $OUTDATA/${R2}_star/tmp 
+rsync -avzP /datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf ${SLURM_TMPDIR}/
+
+mkdir -p ${OUTDIR}
+sample_name=1; shift
+R1=2; shift
+R2=3
 
 STAR --genomeDir $GENOME \
 	--readFilesCommand zcat \
-	--readFilesIn $fq1 $fq2 \
+	--readFilesIn $R1 $R2 \
 	--sjdbGTFfile $GTF \
 	--outSAMstrandField intronMotif \
-	--outFileNamePrefix $OUTDATA/STAR_alignment/R2200001_star/star_ \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
-	--sjdbGTFfeatureExon exon \
-	--runThreadN 4 \
-	&& samtools index $OUTDATA/STAR_alignment/R2200001_star/star_Aligned.sortedByCoord.out.bam 
+	--runThreadN $NCPU \
+	&& samtools index $OUTDATA/STAR_alignment/${OUTDIR}/${sample_name}_star/Aligned.sortedByCoord.out.bam 
