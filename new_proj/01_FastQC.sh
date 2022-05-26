@@ -9,7 +9,6 @@
 set -eux
 
 module load fastqc
-DATA=
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/new_proj/fastqc
 
 FASTQ_FILE=$1
