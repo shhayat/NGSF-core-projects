@@ -26,12 +26,20 @@ sample_name=1; shift
 R1=2; shift
 R2=3
 
+rsync -v $R1 ${SLURM_TMPDIR}
+rsync -v $R2 ${SLURM_TMPDIR}
+
+mkdir -p ${SLURM_TMPDIR}/$NAME && cd ${SLURM_TMPDIR}/${sample_name}
+
 STAR --genomeDir $GENOME \
 	--readFilesCommand zcat \
 	--readFilesIn $R1 $R2 \
-	--sjdbGTFfile $GTF \
 	--outSAMstrandField intronMotif \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
 	--runThreadN $NCPU \
-	&& samtools index $OUTDATA/STAR_alignment/${OUTDIR}/${sample_name}_star/Aligned.sortedByCoord.out.bam 
+	&& samtools index Aligned.sortedByCoord.out.bam 
+	
+	
+rsync -rvzP ${SLURM_TMPDIR}/$NAME $OUTDIR
+
