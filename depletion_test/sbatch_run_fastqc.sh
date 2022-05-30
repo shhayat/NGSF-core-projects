@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DATA=/datastore/NGSF001/experiments/depletion_tests/human/fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test
 
 
 for fq in $DATA/*_001.fastq.gz
