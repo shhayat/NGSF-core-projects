@@ -15,4 +15,4 @@ wait
 cp ~/.local/bin/multiqc ${SLURM_TMPDIR}
 chmod u+x ${SLURM_TMPDIR}/multiqc
 
-${SLURM_TMPDIR}/multiqc "${OUTDIR}/*_fastqc.zip" -o  ${OUTDIR}/fastqc
+${SLURM_TMPDIR}/multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
