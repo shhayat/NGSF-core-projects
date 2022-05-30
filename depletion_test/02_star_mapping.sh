@@ -35,6 +35,7 @@ STAR --genomeDir $GENOME \
 	--outSAMstrandField intronMotif \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
+	--sjdbGTFfile ${SLURM_TMPDIR}/gencode.v40.annotation.gtf \
 	--runThreadN ${NCPU} \
 	&& samtools index Aligned.sortedByCoord.out.bam 
 	
