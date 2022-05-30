@@ -13,4 +13,7 @@ do
  sleep 0.5
 done 
 
-/*Log.final.out
+
+cd /globalhome/hxo752/HPC/tools/
+./multiqc ${OUTDIR}/star_alignment/*/Log.final.out -o ${OUTDIR}/star_alignment
+
