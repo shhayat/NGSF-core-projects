@@ -1,3 +1,4 @@
+#!/bin/bash
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/star_alignment
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests
 
