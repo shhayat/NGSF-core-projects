@@ -1,14 +1,14 @@
-#!/bin/bash
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/star_alignment
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test
 
-  for i in ${DATA}/*/*R1_001.fastq.gz
+for i in ${DATA}/*/Aligned.sortedByCoord.out.bam
 do
-        path="${i%_R1*}";
+        path="${i%*}";
         basename=${path##*/};
 	sample_name=${basename//_*};
-        fq1=${basename}_R1_001.fastq.gz;
-	fq2=${basename}_R2_001.fastq.gz;
-  sbatch $OUTDIR/03_RNASEQC.sh "${sample_name}" "${fq1}" "${fq2}"
+      
+  sbatch $OUTDIR/03_RNASEQC.sh "${sample_name}" "${basename}"
  sleep 0.5
 done 
+
+

@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #SBATCH --job-name=star-align
@@ -21,14 +20,14 @@ NCPU=4
 rsync -avzP /datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf ${SLURM_TMPDIR}/
 
 mkdir -p ${OUTDIR}
-sample_name=1; shift
-fq1=2; shift
-fq2=3
+sample_name=$1; shift
+fq1=$1; shift
+fq2=$1
 
-rsync -v $R1 ${SLURM_TMPDIR}
-rsync -v $R2 ${SLURM_TMPDIR}
+rsync -v $fq1 ${SLURM_TMPDIR}
+rsync -v $fq2 ${SLURM_TMPDIR}
 
-mkdir -p ${SLURM_TMPDIR}/$NAME && cd ${SLURM_TMPDIR}/${sample_name}
+mkdir -p ${SLURM_TMPDIR}/${sample_name} && cd ${SLURM_TMPDIR}/${sample_name}
 
 STAR --genomeDir $GENOME \
 	--readFilesCommand zcat \
