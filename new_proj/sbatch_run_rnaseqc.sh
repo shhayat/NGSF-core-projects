@@ -1,4 +1,4 @@
-DATA=/datastore/NGSF001/experiments/depletion_tests/human/fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/star_alignment
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests
 
   for i in $DATA/*R1_001.fastq.gz
