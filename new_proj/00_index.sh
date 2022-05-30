@@ -14,7 +14,7 @@ set -eux
 module load star/2.7.9a 
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/indices
-mkdir ${OUTDIR}
+mkdir -p ${OUTDIR}
 NCPU=4
 
 rsync -avzP /datastore/NGSF001/analysis/references/human/gencode-40/GRCh38.primary_assembly.genome.fa ${SLURM_TMPDIR}/
@@ -24,10 +24,10 @@ mkdir -p ${SLURM_TMPDIR}/gencode-40
 mkdir -p ${OUTDIR}
 
 
-STAR --runThreadN $NCPU \
+STAR --runThreadN ${NCPU} \
      --runMode genomeGenerate \
      --genomeDir ${SLURM_TMPDIR}/gencode-40 \
      --genomeFastaFiles ${SLURM_TMPDIR}/GRCh38.primary_assembly.genome.fa
      --sjdbGTFfile ${SLURM_TMPDIR}/gencode.v40.annotation.gtf
     
-rsync -rvzP ${SLURM_TMPDIR}/gencode-40 $OUTDIR
+rsync -rvzP ${SLURM_TMPDIR}/gencode-40 ${OUTDIR}
