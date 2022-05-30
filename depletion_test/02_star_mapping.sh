@@ -13,7 +13,7 @@ module load star/2.7.9a
 module load samtools
 
 DATA=/datastore/NGSF001/experiments/depletion_tests/human/fastq
-GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/human/indices/gencode-40
+GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/indices/gencode-40
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/star_alignment
 NCPU=4
 
