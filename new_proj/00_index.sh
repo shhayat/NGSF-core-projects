@@ -13,7 +13,7 @@ set -eux
 #loading required modules
 module load star/2.7.9a 
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/new_proj/indices
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/indices
 NCPU=4
 rsync -avzP /datastore/NGSF001/analysis/references/human/gencode-40/GRCh38.primary_assembly.genome.fa ${SLURM_TMPDIR}/
 rsync -avzP /datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf ${SLURM_TMPDIR}/
