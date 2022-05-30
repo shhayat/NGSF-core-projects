@@ -12,12 +12,17 @@ set -eux
 
 
 module load fastqc
-DATA=
+DATA=/datastore/NGSF001/experiments/depletion_tests/human/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/fastqc
 
 mkdir -p ${OUTDIR}
 
-FASTQ_FILE=$1
+#FASTQ_FILE=$1
 
-#fastqc
-fastqc -o ${OUTDIR} --extract ${FASTQ_FILE}
+for FASTQ_FILE in ${DATA}/*.fq.gz
+do
+  #fastqc
+  fastqc -o ${OUTDIR} --extract ${FASTQ_FILE}
+done
+
+
