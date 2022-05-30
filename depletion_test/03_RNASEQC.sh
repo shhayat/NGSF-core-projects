@@ -15,14 +15,9 @@ sample_name=$1; shift
 bam_file=$2
 
 GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/rnaseqc
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/rnaseqc
 
 mkdir -p ${OUTDIR}
-
-#${SLURM_TMPDIR}/rnaseqc.v2.4.2.linux ${GTF} \
-#                        ${OUTDATA}/R2200001_star/star_Aligned.sortedByCoord.out.bam \
-#                        --sample="R2200001" \
-#                        ${OUTDATA}
 
 ${SLURM_TMPDIR}/rnaseqc.v2.4.2.linux ${GTF} \
                         ${bam_file} \

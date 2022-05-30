@@ -10,7 +10,7 @@ set -eux
 
 
 module load fastqc
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/fastqc
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/fastqc
 
 mkdir -p ${OUTDIR}
 

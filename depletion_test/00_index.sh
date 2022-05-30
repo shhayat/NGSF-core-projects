@@ -13,7 +13,7 @@ set -eux
 #loading required modules
 module load star/2.7.9a 
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/indices
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/indices
 mkdir -p ${OUTDIR}
 NCPU=4
 
