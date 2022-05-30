@@ -1,7 +1,7 @@
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests/human/star_alignment
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_tests
 
-  for i in $DATA/*R1_001.fastq.gz
+  for i in ${DATA}/*/*R1_001.fastq.gz
 do
         path="${i%_R1*}";
         basename=${path##*/};
