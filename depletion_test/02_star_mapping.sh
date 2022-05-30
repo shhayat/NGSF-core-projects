@@ -41,4 +41,3 @@ STAR --genomeDir $GENOME \
 	
 	
 rsync -rvzP ${SLURM_TMPDIR}/${sample_name} ${OUTDIR}
-
