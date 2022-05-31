@@ -1,7 +1,7 @@
 DATA=/datastore/NGSF001/experiments/depletion_tests/human/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test
 
-  for i in $DATA/*R1_001.fastq.gz
+for i in $DATA/*R1_001.fastq.gz
 do
         path="${i%_R1*}";
         basename=${path##*/};
@@ -15,5 +15,5 @@ done
 
 
 cd /globalhome/hxo752/HPC/tools/
-./multiqc ${OUTDIR}/star_alignment/*/Log.final.out -o ${OUTDIR}/star_alignment
+./multiqc -d ${OUTDIR}/star_alignment/*/Log.final.out -o ${OUTDIR}/star_alignment
 
