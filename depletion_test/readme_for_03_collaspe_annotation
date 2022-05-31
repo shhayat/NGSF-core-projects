@@ -1,0 +1,8 @@
+while running rnaseqc following error was seen
+"Failed to parse the GTF: Detected non-unique Exon ID:"
+
+to resolve this issue https://github.com/broadinstitute/gtex-pipeline/blob/master/gene_model/collapse_annotation.py was used
+
+Following command was used for running above code
+
+python collaspe_annotation.py /datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf /datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation_mod.gtf
