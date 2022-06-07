@@ -13,15 +13,20 @@ set -eux
 
 module load fastqc
 DATA=/datastore/NGSF001/projects/22-1LICH-001/fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/fastqc
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001
 
-mkdir -p ${OUTDIR}
+mkdir -p ${OUTDIR}/fastqc
 
-FASTQ_FILE=$1
+for fq in $DATA/*_R*.fastq.gz
+do
+   fastqc -o ${OUTDIR}/fastqc --extract ${fq}
+   sleep 0.5 
+done 
+
+
 
 #for FASTQ_FILE in ${DATA}/*.fastq.gz
 #do
   #fastqc
 #  fastqc -o ${OUTDIR} --extract ${FASTQ_FILE}
 #done
-fastqc -o ${OUTDIR} --extract ${FASTQ_FILE}
