@@ -11,3 +11,7 @@ do
 done 
 
 
+cd /globalhome/hxo752/HPC/tools/
+./multiqc -d ${OUTDIR}/human/rnaseqc/*metrics.tsv -o ${OUTDIR}/human/rnaseqc
+./multiqc -d ${OUTDIR}/human/rnaseqc/*exon_cv.tsv -o ${OUTDIR}/human/rnaseqc
+
