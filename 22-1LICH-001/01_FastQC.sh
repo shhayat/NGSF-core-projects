@@ -17,7 +17,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001
 
 mkdir -p ${OUTDIR}/fastqc
 
-for fq in $DATA/*_R*.fastq.gz
+for fq in $DATA/R2*_R*.fastq.gz
 do
    fastqc -o ${OUTDIR}/fastqc --extract ${fq}
    sleep 0.5 
