@@ -17,7 +17,7 @@ feature_count <- sapply(sample_names, function(x)
 			   
 
 #convet list to a dataframe
-feature_count <- feature_count %>% lapply(function(x) x) %>% 
+feature_count <- feature_count %>% lapply(function(x) x$counts) %>% 
                 do.call(cbind, .) %>% 
 	        magrittr::set_colnames(names(feature_count))
 
