@@ -45,4 +45,4 @@ rsync -rvzP ${SLURM_TMPDIR}/${sample_name} ${OUTDIR}
 wait 
 
 cd /globalhome/hxo752/HPC/tools/
-./multiqc -d ${OUTDIR}/*/Log.final.out -o ${OUTDIR}/star_alignment
+./multiqc -d ${OUTDIR}/*/Log.final.out -o ${OUTDIR}
