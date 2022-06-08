@@ -19,6 +19,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref)
 {
 feature_count <- feature_count[colnum]
 
+feature_count <- feature_count[c(1,3,5,2,4,6)]
 #at least one column has number
 feature_count <- feature_count[apply(feature_count,1,function(z) any(z!=0)),]
 
