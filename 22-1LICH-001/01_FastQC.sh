@@ -6,11 +6,7 @@
 #SBATCH --ntasks=6
 #SBATCH --cpus-per-task=2
 #SBATCH --time=02:00:00
-<<<<<<< HEAD
-#SBATCH --mem=4G
-=======
 #SBATCH --mem=6G
->>>>>>> 4bc79c04055a0b48d85baa7a404d8c71bb933dbc
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
@@ -21,14 +17,14 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001
 
 mkdir -p ${OUTDIR}/fastqc
 
-pids=""
+
 for fq in $DATA/R2*_R*.fastq.gz
 do
    fastqc -o ${OUTDIR}/fastqc --extract ${fq}
-   pids="$pids $!"
+   
 done 
 
-wait $pids 
+wait 
 
 cd /globalhome/hxo752/HPC/tools/
 ./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
