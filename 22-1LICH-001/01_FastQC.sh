@@ -4,6 +4,8 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=fastqc
 #SBATCH --ntasks=6
+#SBATCH --ntasks-per-node=1
+#SBATCH --nodes=6
 #SBATCH --cpus-per-task=2
 #SBATCH --time=02:00:00
 #SBATCH --mem=6G
