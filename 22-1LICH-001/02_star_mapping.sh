@@ -41,3 +41,8 @@ STAR --genomeDir $GENOME \
 	
 	
 rsync -rvzP ${SLURM_TMPDIR}/${sample_name} ${OUTDIR}
+
+wait 
+
+cd /globalhome/hxo752/HPC/tools/
+./multiqc -d ${OUTDIR}/star_alignment/*/Log.final.out -o ${OUTDIR}/star_alignment
