@@ -1,4 +1,4 @@
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/star_alignment
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/star_alignment
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001
 
 for i in ${DATA}/*/*.bam
