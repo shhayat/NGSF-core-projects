@@ -11,8 +11,4 @@ do
   
       sbatch $OUTDIR/02_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
  sleep 0.5
-done 
-
-
-cd /globalhome/hxo752/HPC/tools/
-./multiqc -d ${OUTDIR}/star_alignment/*/Log.final.out -o ${OUTDIR}/star_alignment
+done
