@@ -14,12 +14,22 @@ feature_count <- sapply(sample_names, function(x)
 			   isPairedEnd = TRUE), 
 			   simplify = FALSE, 
 			   USE.NAMES = TRUE)
-			   
+
 
 #convet list to a dataframe
+#COUNTS
 feature_count <- feature_count %>% lapply(function(x) x$counts) %>% 
-                do.call(cbind, .) %>% 
-	        magrittr::set_colnames(names(feature_count))
+	do.call(cbind, .) %>% 
+	magrittr::set_colnames(names(feature_count))
 
-#save dataframe A and B
+#ANNOTATIONS					  
+feature_annotation <- feature_count %>% lapply(function(x) x$annotation) %>% 
+	do.call(cbind, .) %>% 
+	magrittr::extract(,c(1,7,8)) %>%
+	magrittr::set_colnames(c('GeneID', 'gene_name', 'gene_biotype'))
+
+feature_count_with_annotations <- cbind(feature_annotation,feature_count)
+
 save(feature_count, file = 'feature_count.RData', compress = 'xz')
+					
+
