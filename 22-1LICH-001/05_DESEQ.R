@@ -58,10 +58,10 @@ write.csv(resDF1,file=sprintf("DESEQ2/DESEQ2_DEG_%s_vs_%s_filter_on_pval.csv",co
   #gernate rlog for PCA
   rld <-rlog(dds,blind=FALSE)
   pdf(sprintf("DESEQ2/PCA_%s_%s.pdf",cond2,cond1), width=15,height=15)
-  nudge <- position_nudge(y = 0.5)
-  p <- plotPCA(rld,intgroup=c("sample_group"))  
-  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
-  print(p)
+    nudge <- position_nudge(y = 0.5)
+    p <- plotPCA(rld,intgroup=c("sample_group"))  
+    p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
+    print(p)
   dev.off()
 
 }
