@@ -5,15 +5,13 @@ library("org.Hs.eg.db")
 library("ggplot2")
 library("biomaRt")
 
-setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/")
-dir.create("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
+dir.create("/Users/hxo752/Desktop/22-1LICH-001", recursive=TRUE, showWarnings = FALSE) 
+setwd("/Users/hxo752/Desktop/22-1LICH-001")
 
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
-
-names(feature_count) = gsub(pattern = "_S[0-9].*", replacement = "", x = names(feature_count))
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref)
 {
@@ -62,7 +60,7 @@ resDF <- data.frame(gene_id=rownames(res_pval_ordered),res_pval_ordered)
 resDF1 <- merge(resDF, select_attributes, by="gene_id")
 
 #All significant
-write.csv(resDF1,file=sprintf("DESEQ2/DESEQ2_DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
+write.csv(resDF1,file=sprintf("DESEQ2_DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
 
 
 ##########
@@ -70,7 +68,7 @@ write.csv(resDF1,file=sprintf("DESEQ2/DESEQ2_DEG_%s_vs_%s_filter_on_pval.csv",co
 ##########
 #gernate rlog for PCA
   rld <-rlog(dds,blind=FALSE)
-  pdf(sprintf("DESEQ2/PCA_%s_%s.pdf",cond1,cond2))
+  pdf(sprintf("PCA_%s_%s.pdf",cond1,cond2), width=5, height=30)
     nudge <- position_nudge(y = 1)
     p <- plotPCA(rld,intgroup=c("sample_group"))  
     p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge)
@@ -81,7 +79,7 @@ dev.off()
 #########
 #MA PLOT
 #########
-pdf(sprintf("DESEQ2/MA_plot_%s_vs_%s.pdf",cond2,cond1))
+pdf(sprintf("MA_plot_%s_vs_%s.pdf",cond2,cond1))
    ylim <- c(-3,3)
    resGA <- results(dds_wald, lfcThreshold=.5, altHypothesis="greaterAbs")
    drawLines <- function() abline(h=c(-.5,.5),col="dodgerblue",lwd=2)
