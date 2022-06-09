@@ -28,7 +28,7 @@ feature_annotation <- feature_count %>% lapply(function(x) x$annotation) %>%
 	magrittr::extract(,c(1,7,8)) %>%
 	magrittr::set_colnames(c('GeneID', 'gene_name', 'gene_biotype'))
 
-feature_count_with_annotations <- cbind(feature_annotation,feature_count)
+feature_count <- cbind(feature_annotation,feature_count)
 
 save(feature_count, file = 'feature_count.RData', compress = 'xz')
 					
