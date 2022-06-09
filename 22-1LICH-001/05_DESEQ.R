@@ -6,7 +6,7 @@ library("ggplot2")
 library("biomaRt")
 
 setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/")
-dir.create("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001//DESEQ2", recursive=TRUE, showWarnings = FALSE) 
+dir.create("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
