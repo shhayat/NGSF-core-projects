@@ -1,7 +1,5 @@
 
 library("DESeq2")
-library("AnnotationDbi")
-library("org.Hs.eg.db")
 library("ggplot2")
 library("biomaRt")
 
