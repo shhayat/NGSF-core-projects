@@ -1,7 +1,6 @@
 
 library("DESeq2")
 library("ggplot2")
-library("biomaRt")
 
 dir.create("/Users/hxo752/Desktop/22-1LICH-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 setwd("/Users/hxo752/Desktop/22-1LICH-001")
