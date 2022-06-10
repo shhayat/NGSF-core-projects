@@ -10,6 +10,7 @@ feature_count <- sapply(sample_names, function(x)
 			   featureCounts(files = sprintf('%s/%s/Aligned.sortedByCoord.out.bam',result_dir, x),
 			   annot.ext="/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation_mod.gtf",
 			   isGTFAnnotationFile = TRUE,
+			   GTF.attrType.extra  = c('gene_name', 'gene_biotype'),
 			   nthreads = 8, 
 			   isPairedEnd = TRUE), 
 			   simplify = FALSE, 
