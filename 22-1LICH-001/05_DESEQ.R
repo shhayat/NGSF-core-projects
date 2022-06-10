@@ -13,13 +13,13 @@ feature_count <- as.data.frame(feature_count)
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
 
-feature_annotation <- feature_count[1:3]
+feature_annotation <- feature_count[1:2]
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref)
 {
 #feature_count <- feature_count[colnum]
 
-feature_count <- feature_count[c(4,6,8,5,7,9)]
+feature_count <- feature_count[c(3,5,7,4,6,8)]
 #at least one column has number
 feature_count <- feature_count[apply(feature_count,1,function(z) any(z!=0)),]
 
