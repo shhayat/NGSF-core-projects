@@ -1,6 +1,7 @@
 library("edgeR")
 
-setwd("/Users/shahina/Projects/22-1LICH-001")
+dir.create("/Users/hxo752/Desktop/22-1LICH-001/EdgeR", recursive=TRUE, showWarnings = FALSE) 
+setwd("/Users/hxo752/Desktop/22-1LICH-001")
 
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
@@ -33,7 +34,7 @@ edgeR_analysis <-  function(colnum,cond1, cond2, ref)
   
   res <- rbind(res1,res2)
   #All genes
-  write.csv(res,file=sprintf("%s_vs_%s__logFC1.5.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
+  write.csv(res,file=sprintf("%s_vs_%s_logFC1.5.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
   
 }
 edgeR_analysis(c(3:4),"R2200132_Untreated","R2200133_Treated","R2200132_Untreated")
