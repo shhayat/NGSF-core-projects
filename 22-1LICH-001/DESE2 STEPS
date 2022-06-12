@@ -1,10 +1,19 @@
-DESEQ2 STEPS. (https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html)
+DESEQ2 STEPS. (https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html), https://github.com/hbctraining/DGE_workshop/tree/master/lessons
+
+ DESeq2 will model the raw counts, using normalization factors (size factors) to account for differences in library depth. 
+ Then, it will estimate the gene-wise dispersions and shrink these estimates to generate more accurate estimates of dispersion 
+ to model the counts. Finally, DESeq2 will fit the negative binomial model and perform hypothesis testing using the Wald test 
+ or Likelihood Ratio Test.
+
 
 1. PREFITERING
 
-2. EXPLORATORY PLOTS (PCA, BOX PLOTS) [TO LOOK FOR OUTLIERS)
+2. NORMALIZATION
 
-3. NORMALIZATION 
+3. EXPLORATORY PLOTS: UNSUPERVISED CLUSTERING (PCA, Hierarchical Clustering Heatmap) [TO REMOVE FOR OUTLIERS)
 
-4. ESTIMATE DISPERSION 
+4. MODELING RAW COUNTS FOR EACH GENES (ESTIMATE SIZE FACTOR, ESTIMATE GENE WISE DISPERSION, FITTING CURVE TO GENE WISE DISPERSION ESTIMATES,
+                                       SHRINK GENE WISE DISPERSION ESTIMATE, GLM FIT FOR EACH GENES)
+
+4. TESTING FOR DIFFERENTIAL EXPRESSION (WALD TEST , LRT)
 
