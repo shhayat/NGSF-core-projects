@@ -11,6 +11,7 @@ geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
 
 feature_annotation <- feature_count[1:2]
+feature_annotation$GeneID <- gsub(".[0-9]*$", "",feature_annotation$GeneID)
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref)
 {
