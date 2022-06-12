@@ -1,0 +1,10 @@
+DESEQ2 STEPS. (https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html)
+
+1. PREFITERING
+
+2. EXPLORATORY PLOTS (PCA, BOX PLOTS) [TO LOOK FOR OUTLIERS)
+
+3. NORMALIZATION 
+
+4. ESTIMATE DISPERSION 
+
