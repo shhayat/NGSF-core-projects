@@ -31,24 +31,10 @@ group <- data.frame(sample_group=sampleInfo$sample_group)
 dds <- DESeqDataSetFromMatrix(countData=feature_count,
                               colData=group,
                               design=~sample_group)
+                                     
 
 dds$sample_group <-relevel(dds$sample_group,ref=ref)
-dds <- estimateSizeFactors(dds)
-dds <- estimateDispersionsGeneEst(dds)
-dispersions(dds) <- mcols(dds)$dispGeneEst
-dds_wald <- DESeq(dds, betaPrior=TRUE, minReplicatesForReplace=Inf)
-
-#results with independent filtering and outlier removal and padj is by default 0.1
-res <- results(dds_wald, independentFiltering=TRUE,cooksCutoff=TRUE)
-#summary(res)
-resDF <- data.frame(GeneID=rownames(res),res)
-resDF1 <- merge(feature_annotation,resDF, by="GeneID")
-res_pval <- subset(resDF1, pvalue <= 0.05)
-res_pval_ordered <- res_pval[order(res_pval$pvalue),]
-
-#All significant
-write.csv(resDF1,file=sprintf("DESEQ2/DESEQ2_DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
-
+                                     
 ##########
 #PCA PLOT
 ##########
@@ -60,36 +46,7 @@ write.csv(resDF1,file=sprintf("DESEQ2/DESEQ2_DEG_%s_vs_%s_filter_on_pval.csv",co
     p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
     print(p)
   dev.off()
-
-}
-Untreated_vs_Treated   <- DEG_analysis(c(1:6),"Untreated","Treated","Untreated")
-                                     
-                                     
-                                     
-                                     
-                                                                         
-#paired comparisions
-DEG_analysis <-  function(colnum,cond1, cond2, ref)
-{
-#feature_count <- feature_count[colnum]
-
-#feature_count <- feature_count[c(4,6,8,5,7,9)]
-#at least one column has number
-feature_count <- feature_count[apply(feature_count,1,function(z) any(z!=0)),]
-
-sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
-                      sample_type=dput(as.character(names(feature_count))),
-                      sample_group=dput(as.character(c(rep(cond1,1),rep(cond2,1)))))
-
-
-
-group <- data.frame(sample_group=sampleInfo$sample_group)
-
-dds <- DESeqDataSetFromMatrix(countData=feature_count,
-                              colData=group,
-                              design=~sample_group)
-
-dds$sample_group <-relevel(dds$sample_group,ref=ref)
+                                                                       
 dds <- estimateSizeFactors(dds)
 dds <- estimateDispersionsGeneEst(dds)
 dispersions(dds) <- mcols(dds)$dispGeneEst
@@ -106,6 +63,8 @@ res_pval_ordered <- res_pval[order(res_pval$pvalue),]
 #All significant
 write.csv(resDF1,file=sprintf("DESEQ2/DESEQ2_DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
 
+
 }
-Untreated_vs_Treated   <- DEG_analysis(c(1:),"Untreated","Treated","Untreated")
+Untreated_vs_Treated   <- DEG_analysis(c(1:6),"Untreated","Treated","Untreated")
                                      
+     
