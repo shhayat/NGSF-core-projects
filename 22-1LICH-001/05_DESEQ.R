@@ -46,12 +46,19 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref)
   p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
   print(p)
   dev.off()
-                                       
+  
+  #########
+  #BOX PLOT
+  #########
+  #boxplot(log10(assays(dds)[["cooks"]]), range=0, las=2)
+
   
   dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
   
   #results with independent filtering and outlier removal and padj is by default 0.1
-  res_unshrunken <- results(dds_wald, independentFiltering=TRUE,cooksCutoff=TRUE)
+  #The goal of independent filtering is to filter out those tests from the procedure that have no, or little chance 
+  #of showing significant evidence, without even looking at their test statistic 
+  #res_unshrunken <- results(dds_wald, independentFiltering=TRUE,cooksCutoff=TRUE)
   resLFC_shrunken <- lfcShrink(dds_wald, coef=2, type="normal")
   
  # plotMA(res_unshrunken, ylim=c(-2,2))
