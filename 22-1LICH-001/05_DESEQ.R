@@ -45,7 +45,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
   p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
   print(p)
-  dev.off()
+  #dev.off()
   
   #########
   #BOX PLOT
