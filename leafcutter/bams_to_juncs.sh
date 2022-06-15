@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --time=00:20:00
-#SBATCH --mem=5G
+#SBATCH --cpus-per-task=4
+#SBATCH --time=01:30:00
+#SBATCH --mem=40G
 
 set -eux
 
