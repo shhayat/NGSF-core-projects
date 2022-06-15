@@ -7,12 +7,11 @@
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+module load python/3.8.10
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//analysis/bam_to_junct
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//analysis/intron_clustering
 
 mkdir -p ${OUTDIR}
 
-
-
-python ../clustering/leafcutter_cluster_regtools.py -j ${OUTDIR}/juncfiles.txt -m 50 -o ${OUTDIR}/intron_clustering -l 500000
+python /globalhome/hxo752/HPC/tools/leafcutter/clustering/leafcutter_cluster_regtools.py -j ${OUTDIR}/juncfiles.txt -m 50 -o ${OUTDIR}/intron_clustering -l 500000
