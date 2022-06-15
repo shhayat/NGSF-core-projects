@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #SBATCH --job-name=intron_clustering
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
@@ -13,4 +15,4 @@ mkdir -p ${OUTDIR}
 
 
 
-python ../clustering/leafcutter_cluster_regtools.py -j ${OUTDIR}/juncfiles.txt -m 50 -o testYRIvsEU -l 500000
+python ../clustering/leafcutter_cluster_regtools.py -j ${OUTDIR}/juncfiles.txt -m 50 -o ${OUTDIR}/intron_clustering -l 500000
