@@ -21,6 +21,6 @@ bam_file=$1
 
 mkdir -p ${OUTDIR}/${sample_name}
 echo Converting $bam_file to ${bam_file}.junc
-regtools junctions extract -a 8 -m 50 -M 500000 ${bam_file} -o ${OUTDIR}/${sample_name}/${sample_name}.junc
+./regtools junctions extract -a 8 -m 50 -M 500000 ${bam_file} -o ${OUTDIR}/${sample_name}/${sample_name}.junc
 
 echo ${OUTDIR}/${sample_name}/${sample_name}.junc >> ${OUTDIR}/juncfiles.txt
