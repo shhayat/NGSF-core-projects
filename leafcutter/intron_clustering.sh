@@ -9,8 +9,8 @@
 
 module load python/3.8.10
 
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//analysis/bam_to_junct
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//analysis/intron_clustering
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/bam_to_junct
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/intron_clustering
 
 mkdir -p ${OUTDIR}
 
