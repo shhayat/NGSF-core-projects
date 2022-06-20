@@ -9,9 +9,12 @@
 
 module load python/3.8.10
 
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/bam_to_junct
+JUNCT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/bam_to_junct
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/intron_clustering
 
 mkdir -p ${OUTDIR}
 
-python /globalhome/hxo752/HPC/tools/leafcutter/clustering/leafcutter_cluster_regtools.py -j ${OUTDIR}/juncfiles.txt -m 50 -o ${OUTDIR}/intron_clustering -l 500000
+python /globalhome/hxo752/HPC/tools/leafcutter/clustering/leafcutter_cluster_regtools.py -j ${JUNCT_DIR}/juncfiles.txt -m 50 -l 500000
+
+mv /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/D22* ${OUTDIR}
+mv /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/leaf* ${OUTDIR}
