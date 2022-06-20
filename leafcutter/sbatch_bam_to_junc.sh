@@ -1,5 +1,5 @@
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//star_alignment
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/
+DATA=/datastore/NGSF001/projects/22-1MILE-001/deduplication/umi-tools
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001
 
 for i in ${DATA}/*/*.bam
 do
