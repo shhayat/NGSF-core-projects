@@ -13,7 +13,7 @@ set -eux
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/bam_to_junct
 
 module load samtools
-cp -r /globalhome/hxo752/HPC/tools/regtools/build ${SLURM_TMPDIR}
+cp -r /globalhome/hxo752/HPC/tools/regtools ${SLURM_TMPDIR}
 chmod u+x ${SLURM_TMPDIR}/regtools/build
 
 sample_name=$1; shift
