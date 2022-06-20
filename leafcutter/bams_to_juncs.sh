@@ -10,7 +10,7 @@
 set -eux
 
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//analysis/bam_to_junct
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/bam_to_junct
 
 module load samtools
 cp /globalhome/hxo752/HPC/tools/regtools/build ${SLURM_TMPDIR}
