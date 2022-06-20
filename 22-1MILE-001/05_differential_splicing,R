@@ -1,1 +1,5 @@
+
+
+Rscript ~/envs/leafcutter/scripts/leafcutter_ds.R -o CTRLvsA1 --num_threads 4 -g 3 -i 3 -e ../../m10.exon.txt.gz ../junction/CTRLvsA1_perind_numers.counts.gz ../junction/groups_file.txt
+
 ../scripts/leafcutter_ds.R --num_threads 4 ../example_data/testYRIvsEU_perind_numers.counts.gz example_geuvadis/groups_file.txt
