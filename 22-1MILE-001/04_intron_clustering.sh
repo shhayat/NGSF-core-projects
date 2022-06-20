@@ -14,4 +14,4 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/ana
 
 mkdir -p ${OUTDIR}
 
-python /globalhome/hxo752/HPC/tools/leafcutter/clustering/leafcutter_cluster_regtools.py -j ${JUNCT_DIR}/juncfiles.txt -m 50 -o ${OUTDIR}/intron_clustering -l 500000
+python /globalhome/hxo752/HPC/tools/leafcutter/clustering/leafcutter_cluster_regtools.py -j ${JUNCT_DIR}/juncfiles.txt -m 50 -o ${OUTDIR} -l 500000
