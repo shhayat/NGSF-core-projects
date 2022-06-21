@@ -20,5 +20,5 @@ Step2: Prepare the LeafCutter differential splicing results for visualisation
                     -o /Users/hxo752/Desktop/core-projects/22-1MILE-001/CTRL_A1.RData
 
 
-Step3: Visualise the results
+Step3: Visualise the results in Shinny
 ./run_leafviz.R /Users/hxo752/Desktop/core-projects/22-1MILE-001/CTRL_A1.RData
