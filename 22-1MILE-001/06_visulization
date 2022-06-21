@@ -1,4 +1,7 @@
-#For Visualizing data through shinny app following steps were performed
+#The leafcutter git repo was cloned using instructions from the following link
+https://davidaknowles.github.io/leafcutter/articles/Installation.html
+
+#For Visualizing data through shinny app following steps were performed (https://davidaknowles.github.io/leafcutter/articles/Visualization.html)
 
 Step 1: First generate annotation data 
 
