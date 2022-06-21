@@ -4,7 +4,7 @@ Step 1: First generate annotation data
 
 cd /Users/hxo752/Desktop/TOOLS/leafcutter/leafviz
 
-./gtf2leafcutter.pl -o /Users/hxo752/Desktop/TOOLS/leafcutter/leafcutter/data/mm10 \
+./gtf2leafcutter.pl -o /Users/hxo752/Desktop/core-projects/22-1MILE-001/mm10 \
                        /Users/hxo752/Desktop/core-projects/22-1MILE-001/mm10.refGene.gtf.gz 
 
 
@@ -13,7 +13,7 @@ Step2: Prepare the LeafCutter differential splicing results for visualisation
                     /Users/hxo752/Desktop/core-projects/22-1MILE-001/leafcutter_perind_numers.counts.gz \
                     /Users/hxo752/Desktop/core-projects/22-1MILE-001/CTRL_A1_cluster_significance.txt \
                     /Users/hxo752/Desktop/core-projects/22-1MILE-001/CTRL_A1_effect_sizes.txt \
-                    /Users/hxo752/Desktop/TOOLS/leafcutter/leafcutter/data/mm10 \
+                    /Users/hxo752/Desktop/core-projects/22-1MILE-001/mm10 \
                     -o /Users/hxo752/Desktop/core-projects/22-1MILE-001/CTRL_A1.RData
 
 
