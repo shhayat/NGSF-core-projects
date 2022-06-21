@@ -1,0 +1,3 @@
+FASTP AND STAR ALIGNMENT RAN
+After doing alignment UMI sequences has to be removed
+
