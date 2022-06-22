@@ -1,2 +1,2 @@
 #https://www.hdsu.org/chipatac2020/
-cd /globalhome/hxo752/HPC/tools
+/globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
