@@ -15,7 +15,7 @@ sample_name=$1; shift
 bam_file=$1
 
 GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation_mod.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/rnaseqc
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/rnaseqc/analysis
 
 mkdir -p ${OUTDIR}
 
