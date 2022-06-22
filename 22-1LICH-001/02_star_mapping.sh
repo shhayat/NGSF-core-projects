@@ -14,7 +14,7 @@ module load samtools
 
 DATA=/datastore/NGSF001/projects/22-1LICH-001/fastq
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/indices/gencode-40
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/star_alignment
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/analysis/star_alignment
 NCPU=4
 
 rsync -avzP /datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf ${SLURM_TMPDIR}/
