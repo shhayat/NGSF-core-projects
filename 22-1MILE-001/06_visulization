@@ -3,7 +3,7 @@ https://davidaknowles.github.io/leafcutter/articles/Installation.html
 
 #For Visualizing data through shinny app following steps were performed (https://davidaknowles.github.io/leafcutter/articles/Visualization.html)
 
-Step 1: First generate annotation data 
+Step 1: First generate annotation data (gtf file should be from gencode or ENSEMBL)
 
 cd /Users/hxo752/Desktop/TOOLS/leafcutter/leafviz
 
