@@ -1,6 +1,6 @@
 library(Rsubread)
 library(magrittr)
-setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/")
+setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/analysis/")
 result_dir="star_alignment"
 sample_names <- list.files(result_dir, "R2")
 
