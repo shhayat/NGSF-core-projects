@@ -9,6 +9,10 @@
 set -eux
 
 cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/indices
+mkdir -p ${OUTDIR}
 
+rsync -avzP /datastore/NGSF001/analysis/references/human/iGenomes/ ${SLURM_TMPDIR}/
 
-./bowtie2-build $BT2_HOME/example/reference/lambda_virus.fa lambda_virus
+./bowtie2-build ${SLURM_TMPDIR}/.fa \
+/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/indices/Homo_sapiens_UCSC_hg38
