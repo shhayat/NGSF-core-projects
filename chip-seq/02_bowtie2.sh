@@ -14,23 +14,24 @@ cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 
 RAW_DATA=
 GENOME=
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
 NCPU=1
 
-mkdir -p ${OUTDIR}
+mkdir -p ${OUTDIR}/alignment
 sample_name=$1; shift
-fq1=$1; shift
-fq2=$1
+fq=$1
 
 
-./bowtie2\
+(./bowtie2\
 --phred33 \
 --mm \
 --very-sensitive \
 --threads  ${NCPU} \
 -x ${GENOME}/index \
--q <input fastq> \
-2> \
-<bowtie2.log> \
-| samtools view -h -b - > <aligned.bam>
+-q ${fq}) \
+2>> \
+${OUTDIR}/alignment/bowtie2.log>
+&& samtools view -h -b - > aligned.bam
+
 #https://www.hdsu.org/chipatac2020/
 
