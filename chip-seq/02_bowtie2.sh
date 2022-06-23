@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=bams_to_juncs
+#SBATCH --job-name=bowtie2
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=2:00:00
