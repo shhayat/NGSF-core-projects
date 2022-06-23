@@ -28,8 +28,8 @@ fq=$1
 --phred33 \
 --mm \
 --very-sensitive \
---threads  ${NCPU} \
--x ${OUTDIR}/Homo_sapiens_UCSC_hg38 \
+--threads ${NCPU} \
+-x ${OUTDIR}/Homo_sapiens_UCSC_hg38_index \
 -q ${fq} \
 -S ${OUTDIR}/${sample_name}/${sample_name}.sam \
 2> \
