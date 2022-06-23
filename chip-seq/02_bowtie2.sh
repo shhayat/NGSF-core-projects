@@ -30,10 +30,11 @@ fq=$1
 --very-sensitive \
 --threads  ${NCPU} \
 -x ${GENOME}/index \
--q ${fq}) \
+-q ${fq} \
+-S ${OUTDIR}/${sample_name}/${sample_name}.sam) \
 2>> \
-${OUTDIR}/alignment/bowtie2.log>
-&& samtools view -h -b - > aligned.bam
+${OUTDIR}/alignment/bowtie2.log \
+&& samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
 
 #https://www.hdsu.org/chipatac2020/
 
