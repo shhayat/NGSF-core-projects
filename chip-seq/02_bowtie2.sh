@@ -15,7 +15,7 @@ module load samtools
 cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 
 RAW_DATA=
-GENOME=
+GENOME=OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/indices/
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
 NCPU=2
 
@@ -24,16 +24,16 @@ sample_name=$1; shift
 fq=$1
 
 
-(./bowtie2\
+./bowtie2\
 --phred33 \
 --mm \
 --very-sensitive \
 --threads  ${NCPU} \
--x ${GENOME}/index \
+-x ${OUTDIR}/Homo_sapiens_UCSC_hg38 \
 -q ${fq} \
--S ${OUTDIR}/${sample_name}/${sample_name}.sam) \
-2>> \
-${OUTDIR}/alignment/bowtie2.log \
+-S ${OUTDIR}/${sample_name}/${sample_name}.sam \
+2> \
+${OUTDIR}/alignment/${sample_name}_bowtie2.log \
 && samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
 
 #https://www.hdsu.org/chipatac2020/
