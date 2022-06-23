@@ -15,7 +15,7 @@ module load samtools
 cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 
 RAW_DATA=
-GENOME=OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/indices/
+GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/indices/
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
 NCPU=2
 
