@@ -15,4 +15,4 @@ mkdir -p ${OUTDIR}
 rsync -avzP /datastore/NGSF001/analysis/references/human/iGenomes/ ${SLURM_TMPDIR}/
 
 ./bowtie2-build ${SLURM_TMPDIR}/.fa \
-${OUTDIR}/Homo_sapiens_UCSC_hg38
+${OUTDIR}/Homo_sapiens_UCSC_hg38_index
