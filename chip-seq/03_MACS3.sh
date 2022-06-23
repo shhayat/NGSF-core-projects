@@ -10,4 +10,4 @@ sample_name=$1; shift
 
 mkdir ${OUTDIR}/${sample_name}
 
-macs3 callpeak -t ${BAMDIR}/${sample_name}/ChIP.bam -c ${BAMDIR}/${sample_name}/Control.bam -f BAM -g hs -n ${sample_name} -B -q 0.01 --outdir ${OUTDIR}/${sample_name}
+macs3 callpeak  --treatment ${BAMDIR}/${sample_name}/ChIP.bam --control ${BAMDIR}/${sample_name}/Control.bam --format BAM --gsize hs --name ${sample_name} -B --qvalue 0.01 --outdir ${OUTDIR}/${sample_name}
