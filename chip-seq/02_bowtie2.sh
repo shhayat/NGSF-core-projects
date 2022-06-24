@@ -19,10 +19,10 @@ GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/ana
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
 NCPU=2
 
-mkdir -p ${OUTDIR}/alignment
 sample_name=$1; shift
 fq=$1
 
+mkdir -p ${OUTDIR}/alignment/${sample_name}
 
 ./bowtie2\
 --phred33 \
