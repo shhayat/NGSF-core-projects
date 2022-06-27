@@ -14,6 +14,8 @@ macs3 callpeak  --treatment ${sample_name}/${treatBAM} \
                 --gsize hs \
                 --name ${sample_name} -B \
                 --pvalue 1e-3 \
-                --outdir ${OUTDIR}/${sample_name}
+                --outdir ${OUTDIR}/${sample_name} && \
+                sort -k8,8nr ${OUTDIR}/${sample_name}_peaks.narrowPeak > ${OUTDIR}/${sample_name}_peaks.narrowPeak 
+
 
 # --qvalue 0.01 \
