@@ -13,5 +13,7 @@ macs3 callpeak  --treatment ${sample_name}/${treatBAM} \
                 --format BAM \
                 --gsize hs \
                 --name ${sample_name} -B \
-                --qvalue 0.01 \
+                --pvalue 1e-3 \
                 --outdir ${OUTDIR}/${sample_name}
+
+# --qvalue 0.01 \
