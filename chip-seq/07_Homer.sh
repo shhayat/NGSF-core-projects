@@ -9,3 +9,6 @@
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+cd /globalhome/hxo752/HPC/anaconda3/share/homer/bin
+
+./annotatePeaks.pl 
