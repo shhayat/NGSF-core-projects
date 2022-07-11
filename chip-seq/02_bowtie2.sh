@@ -17,7 +17,7 @@ cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 RAW_DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/raw_data
 GENOME=/datastore/NGSF001/analysis/references/human/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/Bowtie2Index
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
-NCPU=2
+NCPU=4
 
 sample_name=$1; shift
 fq=$1
