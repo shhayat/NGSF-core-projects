@@ -24,7 +24,7 @@ fq=$1
 
 mkdir -p ${OUTDIR}/alignment/${sample_name}
 
-./bowtie2\
+./bowtie2 \
 --phred33 \
 --mm \
 --very-sensitive \
