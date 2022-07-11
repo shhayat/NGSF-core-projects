@@ -21,8 +21,9 @@ sample_name=$1
 
 java -Xmx64G -jar $PICARD_HOME/picard.jar MarkDuplicates \
              I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
-             O= ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-             M=${BAMDIR}/${sample_name}/dedup_metrics.txt VALIDATION_STRINGENCY=LENIENT \
+             O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
+             M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
+             VALIDATION_STRINGENCY=LENIENT \
              REMOVE_DUPLICATES=true \
              ASSUME_SORTED=true && \
              samtools sort -T sort_tempdir -o ${BAMDIR}/${sample_name}.aligned_dedup.sort.bam ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
