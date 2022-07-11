@@ -30,7 +30,7 @@ mkdir -p ${OUTDIR}/alignment/${sample_name}
 --very-sensitive \
 --threads ${NCPU} \
 -x ${OUTDIR}/Homo_sapiens_NCBI_GRCh38_index \
--q ${fq} \
+-q ${RAW_DATA}/${sample_name}/${fq} \
 -S ${OUTDIR}/${sample_name}.sam \
 2> \
 ${OUTDIR}/alignment/${sample_name}_bowtie2.log \
