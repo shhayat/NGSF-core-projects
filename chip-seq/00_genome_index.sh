@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=6
+#BATCH --cpus-per-task=4
 #SBATCH --time=06:00:00
 #SBATCH --mem=40G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
