@@ -16,5 +16,4 @@ mkdir -p ${OUTDIR}
 
 rsync -avzP /datastore/NGSF001/analysis/references/human/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta ${SLURM_TMPDIR}/
 
-./bowtie2-build ${SLURM_TMPDIR}/genome.fa \
-${OUTDIR}/Homo_sapiens_NCBI_GRCh38_index
+./bowtie2-build ${SLURM_TMPDIR}/genome.fa ${OUTDIR}/Homo_sapiens_NCBI_GRCh38_index
