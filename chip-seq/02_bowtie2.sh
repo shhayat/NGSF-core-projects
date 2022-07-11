@@ -31,7 +31,7 @@ mkdir -p ${OUTDIR}/alignment/${sample_name}
 --threads ${NCPU} \
 -x ${OUTDIR}/Homo_sapiens_NCBI_GRCh38_index \
 -q ${fq} \
--S ${OUTDIR}/${sample_name}/${sample_name}.sam \
+-S ${OUTDIR}/${sample_name}.sam \
 2> \
 ${OUTDIR}/alignment/${sample_name}_bowtie2.log \
 && samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
