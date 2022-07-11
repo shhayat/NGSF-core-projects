@@ -29,7 +29,7 @@ mkdir -p ${OUTDIR}/alignment/${sample_name}
 --mm \
 --very-sensitive \
 --threads ${NCPU} \
--x ${OUTDIR}/Homo_sapiens_NCBI_GRCh38_index \
+-x ${GENOME} \
 -q ${RAW_DATA}/${sample_name}/${fq} \
 -S ${OUTDIR}/${sample_name}/${sample_name}.sam \
 2> \
