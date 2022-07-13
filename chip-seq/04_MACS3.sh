@@ -17,6 +17,8 @@ sample_name=$1; shift
 treatBAM=$1; shift
 controlBAM=$1
 
+mkdir ${OUTDIR}
+
 macs3 callpeak  --treatment ${sample_name}/${treatBAM} \
                 --control ${sample_name}/${controlBAM} \
                 --format BAM \
