@@ -5,7 +5,7 @@
 #SBATCH --job-name=bowtie2
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --time=2:00:00
+#SBATCH --time=4:00:00
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
