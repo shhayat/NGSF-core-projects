@@ -14,7 +14,7 @@ set -eux
 module load samtools
 cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 
-RAW_DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/raw_data
+RAW_DATA=/tmp/raw_data
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices/HS_GRCh38
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
 NCPU=6
@@ -34,3 +34,5 @@ mkdir -p ${OUTDIR}/alignment/${sample_name}
 -S ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/alignment/${sample_name}/${sample_name}_bowtie2.log \
 && samtools view -h -b ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam > ${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam
 #https://www.hdsu.org/chipatac2020/
+
+
