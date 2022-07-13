@@ -32,8 +32,6 @@ mkdir -p ${OUTDIR}/alignment/${sample_name}
 -x ${GENOME} \
 -q ${RAW_DATA}/${sample_name}/${fq} \
 -S ${OUTDIR}/${sample_name}/${sample_name}.sam \
-2> \
-${OUTDIR}/alignment/${sample_name}_bowtie2.log \
 && samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
 
 #https://www.hdsu.org/chipatac2020/
