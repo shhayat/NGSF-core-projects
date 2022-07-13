@@ -14,7 +14,7 @@ set -eux
 module load samtools
 cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 
-RAW_DATA=/tmp/raw_data
+RAW_DATA=/datastore/NGSF001/datasets/chipseq_SRA
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices/HS_GRCh38
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
 NCPU=6
