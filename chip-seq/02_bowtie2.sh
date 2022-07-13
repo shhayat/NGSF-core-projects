@@ -31,8 +31,8 @@ mkdir -p ${OUTDIR}/alignment/${sample_name}
 --threads ${NCPU} \
 -x ${GENOME} \
 -q ${RAW_DATA}/${sample_name}/${fq} \
--S ${OUTDIR}/${sample_name}/${sample_name}.sam \
-&& samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
+-S ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam \
+&& samtools view -h -b ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam > ${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam
 
 #https://www.hdsu.org/chipatac2020/
 
