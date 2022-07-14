@@ -26,7 +26,8 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
 	RGID=4 \
 	RGLB=lib1 \
 	RGPL=ILLUMINA \
-	RGPU=unit1
+	RGPU=unit1 \
+	RGSM=20
 
 mkdir -p ${SLURM_DIR}/sort_tempdir
 
