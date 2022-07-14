@@ -19,8 +19,18 @@ NCPU=2
 
 sample_name=$1
 
-java -Xmx64G -jar $PICARD_HOME/picard.jar MarkDuplicates \
-             I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
+java -Xmx64G -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
+	I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
+	O=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
+	RGID=4 \
+	RGLB=lib1 \
+	RGPL=ILLUMINA \
+	RGPU=unit1 \
+	RGSM=20 \        
+	SO=coordinate
+
+java -Xmx64G -jar $EBROOTPICARD/picard.jar MarkDuplicates \
+             I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
              O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
              M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
              VALIDATION_STRINGENCY=LENIENT \
