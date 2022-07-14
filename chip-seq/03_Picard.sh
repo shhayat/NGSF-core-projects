@@ -29,6 +29,8 @@ java -Xmx64G -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
 	RGSM=20 \
 	SO=coordinate
 
+mkdir -p ${SLURM_DIR}/sort_tempdir
+
 java -Xmx64G -jar $EBROOTPICARD/picard.jar MarkDuplicates \
              I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
              O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
@@ -36,5 +38,5 @@ java -Xmx64G -jar $EBROOTPICARD/picard.jar MarkDuplicates \
              VALIDATION_STRINGENCY=LENIENT \
              REMOVE_DUPLICATES=true \
              ASSUME_SORTED=true && \
-             samtools sort -T sort_tempdir -o ${BAMDIR}/${sample_name}.aligned_dedup.sort.bam ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
+             samtools sort -T ${SLURM_DIR}/${sample_name}/sort_tempdir -o ${BAMDIR}/${sample_name}.aligned_dedup.sort.bam ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
              samtools index ${BAMDIR}/${sample_name}.aligned_dedup.sort.bam
