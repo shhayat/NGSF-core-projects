@@ -19,14 +19,14 @@ NCPU=2
 
 sample_name=$1
 
-java -Xmx64G -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
+java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
 	I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
 	O=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
 	SO=coordinate
 
 mkdir -p ${SLURM_DIR}/sort_tempdir
 
-java -Xmx64G -jar $EBROOTPICARD/picard.jar MarkDuplicates \
+java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
              I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
              O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
              M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
