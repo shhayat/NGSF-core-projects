@@ -22,7 +22,8 @@ sample_name=$1
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
 	I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
 	O=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
-	SO=coordinate
+	SO=coordinate \
+	RGLB=lib1
 
 mkdir -p ${SLURM_DIR}/sort_tempdir
 
