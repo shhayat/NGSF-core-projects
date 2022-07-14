@@ -26,7 +26,7 @@ java -Xmx64G -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
 	RGLB=lib1 \
 	RGPL=ILLUMINA \
 	RGPU=unit1 \
-	RGSM=20 \        
+	RGSM=20 \
 	SO=coordinate
 
 java -Xmx64G -jar $EBROOTPICARD/picard.jar MarkDuplicates \
