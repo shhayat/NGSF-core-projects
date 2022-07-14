@@ -29,7 +29,6 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
 	RGPU=unit1 \
 	RGSM=20
 
-mkdir -p ${SLURM_DIR}/sort_tempdir
 
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
              I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
