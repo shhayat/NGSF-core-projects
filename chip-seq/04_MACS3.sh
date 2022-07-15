@@ -14,10 +14,10 @@ cd /globalhome/hxo752/HPC/.local/bin/
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/peakcall
 controlBAM=$1; shift
-treat_BAM=$1; shift
+treatBAM=$1; shift
 sample_name=$1
 
-mkdir ${OUTDIR}
+mkdir ${OUTDIR}/${sample_name}
 
 macs3 callpeak  --treatment ${treatBAM} \
                 --control ${controlBAM} \
@@ -26,7 +26,7 @@ macs3 callpeak  --treatment ${treatBAM} \
                 --name ${sample_name} -B \
                 --pvalue 1e-3 \
                 --outdir ${OUTDIR}/${sample_name} && \
-                sort -k8,8nr ${OUTDIR}/${sample_name}peaks.narrowPeak > ${OUTDIR}/${sample_name}.peaks.sorted.narrowPeak 
+                sort -k8,8nr ${OUTDIR}/${sample_name}/peaks.narrowPeak > ${OUTDIR}/${sample_name}/peaks.sorted.narrowPeak 
 
 
 # --qvalue 0.01 \
