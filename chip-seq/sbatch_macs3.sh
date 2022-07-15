@@ -8,4 +8,5 @@ filename='samples.txt'
 echo Start
 while read p; do 
     sbatch "$p"
+    sleep 0.2
 done < "$filename"
