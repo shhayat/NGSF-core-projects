@@ -15,7 +15,7 @@ module load samtools
 cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 
 RAW_DATA=/datastore/NGSF001/datasets/chipseq_mouse
-#GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices/HS_GRCh38
+#GENOME=/datastore/NGSF001/analysis/indices/human/GRCh38_Bowtie2_build/HS_GRCh38
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices/MM_GRCm38
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
 NCPU=6
