@@ -4,9 +4,12 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/ana
 #treatBAM=${SRR19754288, SRR19754289}
 #controlBAM=${SRR19754286, SRR19754287}
 
-filename='samples.txt'
-echo Start
-while read p; do 
-    sbatch "$p"
-    sleep 0.2
-done < "$filename"
+
+while read control treat sample_name; 
+do
+    sbatch "$control  $treat  $sample_name"
+    sleep 0.3
+done < 'samples.txt'
+
+
+
