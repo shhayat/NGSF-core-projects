@@ -7,9 +7,5 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/ana
 filename='samples.txt'
 echo Start
 while read p; do 
-    echo "$p[1]"
+    sbatch "$p"
 done < "$filename"
-
-
-
-for i in ${treatBAM}
