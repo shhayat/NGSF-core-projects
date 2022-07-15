@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=4:00:00
-#SBATCH --mem=40G
+#SBATCH --mem=60G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 set -eux
@@ -24,15 +24,14 @@ fq=$1
 
 mkdir -p ${OUTDIR}/alignment/${sample_name}
 
-./bowtie2 \
---phred33 \
---mm \
---very-sensitive \
---threads ${NCPU} \
--x ${GENOME} \
--q ${RAW_DATA}/${sample_name}/${fq} \
--S ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/alignment/${sample_name}/${sample_name}_bowtie2.log \
-&& samtools view -h -b ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam > ${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam
+#./bowtie2 \
+#--phred33 \
+#--mm \
+#--very-sensitive \
+#--threads ${NCPU} \
+#-x ${GENOME} \
+#-q ${RAW_DATA}/${sample_name}/${fq} \
+#-S ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/alignment/${sample_name}/${sample_name}_bowtie2.log \
+#&& 
+samtools view -h -b ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam > ${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam
 #https://www.hdsu.org/chipatac2020/
-
-
