@@ -1,0 +1,4 @@
+/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/alignment/SRR19754286/SRR19754286.aligned_sort.bam 
+/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/alignment/SRR19754288/SRR19754288.aligned_sort.bam
+/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/alignment/SRR19754288/SRR19754287.aligned_sort.bam
+/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/alignment/SRR19754288/SRR19754289.aligned_sort.bam
