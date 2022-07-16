@@ -1,5 +1,5 @@
-for i in $(seq -w 86 89);
+for i in 492444 492445 507859 507860
 do
-  sbatch 03_Picard.sh SRR197542${i}
+  sbatch 03_Picard.sh SRR${i}
   sleep 0.3
 done

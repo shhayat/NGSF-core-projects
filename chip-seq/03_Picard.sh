@@ -29,14 +29,13 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
 	RGPU=unit1 \
 	RGSM=20
 
-
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
              I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
              O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
              M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
              VALIDATION_STRINGENCY=LENIENT \
              REMOVE_DUPLICATES=true \
-             ASSUME_SORTED=true && \
+             ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
 	     samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
 
             # samtools sort -T ${SLURM_DIR}/${sample_name}/sort_tempdir -o ${BAMDIR}/${sample_name}.aligned_dedup.sort.bam ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
