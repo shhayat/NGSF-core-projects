@@ -10,7 +10,7 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 
-cd /globalhome/hxo752/HPC/.local/bin/
+cd /globalhome/hxo752/HPC/anaconda3/bin
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/peakcall
 controlBAM=$1; shift
