@@ -12,7 +12,7 @@
 
 cd /globalhome/hxo752/HPC/anaconda3/bin
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/analysis/peakcall
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/peakcall
 controlBAM=$1; shift
 treatBAM=$1; shift
 sample_name=$1
@@ -26,5 +26,5 @@ mkdir -p ${OUTDIR}/${sample_name}
                 --gsize hs \
                 --name ${sample_name} -B \
                 --pvalue 5e-2 \
-                --outdir ${OUTDIR}/${sample_name}/${sample_name} && \
+                --outdir ${OUTDIR}/${sample_name}/ && \
                 sort -k8,8nr ${OUTDIR}/${sample_name}/${sample_name}_peaks.narrowPeak > ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak # --qvalue 0.01 \
