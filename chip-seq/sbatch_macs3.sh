@@ -2,6 +2,6 @@
 #controlBAM=${SRR19754286, SRR19754287}
 while read control treat sample_name; 
 do
-    sbatch "$control  $treat  $sample_name"
+    sbatch "$control $treat $sample_name"
     sleep 0.3
 done < 'samples.txt'
