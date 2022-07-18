@@ -19,7 +19,7 @@ sample_name=$1
 
 mkdir ${OUTDIR}/${sample_name}
 
-macs3 callpeak  --treatment ${treatBAM} \
+macs2 callpeak  --treatment ${treatBAM} \
                 --control ${controlBAM} \
                 --format BAM \
                 --gsize hs \
