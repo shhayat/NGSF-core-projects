@@ -5,7 +5,7 @@ mkdir ${OUTDIR}
 cd /globalhome/hxo752/HPC/tools/
 
 #FASTQC
-#./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
+./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc -n fastqc
 
 #BOWTIE ALIGNMENT
 ./multiqc -d ${DIR}/alignment/*/*bowtie2.log  -o ${OUTDIR}/bowtie2 -n bowtie2
