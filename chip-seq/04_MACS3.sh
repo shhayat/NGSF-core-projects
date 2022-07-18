@@ -20,7 +20,7 @@ sample_name=$1
 
 mkdir -p ${OUTDIR}/${sample_name}
 
-./macs3 callpeak \
+macs3 callpeak \
 		--treatment ${treatBAM} \
                 --control ${controlBAM} \
                 --format BAM \
