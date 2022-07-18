@@ -24,7 +24,8 @@ macs3 callpeak \
 		--treatment ${treatBAM} \
                 --control ${controlBAM} \
                 --format BAM \
-                --gsize hs \
+		#--gsize hs \
+                --gsize mm \
 		--keep-dup all \
                 --name ${sample_name} -B \
                 --pvalue 5e-2 \
