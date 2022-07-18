@@ -17,16 +17,14 @@ controlBAM=$1; shift
 treatBAM=$1; shift
 sample_name=$1
 
-mkdir ${OUTDIR}/${sample_name}
+mkdir -p ${OUTDIR}/${sample_name}
 
-./macs2 callpeak  --treatment ${treatBAM} \
+./macs2 callpeak \
+		--treatment ${treatBAM} \
                 --control ${controlBAM} \
                 --format BAM \
                 --gsize hs \
                 --name ${sample_name} -B \
-                --pvalue 1e-3 \
-                --outdir ${OUTDIR}/${sample_name} && \
-                sort -k8,8nr ${OUTDIR}/${sample_name}/peaks.narrowPeak > ${OUTDIR}/${sample_name}/peaks.sorted.narrowPeak 
-
-
-# --qvalue 0.01 \
+                --pvalue 5e-2 \
+                --outdir ${OUTDIR}/${sample_name}/${sample_name} && \
+                sort -k8,8nr ${OUTDIR}/${sample_name}/${sample_name}_peaks.narrowPeak > ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak # --qvalue 0.01 \
