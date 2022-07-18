@@ -14,4 +14,4 @@ cd /globalhome/hxo752/HPC/tools/
 ./multiqc -d ${DIR}/alignment/*/dedup_metrics.txt  -o ${OUTDIR}/picard -n picard
 
 $MACS2
-./multiqc -d ${DIR}/peakcall/*/*_peaks.xls -o ${OUTDIR}/MACS2 -n MACS2
+./multiqc -d ${DIR}/peakcall/*/*_peaks.xls -o ${OUTDIR}/MACS3 -n MACS3
