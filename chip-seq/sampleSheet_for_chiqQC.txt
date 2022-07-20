@@ -1,0 +1,12 @@
+SampleID  Tissue  Factor  Condition Replicate bamReads  ControlID bamControl  Peaks PeakCaller 
+SRR492444 NA  NA  G1E_TAL1
+SRR492445 NA  NA  G1E_TAL1
+SRR507859 NA  NA  WT
+SRR507860 NA  NA  WT
+
+Replicate: Replicate number of sample
+bamReads: file path for BAM file containing aligned reads for ChIP sample
+ControlID: an identifier string for the control sample
+bamControl: file path for bam file containing aligned reads for control sample
+Peaks: path for file containing peaks for sample
+PeakCaller: Identifier string for peak caller used. Possible values include “raw”, “bed”, “narrow”, “macs”
