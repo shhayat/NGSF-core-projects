@@ -1,8 +1,8 @@
-SampleID  Tissue  Factor  Condition Replicate bamReads  ControlID bamControl  Peaks PeakCaller 
-SRR492444 NA  NA  G1E_TAL1
-SRR492445 NA  NA  G1E_TAL1
-SRR507859 NA  NA  WT
-SRR507860 NA  NA  WT
+SampleID  Tissue  Factor  Condition Replicate bamReads  Peaks PeakCaller 
+SRR492444 NA  NA  G1E_TAL1  R1  /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/alignment/SRR492444/SRR492444.aligned_dedup.bam  
+SRR492445 NA  NA  G1E_TAL1  R2
+SRR507859 NA  NA  WT  R1
+SRR507860 NA  NA  WT  R2
 
 Replicate: Replicate number of sample
 bamReads: file path for BAM file containing aligned reads for ChIP sample
