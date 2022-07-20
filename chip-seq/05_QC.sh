@@ -2,21 +2,12 @@
 library(ChIPQC)
 
 #create sample infor object
-sampl_info <- data.frame(SampleID = rbind("c","b"), 
-                           Factor = rbind("c","b"),
-                            Replicate = rbind("c","b"),
-                            bamReads = rbind("c","b"),
-                            ControlID = rbind("c","b"),
-                            bamControl = rbind("c","b"),
-                            Peaks = rbind("c","b"),
-                            PeakCaller = rbind("c","b"),
-                            Tissue = ("NA","NA"),
-                            Condition = ("NA","NA"))
+sampl_info <- read.table(sampleSheet_for_chiqQC.txt)
 
 View(sampl_info)
 
 #Create ChIPQC object
-chipObj <- ChIPQC(sampl_info, annotation="hg19") 
+chipObj <- ChIPQC(sampl_info, annotation="mm10") 
 
 # Create ChIPQC report
 ChIPQCreport(chipObj, reportName="ChIP QC Report", reportFolder="ChIPQCreport")
