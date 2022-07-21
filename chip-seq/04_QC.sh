@@ -17,4 +17,4 @@ sample=$1;
 
 cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
-Rscript run_spp.R -c ${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_dedup.bam -savp xcor_${sample}.pdf -odir ${OUTDIR}/QC/phantompeakqualtools -out=xcor_metrics_${sample}.txt
+Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_dedup.bam -savp=xcor_${sample}.pdf -odir=${OUTDIR}/QC/phantompeakqualtools -out=xcor_metrics_${sample}.txt
