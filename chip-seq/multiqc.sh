@@ -13,5 +13,12 @@ cd /globalhome/hxo752/HPC/tools/
 #PICARD
 ./multiqc -d ${DIR}/alignment/*/dedup_metrics.txt  -o ${OUTDIR}/picard -n picard
 
+#phantompeakqualtools
+mkdir ${OUTDIR}/phantompeakqual_after_alignment
+
+./multiqc -d ${DIR}/QC/phantompeakqualtools/*.pdf  -o ${OUTDIR}/phantompeakqual_after_alignment -n phantompeakqual_xcor
+./multiqc -d ${DIR}/QC/phantompeakqualtools/xcor_metrics_*  -o ${OUTDIR}/phantompeakqual_after_alignment -n phantompeakqual_metrics
+
+
 $MACS2
 ./multiqc -d ${DIR}/peakcall/*/*_peaks.xls -o ${OUTDIR}/MACS3 -n MACS3
