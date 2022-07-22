@@ -23,10 +23,3 @@ cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
 #cross correlation
 Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_sort.bam -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
-
-
-#deeptools
-cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
-
-python plotFingerprint.py --bamfiles 
-
