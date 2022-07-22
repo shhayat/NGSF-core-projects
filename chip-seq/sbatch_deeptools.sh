@@ -6,8 +6,8 @@ samples_id="492444 492445 507859 507860"
 sample=""
 for samples_id in ${samples_id[*]}
 do
-    samples+="${DIR}/SRR${samples_id}/SRR${samples_id}.aligned_dedup.bam " 
+    bam_files+="${DIR}/SRR${samples_id}/SRR${samples_id}.aligned_dedup.bam " 
 done
 
-sbatch 06_QC_deeptools.sh ${samples}
+sbatch 06_QC_deeptools.sh ${bam_files}
 
