@@ -10,7 +10,6 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load r/4.1.2
-module load python/3.7.7
 module load samtools
 OUTDIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
 
