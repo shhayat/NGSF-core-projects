@@ -10,12 +10,23 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load r/4.1.2
+module load python/3.7.7
 module load samtools
 OUTDIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
 
 mkdir -p ${OUTDIR}/QC/phantompeakqualtools
 sample_name=$1;
 
+#using two QC tools for Quality check
+#phantompeakqualtools
 cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
-Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_dedup.bam -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
+#cross correlation
+Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_sort.bam -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
+
+
+#deeptools
+cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
+
+python plotFingerprint.py --bamfiles 
+
