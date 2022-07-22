@@ -9,5 +9,5 @@ do
     bam_files+="${DIR}/SRR${samples_id}/SRR${samples_id}.aligned_dedup.bam " 
 done
 
-sbatch 06_QC_deeptools.sh ${bam_files}
+sbatch 05_QC_deeptools.sh ${bam_files}
 
