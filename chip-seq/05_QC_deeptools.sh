@@ -19,6 +19,7 @@ bam_files=1;
 
 mkdir ${OUTDIR}/QC/deeptools
 
+#cumulative enrichment
 python plotFingerprint.py \
             --bamfiles ${bam_files} \
             --extendReads 110  \
