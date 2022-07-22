@@ -1,8 +1,13 @@
+DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/alignment"
 
-sbatch 06_QC_deeptools.sh SRR${i}
 
-for i in 492444 492445 507859 507860
+samples_id="492444 492445 507859 507860"
+
+sample=""
+for samples_id in ${samples_id[*]}
 do
-  sbatch 03_phantompeakqualtools.sh SRR${i}
-  sleep 0.3
+    samples+="${DIR}/SRR${samples_id}/SRR${samples_id}.aligned_dedup.bam " 
 done
+
+sbatch 06_QC_deeptools.sh ${samples}
+
