@@ -14,17 +14,17 @@ module load python/3.7.7
 cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 
 NCPUS=2
-OUTDIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
+DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
 bam_files=1;
 
-mkdir ${OUTDIR}/QC/deeptools
+mkdir -p ${DIR}/QC/deeptools
 
 #cumulative enrichment
 python plotFingerprint.py \
             --bamfiles ${bam_files} \
             --extendReads 110  \
             --binSize=1000 \
-            --plotFile ${OUTDIR}/QC/deeptools/fingerprint.pdf \
+            --plotFile ${DIR}/QC/deeptools/fingerprint.pdf \
             --labels G1E_TAL1_rep1 G1E_TAL1_rep2 Input_rep1 Input_rep2 \
-            -p ${NCPUS} &> ${OUTDIR}/deeptools/fingerprint.log
+            -p ${NCPUS} &> ${DIR}/QC/deeptools/fingerprint.log
   
