@@ -15,7 +15,8 @@ for sample in $DIR/SRR*/*.aligned_dedup.bam
 do  
     bam_files+="${sample}"
     bam_files=$(echo "$bam_files" | sed 's/.bam\//.bam \//g')
-    #bam_files="${bam_files#"${bam_files%%[![:space:]]*}"}"
  done
+ 
+ echo "$bam_files" > bam_files.txt
  
  sbatch 05_QC_deeptools.sh "${bam_files}"
