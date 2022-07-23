@@ -18,4 +18,4 @@ do
     #bam_files="${bam_files#"${bam_files%%[![:space:]]*}"}"
  done
  
- sbatch 05_QC_deeptools.sh "${bam_files}\"
+ sbatch 05_QC_deeptools.sh "${bam_files}"
