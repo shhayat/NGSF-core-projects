@@ -25,7 +25,5 @@ python plotFingerprint.py \
             --extendReads 110 \
             --binSize=1000 \
             --plotFile ${DIR}/QC/deeptools/fingerprint.pdf \
-            --smartLabels True \
+            --labels G1E_TAL1_rep1 G1E_TAL1_rep2 Input_rep1 Input_rep2 \
             -p ${NCPUS} &> ${DIR}/QC/deeptools/fingerprint.log
-  
-#--labels G1E_TAL1_rep1 G1E_TAL1_rep2 Input_rep1 Input_rep2 \
