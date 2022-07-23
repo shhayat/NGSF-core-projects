@@ -21,7 +21,7 @@ mkdir -p ${DIR}/QC/deeptools
 
 #cumulative enrichment
 python plotFingerprint.py \
-            --bamfiles ${bam_files} \
+            --bamfiles ${bam_files}\
             --extendReads 110  \
             --binSize=1000 \
             --plotFile ${DIR}/QC/deeptools/fingerprint.pdf \
