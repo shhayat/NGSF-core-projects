@@ -1,3 +1,5 @@
+ #!/bin/sh
+
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/alignment"
 
 
@@ -19,4 +21,9 @@ do
  
  echo "$bam_files" > bam_files.txt
  
- sbatch 05_QC_deeptools.sh "${bam_files}"
+ 
+while read bam; 
+do
+    sbatch 05_QC_deeptools.sh "${bam}";
+done < 'bam_files.txt'
+ 
