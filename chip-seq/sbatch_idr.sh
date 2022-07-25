@@ -1,11 +1,9 @@
-#!/bin/bash
-
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/peakcall
 
-sample_name=""
-for sample_name in $DIR/*
+peak_files=""
+for peak_file in $DIR/SRR*/*_peaks.sorted.narrowPeak
 do  
-    sample_name+="${sample_name} "
+    peak_files+="${peak_file} "
  done
  
-sbatch 07_IDR.sh "${sample_name}";
+sbatch 07_IDR.sh "${peak_files}";
