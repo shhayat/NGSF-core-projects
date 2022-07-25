@@ -16,7 +16,7 @@ cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 NCPUS=8
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
 bam_files=1; shift
-labels=1
+labels=1;
 mkdir -p ${DIR}/QC/deeptools
 
 #cumulative enrichment
@@ -24,12 +24,21 @@ python plotFingerprint.py \
             --bamfiles ${bam_files} \
             --minMappingQuality 30 --skipZeros \
             --plotFile ${DIR}/QC/deeptools/fingerprint.pdf \
-            --labels G1E_TAL1_rep1 G1E_TAL1_rep2 Input_rep1 Input_rep2 \
+            --labels ${labels} \
             -p ${NCPUS} &> ${DIR}/QC/deeptools/fingerprint.log
 
 #read coverages for genomic regions for the BAM files
 bamCorrelate bins \
            --bamfiles ${bam_files} \
-
+           --outFileName ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
+           --binSize=5000 \
+           --labels ${labels} \
+           -p ${NCPUS} &> ${DIR}/QC/deeptools/multiBamSummary.log
 
 #sample clustering
+plotCorrelation \
+            --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
+            --plotFile ${DIR}/QC/deeptools/REST_bam_correlation_bin.pdf \
+            --outFileCorMatrix ${DIR}/QC/deeptools/corr_matrix_bin.txt \
+            --whatToPlot heatmap \
+            --corMethod spearman
