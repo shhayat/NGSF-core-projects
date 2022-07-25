@@ -15,8 +15,8 @@ cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 
 NCPUS=8
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
-bam_files=1;
-
+bam_files=1; shift
+labels=1
 mkdir -p ${DIR}/QC/deeptools
 
 #cumulative enrichment
@@ -26,3 +26,10 @@ python plotFingerprint.py \
             --plotFile ${DIR}/QC/deeptools/fingerprint.pdf \
             --labels G1E_TAL1_rep1 G1E_TAL1_rep2 Input_rep1 Input_rep2 \
             -p ${NCPUS} &> ${DIR}/QC/deeptools/fingerprint.log
+
+#read coverages for genomic regions for the BAM files
+bamCorrelate bins \
+           --bamfiles ${bam_files} \
+
+
+#sample clustering
