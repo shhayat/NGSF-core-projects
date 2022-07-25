@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/peakcall
 
 sample_name=""
