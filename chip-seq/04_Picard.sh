@@ -38,4 +38,6 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDupli
              ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
 	     samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
 
+module unload picard/2.23.3 
+module unload samtools
             # samtools sort -T ${SLURM_DIR}/${sample_name}/sort_tempdir -o ${BAMDIR}/${sample_name}.aligned_dedup.sort.bam ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
