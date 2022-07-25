@@ -19,7 +19,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/2chip-seq/analys
 sample_name=1;
 
 mkdir -p $OUTDIR
-cd /globalhome/hxo752/HPC/tools/idr-2.0.3
+cd /globalhome/hxo752/HPC/anaconda3/bin
 
 idr --samples ${peaks}/${sample_name}/${sample_name}.peaks.sorted.narrowPeak ${peaks}/${sample_name}/${sample_name}.peaks.sorted.narrowPeak \
     --input-file-type narrowPeak \
