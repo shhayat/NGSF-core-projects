@@ -4,7 +4,7 @@ peak_files=""
 for peak_file in $DIR/SRR*/*_peaks.sorted.narrowPeak
 do  
     peak_files+="${peak_file}"
-        peak_files=$(echo "$peak_files" | sed 's/.narrowPeak\//.narrowPeak \//g')
+    peak_files=$(echo "$peak_files" | sed 's/.narrowPeak\//.narrowPeak \//g')
 
  done
  
