@@ -30,4 +30,8 @@ macs3 callpeak \
                 --name ${sample_name} -B \
                 --pvalue 5e-2 \
                 --outdir ${OUTDIR}/${sample_name}/ && \
-                sort -k8,8nr ${OUTDIR}/${sample_name}/${sample_name}_peaks.narrowPeak > ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak # --qvalue 0.01 \
+                sort -k8,8nr ${OUTDIR}/${sample_name}/${sample_name}_peaks.narrowPeak > ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak 
+		# --qvalue 0.01 \
+
+#extracting most relevant columns
+cut -f 1-3 ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak > ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak_3columns
