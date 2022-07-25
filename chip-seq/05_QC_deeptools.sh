@@ -15,8 +15,8 @@ cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 
 NCPUS=8
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
-bam_files=1; shift
-labels=1;
+bam_files=$1; shift
+labels=$1;
 mkdir -p ${DIR}/QC/deeptools
 
 #cumulative enrichment
