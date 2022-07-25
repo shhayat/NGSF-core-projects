@@ -49,4 +49,7 @@ python plotCorrelation.py \
 python plotPCA.py \
             --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
             --plotFile ${DIR}/QC/deeptools/pca.pdf \
-            --labels ${labels}            
+            --labels ${labels}   
+        
+module unload python/3.7.7
+
