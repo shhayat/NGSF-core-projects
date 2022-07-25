@@ -38,12 +38,12 @@ python multiBamSummary.py bins \
            -p ${NCPUS} &> ${DIR}/QC/deeptools/multiBamSummary.log
 
 #sample clustering
-python plotCorrelation.py \
-            --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
-            --plotFile ${DIR}/QC/deeptools/sample_clustering_heatmap.pdf \
-            --outFileCorMatrix ${DIR}/QC/deeptools/corr_matrix_bin.txt \
-            --whatToPlot heatmap \
-            --corMethod spearman
+#python plotCorrelation.py \
+#            --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
+#            --plotFile ${DIR}/QC/deeptools/sample_clustering_heatmap.pdf \
+#            --outFileCorMatrix ${DIR}/QC/deeptools/corr_matrix_bin.txt \
+#            --whatToPlot heatmap \
+#            --corMethod spearman
        
 #PCA for read coverage
 python plotPCA.py \
@@ -52,4 +52,3 @@ python plotPCA.py \
             --labels ${labels}   
         
 module unload python/3.7.7
-
