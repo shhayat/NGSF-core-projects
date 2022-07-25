@@ -34,4 +34,4 @@ macs3 callpeak \
 		# --qvalue 0.01 \
 
 #extracting most relevant columns
-cut -f 1-3 ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak > ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak_3columns
+cut -f 1-3 ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak > ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak_3columns.bed
