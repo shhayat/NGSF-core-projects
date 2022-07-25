@@ -16,15 +16,15 @@
 peaks=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/peakcall
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR
 
-narrowPeak_file=$1;
+narrowPeak_files=$1;
 
 mkdir -p $OUTDIR
 cd /globalhome/hxo752/HPC/anaconda3/bin
 
-./idr --samples ${narrowPeak_file} \
+./idr --samples ${narrowPeak_files} \
     --input-file-type narrowPeak \
     --rank p.value \
-    --output-file idr \
+    --output-file ${OUTDIR}/idr \
     --plot \
     --log-output-file ${OUTDIR}/idr.log
 
