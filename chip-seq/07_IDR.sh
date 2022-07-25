@@ -14,7 +14,7 @@
 #Combining replicates to only get the highly reproducible peaks using the IDR method
 
 peaks=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/peakcall
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/2chip-seq/analysis/IDR
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR
 
 sample_name=1;
 
