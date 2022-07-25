@@ -30,7 +30,7 @@ python plotFingerprint.py \
             -p ${NCPUS} &> ${DIR}/QC/deeptools/fingerprint.log
 
 #read coverages for genomic regions for the BAM files
-bamCorrelate bins \
+python multiBamSummary.py bins \
            --bamfiles ${bam_files} \
            --outFileName ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
            --binSize=5000 \
@@ -38,9 +38,15 @@ bamCorrelate bins \
            -p ${NCPUS} &> ${DIR}/QC/deeptools/multiBamSummary.log
 
 #sample clustering
-plotCorrelation \
+python plotCorrelation.py \
             --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
-            --plotFile ${DIR}/QC/deeptools/REST_bam_correlation_bin.pdf \
+            --plotFile ${DIR}/QC/deeptools/sample_clustering_heatmap.pdf \
             --outFileCorMatrix ${DIR}/QC/deeptools/corr_matrix_bin.txt \
             --whatToPlot heatmap \
             --corMethod spearman
+       
+#PCA for read coverage
+python plotPCA.py \
+            --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
+            --plotFile ${DIR}/QC/deeptools/pca.pdf \
+            --labels ${labels}            
