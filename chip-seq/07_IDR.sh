@@ -16,7 +16,7 @@
 peaks=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/peakcall
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR
 
-sample_name=1;
+sample_name=$1;
 
 mkdir -p $OUTDIR
 cd /globalhome/hxo752/HPC/anaconda3/bin
