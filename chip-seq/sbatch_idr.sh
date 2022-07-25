@@ -1,4 +1,9 @@
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/peakcall
 
-
-sbatch 07_IDR.sh "$control" "$treat" "$sample_name";
+sample_name=""
+for sample in $DIR/*
+do  
+    sample_name+="${sample }"
+ done
+ 
+sbatch 07_IDR.sh "${sample_name}";
