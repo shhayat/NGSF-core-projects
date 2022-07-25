@@ -22,7 +22,9 @@ mkdir -p ${DIR}/QC/deeptools
 #cumulative enrichment
 python plotFingerprint.py \
             --bamfiles ${bam_files} \
-            --minMappingQuality 30 --skipZeros \
+            --minMappingQuality 30 \
+            --binSize=1000 \
+            --skipZeros \
             --plotFile ${DIR}/QC/deeptools/fingerprint.pdf \
             --labels ${labels} \
             -p ${NCPUS} &> ${DIR}/QC/deeptools/fingerprint.log
