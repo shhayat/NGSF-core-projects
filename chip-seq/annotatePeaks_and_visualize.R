@@ -1,9 +1,10 @@
 library(ChIPseeker)
 library(clusterProfiler)
-library(biomaRt)
+#library(EnsDb.Mmusculus.v79)
+library(org.Mm.eg.db)
+
 library(diffloop)
 
-library(org.Mm.eg.db)
 library(TxDb.Mmusculus.UCSC.mm10.knownGene)
 txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 
@@ -30,7 +31,8 @@ PeakList_with_added_chr_str <- lapply(ReadPeakList, diffloop::addchr)
 
 #annotate peaks
 #2000bp = 2Kbp
-peakAnnoList <- lapply(PeakList_with_added_chr_str, annotatePeak, TxDb=txdb,tssRegion=c(-2000, 2000), verbose=TRUE)
+peakAnnoList <- lapply(PeakList_with_added_chr_str, annotatePeak, TxDb=txdb,tssRegion=c(-2000, 2000), 
+                       verbose=TRUE, annoDb="org.Mm.eg.db")
 
 pdf("chip_profile")
  #coverage plot
@@ -67,7 +69,7 @@ dev.off()
 
 
 #annotations for each peaks stored in dataframe
-annot_df <- data.frame(peakAnnoList[["GE1"]]@anno)
+annot_df <- data.frame(peakAnnoList[[1]]@anno)
 
 #add gene name to annot_df
 
