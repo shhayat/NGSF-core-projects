@@ -2,7 +2,6 @@ library(ChIPseeker)
 library(clusterProfiler)
 #library(EnsDb.Mmusculus.v79)
 library(org.Mm.eg.db)
-
 library(diffloop)
 
 library(TxDb.Mmusculus.UCSC.mm10.knownGene)
@@ -45,7 +44,7 @@ annot_df=annot_df[c(1:5,23:33)]
 write.csv(annot_df, "peaks_with_annotations.csv")
 
 
-pdf("chip_profile")
+pdf("chip_profile.pdf")
  #coverage plot
  covplot(PeakList_with_added_chr_str[[1]], weightCol="V5")
 
@@ -66,7 +65,7 @@ dev.off()
 
 
 #annotation plot : there are more plot funtion available for multiple cell line comparisions
-pdf("annotation_plots")
+pdf("annotation_plots.pdf")
   #Barchart of genomic feature representation
   plotAnnoBar(peakAnnoList)
 
