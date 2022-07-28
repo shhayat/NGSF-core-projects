@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=QC-deeptools
+#SBATCH --job-name=QC-chipqc
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=2:00:00
