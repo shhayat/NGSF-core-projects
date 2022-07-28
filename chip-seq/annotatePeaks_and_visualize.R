@@ -7,6 +7,13 @@ library(org.Mm.eg.db)
 library(TxDb.Mmusculus.UCSC.mm10.knownGene)
 txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 
+
+
+
+samplefiles <- list.files("data/idr-bed", pattern= ".bed", full.names=T)
+samplefiles <- as.list(samplefiles)
+
+
 #ChIP peaks coverage plot
 
 peaks.consensus <- dba.peakset(res.cnt3, bRetrieve = T)
