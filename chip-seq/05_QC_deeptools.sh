@@ -37,7 +37,7 @@ python multiBamSummary.py bins \
            --labels ${labels} \
            -p ${NCPUS} &> ${DIR}/QC/deeptools/multiBamSummary.log
 
-#sample clustering
+#sample clustering code runs but no output is generated
 #python plotCorrelation.py \
 #            --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
 #            --plotFile ${DIR}/QC/deeptools/sample_clustering_heatmap.pdf \
