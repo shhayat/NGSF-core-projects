@@ -8,7 +8,7 @@ library(diffloop)
 library(TxDb.Mmusculus.UCSC.mm10.knownGene)
 txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 
-dir.create("/globalhome/hxo752/HPC/chipseq/analysis/visulaization")
+dir.create("/globalhome/hxo752/HPC/chipseq/analysis/peak_annotation")
 setwd("/globalhome/hxo752/HPC/chipseq/analysis/peak_annotation")
 #list bed files
 samplefiles <- list.files("/globalhome/hxo752/HPC/chipseq/analysis/IDR/", pattern= "filtered.bed", full.names=T)
@@ -33,6 +33,17 @@ PeakList_with_added_chr_str <- lapply(ReadPeakList, diffloop::addchr)
 #2000bp = 2Kbp
 peakAnnoList <- lapply(PeakList_with_added_chr_str, annotatePeak, TxDb=txdb,tssRegion=c(-2000, 2000), 
                        verbose=TRUE, annoDb="org.Mm.eg.db")
+
+
+#annotations for each peaks stored in dataframe
+annot_df <- data.frame(peakAnnoList[[1]]@anno)
+
+#selected columns
+annot_df=annot_df[c(1:5,23:33)]
+
+#add gene name to annot_df
+write.csv(annot_df, "peaks_with_annotations.csv")
+
 
 pdf("chip_profile")
  #coverage plot
@@ -60,19 +71,11 @@ pdf("annotation_plots")
   plotAnnoBar(peakAnnoList)
 
   #To view full annotation overlaps
-  upsetplot(peakAnnoList[[1]] , vennpie=TRUE))
+  #two packages (ggupset,ggimage) were installed separatly for running upsetplot 
+  upsetplot(peakAnnoList[[1]] , vennpie=TRUE)
   
   #Distribution of TF-binding loci relative to TSS
   plotDistToTSS(peakAnnoList, title="Distribution of transcription factor-binding loci \n relative to TSS")
 
 dev.off()
-
-
-#annotations for each peaks stored in dataframe
-annot_df <- data.frame(peakAnnoList[[1]]@anno)
-
-#add gene name to annot_df
-
-write.csv(annot_df, "peaks_with_annotations.csv", sep="\t",)
-
 
