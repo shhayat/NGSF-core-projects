@@ -23,11 +23,10 @@ cd /globalhome/hxo752/HPC/anaconda3/bin
 
 ./idr --samples ${files} \
     --rank p.value \
-    --output-file ${OUTDIR}/idr.bed \
+    --output-file ${OUTDIR}/idr \
     --output-file-type bed \
     --plot \
     --log-output-file ${OUTDIR}/idr.log \
-    --only-merge-peaks \
     --verbose
 
 
