@@ -30,3 +30,11 @@ multiBamSummary BED-file \
                 --outFileName ${DIR}/QC/QC_after_peakcall/coverage.npz \
                  -p ${NCPU} &> ${DIR}/QC/QC_after_peakcall/multiBamSummary.log
 
+
+#sample clustering code runs but no output is generated
+#python plotCorrelation.py \
+#            --corData ${DIR}/QC/QC_after_peakcall/coverage.npz \
+#            --plotFile${DIR}/QC/QC_after_peakcall/sample_clustering_heatmap.pdf \
+#            --outFileCorMatrix ${DIR}/QC/QC_after_peakcall/corr_matrix_bin.txt \
+#            --whatToPlot heatmap \
+#            --corMethod spearman
