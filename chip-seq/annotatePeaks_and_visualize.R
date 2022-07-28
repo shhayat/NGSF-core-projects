@@ -8,11 +8,9 @@ library(TxDb.Mmusculus.UCSC.mm10.knownGene)
 txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 
 
-
-
-samplefiles <- list.files("data/idr-bed", pattern= ".bed", full.names=T)
+samplefiles <- list.files("/globalhome/hxo752/HPC/chipseq/analysis/IDR/", pattern= ".bed", full.names=T)
 samplefiles <- as.list(samplefiles)
-
+names(samplefiles) <- c("TAL")
 
 #ChIP peaks coverage plot
 
