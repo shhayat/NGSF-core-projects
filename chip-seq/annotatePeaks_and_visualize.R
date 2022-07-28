@@ -32,10 +32,25 @@ PeakList_with_added_chr_str <- lapply(ReadPeakList, diffloop::addchr)
 #2000bp = 2Kbp
 peakAnnoList <- lapply(PeakList_with_added_chr_str, annotatePeak, TxDb=txdb,tssRegion=c(-2000, 2000), verbose=TRUE)
 
-#coverage plot
-pdf("coverage_plots")
-covplot(peakAnnoList, weightCol="V5")
+pdf("chip_profile")
+ #coverage plot
+ covplot(PeakList_with_added_chr_str[[1]], weightCol="V5")
+
+ #Profile of ChIP peaks binding to TSS regions
+  promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
+  tagMatrix <- getTagMatrix(PeakList_with_added_chr_str[[1]], windows=promoter)
+
+  # preparing tagMatrix list
+  tagMatrixList <- list(GE1=tagMatrix)
+  
+  # plotting tagMatrix heatmap
+  tagHeatmap(tagMatrixList, xlim=c(-2000, 2000), color=NULL)
+
+  # plotting average profile of ChIP peaks 
+  plotAvgProf(tagMatrixList, xlim=c(-2000, 2000), xlab="Genomic Region (5'->3')", ylab = "Read Count Frequency")
+
 dev.off()
+
 
 #annotation plot : there are more plot funtion available for multiple cell line comparisions
 pdf("annotation_plots")
@@ -43,26 +58,19 @@ pdf("annotation_plots")
   plotAnnoBar(peakAnnoList)
 
   #To view full annotation overlaps
-  upsetplot(eakAnnoList[[1]] , vennpie=TRUE))
+  upsetplot(peakAnnoList[[1]] , vennpie=TRUE))
   
   #Distribution of TF-binding loci relative to TSS
   plotDistToTSS(peakAnnoList, title="Distribution of transcription factor-binding loci \n relative to TSS")
 
-  
-  promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
-
-  #Heatmap of ChIP binding to TSS regions
-  #tagHeatmap(PeakList_with_added_chr_str, xlim=c(-2000, 2000), color="red")
-
-  #Average Profile of ChIP peaks binding to TSS region
-  #plotAvgProf(peakAnnoList, xlim=c(-2000, 2000), xlab="Genomic Region (5'->3')", ylab = "Read Count Frequency")
 dev.off()
 
 
 #annotations for each peaks stored in dataframe
 annot_df <- data.frame(peakAnnoList[["GE1"]]@anno)
 
+#add gene name to annot_df
 
-write.csv(annot_df, "peaks_with_annotations.csv", sep="\t")
+write.csv(annot_df, "peaks_with_annotations.csv", sep="\t",)
 
 
