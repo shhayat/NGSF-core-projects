@@ -11,3 +11,5 @@
 
 
 module load r/4.1.2
+
+Rscript annotatePeaks_and_visualize.R
