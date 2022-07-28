@@ -7,4 +7,4 @@ do
     peak_files=$(echo "$peak_files" | sed 's/.narrowPeak\//.narrowPeak \//g')
  done
  
-sbatch 07_IDR.sh "${peak_files}";
+sbatch 07_IDR_handling_replicates.sh  "${peak_files}";
