@@ -13,16 +13,19 @@ module load python/3.7.7
 #deeptools
 cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 
+DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
+
 idr_bed_file=$1; shift
 bam_files=$1;
 labels=$1;
 
 NCPU=4
 
-mkdir -p ${OUTDIR}/QC_after_peakcall
+mkdir -p ${DIR}/QC/QC_after_peakcall
+
 multiBamSummary BED-file \
                 --BED ${idr_bed_file} \
                 --bamfiles ${bam_files} \
                 --labels ${labels} \
-                --outFileName ${OUTDIR}/QC_after_peakcall/.npz \
+                --outFileName ${DIR}/QC/QC_after_peakcall/.npz \
                  -p ${NCPU}
