@@ -28,8 +28,8 @@ macs3 callpeak \
                 --gsize mm \
 		--keep-dup all \
                 --name ${sample_name} -B \
-		--qvalue 0.05 \
-                #--pvalue 5e-2 \
+		#--qvalue 0.05 \
+                --pvalue 5e-2 \
                 --outdir ${OUTDIR}/${sample_name}/ && \
                 sort -k8,8nr ${OUTDIR}/${sample_name}/${sample_name}_peaks.narrowPeak > ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak 
 		# --qvalue 0.01 \
