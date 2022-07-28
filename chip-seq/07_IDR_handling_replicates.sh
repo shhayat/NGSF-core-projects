@@ -22,8 +22,13 @@ mkdir -p $OUTDIR
 cd /globalhome/hxo752/HPC/anaconda3/bin
 
 ./idr --samples ${files} \
-      --output-file ${OUTDIR}/idr \
+      --output-file ${OUTDIR}/idr.bed \
       --plot \
       --rank p.value \
       --log-output-file ${OUTDIR}/idr.log \
       --verbose
+
+#Column 5 contains the scaled IDR value, min(int(log2(-125IDR), 1000) For example, peaks with an IDR of 0 have a score of 1000, 
+#peaks with an IDR of 0.05 have a score of int(-125log2(0.05)) = 540, and IDR of 1.0 has a score of 0.
+#select IDR of 0.05
+awk '{if($5 >= 540) print $0}' ${OUTDIR}/idr.bed > ${OUTDIR}/idr_filtered.bed
