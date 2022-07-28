@@ -45,8 +45,11 @@ write.csv(annot_df, "peaks_with_annotations.csv")
 
 
 pdf("chip_profile.pdf")
- #coverage plot
+ #coverage plot 
  covplot(PeakList_with_added_chr_str[[1]], weightCol="V5")
+
+ #from cov plot we saw most of the peaks are at chr 19. we check cov plot for chr 19
+ covplot(PeakList_with_added_chr_str[[1]], weightCol="V5", chrs=c("chr19"))
 
  #Profile of ChIP peaks binding to TSS regions
   promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
