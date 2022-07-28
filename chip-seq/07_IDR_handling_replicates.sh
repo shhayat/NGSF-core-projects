@@ -22,10 +22,8 @@ mkdir -p $OUTDIR
 cd /globalhome/hxo752/HPC/anaconda3/bin
 
 ./idr --samples ${files} \
-      --input-file-type bed \
-      --output-file ${OUTDIR}/idr.bed \
-      --output-file-type bed \
+      --output-file ${OUTDIR}/idr \
       --plot \
+      --rank p.value \
       --log-output-file ${OUTDIR}/idr.log \
       --verbose
-      #--rank p.value \
