@@ -27,5 +27,6 @@ multiBamSummary BED-file \
                 --BED ${idr_bed_file} \
                 --bamfiles ${bam_files} \
                 --labels ${labels} \
-                --outFileName ${DIR}/QC/QC_after_peakcall/.npz \
-                 -p ${NCPU}
+                --outFileName ${DIR}/QC/QC_after_peakcall/coverage.npz \
+                 -p ${NCPU} &> ${DIR}/QC/QC_after_peakcall/multiBamSummary.log
+
