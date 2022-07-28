@@ -25,7 +25,7 @@ cd /globalhome/hxo752/HPC/anaconda3/bin
       --input-file-type bed \
       --output-file ${OUTDIR}/idr.bed \
       --output-file-type bed \
-      --rank p.value \
+      #--rank p.value \
       --plot \
       --log-output-file ${OUTDIR}/idr.log \
       --verbose
