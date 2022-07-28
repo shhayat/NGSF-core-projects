@@ -28,6 +28,7 @@ cd /globalhome/hxo752/HPC/anaconda3/bin
     --output-file-type bed \
     --plot \
     --log-output-file ${OUTDIR}/idr.log \
+    --only-merge-peaks \
     --verbose
 
 
