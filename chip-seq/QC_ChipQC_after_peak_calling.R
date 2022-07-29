@@ -4,8 +4,7 @@ dir.create("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/an
 setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/QC/ChIPQC")
 
 #create sample infor object
-sampl_info <- read.table("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/sampleSheet_for_chiqQC.txt", 
-                         header=TRUE, sep="\t")
+sampl_info <- read.csv("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/sampleSheet_for_chiqQC.csv")
 
 #Create ChIPQC object
 chipObj <- ChIPQC(sampl_info, annotation="mm10") 
