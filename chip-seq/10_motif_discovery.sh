@@ -1,6 +1,13 @@
+#!/bin/bash
 
-
-
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
+#SBATCH --job-name=motif_discovery
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=4:00:00
+#SBATCH --mem=20G
+#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 #there was environment problem while installing meme with conda. 
 #For fixing this issue conda env "meme" was created 
