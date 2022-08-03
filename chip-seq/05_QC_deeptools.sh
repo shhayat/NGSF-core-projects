@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=QC-deeptools
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=4
 #SBATCH --time=2:00:00
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
@@ -13,7 +13,7 @@ module load python/3.7.7
 #deeptools
 cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 
-NCPUS=8
+NCPUS=4
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
 bam_files=$1; shift
 labels=$1;
@@ -50,5 +50,7 @@ python plotPCA.py \
             --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
             --plotFile ${DIR}/QC/deeptools/pca.pdf \
             --labels ${labels}   
-        
+
 module unload python/3.7.7
+
+
