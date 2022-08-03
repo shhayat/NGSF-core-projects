@@ -12,7 +12,7 @@
 
 #https://github.com/hbctraining/Intro-to-ChIPseq/blob/master/lessons/07_handling-replicates-idr.md
 #Combining replicates to only get the highly reproducible peaks using the IDR method
-
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis
 peaks=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/peakcall
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR
 
@@ -32,3 +32,10 @@ cd /globalhome/hxo752/HPC/anaconda3/bin
 #peaks with an IDR of 0.05 have a score of int(-125log2(0.05)) = 540, and IDR of 1.0 has a score of 0.
 #select IDR of 0.05
 awk '{if($5 >= 540) print $0}' ${OUTDIR}/idr.bed > ${OUTDIR}/idr_filtered.bed
+
+
+#for motif discovery step repeat-masked version of the genome is required where all repeat sequences have been replaced with Ns
+#we will generate masked genome based on peak intervals in idr_filtered.bed 
+bedtools getfasta -fi ${DIR}/indices_mouse/genome.fa \
+                  -bed ${DIR}/IDR/idr_filtered.bed \
+                  -fo ${DIR}/IDR/genome.masked.on.idr_intervals.fa
