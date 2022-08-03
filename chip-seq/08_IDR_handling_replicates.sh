@@ -9,6 +9,8 @@
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+cd /globalhome/hxo752/HPC/tools
+chmod a+x bedtools.static.binary
 
 #https://github.com/hbctraining/Intro-to-ChIPseq/blob/master/lessons/07_handling-replicates-idr.md
 #Combining replicates to only get the highly reproducible peaks using the IDR method
@@ -36,6 +38,6 @@ awk '{if($5 >= 540) print $0}' ${OUTDIR}/idr.bed > ${OUTDIR}/idr_filtered.bed
 
 #for motif discovery step repeat-masked version of the genome is required where all repeat sequences have been replaced with Ns
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
-bedtools getfasta -fi ${DIR}/indices_mouse/genome.fa \
+./bedtools.static.binary getfasta -fi ${DIR}/indices_mouse/genome.fa \
                   -bed ${DIR}/IDR/idr_filtered.bed \
                   -fo ${DIR}/IDR/genome.masked.on.idr_intervals.fa
