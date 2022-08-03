@@ -16,24 +16,11 @@
 source $HOME/.bashrc
 conda activate meme
 
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/
-
-
-#mkdir -p ${DIR}/motif_discovery
-
-bed_peak=$1; 
-#sample_name=1;
-
-
-bedtools getfasta -fi /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices_mouse/genome.fa \
-                  -bed /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR/idr_filtered.bed \
-                  -fo /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR/genome.idr_intervals.fa
-#bedtools getfasta -fo CTCF_top500_peak_seq.fa -fi hg38.masked.fa -bed ENCFF693MY_top500.bed
-
-#dreme -p CTCF_top500_peak_seq.fa -oc dreme_out
-
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR
+cd /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/
 
 #select peaks with the strongest signal for motif finding
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
 
-meme-chip ${sample_name}_top.bed -oc ${DIR}/motif_discovery
+#since we have limited number of peaks we will not select top peaks and proceed with meme-chip
+meme-chip -oc motif_discovery ${DIR}/genome.idr_intervals.fa
