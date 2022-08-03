@@ -35,9 +35,12 @@ cd /globalhome/hxo752/HPC/anaconda3/bin
 #select IDR of 0.05
 awk '{if($5 >= 540) print $0}' ${OUTDIR}/idr.bed > ${OUTDIR}/idr_filtered.bed
 
+#prep file for motif discovery
+
+cut -f 1,2,3 ${OUTDIR}/idr_filtered.bed > ${OUTDIR}/idr_filtered_3_columns.bed 
 
 #for motif discovery step repeat-masked version of the genome is required where all repeat sequences have been replaced with Ns
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
 ./bedtools.static.binary getfasta -fi ${DIR}/indices_mouse/genome.fa \
-                  -bed ${DIR}/IDR/idr_filtered.bed \
-                  -fo ${DIR}/IDR/genome.masked.on.idr_intervals.fa
+                  -bed ${OUTDIR}/idr_filtered_3_columns.bed \
+                  -fo ${OUTDIR}/genome.masked.on.idr_intervals.fa
