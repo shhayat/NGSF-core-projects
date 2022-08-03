@@ -25,7 +25,9 @@ bed_peak=$1;
 #sample_name=1;
 
 
-bedtools/2.26.0 
+bedtools getfasta -fi /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices_mouse/genome.fa \
+                  -bed /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR/idr.bed \
+                  -fo /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR/genome.idr_intervals.bed
 #bedtools getfasta -fo CTCF_top500_peak_seq.fa -fi hg38.masked.fa -bed ENCFF693MY_top500.bed
 
 #dreme -p CTCF_top500_peak_seq.fa -oc dreme_out
