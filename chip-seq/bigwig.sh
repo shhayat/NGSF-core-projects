@@ -18,20 +18,30 @@ DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
 
 mkdir -r ${DIR}/bigWig
 
-chip=$1; shift
-input=$1; shift
+BAMfile=$1; shift
 sample_name=$1;
 
 #generate bigwig files to view in IGV
-#normalize the ChIP against the input
-bamCompare -b1 ${chip} \
-           -b2 ${input} \
-            -o ${DIR}/bigWig/${sample_name}.bw \
-            --binSize 20 \
-            --normalizeUsing BPM \
-            --smoothLength 60 \
-            --extendReads 150 \
-            --centerReads \
-            -p ${NCPUS} 2> ${DIR}/bigWig/${sample_name}_bamCompare.log
+
+$ bamCoverage -b ${BAMfile} \
+              -o ${DIR}/bigWig/${sample_name}.bw \
+              --binSize 20 \
+              --normalizeUsing BPM \
+              --smoothLength 60 \
+              --extendReads 150 \
+              --centerReads \
+              -p ${NCPUS} 2> ${DIR}/bigWig/${sample_name}_bamCoverage.log
+
+
+##normalize the ChIP against the input
+#bamCompare -b1 ${chip} \
+#           -b2 ${input} \
+#            -o ${DIR}/bigWig/${sample_name}.bw \
+#            --binSize 20 \
+#            --normalizeUsing BPM \
+#            --smoothLength 60 \
+#            --extendReads 150 \
+#            --centerReads \
+#            -p ${NCPUS} 2> ${DIR}/bigWig/${sample_name}_bamCompare.log
          
 
