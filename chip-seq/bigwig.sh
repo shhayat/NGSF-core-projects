@@ -23,7 +23,7 @@ sample_name=$1;
 
 #generate bigwig files to view in IGV
 
-$ bamCoverage -b ${BAMfile} \
+bamCoverage -b ${BAMfile} \
               -o ${DIR}/bigWig/${sample_name}.bw \
               --binSize 20 \
               --normalizeUsing BPM \
