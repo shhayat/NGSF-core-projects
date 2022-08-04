@@ -15,5 +15,5 @@ wait
 
 #${SLURM_TMPDIR}/multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
 
-cd /globalhome/hxo752/HPC/tools/
-./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
+#cd /globalhome/hxo752/HPC/tools/
+#./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
