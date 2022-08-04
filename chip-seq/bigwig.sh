@@ -16,7 +16,7 @@ cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 NCPUS=4
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
 
-mkdir -r ${DIR}/bigWig
+mkdir ${DIR}/bigWig
 
 BAMfile=$1; shift
 sample_name=$1;
