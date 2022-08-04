@@ -1,11 +1,11 @@
 OUTDIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/multiqc"
-DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/"
-mkdir ${OUTDIR}
+DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
+mkdir -p ${OUTDIR}
 
 cd /globalhome/hxo752/HPC/tools/
 
 #FASTQC
-./multiqc -d ${DIR}/fastqc/*/*_fastqc.zip -o ${OUTDIR}/fastqc -n fastqc
+./multiqc -d ${DIR}/fastqc/*_fastqc -o ${OUTDIR}/fastqc -n fastqc
 
 #BOWTIE ALIGNMENT
 ./multiqc -d ${DIR}/alignment/*/*bowtie2.log  -o ${OUTDIR}/bowtie2 -n bowtie2
