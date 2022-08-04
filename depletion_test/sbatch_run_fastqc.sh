@@ -8,7 +8,7 @@ do
    sleep 0.5
 done 
 
-wait
+#wait
 
 #cp /globalhome/hxo752/HPC/tools/multiqc ${SLURM_TMPDIR}
 #chmod u+x ${SLURM_TMPDIR}/multiqc
