@@ -1,0 +1,13 @@
+#fasta files were downloaded from sra ftp
+
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR949/SRR949213/SRR949213_1.fastq.gz
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR949/SRR949213/SRR949213_2.fastq.gz
+
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR949/SRR949214/SRR949214_1.fastq.gz
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR949/SRR949214/SRR949214_2.fastq.gz
+
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR949/SRR949210/SRR949210_1.fastq.gz
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR949/SRR949210/SRR949210_2.fastq.gz
+
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR949/SRR949211/SRR949211_1.fastq.gz
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR949/SRR949211/SRR949211_2.fastq.gz
