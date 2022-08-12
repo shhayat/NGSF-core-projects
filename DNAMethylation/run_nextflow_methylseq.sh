@@ -4,6 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=nf
 #SBATCH --ntasks=1
+#SBATCH --cpus-per-task=15
+#SBATCH --time=10:00:00
+#SBATCH --mem=40G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module spider purge
@@ -11,7 +14,7 @@ module spider nextflow/21.10.3
 module spider singularity/3.9.2
 
 #config_file=$1;
-nextflow run nf-core/methylseq -profile singularity -c testdata.config
+nextflow run nf-core/methylseq -profile hpc_slurm -c testdata.config
 #nextflow run nf-core/methylseq -profile singularity --input '*_R{1,2}.fastq.gz' --genome GRCh37
 
 #sbatch run_nextflow_methylseq.sh data.config
@@ -19,6 +22,3 @@ nextflow run nf-core/methylseq -profile singularity -c testdata.config
 #'/sw/courses/epigenomics/DNAmethylation/pipeline_bsseq_data/Sample1_PE_R{1,2}.fastq.gz' 
 #--aligner bismark --project g2021025 --genome mm10 --clusterOptions '--reservation g2021025_28'
 
-##SBATCH --cpus-per-task=15
-##SBATCH --time=10:00:00
-##SBATCH --mem=40G
