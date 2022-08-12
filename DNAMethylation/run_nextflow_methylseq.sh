@@ -4,12 +4,12 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=nf
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=15
 #SBATCH --time=10:00:00
 #SBATCH --mem=40G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module load purge
+module spider purge
 module spider nextflow/21.10.3
 module spider singularity/3.9.2
 
