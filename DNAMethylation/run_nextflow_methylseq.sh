@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=nf
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=15
+#SBATCH --cpus-per-task=8
 #SBATCH --time=10:00:00
 #SBATCH --mem=40G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
@@ -13,9 +13,11 @@ module --force purge
 module spider nextflow/21.10.3
 module spider singularity/3.9.2
 
+DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
 #config_file=$1;
-nextflow run nf-core/methylseq -profile singularity -c testdata.config
-#nextflow run nf-core/methylseq -profile singularity --input '*_{1,2}.fastq.gz' --genome GRCh38
+sample_name="Colon_Normal_Primary"
+#nextflow run nf-core/methylseq -profile singularity -c testdata.config
+nextflow run nf-core/methylseq -profile singularity --input ${DIR}/${sample_name}/'*_{1,2}.fastq.gz' -qs 2 --genome GRCh38
 
 #sbatch run_nextflow_methylseq.sh data.config
 #nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
