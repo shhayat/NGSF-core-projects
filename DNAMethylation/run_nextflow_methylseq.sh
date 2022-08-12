@@ -14,7 +14,8 @@ module load nextflow/21.10.3
 module load singularity/3.9.2
 
 config_file=$1;
-nextflow run nf-core/methylseq -profile testdata,singularity -c ${config_file}
+nextflow run nf-core/methylseq -profile singularity -c ${config_file}
+nextflow run nf-core/methylseq -profile singularity --input '*_R{1,2}.fastq.gz' --genome GRCh37
 
 #sbatch run_nextflow_methylseq.sh data.config
 #nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
