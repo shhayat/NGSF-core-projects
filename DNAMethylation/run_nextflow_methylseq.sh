@@ -16,8 +16,9 @@ module spider singularity/3.9.2
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
 #config_file=$1;
 sample_name="Colon_Normal_Primary"
+mkdir -p  $DIR/test
 #nextflow run nf-core/methylseq -profile singularity -c testdata.config
-nextflow run nf-core/methylseq -profile singularity --input ${DIR}/${sample_name}/'*_{1,2}.fastq.gz' -qs 2 --genome GRCh38
+nextflow run nf-core/methylseq -profile singularity --input ${DIR}/${sample_name}/'*_{1,2}.fastq.gz' -qs 2 -w $DIR/test --genome GRCh38 -c testdata.config
 
 #sbatch run_nextflow_methylseq.sh data.config
 #nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
