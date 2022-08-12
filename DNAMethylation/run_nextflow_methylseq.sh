@@ -14,11 +14,13 @@ module spider nextflow/21.10.3
 module spider singularity/3.9.2
 
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
+DATA="/datastore/NGSF001/datasets/bisulfite_seq/Colon_Normal_Primary"
 #config_file=$1;
-sample_name="Colon_Normal_Primary"
+condition="Colon_Normal_Primary"
+sample_name="SRR949214"
 mkdir -p  $DIR/test
 #nextflow run nf-core/methylseq -profile singularity -c testdata.config
-nextflow run nf-core/methylseq -profile singularity --input ${DIR}/${sample_name}/'*_{1,2}.fastq.gz' -qs 2 -w $DIR/test --genome GRCh38 -c testdata.config
+nextflow run nf-core/methylseq -profile singularity --input '${DATA}/${condition}/${sample_name}_{1,2}.fastq.gz' -qs 2 -w $DIR/test --genome GRCh38 -c testdata.config
 
 #sbatch run_nextflow_methylseq.sh data.config
 #nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
