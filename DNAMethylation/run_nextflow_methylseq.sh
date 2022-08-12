@@ -17,10 +17,10 @@ DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
 DATA="/datastore/NGSF001/datasets/bisulfite_seq/"
 #config_file=$1;
 condition="Colon_Normal_Primary"
-sample_name="SRR949214"
+#sample_name="SRR949214"
 mkdir -p  $DIR/test
 #nextflow run nf-core/methylseq -profile singularity -c testdata.config
-nextflow run nf-core/methylseq -profile singularity --input ${DATA}/${condition}/'${sample_name}_{1,2}.fastq.gz' -qs 2 -w $DIR/test --genome GRCh38 --single_end false
+nextflow run nf-core/methylseq -profile singularity --input ${DATA}/${condition}/'*_{1,2}.fastq.gz' -qs 2 -w $DIR/test --genome GRCh38 --single_end false
 
 #sbatch run_nextflow_methylseq.sh data.config
 #nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
