@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=nf
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --time=06:00:00
-#SBATCH --mem=16G
+#SBATCH --cpus-per-task=12
+#SBATCH --time=16:00:00
+#SBATCH --mem=60G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module --force purge
