@@ -15,7 +15,7 @@ module spider singularity/3.9.2
 
 #config_file=$1;
 nextflow run nf-core/methylseq -profile singularity -c testdata.config
-#nextflow run nf-core/methylseq -profile singularity --input '*_R{1,2}.fastq.gz' --genome GRCh37
+#nextflow run nf-core/methylseq -profile singularity --input '*_{1,2}.fastq.gz' --genome GRCh38
 
 #sbatch run_nextflow_methylseq.sh data.config
 #nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
