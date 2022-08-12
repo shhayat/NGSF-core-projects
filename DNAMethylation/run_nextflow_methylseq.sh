@@ -9,7 +9,7 @@
 #SBATCH --mem=40G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module spider purge
+module --force purge
 module spider nextflow/21.10.3
 module spider singularity/3.9.2
 
