@@ -10,8 +10,8 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module --force purge
-module load nextflow/21.10.3
-module load singularity/3.9.2
+module spider nextflow/21.10.3
+module spider singularity/3.9.2
 
 #config_file=$1;
 nextflow run nf-core/methylseq -profile singularity -c testdata.config
