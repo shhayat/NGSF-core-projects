@@ -19,6 +19,6 @@ nextflow run nf-core/methylseq -profile singularity -c testdata.config
 #'/sw/courses/epigenomics/DNAmethylation/pipeline_bsseq_data/Sample1_PE_R{1,2}.fastq.gz' 
 #--aligner bismark --project g2021025 --genome mm10 --clusterOptions '--reservation g2021025_28'
 
-#SBATCH --cpus-per-task=15
-#SBATCH --time=10:00:00
-#SBATCH --mem=40G
+##SBATCH --cpus-per-task=15
+##SBATCH --time=10:00:00
+##SBATCH --mem=40G
