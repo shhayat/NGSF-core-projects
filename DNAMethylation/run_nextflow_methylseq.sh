@@ -14,7 +14,7 @@ module spider nextflow/21.10.3
 module spider singularity/3.9.2
 
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
-DATA="/datastore/NGSF001/datasets/bisulfite_seq/Colon_Normal_Primary"
+DATA="/datastore/NGSF001/datasets/bisulfite_seq/"
 #config_file=$1;
 condition="Colon_Normal_Primary"
 sample_name="SRR949214"
