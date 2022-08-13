@@ -6,10 +6,10 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=15
 #SBATCH --time=10:00:00
-#SBATCH --mem=40G
+#SBATCH --mem=60G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module --force purge
+#module --force purge
 module spider nextflow/21.10.3
 module spider singularity/3.9.2
 
