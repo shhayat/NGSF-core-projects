@@ -1,12 +1,11 @@
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
 #SBATCH --job-name=nf
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=15
-#SBATCH --time=10:00:00
-#SBATCH --mem=60G
+#SBATCH --cpus-per-task=48
+#SBATCH --time=20:00:00
+#SBATCH --mem=185G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 #module --force purge
@@ -17,10 +16,10 @@ DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
 DATA="/datastore/NGSF001/datasets/bisulfite_seq/"
 #config_file=$1;
 condition="Colon_Normal_Primary"
-#sample_name="SRR949214"
+
 mkdir -p  $DIR/test
 #nextflow run nf-core/methylseq -profile singularity -c testdata.config
-nextflow run nf-core/methylseq -profile singularity --input ${DATA}/${condition}/'*_{1,2}.fastq.gz' -w $DIR/test --genome GRCh38 --single_end false -resume 5e679c32-158e-407a-bb67-20a91b0c30c4
+nextflow run nf-core/methylseq -profile singularity --input ${DATA}/${condition}/'*_{1,2}.fastq.gz' -w $DIR/test --genome GRCh38 --single_end false
 
 #sbatch run_nextflow_methylseq.sh data.config
 #nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
