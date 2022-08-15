@@ -10,7 +10,7 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 #module --force purge
-module spider nextflow/20.10.0
+module spider nextflow/21.10.3
 module spider singularity/3.9.2
 
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
