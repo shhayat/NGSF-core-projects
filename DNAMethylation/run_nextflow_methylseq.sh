@@ -3,7 +3,7 @@
 #SBATCH --account=hpc_p_anderson
 #SBATCH --job-name=nf
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=48
+#SBATCH --cpus-per-task=15
 #SBATCH --time=20:00:00
 #SBATCH --mem=185G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
