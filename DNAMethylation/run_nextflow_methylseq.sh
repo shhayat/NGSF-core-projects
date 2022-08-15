@@ -11,7 +11,7 @@
 
 #module --force purge
 module spider nextflow/22.04.3
-module spider singularity/3.9.2
+module spider singularity/3.4.1
 
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
 DATA="/datastore/NGSF001/datasets/bisulfite_seq/"
