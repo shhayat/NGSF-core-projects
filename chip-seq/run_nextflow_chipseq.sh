@@ -13,4 +13,9 @@ module spider nextflow/22.04.3
 module spider singularity/3.4.1
 
 
-nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true --gtf 
+#nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true
+nextflow run nf-core/chipseq -profile singularity \
+                             --input chip_design.csv \
+                             --bwa_index /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices_mouse/genome.fa \
+                             --blacklist /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
+                             --gtf 
