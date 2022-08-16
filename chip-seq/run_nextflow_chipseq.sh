@@ -18,7 +18,7 @@ mkdir -p ${DIR}/chipseq-nf
 
 #nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true
 nextflow run nf-core/chipseq -profile singularity \
-                             --input ${DIR}/chip_design.csv \
+                             --input /globalhome/hxo752/HPC/chipseq/chip_design.csv \
                              --bwa_index ${DIR}/indices_mouse/genome.fa \
                              --blacklist ${DIR}/blacklist_file/mm10-blacklist.v2.bed.gz \
                              --gtf ${GTF} \
