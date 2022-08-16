@@ -8,8 +8,8 @@
 #SBATCH --time=10:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module --force purge
-module load StdEnv/2020
+#module --force purge
+#module load StdEnv/2020
 module load nextflow/22.04.3
 #module load singularity/4.2.1 
 module load gentoo/2020
