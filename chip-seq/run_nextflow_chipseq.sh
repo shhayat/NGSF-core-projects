@@ -9,9 +9,9 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module --force purge
-#module load StdEnv/2020
+module load StdEnv/2020
 module load nextflow/22.04.3
-#module load gentoo/2020
+module load gentoo/2020
 module load singularity/3.9.2
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq
