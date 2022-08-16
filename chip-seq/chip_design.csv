@@ -1,1 +1,5 @@
 group,replicate,fastq_1,fastq_2,antibody,control
+G1E_TAL1,1,/datastore/NGSF001/datasets/chipseq_mouse/SRR492444/SRR492444.fastq,,TAL1,G1E_Input
+G1E_TAL1,2,/datastore/NGSF001/datasets/chipseq_mouse/SRR492445/SRR492445.fastq,TAL1,G1E_Input
+G1E_Input,1,/datastore/NGSF001/datasets/chipseq_mouse/SRR507859/SRR507859.fastq,,,
+G1E_Input,2,/datastore/NGSF001/datasets/chipseq_mouse/SRR507860/SRR507860.fastq,,,
