@@ -9,8 +9,8 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 #module --force purge
-#module spider nextflow/22.04.3
-#module spider singularity/4.2.1 
+#module load nextflow/22.04.3
+#module load singularity/4.2.1 
 
 module --force purge
 module spider nextflow
