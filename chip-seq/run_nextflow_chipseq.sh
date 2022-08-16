@@ -27,7 +27,7 @@ nextflow run nf-core/chipseq -profile singularity \
                              --blacklist ${DIR}/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
                              --narrow_peak \
                              --gtf ${GTF} \
-                             -w ${DIR}/chipseq-nf
+                             -w ${DIR}/analysis/chipseq-nf
                              
                           
 #cache should be deleted otherwise it throws an error in next run
