@@ -19,7 +19,7 @@ chmod a+x ${DIR}/.nextflow/cache
 
 #nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true
 nextflow run nf-core/chipseq -profile singularity \
-                             --input ${DIR}/chip_design.csv \
+                             --input ${DIR}/design.csv \
                              --genome mm10 \
                              --single_end true \
                              --fasta ${DIR}/analysis/indices_mouse/genome.fa \
