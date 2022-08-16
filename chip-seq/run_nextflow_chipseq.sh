@@ -25,5 +25,6 @@ nextflow run nf-core/chipseq -profile singularity \
                              --bwa_index ${DIR}/analysis/indices_mouse/genome.fa \
                              --blacklist ${DIR}/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
                              --gtf ${GTF} \
+                             --macs_gsize \
                              -w ${DIR}/chipseq-nf
                             
