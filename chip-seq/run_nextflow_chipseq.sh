@@ -15,8 +15,6 @@ module spider singularity/3.4.1
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq
 GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
 mkdir -p ${DIR}/chipseq-nf
-chmod a+x ${DIR}/.nextflow/cache
-
 #nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true
 nextflow run nf-core/chipseq -profile singularity \
                              --input ${DIR}/design.csv \
