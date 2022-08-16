@@ -9,9 +9,10 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module --force purge
+module load StdEnv/2020
 module load nextflow/22.04.3
-module load singularity/4.2.1 
-
+#module load singularity/4.2.1 
+module load singularity/3.9.2
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq
 GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
