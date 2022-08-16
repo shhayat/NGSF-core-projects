@@ -13,7 +13,7 @@ module spider nextflow/22.04.3
 module spider singularity/3.4.1
 
 DIR=/globalhome/hxo752/HPC/chipseq/analysis
-GTF=/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf
+#GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
 mkdir -p ${DIR}/chipseq-nf
 chmod a+x ${DIR}/chipseq-nf
 
@@ -23,7 +23,7 @@ nextflow run nf-core/chipseq -profile singularity \
                              --fasta ${DIR}/indices_mouse/genome.fa
                              --bwa_index ${DIR}/indices_mouse/genome.fa \
                              --blacklist ${DIR}/blacklist_file/mm10-blacklist.v2.bed.gz \
-                             --gtf ${GTF} \
+                             --gtf /datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf \
                              -w ${DIR}/chipseq-nf
                             
                             
