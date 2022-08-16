@@ -8,13 +8,10 @@
 #SBATCH --time=10:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-#module --force purge
-#module load nextflow/22.04.3
-#module load singularity/4.2.1 
-
 module --force purge
-module spider nextflow
-module spider singularity
+module load nextflow/22.04.3
+module load singularity/4.2.1 
+
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq
 GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
