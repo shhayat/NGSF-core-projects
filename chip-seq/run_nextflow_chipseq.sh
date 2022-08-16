@@ -10,7 +10,7 @@
 
 #module --force purge
 module spider nextflow/22.04.3
-module spider singularity/3.4.1
+module spider singularity/4.2.1 
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq
 GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
