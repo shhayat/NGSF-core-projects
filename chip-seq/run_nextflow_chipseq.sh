@@ -16,7 +16,7 @@ module load singularity/3.9.2
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq
 GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
-mkdir -p ${DIR}/chipseq-nf
+mkdir -p ${DIR}/analysis/chipseq-nf
 #nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true
 nextflow run nf-core/chipseq -profile singularity \
                              --input ${DIR}/design.csv \
