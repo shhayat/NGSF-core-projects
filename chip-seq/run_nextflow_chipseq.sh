@@ -23,6 +23,7 @@ nextflow run nf-core/chipseq -profile singularity \
                              --fasta ${DIR}/analysis/indices_mouse/genome.fa \
                              --bwa_index ${DIR}/analysis/indices_mouse/genome.fa \
                              --blacklist ${DIR}/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
+                             --narrow_peak \
                              --gtf ${GTF} \
                              -w ${DIR}/chipseq-nf
                              
