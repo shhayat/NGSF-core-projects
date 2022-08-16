@@ -20,10 +20,9 @@ chmod a+x ${DIR}/.nextflow/cache
 #nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true
 nextflow run nf-core/chipseq -profile singularity \
                              --input ${DIR}/chip_design.csv \
-                             --fasta ${DIR}/analysis/indices_mouse/genome.fa
+                             --fasta ${DIR}/analysis/indices_mouse/genome.fa \
                              --bwa_index ${DIR}/analysis/indices_mouse/genome.fa \
                              --blacklist ${DIR}/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
                              --gtf ${GTF} \
                              -w ${DIR}/chipseq-nf
-                            
                             
