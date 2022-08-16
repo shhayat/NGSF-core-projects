@@ -12,13 +12,14 @@
 module spider nextflow/22.04.3
 module spider singularity/3.4.1
 
-DIR=/globalhome/hxo752/HPC/chipseq/analysis/chipseq-nf
-mkdir -p $DIR
+DIR=/globalhome/hxo752/HPC/chipseq/analysis
+GTF=/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf
+mkdir -p ${DIR}/chipseq-nf
 
 #nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true
 nextflow run nf-core/chipseq -profile singularity \
-                             --input chip_design.csv \
-                             --bwa_index /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices_mouse/genome.fa \
-                             --blacklist /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
-                             --gtf /datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf \
-                             --work-dir $DIR
+                             --input ${DIR}/chip_design.csv \
+                             --bwa_index ${DIR}/indices_mouse/genome.fa \
+                             --blacklist ${DIR}/blacklist_file/mm10-blacklist.v2.bed.gz \
+                             --gtf ${GTF} \
+                             --outdir ${DIR}
