@@ -18,4 +18,4 @@ nextflow run nf-core/chipseq -profile singularity \
                              --input chip_design.csv \
                              --bwa_index /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/indices_mouse/genome.fa \
                              --blacklist /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
-                             --gtf 
+                             --gtf /datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf
