@@ -3,6 +3,8 @@
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
 #SBATCH --job-name=nf
+#SBATCH --cpus-per-task=40
+#SBATCH --mem=185G
 #SBATCH --time=10:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
