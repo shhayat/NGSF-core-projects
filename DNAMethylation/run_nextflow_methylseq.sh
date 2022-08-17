@@ -8,9 +8,11 @@
 #SBATCH --time=10:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-#module --force purge
-module spider nextflow/22.04.3
-module spider singularity/3.4.1
+module --force purge
+module load StdEnv/2020
+module load nextflow/22.04.3
+module load gentoo/2020
+module load singularity/3.9.2
 
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/DNAMethylation"
 DATA="/datastore/NGSF001/datasets/bisulfite_seq/"
