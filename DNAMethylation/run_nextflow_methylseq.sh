@@ -14,7 +14,7 @@ module load nextflow/22.04.3
 module load gentoo/2020
 module load singularity/3.9.2
 
-OUTDIR="/datastore/NGSF001/experiments"
+OUTDIR="/globalhome/hxo752/HPC/DNAMethylation"
 DATA="/datastore/NGSF001/datasets/bisulfite_seq/"
 #config_file=$1;
 condition="Colon_Normal_Primary"
@@ -22,6 +22,8 @@ condition="Colon_Normal_Primary"
 mkdir -p  ${SLURM_TMPDIR}/chip_results & cd ${SLURM_TMPDIR}/chip_results
 mkdir -p  ${SLURM_TMPDIR}/chip_results/results
 mkdir -p  ${SLURM_TMPDIR}/chip_results/work
+
+echo ${SLURM_TMPDIR}
 
 #nextflow run nf-core/methylseq -profile singularity -c testdata.config
 nextflow run nf-core/methylseq -profile singularity \
