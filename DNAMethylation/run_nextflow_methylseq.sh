@@ -26,7 +26,8 @@ nextflow run nf-core/methylseq -profile singularity \
                                -w $DIR/test \
                                --outdir $DIR/test \
                                --genome GRCh38 \
-                               --single_end false
+                               --single_end false \
+                               -resume
 
 #sbatch run_nextflow_methylseq.sh data.config
 #nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
