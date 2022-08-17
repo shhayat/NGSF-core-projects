@@ -29,12 +29,6 @@ nextflow run nf-core/methylseq -profile singularity \
                                -w ${SLURM_TMPDIR}/chip_results/work \
                                --outdir ${SLURM_TMPDIR}/chip_results/results \
                                --genome GRCh38 \
-                               --single_end false \
-                               -resume
+                               --single_end false
 
-#sbatch run_nextflow_methylseq.sh data.config
-#nextflow run $NF_CORE_PIPELINES/methylseq/1.6.1/workflow -profile uppmax --input 
-#'/sw/courses/epigenomics/DNAmethylation/pipeline_bsseq_data/Sample1_PE_R{1,2}.fastq.gz' 
-#--aligner bismark --project g2021025 --genome mm10 --clusterOptions '--reservation g2021025_28'
-##SBATCH --cpus-per-task=40
-##SBATCH --mem=185G
+rsync -rvzP  ${SLURM_TMPDIR}/chip_results ${OUTDIR}
