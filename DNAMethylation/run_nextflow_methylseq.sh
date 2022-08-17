@@ -24,6 +24,7 @@ mkdir -p  $DIR/test
 nextflow run nf-core/methylseq -profile singularity \
                                --input ${DATA}/${condition}/'*_{1,2}.fastq.gz' \
                                -w $DIR/test \
+                               --outdir $DIR/test \
                                --genome GRCh38 \
                                --single_end false
 
