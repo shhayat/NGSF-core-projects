@@ -20,8 +20,7 @@ mkdir -p  ${SLURM_TMPDIR}/ch_results/work
                               
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq
 GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
-mkdir -p ${DIR}/analysis/chipseq-nf
-#nextflow run nf-core/chipseq -profile singularity --input chip_design.csv --genome GRCm38 --single_end true
+
 nextflow run nf-core/chipseq -profile singularity \
                              --input ${DIR}/design.csv \
                              --genome mm10 \
