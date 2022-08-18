@@ -25,8 +25,6 @@ nextflow run nf-core/chipseq -profile singularity \
                              --input ${DIR}/design.csv \
                              --genome mm10 \
                              --single_end true \
-                             --fasta /datastore/NGSF001/experiments/chipseq/genome.fa \
-                             --bwa_index /datastore/NGSF001/experiments/chipseq/genome.fa \
                              --blacklist ${DIR}/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
                              --narrow_peak \
                              --gtf ${GTF} \
