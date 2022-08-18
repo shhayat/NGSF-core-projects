@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=ivybridge
+#SBATCH --constraint=skylake
 #SBATCH --job-name=nf
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=30G
-#SBATCH --time=10:00:00
+#SBATCH --cpus-per-task=40
+#SBATCH --mem=185G
+#SBATCH --time=20:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module --force purge
@@ -31,6 +31,7 @@ nextflow run nf-core/methylseq -profile singularity \
                                -w ${SLURM_TMPDIR}/chip_results/work \
                                --outdir ${SLURM_TMPDIR}/chip_results/results \
                                --genome GRCh38 \
-                               --single_end false
+                               --single_end false \
+                               -resume
 
 rsync -rvzP  ${SLURM_TMPDIR}/chip_results ${OUTDIR}
