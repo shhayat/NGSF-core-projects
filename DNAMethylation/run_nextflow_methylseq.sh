@@ -31,7 +31,6 @@ nextflow run nf-core/methylseq -profile singularity \
                                -w ${SLURM_TMPDIR}/chip_results/work \
                                --outdir ${SLURM_TMPDIR}/chip_results/results \
                                --genome GRCh38 \
-                               --single_end false \
-                               -resume
-
+                               --single_end false
+                               
 rsync -rvzP  ${SLURM_TMPDIR}/chip_results ${OUTDIR}
