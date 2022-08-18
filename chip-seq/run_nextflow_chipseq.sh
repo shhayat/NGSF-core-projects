@@ -14,6 +14,10 @@ module load nextflow/22.04.3
 module load gentoo/2020
 module load singularity/3.9.2
 
+mkdir -p  ${SLURM_TMPDIR}/ch_results && cd ${SLURM_TMPDIR}/chip_results
+mkdir -p  ${SLURM_TMPDIR}/ch_results/results
+mkdir -p  ${SLURM_TMPDIR}/ch_results/work
+                              
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq
 GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
 mkdir -p ${DIR}/analysis/chipseq-nf
@@ -27,8 +31,9 @@ nextflow run nf-core/chipseq -profile singularity \
                              --blacklist ${DIR}/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
                              --narrow_peak \
                              --gtf ${GTF} \
-                             -w ${DIR}/analysis/chipseq-nf
+                             -w ${SLURM_TMPDIR}/ch_results/work
+                             -outdir ${SLURM_TMPDIR}/ch_results/results
                              
                           
-#cache should be deleted otherwise it throws an error in next run
-rm -r ${DIR}/.nextflow/cache/
+rsync -rvzP  ${SLURM_TMPDIR}/chip_results ${OUTDIR}
+
