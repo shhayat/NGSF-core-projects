@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=ivybridge
+#SBATCH --constraint=skylake
 #SBATCH --job-name=nf_chipseq
 #SBATCH --cpus-per-task=40
 #SBATCH --mem=185G
