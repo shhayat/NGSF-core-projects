@@ -31,9 +31,9 @@ nextflow run nf-core/chipseq -profile singularity \
                              --blacklist ${DIR}/analysis/blacklist_file/mm10-blacklist.v2.bed.gz \
                              --narrow_peak \
                              --gtf ${GTF} \
-                             -w ${SLURM_TMPDIR}/ch_results/work
-                             -outdir ${SLURM_TMPDIR}/ch_results/results
+                             -w ${SLURM_TMPDIR}/ch_results/work \
+                             --outdir ${SLURM_TMPDIR}/ch_results/results
                              
                           
-rsync -rvzP  ${SLURM_TMPDIR}/chip_results ${OUTDIR}
+rsync -rvzP  ${SLURM_TMPDIR}/ch_results ${OUTDIR}
 
