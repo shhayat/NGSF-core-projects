@@ -14,7 +14,7 @@ module load nextflow/22.04.3
 module load gentoo/2020
 module load singularity/3.9.2
 
-mkdir -p  ${SLURM_TMPDIR}/ch_results && cd ${SLURM_TMPDIR}/chip_results
+mkdir -p  ${SLURM_TMPDIR}/ch_results && cd ${SLURM_TMPDIR}/ch_results
 mkdir -p  ${SLURM_TMPDIR}/ch_results/results
 mkdir -p  ${SLURM_TMPDIR}/ch_results/work
                               
