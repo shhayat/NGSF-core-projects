@@ -5,7 +5,7 @@
 #SBATCH --job-name=nf_chipseq
 #SBATCH --cpus-per-task=40
 #SBATCH --mem=185G
-#SBATCH --time=10:00:00
+#SBATCH --time=40:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module --force purge
