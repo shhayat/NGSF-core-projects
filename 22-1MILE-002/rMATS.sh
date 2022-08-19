@@ -4,6 +4,7 @@
 #./globalhome/hxo752/HPC/anaconda3/condabin/conda create -n rMATS -c bioconda rMATS then go to path /globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin and run commands
 
 rmat=/globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin
+DATA=
 NCPU=4
 
 python rmats.py --s1 /path/to/s1.txt \
