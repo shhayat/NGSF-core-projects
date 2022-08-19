@@ -4,7 +4,7 @@
 #./globalhome/hxo752/HPC/anaconda3/condabin/conda create -n rMATS -c bioconda rMATS then go to path /globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin and run commands
 
 rmat=/globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin
-DATA=
+DATA=/datastore/NGSF001/projects/22-1MILE-002/deduplication
 GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
 NCPU=4
 
