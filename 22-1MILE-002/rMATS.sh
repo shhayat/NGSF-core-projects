@@ -16,7 +16,7 @@ python ${rmat}/rmats.py --s1 group1_bam_files.txt \
                         --gtf ${GTF} \
                         --bi ${index} \
                         -t paired \
-                        --readLength 50 \
+                        --readLength 140 \
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis \
                         --tmp ${SLRUM_TMPDIR}/rmat_tmp
