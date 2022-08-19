@@ -6,14 +6,17 @@
 rmat=/globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin
 DATA=/datastore/NGSF001/projects/22-1MILE-002/leafcutter/dedup_star2pass
 GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002
+mkdir -p ${DIR}/rmat_analysis
 NCPU=4
 
-python rmats.py --s1 /path/to/s1.txt \
-                --s2 /path/to/s2.txt \
-                --gtf /path/to/the.gtf \
-                --bi /path/to/STAR_binary_index \
-                -t paired \
-                --readLength 50 \
-                --nthread $NCPU \
-                --od /path/to/output \
-                --tmp /path/to/tmp_output
+mkdir ${SLRUM_TMPDIR}/rmat_tmp
+python ${rmat}/rmats.py --s1 group1_bam_files.txt \
+                        --s2 group2_bam_files.txt \
+                        --gtf ${GTF} \
+                        --bi /path/to/STAR_binary_index \
+                        -t paired \
+                        --readLength 50 \
+                        --nthread $NCPU \
+                        --od ${DIR}/rmat_analysis \
+                        --tmp ${SLRUM_TMPDIR}/rmat_tmp
