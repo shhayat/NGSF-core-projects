@@ -5,6 +5,7 @@
 
 rmat=/globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin
 DATA=
+GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
 NCPU=4
 
 python rmats.py --s1 /path/to/s1.txt \
@@ -16,6 +17,3 @@ python rmats.py --s1 /path/to/s1.txt \
                 --nthread $NCPU \
                 --od /path/to/output \
                 --tmp /path/to/tmp_output
-
-
-python $rmat/rmats.py --s1
