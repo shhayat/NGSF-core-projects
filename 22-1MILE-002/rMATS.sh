@@ -4,7 +4,7 @@
 #./globalhome/hxo752/HPC/anaconda3/condabin/conda create -n rMATS -c bioconda rMATS then go to path /globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin and run commands
 
 rmat=/globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin
-index=
+index=/datastore/NGSF001/analysis/indices/rat/Rnor_6.0/star/2.5.1b/
 GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002
 mkdir -p ${DIR}/rmat_analysis
@@ -14,7 +14,7 @@ mkdir ${SLRUM_TMPDIR}/rmat_tmp
 python ${rmat}/rmats.py --s1 group1_bam_files.txt \
                         --s2 group2_bam_files.txt \
                         --gtf ${GTF} \
-                        --bi /path/to/STAR_binary_index \
+                        --bi ${index} \
                         -t paired \
                         --readLength 50 \
                         --nthread $NCPU \
