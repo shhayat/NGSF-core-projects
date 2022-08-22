@@ -20,6 +20,8 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002
 mkdir -p ${DIR}/rmat_analysis
 NCPU=20
 
+
+conda activate rMATS
 ${python}/python ${rmat}/rmats.py --s1 group1_bam_files.txt \
                         --s2 group2_bam_files.txt \
                         --gtf ${GTF} \
@@ -29,3 +31,5 @@ ${python}/python ${rmat}/rmats.py --s1 group1_bam_files.txt \
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis \
                         --tmp ${SLRUM_TMPDIR}
+#EXITING because of FATAL ERROR: Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.10a
+#SOLUTION: please re-generate genome from scratch with running version of STAR, or with version: 2.7.4a
