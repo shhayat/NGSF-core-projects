@@ -1,3 +1,12 @@
+#!/bin/bash
+
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
+#SBATCH --job-name=nf_chipseq
+#SBATCH --cpus-per-task=20
+#SBATCH --mem=80G
+#SBATCH --time=04:00:00
+#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 #there was environment problem while installing rmats with conda. 
 #For fixing this issue conda env "rMATS" was created 
