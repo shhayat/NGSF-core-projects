@@ -20,7 +20,6 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002
 mkdir -p ${DIR}/rmat_analysis
 NCPU=20
 
-mkdir ${SLRUM_TMPDIR}/rmat_tmp
 ${python}/python ${rmat}/rmats.py --s1 group1_bam_files.txt \
                         --s2 group2_bam_files.txt \
                         --gtf ${GTF} \
@@ -29,4 +28,4 @@ ${python}/python ${rmat}/rmats.py --s1 group1_bam_files.txt \
                         --readLength 70 \
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis \
-                        --tmp ${SLRUM_TMPDIR}/rmat_tmp
+                        --tmp ${SLRUM_TMPDIR}
