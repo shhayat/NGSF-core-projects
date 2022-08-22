@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=nf_chipseq
+#SBATCH --job-name=rMATS
 #SBATCH --cpus-per-task=20
 #SBATCH --mem=80G
 #SBATCH --time=04:00:00
