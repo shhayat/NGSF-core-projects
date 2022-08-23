@@ -1,0 +1,1 @@
+/datastore/NGSF001/projects/22-1MILE-002/deduplication/R2200098.2pass.no-rRNA.primary.dedup.bam,/datastore/NGSF001/projects/22-1MILE-002/deduplication/R2200099.no-rRNA.primary-aln.dedup.bam,/datastore/NGSF001/projects/22-1MILE-002/deduplication/R2200100.no-rRNA.primary-aln.dedup.bam
