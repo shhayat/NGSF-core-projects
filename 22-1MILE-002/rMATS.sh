@@ -23,8 +23,8 @@ NCPU=20
 source $HOME/.bashrc
 conda activate rMATS
 
-${python}/python ${rmat}/rmats.py --s1 group1_bam_files.txt \
-                        --s2 group2_bam_files.txt \
+${python}/python ${rmat}/rmats.py --s1 group11_bam_files.txt \
+                        --s2 group22_bam_files.txt \
                         --gtf ${GTF} \
                         --bi ${index} \
                         -t paired \
