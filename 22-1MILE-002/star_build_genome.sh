@@ -6,9 +6,8 @@
 #SBATCH --ntasks=1
 #BATCH --cpus-per-task=10
 #SBATCH --time=03:00:00
-#SBATCH --mem=80G
+#SBATCH --mem=60G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
-set -eux
 
 NCPU=10
 
