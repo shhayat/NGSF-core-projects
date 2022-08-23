@@ -20,8 +20,9 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002
 mkdir -p ${DIR}/rmat_analysis
 NCPU=20
 
-
+source $HOME/.bashrc
 conda activate rMATS
+
 ${python}/python ${rmat}/rmats.py --s1 group1_bam_files.txt \
                         --s2 group2_bam_files.txt \
                         --gtf ${GTF} \
