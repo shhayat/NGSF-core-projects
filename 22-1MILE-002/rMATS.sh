@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=ivybridge
+#SBATCH --constraint=skylake
 #SBATCH --job-name=rMATS
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=30G
-#SBATCH --time=04:00:00
+#SBATCH --cpus-per-task=30
+#SBATCH --mem=100G
+#SBATCH --time=08:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 #there was environment problem while installing rmats with conda. 
