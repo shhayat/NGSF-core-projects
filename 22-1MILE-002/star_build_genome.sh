@@ -1,12 +1,12 @@
 #!/bin/sh
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
+#SBATCH --constraint=ivybridge
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=10
+#BATCH --cpus-per-task=16
 #SBATCH --time=03:00:00
-#SBATCH --mem=60G
+#SBATCH --mem=30G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 NCPU=10
