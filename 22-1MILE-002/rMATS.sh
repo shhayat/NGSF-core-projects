@@ -11,6 +11,8 @@
 #there was environment problem while installing rmats with conda. 
 #For fixing this issue conda env "rMATS" was created 
 #./globalhome/hxo752/HPC/anaconda3/condabin/conda create -n rMATS -c bioconda rMATS then go to path /globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin and run commands
+module load cellranger
+PATH=/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/cellranger/2.1.0/STAR/5dda596/:$PATH
 
 rmat=/globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin
 python=/globalhome/hxo752/HPC/anaconda3/bin/
@@ -23,14 +25,15 @@ NCPU=20
 source $HOME/.bashrc
 conda activate rMATS
 
-${python}/python ${rmat}/rmats.py --s1 group11_bam_files.txt \
-                        --s2 group22_bam_files.txt \
+mkdir -p ${DIR}/tmp
+${python}/python ${rmat}/rmats.py --s1 group1_bam_files.txt \
+                        --s2 group2_bam_files.txt \
                         --gtf ${GTF} \
                         --bi ${index} \
                         -t paired \
                         --readLength 70 \
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis \
-                        --tmp ${SLRUM_TMPDIR}
+                        --tmp ${DIR}/tmp
 #EXITING because of FATAL ERROR: Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.10a
 #SOLUTION: please re-generate genome from scratch with running version of STAR, or with version: 2.7.4a
