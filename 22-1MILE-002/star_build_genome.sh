@@ -10,7 +10,7 @@ set -eux
 
 NCPU=20
 
-OUTDIR=/globalhome/hxo752/HPC/Rnor_6.0_indices
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/indices
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 mkdir -p ${SLURM_TMPDIR}/Rnor_6.0
 mkdir -p ${OUTDIR}
