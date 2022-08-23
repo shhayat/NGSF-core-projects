@@ -4,13 +4,13 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=20
-#SBATCH --time=06:00:00
+#BATCH --cpus-per-task=10
+#SBATCH --time=03:00:00
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
-NCPU=20
+NCPU=10
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/indices
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
