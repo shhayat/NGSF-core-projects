@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
 #SBATCH --job-name=genome_index
