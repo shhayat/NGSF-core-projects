@@ -24,7 +24,7 @@ NCPU=16
 #source $HOME/.bashrc
 #conda activate rMATS
 
-mkdir -p ${DIR}/tmp
+mkdir -p ${DIR}/rmat_analysis/tmp
 ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
                         --s2 $DIR/group22_bam_files.txt \
                         --gtf ${GTF} \
@@ -33,6 +33,6 @@ ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
                         --readLength 70 \
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis \
-                        --tmp ${DIR}/tmp
+                        --tmp ${DIR}/rmat_analysis/tmp
 #EXITING because of FATAL ERROR: Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.10a
 #SOLUTION: please re-generate genome from scratch with running version of STAR, or with version: 2.7.4a
