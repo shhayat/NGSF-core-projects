@@ -17,9 +17,9 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 INDEX=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/star-index
 
-sample_name=1; shift
-fq1=1; shift
-fq2=1;
+sample_name=$1; shift
+fq1=$1; shift
+fq2=$1;
 
 mkdir -p ${DIR}/alignemnt/${sample_name}
 
