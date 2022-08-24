@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #BATCH --cpus-per-task=2
 #SBATCH --time=03:00:00
-#SBATCH --mem=60G
+#SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load samtools
