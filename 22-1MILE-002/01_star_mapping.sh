@@ -11,7 +11,7 @@
 
 module load samtools
 
-NCPUS=8
+NCPUS=$SLURM_CPUS_PER_TASK
 #work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
