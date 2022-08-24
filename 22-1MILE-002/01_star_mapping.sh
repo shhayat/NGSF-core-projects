@@ -9,9 +9,11 @@
 #SBATCH --mem=20G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+module load samtools
+
 NCPUS=8
 #work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 INDEX=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/star-index
 
@@ -19,7 +21,7 @@ sample_name=1; shift
 fq1=1; shift
 fq2=1;
 
-mkdir -p ${OUTDIR}/alignemnt/${sample_name}
+mkdir -p ${DIR}/alignemnt/${sample_name}
 
 #star-twopass
 ${star}/STAR --runMode alignReads \
@@ -29,5 +31,5 @@ ${star}/STAR --runMode alignReads \
     --twopassMode Basic \
     --outSAMstrandField intronMotif \
     --outSAMtype BAM SortedByCoordinate \
-    --outFileNamePrefix ${OUTDIR}/alignemnt/${sample_name}/star_ \
-    && samtools index star_Aligned.sortedByCoord.out.bam 
+    --outFileNamePrefix ${DIR}/alignemnt/${sample_name}/star_ \
+    && samtools index ${DIR}/alignemnt/${sample_name}/star_Aligned.sortedByCoord.out.bam 
