@@ -13,7 +13,7 @@ NCPUS=8
 #work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
-INDEX=
+INDEX=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/star-index
 
 sample_name=1; shift
 fq1=1; shift
@@ -22,10 +22,11 @@ fq2=1;
 mkdir -p ${OUTDIR}/alignemnt/${sample_name}
 
 #star-twopass
-STAR --runMode alignReads \
-    --runThreadN $NCPUS \
-    --genomeDir $INDEX \
-    --readFilesIn $(echo "${SLURM_TMPDIR}/${R1%.*}") $(echo "${SLURM_TMPDIR}/${R2%.*}") \
+${star}/STAR --runMode alignReads \
+    --runThreadN ${NCPUS} \
+    --genomeDir ${INDEX} \
+    --readFilesIn ${fq1} ${fq2} \
     --twopassMode Basic \
     --outSAMstrandField intronMotif \
-    --outSAMtype BAM Unsorted
+    --outSAMtype BAM SortedByCoordinate \
+    && samtools index Aligned.sortedByCoord.out.bam 
