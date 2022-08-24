@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=mapping
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=8
+#BATCH --cpus-per-task=4
 #SBATCH --time=03:00:00
-#SBATCH --mem=20G
+#SBATCH --mem=40G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load samtools
