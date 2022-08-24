@@ -29,4 +29,5 @@ ${star}/STAR --runMode alignReads \
     --twopassMode Basic \
     --outSAMstrandField intronMotif \
     --outSAMtype BAM SortedByCoordinate \
-    && samtools index Aligned.sortedByCoord.out.bam 
+    --outFileNamePrefix ${OUTDIR}/alignemnt/${sample_name}/star_ \
+    && samtools index star_Aligned.sortedByCoord.out.bam 
