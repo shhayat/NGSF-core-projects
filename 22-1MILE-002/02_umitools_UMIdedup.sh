@@ -9,5 +9,14 @@ RRNA=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30
 
 NCPU=$SLURM_CPUS_PER_TASK
 
+DIR=
+sample_name=
+bam=
+
+mkdir -p ${DIR}/deduplication/{sample_name} && cd ${DIR}/deduplication/{sample_name}
 echo "Dropping ribosomal RNA reads"
-samtools view -@ ${NCPU} -U ${name}.no-rRNA.bam -O BAM -L ${RRNA} ${bam} > /dev/null
+samtools view -@ ${NCPU} -U {sample_name}.no-rRNA.bam -O BAM -L ${RRNA} ${bam}
+
+
+
+
