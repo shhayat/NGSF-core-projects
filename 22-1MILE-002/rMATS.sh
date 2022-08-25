@@ -25,8 +25,8 @@ NCPU=10
 #conda activate rMATS
 
 mkdir -p ${DIR}/rmat_analysis/tmp
-${rmat}/python ${rmat}/rmats.py --s1 $DIR/group1_bam_files.txt \
-                        --s2 $DIR/group2_bam_files.txt \
+${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
+                        --s2 $DIR/group22_bam_files.txt \
                         --gtf ${GTF} \
                         --bi ${index} \
                         -t paired \
