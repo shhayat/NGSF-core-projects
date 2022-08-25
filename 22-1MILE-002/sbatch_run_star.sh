@@ -1,10 +1,10 @@
-DATA=/datastore/NGSF001/projects/22-1MILE-002/processed_umi
+DATA=/datastore/NGSF001/projects/22-1MILE-002/fastq_umi
 
 
 for i in 098 099 100 101 102 103
 do
-  fq1=${DATA}/R2200${i}/R2200${i}_R1_umi_trimmed.fastq.gz
-  fq2=${DATA}/R2200${i}/R2200${i}_R3_umi_trimmed.fastq.gz
+  fq1=${DATA}/R2200${i}_R1_umi_trimmed.fastq.gz
+  fq2=${DATA}/R2200${i}_R3_umi_trimmed.fastq.gz
   
   sbatch 01_star_mapping.sh R2200${i} ${fq1} ${fq2}
   
