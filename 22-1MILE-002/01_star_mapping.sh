@@ -29,6 +29,7 @@ mkdir -p ${DIR}/alignemnt/${sample_name}
 ${star}/STAR --runMode alignReads \
     --runThreadN ${NCPUS} \
     --genomeDir ${INDEX} \
+    --readFilesCommand zcat \
     --readFilesIn ${fq1} ${fq2} \
     --twopassMode Basic \
     --outSAMstrandField intronMotif \
