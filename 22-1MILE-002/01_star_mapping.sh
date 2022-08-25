@@ -9,6 +9,8 @@
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+set -eux
+
 module load samtools
 
 NCPUS=$SLURM_CPUS_PER_TASK
