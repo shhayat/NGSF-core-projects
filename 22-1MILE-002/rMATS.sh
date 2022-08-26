@@ -18,12 +18,14 @@ GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002
 mkdir -p ${DIR}/rmat_analysis
 NCPU=10
+star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 
 #module load cellranger
 #PATH=/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/cellranger/2.1.0/STAR/5dda596/:$PATH
 #source $HOME/.bashrc
 #conda activate rMATS
 
+cd ${star}
 mkdir -p ${DIR}/rmat_analysis/tmp
 ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
                         --s2 $DIR/group22_bam_files.txt \
