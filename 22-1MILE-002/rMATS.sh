@@ -24,7 +24,7 @@ NCPU=10
 #source $HOME/.bashrc
 #conda activate rMATS
 
-#${star}/STAR
+
 #mkdir -p ${DIR}/rmat_analysis_with_bam/tmp
 #${rmat}/python ${rmat}/rmats.py --b1 $DIR/group1_bam_files.txt \
 #                        --b2 $DIR/group2_bam_files.txt \
@@ -34,7 +34,8 @@ NCPU=10
 #                        --nthread $NCPU \
 #                        --od ${DIR}/rmat_analysis_with_bam \
 #                        --tmp ${DIR}/rmat_analysis_with_bam/tmp
-                       
+
+module load star/2.7.9a
 mkdir -p ${DIR}/rmat_analysis_with_fastq/tmp
 ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
                        --s2 $DIR/group22_bam_files.txt \
