@@ -25,7 +25,7 @@ NCPU=10
 #source $HOME/.bashrc
 #conda activate rMATS
 
-${star}/STAR
+#${star}/STAR
 mkdir -p ${DIR}/rmat_analysis/tmp
 ${rmat}/python ${rmat}/rmats.py --b1 $DIR/group1_bam_files.txt \
                         --b2 $DIR/group2_bam_files.txt \
