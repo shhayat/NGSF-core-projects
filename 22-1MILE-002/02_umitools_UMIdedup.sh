@@ -23,14 +23,14 @@ NCPU=4
 sample_name=$1; shift
 BAM=$1;
 
-mkdir -p ${DIR}/deduplication/{sample_name} && cd ${DIR}/deduplication/{sample_name}
+mkdir -p ${DIR}/deduplication/{sample_name} && cd ${DIR}/deduplication/${sample_name}
 
 echo "Dropping ribosomal RNA reads"
 samtools view -@ ${NCPU} \
-              -U {sample_name}.no-rRNA.bam \
+              -U ${sample_name}.no-rRNA.bam \
               -O BAM \
               -L ${RRNA} \
-              $DIR/alignment/${sample_name}/${BAM}
+              ${DIR}/alignment/${sample_name}/${BAM}
 
 
 # keep only primary alignments
