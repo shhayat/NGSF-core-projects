@@ -32,7 +32,7 @@ ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
                         --gtf ${GTF} \
                         --bi ${index} \
                         -t paired \
-                        --readLength 70 \
+                        --readLength 141 \
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis \
                         --tmp ${DIR}/rmat_analysis/tmp
