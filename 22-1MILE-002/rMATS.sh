@@ -17,7 +17,7 @@ index=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/star
 GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002
 mkdir -p ${DIR}/rmat_analysis
-NCPU=40
+NCPU=10
 #star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 
 #module load cellranger
@@ -33,8 +33,8 @@ NCPU=40
 #                        -t paired \
 #                        --readLength 141 \
 #                        --nthread $NCPU \
-#                        --od ${DIR}/rmat_analysis \
-#                        --tmp ${DIR}/rmat_analysis/tmp
+#                        --od ${DIR}/rmat_analysis_with_bam \
+#                        --tmp ${DIR}/rmat_analysis_with_bam/tmp
                        
 mkdir -p ${DIR}/rmat_analysis_with_fastq/tmp
 ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group1_bam_files.txt \
