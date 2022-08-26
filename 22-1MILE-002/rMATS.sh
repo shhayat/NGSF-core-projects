@@ -1,11 +1,11 @@
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=ivybridge
+#SBATCH --constraint=skylake
 #SBATCH --job-name=rMATS
-#SBATCH --cpus-per-task=10
-#SBATCH --mem=30G
-#SBATCH --time=08:00:00
+#SBATCH --cpus-per-task=40
+#SBATCH --mem=185G
+#SBATCH --time=24:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 #there was environment problem while installing rmats with conda. 
@@ -17,7 +17,7 @@ index=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/star
 GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002
 mkdir -p ${DIR}/rmat_analysis
-NCPU=10
+NCPU=40
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 
 #module load cellranger
@@ -36,5 +36,3 @@ ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis \
                         --tmp ${DIR}/rmat_analysis/tmp
-#EXITING because of FATAL ERROR: Genome version: 20201 is INCOMPATIBLE with running STAR version: 2.7.10a
-#SOLUTION: please re-generate genome from scratch with running version of STAR, or with version: 2.7.4a
