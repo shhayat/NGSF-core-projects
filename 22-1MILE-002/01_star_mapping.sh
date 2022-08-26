@@ -23,7 +23,7 @@ sample_name=$1; shift
 fq1=$1; shift
 fq2=$1;
 
-mkdir -p ${DIR}/alignemnt/${sample_name}
+mkdir -p ${DIR}/alignment/${sample_name}
 
 #star-twopass
 ${star}/STAR --runMode alignReads \
@@ -34,5 +34,5 @@ ${star}/STAR --runMode alignReads \
     --twopassMode Basic \
     --outSAMstrandField intronMotif \
     --outSAMtype BAM SortedByCoordinate \
-    --outFileNamePrefix ${DIR}/alignemnt/${sample_name}/star_ \
-    && samtools index ${DIR}/alignemnt/${sample_name}/star_Aligned.sortedByCoord.out.bam 
+    --outFileNamePrefix ${DIR}/alignment/${sample_name}/star_ \
+    && samtools index ${DIR}/alignment/${sample_name}/star_Aligned.sortedByCoord.out.bam 
