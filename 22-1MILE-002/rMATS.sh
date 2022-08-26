@@ -25,7 +25,7 @@ star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 #source $HOME/.bashrc
 #conda activate rMATS
 
-cd ${star}
+${star}/STAR
 mkdir -p ${DIR}/rmat_analysis/tmp
 ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
                         --s2 $DIR/group22_bam_files.txt \
