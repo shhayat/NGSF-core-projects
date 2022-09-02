@@ -18,9 +18,6 @@ infile=$1
 
 module load fastp/0.20.1
 
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1ELSI-001/analysis/fastp
-mkdir -p ${DIR}
-
 while read line; do
     file1=$(echo $line | awk '{print $1}')
     fname1=$(echo $file1 | awk -F\/ '{print $NF}')
@@ -34,9 +31,9 @@ while read line; do
     mkdir ${corename}
 
     fastp --in1 $file1 --in2 $file2 \
-        --out1 ${DIR}/${corename}/${bname1}_trimmed.fastq.gz --out2 ${DIR}/${corename}/${bname2}_trimmed.fastq.gz \
-        --unpaired1 ${DIR}/${corename}/${bname1}_trimmed_unpaired.fastq.gz \
-        --unpaired2 ${DIR}/${corename}/${bname2}_trimmed_unpaired.fastq.gz \
+        --out1 ${corename}/${bname1}_trimmed.fastq.gz --out2 ${corename}/${bname2}_trimmed.fastq.gz \
+        --unpaired1 ${corename}/${bname1}_trimmed_unpaired.fastq.gz \
+        --unpaired2 ${corename}/${bname2}_trimmed_unpaired.fastq.gz \
         -V \
         -l 30 \
         -p \
