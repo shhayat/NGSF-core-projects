@@ -1,1 +1,1 @@
-/globalhome/dou286/HPC/cluster/projects/22-1ELSI-001/fastq/fastq/R22000153_S15_R1_001.fastq.gz /globalhome/dou286/HPC/cluster/projects/22-1ELSI-001/fastq/fastq/R22000153_S15_R2_001.fastq.gz
+/datastore/NGSF001/projects/22-1ELSI-001/analysis/fastq/fastq/R22000153_S15_R1_001.fastq.gz /datastore/NGSF001/projects/22-1ELSI-001/analysis/fastq/fastq/R22000153_S15_R2_001.fastq.gz
