@@ -1,11 +1,13 @@
 #!/bin/bash
 
 #SBATCH --job-name=star-align
+#SBATCH --constraint=skylake
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=10
 #SBATCH --time=1:00:00
-#SBATCH --mem=40G
+#SBATCH --mem=80G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+
 set -eux
 
 #loading required modules
@@ -16,7 +18,7 @@ DATA=/datastore/NGSF001/projects/22-1ELSI-001/analysis/fastq/fastq
 GENOME=/datastore/NGSF001/analysis/indices/horse/index/star-2.7.9a
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1ELSI-001/analysis/star_alignment
 GTF=
-NCPU=8
+NCPU=10
 
 mkdir -p ${OUTDIR}
 sample_name=$1; shift
