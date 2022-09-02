@@ -11,7 +11,7 @@ feature_count <- sapply(sample_names, function(x)
 			   annot.ext="/datastore/NGSF001/analysis/references/horse/EquCab3.0/ensembl/release-103/Equus_caballus.EquCab3.0.103.gtf",
 			   isGTFAnnotationFile = TRUE,
 			   GTF.attrType.extra  = c('gene_name'),
-			   nthreads = 8, 
+			   nthreads = 10, 
 			   isPairedEnd = TRUE), 
 			   simplify = FALSE, 
 			   USE.NAMES = TRUE)
