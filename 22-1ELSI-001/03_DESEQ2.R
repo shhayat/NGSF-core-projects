@@ -1,6 +1,7 @@
 library("DESeq2")
 library("ggplot2")
 library("dplyr")
+library("ggrepel")
 
 setwd("~/Desktop/")
 dir.create("core-projects/22-1ELSI-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
@@ -205,14 +206,16 @@ plot_volcano <- function(condition_df, condition_name){
     xlab("log2(FC)") +
     ylab("-log10(FDR)") 
 
-  g <- ggplotGrob(p)
-  d <- data.frame(x=0)
-  ax <- g[["grobs"]][g$layout$name == "axis-l"][[1]]
+  #g <- ggplotGrob(p)
+  #d <- data.frame(x=0)
+  #ax <- g[["grobs"]][g$layout$name == "axis-l"][[1]]
   
-  p1 <- p + annotation_custom(grid::grobTree(ax, vp = grid::viewport(x=1, width = sum(ax$height))), xmax=0, xmin=0) +
-          geom_vline(aes(xintercept=x), data = d, size=0.8) +
-          theme(axis.line = element_line(colour = "white"), panel.background = element_rect(fill = "white", colour = "white"), axis.text.y = element_blank(), axis.ticks.y=element_blank(),
-          axis.line.x = element_line(color="black", size = 0.8))
+  #p1 <- p + annotation_custom(grid::grobTree(ax, vp = grid::viewport(x=1, width = sum(ax$height))), xmax=0, xmin=0) +
+  #        geom_vline(aes(xintercept=x), data = d, size=0.8) +
+  #        theme(axis.line = element_line(colour = "white"), panel.background = element_rect(fill = "white", colour = "white"), axis.text.y = element_blank(), axis.ticks.y=element_blank(),
+  #        axis.line.x = element_line(color="black", size = 0.8))
+  p1 <- p + geom_text_repel(data=head(condition_df, 20), aes(label=gene_name))
+  
   print(p1)
   dev.off()
 }
