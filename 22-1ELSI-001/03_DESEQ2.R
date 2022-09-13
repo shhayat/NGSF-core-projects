@@ -194,9 +194,9 @@ plot_volcano <- function(condition_df, condition_name){
   #assign up and down regulation and non signif based on log2fc
   condition_df$direction <- ifelse(as.numeric(condition_df$log2FoldChange) < -4, "down_regulated", 
                                    ifelse(as.numeric(condition_df$log2FoldChange) > 4, "up_regulated", "signif" ))
-  
-  pdf(paste0(condition_name,"_Volcano_plot_padj0.01_and_log2FC_4.pdf"))
-  ggplot(condition_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+    
+ pdf(paste0(condition_name,"_Volcano_plot_padj0.01_and_log2FC_4.pdf"))
+  p <- ggplot(condition_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
     geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
     scale_color_manual(values=c("blue", "gray", "red")) +
     theme(axis.text.x = element_text(size=11),
@@ -205,6 +205,15 @@ plot_volcano <- function(condition_df, condition_name){
     xlab("log2(FC)") +
     ylab("-log10(FDR)") 
 
+  g <- ggplotGrob(p)
+  d <- data.frame(x=0)
+  ax <- g[["grobs"]][g$layout$name == "axis-l"][[1]]
+  
+  p1 <- p + annotation_custom(grid::grobTree(ax, vp = grid::viewport(x=1, width = sum(ax$height))), xmax=0, xmin=0) +
+          geom_vline(aes(xintercept=x), data = d, size=0.8) +
+          theme(axis.line = element_line(colour = "white"), panel.background = element_rect(fill = "white", colour = "white"), axis.text.y = element_blank(), axis.ticks.y=element_blank(),
+          axis.line.x = element_line(color="black", size = 0.8))
+  print(p1)
   dev.off()
 }
 
