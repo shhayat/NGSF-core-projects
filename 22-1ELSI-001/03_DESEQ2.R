@@ -124,7 +124,7 @@ resDF2 <- resDF[resDF$padj <= 0.01,]
 res_padj_ordered <- resDF2[order(resDF2$padj),]
 res_padj_ordered <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
 
-write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_D4_at_fdr_0.05.csv",quote=FALSE, row.names = FALSE)
+write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_D4_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 #Volcano Plot
 pdf("core-projects/22-1ELSI-001/DESEQ2/D1_D4_Volcano_plot_padj0.01_and_log2FC_4.pdf")
@@ -173,7 +173,7 @@ resDF2 <- resDF[resDF$padj <= 0.01,]
 res_padj_ordered <- resDF2[order(resDF2$padj),]
 res_padj_ordered <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
 
-write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.05.csv",quote=FALSE, row.names = FALSE)
+write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 
 #Volcano Plot
