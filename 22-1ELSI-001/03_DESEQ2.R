@@ -182,10 +182,12 @@ write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1
 #resDF$sig <- -log10(resDF$padj)
 #sum(is.infinite(resDF$sig))
 
+
+
 plot_volcano <- function(condition_df, condition_name){
   
-  colnames(condition_df) <- as.character(condition_df[1,])
-  condition_df <- condition_df[-1,]
+  #colnames(condition_df) <- as.character(condition_df[1,])
+  #condition_df <- condition_df[-1,]
   
   #remove rows if padj is NA
   condition_df <- condition_df[!is.na(condition_df$padj), ]
@@ -194,15 +196,15 @@ plot_volcano <- function(condition_df, condition_name){
                                    ifelse(as.numeric(condition_df$log2FoldChange) > 4, "up_regulated", "signif" ))
   
   pdf(paste0(condition_name,"_Volcano_plot_padj0.01_and_log2FC_4.pdf"))
-  p1  <- ggplot(condition_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
-    geom_point(aes(col=direction),size=0.2,show.legend = FALSE) +
+  ggplot(condition_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+    geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
     scale_color_manual(values=c("blue", "gray", "red")) +
     theme(axis.text.x = element_text(size=11),
           axis.text.y = element_text(size=11),
           text = element_text(size=11)) +
     xlab("log2(FC)") +
     ylab("-log10(FDR)") 
-  print(p1)
+
   dev.off()
 }
 
