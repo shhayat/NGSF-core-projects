@@ -127,35 +127,35 @@ res_padj_ordered <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ]
 
 write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_D4_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
-#Volcano Plot
-pdf("core-projects/22-1ELSI-001/DESEQ2/D1_D4_Volcano_plot_padj0.01_and_log2FC_4.pdf")
-alpha=0.01
-resDF$sig <- -log10(resDF$padj)
-sum(is.infinite(resDF$sig))
 
-cols <- densCols(resDF$log2FoldChange, resDF$sig)
-cols[resDF$padj ==0] <- "purple"
-resDF$pch <- 19
-resDF$pch[resDF$pvalue ==0] <- 6
-plot(resDF$log2FoldChange, 
-     resDF$sig, 
-     col=cols, panel.first=grid(),
-     main="Volcano plot", 
-     xlab="Effect size: log2(fold-change)",
-     ylab="-log10(adjusted p-adj)",
-     pch=resDF$pch, cex=0.4)
-abline(v=0)
-abline(v=c(-1,1), col="brown")
-abline(h=-log10(alpha), col="brown")
+#volcano plot
+#remove rows if padj is NA
+d1d4_df <- res_padj_ordered[!is.na(res_padj_ordered$padj), ]
+#assign up and down regulation and non signif based on log2fc
+d1d4_df$direction <- ifelse(as.numeric(d1d4_df$log2FoldChange) < -4, "down_regulated", 
+                                   ifelse(as.numeric(d1d4_df$log2FoldChange) > 4, "up_regulated", "signif" ))
+  
+pdf("D1_D4_Volcano_plot_padj0.01_and_log2FC_4.pdf")
+  p <- ggplot(d1d4_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+    geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
+    scale_color_manual(values=c("blue", "gray", "red")) +
+    theme(axis.text.x = element_text(size=11),
+          axis.text.y = element_text(size=11),
+          text = element_text(size=11)) +
+    xlab("log2(FC)") +
+    ylab("-log10(FDR)") 
 
-## Plot the names of a reasonable number of genes, by selecting those begin not only significant but also having a strong effect size
-gn.selected <- abs(resDF$log2FoldChange) > 4 & resDF$padj < alpha 
-text(resDF$log2FoldChange[gn.selected],
-     -log10(resDF$padj)[gn.selected],
-     lab=resDF$gene_name[gn.selected], cex=0.4)
-
+  #order up and down on lowest adj pvalue
+  up <- d1d4_df[d1d4_df$direction == "up_regulated",]
+  up_ordered <- up[order(up$padj),]
+  down <- d1d4_df[d1d4_df$direction == "down_regulated",]
+  down_ordered <- down[order(down$padj),]
+  
+  p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+  p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+  print(p2)
 dev.off()
-
+  
 
 
 #D1 and LPS
@@ -176,77 +176,30 @@ res_padj_ordered <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ]
 
 write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
+#volcano plot
+#remove rows if padj is NA
+d1lps_df <- res_padj_ordered[!is.na(res_padj_ordered$padj), ]
+#assign up and down regulation and non signif based on log2fc
+d1lps_df$direction <- ifelse(as.numeric(d1lps_df$log2FoldChange) < -4, "down_regulated", 
+                                 ifelse(as.numeric(d1lps_df$log2FoldChange) > 4, "up_regulated", "signif" ))
 
-#Volcano Plot
-#pdf("D1_LPS_Volcano_plot_padj0.01_and_log2FC_4.pdf")
-#alpha=0.01
-#resDF$sig <- -log10(resDF$padj)
-#sum(is.infinite(resDF$sig))
+pdf("D1_LPS_Volcano_plot_padj0.01_and_log2FC_4.pdf")
+p <- ggplot(d1lps_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+  geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
+  scale_color_manual(values=c("blue", "gray", "red")) +
+  theme(axis.text.x = element_text(size=11),
+        axis.text.y = element_text(size=11),
+        text = element_text(size=11)) +
+  xlab("log2(FC)") +
+  ylab("-log10(FDR)") 
 
+#order up and down on lowest adj pvalue
+up <- d1lps_df[d1lps_df$direction == "up_regulated",]
+up_ordered <- up[order(up$padj),]
+down <- d1lps_df[d1lps_df$direction == "down_regulated",]
+down_ordered <- down[order(down$padj),]
 
-
-plot_volcano <- function(condition_df, condition_name){
-  
-  #colnames(condition_df) <- as.character(condition_df[1,])
-  #condition_df <- condition_df[-1,]
-  
-  #remove rows if padj is NA
-  condition_df <- condition_df[!is.na(condition_df$padj), ]
-  #assign up and down regulation and non signif based on log2fc
-  condition_df$direction <- ifelse(as.numeric(condition_df$log2FoldChange) < -4, "down_regulated", 
-                                   ifelse(as.numeric(condition_df$log2FoldChange) > 4, "up_regulated", "signif" ))
-    
- pdf(paste0(condition_name,"_Volcano_plot_padj0.01_and_log2FC_4.pdf"))
-  p <- ggplot(condition_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
-    geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
-    scale_color_manual(values=c("blue", "gray", "red")) +
-    theme(axis.text.x = element_text(size=11),
-          axis.text.y = element_text(size=11),
-          text = element_text(size=11)) +
-    xlab("log2(FC)") +
-    ylab("-log10(FDR)") 
-
-  #g <- ggplotGrob(p)
-  #d <- data.frame(x=0)
-  #ax <- g[["grobs"]][g$layout$name == "axis-l"][[1]]
-  
-  #p1 <- p + annotation_custom(grid::grobTree(ax, vp = grid::viewport(x=1, width = sum(ax$height))), xmax=0, xmin=0) +
-  #        geom_vline(aes(xintercept=x), data = d, size=0.8) +
-  #        theme(axis.line = element_line(colour = "white"), panel.background = element_rect(fill = "white", colour = "white"), axis.text.y = element_blank(), axis.ticks.y=element_blank(),
-  #        axis.line.x = element_line(color="black", size = 0.8))
-  p1 <- p + geom_text_repel(data=head(condition_df, 20), aes(label=gene_name))
-  
-  print(p1)
-  dev.off()
-}
-
-
-
-#Volcano Plot
-pdf("core-projects/22-1ELSI-001/DESEQ2/D1_LPS_Volcano_plot_padj0.01_and_log2FC_4.pdf")
-alpha=0.01
-resDF$sig <- -log10(resDF$padj)
-sum(is.infinite(resDF$sig))
-
-cols <- densCols(resDF$log2FoldChange, resDF$sig)
-cols[resDF$padj ==0] <- "purple"
-resDF$pch <- 19
-resDF$pch[resDF$pvalue ==0] <- 6
-plot(resDF$log2FoldChange, 
-     resDF$sig, 
-     col=cols, panel.first=grid(),
-     main="Volcano plot", 
-     xlab="Effect size: log2(fold-change)",
-     ylab="-log10(adjusted p-adj)",
-     pch=resDF$pch, cex=0.4)
-abline(v=0)
-abline(v=c(-1,1), col="brown")
-abline(h=-log10(alpha), col="brown")
-
-## Plot the names of a reasonable number of genes, by selecting those begin not only significant but also having a strong effect size
-gn.selected <- abs(resDF$log2FoldChange) > 4 & resDF$padj < alpha 
-text(resDF$log2FoldChange[gn.selected],
-     -log10(resDF$padj)[gn.selected],
-     lab=resDF$gene_name[gn.selected], cex=0.4)
-
+p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+print(p2)
 dev.off()
