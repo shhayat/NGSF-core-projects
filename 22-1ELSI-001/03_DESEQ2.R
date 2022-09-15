@@ -203,3 +203,36 @@ p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, 
 p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
 print(p2)
 dev.off()
+
+
+library(eulerr)
+#Venn Diagram 
+
+pdf("DESEQ2/VennDiagram_at_fdr0.01.pdf", width=10, height=3)
+D1_D4 <- res_pval_ordered1
+D1_LPS <- res_padj_ordered2
+
+s1 <- list(D4_vs_D1 = D1_D4$GeneID,
+           LPS_vs_D1 = D1_LPS$GeneID)
+##Total genes common between two contrast
+plot(euler(s1, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="All genes (up and down regulated)")
+
+#Up regulated Genes common between two contrast
+D1_D4_up <- D1_D4[D1_D4$log2FoldChange >= 0,]$GeneID 
+D1_LPS_up <- D1_LPS[D1_LPS$log2FoldChange >= 0,]$GeneID 
+
+s2 <- list(D4_vs_D1 = D1_D4_up,
+           LPS_vs_D1 = D1_LPS_up)
+
+plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="Up regulated")
+
+#Down regulated genes common between two contrast
+D1_D4_down <- D1_D4[D1_D4$log2FoldChange <= 0,]$GeneID 
+D1_LPS_down <- D1_LPS[D1_LPS$log2FoldChange <= 0,]$GeneID 
+
+s3 <- list(D4_vs_D1 = D1_D4_down,
+           LPS_vs_D1 = D1_LPS_down)
+
+plot(euler(s3, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="Down regulated")
+
+dev.off()
