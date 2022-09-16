@@ -176,6 +176,12 @@ res_padj_ordered <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ]
 
 write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
+
+#comman genes between two contrasts
+comman_genes_at_fdr0.01 <- merge(res_padj_ordered1,res_padj_ordered2, by="GeneID", suffix=c(".D4_vs_D1",".LPS_vs_D1"))
+write.csv(comman_genes_at_fdr0.01,file="DESEQ2/comman_genes_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
+
+
 #volcano plot
 #remove rows if padj is NA
 d1lps_df <- res_padj_ordered[!is.na(res_padj_ordered$padj), ]
@@ -236,3 +242,55 @@ pdf("DESEQ2/VennDiagram_at_fdr0.01.pdf", width=10, height=3)
   plot(euler(s3, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="Down regulated")
 
 dev.off()
+
+
+#Count plot
+library(ggtree)
+#plot count top 10 differntially expressed genes for D4 vs D1
+pdf("DESEQ2/count_plot_D1_D4.pdf", height=20, width=15)
+#select top 10 genes on lowest fdr
+gene_ids = head(res_padj_ordered1$GeneID, 10)
+myplots <- list()  # new empty list
+for (gene in gene_ids)
+{
+  d <- plotCounts(dds_wald, gene= gene, 
+                  intgroup="sample_group", returnData=TRUE)
+
+  p <- ggplot(d, aes(x=sample_group, y=count)) + 
+    geom_point(position=position_jitter(w=0.1,h=0)) +
+    ylab("Normalized Count") +
+    ggtitle(paste(gene,":",res_padj_ordered1[res_padj_ordered1$GeneID==gene,]$gene_name,": FDR ",res_padj_ordered1[res_padj_ordered1$GeneID==gene,]$padj))
+  
+  myplots[[gene]] <- p 
+  
+}
+multiplot(plotlist = myplots, ncol = 2)
+
+dev.off()
+
+
+
+pdf("DESEQ2/count_plot_D1_LPS.pdf", height=20, width=15)
+gene_ids = head(res_padj_ordered2$GeneID, 10)
+myplots <- list()  # new empty list
+for (gene in gene_ids)
+{
+  d <- plotCounts(dds_wald, gene= gene, 
+                  intgroup="sample_group", returnData=TRUE)
+  
+  p <- ggplot(d, aes(x=sample_group, y=count)) + 
+    geom_point(position=position_jitter(w=0.1,h=0)) + 
+    ylab("Normalized Count") +
+    #scale_y_log10(breaks=c(100,1000,3000,6000)) +
+    ggtitle(paste(gene,":",res_padj_ordered2[res_padj_ordered2$GeneID==gene,]$gene_name,": FDR ",res_padj_ordered2[res_padj_ordered2$GeneID==gene,]$padj))
+  
+  myplots[[gene]] <- p 
+  
+}
+multiplot(plotlist = myplots, ncol = 2)
+
+dev.off()
+
+
+#plotCounts(dds_wald, gene="KBTBD7", intgroup="sample_group")
+
