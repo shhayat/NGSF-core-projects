@@ -6,7 +6,7 @@ library("ggrepel")
 setwd("~/Desktop/")
 dir.create("core-projects/22-1ELSI-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 
-load("core-projects/22-1ELSI-001/feature_count.RData")
+load("feature_count.RData")
 feature_count1 <- as.data.frame(feature_count)
 #geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 #rownames(feature_count) <- geneID
@@ -103,10 +103,6 @@ plotMA(resLFC_shrunken_D1_D4, ylim=c(-4,4))
 plotMA(resLFC_shrunken_D1_LPS, ylim=c(-4,4))
 dev.off()
 
-#Plot counts for particular gene or the gene with lowest fdr
-#plotCounts(dds_wald, gene="ENSECAG00000012421", intgroup="sample_group")
-#plotCounts(dds_wald, gene=which.min(res_D1_D4$padj), intgroup="sample_group")
-
 #summary(res)
 
 #D1 and D4
@@ -123,9 +119,9 @@ write.csv(res_pval_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1
 #All significant at FDR 0.01
 resDF2 <- resDF[resDF$padj <= 0.01,]
 res_padj_ordered <- resDF2[order(resDF2$padj),]
-res_padj_ordered <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
+res_padj_ordered1 <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
 
-write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_D4_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
+write.csv(res_padj_ordered1,file="DESEQ2/DESEQ2_res_D1_D4_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 
 #volcano plot
@@ -156,8 +152,6 @@ pdf("D1_D4_Volcano_plot_padj0.01_and_log2FC_4.pdf")
   print(p2)
 dev.off()
   
-
-
 #D1 and LPS
 #All significant at pvalue 0.05
 resDF <- data.frame(GeneID=rownames(resLFC_shrunken_D1_LPS),resLFC_shrunken_D1_LPS)
@@ -167,20 +161,20 @@ resDF1 <- resDF[resDF$pvalue <= 0.05,]
 res_pval_ordered <- resDF1[order(resDF1$pvalue),]
 res_pval_ordered <- res_pval_ordered[rowSums(is.na(res_pval_ordered)) == 0, ] 
 
-write.csv(res_pval_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_LPS_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
+write.csv(res_pval_ordered,file="DESEQ2/DESEQ2_res_D1_LPS_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
 
 #All significant at FDR 0.01
 resDF2 <- resDF[resDF$padj <= 0.01,]
 res_padj_ordered <- resDF2[order(resDF2$padj),]
-res_padj_ordered <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
+res_padj_ordered2 <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
 
-write.csv(res_padj_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
-
+write.csv(res_padj_ordered2,file="DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 #comman genes between two contrasts
 comman_genes_at_fdr0.01 <- merge(res_padj_ordered1,res_padj_ordered2, by="GeneID", suffix=c(".D4_vs_D1",".LPS_vs_D1"))
+colnames(comman_genes_at_fdr0.01)[2] <- "gene_name"
+comman_genes_at_fdr0.01 <- comman_genes_at_fdr0.01[-8]
 write.csv(comman_genes_at_fdr0.01,file="DESEQ2/comman_genes_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
-
 
 #volcano plot
 #remove rows if padj is NA
@@ -215,36 +209,35 @@ library(eulerr)
 #Venn Diagram 
 
 pdf("DESEQ2/VennDiagram_at_fdr0.01.pdf", width=10, height=3)
-  D1_D4 <- res_pval_ordered1
-  D1_LPS <- res_padj_ordered2
+D1_D4 <- res_padj_ordered1
+D1_LPS <- res_padj_ordered2
 
-  s1 <- list(D4_vs_D1 = D1_D4$GeneID,
-             LPS_vs_D1 = D1_LPS$GeneID)
-  ##Total genes common between two contrast
-  plot(euler(s1, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="All genes (up and down regulated)")
+s1 <- list(D4_vs_D1 = D1_D4$GeneID,
+           LPS_vs_D1 = D1_LPS$GeneID)
+##Total genes common between two contrast
+plot(euler(s1, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="All genes (up and down regulated)")
 
-  #Up regulated Genes common between two contrast
-  D1_D4_up <- D1_D4[D1_D4$log2FoldChange >= 0,]$GeneID 
-  D1_LPS_up <- D1_LPS[D1_LPS$log2FoldChange >= 0,]$GeneID 
+#Up regulated Genes common between two contrast
+D1_D4_up <- D1_D4[D1_D4$log2FoldChange >= 0,]$GeneID 
+D1_LPS_up <- D1_LPS[D1_LPS$log2FoldChange >= 0,]$GeneID 
 
-  s2 <- list(D4_vs_D1 = D1_D4_up,
-             LPS_vs_D1 = D1_LPS_up)
+s2 <- list(D4_vs_D1 = D1_D4_up,
+           LPS_vs_D1 = D1_LPS_up)
 
-  plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="Up regulated")
+plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="Up regulated")
 
-  #Down regulated genes common between two contrast
-  D1_D4_down <- D1_D4[D1_D4$log2FoldChange <= 0,]$GeneID 
-  D1_LPS_down <- D1_LPS[D1_LPS$log2FoldChange <= 0,]$GeneID 
+#Down regulated genes common between two contrast
+D1_D4_down <- D1_D4[D1_D4$log2FoldChange <= 0,]$GeneID 
+D1_LPS_down <- D1_LPS[D1_LPS$log2FoldChange <= 0,]$GeneID 
 
-  s3 <- list(D4_vs_D1 = D1_D4_down,
-             LPS_vs_D1 = D1_LPS_down)
+s3 <- list(D4_vs_D1 = D1_D4_down,
+           LPS_vs_D1 = D1_LPS_down)
 
-  plot(euler(s3, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="Down regulated")
+plot(euler(s3, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="Down regulated")
 
 dev.off()
 
 
-#Count plot
 library(ggtree)
 #plot count top 10 differntially expressed genes for D4 vs D1
 pdf("DESEQ2/count_plot_D1_D4.pdf", height=20, width=15)
@@ -293,4 +286,3 @@ dev.off()
 
 
 #plotCounts(dds_wald, gene="KBTBD7", intgroup="sample_group")
-
