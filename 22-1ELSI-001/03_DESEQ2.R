@@ -303,7 +303,11 @@ log2.norm.counts <- cbind(GeneID=rownames(log2.norm.counts), log2.norm.counts)
 #D1 vs D4
 
 D1_D4_with_norm_counts <- merge(D1_D4,log2.norm.counts, by="GeneID")
-colnames(D1_D4_with_norm_counts) <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+colnames(D1_D4_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+write.csv(D1_D4_with_norm_counts,file="DESEQ2/D1_D4_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
+
 #D1 vs LPS
 D1_LPS_with_norm_counts <- merge(D1_LPS,log2.norm.counts, by="GeneID")
-colnames(D1_LPS_with_norm_counts) <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+colnames(D1_LPS_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+write.csv(D1_LPS_with_norm_counts,file="DESEQ2/D1_LPS_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
+
