@@ -1,6 +1,7 @@
 library(synergyfinder)
 
-setwd("/Users/shahina/Desktop/Synergy_Analysis")
+#setwd("/Users/shahina/Desktop/Synergy_Analysis")
+setwd("/Users/hxo752/Desktop/core-projects/synergy_analysis
 #For HCC38
 dir.create("HCC38", recursive=TRUE, showWarnings = FALSE) 
 df <- read.csv("Paclitaxel_Homoharringtonine_HCC38.csv", head=TRUE)[1:8]
@@ -96,7 +97,7 @@ Plot2DrugSurface(
 dev.off()
 
 #plot dose response curve and heatmap
-pdf("HCC38/HCC38_dose_response_and_heatmap.pdf", width=20)
+pdf("HCC38/HCC38_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
 
 PlotDoseResponse(
   data = res,
