@@ -292,3 +292,18 @@ dev.off()
 
 
 #plotCounts(dds_wald, gene="KBTBD7", intgroup="sample_group")
+
+
+#Get normalized count for differentially expressed genes at fdr 0.01
+select <- order(rowMeans(counts(dds_wald,normalized=TRUE)),decreasing=FALSE)[1:nrow(counts(dds_wald))]
+nt <- normTransform(dds_wald)
+log2.norm.counts <- assay(nt)[select,]
+log2.norm.counts<- as.data.frame(log2.norm.counts)
+log2.norm.counts <- cbind(GeneID=rownames(log2.norm.counts), log2.norm.counts)
+#D1 vs D4
+
+D1_D4_with_norm_counts <- merge(D1_D4,log2.norm.counts, by="GeneID")
+colnames(D1_D4_with_norm_counts) <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+#D1 vs LPS
+D1_LPS_with_norm_counts <- merge(D1_LPS,log2.norm.counts, by="GeneID")
+colnames(D1_LPS_with_norm_counts) <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
