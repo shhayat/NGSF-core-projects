@@ -217,9 +217,15 @@ s1 <- list(D4_vs_D1 = D1_D4$GeneID,
 ##Total genes common between two contrast
 plot(euler(s1, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="All genes (up and down regulated)")
 
+log2FC <- D1_D4$log2FoldChange
+D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
+
+log2FC1 <- D1_LPS$log2FoldChange
+D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+
 #Up regulated Genes common between two contrast
-D1_D4_up <- D1_D4[D1_D4$log2FoldChange >= 0,]$GeneID 
-D1_LPS_up <- D1_LPS[D1_LPS$log2FoldChange >= 0,]$GeneID 
+D1_D4_up <- D1_D4[D1_D4$Fold_Change >= 0,]$GeneID 
+D1_LPS_up <- D1_LPS[D1_LPS$Fold_Change >= 0,]$GeneID 
 
 s2 <- list(D4_vs_D1 = D1_D4_up,
            LPS_vs_D1 = D1_LPS_up)
@@ -227,8 +233,8 @@ s2 <- list(D4_vs_D1 = D1_D4_up,
 plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="Up regulated")
 
 #Down regulated genes common between two contrast
-D1_D4_down <- D1_D4[D1_D4$log2FoldChange <= 0,]$GeneID 
-D1_LPS_down <- D1_LPS[D1_LPS$log2FoldChange <= 0,]$GeneID 
+D1_D4_down <- D1_D4[D1_D4$Fold_Change < 0,]$GeneID 
+D1_LPS_down <- D1_LPS[D1_LPS$Fold_Change < 0,]$GeneID 
 
 s3 <- list(D4_vs_D1 = D1_D4_down,
            LPS_vs_D1 = D1_LPS_down)
