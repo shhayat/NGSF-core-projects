@@ -108,7 +108,7 @@ df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
 res <- ReshapeData(
   data = df1,
   data_type = "viability",
-  impute = TRUE,
+  impute = FALSE,
   impute_method = NULL,
   noise = TRUE,
   seed = 1)
@@ -119,7 +119,7 @@ synergy.score <- CalculateSynergy(
   method = c("ZIP"),
   Emin = NA,
   Emax = NA,
-  correct_baseline = "non")
+  correct_baseline = "all")
 
 #write synergy scores to csv file
 write.csv(synergy.score, "Hs578T/Hs578T_synergy_scores.csv")
