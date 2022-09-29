@@ -1,21 +1,15 @@
 library(synergyfinder)
 
-#set working directory
-setwd("/Users/hxo752/Desktop/core-projects/synergy_analysis
-
-###########
+#setwd("/Users/shahina/Desktop/Synergy_Analysis")
+setwd("/Users/shahina/Projects/synergy_analysis/Synergy_Analysis")
 #For HCC38
-###########
-#creat dir
 dir.create("HCC38", recursive=TRUE, showWarnings = FALSE) 
 df <- read.csv("Paclitaxel_Homoharringtonine_HCC38.csv", head=TRUE)[1:8]
-##use first row as column name
+#use first row as column name
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
 df1 <- df[-1, ][1:33,]
-#data type conversion
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
-#str(df1)
 
 # Reshaping and pre-processing
 res <- ReshapeData(
@@ -34,10 +28,34 @@ synergy.score <- CalculateSynergy(
                                   Emax = NA,
                                   correct_baseline = "non")
 
-#write synergy scores to csv file
 write.csv(synergy.score, "HCC38/HCC38_synergy_scores.csv")
 
-#Plot 2D Synergy Map
+#Plot Dose-response_curve
+#pdf("HCC38/HCC38_Dose-response_curve.pdf")
+#for (i in c(1, 2)){
+#    PlotDoseResponseCurve(
+#          data = res,
+#          plot_block = 1,
+#          drug_index = i,
+#          plot_new = FALSE,
+#          record_plot = FALSE
+#  )}
+#dev.off()
+
+#Heatmap
+#pdf("HCC38/HCC38_Heatmap.pdf")
+#Plot2DrugHeatmap(
+#  data = res,
+#  plot_block = 1,
+#  drugs = c(1, 2),
+#  plot_value = "response",
+#  dynamic = FALSE,
+#  summary_statistic = c("mean",  "median")
+#)
+#dev.off()
+
+#2D contour plot
+
 pdf("HCC38/HCC38_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = synergy.score,
@@ -57,7 +75,7 @@ Plot2DrugContour(
 )
 dev.off()
 
-Plot 3D Synergy Map
+
 #3D surface plot
 pdf("HCC38/HCC38_3D_surface_plot.pdf")
 Plot2DrugSurface(
@@ -78,8 +96,8 @@ Plot2DrugSurface(
 )
 dev.off()
 
-#Plot dose response curve and heatmap
-pdf("HCC38/HCC38_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
+#plot dose response curve and heatmap
+pdf("HCC38/HCC38_dose_response_and_heatmap.pdf", width=20,onefile=FALSE)
 
 PlotDoseResponse(
   data = res,
@@ -90,25 +108,21 @@ PlotDoseResponse(
 dev.off()
 
 
-#########
-#Hs578T
-#########
-#creat dir
-dir.create("Hs578T", recursive=TRUE, showWarnings = FALSE) 
+
+#For Hs578T
 df <- read.csv("Paclitaxel_Homoharringtonine_Hs578T.csv")
-##use first row as column name
+dir.create("Hs578T", recursive=TRUE, showWarnings = FALSE) 
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
 df1 <- df[-1, ][1:35,]
-#data type conversion
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
-#str(df1)
+
 
 # Reshaping and pre-processing
 res <- ReshapeData(
   data = df1,
   data_type = "viability",
-  impute = FALSE,
+  impute = TRUE,
   impute_method = NULL,
   noise = TRUE,
   seed = 1)
@@ -119,13 +133,36 @@ synergy.score <- CalculateSynergy(
   method = c("ZIP"),
   Emin = NA,
   Emax = NA,
-  correct_baseline = "all")
+  correct_baseline = "non")
 
-#write synergy scores to csv file
 write.csv(synergy.score, "Hs578T/Hs578T_synergy_scores.csv")
 
+#Plot Dose-response_curve
+#pdf("Hs578T/Hs578T_Dose-response_curve.pdf")
+#for (i in c(1, 2)){
+#  PlotDoseResponseCurve(
+#    data = res,
+#    plot_block = 1,
+#    drug_index = i,
+#    plot_new = FALSE,
+#    record_plot = FALSE
+#  )}
+#dev.off()
 
-#2D Synergy Map
+#Heatmap
+#pdf("Hs578T/Hs578T_Heatmap.pdf")
+#Plot2DrugHeatmap(
+#  data = res,
+#  plot_block = 1,
+#  drugs = c(1, 2),
+#  plot_value = "response",
+#  dynamic = FALSE,
+#  summary_statistic = c("mean",  "median")
+#)
+#dev.off()
+
+#2D contour plot
+
 pdf("Hs578T/Hs578T_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = synergy.score,
@@ -146,7 +183,7 @@ Plot2DrugContour(
 dev.off()
 
 
-#Plot 3D Synergy Map
+#3D surface plot
 pdf("Hs578T/Hs578T_3D_surface_plot.pdf")
 Plot2DrugSurface(
   data = synergy.score,
@@ -166,7 +203,7 @@ Plot2DrugSurface(
 )
 dev.off()
 
-#Plot dose response curve and heatmap
+#plot dose response curve and heatmap
 pdf("Hs578T/Hs578T_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
 
 PlotDoseResponse(
@@ -178,19 +215,27 @@ PlotDoseResponse(
 dev.off()
 
 
-#########
-#HCC1395
-#########
-#creat dir
-dir.create("HCC1395", recursive=TRUE, showWarnings = FALSE) 
+
+
+
+
+
+#For HCC1395
 df <- read.csv("Paclitaxel_Homoharringtonine_HCC1395.csv")
-##use first row as column name
+dir.create("HCC1395", recursive=TRUE, showWarnings = FALSE) 
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
 df1 <- df[-1, ][1:33,]
-#data type conversion
+#value 12.346 in conc_c is changed to 12.346 because there is another value 12.347 
+#in conc_c and when these values are passed to Plot2DrugContour function then the 
+#backend function .RoundValue will convert both values to 12.35 and this creates problem
+#with Plot2DrugContour plot and gives a warning message Aggregation function missing: 
+#defaulting to length. Rounding both values to 12.35 will cause 2 response values in one cell
+#and cannot be correctly plotted in synergy map
+df1[df1 == 12.346] <- 12.344
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
-#str(df1)
+
+
 # Reshaping and pre-processing
 res <- ReshapeData(
   data = df1,
@@ -208,10 +253,10 @@ synergy.score <- CalculateSynergy(
   Emax = NA,
   correct_baseline = "non")
 
-#write syngery scores to csv file
 write.csv(synergy.score, "HCC1395/HCC1395_synergy_scores.csv")
 
-#2D Syngery Map
+#2D contour plot
+
 pdf("HCC1395/HCC1395_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = synergy.score,
@@ -232,7 +277,7 @@ Plot2DrugContour(
 dev.off()
 
 
-#3D Synergy Map
+#3D surface plot
 pdf("HCC1395/HCC1395_3D_surface_plot.pdf")
 Plot2DrugSurface(
   data = synergy.score,
@@ -252,7 +297,7 @@ Plot2DrugSurface(
 )
 dev.off()
 
-#Plot dose response curve and heatmap
+#plot dose response curve and heatmap
 pdf("HCC1395/HCC1395_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
 
 PlotDoseResponse(
