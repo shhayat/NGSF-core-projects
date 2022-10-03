@@ -304,6 +304,7 @@ PlotDoseResponse(
   data = res,
   block_ids = c(1),
   drugs = c(1,2),
+            adjusted = TRUE,
   file_type = "pdf"
 )
 dev.off()
