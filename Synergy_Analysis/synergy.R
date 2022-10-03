@@ -83,6 +83,23 @@ PlotDoseResponse(
 )
 dev.off()
 
+synergy.response <- cbind(synergy.score$response[2:4])
+df.wide.response <- pivot_wider(synergy.response, 
+                       names_from = conc2, 
+                       values_from = c(response),
+                       names_prefix = c("adjusted_response.")) 
+
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)]
+
+df.wide.scores <- pivot_wider(synergy.scores, 
+                       names_from = conc2, 
+                       values_from = c(ZIP_synergy),
+                       names_prefix = c("score.")) 
+
+df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+write.csv(df.wide, file="HCC38/HCC38.df.csv", row.names = FALSE)
+                
+                
 
 
 #For Hs578T
@@ -166,10 +183,22 @@ PlotDoseResponse(
 )
 dev.off()
 
+synergy.response <- cbind(synergy.score$response[2:4])
+df.wide.response <- pivot_wider(synergy.response, 
+                       names_from = conc2, 
+                       values_from = c(response),
+                       names_prefix = c("adjusted_response.")) 
 
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)]
 
+df.wide.scores <- pivot_wider(synergy.scores, 
+                       names_from = conc2, 
+                       values_from = c(ZIP_synergy),
+                       names_prefix = c("score.")) 
 
-
+df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+write.csv(df.wide, file="Hs578T/Hs578T.df.csv", row.names = FALSE)
+                
 
 
 #For HCC1395
@@ -186,7 +215,6 @@ df1 <- df[-1, ][1:33,]
 #and cannot be correctly plotted in synergy map
 df1[df1 == 12.346] <- 12.344
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
-
 
 
 # Reshaping and pre-processing
@@ -267,7 +295,7 @@ PlotDoseResponse(
 )
 dev.off()
                 
-#change data structure for synergy response and scores
+#change data format for synergy response and scores
 synergy.response <- cbind(synergy.score$response[2:4])
 df.wide.response <- pivot_wider(synergy.response, 
                        names_from = conc2, 
