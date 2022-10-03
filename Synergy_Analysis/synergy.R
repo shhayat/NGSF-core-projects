@@ -1,5 +1,5 @@
 library(synergyfinder)
-
+library(tidyr)
 #setwd("/Users/shahina/Desktop/Synergy_Analysis")
 setwd("/Users/shahina/Projects/synergy_analysis/Synergy_Analysis")
 #For HCC38
@@ -29,30 +29,6 @@ synergy.score <- CalculateSynergy(
                                   correct_baseline = "non")
 
 write.csv(synergy.score, "HCC38/HCC38_synergy_scores.csv")
-
-#Plot Dose-response_curve
-#pdf("HCC38/HCC38_Dose-response_curve.pdf")
-#for (i in c(1, 2)){
-#    PlotDoseResponseCurve(
-#          data = res,
-#          plot_block = 1,
-#          drug_index = i,
-#          plot_new = FALSE,
-#          record_plot = FALSE
-#  )}
-#dev.off()
-
-#Heatmap
-#pdf("HCC38/HCC38_Heatmap.pdf")
-#Plot2DrugHeatmap(
-#  data = res,
-#  plot_block = 1,
-#  drugs = c(1, 2),
-#  plot_value = "response",
-#  dynamic = FALSE,
-#  summary_statistic = c("mean",  "median")
-#)
-#dev.off()
 
 #2D contour plot
 
@@ -137,30 +113,6 @@ synergy.score <- CalculateSynergy(
 
 write.csv(synergy.score, "Hs578T/Hs578T_synergy_scores.csv")
 
-#Plot Dose-response_curve
-#pdf("Hs578T/Hs578T_Dose-response_curve.pdf")
-#for (i in c(1, 2)){
-#  PlotDoseResponseCurve(
-#    data = res,
-#    plot_block = 1,
-#    drug_index = i,
-#    plot_new = FALSE,
-#    record_plot = FALSE
-#  )}
-#dev.off()
-
-#Heatmap
-#pdf("Hs578T/Hs578T_Heatmap.pdf")
-#Plot2DrugHeatmap(
-#  data = res,
-#  plot_block = 1,
-#  drugs = c(1, 2),
-#  plot_value = "response",
-#  dynamic = FALSE,
-#  summary_statistic = c("mean",  "median")
-#)
-#dev.off()
-
 #2D contour plot
 
 pdf("Hs578T/Hs578T_2D_contour_plot.pdf")
@@ -236,6 +188,7 @@ df1[df1 == 12.346] <- 12.344
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
 
 
+
 # Reshaping and pre-processing
 res <- ReshapeData(
   data = df1,
@@ -254,6 +207,11 @@ synergy.score <- CalculateSynergy(
   correct_baseline = "non")
 
 write.csv(synergy.score, "HCC1395/HCC1395_synergy_scores.csv")
+
+library(data.table)
+acast(setDT(synergy.score$response)[, conc2:= rev(conc1), synergy.score$response], SUB~SUB2,value.var='PATID', length)
+                
+acast(synergy.score$response, conc1~conc2, value.var='response', length)
 
 #2D contour plot
 
@@ -308,3 +266,21 @@ PlotDoseResponse(
   file_type = "pdf"
 )
 dev.off()
+                
+#change data structure for synergy response and scores
+synergy.response <- cbind(synergy.score$response[2:4])
+df.wide.response <- pivot_wider(synergy.response, 
+                       names_from = conc2, 
+                       values_from = c(response),
+                       names_prefix = c("adjusted_response.")) 
+
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)]
+
+df.wide.scores <- pivot_wider(synergy.scores, 
+                       names_from = conc2, 
+                       values_from = c(ZIP_synergy),
+                       names_prefix = c("score.")) 
+
+df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+write.csv(df.wide, file="HCC1395/HCC1395.df.csv", row.names = FALSE)
+   
