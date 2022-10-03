@@ -236,11 +236,6 @@ synergy.score <- CalculateSynergy(
 
 write.csv(synergy.score, "HCC1395/HCC1395_synergy_scores.csv")
 
-library(data.table)
-acast(setDT(synergy.score$response)[, conc2:= rev(conc1), synergy.score$response], SUB~SUB2,value.var='PATID', length)
-                
-acast(synergy.score$response, conc1~conc2, value.var='response', length)
-
 #2D contour plot
 
 pdf("HCC1395/HCC1395_2D_contour_plot.pdf")
