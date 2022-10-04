@@ -34,7 +34,7 @@ write.csv(synergy.score, "HCC38/HCC38_synergy_scores.csv")
 
 pdf("HCC38/HCC38_2D_contour_plot.pdf")
 Plot2DrugContour(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "response",
@@ -42,7 +42,7 @@ Plot2DrugContour(
   summary_statistic = c("mean", "median")
 )
 Plot2DrugContour(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -55,7 +55,7 @@ dev.off()
 #3D surface plot
 pdf("HCC38/HCC38_3D_surface_plot.pdf")
 Plot2DrugSurface(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "response",
@@ -63,7 +63,7 @@ Plot2DrugSurface(
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
 )
 Plot2DrugSurface(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -134,7 +134,7 @@ write.csv(synergy.score, "Hs578T/Hs578T_synergy_scores.csv")
 
 pdf("Hs578T/Hs578T_2D_contour_plot.pdf")
 Plot2DrugContour(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "response",
@@ -142,7 +142,7 @@ Plot2DrugContour(
   summary_statistic = c("mean", "median")
 )
 Plot2DrugContour(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -155,7 +155,7 @@ dev.off()
 #3D surface plot
 pdf("Hs578T/Hs578T_3D_surface_plot.pdf")
 Plot2DrugSurface(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "response",
@@ -163,7 +163,7 @@ Plot2DrugSurface(
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
 )
 Plot2DrugSurface(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -240,7 +240,7 @@ write.csv(synergy.score, "HCC1395/HCC1395_synergy_scores.csv")
 
 pdf("HCC1395/HCC1395_2D_contour_plot.pdf")
 Plot2DrugContour(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "response",
@@ -248,7 +248,7 @@ Plot2DrugContour(
   summary_statistic = c("mean", "median")
 )
 Plot2DrugContour(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -261,7 +261,7 @@ dev.off()
 #3D surface plot
 pdf("HCC1395/HCC1395_3D_surface_plot.pdf")
 Plot2DrugSurface(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "response",
@@ -269,7 +269,7 @@ Plot2DrugSurface(
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
 )
 Plot2DrugSurface(
-  data = synergy.score,
+  data = res,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
