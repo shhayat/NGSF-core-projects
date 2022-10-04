@@ -42,7 +42,7 @@ Plot2DrugContour(
   summary_statistic = c("mean", "median")
 )
 Plot2DrugContour(
-  data = res,
+  data = synergy.score,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -63,7 +63,7 @@ Plot2DrugSurface(
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
 )
 Plot2DrugSurface(
-  data = res,
+  data = synergy.score,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -142,7 +142,7 @@ Plot2DrugContour(
   summary_statistic = c("mean", "median")
 )
 Plot2DrugContour(
-  data = res,
+  data = synergy.score,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -163,7 +163,7 @@ Plot2DrugSurface(
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
 )
 Plot2DrugSurface(
-  data = res,
+  data = synergy.score,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -248,7 +248,7 @@ Plot2DrugContour(
   summary_statistic = c("mean", "median")
 )
 Plot2DrugContour(
-  data = res,
+  data = synergy.score,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
@@ -269,7 +269,7 @@ Plot2DrugSurface(
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
 )
 Plot2DrugSurface(
-  data = res,
+  data = synergy.score,
   plot_block = 1,
   drugs = c(2, 1),
   plot_value = "ZIP_synergy",
