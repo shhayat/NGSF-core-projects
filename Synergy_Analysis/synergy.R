@@ -36,7 +36,7 @@ pdf("HCC38/HCC38_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "response",
   dynamic = FALSE,
   summary_statistic = c("mean", "median")
@@ -44,7 +44,7 @@ Plot2DrugContour(
 Plot2DrugContour(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "ZIP_synergy",
   dynamic = FALSE,
   summary_statistic = c("quantile_25", "quantile_75")
@@ -57,7 +57,7 @@ pdf("HCC38/HCC38_3D_surface_plot.pdf")
 Plot2DrugSurface(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "response",
   dynamic = FALSE,
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
@@ -65,7 +65,7 @@ Plot2DrugSurface(
 Plot2DrugSurface(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "ZIP_synergy",
   dynamic = FALSE,
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
@@ -78,7 +78,7 @@ pdf("HCC38/HCC38_dose_response_and_heatmap.pdf", width=20,onefile=FALSE)
 PlotDoseResponse(
   data = res,
   block_ids = c(1),
-  drugs = c(1,2),
+  drugs = c(2,1),
   file_type = "pdf"
 )
 dev.off()
@@ -136,7 +136,7 @@ pdf("Hs578T/Hs578T_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "response",
   dynamic = FALSE,
   summary_statistic = c("mean", "median")
@@ -144,7 +144,7 @@ Plot2DrugContour(
 Plot2DrugContour(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "ZIP_synergy",
   dynamic = FALSE,
   summary_statistic = c("quantile_25", "quantile_75")
@@ -157,7 +157,7 @@ pdf("Hs578T/Hs578T_3D_surface_plot.pdf")
 Plot2DrugSurface(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "response",
   dynamic = FALSE,
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
@@ -165,7 +165,7 @@ Plot2DrugSurface(
 Plot2DrugSurface(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "ZIP_synergy",
   dynamic = FALSE,
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
@@ -178,7 +178,7 @@ pdf("Hs578T/Hs578T_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
 PlotDoseResponse(
   data = res,
   block_ids = c(1),
-  drugs = c(1,2),
+  drugs = c(2,1),
   file_type = "pdf"
 )
 dev.off()
@@ -242,7 +242,7 @@ pdf("HCC1395/HCC1395_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "response",
   dynamic = FALSE,
   summary_statistic = c("mean", "median")
@@ -250,7 +250,7 @@ Plot2DrugContour(
 Plot2DrugContour(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "ZIP_synergy",
   dynamic = FALSE,
   summary_statistic = c("quantile_25", "quantile_75")
@@ -263,7 +263,7 @@ pdf("HCC1395/HCC1395_3D_surface_plot.pdf")
 Plot2DrugSurface(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "response",
   dynamic = FALSE,
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
@@ -271,7 +271,7 @@ Plot2DrugSurface(
 Plot2DrugSurface(
   data = synergy.score,
   plot_block = 1,
-  drugs = c(1, 2),
+  drugs = c(2, 1),
   plot_value = "ZIP_synergy",
   dynamic = FALSE,
   summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
@@ -284,7 +284,7 @@ pdf("HCC1395/HCC1395_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
 PlotDoseResponse(
   data = res,
   block_ids = c(1),
-  drugs = c(1,2),
+  drugs = c(2,1),
             adjusted = TRUE,
   file_type = "pdf"
 )
