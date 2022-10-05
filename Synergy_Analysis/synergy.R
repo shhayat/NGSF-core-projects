@@ -103,7 +103,7 @@ write.csv(df.wide, file="HCC38/HCC38.df.csv", row.names = FALSE)
 
 
 #For Hs578T
-df <- read.csv("Paclitaxel_Homoharringtonine_Hs578T-edit.csv")
+df <- read.csv("Paclitaxel_Homoharringtonine_Hs578T-revised.csv")
 dir.create("Hs578T", recursive=TRUE, showWarnings = FALSE) 
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
@@ -202,7 +202,7 @@ write.csv(df.wide, file="Hs578T/Hs578T.df.csv", row.names = FALSE)
 
 
 #For HCC1395
-df <- read.csv("Paclitaxel_Homoharringtonine_HCC1395-edit.csv")
+df <- read.csv("Paclitaxel_Homoharringtonine_HCC1395-revised.csv")
 dir.create("HCC1395", recursive=TRUE, showWarnings = FALSE) 
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
