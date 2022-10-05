@@ -52,9 +52,7 @@ PlotSynergy(
   method = "ZIP",
   block_ids = c(1),
   drugs = c(2,1),
-  grid=FALSE,
-  save_file = FALSE,
-  file_type = "pdf"
+  grid=FALSE
 )
 dev.off() 
 
@@ -139,10 +137,8 @@ PlotSynergy(
   method = "ZIP",
   block_ids = c(1),
   drugs = c(2,1),
-  grid=FALSE,
-  save_file = FALSE,
-  file_type = "pdf"
-)
+  grid=FALSE
+  )
 dev.off() 
 
 #round dose response values to whole number
@@ -185,13 +181,6 @@ dir.create("HCC1395", recursive=TRUE, showWarnings = FALSE)
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
 df1 <- df[-1, ][1:33,]
-#value 12.346 in conc_c is changed to 12.346 because there is another value 12.347 
-#in conc_c and when these values are passed to Plot2DrugContour function then the 
-#backend function .RoundValue will convert both values to 12.35 and this creates problem
-#with Plot2DrugContour plot and gives a warning message Aggregation function missing: 
-#defaulting to length. Rounding both values to 12.35 will cause 2 response values in one cell
-#and cannot be correctly plotted in synergy map
-#df1[df1 == 12.346] <- 12.344
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
 
 
@@ -234,9 +223,7 @@ PlotSynergy(
   method = "ZIP",
   block_ids = c(1),
   drugs = c(2,1),
-  grid=FALSE,
-  save_file = FALSE,
-  file_type = "pdf"
+  grid=FALSE
 )
 dev.off() 
 
