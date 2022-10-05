@@ -45,7 +45,7 @@ dev.off()
 
 
 #Plot synergy scores
-pdf("Hs578T/Hs578T_plot_synergyscores.pdf")
+pdf("HCC38/HCC38_plot_synergyscores.pdf")
 PlotSynergy(
   data = synergy.score,
   type = "2D",
@@ -147,17 +147,6 @@ dev.off()
 
 #round dose response values to whole number
 res$response$response <- round(res$response$response)
-#plot dose response curve and heatmap
-pdf("Hs578T/Hs578T_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
-
-PlotDoseResponse(
-  data = res,
-  block_ids = c(1),
-  drugs = c(2,1),
-  adjusted = TRUE,
-  file_type = "pdf"
-)
-dev.off()
 
 pdf("Hs578T/Hs578T_dose_response_heatmap.pdf", onefile=FALSE)
 Plot2DrugHeatmap(
@@ -238,7 +227,7 @@ Plot2DrugContour(
 dev.off()
 
 #Plot synergy scores
-pdf("Hs578T/Hs578T_plot_synergyscores.pdf")
+pdf("HCC1395/HCC1395_plot_synergyscores.pdf")
 PlotSynergy(
   data = synergy.score,
   type = "2D",
@@ -361,3 +350,15 @@ write.csv(df.wide, file="HCC1395/HCC1395.df.csv", row.names = FALSE)
 #  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
 #)
 #dev.off()
+
+#plot dose response curve and heatmap
+#pdf("Hs578T/Hs578T_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
+#PlotDoseResponse(
+#  data = res,
+#  block_ids = c(1),
+#  drugs = c(2,1),
+#  adjusted = TRUE,
+#  file_type = "pdf"
+#)
+#dev.off()
+
