@@ -13,20 +13,20 @@ df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
 
 # Reshaping and pre-processing
 res <- ReshapeData(
-            data = df1,
-            data_type = "viability",
-            impute = TRUE,
-            impute_method = NULL,
-            noise = TRUE,
-            seed = 1)
+  data = df1,
+  data_type = "viability",
+  impute = TRUE,
+  impute_method = NULL,
+  noise = TRUE,
+  seed = 1)
 
 # calculate synergy
 synergy.score <- CalculateSynergy(
-                                  data = res,
-                                  method = c("ZIP"),
-                                  Emin = NA,
-                                  Emax = NA,
-                                  correct_baseline = "non")
+  data = res,
+  method = c("ZIP"),
+  Emin = NA,
+  Emax = NA,
+  correct_baseline = "non")
 
 write.csv(synergy.score, "HCC38/HCC38_synergy_scores.csv")
 
@@ -72,6 +72,7 @@ Plot2DrugSurface(
 )
 dev.off()
 
+res$response$response <- round(res$response$response)
 #plot dose response curve and heatmap
 pdf("HCC38/HCC38_dose_response_and_heatmap.pdf", width=20,onefile=FALSE)
 
@@ -83,23 +84,36 @@ PlotDoseResponse(
 )
 dev.off()
 
-synergy.response <- cbind(synergy.score$response[2:4])
+pdf("HCC38/HCC38_dose_response_heatmap.pdf", onefile=FALSE)
+Plot2DrugHeatmap(
+  data = res,
+  plot_block = 1,
+  drugs = c(2, 1),
+  plot_value = "response",
+  dynamic = FALSE,
+  summary_statistic = c("mean",  "median")
+)
+dev.off()
+
+
+synergy.response <- synergy.score$response[2:4]
 df.wide.response <- pivot_wider(synergy.response, 
-                       names_from = conc2, 
-                       values_from = c(response),
-                       names_prefix = c("adjusted_response.")) 
+                                names_from = conc1, 
+                                values_from = c(response),
+                                names_prefix = c("adjusted_response.")) 
 
 synergy.scores <- synergy.score$synergy_score[c(2:3,6)]
 
 df.wide.scores <- pivot_wider(synergy.scores, 
-                       names_from = conc2, 
-                       values_from = c(ZIP_synergy),
-                       names_prefix = c("score.")) 
+                              names_from = conc1, 
+                              values_from = c(ZIP_synergy),
+                              names_prefix = c("score.")) 
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+df.wide <- df.wide[order(df.wide$conc2),]
 write.csv(df.wide, file="HCC38/HCC38.df.csv", row.names = FALSE)
-                
-                
+
+
 
 
 #For Hs578T
@@ -107,7 +121,7 @@ df <- read.csv("Paclitaxel_Homoharringtonine_Hs578T-revised.csv")
 dir.create("Hs578T", recursive=TRUE, showWarnings = FALSE) 
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
-df1 <- df[-1, ][1:35,]
+df1 <- df[-1, ][1:32,]
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
 
 
@@ -172,6 +186,7 @@ Plot2DrugSurface(
 )
 dev.off()
 
+res$response$response <- round(res$response$response)
 #plot dose response curve and heatmap
 pdf("Hs578T/Hs578T_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
 
@@ -179,26 +194,39 @@ PlotDoseResponse(
   data = res,
   block_ids = c(1),
   drugs = c(2,1),
+  adjusted = TRUE,
   file_type = "pdf"
+)
+dev.off()
+
+pdf("Hs578T/Hs578T_dose_response_heatmap.pdf", onefile=FALSE)
+Plot2DrugHeatmap(
+  data = res,
+  plot_block = 1,
+  drugs = c(2, 1),
+  plot_value = "response",
+  dynamic = FALSE,
+  summary_statistic = c("mean",  "median")
 )
 dev.off()
 
 synergy.response <- cbind(synergy.score$response[2:4])
 df.wide.response <- pivot_wider(synergy.response, 
-                       names_from = conc2, 
-                       values_from = c(response),
-                       names_prefix = c("adjusted_response.")) 
+                                names_from = conc1, 
+                                values_from = c(response),
+                                names_prefix = c("adjusted_response.")) 
 
 synergy.scores <- synergy.score$synergy_score[c(2:3,6)]
 
 df.wide.scores <- pivot_wider(synergy.scores, 
-                       names_from = conc2, 
-                       values_from = c(ZIP_synergy),
-                       names_prefix = c("score.")) 
+                              names_from = conc1, 
+                              values_from = c(ZIP_synergy),
+                              names_prefix = c("score.")) 
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+df.wide <- df.wide[order(df.wide$conc2),]
 write.csv(df.wide, file="Hs578T/Hs578T.df.csv", row.names = FALSE)
-                
+
 
 
 #For HCC1395
@@ -213,7 +241,7 @@ df1 <- df[-1, ][1:33,]
 #with Plot2DrugContour plot and gives a warning message Aggregation function missing: 
 #defaulting to length. Rounding both values to 12.35 will cause 2 response values in one cell
 #and cannot be correctly plotted in synergy map
-df1[df1 == 12.346] <- 12.344
+#df1[df1 == 12.346] <- 12.344
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
 
 
@@ -278,6 +306,8 @@ Plot2DrugSurface(
 )
 dev.off()
 
+res$response$response <- round(res$response$response)
+
 #plot dose response curve and heatmap
 pdf("HCC1395/HCC1395_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
 
@@ -285,25 +315,37 @@ PlotDoseResponse(
   data = res,
   block_ids = c(1),
   drugs = c(2,1),
-            adjusted = TRUE,
+  adjusted = TRUE,
   file_type = "pdf"
 )
 dev.off()
-                
+
+pdf("HCC1395/HCC1395_dose_response_heatmap.pdf", onefile=FALSE)
+Plot2DrugHeatmap(
+  data = res,
+  plot_block = 1,
+  drugs = c(2, 1),
+  plot_value = "response",
+  dynamic = FALSE,
+  summary_statistic = c("mean",  "median")
+)
+dev.off()
+
 #change data format for synergy response and scores
 synergy.response <- cbind(synergy.score$response[2:4])
 df.wide.response <- pivot_wider(synergy.response, 
-                       names_from = conc2, 
-                       values_from = c(response),
-                       names_prefix = c("adjusted_response.")) 
+                                names_from = conc1, 
+                                values_from = c(response),
+                                names_prefix = c("adjusted_response.")) 
 
 synergy.scores <- synergy.score$synergy_score[c(2:3,6)]
 
 df.wide.scores <- pivot_wider(synergy.scores, 
-                       names_from = conc2, 
-                       values_from = c(ZIP_synergy),
-                       names_prefix = c("score.")) 
+                              names_from = conc1, 
+                              values_from = c(ZIP_synergy),
+                              names_prefix = c("score.")) 
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+df.wide <- df.wide[order(df.wide$conc2),]
 write.csv(df.wide, file="HCC1395/HCC1395.df.csv", row.names = FALSE)
-   
+
