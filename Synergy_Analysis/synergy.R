@@ -31,6 +31,7 @@ synergy.score <- CalculateSynergy(
 write.csv(synergy.score, "HCC38/HCC38_synergy_scores.csv")
 
 #2D contour plot
+
 pdf("HCC38/HCC38_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = res,
@@ -40,63 +41,26 @@ Plot2DrugContour(
   dynamic = FALSE,
   summary_statistic = c("mean", "median")
 )
-Plot2DrugContour(
-  data = synergy.score,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "ZIP_synergy",
-  dynamic = FALSE,
-  summary_statistic = c("quantile_25", "quantile_75")
-)
 dev.off()
 
 
-#3D surface plot
-pdf("HCC38/HCC38_3D_surface_plot.pdf")
-Plot2DrugSurface(
-  data = res,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "response",
-  dynamic = FALSE,
-  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
-)
-Plot2DrugSurface(
-  data = synergy.score,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "ZIP_synergy",
-  dynamic = FALSE,
-  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
-)
-dev.off()
-
-pdf("HCC38/HCC38_plot_synergyscores.pdf")
 #Plot synergy scores
+pdf("Hs578T/Hs578T_plot_synergyscores.pdf")
 PlotSynergy(
   data = synergy.score,
   type = "2D",
   method = "ZIP",
   block_ids = c(1),
   drugs = c(2,1),
+  grid=FALSE,
   save_file = FALSE,
   file_type = "pdf"
 )
-dev.off()                
-                
-                
+dev.off() 
+
+#round dose response values to whole number
 res$response$response <- round(res$response$response)
-#plot dose response curve and heatmap
-pdf("HCC38/HCC38_dose_response_and_heatmap.pdf", width=20,onefile=FALSE)
-
-PlotDoseResponse(
-  data = res,
-  block_ids = c(1),
-  drugs = c(2,1),
-  file_type = "pdf"
-)
-dev.off()
-
+#plot dose response heatmap
 pdf("HCC38/HCC38_dose_response_heatmap.pdf", onefile=FALSE)
 Plot2DrugHeatmap(
   data = res,
@@ -108,7 +72,7 @@ Plot2DrugHeatmap(
 )
 dev.off()
 
-
+#change data format from long to wide for synergy response and scores
 synergy.response <- synergy.score$response[2:4]
 df.wide.response <- pivot_wider(synergy.response, 
                                 names_from = conc1, 
@@ -128,7 +92,6 @@ write.csv(df.wide, file="HCC38/HCC38.df.csv", row.names = FALSE)
 
 
 
-
 #For Hs578T
 df <- read.csv("Paclitaxel_Homoharringtonine_Hs578T-revised.csv")
 dir.create("Hs578T", recursive=TRUE, showWarnings = FALSE) 
@@ -136,7 +99,6 @@ names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
 df1 <- df[-1, ][1:32,]
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
-
 
 # Reshaping and pre-processing
 res <- ReshapeData(
@@ -157,8 +119,7 @@ synergy.score <- CalculateSynergy(
 
 write.csv(synergy.score, "Hs578T/Hs578T_synergy_scores.csv")
 
-#2D contour plot
-
+#2D contour response plot
 pdf("Hs578T/Hs578T_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = res,
@@ -168,50 +129,23 @@ Plot2DrugContour(
   dynamic = FALSE,
   summary_statistic = c("mean", "median")
 )
-Plot2DrugContour(
-  data = synergy.score,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "ZIP_synergy",
-  dynamic = FALSE,
-  summary_statistic = c("quantile_25", "quantile_75")
-)
 dev.off()
 
-
-#3D surface plot
-pdf("Hs578T/Hs578T_3D_surface_plot.pdf")
-Plot2DrugSurface(
-  data = res,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "response",
-  dynamic = FALSE,
-  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
-)
-Plot2DrugSurface(
-  data = synergy.score,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "ZIP_synergy",
-  dynamic = FALSE,
-  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
-)
-dev.off()
-
-pdf("Hs578T/Hs578T_plot_synergyscores.pdf")
 #Plot synergy scores
+pdf("Hs578T/Hs578T_plot_synergyscores.pdf")
 PlotSynergy(
   data = synergy.score,
   type = "2D",
   method = "ZIP",
   block_ids = c(1),
   drugs = c(2,1),
+  grid=FALSE,
   save_file = FALSE,
   file_type = "pdf"
 )
-dev.off()  
-                
+dev.off() 
+
+#round dose response values to whole number
 res$response$response <- round(res$response$response)
 #plot dose response curve and heatmap
 pdf("Hs578T/Hs578T_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
@@ -236,6 +170,7 @@ Plot2DrugHeatmap(
 )
 dev.off()
 
+#change data format from long to wide for synergy response and scores
 synergy.response <- cbind(synergy.score$response[2:4])
 df.wide.response <- pivot_wider(synergy.response, 
                                 names_from = conc1, 
@@ -291,7 +226,6 @@ synergy.score <- CalculateSynergy(
 write.csv(synergy.score, "HCC1395/HCC1395_synergy_scores.csv")
 
 #2D contour plot
-
 pdf("HCC1395/HCC1395_2D_contour_plot.pdf")
 Plot2DrugContour(
   data = res,
@@ -301,62 +235,26 @@ Plot2DrugContour(
   dynamic = FALSE,
   summary_statistic = c("mean", "median")
 )
-Plot2DrugContour(
-  data = synergy.score,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "ZIP_synergy",
-  dynamic = FALSE,
-  summary_statistic = c("quantile_25", "quantile_75")
-)
 dev.off()
 
-
-#3D surface plot
-pdf("HCC1395/HCC1395_3D_surface_plot.pdf")
-Plot2DrugSurface(
-  data = res,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "response",
-  dynamic = FALSE,
-  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
-)
-Plot2DrugSurface(
+#Plot synergy scores
+pdf("Hs578T/Hs578T_plot_synergyscores.pdf")
+PlotSynergy(
   data = synergy.score,
-  plot_block = 1,
-  drugs = c(2, 1),
-  plot_value = "ZIP_synergy",
-  dynamic = FALSE,
-  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
-)
-dev.off()
-                
-pdf("HCC1395/HCC1395_plot_synergyscores.pdf")
-   
- PlotSynergy(
-  data = res,
   type = "2D",
   method = "ZIP",
   block_ids = c(1),
   drugs = c(2,1),
-  save_file = FALSE
-)
-                
-res$response$response <- round(res$response$response)
-
-#plot dose response curve and heatmap
-pdf("HCC1395/HCC1395_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
-
-PlotDoseResponse(
-  data = res,
-  block_ids = c(1),
-  drugs = c(2,1),
-  adjusted = TRUE,
+  grid=FALSE,
+  save_file = FALSE,
   file_type = "pdf"
 )
-dev.off()
+dev.off() 
 
+#round dose response values to whole number
+res$response$response <- round(res$response$response)
+
+#plot dose response heatmap
 pdf("HCC1395/HCC1395_dose_response_heatmap.pdf", onefile=FALSE)
 Plot2DrugHeatmap(
   data = res,
@@ -368,7 +266,7 @@ Plot2DrugHeatmap(
 )
 dev.off()
 
-#change data format for synergy response and scores
+#change data format from long to wide for synergy response and scores
 synergy.response <- cbind(synergy.score$response[2:4])
 df.wide.response <- pivot_wider(synergy.response, 
                                 names_from = conc1, 
@@ -386,3 +284,80 @@ df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
 write.csv(df.wide, file="HCC1395/HCC1395.df.csv", row.names = FALSE)
 
+
+#3D surface plot
+#pdf("Hs578T/Hs578T_3D_surface_plot.pdf")
+#Plot2DrugSurface(
+#  data = res,
+#  plot_block = 1,
+#  drugs = c(2, 1),
+#  plot_value = "response",
+#  dynamic = FALSE,
+#  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
+#)
+#Plot2DrugSurface(
+#  data = synergy.score,
+#  plot_block = 1,
+#  drugs = c(2, 1),
+#  plot_value = "ZIP_synergy",
+#  dynamic = FALSE,
+#  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
+#)
+#dev.off()
+
+
+
+#3D surface plot
+#pdf("HCC1395/HCC1395_3D_surface_plot.pdf")
+#Plot2DrugSurface(
+#  data = res,
+#  plot_block = 1,
+#  drugs = c(2, 1),
+#  plot_value = "response",
+#  dynamic = FALSE,
+#  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
+#)
+#Plot2DrugSurface(
+#  data = synergy.score,
+#  plot_block = 1,
+#  drugs = c(2, 1),
+#  plot_value = "ZIP_synergy",
+#  dynamic = FALSE,
+#  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
+#)
+#dev.off()
+
+#plot dose response curve and heatmap
+#pdf("HCC1395/HCC1395_dose_response_and_heatmap.pdf", width=20, onefile=FALSE)
+
+#PlotDoseResponse(
+#  data = res,
+#  block_ids = c(1),
+#  drugs = c(2,1),
+#  adjusted = TRUE,
+#  file_type = "pdf"
+#)
+#dev.off()
+
+#plot dose response curve and heatmap
+#pdf("HCC38/HCC38_dose_response_and_heatmap.pdf", width=20,onefile=FALSE)
+
+#PlotDoseResponse(
+#  data = res,
+#  block_ids = c(1),
+#  drugs = c(2,1),
+#  file_type = "pdf"
+#)
+#dev.off()
+
+#3D surface plot
+#pdf("HCC38/HCC38_3D_surface_plot.pdf")
+#Plot2DrugSurface(
+#  data = res,
+#  plot_block = 1,
+#  drugs = c(2, 1),
+#  plot_value = "response",
+#  dynamic = FALSE,
+#  summary_statistic = c("mean", "quantile_25", "median", "quantile_75")
+#)
+#dev.off()
