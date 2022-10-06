@@ -1,26 +1,33 @@
 library(ggplot2)
+library(ggrepel)
+
 res <- read.csv("/datastore/NGSF001/projects/20-1JOHO-001/dge_males_fdr0.05.txt")
 res1 <- as.data.frame(res)
 
-#assign up and down regulation and non signif based on log2fc
-res1$direction <- ifelse(res1$effects < -1, "down_regulated", 
-                         ifelse(res1$effects > 1, "up_regulated", "signif" ))
+res <- read.table("dge_males_fdr0.05.txt", header=TRUE)
+res1 <- as.data.frame(res)
 
-png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot.png", width=1300, height=500, res=120)
-ggplot(res1, aes(effects, -log10(fdr))) +
-  geom_point(aes(col=direction),
-             size=0.5,
-             show.legend = FALSE) +
+res1$direction <- ifelse(as.numeric(res1$effects) < -1, "down_regulated", 
+                            ifelse(as.numeric(res1$effects) > 1, "up_regulated", "signif" ))
+
+pdf("Volcano_plot_fdr0.05_and_log2FC_3.pdf")
+p <- ggplot(res1, aes(as.numeric(effects), -log10(as.numeric(fdr)))) +
+  geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
   scale_color_manual(values=c("blue", "gray", "red")) +
   theme(axis.text.x = element_text(size=11),
         axis.text.y = element_text(size=11),
         text = element_text(size=11)) +
-  annotate("text",x=2.2,y=1.7,hjust = 0,label=" Total (FDR <=0.05) = 6678 \n Total Upregulated = 3138 \n Total Down Regulated = 3540 \n Log2FC > 1 = 120 \n Log2FC < -1 = 90", size = 3)  +
   xlab("log2(FC)") +
   ylab("-log10(FDR)") 
-  
+
+#order up and down on lowest adj pvalue
+up <- res1[res1$direction == "up_regulated",]
+up_ordered <- up[order(up$fdr),]
+down <- res1[res1$direction == "down_regulated",]
+down_ordered <- down[order(down$fdr),]
+
+p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+print(p2)
 dev.off()
-
-
-
 
