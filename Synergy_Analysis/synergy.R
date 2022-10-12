@@ -33,6 +33,7 @@ synergy.score <- CalculateSynergy(
   correct_baseline = "non")
 
 write.csv(synergy.score, "HCC38/HCC38_synergy_scores.csv")
+save(synergy.score, file = 'HCC38_synergy.score.RData', compress = 'xz')
 
 #2D contour plot
 
@@ -43,10 +44,14 @@ Plot2DrugContour(
   drugs = c(1, 2),
   plot_value = "response",
   dynamic = FALSE,
-  summary_statistic = c("mean", "median")
+  summary_statistic = c("mean", "median"),
+  grid=FALSE
 )
 dev.off()
 
+
+#run modified plot_synergy.R function to plot synergy scores
+#axes text and dose response value size has been increased
 
 #Plot synergy scores
 pdf("HCC38/HCC38_plot_synergyscores.pdf")
@@ -56,7 +61,9 @@ PlotSynergy(
   method = "ZIP",
   block_ids = c(1),
   drugs = c(1,2),
-  grid=FALSE
+  grid=FALSE,
+  text_size_scale = 1.1,
+  heatmap_text_label_size_scale = 1.4
 )
 dev.off() 
 
@@ -115,6 +122,7 @@ synergy.score <- CalculateSynergy(
   correct_baseline = "non")
 
 write.csv(synergy.score, "Hs578T/Hs578T_synergy_scores.csv")
+save(synergy.score, file = 'Hs578T_synergy.score.RData', compress = 'xz')
 
 #2D contour response plot
 pdf("Hs578T/Hs578T_2D_contour_plot.pdf")
@@ -124,7 +132,8 @@ Plot2DrugContour(
   drugs = c(1,2),
   plot_value = "response",
   dynamic = FALSE,
-  summary_statistic = c("mean", "median")
+  summary_statistic = c("mean", "median"),
+  grid=FALSE
 )
 dev.off()
 
@@ -136,13 +145,14 @@ PlotSynergy(
   method = "ZIP",
   block_ids = c(1),
   drugs = c(1,2),
-  grid=FALSE
-  )
+  grid=FALSE,
+  text_size_scale = 1.1,
+  heatmap_text_label_size_scale = 1.4
+)
 dev.off() 
 
 #round dose response values to whole number
 res$response$response <- round(res$response$response)
-
 save(res, file = 'Hs578T_res.RData', compress = 'xz')
 
 #run modified Plot2drugHeatmap.R function to plot dose response heatmap
@@ -197,6 +207,7 @@ synergy.score <- CalculateSynergy(
   correct_baseline = "non")
 
 write.csv(synergy.score, "HCC1395/HCC1395_synergy_scores.csv")
+save(synergy.score, file = 'HCC1395_synergy.score.RData', compress = 'xz')
 
 #2D contour plot
 pdf("HCC1395/HCC1395_2D_contour_plot.pdf")
@@ -206,7 +217,8 @@ Plot2DrugContour(
   drugs = c(1,2),
   plot_value = "response",
   dynamic = FALSE,
-  summary_statistic = c("mean", "median")
+  summary_statistic = c("mean", "median"),
+  grid=FALSE
 )
 dev.off()
 
@@ -218,9 +230,11 @@ PlotSynergy(
   method = "ZIP",
   block_ids = c(1),
   drugs = c(1,2),
-  grid=FALSE
+  grid=FALSE,
+  text_size_scale = 1.1,
+  heatmap_text_label_size_scale = 1.4
 )
-dev.off() 
+dev.off()
 
 #round dose response values to whole number
 res$response$response <- round(res$response$response)
@@ -258,7 +272,7 @@ df <- read.csv("Paclitaxel_Other_Drugs_HCC1806.csv", head=TRUE)[1:8]
 #use first row as column name
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
-df1 <- df[-1, ][1:33,]
+df1 <- df[-1, ][1:66,]
 df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
 
 colnames(df1)[2:5] <- c("drug_col","drug_row","conc_c","conc_r")
@@ -282,20 +296,33 @@ synergy.score <- CalculateSynergy(
   correct_baseline = "non")
 
 write.csv(synergy.score, "HCC1806/HCC1806_synergy_scores.csv")
+save(synergy.score, file = 'HCC1806_synergy.score.RData', compress = 'xz')
 
 #2D contour plot
 
-pdf("HCC1806/HCC1806_2D_contour_plot.pdf")
+pdf("HCC1806/HCC1806_2D_contour_plot_paclitaxel_lanatosidec.pdf")
 Plot2DrugContour(
   data = res,
   plot_block = 1,
   drugs = c(1, 2),
   plot_value = "response",
   dynamic = FALSE,
-  summary_statistic = c("mean", "median")
+  summary_statistic = c("mean", "median"),
+  grid=FALSE
 )
 dev.off()
 
+pdf("HCC1806/HCC1806_2D_contour_plot_paclitaxel_homoharringtonine.pdf")
+Plot2DrugContour(
+  data = res,
+  plot_block = 2,
+  drugs = c(1, 2),
+  plot_value = "response",
+  dynamic = FALSE,
+  summary_statistic = c("mean", "median"),
+  grid=FALSE
+)
+dev.off()
 
 #Plot synergy scores
 pdf("HCC1806/HCC1806_plot_synergyscores.pdf")
@@ -303,15 +330,25 @@ PlotSynergy(
   data = synergy.score,
   type = "2D",
   method = "ZIP",
-  block_ids = c(1),
+  block_ids = 1,
   drugs = c(1,2),
-  grid=FALSE
-)
-dev.off() 
+  grid=FALSE,
+  text_size_scale = 1.1,
+  heatmap_text_label_size_scale = 1.4)
 
+PlotSynergy(
+  data = synergy.score,
+  type = "2D",
+  method = "ZIP",
+  block_ids =2,
+  drugs = c(1,2),
+  grid=FALSE,
+  text_size_scale = 1.1,
+  heatmap_text_label_size_scale = 1.4)
+
+dev.off() 
 #round dose response values to whole number
 res$response$response <- round(res$response$response)
-
 save(res, file = 'HCC1806_res.RData', compress = 'xz')
 
 #run modified Plot2drugHeatmap.R function to plot dose response heatmap
