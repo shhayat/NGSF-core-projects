@@ -216,10 +216,10 @@
 
 
 #After loading above functions call Plot2drugHeatmap Function for each cell
-Plot2drugHeatmap <- function(data) 
+Plot2drugHeatmap <- function(data, plot_block) 
 {
 data=data
-plot_block = 1
+plot_block = plot_block
 drugs = c(1, 2)
 plot_value = "response"
 statistic = NULL
@@ -458,20 +458,21 @@ p
 
 pdf("HCC38/HCC38_dose_response_heatmap.pdf", onefile=FALSE)
 load("HCC38_res.RData")
-Plot2drugHeatmap(res)
+Plot2drugHeatmap(res,1)
 dev.off()
 
 pdf("Hs578T/Hs578T_dose_response_heatmap.pdf", onefile=FALSE, width=10)
   load("Hs578T_res.RData")
-  Plot2drugHeatmap(res)
+  Plot2drugHeatmap(res,1)
 dev.off()
 
 pdf("HCC1395/HCC1395_dose_response_heatmap.pdf", onefile=FALSE)
   load("HCC1395_res.RData")
-  Plot2drugHeatmap(res)
+  Plot2drugHeatmap(res,1)
 dev.off()
 
-pdf("HCC1806/HCC1806_dose_response_heatmap.pdf", onefile=FALSE)
+pdf("HCC1806/HCC1806_dose_response_heatmap.pdf")
   load("HCC1806_res.RData")
-  Plot2drugHeatmap(res)
+  Plot2drugHeatmap(res,1)
+  Plot2drugHeatmap(res,2)
 dev.off()
