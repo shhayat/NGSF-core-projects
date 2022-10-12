@@ -5,6 +5,10 @@
 #.Extract2DrugPlotData 
 #.RoundValues
 #.Pt2mm
+#First load required functions for Plot2drupHeatmap.
+#.Extract2DrugPlotData 
+#.RoundValues
+#.Pt2mm
 
 .Extract2DrugPlotData <- function(data,
                                   plot_block = 1,
@@ -449,7 +453,7 @@ plot_data <- .Extract2DrugPlotData(data, plot_block = plot_block,
                                                           title_text_size_scale, face = "bold", hjust = 0.5), 
                      plot.subtitle = ggplot2::element_text(size = 12 * 
                                                              title_text_size_scale, hjust = 0.5), panel.background = ggplot2::element_blank(), 
-                     axis.text = ggplot2::element_text(size = 10 * title_text_size_scale), axis.title = ggplot2::element_text(size = 10 * title_text_size_scale), legend.title = ggplot2::element_text(size = 10 *  title_text_size_scale), legend.text = ggplot2::element_text(size = 9 * title_text_size_scale), legend.background = element_rect(color = NA))
+                     axis.text = ggplot2::element_text(size = 10 * title_text_size_scale), axis.title = ggplot2::element_text(size = 10 * title_text_size_scale), legend.title = ggplot2::element_text(size = 10 *  title_text_size_scale), legend.text = ggplot2::element_text(size = 10 * title_text_size_scale), legend.background = element_rect(color = NA))
    
     
   }
@@ -476,3 +480,5 @@ pdf("HCC1806/HCC1806_dose_response_heatmap.pdf")
   Plot2drugHeatmap(res,1)
   Plot2drugHeatmap(res,2)
 dev.off()
+
+  
