@@ -235,9 +235,9 @@ row_range = NULL
 color_range = NULL 
 high_value_color = "#FF0000"
 low_value_color = "#00FF00"
-text_label_size_scale = 1.4
+text_label_size_scale = 1.7
 text_label_color = "#000000"
-title_text_size_scale = 1.1
+title_text_size_scale = 1.5
 
 library(ggplot2)
 plot_data <- .Extract2DrugPlotData(data, plot_block = plot_block, 
