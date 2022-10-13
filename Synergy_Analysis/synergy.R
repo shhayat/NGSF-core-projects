@@ -356,23 +356,6 @@ save(res, file = 'HCC1806_res.RData', compress = 'xz')
 #axes text and dose response value size has been increased and legend text 
 #has been changed from inhibition to cytotoxicity
 
-#change data format from long to wide for synergy response and scores
-synergy.response <- synergy.score$response[2:4][1:100]
-df.wide.response <- pivot_wider(synergy.response, 
-                                names_from = conc1, 
-                                values_from = c(response),
-                                names_prefix = c("adjusted_response.")) 
-
-synergy.scores <- synergy.score$synergy_score[c(2:3,6)][1:100]
-
-df.wide.scores <- pivot_wider(synergy.scores, 
-                              names_from = conc1, 
-                              values_from = c(ZIP_synergy),
-                              names_prefix = c("score.")) 
-
-df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
-df.wide <- df.wide[order(df.wide$conc2),]
-write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel.lanatosidec.csv", row.names = FALSE)
 
 #change data format from long to wide for synergy response and scores
 synergy.response <- synergy.score$response[2:4][1:100,]
@@ -390,6 +373,7 @@ df.wide.scores <- pivot_wider(synergy.scores,
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
+df.wide <- df.wide[c(1:7, 11,8:10, 12:17, 21, 18:20)]        
 write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel_lanatosidec.csv", row.names = FALSE)
 
 #change data format from long to wide for synergy response and scores
@@ -408,6 +392,7 @@ df.wide.scores <- pivot_wider(synergy.scores,
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
+df.wide <- df.wide[c(1:7, 11,8:10, 12:17, 21, 18:20)]        
 write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel_homoharringtonine.csv", row.names = FALSE)
                 
                 
