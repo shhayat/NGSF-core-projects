@@ -55,7 +55,7 @@ dev.off()
 #axes text and dose response value size has been increased
 
 #Plot synergy scores
-pdf("HCC38/HCC38_plot_synergyscores.pdf")
+pdf("HCC38/HCC38_plot_synergyscores_v3.pdf", width=10)
 PlotSynergy(
   data = synergy.score,
   type = "2D",
@@ -63,8 +63,7 @@ PlotSynergy(
   block_ids = c(1),
   drugs = c(1,2),
   grid=FALSE,
-  text_size_scale = 1.1,
-  heatmap_text_label_size_scale = 1.4
+  text_size_scale = 1.5
 )
 dev.off() 
 
@@ -140,7 +139,7 @@ Plot2DrugContour(
 dev.off()
 
 #Plot synergy scores
-pdf("Hs578T/Hs578T_plot_synergyscores.pdf")
+pdf("Hs578T/Hs578T_plot_synergyscores_v3.pdf", width=10)
 PlotSynergy(
   data = synergy.score,
   type = "2D",
@@ -148,8 +147,7 @@ PlotSynergy(
   block_ids = c(1),
   drugs = c(1,2),
   grid=FALSE,
-  text_size_scale = 1.1,
-  heatmap_text_label_size_scale = 1.4
+  text_size_scale = 1.5
 )
 dev.off() 
 
@@ -226,7 +224,7 @@ Plot2DrugContour(
 dev.off()
 
 #Plot synergy scores
-pdf("HCC1395/HCC1395_plot_synergyscores.pdf")
+pdf("HCC1395/HCC1395_plot_synergyscores_v3.pdf", width=10)
 PlotSynergy(
   data = synergy.score,
   type = "2D",
@@ -234,8 +232,7 @@ PlotSynergy(
   block_ids = c(1),
   drugs = c(1,2),
   grid=FALSE,
-  text_size_scale = 1.1,
-  heatmap_text_label_size_scale = 1.4
+  text_size_scale = 1.5
 )
 dev.off()
 
@@ -329,7 +326,7 @@ Plot2DrugContour(
 dev.off()
 
 #Plot synergy scores
-pdf("HCC1806/HCC1806_plot_synergyscores.pdf")
+pdf("HCC1806/HCC1806_plot_synergyscores_v3.pdf", width=10)
 PlotSynergy(
   data = synergy.score,
   type = "2D",
@@ -337,8 +334,7 @@ PlotSynergy(
   block_ids = 1,
   drugs = c(1,2),
   grid=FALSE,
-  text_size_scale = 1.1,
-  heatmap_text_label_size_scale = 1.4)
+  text_size_scale = 1.5)
 
 PlotSynergy(
   data = synergy.score,
@@ -347,8 +343,7 @@ PlotSynergy(
   block_ids =2,
   drugs = c(1,2),
   grid=FALSE,
-  text_size_scale = 1.1,
-  heatmap_text_label_size_scale = 1.4)
+  text_size_scale = 1.5)
 
 dev.off() 
 #round dose response values to whole number
