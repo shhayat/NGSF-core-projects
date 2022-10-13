@@ -460,22 +460,22 @@ plot_data <- .Extract2DrugPlotData(data, plot_block = plot_block,
 p
 }
 
-pdf("HCC38/HCC38_dose_response_heatmap.pdf", onefile=FALSE)
+pdf("HCC38/HCC38_dose_response_heatmap_v3.pdf", onefile=FALSE)
 load("HCC38_res.RData")
 Plot2drugHeatmap(res,1)
 dev.off()
 
-pdf("Hs578T/Hs578T_dose_response_heatmap.pdf", onefile=FALSE, width=10)
+pdf("Hs578T/Hs578T_dose_response_heatmap_v3.pdf", onefile=FALSE, width=10)
   load("Hs578T_res.RData")
   Plot2drugHeatmap(res,1)
 dev.off()
 
-pdf("HCC1395/HCC1395_dose_response_heatmap.pdf", onefile=FALSE)
+pdf("HCC1395/HCC1395_dose_response_heatmap_v3.pdf", onefile=FALSE)
   load("HCC1395_res.RData")
   Plot2drugHeatmap(res,1)
 dev.off()
 
-pdf("HCC1806/HCC1806_dose_response_heatmap.pdf")
+pdf("HCC1806/HCC1806_dose_response_heatmap_v3.pdf")
   load("HCC1806_res.RData")
   Plot2drugHeatmap(res,1)
   Plot2drugHeatmap(res,2)
