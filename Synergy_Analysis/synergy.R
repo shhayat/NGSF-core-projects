@@ -1,6 +1,7 @@
 library(synergyfinder)
 library(tidyr)
 #setwd("/Users/shahina/Desktop/Synergy_Analysis")
+#setwd("/Users/hxo752/Desktop/core-projects/synergy_analysis/")
 setwd("/Users/shahina/Projects/synergy_analysis/Synergy_Analysis")
 #For HCC38
 dir.create("HCC38", recursive=TRUE, showWarnings = FALSE) 
@@ -356,13 +357,13 @@ save(res, file = 'HCC1806_res.RData', compress = 'xz')
 #has been changed from inhibition to cytotoxicity
 
 #change data format from long to wide for synergy response and scores
-synergy.response <- synergy.score$response[2:4]
+synergy.response <- synergy.score$response[2:4][1:100]
 df.wide.response <- pivot_wider(synergy.response, 
                                 names_from = conc1, 
                                 values_from = c(response),
                                 names_prefix = c("adjusted_response.")) 
 
-synergy.scores <- synergy.score$synergy_score[c(2:3,6)]
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)][1:100]
 
 df.wide.scores <- pivot_wider(synergy.scores, 
                               names_from = conc1, 
@@ -371,10 +372,45 @@ df.wide.scores <- pivot_wider(synergy.scores,
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
-write.csv(df.wide, file="HCC1806/HCC1806.df.csv", row.names = FALSE)
+write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel.lanatosidec.csv", row.names = FALSE)
 
+#change data format from long to wide for synergy response and scores
+synergy.response <- synergy.score$response[2:4][1:100]
+df.wide.response <- pivot_wider(synergy.response, 
+                                names_from = conc1, 
+                                values_from = c(response),
+                                names_prefix = c("adjusted_response.")) 
 
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)][1:100]
 
+df.wide.scores <- pivot_wider(synergy.scores, 
+                              names_from = conc1, 
+                              values_from = c(ZIP_synergy),
+                              names_prefix = c("score.")) 
+
+df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+df.wide <- df.wide[order(df.wide$conc2),]
+write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel_lanatosidec.csv", row.names = FALSE)
+
+#change data format from long to wide for synergy response and scores
+synergy.response <- synergy.score$response[2:4][101:nrow(synergy.score$response)]
+df.wide.response <- pivot_wider(synergy.response, 
+                                names_from = conc1, 
+                                values_from = c(response),
+                                names_prefix = c("adjusted_response.")) 
+
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)][101:nrow(synergy.score$response)]
+
+df.wide.scores <- pivot_wider(synergy.scores, 
+                              names_from = conc1, 
+                              values_from = c(ZIP_synergy),
+                              names_prefix = c("score.")) 
+
+df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+df.wide <- df.wide[order(df.wide$conc2),]
+write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel_homoharringtonine.csv", row.names = FALSE)
+                
+                
 
 #3D surface plot
 #pdf("Hs578T/Hs578T_3D_surface_plot.pdf")
