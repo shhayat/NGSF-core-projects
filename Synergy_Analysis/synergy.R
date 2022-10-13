@@ -375,13 +375,13 @@ df.wide <- df.wide[order(df.wide$conc2),]
 write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel.lanatosidec.csv", row.names = FALSE)
 
 #change data format from long to wide for synergy response and scores
-synergy.response <- synergy.score$response[2:4][1:100]
+synergy.response <- synergy.score$response[2:4][1:100,]
 df.wide.response <- pivot_wider(synergy.response, 
                                 names_from = conc1, 
                                 values_from = c(response),
                                 names_prefix = c("adjusted_response.")) 
 
-synergy.scores <- synergy.score$synergy_score[c(2:3,6)][1:100]
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)][1:100,]
 
 df.wide.scores <- pivot_wider(synergy.scores, 
                               names_from = conc1, 
@@ -393,13 +393,13 @@ df.wide <- df.wide[order(df.wide$conc2),]
 write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel_lanatosidec.csv", row.names = FALSE)
 
 #change data format from long to wide for synergy response and scores
-synergy.response <- synergy.score$response[2:4][101:nrow(synergy.score$response)]
+synergy.response <- synergy.score$response[2:4][101:nrow(synergy.score$response),]
 df.wide.response <- pivot_wider(synergy.response, 
                                 names_from = conc1, 
                                 values_from = c(response),
                                 names_prefix = c("adjusted_response.")) 
 
-synergy.scores <- synergy.score$synergy_score[c(2:3,6)][101:nrow(synergy.score$response)]
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)][101:nrow(synergy.score$response),]
 
 df.wide.scores <- pivot_wider(synergy.scores, 
                               names_from = conc1, 
