@@ -92,6 +92,7 @@ df.wide.scores <- pivot_wider(synergy.scores,
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
+df.wide <- df.wide[c(1:8,11,9:10,12:18,21,19:20)]
 write.csv(df.wide, file="HCC38/HCC38.df.csv", row.names = FALSE)
 
 
@@ -176,6 +177,7 @@ df.wide.scores <- pivot_wider(synergy.scores,
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
+df.wide <- df.wide[c(1:4,12,5,13,6,14,7,15,8,16,11,9,17,10,18,19:21,29,22,30,23,31,24,32,25,33,28,26,34,27,35)]
 write.csv(df.wide, file="Hs578T/Hs578T.df.csv", row.names = FALSE)
 
 
@@ -262,6 +264,7 @@ df.wide.scores <- pivot_wider(synergy.scores,
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
+df.wide <- df.wide[c(1:8,11,9,10,12:18,21,19,20)]
 write.csv(df.wide, file="HCC1395/HCC1395.df.csv", row.names = FALSE)
 
 
