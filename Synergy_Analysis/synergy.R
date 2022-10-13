@@ -327,14 +327,14 @@ dev.off()
 
 #Plot synergy scores
 pdf("HCC1806/HCC1806_plot_synergyscores_v3.pdf", width=10)
-PlotSynergy(
-  data = synergy.score,
-  type = "2D",
-  method = "ZIP",
-  block_ids = 1,
-  drugs = c(1,2),
-  grid=FALSE,
-  text_size_scale = 1.5)
+#PlotSynergy(
+ # data = synergy.score,
+ # type = "2D",
+ # method = "ZIP",
+ # block_ids = 1,
+ # drugs = c(1,2),
+ # grid=FALSE,
+ # text_size_scale = 1.5)
 
 PlotSynergy(
   data = synergy.score,
