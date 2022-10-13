@@ -477,7 +477,7 @@ dev.off()
 
 pdf("HCC1806/HCC1806_dose_response_heatmap_v3.pdf", width=10)
   load("HCC1806_res.RData")
-  Plot2drugHeatmap(res,1)
+  #Plot2drugHeatmap(res,1)
   Plot2drugHeatmap(res,2)
 dev.off()
 
