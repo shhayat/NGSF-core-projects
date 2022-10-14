@@ -70,14 +70,15 @@ fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
 #NROW(fdata1_pval)
 names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
 #[1] 7966
-fdata1_fdr=fdata1_select[fdata1_select[4] <=0.05,]
+fdata1_fdr=fdata1_select[fdata1_select[4] <=0.01,]
 names(fdata1_fdr) <- c("gene_name","effects","pvalue", "fdr")
 fdata1_fdr_order <- fdata1_fdr[order(fdata1_fdr$fdr),]
 #NROW(fdata1_fdr)
 #[1] 6660
-write.csv(fdata1_fdr_order, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.05.csv")
+write.csv(fdata1_fdr_order, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.01.csv")
 
 low <- fdata1_fdr_order[fdata1_fdr_order$effects <= -0.6,]
 high <- fdata1_fdr_order[fdata1_fdr_order$effects >= 0.6,]
 df_effect_0.6 <- rbind(low,high)
-write.csv(df_effect_0.6, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.05_and_log2FC0.6.csv")
+write.csv(df_effect_0.6, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.01_and_log2FC0.6.csv")
+
