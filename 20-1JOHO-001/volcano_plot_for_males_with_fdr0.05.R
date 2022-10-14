@@ -1,16 +1,13 @@
 library(ggplot2)
 library(ggrepel)
 
-res <- read.csv("/datastore/NGSF001/projects/20-1JOHO-001/dge_males_fdr0.05.txt")
+res <- read.csv("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.05.csv")
 res1 <- as.data.frame(res)
 
-res <- read.table("dge_males_fdr0.05.txt", header=TRUE)
-res1 <- as.data.frame(res)
+res1$direction <- ifelse(as.numeric(res1$effects) <= -0.6, "down_regulated", 
+                            ifelse(as.numeric(res1$effects) >= 0.6, "up_regulated", "non_signif" ))
 
-res1$direction <- ifelse(as.numeric(res1$effects) < -1, "down_regulated", 
-                            ifelse(as.numeric(res1$effects) > 1, "up_regulated", "signif" ))
-
-pdf("Volcano_plot_fdr0.05_and_log2FC_3.pdf")
+pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/Volcano_plot.pdf")
 p <- ggplot(res1, aes(as.numeric(effects), -log10(as.numeric(fdr)))) +
   geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
   scale_color_manual(values=c("blue", "gray", "red")) +
