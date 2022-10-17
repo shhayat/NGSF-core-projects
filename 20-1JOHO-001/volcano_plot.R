@@ -3,10 +3,10 @@ res <- read.csv("/Users/shahina/Projects/20-1JOHO-001/results/treated_and_contro
 res1 <- as.data.frame(res)
 
 #assign up and down regulation and non signif based on log2fc
-res1$direction <- ifelse(res1$effects < -1, "down_regulated", 
-                         ifelse(res1$effects > 1, "up_regulated", "signif" ))
+res1$direction <- ifelse(res1$effects < -0.5, "down_regulated", 
+                         ifelse(res1$effects > 0.5, "up_regulated", "signif" ))
 
-png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot.png", width=1300, height=500, res=120)
+png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot_0.5log2FC.png", width=1300, height=500, res=120)
 ggplot(res1, aes(effects, -log10(fdr))) +
   geom_point(aes(col=direction),
              size=0.5,
