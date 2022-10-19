@@ -58,8 +58,9 @@ object$subgroup <- as.factor(c("treated","treated","treated","treated","treated"
 object <- object %>% filter_samples(!sample_id %in% c("control_male_R56","control_male_R59","treated_male_R28","treated_male_R40","treated_male_R63"))
 
 pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_15male_samples.pdf", width=10)
-biplot(object, pca1, pca2, label=sample_id,color=subgroup)
+biplot(object, pca1, pca2,color=subgroup)
 dev.off()
+
 
 object2 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
 
