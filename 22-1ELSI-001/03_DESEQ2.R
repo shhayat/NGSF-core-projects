@@ -3,8 +3,10 @@ library("ggplot2")
 library("dplyr")
 library("ggrepel")
 
-setwd("~/Desktop/")
-dir.create("core-projects/22-1ELSI-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
+#setwd("~/Desktop/")
+#dir.create("core-projects/22-1ELSI-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
+#setwd("~/Desktop/core-projects/22-1ELSI-001")
+setwd("/Users/shahina/Projects/22-1ELSI-001/")
 
 load("feature_count.RData")
 feature_count1 <- as.data.frame(feature_count)
@@ -19,7 +21,7 @@ feature_annotation <- feature_count1[1:2]
 #feature_count <- feature_count[colnum]
 #
 #this will only store your samples with their expression values AND samples are arranged according to groups
-feature_count <- feature_count1[c(6,10,8,7,3,13,12,11,5,17,14,9,15,16,4)]
+feature_count <- feature_count1[c(6,10,8,7,3,13,12,11,5,17,14,9,15,16,4),]
 #at least one column has number
 #feature_count3 <- feature_count2[apply(feature_count2,1,function(z) any(z!=0)),]
 #feature_count3 <- feature_count2[apply(feature_count2, 1,function(x) all(x[1:5] >=1) && all(x[6:10]==0) && all(x[11:15]==0)),]
@@ -59,9 +61,13 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count3,
 ##########
 #PCA PLOT
 ##########
+#setwd("~/Desktop/core-projects/22-1ELSI-001/DESEQ2")
+
+setwd("/Users/shahina/Projects/22-1ELSI-001/DESEQ2")
+
 #gernate rlog for PCA
 
-pdf("core-projects/22-1ELSI-001/DESEQ2/PCA_for_3_groups.pdf")
+pdf("PCA_for_3_groups.pdf")
 
 #rld <-rlog(dds,blind=FALSE)
 #pdf(sprintf("PCA_%s_%s.pdf",cond2,cond1), width=15,height=15)
@@ -126,14 +132,14 @@ resDF1 <- resDF[resDF$pvalue <= 0.05,]
 res_pval_ordered <- resDF1[order(resDF1$pvalue),]
 res_pval_ordered <- res_pval_ordered[rowSums(is.na(res_pval_ordered)) == 0, ] 
 
-write.csv(res_pval_ordered,file="core-projects/22-1ELSI-001/DESEQ2/DESEQ2_res_D1_D4_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
+write.csv(res_pval_ordered,file="DESEQ2_res_D1_D4_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
 
 #All significant at FDR 0.01
 resDF2 <- resDF[resDF$padj <= 0.01,]
 res_padj_ordered <- resDF2[order(resDF2$padj),]
 res_padj_ordered1 <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
 
-write.csv(res_padj_ordered1,file="DESEQ2/DESEQ2_res_D1_D4_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
+write.csv(res_padj_ordered1,file="DESEQ2_res_D1_D4_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 
 #volcano plot
@@ -180,7 +186,7 @@ resDF2 <- resDF[resDF$padj <= 0.01,]
 res_padj_ordered <- resDF2[order(resDF2$padj),]
 res_padj_ordered2 <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
 
-write.csv(res_padj_ordered2,file="DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
+write.csv(res_padj_ordered2,file="DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 
 #volcano plot
@@ -234,7 +240,7 @@ write.csv(res_padj_ordered2,file="DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quot
 comman_genes_at_fdr0.01 <- merge(res_padj_ordered1,res_padj_ordered2, by="GeneID", suffix=c(".D4_vs_D1",".LPS_vs_D1",".LPS_vs_D4"))
 colnames(comman_genes_at_fdr0.01)[2] <- "gene_name"
 comman_genes_at_fdr0.01 <- comman_genes_at_fdr0.01[-8]
-write.csv(comman_genes_at_fdr0.01,file="DESEQ2/comman_genes_at_fdr_0.01_three_contrasts.csv",quote=FALSE, row.names = FALSE)
+write.csv(comman_genes_at_fdr0.01,file="comman_genes_at_fdr_0.01_three_contrasts.csv",quote=FALSE, row.names = FALSE)
 
 #volcano plot
 #remove rows if padj is NA
@@ -271,7 +277,7 @@ dev.off()
 library(eulerr)
 #Venn Diagram 
 
-pdf("DESEQ2/VennDiagram_at_fdr0.01.pdf", width=10, height=3)
+pdf("VennDiagram_at_fdr0.01.pdf", width=10, height=3)
 D1_D4 <- res_padj_ordered1
 D1_LPS <- res_padj_ordered2
 
@@ -309,7 +315,7 @@ dev.off()
 
 library(ggtree)
 #plot count top 10 differntially expressed genes for D4 vs D1
-pdf("DESEQ2/count_plot_D1_D4.pdf", height=20, width=15)
+pdf("count_plot_D1_D4.pdf", height=20, width=15)
 #select top 10 genes on lowest fdr
 gene_ids = head(res_padj_ordered1$GeneID, 10)
 myplots <- list()  # new empty list
@@ -332,7 +338,7 @@ dev.off()
 
 
 
-pdf("DESEQ2/count_plot_D1_LPS.pdf", height=20, width=15)
+pdf("count_plot_D1_LPS.pdf", height=20, width=15)
 gene_ids = head(res_padj_ordered2$GeneID, 10)
 myplots <- list()  # new empty list
 for (gene in gene_ids)
@@ -367,10 +373,10 @@ log2.norm.counts <- cbind(GeneID=rownames(log2.norm.counts), log2.norm.counts)
 
 D1_D4_with_norm_counts <- merge(D1_D4,log2.norm.counts, by="GeneID")
 colnames(D1_D4_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
-write.csv(D1_D4_with_norm_counts,file="DESEQ2/D1_D4_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
+write.csv(D1_D4_with_norm_counts,file="D1_D4_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
 
 #D1 vs LPS
 D1_LPS_with_norm_counts <- merge(D1_LPS,log2.norm.counts, by="GeneID")
 colnames(D1_LPS_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
-write.csv(D1_LPS_with_norm_counts,file="DESEQ2/D1_LPS_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
+write.csv(D1_LPS_with_norm_counts,file="D1_LPS_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
 
