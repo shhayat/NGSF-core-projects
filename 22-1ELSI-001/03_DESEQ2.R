@@ -109,15 +109,17 @@ boxplot(log10(assays(dds_wald)[["cooks"]]), range=0, las=2)
 
 #MA plot to see most significant genes
 pdf("MAplot.pdf")
-plotMA(resLFC_shrunken_D1_D4, ylim=c(-4,4))
-plotMA(resLFC_shrunken_D1_LPS, ylim=c(-4,4))
+plotMA(res_D4_vs_D1, ylim=c(-4,4))
+plotMA(res_LPS_vs_D1, ylim=c(-4,4))
+plotMA(res_LPS_vs_D4, ylim=c(-4,4))
+
 dev.off()
 
 #summary(res)
 
 #D1 and D4
 #All significant at pvalue 0.05
-resDF <- data.frame(GeneID=rownames(resLFC_shrunken_D1_D4),resLFC_shrunken_D1_D4)
+resDF <- data.frame(GeneID=rownames(res_D4_vs_D1),res_D4_vs_D1)
 resDF <- merge(feature_annotation,resDF, by="GeneID")
 
 resDF1 <- resDF[resDF$pvalue <= 0.05,]
@@ -164,7 +166,7 @@ dev.off()
   
 #D1 and LPS
 #All significant at pvalue 0.05
-resDF <- data.frame(GeneID=rownames(resLFC_shrunken_D1_LPS),resLFC_shrunken_D1_LPS)
+resDF <- data.frame(GeneID=rownames(res_LPS_vs_D1),res_LPS_vs_D1)
 resDF <- merge(feature_annotation,resDF, by="GeneID")
 
 resDF1 <- resDF[resDF$pvalue <= 0.05,]
@@ -180,11 +182,6 @@ res_padj_ordered2 <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ]
 
 write.csv(res_padj_ordered2,file="DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
-#comman genes between two contrasts
-comman_genes_at_fdr0.01 <- merge(res_padj_ordered1,res_padj_ordered2, by="GeneID", suffix=c(".D4_vs_D1",".LPS_vs_D1"))
-colnames(comman_genes_at_fdr0.01)[2] <- "gene_name"
-comman_genes_at_fdr0.01 <- comman_genes_at_fdr0.01[-8]
-write.csv(comman_genes_at_fdr0.01,file="DESEQ2/comman_genes_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 #volcano plot
 #remove rows if padj is NA
@@ -213,6 +210,62 @@ p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, 
 p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
 print(p2)
 dev.off()
+
+
+#D4 and LPS
+#All significant at pvalue 0.05
+resDF <- data.frame(GeneID=rownames(res_LPS_vs_D4),res_LPS_vs_D4)
+resDF <- merge(feature_annotation,resDF, by="GeneID")
+
+resDF1 <- resDF[resDF$pvalue <= 0.05,]
+res_pval_ordered <- resDF1[order(resDF1$pvalue),]
+res_pval_ordered <- res_pval_ordered[rowSums(is.na(res_pval_ordered)) == 0, ] 
+
+write.csv(res_pval_ordered,file="DESEQ2/DESEQ2_res_D1_LPS_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
+
+#All significant at FDR 0.01
+resDF2 <- resDF[resDF$padj <= 0.01,]
+res_padj_ordered <- resDF2[order(resDF2$padj),]
+res_padj_ordered2 <- res_padj_ordered[rowSums(is.na(res_padj_ordered)) == 0, ] 
+
+write.csv(res_padj_ordered2,file="DESEQ2/DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
+
+#comman genes between three contrasts
+comman_genes_at_fdr0.01 <- merge(res_padj_ordered1,res_padj_ordered2, by="GeneID", suffix=c(".D4_vs_D1",".LPS_vs_D1",".LPS_vs_D4"))
+colnames(comman_genes_at_fdr0.01)[2] <- "gene_name"
+comman_genes_at_fdr0.01 <- comman_genes_at_fdr0.01[-8]
+write.csv(comman_genes_at_fdr0.01,file="DESEQ2/comman_genes_at_fdr_0.01_three_contrasts.csv",quote=FALSE, row.names = FALSE)
+
+#volcano plot
+#remove rows if padj is NA
+d4lps_df <- res_padj_ordered[!is.na(res_padj_ordered$padj), ]
+#assign up and down regulation and non signif based on log2fc
+d4lps_df$direction <- ifelse(as.numeric(d4lps_df$log2FoldChange) < -4, "down_regulated", 
+                                 ifelse(as.numeric(d4lps_df$log2FoldChange) > 4, "up_regulated", "signif" ))
+
+pdf("D4_LPS_Volcano_plot_padj0.01_and_log2FC_4.pdf")
+p <- ggplot(d4lps_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+  geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
+  scale_color_manual(values=c("blue", "gray", "red")) +
+  theme(axis.text.x = element_text(size=11),
+        axis.text.y = element_text(size=11),
+        text = element_text(size=11)) +
+  xlab("log2(FC)") +
+  ylab("-log10(FDR)") 
+
+#order up and down on lowest adj pvalue
+up <- d1lps_df[d1lps_df$direction == "up_regulated",]
+up_ordered <- up[order(up$padj),]
+down <- d1lps_df[d1lps_df$direction == "down_regulated",]
+down_ordered <- down[order(down$padj),]
+
+p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+print(p2)
+dev.off()
+
+
+
 
 
 library(eulerr)
