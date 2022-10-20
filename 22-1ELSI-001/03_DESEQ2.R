@@ -46,15 +46,15 @@ f6 <- feature_count %>%
 
 feature_count3 <- rbind(f1,f2,f3,f4,f5,f6)         
 #creating SAMPLE INFORMATION VARIABLE with group definition
-sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count3))),
-                      sample_type=dput(as.character(names(feature_count3))),
+sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count3)))[3:17],
+                      sample_type=dput(as.character(names(feature_count3)))[3:17],
                       sample_group=dput(as.character(c(rep("D1",5),rep("D4",5), rep("LPS",5)))))
 
 
 
 group <- data.frame(sample_group=sampleInfo$sample_group)
 
-dds <- DESeqDataSetFromMatrix(countData=feature_count3,
+dds <- DESeqDataSetFromMatrix(countData=feature_count3[3:!7],
                               colData=group,
                               design=~sample_group)
 
