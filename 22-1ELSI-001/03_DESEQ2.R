@@ -327,7 +327,7 @@ myplots <- list()  # new empty list
 for (gene in gene_ids)
 {
   d <- plotCounts(dds_wald, gene= gene, 
-                  intgroup="sample_group", returnData=TRUE,returnData=TRUE,normalized=FALSE,transform=FALSE)
+                  intgroup="sample_group",returnData=TRUE,normalized=FALSE,transform=FALSE)
 
   p <- ggplot(d, aes(x=sample_group, y=count)) + 
     geom_point(position=position_jitter(w=0.1,h=0)) +
@@ -348,7 +348,7 @@ myplots <- list()  # new empty list
 for (gene in gene_ids)
 {
   d <- plotCounts(dds_wald, gene= gene, 
-                  intgroup="sample_group", returnData=TRUE,returnData=TRUE)
+                  intgroup="sample_group", returnData=TRUE)
 
   p <- ggplot(d, aes(x=sample_group, y=count)) + 
     geom_point(position=position_jitter(w=0.1,h=0)) +
