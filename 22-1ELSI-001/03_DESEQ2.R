@@ -75,6 +75,12 @@ dev.off()
 
 dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
 
+res_D4_vs_D1 <- results(dds_wald, contrast=c("sample_group","D4","D1" ))
+res_LPS_vs_D1 <- results(dds_wald, contrast=c("sample_group","LPS","D1" ))
+res_LPS_vs_D4 <- results(dds_wald, contrast=c("sample_group","LPS","D4" ))
+
+
+
 #########
 #BOX PLOT
 #########
@@ -85,8 +91,12 @@ boxplot(log10(assays(dds_wald)[["cooks"]]), range=0, las=2)
 #resLFC_shrunken_D1_D4 <- lfcShrink(dds_wald, contrast=c("sample_group","D4","D1"), type="normal")
 #resLFC_shrunken_D1_LPS <- lfcShrink(dds_wald, contrast=c("sample_group","LPS","D1"),  type="normal")
 
-resLFC_shrunken_D1_D4 <- lfcShrink(dds_wald, coef=2, type="apeglm")
-resLFC_shrunken_D1_LPS <- lfcShrink(dds_wald, coef=3,  type="apeglm")
+#resultsNames(dds_wald)
+#[1] "Intercept"              "sample_group_D4_vs_D1"  "sample_group_LPS_vs_D1"
+#resLFC_shrunken_D1_D4 <- lfcShrink(dds_wald, coef="sample_group_D4_vs_D1", type="apeglm")
+#resLFC_shrunken_D1_LPS <- lfcShrink(dds_wald, coef="sample_group_LPS_vs_D1",  type="apeglm")
+#resLFC_shrunken_LPS_D4 <- lfcShrink(dds_wald, coef=c("sample_group","LPS","D4"),  type="apeglm")
+
 
 #Differential Expression Analysis for 2 groups with pvalue less than 0.05
 #res_D1_D4 <- results(dds_wald  , contrast=c("sample_group","D1","D4"), alpha=0.05)
@@ -94,8 +104,8 @@ resLFC_shrunken_D1_LPS <- lfcShrink(dds_wald, coef=3,  type="apeglm")
 
 
 #Summary of results
-summary(resLFC_shrunken_D1_D4, alpha=0.01)
-summary(resLFC_shrunken_D1_LPS, alpha=0.01)
+#summary(resLFC_shrunken_D1_D4, alpha=0.01)
+#summary(resLFC_shrunken_D1_LPS, alpha=0.01)
 
 #MA plot to see most significant genes
 pdf("MAplot.pdf")
