@@ -326,8 +326,8 @@ D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
 log2FC1 <- D1_LPS$log2FoldChange
 D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
 
-D1_D4_df <- rbind(D1_D4[D1_D4$Fold_Change >= 10,], D1_D4[D1_D4$Fold_Change <= -10,])
-D1_LPS_df <- rbind(D1_LPS[D1_LPS$Fold_Change >= 10,], D1_LPS[D1_LPS$Fold_Change <= -10,])                          
+D1_D4_df <- rbind(D1_D4[D1_D4$Fold_Change >= 10,]$GeneID, D1_D4[D1_D4$Fold_Change <= -10,]$GeneID)
+D1_LPS_df <- rbind(D1_LPS[D1_LPS$Fold_Change >= 10,]$GeneID, D1_LPS[D1_LPS$Fold_Change <= -10,]$GeneID)                          
                                   
 s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df)
 
@@ -349,9 +349,9 @@ D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
 log2FC1 <- D4_LPS$log2FoldChange
 D4_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
                                   
-D1_D4_df <- rbind(D1_D4[D1_D4$Fold_Change >= 10,], D1_D4[D1_D4$Fold_Change <= -10,])
-D1_LPS_df <- rbind(D1_LPS[D1_LPS$Fold_Change >= 10,], D1_LPS[D1_LPS$Fold_Change <= -10,])                          
-D4_LPS_df <- rbind(D4_LPS[D4_LPS$Fold_Change >= 10,], D4_LPS[D4_LPS$Fold_Change <= -10,])  
+D1_D4_df <- rbind(D1_D4[D1_D4$Fold_Change >= 10,]$GeneID, D1_D4[D1_D4$Fold_Change <= -10,]$GeneID)
+D1_LPS_df <- rbind(D1_LPS[D1_LPS$Fold_Change >= 10,]$GeneID, D1_LPS[D1_LPS$Fold_Change <= -10,]$GeneID)                          
+D4_LPS_df <- rbind(D4_LPS[D4_LPS$Fold_Change >= 10,]$GeneID, D4_LPS[D4_LPS$Fold_Change <= -10,]$GeneID)  
                                   
 s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df, LPS_vs_D4=D4_LPS_df)
 
