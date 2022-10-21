@@ -277,7 +277,7 @@ dev.off()
 
 library(eulerr)
 #Venn Diagram 
-
+#Venn diagram for 2 contast at fdr 0.01
 pdf("VennDiagram_at_fdr0.01.pdf", width=10, height=3)
 D1_D4 <- res_padj_ordered1
 D1_LPS <- res_padj_ordered2
@@ -314,7 +314,52 @@ plot(euler(s3, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('
 dev.off()
 
 
+#Venn diagram for 2 contast at fdr 0.01 and FC +/-10                                  
+pdf("VennDiagram_at_fdr0.01_and_fc10_2contrast.pdf", width=10, height=3)
+D1_D4 <- res_padj_ordered1
+D1_LPS <- res_padj_ordered2
                                   
+log2FC <- D1_D4$log2FoldChange
+D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
+
+log2FC1 <- D1_LPS$log2FoldChange
+D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+
+D1_D4_df <- rbind(D1_D4[D1_D4$Fold_Change >= 10,], D1_D4[D1_D4$Fold_Change <= -10,])
+D1_LPS_df <- ribind(D1_LPS[D1_LPS$Fold_Change >= 10,], D1_LPS[D1_LPS$Fold_Change <= -10,])                          
+                                  
+s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df)
+
+plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="FDR=0.01 AND FOLDCHANGE=10")                                 
+dev.off()
+                                  
+#Venn diagram for 3 contast at fdr 0.01 and FC +/-10                                  
+pdf("VennDiagram_at_fdr0.01_and_fc10_3contrast.pdf", width=10, height=3)
+D1_D4 <- res_padj_ordered1
+D1_LPS <- res_padj_ordered2
+D4_LPS <- res_padj_ordered3                                 
+                                  
+log2FC <- D1_D4$log2FoldChange
+D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
+
+log2FC1 <- D1_LPS$log2FoldChange
+D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+                                  
+log2FC1 <- D4_LPS$log2FoldChange
+D4_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+                                  
+D1_D4_df <- rbind(D1_D4[D1_D4$Fold_Change >= 10,], D1_D4[D1_D4$Fold_Change <= -10,])
+D1_LPS_df <- ribind(D1_LPS[D1_LPS$Fold_Change >= 10,], D1_LPS[D1_LPS$Fold_Change <= -10,])                          
+D4_LPS_df <- ribind(D4_LPS[D4_LPS$Fold_Change >= 10,], D4_LPS[D4_LPS$Fold_Change <= -10,])  
+                                  
+s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df, LPS_vs_D4=D4_LPS_df)
+
+plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2','seashell3'), .1) ,main="FDR=0.01 AND FOLDCHANGE=10")                                   
+dev.off()                                  
+                              
+###############
+#  COUNT PLOT                   
+################                              
                                   
                                   
                                   
