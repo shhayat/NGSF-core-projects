@@ -451,29 +451,38 @@ multiplot(plotlist = myplots, ncol = 2)
 
 dev.off()
                                   
+#Get normalized count (used for plot count) for differentially expressed genes at fdr 0.01                                  
+D1_D4 <- res_padj_ordered1
+D1_LPS <- res_padj_ordered2
+D4_LPS <- res_padj_ordered3
                                   
-                                  
+get_normalized_counts <- function(df,contrast) {
+  gene_ids = df$GeneID
+  for (gene in gene_ids)
+  {
+    normalized_count <- plotCounts(dds_wald, gene= gene, intgroup="sample_group", returnData=TRUE)
+    normalized_count <- as.numeric(t(normalized_count)[1,])
+    normalized_count1 <- c(gene,normalized_count)
+write.table(rbind(normalized_count1), file=paste(contrast,"_with_norm_counts_at_fdr0.01.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE,col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv")))
+  }
+}
+get_normalized_counts(D1_D4,"D1_D4")  
+get_normalized_counts(D1_LPS,"D1_LPS")                                  
+get_normalized_counts(D4_LPS,"D4_LPS")                                  
 
+                                  
+                                  
+                                  
 #Get normalized count for differentially expressed genes at fdr 0.01
-select <- order(rowMeans(counts(dds_wald,normalized=TRUE)),decreasing=FALSE)[1:nrow(counts(dds_wald))]
-nt <- normTransform(dds_wald,pc=0)
-log2.norm.counts <- assay(nt)[select,]
-log2.norm.counts<- as.data.frame(log2.norm.counts)
-log2.norm.counts <- cbind(GeneID=rownames(log2.norm.counts), log2.norm.counts)
+#select <- order(rowMeans(counts(dds_wald,normalized=TRUE)),decreasing=FALSE)[1:nrow(counts(dds_wald))]
+#nt <- normTransform(dds_wald)
+#log2.norm.counts <- assay(nt)[select,]
+#log2.norm.counts<- as.data.frame(log2.norm.counts)
+#log2.norm.counts <- cbind(GeneID=rownames(log2.norm.counts), log2.norm.counts)
+
 #D1 vs D4
-
-D1_D4_with_norm_counts <- merge(D1_D4,log2.norm.counts, by="GeneID")
-colnames(D1_D4_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
-write.csv(D1_D4_with_norm_counts,file="D1_D4_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
-
-#D1 vs LPS
-D1_LPS_with_norm_counts <- merge(D1_LPS,log2.norm.counts, by="GeneID")
-colnames(D1_LPS_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
-write.csv(D1_LPS_with_norm_counts,file="D1_LPS_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
-
-#D4 vs LPS
-D4_LPS_with_norm_counts <- merge(D4_LPS,log2.norm.counts, by="GeneID")
-colnames(D4_LPS_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
-write.csv(D4_LPS_with_norm_counts,file="D4_LPS_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
-                                  
+#D1_D4_with_norm_counts <- merge(D1_D4,log2.norm.counts, by="GeneID")
+#colnames(D1_D4_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+#write.csv(D1_D4_with_norm_counts,file="D1_D4_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
+                            
 
