@@ -144,7 +144,7 @@ write.csv(res_padj_ordered1,file="DESEQ2_res_D1_D4_at_fdr_0.01.csv",quote=FALSE,
 
 #volcano plot
 #remove rows if padj is NA
-d1d4_df <- res_padj_ordered[!is.na(res_padj_ordered$padj), ]
+d1d4_df <- res_padj_ordered1[!is.na(res_padj_ordered1$padj), ]
 #assign up and down regulation and non signif based on log2fc
 d1d4_df$direction <- ifelse(as.numeric(d1d4_df$log2FoldChange) < -4, "down_regulated", 
                                    ifelse(as.numeric(d1d4_df$log2FoldChange) > 4, "up_regulated", "signif" ))
@@ -190,7 +190,7 @@ write.csv(res_padj_ordered2,file="DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE
 
 #volcano plot
 #remove rows if padj is NA
-d1lps_df <- res_padj_ordered[!is.na(res_padj_ordered$padj), ]
+d1lps_df <- res_padj_ordered2[!is.na(res_padj_ordered2$padj), ]
 #assign up and down regulation and non signif based on log2fc
 d1lps_df$direction <- ifelse(as.numeric(d1lps_df$log2FoldChange) < -4, "down_regulated", 
                                  ifelse(as.numeric(d1lps_df$log2FoldChange) > 4, "up_regulated", "signif" ))
@@ -538,17 +538,33 @@ f3 <- feature_count[11:15] %>%
                                                         
 D1 <- rownames(f1)
 D4 <- rownames(f2)
-LPS <-  rownames(f3)                                
-  
-venn.diagram(
-  x <- list(D1=D1,D4=D4,LPS=LPS),
-  filename = 'VennDiagram_based_on_rawdata.png',
-  category.names = c("D1","D4","LPS"),
-  output=TRUE,
+LPS <- rownames(f3)                                
+ 
+
+display_venn <- function(x, ...){
+  library(VennDiagram)
+  grid.newpage()
+  venn_object <- venn.diagram(x, filename = NULL, ...)
+  grid.draw(venn_object)
+}                                  
+                                  
+pdf("VennDiagram_based_on_rawdata.pdf")                                  
+  display_venn(
+      list(D1=D1,D4=D4,LPS=LPS),
+      category.names = c("D1" , "D4" , "LPS"),
+      fill = c("#999999", "#E69F00", "#56B4E9")
+  )                                 
+dev.off()
+                                  
+ #venn.diagram(
+ # x <- list(D1=D1,D4=D4,LPS=LPS),
+ # filename = 'VennDiagram_based_on_rawdata.tiff',
+ # category.names = c("D1","D4","LPS"),
+ # output=TRUE,
   # Circles
-  lwd = 2,
-  lty = 'blank',
-  fill = myCol)   
+#  lwd = 2,
+#  lty = 'blank',
+#  fill = myCol)   
                                   
                                   
 #Get normalized count for differentially expressed genes at fdr 0.01
