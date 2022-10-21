@@ -475,7 +475,10 @@ get_normalized_counts(D4_LPS,"D4_LPS")
 
                                   
 
-library(eulerr)
+library(VennDiagram)
+library(RColorBrewer)
+
+myCol <- brewer.pal(3, "Pastel2")
 #venn diagram on raw data (three conditions)
 #keep gene if any of the condition has value for any 1 sample
 f1 <- feature_count[1:5] %>% 
@@ -486,19 +489,20 @@ f2 <- feature_count[6:10] %>%
  
 f3 <- feature_count[11:15] %>% 
   filter(if_any(c(1:5), ~ . >=1))                                 
-                                                         
-pdf("VennDiagram_based_on_rawdata.pdf", width=10, height=3)
+                                                        
 D1 <- rownames(f1)
 D4 <- rownames(f2)
 LPS <-  rownames(f3)                                
-
-s1 <- list(D1 = D1,
-           D4 = D4,
-           LPS=LPS)
-##Total genes common between three conditions
-plot(euler(s1, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2', 'lightcyan'), .1))
-dev.off()                                 
-                                  
+  
+venn.diagram(
+  x <- list(D1=D1,D4=D4,LPS=LPS),
+  filename = 'VennDiagram_based_on_rawdata.png',
+  category.names = c("D1","D4","LPS"),
+  output=TRUE,
+  # Circles
+  lwd = 2,
+  lty = 'blank',
+  fill = myCol)   
                                   
                                   
 #Get normalized count for differentially expressed genes at fdr 0.01
@@ -512,5 +516,5 @@ dev.off()
 #D1_D4_with_norm_counts <- merge(D1_D4,log2.norm.counts, by="GeneID")
 #colnames(D1_D4_with_norm_counts)[8:22] <- c("E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
 #write.csv(D1_D4_with_norm_counts,file="D1_D4_with_norm_counts_at_fdr0.01.csv",quote=FALSE, row.names = FALSE)
-                            
+               
 
