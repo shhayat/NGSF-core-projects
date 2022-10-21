@@ -460,16 +460,44 @@ get_normalized_counts <- function(df,contrast) {
   gene_ids = df$GeneID
   for (gene in gene_ids)
   {
-    normalized_count <- plotCounts(dds_wald, gene= gene, intgroup="sample_group", returnData=TRUE)
+    normalized_count <- plotCounts(dds_wald, gene=gene, intgroup="sample_group", returnData=TRUE)
     normalized_count <- as.numeric(t(normalized_count)[1,])
     normalized_count1 <- c(gene,normalized_count)
-write.table(rbind(normalized_count1), file=paste(contrast,"_with_norm_counts_at_fdr0.01.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE,col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv")))
+    normalized_count1 <- t(normalized_count1)
+    colnames(normalized_count1) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+    normalized_count2 <- merge(df[1:2],normalized_count1, by="GeneID")
+    write.table(normalized_count2, file=paste(contrast,"_with_norm_counts_at_fdr0.01.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE,col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv")))
   }
 }
 get_normalized_counts(D1_D4,"D1_D4")  
 get_normalized_counts(D1_LPS,"D1_LPS")                                  
 get_normalized_counts(D4_LPS,"D4_LPS")                                  
 
+                                  
+
+library(eulerr)
+#venn diagram on raw data (three conditions)
+#keep gene if any of the condition has value for any 1 sample
+f1 <- feature_count[1:5] %>% 
+  filter(if_any(c(1:5), ~ . >=1))
+
+f2 <- feature_count[6:10] %>% 
+  filter(if_any(c(1:5), ~ . >=1))
+ 
+f3 <- feature_count[11:15] %>% 
+  filter(if_any(c(1:5), ~ . >=1))                                 
+                                                         
+pdf("VennDiagram_based_on_rawdata.pdf", width=10, height=3)
+D1 <- rownames(f1)
+D4 <- rownames(f2)
+LPS <-  rownames(f3)                                
+
+s1 <- list(D1 = D1,
+           D4 = D4,
+           LPS=LPS)
+##Total genes common between three conditions
+plot(euler(s1, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2', 'lightcyan'), .1))
+dev.off()                                 
                                   
                                   
                                   
