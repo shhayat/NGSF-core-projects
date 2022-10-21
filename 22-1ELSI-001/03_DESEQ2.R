@@ -273,12 +273,13 @@ p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=
 print(p2)
 dev.off()
 
+###############
+ #Venn Diagram                                 
+###############                                
 
-
-library(eulerr)
-#Venn Diagram 
+library(eulerr) 
 #Venn diagram for 2 contast at fdr 0.01
-pdf("VennDiagram_at_fdr0.01.pdf", width=10, height=3)
+pdf("VennDiagram_at_fdr0.01_2contrast.pdf", width=10, height=3)
 D1_D4 <- res_padj_ordered1
 D1_LPS <- res_padj_ordered2
 
@@ -326,7 +327,7 @@ log2FC1 <- D1_LPS$log2FoldChange
 D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
 
 D1_D4_df <- rbind(D1_D4[D1_D4$Fold_Change >= 10,], D1_D4[D1_D4$Fold_Change <= -10,])
-D1_LPS_df <- ribind(D1_LPS[D1_LPS$Fold_Change >= 10,], D1_LPS[D1_LPS$Fold_Change <= -10,])                          
+D1_LPS_df <- rbind(D1_LPS[D1_LPS$Fold_Change >= 10,], D1_LPS[D1_LPS$Fold_Change <= -10,])                          
                                   
 s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df)
 
@@ -349,8 +350,8 @@ log2FC1 <- D4_LPS$log2FoldChange
 D4_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
                                   
 D1_D4_df <- rbind(D1_D4[D1_D4$Fold_Change >= 10,], D1_D4[D1_D4$Fold_Change <= -10,])
-D1_LPS_df <- ribind(D1_LPS[D1_LPS$Fold_Change >= 10,], D1_LPS[D1_LPS$Fold_Change <= -10,])                          
-D4_LPS_df <- ribind(D4_LPS[D4_LPS$Fold_Change >= 10,], D4_LPS[D4_LPS$Fold_Change <= -10,])  
+D1_LPS_df <- rbind(D1_LPS[D1_LPS$Fold_Change >= 10,], D1_LPS[D1_LPS$Fold_Change <= -10,])                          
+D4_LPS_df <- rbind(D4_LPS[D4_LPS$Fold_Change >= 10,], D4_LPS[D4_LPS$Fold_Change <= -10,])  
                                   
 s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df, LPS_vs_D4=D4_LPS_df)
 
