@@ -331,7 +331,7 @@ D1_LPS_df <- c(D1_LPS[D1_LPS$Fold_Change >= 10,]$GeneID, D1_LPS[D1_LPS$Fold_Chan
                                   
 s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df)
 
-plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="FDR=0.01 AND FOLDCHANGE=10")                                 
+plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="FDR=0.01 AND FOLDCHANGE +/-10")                                 
 dev.off()
                                   
 #Venn diagram for 3 contast at fdr 0.01 and FC +/-10                                  
@@ -355,7 +355,7 @@ D4_LPS_df <- c(D4_LPS[D4_LPS$Fold_Change >= 10,]$GeneID, D4_LPS[D4_LPS$Fold_Chan
                                   
 s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df, LPS_vs_D4=D4_LPS_df)
 
-plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2','seashell3'), .1) ,main="FDR=0.01 AND FOLDCHANGE=10")                                   
+plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2','seashell3'), .1) ,main="FDR=0.01 AND FOLDCHANGE +/-10")                                   
 dev.off()                                  
                               
 ###############
