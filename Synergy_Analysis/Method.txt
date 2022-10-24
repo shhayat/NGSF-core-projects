@@ -1,1 +1,5 @@
+Synergy Analysis was performed using Bioconductor R package synergyfinder (version 3.2.10). 
 
+
+Reference
+Zheng,S., Wang,W., Aldahdooh,J., Malyutina,A., Shadbahr,T., Pessia, A.Tanoli.Z and Tang,J. (2022) SynergyFinder Plus: Toward Better Interpretation and Annotation of Drug Combination Screening Datasets. Genomics, Proteomics & Bioinformatics.
