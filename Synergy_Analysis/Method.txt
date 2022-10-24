@@ -1,4 +1,4 @@
-Synergy Analysis was performed using Bioconductor R package synergyfinder (version 3.2.10). Zero Interaction Potency (ZIP) synergy scoring model was used for quantifying the degree of drug combiantion synergy. Dose response heatmaps and ZIP synergy score maps were generated using default parameters.
+Synergy Analysis was performed using synergyfinder (version 3.2.10) package in R (version 4.1.1). Zero Interaction Potency (ZIP) synergy scoring model was used for quantifying the degree of drug combiantion synergy. Dose response heatmaps and ZIP synergy score maps were generated. 
 
 
 Reference
