@@ -1,4 +1,4 @@
-Synergy Analysis was performed using synergyfinder (version 3.2.10) package in R (version 4.1.1). Zero Interaction Potency (ZIP) synergy scoring model was used for quantifying the degree of drug combiantion synergy. Dose response heatmaps and ZIP synergy score maps were generated. 
+Synergy Analysis was performed using SynergyFinder (version 3.2.10) package in R (version 4.1.1). The package adjusted the data to % viability of cell before calculating synergy scores. Zero Interaction Potency (ZIP) synergy scoring model was used for quantifying the degree of drug combination synergy. The dose response heatmaps and ZIP synergy score maps were generated using the functions available under SynergyFinder software.
 
 
 Reference
