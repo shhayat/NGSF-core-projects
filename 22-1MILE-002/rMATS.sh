@@ -12,6 +12,8 @@
 #For fixing this issue conda env "rMATS" was created 
 #./globalhome/hxo752/HPC/anaconda3/condabin/conda create -n rMATS -c bioconda rMATS then go to path /globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin and run commands
 
+module load star
+
 rmat=/globalhome/hxo752/HPC/anaconda3/envs/rMATS/bin
 index=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/star-index
 GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
@@ -36,9 +38,9 @@ NCPU=10
 #                        --tmp ${DIR}/rmat_analysis_with_bam/tmp
 
 module load star/2.7.9a
-mkdir -p ${DIR}/rmat_analysis_with_fastq/tmp
-${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_fastq_files.txt \
-                       --s2 $DIR/group22_fastq_files.txt \
+mkdir -p ${DIR}/rmat_analysis_with_fastq_dropR102/tmp
+${rmat}/python ${rmat}/rmats.py --s1 $DIR/group1_fastq_files.txt \
+                      --s2 $DIR/group2_fastq_files.txt \
                         --gtf ${GTF} \
                         --bi ${index} \
                         -t paired \
@@ -46,4 +48,3 @@ ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_fastq_files.txt \
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis_with_fastq \
                         --tmp ${DIR}/rmat_analysis_with_fastq/tmp
-                        
