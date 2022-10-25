@@ -1,0 +1,6 @@
+/datastore/NGSF001/projects/22-1MILE-001/D2200001/D2200001_R1_umi.fastq.gz
+/datastore/NGSF001/projects/22-1MILE-001/D2200003/
+/datastore/NGSF001/projects/22-1MILE-001/D2200005/
+/datastore/NGSF001/projects/22-1MILE-001/D2200007/
+/datastore/NGSF001/projects/22-1MILE-001/D2200009/
+
