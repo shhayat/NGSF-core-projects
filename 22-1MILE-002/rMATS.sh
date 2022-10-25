@@ -37,8 +37,8 @@ NCPU=10
 
 module load star/2.7.9a
 mkdir -p ${DIR}/rmat_analysis_with_fastq/tmp
-${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_bam_files.txt \
-                       --s2 $DIR/group22_bam_files.txt \
+${rmat}/python ${rmat}/rmats.py --s1 $DIR/group11_fastq_files.txt \
+                       --s2 $DIR/group22_fastq_files.txt \
                         --gtf ${GTF} \
                         --bi ${index} \
                         -t paired \
