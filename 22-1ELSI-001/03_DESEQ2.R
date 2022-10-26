@@ -76,10 +76,10 @@ p
 dev.off()
 
 pdf("PCA_for_3_groups_without_labels.pdf")
-  rld <-rlog(dds,blind=FALSE)
+  #rld <-rlog(dds,blind=FALSE)
   nudge <- position_nudge(y = 0.5)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
-  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.4)
+  #p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.4)
 p
 dev.off()
 
@@ -119,10 +119,9 @@ boxplot(log10(assays(dds_wald)[["cooks"]]), range=0, las=2)
 
 #MA plot to see most significant genes
 pdf("MAplot.pdf")
-plotMA(res_D4_vs_D1, ylim=c(-4,4))
-plotMA(res_LPS_vs_D1, ylim=c(-4,4))
-plotMA(res_LPS_vs_D4, ylim=c(-4,4))
-
+plotMA(res_D4_vs_D1, ylim=c(-2,2))
+plotMA(res_LPS_vs_D1, ylim=c(-2,2))
+plotMA(res_LPS_vs_D4, ylim=c(-2,2))
 dev.off()
 
 #summary(res)
@@ -131,94 +130,104 @@ dev.off()
 #All significant at pvalue 0.05
 resDF <- data.frame(GeneID=rownames(res_D4_vs_D1),res_D4_vs_D1)
 resDF <- merge(feature_annotation,resDF, by="GeneID")
-
-resDF1 <- resDF[resDF$pvalue <= 0.05,]
-res_pval_ordered <- resDF1[order(resDF1$pvalue),]
-
-write.csv(res_pval_ordered,file="DESEQ2_res_D1_D4_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
-
-#All significant at FDR 0.01
-resDF2 <- resDF[resDF$padj <= 0.01,]
-res_padj_ordered1 <- resDF2[order(resDF2$padj),]
 #remove rows with all NAs
-res_padj_ordered1 <- res_padj_ordered1[rowSums(is.na(res_padj_ordered1)) != ncol(res_padj_ordered1), ]
+resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
+#order on FD
+resDF1 <- resDF1[order(resDF1$padj),]
+log2FC1 <- resDF1$log2FoldChange
+resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+write.csv(resDF1,file="DESEQ2_res_D1_D4_all_genes.csv",quote=FALSE, row.names = FALSE)
 
-write.csv(res_padj_ordered1,file="DESEQ2_res_D1_D4_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
+#resDF1 <- resDF[resDF$pvalue <= 0.05,]
+#res_pval_ordered <- resDF1[order(resDF1$pvalue),]
+#write.csv(res_pval_ordered,file="DESEQ2_res_D1_D4_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
+#All significant at FDR 0.01
+#resDF2 <- resDF[resDF$padj <= 0.01,]
+#res_padj_ordered1 <- resDF2[order(resDF2$padj),]
+#remove rows with all NAs
+#res_padj_ordered1 <- res_padj_ordered1[rowSums(is.na(res_padj_ordered1)) != ncol(res_padj_ordered1), ]
 
 
 #volcano plot
 #remove rows if padj is NA
-d1d4_df <- res_padj_ordered1[!is.na(res_padj_ordered1$padj), ]
-#assign up and down regulation and non signif based on log2fc
-d1d4_df$direction <- ifelse(as.numeric(d1d4_df$log2FoldChange) < -4, "down_regulated", 
-                                   ifelse(as.numeric(d1d4_df$log2FoldChange) > 4, "up_regulated", "signif" ))
+#d1d4_df <- res_padj_ordered1[!is.na(res_padj_ordered1$padj), ]
+##assign up and down regulation and non signif based on log2fc
+#d1d4_df$direction <- ifelse(as.numeric(d1d4_df$log2FoldChange) < -4, "down_regulated", 
+#                                   ifelse(as.numeric(d1d4_df$log2FoldChange) > 4, "up_regulated", "signif" ))
   
-pdf("D1_D4_Volcano_plot_padj0.01_and_log2FC_4.pdf")
-  p <- ggplot(d1d4_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
-    geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
-    scale_color_manual(values=c("blue", "gray", "red")) +
-    theme(axis.text.x = element_text(size=11),
-          axis.text.y = element_text(size=11),
-          text = element_text(size=11)) +
-    xlab("log2(FC)") +
-    ylab("-log10(FDR)") 
+#pdf("D1_D4_Volcano_plot_padj0.01_and_log2FC_4.pdf")
+#  p <- ggplot(d1d4_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+#    geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
+#    scale_color_manual(values=c("blue", "gray", "red")) +
+#    theme(axis.text.x = element_text(size=11),
+#          axis.text.y = element_text(size=11),
+#          text = element_text(size=11)) +
+#    xlab("log2(FC)") +
+#    ylab("-log10(FDR)") 
 
   #order up and down on lowest adj pvalue
-  up <- d1d4_df[d1d4_df$direction == "up_regulated",]
-  up_ordered <- up[order(up$padj),]
-  down <- d1d4_df[d1d4_df$direction == "down_regulated",]
-  down_ordered <- down[order(down$padj),]
+#  up <- d1d4_df[d1d4_df$direction == "up_regulated",]
+#  up_ordered <- up[order(up$padj),]
+#  down <- d1d4_df[d1d4_df$direction == "down_regulated",]
+#  down_ordered <- down[order(down$padj),]
   
-  p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
-  p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
-  print(p2)
-dev.off()
+#  p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+#  p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+#  print(p2)
+#dev.off()
   
 #D1 and LPS
 #All significant at pvalue 0.05
 resDF <- data.frame(GeneID=rownames(res_LPS_vs_D1),res_LPS_vs_D1)
 resDF <- merge(feature_annotation,resDF, by="GeneID")
+#remove rows with all NAs
+resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
+#order on FD
+resDF2 <- resDF1[order(resDF1$padj),]
+log2FC1 <- resDF2$log2FoldChange
+resDF2$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+write.csv(resDF2,file="DESEQ2_res_D1_LPS_all_genes.csv",quote=FALSE, row.names = FALSE)
 
-resDF1 <- resDF[resDF$pvalue <= 0.05,]
-res_pval_ordered <- resDF1[order(resDF1$pvalue),]
-write.csv(res_pval_ordered,file="DESEQ2_res_D1_LPS_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
+
+#resDF1 <- resDF[resDF$pvalue <= 0.05,]
+#res_pval_ordered <- resDF1[order(resDF1$pvalue),]
+#write.csv(res_pval_ordered,file="DESEQ2_res_D1_LPS_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
 
 #All significant at FDR 0.01
-resDF2 <- resDF[resDF$padj <= 0.01,]
-res_padj_ordered2 <- resDF2[order(resDF2$padj),]
+#resDF2 <- resDF[resDF$padj <= 0.01,]
+#res_padj_ordered2 <- resDF2[order(resDF2$padj),]
 #remove rows with all NAs
-res_padj_ordered2 <- res_padj_ordered2[rowSums(is.na(res_padj_ordered2)) != ncol(res_padj_ordered2), ]
-
-write.csv(res_padj_ordered2,file="DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
+#res_padj_ordered2 <- res_padj_ordered2[rowSums(is.na(res_padj_ordered2)) != ncol(res_padj_ordered2), ]
+#write.csv(res_padj_ordered2,file="DESEQ2_res_D1_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 
 #volcano plot
 #remove rows if padj is NA
-d1lps_df <- res_padj_ordered2[!is.na(res_padj_ordered2$padj), ]
+#d1lps_df <- res_padj_ordered2[!is.na(res_padj_ordered2$padj), ]
 #assign up and down regulation and non signif based on log2fc
-d1lps_df$direction <- ifelse(as.numeric(d1lps_df$log2FoldChange) < -4, "down_regulated", 
-                                 ifelse(as.numeric(d1lps_df$log2FoldChange) > 4, "up_regulated", "signif" ))
+#d1lps_df$direction <- ifelse(as.numeric(d1lps_df$log2FoldChange) < -4, "down_regulated", 
+#                                 ifelse(as.numeric(d1lps_df$log2FoldChange) > 4, "up_regulated", "signif" ))
 
-pdf("D1_LPS_Volcano_plot_padj0.01_and_log2FC_4.pdf")
-p <- ggplot(d1lps_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
-  geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
-  scale_color_manual(values=c("blue", "gray", "red")) +
-  theme(axis.text.x = element_text(size=11),
-        axis.text.y = element_text(size=11),
-        text = element_text(size=11)) +
-  xlab("log2(FC)") +
-  ylab("-log10(FDR)") 
+#pdf("D1_LPS_Volcano_plot_padj0.01_and_log2FC_4.pdf")
+#p <- ggplot(d1lps_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+#  geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
+#  scale_color_manual(values=c("blue", "gray", "red")) +
+#  theme(axis.text.x = element_text(size=11),
+#        axis.text.y = element_text(size=11),
+#        text = element_text(size=11)) +
+#  xlab("log2(FC)") +
+#  ylab("-log10(FDR)") 
 
 #order up and down on lowest adj pvalue
-up <- d1lps_df[d1lps_df$direction == "up_regulated",]
-up_ordered <- up[order(up$padj),]
-down <- d1lps_df[d1lps_df$direction == "down_regulated",]
-down_ordered <- down[order(down$padj),]
+#up <- d1lps_df[d1lps_df$direction == "up_regulated",]
+#up_ordered <- up[order(up$padj),]
+#down <- d1lps_df[d1lps_df$direction == "down_regulated",]
+#down_ordered <- down[order(down$padj),]
 
-p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
-p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
-print(p2)
-dev.off()
+#p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+#p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+#print(p2)
+#dev.off()
 
 
 #D4 and LPS
@@ -226,148 +235,157 @@ dev.off()
 resDF <- data.frame(GeneID=rownames(res_LPS_vs_D4),res_LPS_vs_D4)
 resDF <- merge(feature_annotation,resDF, by="GeneID")
 
-resDF1 <- resDF[resDF$pvalue <= 0.05,]
-res_pval_ordered <- resDF1[order(resDF1$pvalue),]
-write.csv(res_pval_ordered,file="DESEQ2_res_D4_LPS_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
+resDF <- merge(feature_annotation,resDF, by="GeneID")
+#remove rows with all NAs
+resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
+#order on FD
+resDF3 <- resDF1[order(resDF1$padj),]
+log2FC1 <- resDF3$log2FoldChange
+resDF3$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+write.csv(resDF3,file="DESEQ2_res_D4_LPS_all_genes.csv",quote=FALSE, row.names = FALSE)
+
+
+
+#resDF1 <- resDF[resDF$pvalue <= 0.05,]
+#res_pval_ordered <- resDF1[order(resDF1$pvalue),]
+#write.csv(res_pval_ordered,file="DESEQ2_res_D4_LPS_at_pvalue_0.05.csv",quote=FALSE, row.names = FALSE)
 
 #All significant at FDR 0.01
-resDF2 <- resDF[resDF$padj <= 0.01,]
-res_padj_ordered3 <- resDF2[order(resDF2$padj),]
+#resDF2 <- resDF[resDF$padj <= 0.01,]
+#res_padj_ordered3 <- resDF2[order(resDF2$padj),]
 #remove rows with all NAs
-res_padj_ordered3 <- res_padj_ordered3[rowSums(is.na(res_padj_ordered3)) != ncol(res_padj_ordered3), ]
+#res_padj_ordered3 <- res_padj_ordered3[rowSums(is.na(res_padj_ordered3)) != ncol(res_padj_ordered3), ]
 
-write.csv(res_padj_ordered3,file="DESEQ2_res_D4_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
+#write.csv(res_padj_ordered3,file="DESEQ2_res_D4_LPS_at_fdr_0.01.csv",quote=FALSE, row.names = FALSE)
 
 #comman genes between three contrasts
-df_list <- list(res_padj_ordered1, res_padj_ordered2, res_padj_ordered3)
+#df_list <- list(res_padj_ordered1, res_padj_ordered2, res_padj_ordered3)
 
 #merge all data frames in list
-comman_genes_at_fdr0.01 <- Reduce(function(x, y) merge(x, y, by="GeneID", suffix=c(".D4_vs_D1",".LPS_vs_D1")), df_list)
+#comman_genes_at_fdr0.01 <- Reduce(function(x, y) merge(x, y, by="GeneID", suffix=c(".D4_vs_D1",".LPS_vs_D1")), df_list)
 
-colnames(comman_genes_at_fdr0.01)[2] <- "gene_name"
-comman_genes_at_fdr0.01 <- comman_genes_at_fdr0.01[c(-9,-16)]
-names(comman_genes_at_fdr0.01)[15:20] <- c("baseMean.LPS_vs_D4","log2FoldChange.LPS_vs_D4","lfcSE.LPS_vs_D4","stat.LPS_vs_D4","pvalue.LPS_vs_D4","padj.LPS_vs_D4")                                  
-write.csv(comman_genes_at_fdr0.01,file="comman_genes_at_fdr_0.01_three_contrasts.csv",quote=FALSE, row.names = FALSE)
+#colnames(comman_genes_at_fdr0.01)[2] <- "gene_name"
+#comman_genes_at_fdr0.01 <- comman_genes_at_fdr0.01[c(-9,-16)]
+#names(comman_genes_at_fdr0.01)[15:20] <- c("baseMean.LPS_vs_D4","log2FoldChange.LPS_vs_D4","lfcSE.LPS_vs_D4","stat.LPS_vs_D4","pvalue.LPS_vs_D4","padj.LPS_vs_D4")                                  
+#write.csv(comman_genes_at_fdr0.01,file="comman_genes_at_fdr_0.01_three_contrasts.csv",quote=FALSE, row.names = FALSE)
 
 #volcano plot
 #remove rows if padj is NA
-d4lps_df <- res_padj_ordered3[!is.na(res_padj_ordered3$padj), ]
+#d4lps_df <- res_padj_ordered3[!is.na(res_padj_ordered3$padj), ]
 #assign up and down regulation and non signif based on log2fc
-d4lps_df$direction <- ifelse(as.numeric(d4lps_df$log2FoldChange) < -4, "down_regulated", 
-                                 ifelse(as.numeric(d4lps_df$log2FoldChange) > 4, "up_regulated", "signif" ))
+#d4lps_df$direction <- ifelse(as.numeric(d4lps_df$log2FoldChange) < -4, "down_regulated", 
+#                                 ifelse(as.numeric(d4lps_df$log2FoldChange) > 4, "up_regulated", "signif" ))
 
-pdf("D4_LPS_Volcano_plot_padj0.01_and_log2FC_4.pdf")
-p <- ggplot(d4lps_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
-  geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
-  scale_color_manual(values=c("blue", "gray", "red")) +
-  theme(axis.text.x = element_text(size=11),
-        axis.text.y = element_text(size=11),
-        text = element_text(size=11)) +
-  xlab("log2(FC)") +
-  ylab("-log10(FDR)") 
+#pdf("D4_LPS_Volcano_plot_padj0.01_and_log2FC_4.pdf")
+#p <- ggplot(d4lps_df, aes(as.numeric(log2FoldChange), -log10(as.numeric(padj)))) +
+#  geom_point(aes(col=direction),size=0.4,show.legend = FALSE) +
+#  scale_color_manual(values=c("blue", "gray", "red")) +
+#  theme(axis.text.x = element_text(size=11),
+#        axis.text.y = element_text(size=11),
+#        text = element_text(size=11)) +
+#  xlab("log2(FC)") +
+#  ylab("-log10(FDR)") 
 
 #order up and down on lowest adj pvalue
-up <- d4lps_df[d4lps_df$direction == "up_regulated",]
-up_ordered <- up[order(up$padj),]
-down <- d4lps_df[d4lps_df$direction == "down_regulated",]
-down_ordered <- down[order(down$padj),]
+#up <- d4lps_df[d4lps_df$direction == "up_regulated",]
+#up_ordered <- up[order(up$padj),]
+#down <- d4lps_df[d4lps_df$direction == "down_regulated",]
+#down_ordered <- down[order(down$padj),]
 
-p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
-p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
-print(p2)
-dev.off()
+#p1 <- p + geom_text_repel(data=head(up_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+#p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
+#print(p2)
+#dev.off()
 
 ###############
  #Venn Diagram                                 
 ###############                                
 
-library(eulerr) 
+#library(eulerr) 
 #Venn diagram for 2 contast at fdr 0.01
-pdf("VennDiagram_at_fdr0.01_2contrast.pdf", width=10, height=3)
-D1_D4 <- res_padj_ordered1
-D1_LPS <- res_padj_ordered2
+#pdf("VennDiagram_at_fdr0.01_2contrast.pdf", width=10, height=3)
+#D1_D4 <- res_padj_ordered1
+#D1_LPS <- res_padj_ordered2
 
-s1 <- list(D4_vs_D1 = D1_D4$GeneID,
-           LPS_vs_D1 = D1_LPS$GeneID)
+#s1 <- list(D4_vs_D1 = D1_D4$GeneID,
+#           LPS_vs_D1 = D1_LPS$GeneID)
 ##Total genes common between two contrast
-plot(euler(s1, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="All genes (up and down regulated)")
+#plot(euler(s1, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="All genes (up and down regulated)")
 
-log2FC <- D1_D4$log2FoldChange
-D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
+#log2FC <- D1_D4$log2FoldChange
+#D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
 
-log2FC1 <- D1_LPS$log2FoldChange
-D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+#log2FC1 <- D1_LPS$log2FoldChange
+#D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
 
 #Up regulated Genes common between two contrast
-D1_D4_up <- D1_D4[D1_D4$Fold_Change >= 0,]$GeneID 
-D1_LPS_up <- D1_LPS[D1_LPS$Fold_Change >= 0,]$GeneID 
+#D1_D4_up <- D1_D4[D1_D4$Fold_Change >= 0,]$GeneID 
+#D1_LPS_up <- D1_LPS[D1_LPS$Fold_Change >= 0,]$GeneID 
 
-s2 <- list(D4_vs_D1 = D1_D4_up,
-           LPS_vs_D1 = D1_LPS_up)
+#s2 <- list(D4_vs_D1 = D1_D4_up,
+#           LPS_vs_D1 = D1_LPS_up)
 
-plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="Up regulated")
+#plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="Up regulated")
 
 #Down regulated genes common between two contrast
-D1_D4_down <- D1_D4[D1_D4$Fold_Change < 0,]$GeneID 
-D1_LPS_down <- D1_LPS[D1_LPS$Fold_Change < 0,]$GeneID 
+#D1_D4_down <- D1_D4[D1_D4$Fold_Change < 0,]$GeneID 
+#D1_LPS_down <- D1_LPS[D1_LPS$Fold_Change < 0,]$GeneID 
 
-s3 <- list(D4_vs_D1 = D1_D4_down,
-           LPS_vs_D1 = D1_LPS_down)
+#s3 <- list(D4_vs_D1 = D1_D4_down,
+#           LPS_vs_D1 = D1_LPS_down)
 
-plot(euler(s3, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="Down regulated")
+#plot(euler(s3, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1),main="Down regulated")
 
-dev.off()
+#dev.off()
 
 
 #Venn diagram for 2 contast at fdr 0.01 and FC +/-10                                  
-pdf("VennDiagram_at_fdr0.01_and_fc10_2contrast.pdf", width=10, height=3)
-D1_D4 <- res_padj_ordered1
-D1_LPS <- res_padj_ordered2
+#pdf("VennDiagram_at_fdr0.01_and_fc10_2contrast.pdf", width=10, height=3)
+#D1_D4 <- res_padj_ordered1
+#D1_LPS <- res_padj_ordered2
                                   
-log2FC <- D1_D4$log2FoldChange
-D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
+#log2FC <- D1_D4$log2FoldChange
+#D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
 
-log2FC1 <- D1_LPS$log2FoldChange
-D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+#log2FC1 <- D1_LPS$log2FoldChange
+#D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
 
-D1_D4_df <- c(D1_D4[D1_D4$Fold_Change >= 10,]$GeneID, D1_D4[D1_D4$Fold_Change <= -10,]$GeneID)  
-D1_LPS_df <- c(D1_LPS[D1_LPS$Fold_Change >= 10,]$GeneID, D1_LPS[D1_LPS$Fold_Change <= -10,]$GeneID)                          
+#D1_D4_df <- c(D1_D4[D1_D4$Fold_Change >= 10,]$GeneID, D1_D4[D1_D4$Fold_Change <= -10,]$GeneID)  
+#D1_LPS_df <- c(D1_LPS[D1_LPS$Fold_Change >= 10,]$GeneID, D1_LPS[D1_LPS$Fold_Change <= -10,]$GeneID)                          
                                   
-s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df)
+#s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df)
 
-plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="FDR=0.01 AND FOLDCHANGE +/-10")                                 
-dev.off()
+#plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2'), .1) ,main="FDR=0.01 AND FOLDCHANGE +/-10")                                 
+#dev.off()
                                   
 #Venn diagram for 3 contast at fdr 0.01 and FC +/-10                                  
-pdf("VennDiagram_at_fdr0.01_and_fc10_3contrast.pdf", width=10, height=3)
-D1_D4 <- res_padj_ordered1
-D1_LPS <- res_padj_ordered2
-D4_LPS <- res_padj_ordered3                                 
+#pdf("VennDiagram_at_fdr0.01_and_fc10_3contrast.pdf", width=10, height=3)
+#D1_D4 <- res_padj_ordered1
+#D1_LPS <- res_padj_ordered2
+#D4_LPS <- res_padj_ordered3                                 
                                   
-log2FC <- D1_D4$log2FoldChange
-D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
+#log2FC <- D1_D4$log2FoldChange
+#D1_D4$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
 
-log2FC1 <- D1_LPS$log2FoldChange
-D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+#log2FC1 <- D1_LPS$log2FoldChange
+#D1_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
                                   
-log2FC1 <- D4_LPS$log2FoldChange
-D4_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+#log2FC1 <- D4_LPS$log2FoldChange
+#D4_LPS$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
                                   
-D1_D4_df <- c(D1_D4[D1_D4$Fold_Change >= 10,]$GeneID, D1_D4[D1_D4$Fold_Change <= -10,]$GeneID)
-D1_LPS_df <- c(D1_LPS[D1_LPS$Fold_Change >= 10,]$GeneID, D1_LPS[D1_LPS$Fold_Change <= -10,]$GeneID)                          
-D4_LPS_df <- c(D4_LPS[D4_LPS$Fold_Change >= 10,]$GeneID, D4_LPS[D4_LPS$Fold_Change <= -10,]$GeneID)  
+#D1_D4_df <- c(D1_D4[D1_D4$Fold_Change >= 10,]$GeneID, D1_D4[D1_D4$Fold_Change <= -10,]$GeneID)
+#D1_LPS_df <- c(D1_LPS[D1_LPS$Fold_Change >= 10,]$GeneID, D1_LPS[D1_LPS$Fold_Change <= -10,]$GeneID)                          
+#D4_LPS_df <- c(D4_LPS[D4_LPS$Fold_Change >= 10,]$GeneID, D4_LPS[D4_LPS$Fold_Change <= -10,]$GeneID)  
                                   
-s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df, LPS_vs_D4=D4_LPS_df)
+#s2 <- list(D4_vs_D1 = D1_D4_df, LPS_vs_D1 = D1_LPS_df, LPS_vs_D4=D4_LPS_df)
 
-plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2','seashell3'), .1) ,main="FDR=0.01 AND FOLDCHANGE +/-10")                                   
-dev.off()                                  
+#plot(euler(s2, shape = "circle"), quantities = TRUE, fill=yarrr::transparent(c('palegreen1','salmon2','seashell3'), .1) ,main="FDR=0.01 AND FOLDCHANGE +/-10")                                   
+#dev.off()                                  
                               
 ###############
 #  COUNT PLOT                   
 ################                              
-                                  
-                                  
-                                  
+                                                                                    
 library(ggtree)
 #plot count top 10 differntially expressed genes for D4 vs D1
 pdf("count_plot_D1_D4_without_normalization.pdf", height=20, width=15)
@@ -411,30 +429,7 @@ for (gene in gene_ids)
 multiplot(plotlist = myplots, ncol = 2)
 
 dev.off()
-                                  
-
-                                  
-
-pdf("count_plot_D1_LPS_without_normalization.pdf", height=20, width=15)
-gene_ids = head(res_padj_ordered2$GeneID, 10)
-myplots <- list()  # new empty list
-for (gene in gene_ids)
-{
-  d <- plotCounts(dds_wald, gene= gene, 
-                  intgroup="sample_group", returnData=TRUE,normalized=FALSE,transform=FALSE)
-  
-  p <- ggplot(d, aes(x=sample_group, y=count)) + 
-    geom_point(position=position_jitter(w=0.1,h=0)) + 
-    ylab("Count") +
-    #scale_y_log10(breaks=c(100,1000,3000,6000)) +
-    ggtitle(paste(gene,":",res_padj_ordered2[res_padj_ordered2$GeneID==gene,]$gene_name,": FDR ",res_padj_ordered2[res_padj_ordered2$GeneID==gene,]$padj))
-  
-  myplots[[gene]] <- p 
-  
-}
-multiplot(plotlist = myplots, ncol = 2)
-
-dev.off()
+                                 
 
 pdf("count_plot_D1_LPS_with_normalization.pdf", height=20, width=15)
 gene_ids = head(res_padj_ordered2$GeneID, 10)
@@ -449,29 +444,6 @@ for (gene in gene_ids)
     ylab("Normalized Count") +
     #scale_y_log10(breaks=c(100,1000,3000,6000)) +
     ggtitle(paste(gene,":",res_padj_ordered2[res_padj_ordered2$GeneID==gene,]$gene_name,": FDR ",res_padj_ordered2[res_padj_ordered2$GeneID==gene,]$padj))
-  
-  myplots[[gene]] <- p 
-  
-}
-multiplot(plotlist = myplots, ncol = 2)
-
-dev.off()
-
-#plotCounts(dds_wald, gene="KBTBD7", intgroup="sample_group")
-
-pdf("count_plot_D4_LPS_without_normalization.pdf", height=20, width=15)
-gene_ids = head(res_padj_ordered3$GeneID, 10)
-myplots <- list()  # new empty list
-for (gene in gene_ids)
-{
-  d <- plotCounts(dds_wald, gene= gene, 
-                  intgroup="sample_group", returnData=TRUE,normalized=FALSE,transform=FALSE)
-  
-  p <- ggplot(d, aes(x=sample_group, y=count)) + 
-    geom_point(position=position_jitter(w=0.1,h=0)) + 
-    ylab("Count") +
-    #scale_y_log10(breaks=c(100,1000,3000,6000)) +
-    ggtitle(paste(gene,":",res_padj_ordered3[res_padj_ordered3$GeneID==gene,]$gene_name,": FDR ",res_padj_ordered3[res_padj_ordered3$GeneID==gene,]$padj))
   
   myplots[[gene]] <- p 
   
@@ -501,10 +473,10 @@ multiplot(plotlist = myplots, ncol = 2)
 
 dev.off()
                                   
-#Get normalized count (used for plot count) for differentially expressed genes at fdr 0.01                                  
-D1_D4 <- res_padj_ordered1
-D1_LPS <- res_padj_ordered2
-D4_LPS <- res_padj_ordered3
+#Get normalized count (used for plot count) for all genes                   
+D1_D4 <- resDF1
+D1_LPS <- resDF2
+D4_LPS <- resDF3
                                   
 get_normalized_counts <- function(df,contrast) {
   gene_ids = df$GeneID
@@ -516,7 +488,7 @@ get_normalized_counts <- function(df,contrast) {
     normalized_count1 <- t(normalized_count1)
     colnames(normalized_count1) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
     normalized_count2 <- merge(df[1:2],normalized_count1, by="GeneID")
-    write.table(normalized_count2, file=paste(contrast,"_with_norm_counts_at_fdr0.01.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE,col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv")))
+    write.table(normalized_count2, file=paste(contrast,"_with_norm_counts.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE,col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv")))
   }
 }
 get_normalized_counts(D1_D4,"D1_D4")  
