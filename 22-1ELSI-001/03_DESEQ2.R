@@ -5,8 +5,8 @@ library("ggrepel")
 
 #setwd("~/Desktop/")
 #dir.create("core-projects/22-1ELSI-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
-#setwd("~/Desktop/core-projects/22-1ELSI-001")
-setwd("/Users/shahina/Projects/22-1ELSI-001/")
+setwd("~/Desktop/core-projects/22-1ELSI-001")
+#setwd("/Users/shahina/Projects/22-1ELSI-001/")
 
 load("feature_count.RData")
 feature_count1 <- as.data.frame(feature_count)
@@ -26,58 +26,62 @@ feature_count <- feature_count1[c(6,10,8,7,3,13,12,11,5,17,14,9,15,16,4)]
 #feature_count3 <- feature_count2[apply(feature_count2,1,function(z) any(z!=0)),]
 #feature_count3 <- feature_count2[apply(feature_count2, 1,function(x) all(x[1:5] >=1) && all(x[6:10]==0) && all(x[11:15]==0)),]
 
-f1 <- feature_count %>% 
-  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . ==0))
+#f1 <- feature_count %>% 
+#  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . ==0))
 
-f2 <- feature_count %>% 
-  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
+#f2 <- feature_count %>% 
+#  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
 
-f3 <- feature_count %>% 
-  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . ==0))
+#f3 <- feature_count %>% 
+#  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . ==0))
 
-f4 <- feature_count %>% 
-  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . >=1))
+#f4 <- feature_count %>% 
+#  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . >=1))
 
-f5 <- feature_count %>% 
-  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . >=1))
+#f5 <- feature_count %>% 
+#  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . >=1))
 
-f6 <- feature_count %>% 
-  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
+#f6 <- feature_count %>% 
+#  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
 
-feature_count3 <- rbind(f1,f2,f3,f4,f5,f6)         
+#feature_count3 <- rbind(f1,f2,f3,f4,f5,f6)         
 #creating SAMPLE INFORMATION VARIABLE with group definition
-sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count3))),
-                      sample_type=dput(as.character(names(feature_count3))),
+sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
+                      sample_type=dput(as.character(names(feature_count))),
                       sample_group=dput(as.character(c(rep("D1",5),rep("D4",5), rep("LPS",5)))))
 
 
 
 group <- data.frame(sample_group=sampleInfo$sample_group)
 
-dds <- DESeqDataSetFromMatrix(countData=feature_count3,
+dds <- DESeqDataSetFromMatrix(countData=feature_count,
                               colData=group,
                               design=~sample_group)
 
 ##########
 #PCA PLOT
 ##########
-#setwd("~/Desktop/core-projects/22-1ELSI-001/DESEQ2")
+setwd("~/Desktop/core-projects/22-1ELSI-001/DESEQ2")
 
-setwd("/Users/shahina/Projects/22-1ELSI-001/DESEQ2")
+#setwd("/Users/shahina/Projects/22-1ELSI-001/DESEQ2")
 
 #gernate rlog for PCA
 
 pdf("PCA_for_3_groups.pdf")
-
-#rld <-rlog(dds,blind=FALSE)
-#pdf(sprintf("PCA_%s_%s.pdf",cond2,cond1), width=15,height=15)
-nudge <- position_nudge(y = 0.5)
-p <- plotPCA(rld,intgroup=c("sample_group"))  
-p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.4)
+  rld <-rlog(dds,blind=FALSE)
+  nudge <- position_nudge(y = 0.5)
+  p <- plotPCA(rld,intgroup=c("sample_group"))  
+  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.4)
 p
-
 dev.off()
 
+pdf("PCA_for_3_groups_without_labels.pdf")
+  rld <-rlog(dds,blind=FALSE)
+  nudge <- position_nudge(y = 0.5)
+  p <- plotPCA(rld,intgroup=c("sample_group"))  
+  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.4)
+p
+dev.off()
 
 dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
 
