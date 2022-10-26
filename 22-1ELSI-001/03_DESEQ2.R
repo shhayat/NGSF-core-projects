@@ -136,6 +136,9 @@ resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
 resDF1 <- resDF1[order(resDF1$padj),]
 log2FC1 <- resDF1$log2FoldChange
 resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+
+#filter(resDF11, padj <= 0.01)
+
 write.csv(resDF1,file="DESEQ2_res_D1_D4_all_genes.csv",quote=FALSE, row.names = FALSE)
 
 #resDF1 <- resDF[resDF$pvalue <= 0.05,]
@@ -231,7 +234,6 @@ write.csv(resDF2,file="DESEQ2_res_D1_LPS_all_genes.csv",quote=FALSE, row.names =
 
 
 #D4 and LPS
-#All significant at pvalue 0.05
 resDF <- data.frame(GeneID=rownames(res_LPS_vs_D4),res_LPS_vs_D4)
 resDF <- merge(feature_annotation,resDF, by="GeneID")
 
@@ -473,10 +475,10 @@ multiplot(plotlist = myplots, ncol = 2)
 
 dev.off()
                                   
-#Get normalized count (used for plot count) for all genes                   
-D1_D4 <- resDF1
-D1_LPS <- resDF2
-D4_LPS <- resDF3
+#Get normalized count (used for plot count) for genes at fdr 0.01             
+D1_D4 <- filter(resDF1, padj <= 0.01)
+D1_LPS <- filter(resDF2, padj <= 0.01)
+D4_LPS <- filter(resDF3, padj <= 0.01)
                                   
 get_normalized_counts <- function(df,contrast) {
   gene_ids = df$GeneID
@@ -496,12 +498,10 @@ get_normalized_counts(D1_LPS,"D1_LPS")
 get_normalized_counts(D4_LPS,"D4_LPS")                                  
 
                                   
-
-
 #take top 2000 genes based on FDR
-write.csv(head(resDF1,2000), "D1_D4_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE))
-write.csv(head(resDF2,2000), "D1_LPS_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE))
-write.csv(head(resDF3,2000), "D4_LPS_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE))
+write.csv(head(D1_D4,2000), "D1_D4_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE)
+write.csv(head(D1_LPS,2000), "D1_LPS_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE)
+write.csv(head(D4_LPS,2000), "D4_LPS_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE)
 
 
 library(VennDiagram)
