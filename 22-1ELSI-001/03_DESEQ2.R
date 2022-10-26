@@ -497,6 +497,13 @@ get_normalized_counts(D4_LPS,"D4_LPS")
 
                                   
 
+
+#take top 2000 genes based on FDR
+write.csv(head(resDF1,2000), "D1_D4_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE))
+write.csv(head(resDF2,2000), "D1_LPS_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE))
+write.csv(head(resDF3,2000), "D4_LPS_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE))
+
+
 library(VennDiagram)
 library(RColorBrewer)
 
