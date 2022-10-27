@@ -16,7 +16,7 @@ set -eux
 	
 mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/Fastq 
 # Move all fastq files from the run onto the node
-FASTQ_FOLDER=/datastore/NGSF001/NB551711/221025_NB551711_0059_AHK53LBGXL/Alignment_1/20220607_033312/Fastq
+FASTQ_FOLDER=/datastore/NGSF001/NB551711/221025_NB551711_0059_AHK53LBGXL/Alignment_1/20221026_001314/Fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/Fastq
 	
 
