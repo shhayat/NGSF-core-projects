@@ -42,7 +42,7 @@ STAR --genomeDir $GENOME \
 	
 rsync -rvzP ${SLURM_TMPDIR}/${sample_name} ${OUTDIR}
 
-wait 
+#wait 
 
-cd /globalhome/hxo752/HPC/tools/
-./multiqc -d ${OUTDIR}/*/Log.final.out -o ${OUTDIR}
+#cd /globalhome/hxo752/HPC/tools/
+#./multiqc -d ${OUTDIR}/*/Log.final.out -o ${OUTDIR}
