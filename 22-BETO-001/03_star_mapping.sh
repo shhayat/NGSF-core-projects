@@ -14,7 +14,7 @@ module load samtools
 
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/Fastq
-GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/Bowtie2Index
+GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/indices/star-index
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/analysis/star_alignment
 NCPU=4
 
