@@ -25,4 +25,4 @@ done
 wait 
 
 cd /datastore/NGSF001/software/tools/
-./multiqc ${OUTDIR}/analysis/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
+./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
