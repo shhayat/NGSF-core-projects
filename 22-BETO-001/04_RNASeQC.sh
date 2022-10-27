@@ -14,7 +14,7 @@ chmod u+x ${SLURM_TMPDIR}/rnaseqc.v2.4.2.linux
 sample_name=$1; shift
 bam_file=$1
 
-GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation_mod.gtf
+GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/analysis/rnaseqc
 
 mkdir -p ${OUTDIR}
