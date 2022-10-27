@@ -1,5 +1,3 @@
-
-
 #!/bin/bash
 
 #SBATCH --job-name=feature-count
