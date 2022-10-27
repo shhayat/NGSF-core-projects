@@ -1,10 +1,9 @@
 #!/bin/sh
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=4
+#BATCH --cpus-per-task=8
 #SBATCH --time=03:00:00
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
@@ -16,7 +15,7 @@ GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ense
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/indices
 
-NCPU=4
+NCPU=8
 
 mkdir -p $OUTDIR
 cd ${OUTDIR}
