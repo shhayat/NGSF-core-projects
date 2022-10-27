@@ -19,8 +19,6 @@ GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/analysis/star_alignment
 NCPU=4
 
-rsync -avzP /datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf ${SLURM_TMPDIR}/
-
 mkdir -p ${OUTDIR}
 sample_name=$1; shift
 fq1=$1; shift
@@ -38,7 +36,6 @@ STAR --genomeDir $GENOME \
 	--outSAMstrandField intronMotif \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
-	--sjdbGTFfile ${SLURM_TMPDIR}/gencode.v40.annotation.gtf \
 	--runThreadN ${NCPU} \
 	&& samtools index Aligned.sortedByCoord.out.bam 
 	
