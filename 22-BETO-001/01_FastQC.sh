@@ -12,13 +12,13 @@ set -eux
 
 module load fastqc
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/Fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/analysis
 
-mkdir -p ${OUTDIR}/analysis/fastqc
+mkdir -p ${OUTDIR}/fastqc
 
 for fq in $DATA/R22*.fastq.gz
 do
-   fastqc -o ${OUTDIR}/analysis/fastqc --extract ${fq}
+   fastqc -o ${OUTDIR}/fastqc --extract ${fq}
    
 done 
 
