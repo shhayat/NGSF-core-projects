@@ -21,7 +21,7 @@ NCPU=16
 mkdir -p $OUTDIR
 cd ${OUTDIR}
 
-${star}/STAR --runThreadN ${NCPU} \
+STAR --runThreadN ${NCPU} \
      --runMode genomeGenerate \
      --genomeDir star-index \
      --genomeFastaFiles ${GENOME}/genome.fa \
