@@ -9,15 +9,21 @@
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module load
+module load star/2.7.9a 
 
+
+GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta
+GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001/indices
 
-mkdir -p $OUTDIR
+NCPU=16
 
-${star}/STAR --runThreadN 16 \
+mkdir -p $OUTDIR
+cd ${OUTDIR}
+
+${star}/STAR --runThreadN ${NCPU} \
      --runMode genomeGenerate \
      --genomeDir star-index \
-     --genomeFastaFiles /datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.fa \
-     --sjdbGTFfile /datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf \
+     --genomeFastaFiles ${GENOME}/genome.fa \
+     --sjdbGTFfile ${GTF} \
      --sjdbOverhang 99
