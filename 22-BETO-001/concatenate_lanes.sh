@@ -25,7 +25,7 @@ do
 	echo Combining library R22000${i}
         # Cat all the original seq (each lane) files into a new file on the node
 	# This will also remove that stupid sample number
-	cat ${FASTQ_FOLDER}/R2200${i}_*_R1_* > ${OUTDIR}/R2200${i}_R1.fastq.gz
-	cat ${FASTQ_FOLDER}/R2200${i}_*_R2_* > ${OUTDIR}/R2200${i}_R2.fastq.gz
+	cat ${FASTQ_FOLDER}/R22000${i}_*_R1_* > ${OUTDIR}/R22000${i}_R1.fastq.gz
+	cat ${FASTQ_FOLDER}/R22000${i}_*_R2_* > ${OUTDIR}/R22000${i}_R2.fastq.gz
 done
   
