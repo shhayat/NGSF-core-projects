@@ -459,7 +459,7 @@ get_normalized_counts(D4_LPS,"D4_LPS")
 
 add_column_names <- function(norm_df){
     df <- read.csv(paste(norm_df,"_with_norm_counts.csv"), header=FALSE)
-    colnames(df) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+    colnames(df) <- c("GeneID","GeneName","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
     write.table(df, file=paste(norm_df,"_with_norm_counts-1.csv"),quote=FALSE, row.names = FALSE,sep=",")
 
 }
