@@ -6,6 +6,7 @@ library("ggrepel")
 
 setwd("/Users/shahina/Projects/22-1BETO-001")
 dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
+setwd("/Users/shahina/Projects/22-1BETO-001/DESEQ2")
 
 load("feature_count.RData")
 feature_count1 <- as.data.frame(feature_count)
@@ -18,9 +19,9 @@ feature_annotation <- feature_count1[1:2]
 DEG_analysis <-  function(colnum,cond1, cond2, ref)
 {
 #feature_count <- feature_count[colnum]
-  feature_count <- feature_count[c(3,5,7,4,6,8)]
+  feature_count <- feature_count1[colnum]
   #at least one column has number
-  feature_count <- feature_count[apply(feature_count,1,function(z) any(z!=0)),]
+  #feature_count <- feature_count[apply(feature_count,1,function(z) any(z!=0)),]
   
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
@@ -56,8 +57,8 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref)
   resDF <- data.frame(GeneID=rownames(res_D4_vs_D1),res_D4_vs_D1)
   resDF <- merge(feature_annotation,resDF, by="GeneID")
   #remove rows with all NAs
-  resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
-  resDF1<- filter(resDF1, pvalue <= 0.05)
+  #resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
+  resDF1 <- filter(resDF1, pvalue <= 0.05)
   #order on FDR
   resDF1 <- resDF1[order(resDF1$padj),]
   log2FC1 <- resDF1$log2FoldChange
@@ -69,5 +70,5 @@ write.csv(resDF1,file=sprintf("DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quo
 
 }
 DEG_analysis(c(1:6),"ABN","AB4","ABN")
-DEG_analysis(c(7:12),"DN","D4","DN")
+DEG_analysis(c(7,8,10,11,12),"DN","D4","DN")
                    
