@@ -54,14 +54,19 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref)
   dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
   
   #summary(res)
-  resDF <- data.frame(GeneID=rownames(resLFC_shrunken),resLFC_shrunken)
-  resDF1 <- merge(feature_annotation,resDF, by="GeneID")
-  res_pval <- subset(resDF1, pvalue <= 0.05)
-  res_pval_ordered <- res_pval[order(res_pval$pvalue),]
-  
-
+  resDF <- data.frame(GeneID=rownames(res_D4_vs_D1),res_D4_vs_D1)
+  resDF <- merge(feature_annotation,resDF, by="GeneID")
+  #remove rows with all NAs
+  resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
+  resDF1<- filter(resDF1, pvalue <= 0.05)
+  #order on FDR
+  resDF1 <- resDF1[order(resDF1$padj),]
+  log2FC1 <- resDF1$log2FoldChange
+  resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+#filter(resDF11, padj <= 0.01)
+ 
 #All significant
-write.csv(resDF1,file=sprintf("DESEQ2_DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
+write.csv(resDF1,file=sprintf("DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
 
 }
 DEG_analysis(c(1:6),"ABN","AB4","ABN")
