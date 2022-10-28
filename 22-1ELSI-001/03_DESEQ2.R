@@ -126,20 +126,22 @@ dev.off()
 
 #summary(res)
 
-#D1 and D4
-#All significant at pvalue 0.05
-resDF <- data.frame(GeneID=rownames(res_D4_vs_D1),res_D4_vs_D1)
-resDF <- merge(feature_annotation,resDF, by="GeneID")
-#remove rows with all NAs
-resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
-#order on FD
-resDF1 <- resDF1[order(resDF1$padj),]
-log2FC1 <- resDF1$log2FoldChange
-resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+df_for_all_genes <- function(contrast_DF,cond1,cond2){
+ 
+  resDF1 <- data.frame(GeneID=rownames(contrast_DF),contrast_DF)
+  resDF1 <- merge(feature_annotation,resDF1, by="GeneID")
+  #order on FDR
+  resDF1 <- resDF1[order(resDF1$padj),]
+  log2FC1 <- resDF1$log2FoldChange
+  resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
+  write.csv(resDF1,file=sprintf("DESEQ2_res_%s_%s_all_genes.csv",cond1,cond2), quote=FALSE, row.names = FALSE)
+  return(resDF1)
+ }
 
-#filter(resDF11, padj <= 0.01)
+D1_D4_DF <- df_for_all_genes(res_D4_vs_D1,"D1","D4")
+D1_LPS_DF <- df_for_all_genes(res_LPS_vs_D1,"D1","LPS")
+D4_LPS_DF <- df_for_all_genes(res_LPS_vs_D4,"D4","LPS")
 
-write.csv(resDF1,file="DESEQ2_res_D1_D4_all_genes.csv",quote=FALSE, row.names = FALSE)
 
 #resDF1 <- resDF[resDF$pvalue <= 0.05,]
 #res_pval_ordered <- resDF1[order(resDF1$pvalue),]
@@ -179,18 +181,6 @@ write.csv(resDF1,file="DESEQ2_res_D1_D4_all_genes.csv",quote=FALSE, row.names = 
 #  print(p2)
 #dev.off()
   
-#D1 and LPS
-#All significant at pvalue 0.05
-resDF <- data.frame(GeneID=rownames(res_LPS_vs_D1),res_LPS_vs_D1)
-resDF <- merge(feature_annotation,resDF, by="GeneID")
-#remove rows with all NAs
-resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
-#order on FD
-resDF2 <- resDF1[order(resDF1$padj),]
-log2FC1 <- resDF2$log2FoldChange
-resDF2$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
-write.csv(resDF2,file="DESEQ2_res_D1_LPS_all_genes.csv",quote=FALSE, row.names = FALSE)
-
 
 #resDF1 <- resDF[resDF$pvalue <= 0.05,]
 #res_pval_ordered <- resDF1[order(resDF1$pvalue),]
@@ -231,20 +221,6 @@ write.csv(resDF2,file="DESEQ2_res_D1_LPS_all_genes.csv",quote=FALSE, row.names =
 #p2 <- p1 + geom_text_repel(data=head(down_ordered,10),aes(label=gene_name),size=2, box.padding = unit(0.7, "lines"), max.overlaps = Inf)
 #print(p2)
 #dev.off()
-
-
-#D4 and LPS
-resDF <- data.frame(GeneID=rownames(res_LPS_vs_D4),res_LPS_vs_D4)
-resDF <- merge(feature_annotation,resDF, by="GeneID")
-
-resDF <- merge(feature_annotation,resDF, by="GeneID")
-#remove rows with all NAs
-resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
-#order on FD
-resDF3 <- resDF1[order(resDF1$padj),]
-log2FC1 <- resDF3$log2FoldChange
-resDF3$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
-write.csv(resDF3,file="DESEQ2_res_D4_LPS_all_genes.csv",quote=FALSE, row.names = FALSE)
 
 
 
@@ -456,22 +432,23 @@ multiplot(plotlist = myplots, ncol = 2)
 dev.off()
                                   
 #Get normalized count (used for plot count) for genes at fdr 0.01             
-D1_D4 <- filter(resDF1, padj <= 0.01)
-D1_LPS <- filter(resDF2, padj <= 0.01)
-D4_LPS <- filter(resDF3, padj <= 0.01)
+D1_D4 <- filter(D1_D4_DF, padj <= 0.01)
+D1_LPS <- filter(D1_LPS_DF, padj <= 0.01)
+D4_LPS <- filter(D4_LPS_DF, padj <= 0.01)
                                   
 get_normalized_counts <- function(df,contrast) {
+  df <- df[order(df$padj),]
   gene_ids = df$GeneID
   for (gene in gene_ids)
   {
     normalized_count <- plotCounts(dds_wald, gene=gene, intgroup="sample_group", returnData=TRUE)
     normalized_count <- as.numeric(t(normalized_count)[1,])
-    normalized_count1 <- c(gene,normalized_count)
-    normalized_count1 <- t(normalized_count1)
-    colnames(normalized_count1) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
-    normalized_count2 <- merge(df[1:2],normalized_count1, by="GeneID")
-    names(normalized_count2) <- NULL
-    write.table(normalized_count2, file=paste(contrast,"_with_norm_counts.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE)
+    normalized_count <- c(gene,normalized_count)
+    normalized_count <- t(normalized_count)
+    colnames(normalized_count) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+    normalized_count <- merge(df[1:2],normalized_count, by="GeneID")
+    names(normalized_count) <- NULL
+    write.table(normalized_count, file=paste(contrast,"_with_norm_counts.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE)
   }
 }
 #col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv"))
