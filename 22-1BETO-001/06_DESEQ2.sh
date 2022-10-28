@@ -16,7 +16,7 @@ feature_count1 <- as.data.frame(feature_count)
 #your first columns which are gene id and gene name
 feature_annotation <- feature_count1[1:2]
 
-DEG_analysis <-  function(colnum,cond1, cond2, ref)
+DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 {
 #feature_count <- feature_count[colnum]
   feature_count <- feature_count1[colnum]
@@ -25,7 +25,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref)
   
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
-                        sample_group=dput(as.character(c(rep(cond1,3),rep(cond2,3)))))
+                        sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))))
   
   
   
@@ -70,5 +70,5 @@ write.csv(resDF1,file=sprintf("DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quo
 
 }
 DEG_analysis(c(1:6),"ABN","AB4","ABN")
-DEG_analysis(c(7,8,10,11,12),"DN","D4","DN")
+DEG_analysis(c(7,8,10,11,12),"DN","D4","DN",2,3)
                    
