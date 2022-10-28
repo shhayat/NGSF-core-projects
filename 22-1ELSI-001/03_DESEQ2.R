@@ -470,14 +470,27 @@ get_normalized_counts <- function(df,contrast) {
     normalized_count1 <- t(normalized_count1)
     colnames(normalized_count1) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
     normalized_count2 <- merge(df[1:2],normalized_count1, by="GeneID")
-    write.table(normalized_count2, file=paste(contrast,"_with_norm_counts.csv"),quote=FALSE, row.names = FALSE,sep="," ,col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv")))
+    names(normalized_count2) <- NULL
+    write.table(normalized_count2, file=paste(contrast,"_with_norm_counts.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE)
   }
 }
+#col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv"))
 get_normalized_counts(D1_D4,"D1_D4")  
 get_normalized_counts(D1_LPS,"D1_LPS")                                  
 get_normalized_counts(D4_LPS,"D4_LPS")                                  
 
-                                  
+
+add_column_names <- function(norm_df){
+    df <- read.csv(paste(norm_df,"_with_norm_counts.csv"), header=FALSE)
+    colnames(df) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+    write.table(df, file=paste(norm_df,"_with_norm_counts-1.csv"),quote=FALSE, row.names = FALSE,sep=",")
+
+}
+add_column_names("D1_D4")  
+add_column_names("D1_LPS")                                  
+add_column_names("D4_LPS")  
+
+
 #take top 2000 genes based on FDR
 write.csv(head(D1_D4,2000), "D1_D4_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE)
 write.csv(head(D1_LPS,2000), "D1_LPS_2000genes_with_lowestFDR.csv", quote=FALSE, row.names = FALSE)
