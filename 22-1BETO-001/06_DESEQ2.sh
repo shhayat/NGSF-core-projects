@@ -35,7 +35,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref)
                                 design=~sample_group)
   
   
-  dds$sample_group <-relevel(dds$sample_group,ref="untreated")
+  dds$sample_group <-relevel(dds$sample_group,ref=ref)
   
   ##########
   #PCA PLOT
@@ -50,7 +50,6 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref)
   print(p)
   dev.off()
   
-
   dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
   
   #summary(res)
