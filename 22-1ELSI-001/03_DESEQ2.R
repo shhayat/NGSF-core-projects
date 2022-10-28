@@ -390,26 +390,6 @@ write.csv(resDF3,file="DESEQ2_res_D4_LPS_all_genes.csv",quote=FALSE, row.names =
                                                                                     
 library(ggtree)
 #plot count top 10 differntially expressed genes for D4 vs D1
-pdf("count_plot_D1_D4_without_normalization.pdf", height=20, width=15)
-#select top 10 genes on lowest fdr
-gene_ids = head(res_padj_ordered1$GeneID, 10)
-myplots <- list()  # new empty list
-for (gene in gene_ids)
-{
-  d <- plotCounts(dds_wald, gene= gene, 
-                  intgroup="sample_group",returnData=TRUE,normalized=FALSE,transform=FALSE)
-
-  p <- ggplot(d, aes(x=sample_group, y=count)) + 
-    geom_point(position=position_jitter(w=0.1,h=0)) +
-    ylab("Count") +
-    ggtitle(paste(gene,":",res_padj_ordered1[res_padj_ordered1$GeneID==gene,]$gene_name,": FDR ",res_padj_ordered1[res_padj_ordered1$GeneID==gene,]$padj))
-  
-  myplots[[gene]] <- p 
-  
-}
-multiplot(plotlist = myplots, ncol = 2)
-
-dev.off()
 
 pdf("count_plot_D1_D4_with_normalization.pdf", height=20, width=15)
 #select top 10 genes on lowest fdr
@@ -490,7 +470,7 @@ get_normalized_counts <- function(df,contrast) {
     normalized_count1 <- t(normalized_count1)
     colnames(normalized_count1) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
     normalized_count2 <- merge(df[1:2],normalized_count1, by="GeneID")
-    write.table(normalized_count2, file=paste(contrast,"_with_norm_counts.csv"),quote=FALSE, row.names = FALSE,sep=",", append=TRUE,col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv")))
+    write.table(normalized_count2, file=paste(contrast,"_with_norm_counts.csv"),quote=FALSE, row.names = FALSE,sep="," ,col.names=!file.exists(paste(contrast,"_with_norm_counts_at_fdr0.01.csv")))
   }
 }
 get_normalized_counts(D1_D4,"D1_D4")  
