@@ -52,13 +52,12 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   dev.off()
   
   dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
-  
+  res <- results(dds_wald, contrast=c("sample_group",cond2,cond1))
 
-  resDF <- data.frame(GeneID=rownames(res_D4_vs_D1),res_D4_vs_D1)
+  resDF <- data.frame(GeneID=rownames(res),res)
   resDF <- merge(feature_annotation,resDF, by="GeneID")
   #remove rows with all NAs
-  #resDF1 <- resDF[rowSums(is.na(resDF)) != ncol(resDF), ]
-  resDF1 <- filter(resDF1, pvalue <= 0.05)
+  resDF1 <- filter(resDF, pvalue <= 0.05)
   #order on FDR
   resDF1 <- resDF1[order(resDF1$padj),]
   log2FC1 <- resDF1$log2FoldChange
