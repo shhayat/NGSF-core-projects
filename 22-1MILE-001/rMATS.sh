@@ -45,9 +45,9 @@ ${rmat}/python ${rmat}/rmats.py --s1 $DIR/group1_fastq_files.txt \
                         --bi ${index} \
                         -t paired \
                         --readLength 141 \
-                        --variable-read-length \
+                        --variable-read-length \ #used it for testing purposes
                         --nthread $NCPU \
                         --od ${DIR}/rmat_analysis_with_fastq \
                         --tmp ${DIR}/rmat_analysis_with_fastq/tmp \
-                        --cstat 0.0005
+                        --cstat 0.0005 #by default 0.0001 was used but I changed it to 0.0005 for the testing purposes
                     
