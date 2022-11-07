@@ -14,6 +14,11 @@ chmod u+x ${SLURM_TMPDIR}/rnaseqc.v2.4.2.linux
 sample_name=$1; shift
 bam_file=$1
 
+
+#GTF file needs to be modified for running RNASeQC
+#run following python code on GTF file
+#python collaspe_annotation.py /datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf genes_mod.gtf
+
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001/analysis/rnaseqc
 
