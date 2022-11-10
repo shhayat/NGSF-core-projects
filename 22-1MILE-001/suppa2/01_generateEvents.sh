@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=ivybridge
-#SBATCH --job-name=rMATS
+#SBATCH --job-name=suppa2_generate_events
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=30G
 #SBATCH --time=24:00:00
