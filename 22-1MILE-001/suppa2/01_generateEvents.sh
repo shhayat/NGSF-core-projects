@@ -13,7 +13,7 @@ GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/suppa2/suppa2_analysis
 
 ${SUPPA}/python ${SUPPA}/suppa.py generateEvents \
-                              -i $GTF \ 
-                              -o $OUTDIR/events_from_gtf \
+                              -i ${GTF} \ 
+                              -o ${OUTDIR}/events_from_gtf \
                               -f ioe \
                               -e SE SS MX RI FL  
