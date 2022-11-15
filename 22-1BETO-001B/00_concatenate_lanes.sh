@@ -12,7 +12,7 @@ set -eux
 mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq 
 # Move all fastq files from the run onto the node
 FASTQ_FOLDER=/datastore/NGSF001/NB551711/221108_NB551711_0060_AHK53KBGXL/Alignment_1/20221108_225459/Fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-BETO-001B/analysis/Fastq
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq
 	
 
 for i in $(seq -w 166 177)
