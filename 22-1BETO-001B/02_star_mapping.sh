@@ -14,7 +14,8 @@ module load samtools
 
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/Fastq
-GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/indices/star-index
+GENOME=/datastore/NGSF001/analysis/indices/human/gencode-40
+GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/star_alignment
 NCPU=4
 
@@ -32,6 +33,7 @@ STAR --genomeDir $GENOME \
 	--readFilesCommand zcat \
 	--readFilesIn ${fq1} ${fq2} \
 	--outSAMtype BAM SortedByCoordinate \
+	--sjdbGTFfile ${GTF} \
 	--runThreadN ${NCPU} \
 	&& samtools index Aligned.sortedByCoord.out.bam 
 	
