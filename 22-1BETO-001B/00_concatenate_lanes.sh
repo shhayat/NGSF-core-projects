@@ -7,9 +7,6 @@
 #SBATCH --mem=8G
 #SBATCH --account=hpc_p_anderson
 	
-# goal is to pull data from datastore, and compile into a file on the compute node
-# then send that file back to the working directory
-	
 set -eux
 	
 mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq 
