@@ -56,7 +56,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   resDF <- data.frame(GeneID=rownames(res),res)
   resDF <- merge(feature_annotation,resDF, by="GeneID")
   #remove rows with all NAs
-  resDF1 <- filter(resDF, pvalue <= 0.05)
+  resDF1 <- subset(resDF, pvalue <= 0.05)
   #order on FDR
   resDF1 <- resDF1[order(resDF1$padj),]
   log2FC1 <- resDF1$log2FoldChange
