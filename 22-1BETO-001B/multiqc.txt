@@ -2,3 +2,6 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/an
 cd /datastore/NGSF001/software/tools/
 ./multiqc ${OUTDIR}/*/Log.final.out -o ${OUTDIR}
 
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/rnaseqc
+cd /datastore/NGSF001/software/tools/
+./multiqc ${OUTDIR}/*.metrics.tsv -o ${OUTDIR}
