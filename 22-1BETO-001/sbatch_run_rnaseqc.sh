@@ -6,6 +6,6 @@ do
         path="${i%/Aligned*}";
 	sample_name="${path##*/}"
       
-  sbatch ${SCRIPT_DIR}/03_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
+  sbatch ${SCRIPT_DIR}/04_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
  sleep 0.5
 done 
