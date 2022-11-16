@@ -14,7 +14,7 @@ feature_count1 <- as.data.frame(feature_count)
 #your first columns which are gene id and gene name
 feature_annotation <- feature_count1[1:2]
 
-setwd("/Users/shahina/Projects/22-1BETO-001/DESEQ2")
+setwd("/Users/shahina/Projects/22-1BETO-001B/DESEQ2")
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 {
