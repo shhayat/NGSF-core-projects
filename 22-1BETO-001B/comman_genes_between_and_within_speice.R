@@ -2,10 +2,10 @@
 
 within <- function(contrast1, contrast2, specie, cont1, cont2) {
  
-contrast1$gene_name <- tolower(contrast1$gene_name)
-contrast2$gene_name <- tolower(contrast2$gene_name)
+#contrast1$gene_name <- tolower(contrast1$gene_name)
+#contrast2$gene_name <- tolower(contrast2$gene_name)
 
-df <- merge(contrast1,contrast2, by="gene_name",suffixes=c(sprintf(".%s",cont1),sprintf(".%s",cont2)))
+df <- merge(contrast1,contrast2, by="GeneID",suffixes=c(sprintf(".%s",cont1),sprintf(".%s",cont2)))
 #return(nrow(df))
 write.csv(df,file=sprintf("DEG_common_genes_%s.csv",specie),quote=FALSE, row.names = FALSE)
 
@@ -23,3 +23,19 @@ within(h_cnt1,h_cnt2,"human", "144_14N","MG4_MGN")
 
 
 
+#between species
+
+d_cnt1$gene_name <- tolower(d_cnt1$gene_name)
+d_cnt2$gene_name <- tolower(d_cnt2$gene_name)
+h_cnt1$gene_name <- tolower(h_cnt1$gene_name)
+h_cnt2$gene_name <- tolower(h_cnt2$gene_name)
+ 
+df1 <- merge(d_cnt1,d_cnt2, by="gene_name", suffix=c(".AB4_vs_ABN",".D4_vs_DN"))
+
+df2 <- merge(df1,h_cnt1, by="gene_name",suffix=c(".x",".144_vs_14N"))
+
+df3 <- merge(df2,h_cnt2, by="gene_name",suffix=c(".144_vs_14N",".MG4_vs_MGN"))
+
+nrow(df3)
+write.csv(df3,file="DEG_common_genes_between_species.csv",quote=FALSE, row.names = FALSE)
+ 
