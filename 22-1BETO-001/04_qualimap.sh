@@ -20,4 +20,4 @@ ${qualimap}/qualimap rnaseq \
     -p strand-specific-forward \
     -gtf ${gtf} \
     -pe \
-    --java-mem-size=375G
+    -outfile ${sample_name}
