@@ -39,7 +39,7 @@ do
     -outdir ${OUTDIR} \
     -oc ${sample_name} \
     -a proportional \
-    -bam ${bam_file} \
+    -bam ${i} \
     -p strand-specific-forward \
     -gtf ${gtf} \
     -pe \
