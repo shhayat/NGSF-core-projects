@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#SBATCH --constraint=skylake
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:50:00
