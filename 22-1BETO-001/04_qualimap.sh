@@ -3,7 +3,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:50:00
-#SBATCH --mem=5G
+#SBATCH --mem=40G
 
 set -eux
 sample_name=1; shift
@@ -21,4 +21,4 @@ ${qualimap}/qualimap rnaseq \
     -p strand-specific-forward \
     -gtf ${gtf} \
     -pe \
-    --java-mem-size=8G
+    --java-mem-size=40G
