@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --time=00:20:00
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:50:00
 #SBATCH --mem=5G
 
 set -eux
@@ -19,4 +19,5 @@ ${qualimap}/qualimap rnaseq \
     -bam ${bam_file} \
     -p strand-specific-forward \
     -gtf ${gtf} \
+    -pe \
     --java-mem-size=8G
