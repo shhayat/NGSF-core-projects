@@ -395,6 +395,97 @@ write.csv(df.wide, file="HCC1806/HCC1806.df.paclitaxel_homoharringtonine.csv", r
                 
                 
 
+#For BT549                              
+dir.create("BT549", recursive=TRUE, showWarnings = FALSE) 
+df <- read.csv("Paclitaxel_Homoharringtonine_BT549-revised.csv", head=TRUE)[1:8]
+#use first row as column name
+names(df) <- as.matrix(df[1, ])
+#remove first row from df and select rest of the rows
+df1 <- df[-1, ][1:33,]
+df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
+
+colnames(df1)[2:5] <- c("drug_col","drug_row","conc_c","conc_r")
+#df1 <- df1[c(1,3,2,5,4,6,7,8)]
+
+# Reshaping and pre-processing
+res <- ReshapeData(
+  data = df1,
+  data_type = "viability",
+  impute = TRUE,
+  impute_method = NULL,
+  noise = TRUE,
+  seed = 1)
+
+# calculate synergy
+synergy.score <- CalculateSynergy(
+  data = res,
+  method = c("ZIP"),
+  Emin = NA,
+  Emax = NA,
+  correct_baseline = "non")
+
+write.csv(synergy.score, "BT549/BT549_synergy_scores.csv")
+save(synergy.score, file = 'BT549_synergy.score.RData', compress = 'xz')                
+
+ 
+#2D contour plot
+
+pdf("BT549/BT549_2D_contour_plot_paclitaxel_homoharringtonine.pdf")
+Plot2DrugContour(
+  data = res,
+  plot_block = 1,
+  drugs = c(1, 2),
+  plot_value = "response",
+  dynamic = FALSE,
+  summary_statistic = c("mean", "median"),
+  grid=FALSE
+)
+dev.off()
+
+
+#Plot synergy scores
+pdf("BT549/BT549_plot_synergyscores.pdf", width=10)
+
+PlotSynergy(
+  data = synergy.score,
+  type = "2D",
+  method = "ZIP",
+  block_ids =1,
+  drugs = c(1,2),
+  grid=FALSE,
+  text_size_scale = 1.5)
+
+dev.off() 
+#round dose response values to whole number
+res$response$response <- round(res$response$response)
+save(res, file = 'BT549_res.RData', compress = 'xz')
+
+#run modified Plot2drugHeatmap.R function to plot dose response heatmap
+#axes text and dose response value size has been increased and legend text 
+#has been changed from inhibition to cytotoxicity
+
+
+#change data format from long to wide for synergy response and scores
+synergy.response <- synergy.score$response[2:4][1:110,]
+df.wide.response <- pivot_wider(synergy.response, 
+                                names_from = conc1, 
+                                values_from = c(response),
+                                names_prefix = c("adjusted_response.")) 
+
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)][1:110,]
+
+df.wide.scores <- pivot_wider(synergy.scores, 
+                              names_from = conc1, 
+                              values_from = c(ZIP_synergy),
+                              names_prefix = c("score.")) 
+
+df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+df.wide <- df.wide[order(df.wide$conc2),]
+df.wide <- df.wide[c(1:7, 11,8:10, 12:17, 21, 18:20)]        
+write.csv(df.wide, file="BT549/BT549.df.paclitaxel_homoharringtonine.csv", row.names = FALSE)
+               
+                
+                
 #3D surface plot
 #pdf("Hs578T/Hs578T_3D_surface_plot.pdf")
 #Plot2DrugSurface(
