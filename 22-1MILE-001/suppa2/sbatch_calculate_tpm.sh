@@ -9,6 +9,6 @@ do
 	sample_path="${path%.no-rRNA.primary-aln.dedup.bam}"; 
 	sample_name="${sample_path##*/}";
  
-  sbatch ${SCRIPT_DIR}/02_calculate_tpm.sh "${sample_name}" "${DATA}/${sample_name}.no-rRNA.primary-aln.dedup.bam"
+  sbatch ${SCRIPT_DIR}/02_calculate_TPM.sh "${sample_name}" "${DATA}/${sample_name}.no-rRNA.primary-aln.dedup.bam"
  sleep 0.5
 done 
