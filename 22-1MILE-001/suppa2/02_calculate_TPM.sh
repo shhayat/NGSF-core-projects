@@ -15,8 +15,8 @@ GTF=/datastore/NGSF001/analysis/references/iGenomes/Rat/Rattus_norvegicus/Ensemb
 
 mkdir -p ${OUTDIR}
 
-sample_name=1; shift
-bam_file=1;
+sample_name=$1; shift
+bam_file=$1;
 
 echo ${bam_file};
 echo ${sample_name};
