@@ -19,5 +19,4 @@ bam_file=1;
 
 ${stringtie}/stringtie ${bam_file} \
 -G ${GTF} \
--o $OUTDIR/${sample_name}.gtf \
 -A $OUTDIR/${sample_name}.txt
