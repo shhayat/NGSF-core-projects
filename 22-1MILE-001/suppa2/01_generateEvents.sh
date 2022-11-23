@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=30G
 #SBATCH --time=24:00:00
-#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH --output=%j.out
 
 SUPPA=/globalhome/hxo752/HPC/anaconda3/envs/suppa/bin
 #GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
