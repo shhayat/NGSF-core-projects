@@ -18,4 +18,7 @@ mkdir -p ${OUTDIR}
 sample_name=1; shift
 bam_file=1;
 
+echo ${bam_file};
+echo ${sample_name};
 ${stringtie}/stringtie ${bam_file} -G ${GTF} -A ${OUTDIR}/${sample_name}.txt
+
