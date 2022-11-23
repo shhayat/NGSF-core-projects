@@ -11,7 +11,8 @@
 
 stringtie=/datastore/NGSF001/software/tools/stringtie
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/suppa2/suppa2_analysis/tpm
-GTF=
+GTF=/datastore/NGSF001/analysis/references/iGenomes/Rat/Rattus_norvegicus/Ensembl/Rnor_6.0/Annotation/Genes/genes.gtf
+
 mkdir -p ${OUTDIR}
 
 sample_name=1; shift
