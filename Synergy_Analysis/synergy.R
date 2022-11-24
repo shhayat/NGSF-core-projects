@@ -481,7 +481,7 @@ df.wide.scores <- pivot_wider(synergy.scores,
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
-df.wide <- df.wide[c(1:7, 11,8:10, 12:17, 21, 18:20)]        
+df.wide <-  df.wide[c(1:8,11,9,10,12:18,21,19,20)]
 write.csv(df.wide, file="BT549/BT549.df.paclitaxel_homoharringtonine.csv", row.names = FALSE)
                
                 
