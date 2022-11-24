@@ -97,6 +97,8 @@ object$subgroup <- as.factor(c("treated","treated","treated","treated","treated"
 #drop samples
 object <- object %>% filter_samples(!sample_id %in% c("control_male_R56","control_male_R59","treated_male_R28","treated_male_R40","treated_male_R63"))
 
-cpm(object) <- counts(object)
-#cpm(object) <- counts(object)
+libsize <- scaledlibsizes(values(object))
+
+cpm <- counts2cpm(counts(object), libsize)
+
 cpm(object)[rownames(cpm(object)) == "Penk",]
