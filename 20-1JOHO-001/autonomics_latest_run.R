@@ -87,3 +87,16 @@ low <- fdata1_fdr_order[fdata1_fdr_order$effects <= -0.6,]
 high <- fdata1_fdr_order[fdata1_fdr_order$effects >= 0.6,]
 df_effect_0.6 <- rbind(low,high)
 write.csv(df_effect_0.6, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.05_and_log2FC0.6.csv")
+
+
+
+#CALCULATE cpm for 15 males
+object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_male.txt",pca=FALSE, plot = FALSE, cpm=FALSE)
+object$subgroup <- as.factor(c("treated","treated","treated","treated","treated","treated","treated","treated","treated","treated","treated",
+                               "control","control","control","control","control","control","control","control","control"))
+#drop samples
+object <- object %>% filter_samples(!sample_id %in% c("control_male_R56","control_male_R59","treated_male_R28","treated_male_R40","treated_male_R63"))
+
+cpm(object) <- values(object)
+cpm(object)[rownames(cpm(object)) == "Penk",]
+
