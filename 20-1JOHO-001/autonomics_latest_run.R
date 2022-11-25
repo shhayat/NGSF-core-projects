@@ -101,12 +101,12 @@ library(edgeR)
 ## as DGEList
 dge <- DGEList(counts=counts(object))
 ## calculate norm. factors
-dge <- calcNormFactors(dge)
+dge <- calcNormFactors(dge, method="TMM")
 ## get normalized counts
 normalized.counts <- cpm(dge)
-normalized.counts[rownames(normalized.counts) == "Penk",]
+normalized.counts1 <- normalized.counts[rownames(normalized.counts) == "Penk",]
 
-
+write.csv(normalized.counts1, "/Users/shahina/Projects/20-1JOHO-001/penk_cpm.csv")
 
 
 #libsize <- scaledlibsizes(values(object))
