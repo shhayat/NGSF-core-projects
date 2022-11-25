@@ -97,8 +97,22 @@ object$subgroup <- as.factor(c("treated","treated","treated","treated","treated"
 #drop samples
 object <- object %>% filter_samples(!sample_id %in% c("control_male_R56","control_male_R59","treated_male_R28","treated_male_R40","treated_male_R63"))
 
-libsize <- scaledlibsizes(values(object))
+library(edgeR)
+## as DGEList
+dge <- DGEList(counts=counts(object))
+## calculate norm. factors
+dge <- calcNormFactors(dge)
+## get normalized counts
+normalized.counts <- cpm(dge)
+normalized.counts[rownames(normalized.counts) == "Penk",]
 
-cpm <- counts2cpm(counts(object), libsize)
 
-cpm(object)[rownames(cpm(object)) == "Penk",]
+
+
+#libsize <- scaledlibsizes(values(object))
+
+#cpm <- counts2cpm(counts(object))
+
+#cpm[rownames(cpm) == "Penk",]
+
+
