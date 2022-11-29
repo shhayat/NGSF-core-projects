@@ -1,0 +1,13 @@
+#install Piranha from bioconda
+/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n piranha -c bioconda piranha
+
+#while running piranha following error was generated
+> ./globalhome/hxo752/HPC/anaconda3/envs/piranha/bin/Piranha
+./Piranha: error while loading shared libraries: libcblas.so.3: cannot open shared object file: No such file or directory
+
+#For resolving issue install libcblas
+/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n libcblas -c bioconda libcblas
+
+#Go to libcblas folder and copy all files from libcblas folder to piranha lib folder
+
+cp /globalhome/hxo752/HPC/anaconda3/envs/libcblas/lib/* /globalhome/hxo752/HPC/anaconda3/envs/piranha/lib/
