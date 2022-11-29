@@ -1,4 +1,6 @@
 #/datastore/NGSF001/projects/2021/21-1MILE-001/alignment/star
+
+module load picard/2.23.3 
 fastq_path=/datastore/NGSF001/projects/2021/21-1MILE-001/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/Piranha
 
