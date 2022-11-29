@@ -1,3 +1,13 @@
+#!/bin/bash
+
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=ivybridge
+#SBATCH --job-name=FastqToSam
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=30G
+#SBATCH --time=24:00:00
+#SBATCH --output=%j.out
+
 #/datastore/NGSF001/projects/2021/21-1MILE-001/alignment/star
 
 module load picard/2.23.3 
