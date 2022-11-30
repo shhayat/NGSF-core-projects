@@ -20,5 +20,3 @@ java -Xmx30G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar FastqToSa
     O=$OUTDIR/R2100080_fastqtosam.bam \
     SM=R2100080 \
     RG=rg0013
-
-    
