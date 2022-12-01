@@ -11,3 +11,21 @@
 #Go to libcblas folder and copy all files from libcblas folder to piranha lib folder
 
 cp /globalhome/hxo752/HPC/anaconda3/envs/libcblas/lib/* /globalhome/hxo752/HPC/anaconda3/envs/piranha/lib/
+
+The above installation still give error message when ran with bam file. The error is generated because bamtools are not complied with Piranha
+
+Next I tried isntallation from git : https://github.com/smithlabcode/piranha
+For running bam file with Piranha, I should download and build BAMTools with Piranha. I tried building BAMTools and got the following error.
+
+/globalhome/hxo752/HPC/piranha/configure --with-bam_tools_headers="/globalhome/hxo752/HPC/bamtools/globalhome/hxo752/HPC/bamtools/include/"  --with-bam_tools_library="/globalhome/hxo752/HPC/bamtools/globalhome/hxo752/HPC/bamtools/lib64/" 
+
+configure: error: could not find or link to GSL -- Piranha requires GSL and cannot be built without it. GSL can be downloaded from http://www.gnu.org/software/gsl/ -- please ensure GSL is correctly installed on your system.
+
+I also downloaded GSL and tried building BAMTools with piranha. Still got the same error.
+
+
+Contacted IT about the issue and this is what he has to say
+
+Regarding GSL, it is already available on Plato as a software module; there is therefore no need to install it. The same applies to BamTools.
+
+However, the Piranha software you are trying to install is very old: 1.1.3 was the last release in 2014. It will not be possible to compile and install this package using reasonably modern compilers and libraries. Notably, the software is not compatible with recent versions of GSL or BamTools. I would strongly recommend to use a different software package. A colleague of mine recommends MACS2 for peak-calling.
