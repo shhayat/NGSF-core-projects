@@ -484,6 +484,96 @@ df.wide <- df.wide[order(df.wide$conc2),]
 df.wide <-  df.wide[c(1:8,11,9,10,12:18,21,19,20)]
 write.csv(df.wide, file="BT549/BT549.df.paclitaxel_homoharringtonine.csv", row.names = FALSE)
                
+
+#For MDA_MB_436                
+dir.create("MDA_MB_436", recursive=TRUE, showWarnings = FALSE) 
+df <- read.csv("Paclitaxel_Homoharringtonine_MDA_MB_436-revised.csv", head=TRUE)[1:8]
+#use first row as column name
+names(df) <- as.matrix(df[1, ])
+#remove first row from df and select rest of the rows
+df1 <- df[-1, ][1:35,]
+df1[] <- lapply(df1, function(x) type.convert(as.character(x)))
+
+colnames(df1)[2:5] <- c("drug_col","drug_row","conc_c","conc_r")
+#df1 <- df1[c(1,3,2,5,4,6,7,8)]
+
+# Reshaping and pre-processing
+res <- ReshapeData(
+  data = df1,
+  data_type = "viability",
+  impute = TRUE,
+  impute_method = NULL,
+  noise = TRUE,
+  seed = 1)
+
+# calculate synergy
+synergy.score <- CalculateSynergy(
+  data = res,
+  method = c("ZIP"),
+  Emin = NA,
+  Emax = NA,
+  correct_baseline = "non")
+
+write.csv(synergy.score, "MDA_MB_436/MDA_MB_436_synergy_scores.csv")
+save(synergy.score, file = 'MDA_MB_436_synergy.score.RData', compress = 'xz')                
+
+ 
+#2D contour plot
+
+pdf("MDA_MB_436/MDA_MB_436_2D_contour_plot_paclitaxel_homoharringtonine.pdf")
+Plot2DrugContour(
+  data = res,
+  plot_block = 1,
+  drugs = c(1, 2),
+  plot_value = "response",
+  dynamic = FALSE,
+  summary_statistic = c("mean", "median"),
+  grid=FALSE
+)
+dev.off()
+
+
+#Plot synergy scores
+pdf("MDA_MB_436/MDA_MB_436_plot_synergyscores.pdf")
+
+PlotSynergy(
+  data = synergy.score,
+  type = "2D",
+  method = "ZIP",
+  block_ids =1,
+  drugs = c(1,2),
+  grid=FALSE,
+  text_size_scale = 1.5)
+
+dev.off() 
+#round dose response values to whole number
+res$response$response <- round(res$response$response)
+save(res, file = 'MDA_MB_436_res.RData', compress = 'xz')
+
+#run modified Plot2drugHeatmap.R function to plot dose response heatmap
+#axes text and dose response value size has been increased and legend text 
+#has been changed from inhibition to cytotoxicity
+
+
+#change data format from long to wide for synergy response and scores
+synergy.response <- synergy.score$response[2:4][1:200,]
+df.wide.response <- pivot_wider(synergy.response, 
+                                names_from = conc1, 
+                                values_from = c(response),
+                                names_prefix = c("adjusted_response.")) 
+
+synergy.scores <- synergy.score$synergy_score[c(2:3,6)][1:166,]
+
+df.wide.scores <- pivot_wider(synergy.scores, 
+                              names_from = conc1, 
+                              values_from = c(ZIP_synergy),
+                              names_prefix = c("score.")) 
+
+df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
+df.wide <- df.wide[order(df.wide$conc2),]
+df.wide <- df.wide[c(1:4,21,5,20,6,19,7,18,11,8,17,9,16,10,15,14,13,12,22:27,38,31,28,37,29,36,30,35,34,32:33)]
+write.csv(df.wide, file="MDA_MB_436/MDA_MB_436.df.paclitaxel_homoharringtonine.csv", row.names = FALSE)
+                               
                 
                 
 #3D surface plot
