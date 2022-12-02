@@ -235,7 +235,7 @@ row_range = NULL
 color_range = NULL 
 high_value_color = "#FF0000"
 low_value_color = "#00FF00"
-text_label_size_scale = 2.8 #1.8
+text_label_size_scale = 2.7 #1.8
 text_label_color = "#000000"
 title_text_size_scale = 1.8 #1.4
 
@@ -487,7 +487,8 @@ jpeg("BT549/BT549_dose_response_heatmap.jpeg")
   #Plot2drugHeatmap(res,2)
 dev.off()
 
-jpeg("MDA_MB_436/MDA_MB_436_dose_response_heatmap.jpeg", width=5, height=1.5)
+#for this plot the sizes are text_label_size_scale = 2.7 and title_text_size_scale = 1.8 #1.4
+jpeg("MDA_MB_436/MDA_MB_436_dose_response_heatmap.jpeg", width=1250, height=500)
   load("MDA_MB_436_res.RData")
   Plot2drugHeatmap(res,1)
   #Plot2drugHeatmap(res,2)
