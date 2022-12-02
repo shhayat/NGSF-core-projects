@@ -520,7 +520,7 @@ save(synergy.score, file = 'MDA_MB_436_synergy.score.RData', compress = 'xz')
  
 #2D contour plot
 
-pdf("MDA_MB_436/MDA_MB_436_2D_contour_plot_paclitaxel_homoharringtonine.pdf")
+jpeg("MDA_MB_436/MDA_MB_436_2D_contour_plot_paclitaxel_homoharringtonine.jpeg", width=500)
 Plot2DrugContour(
   data = res,
   plot_block = 1,
@@ -534,7 +534,7 @@ dev.off()
 
 
 #Plot synergy scores
-pdf("MDA_MB_436/MDA_MB_436_plot_synergyscores.pdf")
+jpeg("MDA_MB_436/MDA_MB_436_plot_synergyscores.jpeg")
 
 PlotSynergy(
   data = synergy.score,
