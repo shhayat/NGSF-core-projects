@@ -1,6 +1,6 @@
 #The purpose of rewriting Plot2drupHeatmap function is to do modifications to the 
 #axes values and dose response value size and also to replace legend title to cytotoxicity
-
+#1.8
 #First load required functions for Plot2drupHeatmap.
 #.Extract2DrugPlotData 
 #.RoundValues
@@ -235,9 +235,9 @@ row_range = NULL
 color_range = NULL 
 high_value_color = "#FF0000"
 low_value_color = "#00FF00"
-text_label_size_scale = 1.8
+text_label_size_scale = 2.8 #1.8
 text_label_color = "#000000"
-title_text_size_scale = 1.4
+title_text_size_scale = 1.8 #1.4
 
 library(ggplot2)
 plot_data <- .Extract2DrugPlotData(data, plot_block = plot_block, 
@@ -481,13 +481,13 @@ pdf("HCC1806/HCC1806_dose_response_heatmap_v3.pdf", width=10)
   Plot2drugHeatmap(res,2)
 dev.off()
 
-pdf("BT549/BT549_dose_response_heatmap.pdf")
+jpeg("BT549/BT549_dose_response_heatmap.jpeg")
   load("BT549_res.RData")
   Plot2drugHeatmap(res,1)
   #Plot2drugHeatmap(res,2)
 dev.off()
 
-pdf("MDA_MB_436/MDA_MB_436_dose_response_heatmap.pdf")
+jpeg("MDA_MB_436/MDA_MB_436_dose_response_heatmap.jpeg", width=5, height=1.5)
   load("MDA_MB_436_res.RData")
   Plot2drugHeatmap(res,1)
   #Plot2drugHeatmap(res,2)
