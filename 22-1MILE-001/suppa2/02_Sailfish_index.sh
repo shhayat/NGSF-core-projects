@@ -4,7 +4,7 @@
 #SBATCH --constraint=ivybridge
 #SBATCH --job-name=sailfish_index
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=100G
+#SBATCH --mem=80G
 #SBATCH --time=24:00:00
 #SBATCH --output=%j.out
 
