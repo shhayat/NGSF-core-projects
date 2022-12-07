@@ -5,7 +5,7 @@
 #SBATCH --job-name=sailfish_index
 #SBATCH --ntasks=1
 #BATCH --cpus-per-task=1
-#SBATCH --time=02:00:00
+#SBATCH --time=08:00:00
 #SBATCH --mem=185G
 #SBATCH --output=%j.out
 
