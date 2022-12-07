@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --constraint=Skylake
+#SBATCH --constraint=skylake
 #SBATCH --job-name=sailfish_index
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=80G
