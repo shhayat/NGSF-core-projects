@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#SBATCH --constraint=skylake
+#SBATCH --constraint=ivybridge
 #SBATCH --job-name=sailfish_index
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=80G
+#SBATCH --mem=30G
 #SBATCH --time=24:00:00
 #SBATCH --output=%j.out
 
