@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=Penguin
+#SBATCH --constraint=Skylake
 #SBATCH --job-name=sailfish_index
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=80G
