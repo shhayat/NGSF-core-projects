@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #BATCH --cpus-per-task=1
 #SBATCH --time=02:00:00
-#SBATCH --mem=80G
+#SBATCH --mem=185G
 #SBATCH --output=%j.out
 
 NCPU=1
