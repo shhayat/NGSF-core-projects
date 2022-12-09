@@ -34,5 +34,5 @@ fdata1_fdr_order <- fdata1_fdr[order(fdata1_fdr$fdr),]
 
 fdata1_pval_order$GeneID <- mapIds(org.Rn.eg.db, keys=fdata1_pval_order$gene_name, column="ENSEMBL", keytype="SYMBOL", multiVals="first")
 
-fdata1_pval_order <- fdata1_fdr_order[c(5,1:4)]
-write.csv(fdata1_fdr_order, "/Users/shahina/Projects/21-1JOHO-001/DEG_2_treated_vs_2_control_at_pval0.05.csv")
+fdata1_pval_order <- fdata1_pval_order[c(5,1:4)]
+write.csv(fdata1_pval_order, "/Users/shahina/Projects/21-1JOHO-001/DEG_2_treated_vs_2_control_at_pval0.05.csv")
