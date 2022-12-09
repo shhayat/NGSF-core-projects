@@ -1,7 +1,8 @@
-object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_male.txt",pca=TRUE, plot = FALSE)
-object$subgroup <- as.factor(c("treated","treated","treated","treated","treated","treated","treated","treated","treated","treated","treated",
-                               "control","control","control","control","control","control","control","control","control"))
-#drop samples
+library(autonomics)
+library(magrittr)
+
+object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/21-1JOHO-001/expression/feature_counts.txt",pca=TRUE, plot = FALSE)
+object$subgroup <- as.factor(c("control","treated","treated","treated","control","control"))
 object <- object %>% filter_samples(!sample_id %in% c("control_male_R56","control_male_R59","treated_male_R28","treated_male_R40","treated_male_R63"))
 
 pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_15male_samples.pdf", width=10)
