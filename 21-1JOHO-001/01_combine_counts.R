@@ -1,6 +1,6 @@
 library(magrittr)
 
-setwd("/datastore/NGSF001/projects/2021/21-1JOHO-001/expression")
+setwd("/Users/shahina/Projects/21-1JOHO-001/")
 
 Files <- lapply(Sys.glob("*.counts.htseq.txt"), read.table)
 
