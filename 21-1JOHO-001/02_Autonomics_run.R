@@ -20,16 +20,18 @@ object2 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrou
 fdata1 <- data.frame(fdt(object2))
 fdata1_select <- fdata1[c(2,5,6,7)]
 fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
+fdata1_pval_order <- fdata1_pval[order(fdata1_pval$pvalue),]
+
 #NROW(fdata1_pval)
+#1427
 names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
-#[1] 7966
 fdata1_fdr=fdata1_select[fdata1_select[4] <=0.05,]
 names(fdata1_fdr) <- c("gene_name","effects","pvalue", "fdr")
 fdata1_fdr_order <- fdata1_fdr[order(fdata1_fdr$fdr),]
 #NROW(fdata1_fdr)
-#[1] 6660
+#[1] 0
 
-fdata1_fdr_order$GeneID <- mapIds(org.Rn.eg.db, keys=fdata1_fdr_order$gene_name, column="ENSEMBL", keytype="SYMBOL", multiVals="first")
+fdata1_pval_order$GeneID <- mapIds(org.Rn.eg.db, keys=fdata1_pval_order$gene_name, column="ENSEMBL", keytype="SYMBOL", multiVals="first")
 
-fdata1_fdr_order <- fdata1_fdr_order[c(5,1:4)]
-write.csv(fdata1_fdr_order, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.05.csv")
+fdata1_pval_order <- fdata1_fdr_order[c(5,1:4)]
+write.csv(fdata1_fdr_order, "/Users/shahina/Projects/21-1JOHO-001/DEG_2_treated_vs_2_control_at_pval0.05.csv")
