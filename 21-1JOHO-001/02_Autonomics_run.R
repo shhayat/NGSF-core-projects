@@ -1,6 +1,7 @@
 library(autonomics)
 library(magrittr)
 
+
 object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/21-1JOHO-001/expression/feature_counts.txt",pca=TRUE, plot = FALSE)
 object$subgroup <- as.factor(c("control","treated","treated","treated","control","control"))
 
@@ -20,11 +21,11 @@ object2 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrou
 fdata1 <- data.frame(fdt(object2))
 fdata1_select <- fdata1[c(2,5,6,7)]
 fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
+names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
 fdata1_pval_order <- fdata1_pval[order(fdata1_pval$pvalue),]
 
 #NROW(fdata1_pval)
 #1427
-names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
 fdata1_fdr=fdata1_select[fdata1_select[4] <=0.05,]
 names(fdata1_fdr) <- c("gene_name","effects","pvalue", "fdr")
 fdata1_fdr_order <- fdata1_fdr[order(fdata1_fdr$fdr),]
