@@ -8,6 +8,6 @@ do
         fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
 	fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
   
-      sbatch ${SCRIPT_DIR}/02_salmon_quantification.sh "${sample_name}" "${fq1}" "${fq2}"
+      sbatch ${SCRIPT_DIR}/03_salmon_quantification.sh "${sample_name}" "${fq1}" "${fq2}"
  sleep 0.5
 done
