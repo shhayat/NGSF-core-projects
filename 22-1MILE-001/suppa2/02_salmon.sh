@@ -13,4 +13,4 @@
 salmon=/datastore/NGSF001/software/tools/salmon-1.9.0_linux_x86_64/bin
 GENOME=/datastore/NGSF001/analysis/references/mouse/mm10/mm10.fa
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/suppa2/suppa2_analysis/tpm/index
-$salmon/salmon index -t ${GENOME} -i ${OUTDIR}/athal_index
+$salmon/salmon index -t ${GENOME} -i ${OUTDIR}/mm10_index
