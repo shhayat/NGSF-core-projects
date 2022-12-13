@@ -3,7 +3,7 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001
 
 for i in $DATA/R2*.fastq.gz
 do
-        path="${i%_R21*_S*}";
+        path="${i%_R2*}";
         sample_name=${path##*/};
         fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
 	fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
