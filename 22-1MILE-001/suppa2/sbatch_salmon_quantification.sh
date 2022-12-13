@@ -1,3 +1,4 @@
+#!/bin/sh
 DATA=/datastore/NGSF001/projects/2021/21-1MILE-001/fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/suppa2
 
