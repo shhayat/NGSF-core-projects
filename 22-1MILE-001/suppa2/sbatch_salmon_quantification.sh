@@ -5,7 +5,8 @@ for i in $DATA/R2*.fastq.gz
 do
         path="${i%_R2*}";
         sample_name=${path##*/};
-        fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
+	sample_name1="${sample_name%%_*}";
+        fq1=${DATA}/${sample_name1}_R1_001.fastq.gz;
 	fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
   
       sbatch ${SCRIPT_DIR}/03_salmon_quantification.sh "${sample_name}" "${fq1}" "${fq2}"
