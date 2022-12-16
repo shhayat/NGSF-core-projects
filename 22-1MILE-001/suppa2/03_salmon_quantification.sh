@@ -18,7 +18,7 @@ fq1=$1; shift
 fq2=$1;
 
 NCPU=8
-$salmon/salmon quant -i mm10_index \
+$salmon/salmon quant -i $index \
              -l A \
              -1 ${fq1} \
              -2 ${fq2} \
