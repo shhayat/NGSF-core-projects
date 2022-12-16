@@ -1,13 +1,13 @@
-DATA=/datastore/NGSF001/projects/2021/21-1MILE-001/fastq
+DATA=/datastore/NGSF001/projects/22-1MILE-001/fastq_umi
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-001/suppa2
 
-for i in $DATA/R2*.fastq.gz
+for i in $DATA/D2*.fastq.gz
 do
-        path="${i%_R2*}";
+        path="${i%_D2*}";
         sample_name=${path##*/};
-	sample_name1="${sample_name%%_*}";
-        fq1=${DATA}/${sample_name1}_R1_001.fastq.gz;
-	fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
+	sample_name1=${sample_name%%_*};
+        fq1=${DATA}/${sample_name1}_R1_umi.fastq.gz;
+	fq2=${DATA}/${sample_name1}_R3_umi.fastq.gz;
   
       sbatch ${SCRIPT_DIR}/03_salmon_quantification.sh "${sample_name}" "${fq1}" "${fq2}"
  sleep 0.5
