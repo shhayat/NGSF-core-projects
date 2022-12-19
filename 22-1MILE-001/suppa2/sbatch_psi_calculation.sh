@@ -7,6 +7,6 @@ do
 	path="${i%/quant*}";
 	sample_name="${path##*/}"
   
-        sbatch ${SCRIPT_DIR}/04_salmon_quantification.sh "${sample_name}"
+        sbatch ${SCRIPT_DIR}/04_psi_calculation.sh "${sample_name}"
  sleep 0.5
 done
