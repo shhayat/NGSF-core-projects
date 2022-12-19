@@ -20,7 +20,7 @@ mkdir -p ${OUTPUT}
 sample_name=$1;
 
 #psi calculation for events
-python suppa.py psiPerEvent \
+python ${SUPPA}/suppa.py psiPerEvent \
                 --ioe-file ${events}/events_from_gtf_AL_strict.ioe \
                 --expression-file ${DATA}/${sample_name}/qunat.sf \
                 -o ${OUTPUT}
