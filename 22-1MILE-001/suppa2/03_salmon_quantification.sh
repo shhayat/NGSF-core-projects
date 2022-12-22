@@ -23,5 +23,4 @@ $salmon/salmon quant -i $index \
              -1 ${fq1} \
              -2 ${fq2} \
              -p $NCPU \
-             --validateMappings \
              -o $OUTDIR/${sample_name}_quant
