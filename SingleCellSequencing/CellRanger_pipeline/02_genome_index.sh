@@ -8,7 +8,7 @@
 #SBATCH --mem=80G
 #SBATCH --output=%j.out
 
-
+module load python/3.9
 cellranger=/datastore/NGSF001/software/tools/cellranger-7.1.0/bin
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Annotation/Genes/genes.gtf
