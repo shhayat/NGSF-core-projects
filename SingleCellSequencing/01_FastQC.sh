@@ -21,3 +21,7 @@ do
    fastqc -o ${OUTDIR}/fastqc --extract ${fq}
    
 done
+wait 
+
+cd /datastore/NGSF001/software/tools/
+./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
