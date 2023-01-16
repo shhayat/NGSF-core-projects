@@ -6,7 +6,7 @@
 #BATCH --cpus-per-task=10
 #SBATCH --time=03:00:00
 #SBATCH --mem=80G
-#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH --output=%j.out
 
 
 cellranger=/datastore/NGSF001/software/tools/cellranger-7.1.0/bin
