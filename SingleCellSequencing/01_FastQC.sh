@@ -16,7 +16,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequen
 
 mkdir -p ${OUTDIR}/fastqc
 
-for fq in $DATA/R22*.fastq.gz
+for fq in $DATA/*.fastq.gz
 do
    fastqc -o ${OUTDIR}/fastqc --extract ${fq}
    
