@@ -1,0 +1,1 @@
+./datastore/NGSF001/software/tools/txg-linux-v1.3.0/txg fastqs upload --project-id Knqk99mcYRt90XeHF2FQbmtQ ~/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/Fastq/
