@@ -9,7 +9,7 @@
 #SBATCH --output=%j.out
 
 #activate the virtual environment created for running cell ranger, check installation_issues.txt for detail 
-source /globalhome/hxo752/HPC/cellranger/bin/activate
+source /globalhome/hxo752/HPC/cell_ranger_env/bin/activate
 #module load python/3.9
 export PATH=/datastore/NGSF001/software/tools/cellranger-7.1.0/bin:$PATH
 #export PYTHONHOME=/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx/Core/python/3.9.6/bin/python:$PYTHONHOME
