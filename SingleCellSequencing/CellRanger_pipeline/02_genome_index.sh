@@ -8,10 +8,12 @@
 #SBATCH --mem=80G
 #SBATCH --output=%j.out
 
+#activate the virtual environment created for running cell ranger, check installation_issues.txt for detail 
+source /globalhome/hxo752/HPC/cellranger/bin/activate
 #module load python/3.9
 export PATH=/datastore/NGSF001/software/tools/cellranger-7.1.0/bin:$PATH
-export PATH=/globalhome/hxo752/HPC/anaconda3/bin/python3:$PATH
-
+#export PYTHONHOME=/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx/Core/python/3.9.6/bin/python:$PYTHONHOME
+#export PATH=/globalhome/hxo752/HPC/.local/lib/python3.9/site-packages/docopt-0.6.2+computecanada.dist-info:$PATH
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/indices
