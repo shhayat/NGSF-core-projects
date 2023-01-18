@@ -9,6 +9,7 @@
 #SBATCH --mem=250G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+export PATH=/datastore/NGSF001/software/tools/cellranger-7.1.0/bin:$PATH
 
 FASTQS=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/Fastq
 REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-GRCh38-2020-A/fasta
