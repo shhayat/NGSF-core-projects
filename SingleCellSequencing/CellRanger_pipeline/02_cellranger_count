@@ -1,9 +1,24 @@
+#!/bin/bash
+
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
+#SBATCH --job-name=cellranger-count
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=20
+#SBATCH --time=2:00:00
+#SBATCH --mem=250G
+#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+
 FASTQS=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/Fastq
 REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-GRCh38-2020-A/fasta
 NCPUS=20
-cellranger count --id={OUTPUT_SAMPLE_NAME} \
+RAM_MEMORY=250G
+SAMPLE_NAME=1;
+
+
+cellranger count --id=${SAMPLE_NAME} \
                  --transcriptome=${REF} \
                  --fastqs=${FASTQS} \
-                 --sample={NAME_OF_SAMPLE_IN_FASTQ_FILES} \
+                 --sample=${SAMPLE_NAME} \
                  --localcores=${NCPUS} \
-                 --localmem={RAM_MEMORY}
+                 --localmem=${RAM_MEMORY}
