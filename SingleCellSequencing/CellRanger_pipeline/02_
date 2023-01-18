@@ -1,8 +1,0 @@
-cell_ranger_genome_builds
-
-cellranger count --id={OUTPUT_SAMPLE_NAME} \
-                 --transcriptome={DIRECTORY_WITH_REFERENCE} \
-                 --fastqs={DIRECTORY_WITH_FASTQ_FILES} \
-                 --sample={NAME_OF_SAMPLE_IN_FASTQ_FILES} \
-                 --localcores={NUMBER_OF_CPUS} \
-                 --localmem={RAM_MEMORY}

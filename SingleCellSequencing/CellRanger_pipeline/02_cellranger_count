@@ -1,0 +1,9 @@
+FASTQS=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/Fastq
+REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-GRCh38-2020-A/fasta
+NCPUS=20
+cellranger count --id={OUTPUT_SAMPLE_NAME} \
+                 --transcriptome=${REF} \
+                 --fastqs=${FASTQS} \
+                 --sample={NAME_OF_SAMPLE_IN_FASTQ_FILES} \
+                 --localcores=${NCPUS} \
+                 --localmem={RAM_MEMORY}
