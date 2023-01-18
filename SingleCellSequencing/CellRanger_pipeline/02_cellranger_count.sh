@@ -15,8 +15,8 @@ FASTQS=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequen
 REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-GRCh38-2020-A/fasta
 NCPUS=20
 RAM_MEMORY=250
-SAMPLE_NAME=1;
-
+#SAMPLE_NAME=1;
+SAMPLE_NAME="Brain_Tumor"
 cellranger count --id=${SAMPLE_NAME} \
                  --transcriptome=${REF} \
                  --fastqs=${FASTQS} \
