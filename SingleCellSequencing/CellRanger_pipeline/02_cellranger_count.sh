@@ -5,7 +5,7 @@
 #SBATCH --job-name=cellranger-count
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
-#SBATCH --time=10:00:00
+#SBATCH --time=24:00:00
 #SBATCH --mem=250G
 #SBATCH  --output=%j.out
 
