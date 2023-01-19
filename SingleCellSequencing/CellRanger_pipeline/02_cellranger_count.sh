@@ -6,10 +6,10 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --time=24:00:00
-#SBATCH --mem=250G
+#SBATCH --mem=128G
 #SBATCH  --output=%j.out
 
-source /globalhome/hxo752/HPC/cell_ranger_env/bin/activate
+#source /globalhome/hxo752/HPC/cell_ranger_env/bin/activate
 
 export PATH=/datastore/NGSF001/software/tools/cellranger-7.1.0/bin:$PATH
 
