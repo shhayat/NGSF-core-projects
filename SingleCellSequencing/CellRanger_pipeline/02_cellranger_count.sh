@@ -9,6 +9,8 @@
 #SBATCH --mem=250G
 #SBATCH  --output=%j.out
 
+source /globalhome/hxo752/HPC/cell_ranger_env/bin/activate
+
 export PATH=/datastore/NGSF001/software/tools/cellranger-7.1.0/bin:$PATH
 
 FASTQS=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/Fastq
