@@ -7,7 +7,7 @@
 #5. Checked the directionality of genes from step3 to significant genes from step4  (Folder: results)
 
 setwd("~/Desktop/TCGA_analysis_for_pathways/")
-#library("readxl")
+library("readxl")
 
 #LuminalA_vs_Normal extracted from cbioPortal
 luminalA <- read.csv("LuminalA_vs_Normal_from_cbioportal.csv", header=TRUE)[c(1,3:4,7:10)] 
@@ -15,11 +15,11 @@ colnames(luminalA) <- c("Gene","Mean Log2 BRCA_LumA","Mean Log2 BRCA_Normal","Lo
 
 luminalA <- luminalA[luminalA$pvalue <= 0.05,]
 #cAMP mediated Signaling
-A3A_p1 <- read.csv("pathways_used_from_IPA/pairwise_A3A_camp_mediated_signaling.csv")[1]
+A3A_p1 <- read_excel("pathways_used_from_IPA/A3A_cAMP_Mediated_Signaling.xls")[1]
 colnames(A3A_p1) <- c("Gene")
-A3B_p1 <- read.csv("pathways_used_from_IPA/pairwise_A3B_camp_mediated_signaling.csv")[1]
+A3B_p1 <- read_excel("pathways_used_from_IPA/A3B_cAMP_Mediated_Signaling.xls")[1]
 colnames(A3B_p1) <- c("Gene")
-A3H_p1 <- read.csv("pathways_used_from_IPA/pairwise_A3H_camp_mediated_signaling.csv")[1]
+A3H_p1 <- read_excel("pathways_used_from_IPA/A3H_cAMP_Mediated_Signaling.xls")[1]
 colnames(A3H_p1) <- c("Gene")
 
 #3
@@ -45,11 +45,11 @@ write.csv(pairwise_A3H_p1,"results/pairwise_A3H_camp_mediated_signaling.csv", ro
 
 
 #Pulmonary Healing Signaling pathway
-A3A_p2 <- read.csv("pathways_used_from_IPA/pairwise_A3A_pulmonary_healing_signaling.csv")[1]
+A3A_p2 <- read_excel("pathways_used_from_IPA/A3A_Pulmonary_Healing_Signaling_pathway.xls")[1]
 colnames(A3A_p2) <- c("Gene")
-A3B_p2 <- read.csv("pathways_used_from_IPA/pairwise_A3B_pulmonary_healing_signaling.csv")[1]
+A3B_p2 <- read_excel("pathways_used_from_IPA/A3B_Pulmonary_Healing_Signaling_pathway.xls")[1]
 colnames(A3B_p2) <- c("Gene")
-A3H_p2 <- read.csv("pathways_used_from_IPA/pairwise_A3H_pulmonary_healing_signaling.csv")[1]
+A3H_p2 <- read_excel("pathways_used_from_IPA/A3H_Pulmonary_Healing_Signaling_pathway.xls")[1]
 colnames(A3H_p2) <- c("Gene")
 #4
 A3A_p22 <-  merge(luminalA, A3A_p2, by = "Gene")
