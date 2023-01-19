@@ -1,3 +1,11 @@
+
+#For performing analysis following steps were followed.
+#1. LuminalA vs Normal Data was extracted from cioportal webpage (LuminalA_vs_Normal_from_cbioportal.csv)
+#2. Extracted genes involved in cAMP mediated signaling and Pulmonary healing signaling for each condition
+#3. Matched genes LuminalA vs Normal Data to pathways extracted in step2 (Folder: pathways_used_from_IPA)
+#4. Extracted original significant gene list sent by Linda (Folder: significant_pairwise_gene_list)
+#5. Checked the directionality of genes from step3 to significant genes from step4  (Folder: results)
+
 setwd("~/Desktop/TCGA_analysis_for_pathways/")
 #library("readxl")
 
