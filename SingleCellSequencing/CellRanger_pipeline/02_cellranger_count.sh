@@ -14,7 +14,7 @@
 export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 
 FASTQS=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/Fastq
-REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-GRCh38-2020-A/
+REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/CellRanger_pipeline/refdata-gex-GRCh38-2020-A/
 #OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/
 
 #mkdir -p ${OUTPUT}
