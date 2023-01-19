@@ -17,7 +17,7 @@ FASTQS=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequen
 REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-GRCh38-2020-A/
 #OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/
 
-mkdir -p ${OUTPUT}
+#mkdir -p ${OUTPUT}
 NCPUS=16
 RAM_MEMORY=128
 #SAMPLE_NAME=1;
