@@ -1,6 +1,9 @@
 
 #For performing analysis following steps were followed.
 #1. LuminalA vs Normal Data was extracted from cioportal webpage (LuminalA_vs_Normal_from_cbioportal.csv)
+#(For extracting data Breast Invasive Carcinoma(TCGA, pancancer altas) data study was selected click on 
+#explore selected study. From Subtype select Luminal A and Normal patient data, click on compare groups and 
+#select mRNA from next page.)
 #2. Extracted genes involved in cAMP mediated signaling and Pulmonary healing signaling for each condition
 #3. Matched genes LuminalA vs Normal Data to pathways extracted in step2 (Folder: pathways_used_from_IPA)
 #4. Extracted original significant gene list sent by Linda (Folder: significant_pairwise_gene_list)
