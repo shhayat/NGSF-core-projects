@@ -9,9 +9,9 @@
 #4. Extracted original significant gene list sent by Linda (Folder: significant_pairwise_gene_list)
 #5. Checked the directionality of genes from step3 to significant genes from step4  (Folder: results)
 
-setwd("~/Desktop/core-projects/TCGA_analysis_for_pathways/")
+setwd("~/Desktop/core-projects/22-LICH-001/TCGA_analysis_for_pathways/")
 library("readxl")
-library("xlsx")
+library("WriteXLS")
 #LuminalA_vs_Normal extracted from cbioPortal
 luminalA <- read.csv("LuminalA_vs_Normal_from_cbioportal.csv", header=TRUE)[c(1,3:4,7:10)] 
 colnames(luminalA) <- c("Gene","Mean Log2 BRCA_LumA","Mean Log2 BRCA_Normal","Log2 Ratio","pvalue","qvalue","Higher Expression in")
@@ -101,8 +101,8 @@ pairwise_A3B_p3 <- merge(A3B_p33,pairwise_A3B, by="Gene")
 pairwise_A3H <- read.csv("significant_pairwise_gene_list/A3H_Pairwise Analysis  genes_fc2_pv05.csv")[2:3]
 pairwise_A3H_p3 <- merge(A3H_p33,pairwise_A3H, by="Gene")
 
-write.xlsx(pairwise_A3A_p3,"results/pairwise_A3A_wound_healing_signaling.xlsx", row.names = FALSE)
-write.xlsx(pairwise_A3B_p3,"results/pairwise_A3B_wound_healing_signaling.xlsx", row.names = FALSE)
-write.xlsx(pairwise_A3H_p3,"results/pairwise_A3H_wound_healing_signaling.xlsx", row.names = FALSE)
+WriteXLS(pairwise_A3A_p3,"results/pairwise_A3A_wound_healing_signaling.xlsx", row.names = FALSE)
+WriteXLS(pairwise_A3B_p3,"results/pairwise_A3B_wound_healing_signaling.xlsx", row.names = FALSE)
+WriteXLS(pairwise_A3H_p3,"results/pairwise_A3H_wound_healing_signaling.xlsx", row.names = FALSE)
 
 
