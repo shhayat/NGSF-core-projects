@@ -18,11 +18,11 @@ colnames(luminalA) <- c("Gene","Mean Log2 BRCA_LumA","Mean Log2 BRCA_Normal","Lo
 
 luminalA <- luminalA[luminalA$pvalue <= 0.05,]
 #cAMP mediated Signaling
-A3A_p1 <- read_excel("pathways_used_from_IPA/A3A_cAMP_Mediated_Signaling.xls")[1]
+A3A_p1 <- read_excel("pathways_used_for_analysis/A3A_cAMP_Mediated_Signaling.xls")[1]
 colnames(A3A_p1) <- c("Gene")
-A3B_p1 <- read_excel("pathways_used_from_IPA/A3B_cAMP_Mediated_Signaling.xls")[1]
+A3B_p1 <- read_excel("pathways_used_for_analysis/A3B_cAMP_Mediated_Signaling.xls")[1]
 colnames(A3B_p1) <- c("Gene")
-A3H_p1 <- read_excel("pathways_used_from_IPA/A3H_cAMP_Mediated_Signaling.xls")[1]
+A3H_p1 <- read_excel("pathways_used_for_analysis/A3H_cAMP_Mediated_Signaling.xls")[1]
 colnames(A3H_p1) <- c("Gene")
 
 #3
@@ -48,11 +48,11 @@ write.csv(pairwise_A3H_p1,"results/pairwise_A3H_camp_mediated_signaling.csv", ro
 
 
 #Pulmonary Healing Signaling pathway
-A3A_p2 <- read_excel("pathways_used_from_IPA/A3A_Pulmonary_Healing_Signaling_pathway.xls")[1]
+A3A_p2 <- read_excel("pathways_used_for_analysis/A3A_Pulmonary_Healing_Signaling_pathway.xls")[1]
 colnames(A3A_p2) <- c("Gene")
-A3B_p2 <- read_excel("pathways_used_from_IPA/A3B_Pulmonary_Healing_Signaling_pathway.xls")[1]
+A3B_p2 <- read_excel("pathways_used_for_analysis/A3B_Pulmonary_Healing_Signaling_pathway.xls")[1]
 colnames(A3B_p2) <- c("Gene")
-A3H_p2 <- read_excel("pathways_used_from_IPA/A3H_Pulmonary_Healing_Signaling_pathway.xls")[1]
+A3H_p2 <- read_excel("pathways_used_for_analysis/A3H_Pulmonary_Healing_Signaling_pathway.xls")[1]
 colnames(A3H_p2) <- c("Gene")
 #4
 A3A_p22 <-  merge(luminalA, A3A_p2, by = "Gene")
@@ -79,11 +79,11 @@ write.csv(pairwise_A3H_p2,"results/pairwise_A3H_pulmonary_healing_signaling.csv"
 
 
 #Wound Healing Signaling Pathway
-A3A_p3 <- read_excel("pathways_used_from_IPA/A3A_wound_healing_signaling_pathway.xls")[1]
+A3A_p3 <- read_excel("pathways_used_for_analysis/A3A_wound_healing_signaling_pathway.xls")[1]
 colnames(A3A_p3) <- c("Gene")
-A3B_p3 <- read_excel("pathways_used_from_IPA/A3B_wound_healing_signaling_pathway.xls")[1]
+A3B_p3 <- read_excel("pathways_used_for_analysis/A3B_wound_healing_signaling_pathway.xls")[1]
 colnames(A3B_p3) <- c("Gene")
-A3H_p3 <- read_excel("pathways_used_from_IPA/A3H_wound_healing_signaling_pathway.xls")[1]
+A3H_p3 <- read_excel("pathways_used_for_analysis/A3H_wound_healing_signaling_pathway.xls")[1]
 colnames(A3H_p3) <- c("Gene")
 #4
 A3A_p33 <-  merge(luminalA, A3A_p3, by = "Gene")
