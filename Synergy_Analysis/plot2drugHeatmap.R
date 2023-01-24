@@ -494,3 +494,10 @@ jpeg("MDA_MB_436/MDA_MB_436_dose_response_heatmap.jpeg", width=1250, height=500)
   #Plot2drugHeatmap(res,2)
 dev.off()
 
+
+#for this plot the sizes are text_label_size_scale = 2.7 and title_text_size_scale = 1.8 #1.4
+jpeg("MDA_MB_157/MDA_MB_157_dose_response_heatmap.jpeg", width=1250, height=500)
+  load("MDA_MB_157_res.RData")
+  Plot2drugHeatmap(res,1)
+  #Plot2drugHeatmap(res,2)
+dev.off()
