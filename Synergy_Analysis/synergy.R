@@ -664,7 +664,7 @@ df.wide.scores <- pivot_wider(synergy.scores,
 
 df.wide <- cbind(df.wide.response,df.wide.scores[2:length(df.wide.scores)])
 df.wide <- df.wide[order(df.wide$conc2),]
-df.wide <- df.wide[c(1:4,21,5,20,6,19,7,18,11,8,17,9,16,10,15,14,13,12,22:27,38,31,28,37,29,36,30,35,34,32:33)]
+df.wide <- df.wide[c(1:4,12,5,13,6,14,7,15,11,8,16,9,17,10,18,19,20,21,22:24,32,33,25,26,34,27,35,31,28,36,29,37,30,38)]
 write.csv(df.wide, file="MDA_MB_157/MDA_MB_157.df.paclitaxel_homoharringtonine.csv", row.names = FALSE)
                                  
                 
