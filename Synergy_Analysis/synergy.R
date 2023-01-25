@@ -487,7 +487,7 @@ write.csv(df.wide, file="BT549/BT549.df.paclitaxel_homoharringtonine.csv", row.n
 
 #For MDA_MB_436                
 dir.create("MDA_MB_436", recursive=TRUE, showWarnings = FALSE) 
-df <- read.csv("Paclitaxel_Homoharringtonine_MDA_MB_436-revised.csv", head=TRUE)[1:8]
+df <- read.csv("Paclitaxel_Homoharringtonine_MDA_MB_436_corrected.csv", head=TRUE)[1:8]
 #use first row as column name
 names(df) <- as.matrix(df[1, ])
 #remove first row from df and select rest of the rows
