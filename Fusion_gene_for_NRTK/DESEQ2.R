@@ -2,11 +2,10 @@ library("DESeq2")
 library("ggplot2")
 
 
-setwd("/Users/shahina/Projects/22-1BETO-001")
+setwd("/Users/shahina/Projects/Fusion_gene_for_ NTRK/")
 dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 
-load("feature_count.RData")
-feature_count1 <- as.data.frame(feature_count)
+feature_count1 <- read.delim("pcbi.1009450.s007.txt")
 #geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 #rownames(feature_count) <- geneID
 
