@@ -12,7 +12,7 @@ feature_count1 <- read.delim("pcbi.1009450.s007.txt")
 #your first columns which are gene id and gene name
 feature_annotation <- feature_count1[1:2]
 
-setwd("/Users/shahina/Projects/22-1BETO-001/DESEQ2")
+setwd("/Users/shahina/Projects/Fusion_gene_for_ NTRK/DESEQ2")
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 {
@@ -65,6 +65,5 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 write.csv(resDF1,file=sprintf("DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
 
 }
-DEG_analysis(c(3:8),"ABN","AB4","ABN",3,3)
-DEG_analysis(c(9:14),"DN","D4","DN",3,3)
+DEG_analysis(c(9:17,63:71,108:116,153:161,198:206,),"Normal","Tumor","Normal",3,3)
                    
