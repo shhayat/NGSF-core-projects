@@ -20,14 +20,14 @@ mkdir -p  ${DIR}/analysis && cd ${DIR}/analysis
 mkdir -p  ${DIR}/analysis/results
 mkdir -p  ${DIR}/analysis/work
                               
-
-GTF="/datastore/NGSF001/analysis/references/human/gencode-40/"
+FASTA="/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa"
+GTF="/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Annotation/Genes/genes.gtf"
 
 nextflow run nf-core/chipseq -profile singularity \
                              --input ${DIR}/design.csv \
-                             --fasta \
+                             --fasta ${FASTA} \
                              --gtf ${GTF} \
-                             --star_index \
+                             --save_reference \
                              --gtf ${GTF} \
                              -w ${DIR}/analysis/work \
                              --outdir ${DIR}/analysis/results
