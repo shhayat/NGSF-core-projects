@@ -31,7 +31,6 @@ nextflow run nf-core/rnaseq -profile singularity \
                              --genome GRCh38 \
                              --input ${DATA_DIR}/'*_R{1,2}.fastq.gz' \
                              --save_reference \
-                             --gtf ${GTF} \
                              -w ${DIR}/analysis/work \
                              --outdir ${DIR}/analysis/results
                              
