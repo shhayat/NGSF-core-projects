@@ -32,8 +32,7 @@ GTF="/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/An
 
 nextflow run nf-core/rnaseq -profile singularity \
                              --input ${DATA_DIR}/'*_R{1,2}.fastq.gz' \
-                             --fasta ${FASTA} \
-                             --gtf ${GTF} \
+                             --genome GRCh38 \
                              --save_reference TRUE \
                              -w ${DIR}/analysis/work \
                              --outdir ${DIR}/analysis/results
