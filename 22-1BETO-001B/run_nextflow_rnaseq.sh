@@ -15,7 +15,7 @@ module load gentoo/2020
 module load singularity/3.9.2
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B
-DATA_DIR=/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq
+DATA_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/Fastq
 
 mkdir -p  ${DIR}/analysis && cd ${DIR}/analysis
 mkdir -p  ${DIR}/analysis/results
