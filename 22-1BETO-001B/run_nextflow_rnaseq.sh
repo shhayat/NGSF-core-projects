@@ -21,11 +21,10 @@ mkdir -p  ${DIR}/analysis/results
 mkdir -p  ${DIR}/analysis/work
                               
 
-GTF="/datastore/NGSF001/analysis/references/mouse/gencode-m30/gencode.vM30.annotation.gtf"
+GTF="/datastore/NGSF001/analysis/references/human/gencode-40/"
 
 nextflow run nf-core/chipseq -profile singularity \
                              --input ${DIR}/design.csv \
-                             --genome mm10 \
                              --fasta \
                              --gtf ${GTF} \
                              --star_index \
