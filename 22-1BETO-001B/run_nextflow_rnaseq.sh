@@ -26,7 +26,7 @@ mkdir -p  ${DIR}/analysis/work
 #--star_index
 #--fasta ${FASTA} \
 #--gtf ${GTF} \
-nextflow run nf-core/chipseq -profile singularity \
+nextflow run nf-core/rnaseq -profile singularity \
                              --genome GRCh38 \
                              --input ${DIR}/design.csv \
                              --save_reference \
