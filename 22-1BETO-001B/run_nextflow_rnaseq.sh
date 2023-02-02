@@ -34,6 +34,7 @@ nextflow run nf-core/rnaseq -profile singularity \
                              --input ${DATA_DIR}/'*_R{1,2}.fastq.gz' \
                              --fasta ${FASTA} \
                              --gtf ${GTF} \
+                             --save_reference TRUE \
                              -w ${DIR}/analysis/work \
                              --outdir ${DIR}/analysis/results
                              
