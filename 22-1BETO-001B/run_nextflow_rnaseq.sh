@@ -28,7 +28,7 @@ mkdir -p  ${DIR}/analysis/work
 #--gtf ${GTF} \
 nextflow run nf-core/rnaseq -profile singularity \
                              --genome GRCh38 \
-                             --input ${DIR}/design.csv \
+                             --input /*_R{1,2}.fastq.gz \
                              --save_reference \
                              --gtf ${GTF} \
                              -w ${DIR}/analysis/work \
