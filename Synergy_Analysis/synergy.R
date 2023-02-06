@@ -2,7 +2,7 @@ library(synergyfinder)
 library(tidyr)
 #setwd("/Users/shahina/Desktop/Synergy_Analysis")
 #setwd("/Users/hxo752/Desktop/core-projects/synergy_analysis/")
-setwd("/Users/shahina/Projects/synergy_analysis/Synergy_Analysis")
+setwd("/Users/shahina/Projects/synergy_analysis/Synergy_Analysis/Deb")
 #For HCC38
 dir.create("HCC38", recursive=TRUE, showWarnings = FALSE) 
 df <- read.csv("Paclitaxel_Homoharringtonine_HCC38.csv", head=TRUE)[1:8]
