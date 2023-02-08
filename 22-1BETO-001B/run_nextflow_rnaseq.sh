@@ -31,7 +31,7 @@ mkdir -p  ${DIR}/analysis/work
 #--save_reference \
 
 nextflow run nf-core/rnaseq -profile singularity \
-                             --input ${DATA_DIR}/design.csv \
+                             --input ${DIR}/design.csv \
                              --genome GRCh38 \
                              --save_reference TRUE \
                              -w ${DIR}/analysis/work \
