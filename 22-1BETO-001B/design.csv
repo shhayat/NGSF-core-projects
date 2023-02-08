@@ -1,7 +1,7 @@
 sample,fastq_1,fastq_2,strandedness
-14N_REP1,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000166_R1.fastq.gz,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000166_R2.fastq.gz,auto
-14N_REP2,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000167_R1.fastq.gz,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000167_R2.fastq.gz,auto
-14N_REP3,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000168_R1.fastq.gz,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000168_R2.fastq.gz,auto
-144_REP1,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000169_R1.fastq.gz,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000169_R2.fastq.gz,auto
-144_REP2,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000170_R1.fastq.gz,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000170_R2.fastq.gz,auto
-144_REP3,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000171_R1.fastq.gz,/datastore/NGSF001/projects/22-1BETO-001B/analysis/Fastq/R22000171_R2.fastq.gz,auto
+14N_REP1,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000166_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000166_R2.fastq.gz,auto
+14N_REP2,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000167_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000167_R2.fastq.gz,auto
+14N_REP3,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000168_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000168_R2.fastq.gz,auto
+144_REP1,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000169_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000169_R2.fastq.gz,auto
+144_REP2,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000170_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000170_R2.fastq.gz,auto
+144_REP3,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000171_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/Fastq/R22000171_R2.fastq.gz,auto
