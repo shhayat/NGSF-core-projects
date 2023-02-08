@@ -37,3 +37,4 @@ nextflow run nf-core/rnaseq -profile singularity \
                              -w ${DIR}/analysis/work \
                              --outdir ${DIR}/analysis/results
                              
+#nextflow run nf-core/rnaseq -r 3.10.1 -profile test --outdir <OUTDIR>
