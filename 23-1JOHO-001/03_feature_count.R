@@ -1,14 +1,14 @@
 library(Rsubread)
 library(magrittr)
-setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/")
+setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/")
 result_dir="star_alignment"
-sample_names <- list.files(result_dir, "R2")
+sample_names <- list.files(result_dir, "R23")
 
 
 #count features using featureCounts function
 feature_count <- sapply(sample_names, function(x)
 			   featureCounts(files = sprintf('%s/%s/Aligned.sortedByCoord.out.bam',result_dir, x),
-			   annot.ext="/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf",
+			   annot.ext="/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/genes.gtf",
 			   isGTFAnnotationFile = TRUE,
 			   GTF.attrType.extra  = c('gene_name'),
 			   nthreads = 8, 
