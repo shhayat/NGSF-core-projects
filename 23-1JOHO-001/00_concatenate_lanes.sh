@@ -10,7 +10,7 @@
 	
 set -eux
 	
-mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001/analysis/Fastq 
+mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/Fastq 
 
 FASTQ_FOLDER=/datastore/NGSF001/NB551711/230208_NB551711_0063_AHT2WGBGXN/Alignment_1/20230208_231511/Fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/Fastq
