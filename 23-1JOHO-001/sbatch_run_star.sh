@@ -9,6 +9,6 @@ do
         fq1=${DATA}/${sample_name}_R1.fastq.gz;
 	      fq2=${DATA}/${sample_name}_R2.fastq.gz;
   
-      sbatch ${SCRIPT_DIR}/02_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
+      sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
  sleep 0.5
 done
