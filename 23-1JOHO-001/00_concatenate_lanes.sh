@@ -16,7 +16,7 @@ FASTQ_FOLDER=/datastore/NGSF001/NB551711/230208_NB551711_0063_AHT2WGBGXN/Alignme
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/Fastq
 	
 
-for i in $(seq -w 3 18)
+for i in $(seq -w 03 18)
 do
 	echo Combining library R22000${i}
 	cat ${FASTQ_FOLDER}/R23000${i}_*_R1_* > ${OUTDIR}/R23000${i}_R1.fastq.gz
