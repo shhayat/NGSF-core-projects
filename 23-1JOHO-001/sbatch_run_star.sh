@@ -3,7 +3,7 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001
 
 
 #for i in $DATA/R*.fastq.gz
-for i in $DATA/R*03_*.fastq.gz $DATA/R*04_*.fastq.gz $DATA/R*12_*.fastq.gz $DATA/R*15_*.fastq.gz $DATA/R*17_*.fastq.gz $DATA/R*13_*.fastq.gz
+for i in $DATA/R*03_*.fastq.gz
 do
          path="${i%_R*}";
         sample_name=${path##*/};
