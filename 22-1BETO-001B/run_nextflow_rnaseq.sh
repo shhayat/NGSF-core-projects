@@ -10,14 +10,14 @@
 
 module --force purge
 module load StdEnv/2020
-module load nextflow/22.04.3
+#module load nextflow/22.04.3
 module load gentoo/2020
 module load singularity/3.9.2
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B
 DATA_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/Fastq
 
-mkdir -p  ${DIR}/analysis && cd ${DIR}/analysis
+#mkdir -p  ${DIR}/analysis && cd ${DIR}/analysis
 mkdir -p  ${DIR}/analysis/results
 mkdir -p  ${DIR}/analysis/work
                               
