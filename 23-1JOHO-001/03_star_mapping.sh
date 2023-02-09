@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
 #SBATCH --job-name=star-align
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
