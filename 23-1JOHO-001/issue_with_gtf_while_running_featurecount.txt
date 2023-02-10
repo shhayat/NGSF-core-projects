@@ -1,0 +1,17 @@
+Following error was encountered while running gtf file eith featurecount. The gtf annotation is from NCBI (downloaded from iGenomes)
+ERROR: failed to find the gene identifier attribute in the 9th column of the provided GTF file.
+The specified gene identifier attribute is 'gene_id' 
+An example of attributes included in your GTF annotation is 'transcript_id "rna177"; tss_id "TSS2450";'.
+
+#checked the original gtf file
+ > head -n2 /datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/genes.gtf 
+1	RefSeq	exon	3214482	3216968	.	-	.	gene_id "Xkr4"; gene_name "Xkr4"; p_id "P2781"; transcript_id "NM_001011874.1"; tss_id "TSS17967";
+1	RefSeq	CDS	3216022	3216968	.	-	2	gene_id "Xkr4"; gene_name "Xkr4"; p_id "P2781"; transcript_id "NM_001011874.1"; tss_id "TSS17967";
+
+
+perl -ne 'chomp; @a=split/\t/; %h=split(/ /,$a[8]); $a[8]=join(" ",("gene_id",$h{"gene_id"},"gene_name",$h{"gene_id"},"transcript_id",$h{"transcript_id"})); print join("\t",@a),"\n";' /datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/genes.gtf > /datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/gene_modified.gtf
+
+
+head /datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/gene_modified.gtf
+1	RefSeq	exon	3214482	3216968	.	-	.	gene_id "Xkr4"; gene_name "Xkr4"; transcript_id "NM_001011874.1";
+1	RefSeq	CDS	3216022	3216968	.	-	2	gene_id "Xkr4"; gene_name "Xkr4"; transcript_id "NM_001011874.1";
