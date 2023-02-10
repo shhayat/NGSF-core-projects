@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=star-align
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=44
+#SBATCH --cpus-per-task=4
 #SBATCH --time=3:00:00
 #SBATCH --mem=60G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
