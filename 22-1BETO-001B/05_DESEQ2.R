@@ -12,7 +12,7 @@ feature_count1 <- as.data.frame(feature_count)
 #rownames(feature_count) <- geneID
 
 #your first columns which are gene id and gene name
-feature_annotation <- feature_count1[1:2]
+feature_annotation <- feature_count1[1]
 
 setwd("/Users/shahina/Projects/22-1BETO-001B/DESEQ2")
 
