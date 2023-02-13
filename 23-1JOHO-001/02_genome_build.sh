@@ -12,8 +12,10 @@
 module load star/2.7.9a 
 
 
-GENOME=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Sequence/WholeGenomeFasta
-GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/genes.gtf
+#GENOME=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Sequence/WholeGenomeFasta
+#GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/genes.gtf
+GENOME=/datastore/NGSF001/analysis/references/mouse/gencode-m32/GRCm39.primary_assembly.genome.fa.gz
+GTF=/datastore/NGSF001/analysis/references/mouse/gencode-m32/gencode.vM32.primary_assembly.annotation.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/indices
 
 NCPU=8
