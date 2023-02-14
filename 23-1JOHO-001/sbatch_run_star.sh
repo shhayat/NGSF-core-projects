@@ -2,8 +2,8 @@ DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analy
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001
 
 
-#for i in $DATA/R*.fastq.gz
-for i in $DATA/R23*13_R1.fastq.gz
+for i in $DATA/R*_R1.fastq.gz
+#for i in $DATA/R23*13_R1.fastq.gz
 do
          path="${i%_R*}";
         sample_name=${path##*/};
