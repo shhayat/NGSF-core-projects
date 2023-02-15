@@ -2,8 +2,9 @@
 
 module load sra-toolkit/2.10.8
 
-for i in SRR8474298 SRR8474287 SRR8474236	SRR8474246 SRR8474266
+for i in SRR8474298 SRR8474287 SRR8474236 SRR8474246 SRR8474266
 do
   prefetch $i;
+  fasterq-dump $i;
   
 done
