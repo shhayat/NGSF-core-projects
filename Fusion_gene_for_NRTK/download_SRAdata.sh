@@ -1,11 +1,12 @@
 #!/bin/bash
 
-#SBATCH --job-name=star-align
-#SBATCH --ntasks=1
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
+#SBATCH --job-name=sra_download
 #SBATCH --cpus-per-task=1
-#SBATCH --time=16:00:00
 #SBATCH --mem=185G
-#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH --time=24:00:00
+#SBATCH --output=%j.out
 
 #Normal Skin Tissue
 module load sra-toolkit/2.10.8
