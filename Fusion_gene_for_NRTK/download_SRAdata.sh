@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #Normal Skin Tissue
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_NRTK/Normal_Skin
 mkdir $OUTPUT
