@@ -1,5 +1,13 @@
-#Normal Skin Tissue
+#!/bin/bash
 
+#SBATCH --job-name=star-align
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=16:00:00
+#SBATCH --mem=185G
+#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+
+#Normal Skin Tissue
 module load sra-toolkit/2.10.8
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_NRTK/Normal_Skin
 mkdir $OUTPUT
