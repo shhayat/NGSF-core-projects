@@ -1,15 +1,5 @@
 #!/bin/bash
 
-#SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
-#SBATCH --job-name=sra_download
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=185G
-#SBATCH --time=24:00:00
-#SBATCH --output=%j.out
-
-module spider sra-toolkit/2.10.8
-
 #Normal Skin Tissue
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_NRTK/Normal_Skin
 mkdir $OUTPUT
