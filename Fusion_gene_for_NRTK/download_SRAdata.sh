@@ -8,8 +8,9 @@
 #SBATCH --time=24:00:00
 #SBATCH --output=%j.out
 
+module spider sra-toolkit/2.10.8
+
 #Normal Skin Tissue
-module load sra-toolkit/2.10.8
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_NRTK/Normal_Skin
 mkdir $OUTPUT
 for i in SRR8474298 SRR8474287 SRR8474236 SRR8474246 SRR8474266
