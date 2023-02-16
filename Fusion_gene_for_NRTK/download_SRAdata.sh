@@ -15,7 +15,7 @@ OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_
 mkdir $OUTPUT
 for i in SRR8474298 SRR8474287 SRR8474236 SRR8474246 SRR8474266
 do
-  ${sratoolkit}/prefetch $i -O $OUTPUT;
+  ${sratoolkit}/prefetch $i -O $OUTPUT --progress;
   ${sratoolkit}/fasterq-dump --split-files $i -O $OUTPUT --threads $NCPU --progress;
   #${sratoolkit}/fasterq-dump --split-files $i -O $OUTPUT --threads $NCPU;
 done
@@ -25,6 +25,6 @@ OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_
 mkdir $OUTPUT
 for i in SRR20327014 SRR20327015 SRR20327016 SRR20327011 SRR20327012 SRR20327013 SRR20327035 SRR20327036 SRR20327037 SRR20327006	
 do
-  ${sratoolkit}/prefetch $i -O $OUTPUT;
+  ${sratoolkit}/prefetch $i -O $OUTPUT --progress;
   ${sratoolkit}/fasterq-dump --split-files $i -O $OUTPUT --threads $NCPU --progress;
 done
