@@ -9,7 +9,6 @@
 #SBATCH --output=%j.out
 
 sratoolkit=/globalhome/hxo752/HPC/tools/sratoolkit.3.0.1-ubuntu64/bin
-NCPU=1
 #Normal Skin Tissue (Paired reads)
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_NRTK/Normal_Skin
 mkdir -p $OUTPUT
