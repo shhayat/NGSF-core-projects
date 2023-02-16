@@ -20,7 +20,7 @@ do
   ${sratoolkit}/prefetch $i -O $OUTPUT --progress;
   
   echo "Generating fastq for: ${i}";
-  ${sratoolkit}/fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass --split-3 --clip ${OUTPUT}/${i}.sra;
+  ${sratoolkit}/fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass --split-3 --clip ${OUTPUT}/${i}/${i}.sra;
   #${sratoolkit}/fasterq-dump --split-files $i -O $OUTPUT --threads $NCPU --progress;
   #${sratoolkit}/fasterq-dump --split-files $i -O $OUTPUT --threads $NCPU;
 done
@@ -34,5 +34,5 @@ do
   ${sratoolkit}/prefetch $i -O $OUTPUT --progress;
   
   echo "Generating fastq for: ${i}";
-  ${sratoolkit}/fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass --split-3 --clip ${OUTPUT}/${i}.sra;
+  ${sratoolkit}/fastq-dump --outdir fastq --gzip --skip-technical --readids --read-filter pass --split-3 --clip ${OUTPUT}/${i}/${i}.sra;
 done
