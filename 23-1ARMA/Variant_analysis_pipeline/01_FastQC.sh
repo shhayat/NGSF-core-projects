@@ -12,34 +12,34 @@ set -eux
 
 module load fastqc
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Fibrosarcoma
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Variant_analysis_pipeline
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Variant_analysis_pipeline/analysis/fastqc/Fibrosarcoma
 
-mkdir -p ${OUTDIR}/analysis/fastqc/Fibrosarcoma
+mkdir -p ${OUTDIR}
 
 for fq in $DATA/fastq/SRR*.fastq.gz
 do
-   fastqc -o ${OUTDIR}/fastqc --extract ${fq}
+   fastqc -o ${OUTDIR} --extract ${fq}
    
 done 
 
 wait 
 
 cd /datastore/NGSF001/software/tools/
-./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/Fibrosarcoma/fastqc
+./multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}/Fibrosarcoma/fastqc
 
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Normal_Skin
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Variant_analysis_pipeline
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Variant_analysis_pipeline/analysis/fastqc/Normal_Skin
 
-mkdir -p ${OUTDIR}/analysis/fastqc/Normal_Skin
+mkdir -p ${OUTDIR}
 
 for fq in $DATA/fastq/SRR*.fastq.gz
 do
-   fastqc -o ${OUTDIR}/fastqc --extract ${fq}
+   fastqc -o ${OUTDIR} --extract ${fq}
    
 done 
 
 wait 
 
 cd /datastore/NGSF001/software/tools/
-./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/Normal_Skin/fastqc
+./multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}/Normal_Skin/fastqc
