@@ -10,7 +10,7 @@
 
 sratoolkit=/globalhome/hxo752/HPC/tools/sratoolkit.3.0.1-ubuntu64/bin
 #Normal Skin Tissue (Paired reads)
-OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_NRTK/Normal_Skin
+OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Normal_Skin
 mkdir -p $OUTPUT
 mkdir -p $OUTPUT/fastq
 #for i in SRR8474298 SRR8474287 SRR8474236 SRR8474246 SRR8474266
@@ -23,7 +23,7 @@ mkdir -p $OUTPUT/fastq
 #done
 
 #Fibrosarcoma (Single ended reads)
-OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Fusion_gene_for_NRTK/Fibrosarcoma_v1
+OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Fibrosarcoma_v1
 mkdir -p $OUTPUT
 mkdir -p $OUTPUT/fastq
 for i in SRR20327014 SRR20327015 SRR20327016 SRR20327011 SRR20327012 SRR20327013 SRR20327035 SRR20327036 SRR20327037 SRR20327006	
