@@ -7,7 +7,7 @@
 #BATCH --cpus-per-task=10
 #SBATCH --time=02:00:00
 #SBATCH --mem=20G
-#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH --output=%j.out
 set -eux
 
 module load fastqc
