@@ -25,7 +25,7 @@ done
 wait 
 
 cd /datastore/NGSF001/software/tools/
-./multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}/Fibrosarcoma/fastqc
+./multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}
 
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/Normal_Skin
@@ -42,4 +42,4 @@ done
 wait 
 
 cd /datastore/NGSF001/software/tools/
-./multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}/Normal_Skin/fastqc
+./multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}
