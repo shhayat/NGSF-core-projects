@@ -25,6 +25,6 @@ mkdir -p ${OUTDIR}
 #Run Mutect2 on induced and uninduced samples to generate VCFs
 gatk Mutect2 \
      -R ${REF} \
-     -I ${INPUT_DIR}/${PREP1}_${PREP2}_merged.bam  \
+     -I ${INPUT_DIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_mdup_rg.bam   \
      -L ${INTERVALS} \
-     -O ${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/mutect2_calling/${PREP1}_${PREP2}.vcf.gz
+     -O ${INPUT_DIR}/${OUTDIR_NAME}/${OUTDIR_NAME}.vcf.gz
