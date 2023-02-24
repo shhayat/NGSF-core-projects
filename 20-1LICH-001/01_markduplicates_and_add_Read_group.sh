@@ -28,7 +28,8 @@ mkdir -p ${OUTDIR}/${OUTDIR_NAME}
 #Read Group Added
 #run these commands from E21000* samples
 java -jar $EBROOTPICARD/picard.jar MarkDuplicates \
-                                    I=${BAM_FILE} BARCODE_TAG="RX" \
+                                    I=${BAM_FILE} \
+                                    BARCODE_TAG="RX" \
                                     O=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_markduplicates.bam \
                                     M=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_marked_dup_metrics.txt && \
 java -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups 
