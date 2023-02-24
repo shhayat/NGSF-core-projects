@@ -2,47 +2,23 @@
 #STEP1 : MARKDUPLICATES AND ADD READ GROUP
 ##########################################
 
-DATA_DIR='/datastore/NGSF001/projects/2020/20-1LICH-001/alignment'
-for i in $(seq -w 13 24);
-do
-  sbatch 01_markduplicates_and_add_Read_group.sh E21000${i} "${DATA_DIR}/E21000${i}.sorted.bam"
-  sleep 0.5
-done
-#for i in $(seq -w 01 12);
+#DATA_DIR='/datastore/NGSF001/projects/2020/20-1LICH-001/alignment'
+#for i in $(seq -w 13 24);
 #do
-#  sbatch 01_markduplicates_and_add_read_group.sh D21000${i} "${DATA_DIR}/D21000${i}.bam"
+#  sbatch 01_markduplicates_and_add_Read_group.sh E21000${i} "${DATA_DIR}/E21000${i}.sorted.bam"
 #  sleep 0.5
 #done
 
 
 #####################
-#STEP2 : MERGE PREPS
-#####################
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/vaca/variants/gatk-mutect2-pipeline/
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}sample_IDs.txt
- 
-#for i in $(seq 0 11)
-#do
-#   set ${myarr[i]}
-   #sbatch 02_merge_preps.sh $2 $3
-#   sleep 0.5
-# done
-#https://stackoverflow.com/questions/68215694/how-to-submit-a-slurm-job-via-sbatch-that-depends-on-a-list-of-jobs
-
-
-#####################
 #STEP3 : MUTECT2 CALL
 #####################
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/vaca/variants/gatk-mutect2-pipeline/
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}sample_IDs.txt
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
+myarr=()
+while read line
+do 
+   myarr+=("$line")
+done < ${SCRIPT_DIR}/sample_IDs.txt
  
 #for i in $(seq 0 11)
 #do
