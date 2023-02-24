@@ -16,13 +16,14 @@ module load samtools
 
 #reference file
 REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
+OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
 PROJECT_ID='20-1LICH-001'
 OUTDIR_NAME=$1
 BAM_FILE=$2
 
 #making project ID directory for storing results
 mkdir -p ${HOME}/projects/${PROJECT_ID}/
-mkdir -p ${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/${OUTDIR_NAME}
+mkdir -p ${OUTDIR}/${OUTDIR_NAME}
 
 
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
@@ -35,15 +36,15 @@ mkdir -p ${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/${OUTDIR_NAME}
 #run these commands from E21000* samples
 java -jar $EBROOTPICARD/picard.jar MarkDuplicates \
                                     I=${BAM_FILE} BARCODE_TAG="RX" \
-                                    O=${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/${OUTDIR_NAME}/${OUTDIR_NAME}_markduplicates.bam \
-                                    M=${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/${OUTDIR_NAME}/${OUTDIR_NAME}_marked_dup_metrics.txt && \
+                                    O=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_markduplicates.bam \
+                                    M=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_marked_dup_metrics.txt && \
 java -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups 
-                                    I=${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/${OUTDIR_NAME}/${OUTDIR_NAME}_markduplicates.bam \
-                                    O=${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/${OUTDIR_NAME}/${OUTDIR_NAME}_mdup_rg.bam \
+                                    I=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_markduplicates.bam \
+                                    O=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_mdup_rg.bam \
                                     RGID=4 \
                                     RGLB=lib1 \
                                     RGPL=ILLUMINA \
                                     RGPU=unit1 RGSM=20
 
-samtools index ${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/${OUTDIR_NAME}/${OUTDIR_NAME}_mdup_rg.bam
+samtools index ${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_mdup_rg.bam
 
