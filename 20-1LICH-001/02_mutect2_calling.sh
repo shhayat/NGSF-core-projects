@@ -20,6 +20,8 @@ INTERVALS='/datastore/NGSF001/analysis/references/human/hg38/agilent_sureselect_
 OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/'
 mkdir -p ${OUTDIR}
 
+OUTDIR_NAME=$1;
+
 
 #Run Mutect2 in tumor only mode (https://gatk.broadinstitute.org/hc/en-us/articles/360035531132--How-to-Call-somatic-mutations-using-GATK4-Mutect2
 #https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2)
