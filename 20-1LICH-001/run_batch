@@ -5,7 +5,7 @@
 DATA_DIR='/datastore/NGSF001/projects/2020/20-1LICH-001/alignment'
 for i in $(seq -w 13 24);
 do
-  sbatch 01_markduplicates_and_add_read_group.sh E21000${i} "${DATA_DIR}/E21000${i}.sorted.bam"
+  sbatch 01_markduplicates_and_add_Read_group.sh E21000${i} "${DATA_DIR}/E21000${i}.sorted.bam"
   sleep 0.5
 done
 #for i in $(seq -w 01 12);
