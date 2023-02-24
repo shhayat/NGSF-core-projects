@@ -27,14 +27,15 @@ mkdir -p ${OUTDIR}/${OUTDIR_NAME}
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
 #Read Group Added
 #run these commands from E21000* samples
-java -jar $EBROOTPICARD/picard.jar MarkDuplicates \
+java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
                                     I=${BAM_FILE} \
                                     BARCODE_TAG="RX" \
                                     O=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_markduplicates.bam \
                                     M=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_marked_dup_metrics.txt && \
-java -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups 
+java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups 
                                     I=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_markduplicates.bam \
                                     O=${OUTDIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_mdup_rg.bam \
+                                    SO=coordinate \
                                     RGID=4 \
                                     RGLB=lib1 \
                                     RGPL=ILLUMINA \
