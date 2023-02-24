@@ -15,12 +15,10 @@ module load gatk/4.2.2.0
 
 #reference file
 REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
-PROJECT_ID='20-1LICH-001'
-INPUT_DIR="${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/merged_bam"
+INPUT_DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis"
 INTERVALS='/datastore/NGSF001/analysis/references/human/hg38/agilent_sureselect_human_all_exon_v8_hg38/S33266340_Covered.noheader.noAlt.bed'
-PREP1=$1
-PREP2=$2
-mkdir -p ${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/mutect2_calling
+OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/'
+mkdir -p ${OUTDIR}
 
 #Run Mutect2 in tumor only mode (https://gatk.broadinstitute.org/hc/en-us/articles/360035531132--How-to-Call-somatic-mutations-using-GATK4-Mutect2
 #https://gatk.broadinstitute.org/hc/en-us/articles/360037593851-Mutect2)
