@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=6
 #SBATCH --time=2:30:00
 #SBATCH --mem=6G
-#SBATCH  --output=markdup_add_RG.out
+#SBATCH  --output=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/markdup_add_RG.out
 set -eux
 
 #loading required modules
