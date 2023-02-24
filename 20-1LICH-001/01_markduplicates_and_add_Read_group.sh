@@ -2,12 +2,12 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=gatk-mutect2
+#SBATCH --job-name=markdup_add_RG
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=6
 #SBATCH --time=2:30:00
 #SBATCH --mem=6G
-#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH  --output=markdup_add_RG.out
 set -eux
 
 #loading required modules
