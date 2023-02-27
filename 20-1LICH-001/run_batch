@@ -23,12 +23,12 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 ###########################################
 #STEP3 : MERGE UNINDUCED SAMPLES PER PROTEIN
 ###########################################
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}/sample_IDs.txt
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
+myarr=()
+while read line
+do 
+   myarr+=("$line")
+done < ${SCRIPT_DIR}/sample_IDs.txt
 
 #for i in 2 6 10
 #do
@@ -41,7 +41,7 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 #   PREP_D2=$2 
 #   PREP_E2=$3
    
-#    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $CLONE_ID $PREP_D1 $PREP_E1 $PREP_D2 $PREP_E2
+#    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $CLONE_ID $PREP_E1 $PREP_E2
 #   sleep 0.5
 # done
 
