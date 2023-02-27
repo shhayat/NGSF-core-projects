@@ -23,6 +23,29 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 ###########################################
 #STEP3 : MERGE UNINDUCED SAMPLES PER PROTEIN
 ###########################################
+#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
+#myarr=()
+#while read line
+#do 
+#   myarr+=("$line")
+#done < ${SCRIPT_DIR}/sample_IDs.txt
+
+#for i in 2 6 10
+#do
+#  set ${myarr[i]}
+#   PREP_E1=$2
+   
+#   set ${myarr[i+1]}
+#   PREP_E2=$2
+   
+   #$1 is CLONE_ID
+ #   sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $1 ${PREP_E1} ${PREP_E2}
+  # sleep 0.5
+ #done
+
+#########################################################################
+#STEP4 : REMOVE SHARED VARIANTS BETWEEN INDUCED AND UNINDUCED PER PROTEINS
+#########################################################################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 myarr=()
 while read line
@@ -30,36 +53,13 @@ do
    myarr+=("$line")
 done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 2 6 10
+for i in 0 1 4 5 8 9
 do
    set ${myarr[i]}
-   #CLONE_ID=$1 
-   PREP_E1=$2
+   CLONE_ID=$1 
+   PREP_D1=$2 
+   PREP_E1=$3
    
-   set ${myarr[i+1]}
-   PREP_E2=$2
-   
-    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $1 ${PREP_E1} ${PREP_E2}
-   sleep 0.5
- done
-
-#########################################################################
-#STEP4 : REMOVE SHARED VARIANTS BETWEEN INDUCED AND UNINDUCED PER PROTEINS
-#########################################################################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
-#myarr=()
-#while read line
-#do 
- #  myarr+=("$line")
-#done < ${SCRIPT_DIR}sample_IDs.txt
-
-#for i in 0 1 4 5 8 9
-#do
-#   set ${myarr[i]}
-#   CLONE_ID=$1 
-#   PREP_D1=$2 
- #  PREP_E1=$3
-   
- #   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh $CLONE_ID $PREP_D1 $PREP_E1 
+ #   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${PREP_D1} ${PREP_E1}
   # sleep 0.5
  #done
