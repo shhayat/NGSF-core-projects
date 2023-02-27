@@ -43,106 +43,23 @@ do
    sleep 0.5
  done
 
-
 #########################################################################
 #STEP4 : REMOVE SHARED VARIANTS BETWEEN INDUCED AND UNINDUCED PER PROTEINS
 #########################################################################
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 #myarr=()
 #while read line
 #do 
-#   myarr+=("$line")
+ #  myarr+=("$line")
 #done < ${SCRIPT_DIR}sample_IDs.txt
 
 #for i in 0 1 4 5 8 9
 #do
- #  set ${myarr[i]}
- #  CLONE_ID=$1 
- #  PREP_D1=$2 
+#   set ${myarr[i]}
+#   CLONE_ID=$1 
+#   PREP_D1=$2 
  #  PREP_E1=$3
    
- #   sbatch ${SCRIPT_DIR}04_remove_shared_variants.sh $CLONE_ID $PREP_D1 $PREP_E1 
+ #   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh $CLONE_ID $PREP_D1 $PREP_E1 
   # sleep 0.5
  #done
- 
- 
-#################################################################
-#STEP 6: FILTER INDUCED SAMPLES [Read Depth >=15 & TLOD >=6.3]
-        # FILTER UNINDUCED SAMPLES [Read Depth >=15]
-#################################################################
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/vaca/variants/gatk-mutect2-pipeline/
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}sample_IDs.txt 
-
-#for i in 0 1 4 5 8 9
-#do
-#   set ${myarr[i]}
-#   CLONE_ID=$1 
-#   PREP1=$2
-#   PREP2=$3
-#   SAMPLE_TYPE="induced filtered"
-   
-#    sbatch ${SCRIPT_DIR}06_filterations.sh ${CLONE_ID} ${PREP1} ${PREP2} ${SAMPLE_TYPE}
-#   sleep 0.5
-#done
-
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/vaca/variants/gatk-mutect2-pipeline/
-myarr=()
-while read line
-do 
-   myarr+=("$line")
-done < ${SCRIPT_DIR}sample_IDs.txt 
-
-for i in 0 1 4 5 8 9
-do
-   set ${myarr[i]}
-   CLONE_ID=$1 
-   PREP1=$2
-   PREP2=$3
-   SAMPLE_TYPE="induced"
-   
-    sbatch ${SCRIPT_DIR}06_filterations.sh ${CLONE_ID} ${PREP1} ${PREP2} ${SAMPLE_TYPE}
-   sleep 0.5
-done
-
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/vaca/variants/gatk-mutect2-pipeline/
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}sample_IDs.txt 
-
-#for i in 2 3 6 7 10 11
-#do
-#   set ${myarr[i]}
-#   CLONE_ID=$1 
-#   PREP1=$2
-#   PREP2=$3
-#   SAMPLE_TYPE="uninduced"
-   
-  #  sbatch ${SCRIPT_DIR}06_filterations.sh ${CLONE_ID} ${PREP1} ${PREP2} ${SAMPLE_TYPE}
-  # sleep 0.5
-#done
-
-##################
-#BCFTOOLS MPILEUP
-##################
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/vaca/variants/gatk-mutect2-pipeline/
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}sample_IDs.txt
-
-#for i in 0 1 4 5 8 9
-#do
-#   set ${myarr[i]}
-#   PREP_D1=$2
-#   PREP_E1=$3
-   
-#    sbatch ${SCRIPT_DIR}bcf_calls.sh $PREP_D1 $PREP_E1 
-#    sleep 0.5
-#done
