@@ -19,12 +19,11 @@ INPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
 
 CLONE_ID=$1; shift
-SAMPLE_ID=$2; shift
 UNINDUCED_1=$3; shift
 UNINDUCED_2=$4
 
-echo "${INPUT_DIR}/${SAMPLE_ID}/${UNINDUCED_1}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
-echo "${INPUT_DIR}/${SAMPLE_ID}/${UNINDUCED_2}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
+echo "${INPUT_DIR}/${SAMPLE_ID}/${UNINDUCED_1}/${UNINDUCED_1}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
+echo "${INPUT_DIR}/${SAMPLE_ID}/${UNINDUCED_2}/${UNINDUCED_2}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
 
 bcftools concat -a \
                 -d all \
