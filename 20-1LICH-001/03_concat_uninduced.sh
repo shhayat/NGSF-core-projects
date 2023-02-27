@@ -20,13 +20,13 @@ INPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 INTERVALS='/datastore/NGSF001/analysis/references/human/hg38/agilent_sureselect_human_all_exon_v8_hg38/S33266340_Covered.noheader.noAlt.bed'
 OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
 
-UNINDUCED_PREP_E1=$1; shift
-UNINDUCED_PREP_E2=$2
+CLONE_ID=$1; shift
+UNINDUCED_PREP_E1=$2; shift
+UNINDUCED_PREP_E2=$3
 
 echo "${INPUT_DIR}/${UNINDUCED_PREP_D1}_${UNINDUCED_PREP_E1}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
 echo "${INPUT_DIR}/${UNINDUCED_PREP_D2}_${UNINDUCED_PREP_E2}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
 
-#bcftools merge --force-samples ${INPUT_DIR}/${UNINDUCED_PREP_D1}_${UNINDUCED_PREP_E1}.vcf.gz ${INPUT_DIR}/${UNINDUCED_PREP_D2}_${UNINDUCED_PREP_E2}.vcf.gz -o ${INPUT_DIR}/${CLONE_ID}_uninduced_concat.vcf.gz -O z
 bcftools concat -a \
                 -d all \
                 -O z \
