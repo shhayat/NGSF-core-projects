@@ -16,21 +16,19 @@ module load StdEnv/2020
 module load gcc/9.3.0
 module load bcftools/1.13
 
-PROJECT_ID='20-1LICH-001'
 INPUT_DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis"
-CLONE_ID=$1
-INDUCED_SAMPLE1=$2
-INDUCED_SAMPLE2=$3
-
 mkdir -p ${INPUT_DIR}/filtered_vcfs
 OUTPUT_DIR='${INPUT_DIR}/filtered_vcfs'
+CLONE_ID=$1
+INDUCED_SAMPLE=$2
+
 
 bcftools isec -C \
               -c none \
               -O z \
               -w 1 \
-              -o ${OUTPUT_DIR}/${CLONE_ID}_${PREP1}_${PREP2}.vcf.gz \
-              ${INPUT_DIR}/${PREP1}_${PREP2}.vcf.gz \
+              -o ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}.vcf.gz \
+              ${INPUT_DIR}/${INDUCED_SAMPLE}/${INDUCED_SAMPLE}.vcf.gz \
               ${INPUT_DIR}/${CLONE_ID}_uninduced_concat.vcf.gz
 
-bcftools index -t ${OUTPUT_DIR}/${CLONE_ID}_${PREP1}_${PREP2}.vcf.gz
+bcftools index -t ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}.vcf.gz
