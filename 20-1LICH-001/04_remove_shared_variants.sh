@@ -19,8 +19,8 @@ module load bcftools/1.13
 PROJECT_ID='20-1LICH-001'
 INPUT_DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis"
 CLONE_ID=$1
-PREP1=$2
-PREP2=$3
+INDUCED_SAMPLE1=$2
+INDUCED_SAMPLE2=$3
 
 mkdir -p ${INPUT_DIR}/filtered_vcfs
 OUTPUT_DIR='${INPUT_DIR}/filtered_vcfs'
