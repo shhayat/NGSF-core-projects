@@ -30,20 +30,19 @@ do
    myarr+=("$line")
 done < ${SCRIPT_DIR}/sample_IDs.txt
 
-#for i in 2 6 10
-#do
-#   set ${myarr[i]}
-#   CLONE_ID=$1 
-#   PREP_D1=$2 
-#   PREP_E1=$3
-      
-#   set ${myarr[i+1]}
-#   PREP_D2=$2 
-#   PREP_E2=$3
+
+for i in 2 6 10
+do
+   set ${myarr[i]}
+   CLONE_ID=$1 
+   PREP_E1=$2
    
-#    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $CLONE_ID $PREP_E1 $PREP_E2
-#   sleep 0.5
-# done
+   set ${myarr[i+1]}
+   PREP_E2=$2
+   
+    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $CLONE_ID $PREP_E1 $PREP_E2
+   sleep 0.5
+ done
 
 
 #########################################################################
