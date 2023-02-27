@@ -57,9 +57,8 @@ for i in 0 1 4 5 8 9
 do
    set ${myarr[i]}
    CLONE_ID=$1 
-   PREP_D1=$2 
-   PREP_E1=$3
+   PREP_E1=$2
    
-  #sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${PREP_E1}
-  # sleep 0.5
- #done
+   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${PREP_E1}
+   sleep 0.5
+ done
