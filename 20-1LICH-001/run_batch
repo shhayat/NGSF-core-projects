@@ -14,18 +14,12 @@
 #STEP2 : MUTECT2 CALL
 #####################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}/sample_IDs.txt
  
-for i in $(seq -w 13 24)
-do
-   #set ${myarr[i]}
-   sbatch 02_mutect2_calling.sh E21000${i}
-   sleep 0.5
- done
+#for i in $(seq -w 13 24)
+#do
+   #sbatch 02_mutect2_calling.sh E21000${i}
+   #sleep 0.5
+ #done
 ###########################################
 #STEP3 : MERGE UNINDUCED SAMPLES PER PROTEIN
 ###########################################
