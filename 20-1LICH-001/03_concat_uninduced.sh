@@ -23,8 +23,8 @@ SAMPLE_ID=$2; shift
 UNINDUCED_1=$3; shift
 UNINDUCED_2=$4
 
-echo "${INPUT_DIR}/${UNINDUCED_1}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
-echo "${INPUT_DIR}/${UNINDUCED_2}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
+echo "${INPUT_DIR}/${SAMPLE_ID}/${UNINDUCED_1}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
+echo "${INPUT_DIR}/${SAMPLE_ID}/${UNINDUCED_2}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
 
 bcftools concat -a \
                 -d all \
