@@ -25,11 +25,10 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 ###########################################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 myarr=()
-while read line
-do 
-   myarr+=("$line")
-done < ${SCRIPT_DIR}/sample_IDs.txt
-
+#while read line
+#do 
+#   myarr+=("$line")
+#done < ${SCRIPT_DIR}/sample_IDs.txt
 
 for i in 2 6 10
 do
