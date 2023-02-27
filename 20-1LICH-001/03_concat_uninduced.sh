@@ -15,13 +15,13 @@ module load StdEnv/2020
 module load gcc/9.3.0
 module load bcftools/1.13
 
-PROJECT_ID='20-1LICH-001'
-INPUT_DIR="${HOME}/projects/${PROJECT_ID}/mutect2-pipeline/mutect2_calling"
-CLONE_ID=$1
-UNINDUCED_PREP_D1=$2
-UNINDUCED_PREP_E1=$3
-UNINDUCED_PREP_D2=$4
-UNINDUCED_PREP_E2=$5
+REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
+INPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
+INTERVALS='/datastore/NGSF001/analysis/references/human/hg38/agilent_sureselect_human_all_exon_v8_hg38/S33266340_Covered.noheader.noAlt.bed'
+OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
+
+UNINDUCED_PREP_E1=$1; shift
+UNINDUCED_PREP_E2=$2
 
 echo "${INPUT_DIR}/${UNINDUCED_PREP_D1}_${UNINDUCED_PREP_E1}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
 echo "${INPUT_DIR}/${UNINDUCED_PREP_D2}_${UNINDUCED_PREP_E2}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
