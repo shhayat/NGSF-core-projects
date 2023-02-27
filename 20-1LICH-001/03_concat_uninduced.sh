@@ -5,9 +5,9 @@
 #SBATCH --job-name=bcftools
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --time=00:15:00
+#SBATCH --time=00:30:00
 #SBATCH --mem=2G
-#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH  --output=%j.out
 #set -eux
 
 #loading required modules
@@ -15,17 +15,16 @@ module load StdEnv/2020
 module load gcc/9.3.0
 module load bcftools/1.13
 
-REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
 INPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
-INTERVALS='/datastore/NGSF001/analysis/references/human/hg38/agilent_sureselect_human_all_exon_v8_hg38/S33266340_Covered.noheader.noAlt.bed'
 OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
 
 CLONE_ID=$1; shift
-UNINDUCED_PREP_E1=$2; shift
-UNINDUCED_PREP_E2=$3
+SAMPLE_ID=$2; shift
+UNINDUCED_1=$3; shift
+UNINDUCED_2=$4
 
-echo "${INPUT_DIR}/${UNINDUCED_PREP_D1}_${UNINDUCED_PREP_E1}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
-echo "${INPUT_DIR}/${UNINDUCED_PREP_D2}_${UNINDUCED_PREP_E2}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
+echo "${INPUT_DIR}/${UNINDUCED_1}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
+echo "${INPUT_DIR}/${UNINDUCED_2}.vcf.gz" >> ${CLONE_ID}_uniduced_vcf.txt
 
 bcftools concat -a \
                 -d all \
