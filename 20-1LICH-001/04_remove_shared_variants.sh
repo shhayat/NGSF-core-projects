@@ -19,7 +19,7 @@ module load bcftools/1.13
 INPUT_DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis"
 CONCATE_UNINDUCED="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_uninduced_samples"
 mkdir -p ${INPUT_DIR}/filtered_vcfs
-OUTPUT_DIR='${INPUT_DIR}/filtered_vcfs'
+OUTPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/filtered_vcfs'
 CLONE_ID=$1
 INDUCED_SAMPLE=$2
 
