@@ -34,12 +34,12 @@ for i in 2 6 10
 do
    set ${myarr[i]}
    #CLONE_ID=$1 
-   #PREP_E1=$2
+   PREP_E1=$2
    
    set ${myarr[i+1]}
    PREP_E2=$2
    
-    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $1 $2 ${PREP_E2}
+    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $1 ${PREP_E1} ${PREP_E2}
    sleep 0.5
  done
 
