@@ -60,6 +60,6 @@ do
    PREP_D1=$2 
    PREP_E1=$3
    
- #   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${PREP_D1} ${PREP_E1}
+  #sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${PREP_E1}
   # sleep 0.5
  #done
