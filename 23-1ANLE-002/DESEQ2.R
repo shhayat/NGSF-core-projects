@@ -13,6 +13,8 @@ feature_count=feature_count[rowSums(feature_count[,c(3:8)])>0, ]
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
 
+#write.table(feature_count,file="DESEQ2/counts_for_all_genes.txt", row.names = TRUE, sep="\t")
+
 #your first columns which are gene id and gene name
 feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
 
@@ -41,37 +43,30 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   #PCA PLOT
   ##########
   #gernate rlog for PCA
-  rld <-rlog(dds,blind=FALSE)
-  pdf(sprintf("PCA_%s_%s.pdf",cond2,cond1), width=8,height=8)
-  nudge <- position_nudge(y = 0.5)
-  p <- plotPCA(rld,intgroup=c("sample_group"))  
-  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
-  print(p)
-  dev.off()
+  #rld <-rlog(dds,blind=FALSE)
+  #pdf(sprintf("PCA_%s_%s.pdf",cond2,cond1), width=8,height=8)
+  #nudge <- position_nudge(y = 0.5)
+  #p <- plotPCA(rld,intgroup=c("sample_group"))  
+  #p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
+  #print(p)
+  #dev.off()
   
   dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
   res <- results(dds_wald, contrast=c("sample_group",cond2,cond1))
   
   resDF <- data.frame(GeneID=rownames(res),res)
   resDF <- merge(feature_annotation,resDF, by="GeneID")
-  #resDF <- resDF[order(resDF$pvalue),]
-  #log2FC <- resDF$log2FoldChange
-  #resDF$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
+  resDF <- resDF[order(resDF$pvalue),]
+  log2FC <- resDF$log2FoldChange
+  resDF$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
+  
+  #filter on FC -1.5/+1.5 (used for significant genes only)
+  down=resDF[resDF$Fold_Change <= -1.5,] 
+  up=resDF[resDF$Fold_Change >= 1.5,]
+  resDF=rbind(down,up)
   
   #remove rows with all NAs
   resDF1 <- subset(resDF, pvalue <= 0.05)
-  
-  #calculate Foldchange
-  log2FC1 <- resDF1$log2FoldChange
-  resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
-  
-  #filter on FC -1.5/+1.5
-  down=resDF1[resDF1$Fold_Change <= -1.5,] 
-  up=resDF1[resDF1$Fold_Change >= 1.5,]
-  resDF1=rbind(down,up)
-  
-  #order on Pvalue
-  #resDF1 <- resDF1[order(resDF1$pvalue),]
   
   #return(dim(resDF1))
   #All significant
@@ -79,10 +74,13 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   #write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_all_genes.xlsx",cond2,cond1), row.names = FALSE)
   
 }
-#all samples all genes
+#analysis for all genes
 #DEG_analysis(c(3,5,7,4,6,8),"CONTROL","DMOG","CONTROL",3,3)
-#all samples
+#DEG_analysis(c(3,7,4,8),"CONTROL2","DMOG2","CONTROL2",2,2)
+
+#analysis for significant genes
 DEG_analysis(c(3,5,7,4,6,8),"CONTROL3","DMOG3","CONTROL3",3,3)
-#2 outliers removed
 DEG_analysis(c(3,7,4,8),"CONTROL2","DMOG2","CONTROL2",2,2)
+
+
 
