@@ -13,7 +13,7 @@ set -eux
 ##loading required modules
 module load bedtools
 
-OUTPUT_DIR=''
+OUTPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/filtered_vcfs'
 GENOME='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
 
 CLONE_ID=$1
