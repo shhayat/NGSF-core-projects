@@ -15,6 +15,6 @@ module load StdEnv/2020
 module load gcc/9.3.0
 module load bedtools
 
-#
-bedtools flank [OPTIONS] -i <BED/GFF/VCF> -g <GENOME> -b 2
+#Extract C to T or G 
+bedtools flank [OPTIONS] -i ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}.vcf.gz -g <GENOME> -b 2
 
