@@ -8,8 +8,8 @@ dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE)
 
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
-#remove row with sum zero
-feature_count=feature_count[rowSums(feature_count[,c(3:8)])>0, ]
+
+#remove number after decimal point from ensembl ID
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
 
@@ -21,9 +21,10 @@ feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 {
-  #feature_count <- feature_count[colnum]
   feature_count <- feature_count[colnum]
-
+  #remove row with sum zero
+  feature_count <- feature_count[rowSums(feature_count[,c(1:ncol(feature_count))])>0, ]
+  
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
                         sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))))
@@ -61,26 +62,25 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   resDF$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
   
   #filter on FC -1.5/+1.5 (used for significant genes only)
-  down=resDF[resDF$Fold_Change <= -1.5,] 
-  up=resDF[resDF$Fold_Change >= 1.5,]
-  resDF=rbind(down,up)
+  #down=resDF[resDF$Fold_Change <= -1.5,] 
+  #up=resDF[resDF$Fold_Change >= 1.5,]
+  #resDF=rbind(down,up)
   
   #remove rows with all NAs
-  resDF1 <- subset(resDF, pvalue <= 0.05)
+  #resDF1 <- subset(resDF, pvalue <= 0.05)
   
   #return(dim(resDF1))
   #All significant
-  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_pval_and_Foldchange.xlsx",cond2,cond1), row.names = FALSE)
-  #write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_all_genes.xlsx",cond2,cond1), row.names = FALSE)
+  #write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_pval_and_Foldchange.xlsx",cond2,cond1), row.names = FALSE)
+  #All Genes
+  write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_all_genes.xlsx",cond2,cond1), row.names = FALSE)
   
 }
 #analysis for all genes
 #DEG_analysis(c(3,5,7,4,6,8),"CONTROL","DMOG","CONTROL",3,3)
-#DEG_analysis(c(3,7,4,8),"CONTROL2","DMOG2","CONTROL2",2,2)
+DEG_analysis(c(3,7,4,8),"CONTROL2","DMOG2","CONTROL2",2,2)
 
 #analysis for significant genes
 DEG_analysis(c(3,5,7,4,6,8),"CONTROL3","DMOG3","CONTROL3",3,3)
 DEG_analysis(c(3,7,4,8),"CONTROL2","DMOG2","CONTROL2",2,2)
-
-
 
