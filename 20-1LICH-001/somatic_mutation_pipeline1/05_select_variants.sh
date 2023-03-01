@@ -23,8 +23,8 @@ gunzip ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}.vcf.gz
 #Extract bases C converting. to T or G base
 grep -P 'C\tG' your_vcf_file.vcf | cut -f 1,2,3,4,5 >> ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}_filtered.vcf
 grep -P 'C\tT' your_vcf_file.vcf | cut -f 1,2,3,4,5 >> ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}_filtered.vcf
-grep -P 'C\tT/G' your_vcf_file.vcf | cut -f 1,2,3,4,5 >> ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}_filtered.vcf
-grep -P 'C\tG/T' your_vcf_file.vcf | cut -f 1,2,3,4,5 >> ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}_filtered.vcf
+grep -P 'C\tTG' your_vcf_file.vcf | cut -f 1,2,3,4,5 >> ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}_filtered.vcf
+grep -P 'C\tGT' your_vcf_file.vcf | cut -f 1,2,3,4,5 >> ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}_filtered.vcf
 
 
 bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}_filtered.vcf -g ${GENOME} -b 2
