@@ -16,13 +16,8 @@ module load bedtools
 INPUT_DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis"
 OUTPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/filtered_vcfs'
 
-mkdir -p ${INPUT_DIR}/filtered_vcfs
-SAMPLE=$2
-
-OUTPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/filtered_vcfs'
-
-CLONE_ID=$1
-INDUCED_SAMPLE=$2
+mkdir -p ${OUTPUT_DIR}
+SAMPLE=$1
 
 gunzip ${OUTPUT_DIR}/${CLONE_ID}_${INDUCED_SAMPLE}.vcf.gz
 #Extract bases C converting. to T or G base
