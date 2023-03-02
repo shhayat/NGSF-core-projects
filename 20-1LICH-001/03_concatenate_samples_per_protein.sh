@@ -31,7 +31,7 @@ echo "${INPUT_DIR}/${SAMPLE2}/${SAMPLE2}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${COND
 bcftools concat -a \
                 -d all \
                 -O z \
-                -f ${OUTDIR}/${CLONE_ID}_${COND}_vcf.txt \
-                -o ${OUTDIR}/${CLONE_ID}_${COND}_concat_vcf.gz
+                -f ${OUTDIR}/${CLONE_ID}_${COND}.vcf.txt \
+                -o ${OUTDIR}/${CLONE_ID}_${COND}_concat.vcf.gz
                 
-bcftools index -t ${OUTDIR}/${CLONE_ID}_${COND}_concat_vcf.gz
+bcftools index -t ${OUTDIR}/${CLONE_ID}_${COND}_concat.vcf.gz
