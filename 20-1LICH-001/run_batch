@@ -24,31 +24,51 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 ###############################################################
 #STEP3 : MERGE UNINDUCED AND INDUCED SAMPLES PER PROTEIN
 ###############################################################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
+#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
+#myarr=()
+#while read line
+#do 
+#   myarr+=("$line")
+#done < ${SCRIPT_DIR}/sample_IDs.txt
+
+#for i in 0 2 4 6 8 10
+#do
+#  set ${myarr[i]}
+#      SAMPLE1=$2
+   
+#   set ${myarr[i+1]}
+#       SAMPLE2=$2
+   
+   #$1 is CLONE_ID and $4 is conditions for sample
+ #   sbatch 03_concatenate_samples_per_protein.sh $1 ${SAMPLE1} ${SAMPLE2} $3
+ #  sleep 0.5
+ #done
+
+##########################
+#STEP4 : SELECT VARIANTS
+##########################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
 myarr=()
 while read line
 do 
    myarr+=("$line")
 done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 0 2 4 6 8 10
+for i in 0 1 2 3 4 5 6 7 8 9
 do
-  set ${myarr[i]}
-      SAMPLE1=$2
+   set ${myarr[i]}
+   CLONE_ID=$1 
+   SAMPLE=$2
+   COND=$3
    
-   set ${myarr[i+1]}
-       SAMPLE2=$2
-   
-   #$1 is CLONE_ID and $4 is conditions for sample
-    sbatch 03_concatenate_samples_per_protein.sh $1 ${SAMPLE1} ${SAMPLE2} $3
+   sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${SAMPLE} ${COND}
    sleep 0.5
  done
-
-
+ 
 ###########################################
 #STEP3 : MERGE UNINDUCED SAMPLES PER PROTEIN
 ###########################################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
+#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
 #myarr=()
 #while read line
 #do 
@@ -67,6 +87,8 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 #    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $1 ${UNINDUCED_SAMPLE1} ${UNINDUCED_SAMPLE2}
 #   sleep 0.5
 # done
+
+
 
 #########################################################################
 #STEP4 : REMOVE SHARED VARIANTS BETWEEN INDUCED AND UNINDUCED PER PROTEINS
@@ -87,24 +109,5 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 #   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${INDUCED_SAMPLE}
 #   sleep 0.5
 # done
- 
-##########################
-#STEP5 : SELECT VARIANTS
-##########################
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}/sample_IDs.txt
 
-#for i in 0 1 4 5 8 9
-#do
-#   set ${myarr[i]}
-#   CLONE_ID=$1 
-#   INDUCED_SAMPLE=$2
-   
- #  sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${INDUCED_SAMPLE}
- #  sleep 0.5
- #done
  
