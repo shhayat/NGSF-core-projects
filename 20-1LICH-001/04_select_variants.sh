@@ -25,7 +25,7 @@ COND=$2
 gunzip ${INPUT_DIR}/${OUTDIR_NAME}/${CLONE_ID}_${COND}_concat.vcf.gz
 
 #Extract bases C converting. to T or G base
-grep -P '^C\tG' $${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf
+grep -P '^C\tG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf
 grep -P '^C\tT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf
 grep -P '^C\tT/G' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf
 grep -P '^C\tG/T' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf
