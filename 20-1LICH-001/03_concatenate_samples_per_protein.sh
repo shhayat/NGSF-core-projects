@@ -23,14 +23,15 @@ mkdir -p ${OUTDIR}
 CLONE_ID=$1
 SAMPLE1=$2
 SAMPLE2=$3
+COND=$4 #INDUCED OR UNINDUCED
 
-echo "${INPUT_DIR}/${SAMPLE1}/${SAMPLE1}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${SAMPLE1}_vcf.txt
-echo "${INPUT_DIR}/${SAMPLE2}/${SAMPLE2}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${SAMPLE2}_vcf.txt
+echo "${INPUT_DIR}/${SAMPLE1}/${SAMPLE1}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${COND}_vcf.txt
+echo "${INPUT_DIR}/${SAMPLE2}/${SAMPLE2}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${COND}_vcf.txt
 
 bcftools concat -a \
                 -d all \
                 -O z \
-                -f ${OUTDIR}/${CLONE_ID}_uniduced_vcf.txt \
-                -o ${OUTDIR}/${CLONE_ID}_concat_${SAMPLE1}_${SAMPLE2}.vcf.gz 
+                -f ${OUTDIR}/${CLONE_ID}_${COND}_vcf.txt \
+                -o ${OUTDIR}/${CLONE_ID}_${COND}_concat_vcf.gz
                 
-bcftools index -t ${OUTDIR}/${CLONE_ID}_concat_${SAMPLE1}_${SAMPLE2}.vcf.gz 
+bcftools index -t ${OUTDIR}/${CLONE_ID}_${COND}_concat_vcf.gz
