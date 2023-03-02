@@ -1,0 +1,85 @@
+##########################################
+#STEP1 : MARKDUPLICATES AND ADD READ GROUP
+##########################################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/somatic_mutation_pipeline1
+#DATA_DIR='/datastore/NGSF001/projects/2020/20-1LICH-001/alignment'
+#for i in $(seq -w 13 24);
+#do
+#  sbatch ${SCRIPT_DIR}/01_markduplicates_and_add_Read_group.sh E21000${i} "${DATA_DIR}/E21000${i}.sorted.bam"
+#  sleep 0.5
+#done
+
+
+#####################
+#STEP2 : MUTECT2 CALL
+#####################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/somatic_mutation_pipeline1
+ 
+#for i in $(seq -w 13 24)
+#do
+   #sbatch 02_mutect2_calling.sh E21000${i}
+   #sleep 0.5
+ #done
+###########################################
+#STEP3 : MERGE UNINDUCED SAMPLES PER PROTEIN
+###########################################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/somatic_mutation_pipeline1
+#myarr=()
+#while read line
+#do 
+#   myarr+=("$line")
+#done < ${SCRIPT_DIR}/sample_IDs.txt
+
+#for i in 2 6 10
+#do
+#  set ${myarr[i]}
+#   UNINDUCED_SAMPLE1=$2
+   
+#   set ${myarr[i+1]}
+#   UNINDUCED_SAMPLE2=$2
+   
+   #$1 is CLONE_ID
+#    sbatch ${SCRIPT_DIR}/03_concat_uninduced.sh $1 ${UNINDUCED_SAMPLE1} ${UNINDUCED_SAMPLE2}
+#   sleep 0.5
+# done
+
+#########################################################################
+#STEP4 : REMOVE SHARED VARIANTS BETWEEN INDUCED AND UNINDUCED PER PROTEINS
+#########################################################################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/somatic_mutation_pipeline1
+myarr=()
+while read line
+do 
+   myarr+=("$line")
+done < ${SCRIPT_DIR}/sample_IDs.txt
+
+for i in 0 1 4 5 8 9
+do
+   set ${myarr[i]}
+   CLONE_ID=$1 
+   INDUCED_SAMPLE=$2
+   
+   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${INDUCED_SAMPLE}
+   sleep 0.5
+ done
+ 
+##########################
+#STEP5 : SELECT VARIANTS
+##########################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/somatic_mutation_pipeline1
+myarr=()
+while read line
+do 
+   myarr+=("$line")
+done < ${SCRIPT_DIR}/sample_IDs.txt
+
+for i in 0 1 4 5 8 9
+do
+   set ${myarr[i]}
+   CLONE_ID=$1 
+   INDUCED_SAMPLE=$2
+   
+   sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${INDUCED_SAMPLE}
+   sleep 0.5
+ done
+ 
