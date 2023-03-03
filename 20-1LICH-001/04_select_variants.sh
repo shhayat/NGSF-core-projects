@@ -33,3 +33,39 @@ grep -P 'C\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${C
 
 bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf -g ${GENOME} -b 2
 
+First, you'll need to convert your VCF file to a BED file using the vcf2bed utility from bedtools:
+lua
+Copy code
+vcf2bed < input.vcf > output.bed
+This will create a BED file containing the genomic coordinates of each variant in the VCF file.
+
+Next, you can use the bedtools flank command to add flanking regions to each variant in the BED file:
+css
+Copy code
+bedtools flank -i output.bed -g genome_file.txt -l 1 -r 1 > output_flanked.bed
+Here's a breakdown of the options used:
+
+-i output.bed specifies the input BED file
+-g genome_file.txt specifies a file containing the sizes of each chromosome in the genome
+-l 1 -r 1 specifies that we want to add 1 base of flanking sequence to each side of the variant.
+This will create a new BED file called output_flanked.bed, which contains the original genomic coordinates of each variant, as well as one base of flanking sequence on either side.
+
+Finally, you can use the bedtools intersect command to find all C to T conversions and their flanking bases. This command will intersect the flanked BED file with itself, keeping only variants where the reference allele is 'C' and the alternate allele is 'T':
+swift
+Copy code
+bedtools intersect -a output_flanked.bed -b output_flanked.bed -wa -wb -f 1 -r -v -e -i | awk '$5=="C" && $10=="T"' > c_to_t_flanked.bed
+Here's a breakdown of the options used:
+
+-a output_flanked.bed -b output_flanked.bed specifies that we want to intersect the flanked BED file with itself
+-wa -wb specifies that we want to output both the A and B entries (i.e. the two intersecting intervals) for each overlap
+-f 1 -r specifies that we want to require a complete overlap between the two intervals (i.e. the entire variant) and that the overlap must be on the same strand
+-v -e -i specifies that we want to exclude variants that don't overlap with themselves (i.e. no single-base variants) and that we want to ignore any overlaps within the same interval (i.e. ignore self-overlaps)
+awk '$5=="C" && $10=="T"' filters the output to only include variants where the reference allele is 'C' and the alternate allele is 'T', and saves the output to a new BED file called c_to_t_flanked.bed.
+The resulting c_to_t_flanked.bed file will contain the genomic coordinates of all C to T conversions in the original VCF file, as well as one base of flanking sequence on either side.
+
+
+
+
+
+
+
