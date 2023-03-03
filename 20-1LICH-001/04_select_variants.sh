@@ -31,7 +31,16 @@ grep -P 'C\tTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${C
 grep -P 'C\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf
 
 
-bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf -g ${GENOME} -b 2
+
+gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
+#bedtools flank -i MCF7_A3B_U_concat.vcf -g chrom.sizes -b 2 > test.vcf
+
+bedtools intersect -a MCF7_A3H_I_concat.vcf -b MCF7_A3H_I_concat.vcf -wa -wb -f 1 -r -v -e | awk '$4=="C" && $5=="T"' > c_to_t_flanked.vcf
+
+bedtools flank -i c_to_t_flanked.vcf -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > test.vcf
+
+
+
 
 First, you'll need to convert your VCF file to a BED file using the vcf2bed utility from bedtools:
 lua
