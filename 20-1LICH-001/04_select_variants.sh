@@ -22,7 +22,7 @@ CLONE_ID=$1
 COND=$2
  
 
-gunzip -k ${INPUT_DIR}/${OUTDIR_NAME}/${CLONE_ID}_${COND}_concat.vcf.gz
+gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
 
 #Extract bases C converting. to T or G base
 grep -P 'C\tG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.vcf
