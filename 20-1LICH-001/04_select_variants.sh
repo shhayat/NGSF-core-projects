@@ -32,7 +32,9 @@ grep -P 'C\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${C
 
 
 
-java -jar /globalhome/hxo752/HPC/tools/jvarkit/dist/jvarkit.jar 
+java -jar /globalhome/hxo752/HPC/tools/jvarkit/dist/jvarkit.jar biostar251649 
+     -n 2 \
+     -R /datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa MCF7_A3H_I_concat.vcf > MCF7_A3H_I_concat_flanked.vcf
 
 
 gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
