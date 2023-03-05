@@ -32,6 +32,9 @@ grep -P 'C\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${C
 
 
 
+java -jar /globalhome/hxo752/HPC/tools/jvarkit/dist/jvarkit.jar 
+
+
 gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
 #bedtools flank -i MCF7_A3B_U_concat.vcf -g chrom.sizes -b 2 > test.vcf
 
