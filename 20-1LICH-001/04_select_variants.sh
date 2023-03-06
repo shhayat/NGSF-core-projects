@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=bcftools-filter
+#SBATCH --job-name=bedtool_variants
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:20:00
@@ -27,13 +27,13 @@ gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
 /globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed
 
 ##step2: Extract C to T or G conversions and select first 3 columns (chrom, start, end position)
-grep -P '\tC\tG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.bed
-grep -P '\tC\tT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.bed
-grep -P '\tC\tTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.bed
-grep -P '\tC\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.bed
+grep -P '\tC\tG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+grep -P '\tC\tT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+grep -P '\tC\tTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+grep -P '\tC\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
 
 #step3: select 2 bases upstream and downstream of bases in step2
-bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered_2bpflanked.bed
+bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed
 
 #step4: extract flanked bases for file in step3. tab delimited bed file is produced which is written as text file
-bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered_2bpflanked.bed -tab > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered_2bpflanked.txt
+bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed -tab > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt
