@@ -39,6 +39,10 @@ grep -P '\tC\tT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '
 grep -P 'CC\tTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
 grep -P 'CC\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
 
+grep -P 'CCC\tTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+grep -P 'CCC\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+
+
 #step3: select 2 bases upstream and downstream of bases in step2
 bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed
 
