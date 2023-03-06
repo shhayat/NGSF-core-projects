@@ -32,21 +32,18 @@ grep -P 'C\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${C
 
 
 
-java -jar /globalhome/hxo752/HPC/tools/jvarkit/dist/jvarkit.jar biostar251649 
-     -n 2 \
-     -R /datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa MCF7_A3H_I_concat.vcf > MCF7_A3H_I_concat_flanked.vcf
+
+/globalhome/hxo752/HPC/tools/bedops/convert2bed -i MCF7_A3H_I_concat.vcf.gz -o MCF7_A3H_I_concat.bed
+
+
 
 
 gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
 #bedtools flank -i MCF7_A3B_U_concat.vcf -g chrom.sizes -b 2 > test.vcf
 
-bedtools intersect -a MCF7_A3H_I_concat.vcf -b MCF7_A3H_I_concat.vcf -wa -wb -f 1 -r -v -e | awk '$4=="C" && $5=="T"' > c_to_t_flanked.vcf
+bedtools intersect -a MCF7_A3H_I_concat.vcf -b MCF7_A3H_I_concat.vcf -wa -wb | awk '$4=="C" && $5=="T"' > c_to_t_flanked.vcf
 
-
-
-
-bedtools flank -i c_to_t_flanked.vcf -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > c_to_t_flanked_2bp.vcf
-
+#bedtools flank -i c_to_t_flanked.vcf -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > c_to_t_flanked_2bp.vcf
 
 
 
