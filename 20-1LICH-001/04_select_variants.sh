@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=bedtool_variants
+#SBATCH --job-name=select_variants
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:20:00
 #SBATCH --mem=2G
-#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH  --output=%j.out
 
 set -eux
 
