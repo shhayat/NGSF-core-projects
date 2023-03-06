@@ -54,14 +54,13 @@ do
    myarr+=("$line")
 done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 0 1 2 3 4 5 6 7 8 9 10 11
+for i in 0 2 4 6 8 10
 do
    set ${myarr[i]}
    CLONE_ID=$1 
-   SAMPLE=$2
    COND=$3
    
-   sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${SAMPLE} ${COND}
+   sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${COND}
    sleep 0.5
  done
  
