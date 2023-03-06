@@ -35,5 +35,5 @@ grep -P '\tC\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' 
 #step3: select 2 bases upstream and downstream of bases in step2
 bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered_2bpflanked.bed
 
-#step4: extract flanked bases for file in step3
-bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered_2bpflanked.bed -fo ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered_2bpflanked.fasta
+#step4: extract flanked bases for file in step3. tab delimited bed file is produced which is written as text file
+bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered_2bpflanked.bed -tab > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_filtered_2bpflanked.txt
