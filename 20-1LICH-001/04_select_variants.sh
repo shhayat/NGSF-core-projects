@@ -33,7 +33,7 @@ grep -P 'C\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf >> ${OUTPUT_DIR}/${C
 
 
 
-/globalhome/hxo752/HPC/tools/bedops/convert2bed -i MCF7_A3H_I_concat.vcf.gz -o MCF7_A3H_I_concat.bed
+/globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < MCF7_A3H_I_concat.vcf -d >  MCF7_A3H_I_concat.bed
 
 
 
