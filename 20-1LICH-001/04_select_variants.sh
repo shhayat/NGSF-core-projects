@@ -35,8 +35,8 @@ gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
 ##step2: Extract C to T or G conversions and select first 3 columns (chrom, start, end position)
 grep -P '\tC\tG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
 grep -P '\tC\tT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
-grep -P '\tC\tTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
-grep -P '\tC\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+grep -P 'C\tTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+grep -P 'C\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
 
 #step3: select 2 bases upstream and downstream of bases in step2
 bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed
