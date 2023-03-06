@@ -35,12 +35,11 @@ awk -v OFS='\t' '{print $5, $1}'
 #step1: Convert vcf to bed file
 /globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < MCF7_A3H_I_concat.vcf -d >  MCF7_A3H_I_concat.bed
 
-#step2: Extract C to T conversions and select first 3 columns (chrom, start, end position)
+#step2: Extract C to T/G conversions and select first 3 columns (chrom, start, end position)
 grep -P '\tC\tT' MCF7_A3H_I_concat.bed | awk -v OFS='\t' '{print $1,$2,$3}' > c_to_t.bed
-#bedtools intersect -a MCF7_A3H_I_concat.bed -b MCF7_A3H_I_concat.bed -wa -wb | awk '$6=="C" && $7=="T"' > c_to_t.bed
 
 #step3:
-bedtools flank -i c_to_t.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 1 > c_to_t_flanked_up_down_2bp.bed
+bedtools flank -i c_to_t.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > c_to_t_flanked_up_down_2bp.bed
 
 #step4
 bedtools getfasta -fi /datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa -bed c_to_t_flanked_up_down_2bp.bed -fo c_to_t_flanked_up_down_2bp.fasta
