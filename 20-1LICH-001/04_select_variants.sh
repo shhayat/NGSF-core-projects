@@ -10,7 +10,13 @@
 
 set -eux
 
-##loading required modules
+##loading required modules for bedtools
+
+#module load bedtools
+module load nixpkgs/16.09 
+module load gcc/5.4.0
+module load intel/2016.4
+module load intel/2017.1
 module load bedtools
 
 INPUT_DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_samples_per_protein"
