@@ -42,7 +42,10 @@ gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
 
 bedtools intersect -a MCF7_A3H_I_concat.vcf -b MCF7_A3H_I_concat.vcf -wa -wb -f 1 -r -v -e | awk '$4=="C" && $5=="T"' > c_to_t_flanked.vcf
 
-bedtools flank -i c_to_t_flanked.vcf -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > test.vcf
+
+
+
+bedtools flank -i c_to_t_flanked.vcf -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > c_to_t_flanked_2bp.vcf
 
 
 
@@ -67,7 +70,7 @@ This will create a new BED file called output_flanked.bed, which contains the or
 Finally, you can use the bedtools intersect command to find all C to T conversions and their flanking bases. This command will intersect the flanked BED file with itself, keeping only variants where the reference allele is 'C' and the alternate allele is 'T':
 swift
 Copy code
-bedtools intersect -a output_flanked.bed -b output_flanked.bed -wa -wb -f 1 -r -v -e -i | awk '$5=="C" && $10=="T"' > c_to_t_flanked.bed
+bedtools intersect -a output_flanked.bed -b output_flanked.bed -wa -wb | awk '$5=="C" && $10=="T"' > c_to_t_flanked.bed
 Here's a breakdown of the options used:
 
 -a output_flanked.bed -b output_flanked.bed specifies that we want to intersect the flanked BED file with itself
