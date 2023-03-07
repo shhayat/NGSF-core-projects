@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=fastqc
 #SBATCH --ntasks=6
-#BATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=4
 #SBATCH --time=02:00:00
 #SBATCH --mem=6G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
