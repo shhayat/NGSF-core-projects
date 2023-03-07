@@ -2,9 +2,9 @@
 
 #SBATCH --job-name=star-align
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
+#SBATCH --cpus-per-task=4
 #SBATCH --time=1:00:00
-#SBATCH --mem=20G
+#SBATCH --mem=60G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
