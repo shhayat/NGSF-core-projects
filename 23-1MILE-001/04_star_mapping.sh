@@ -18,11 +18,11 @@ GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/ind
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/star_alignment
 NCPU=2
 
-mkdir -p ${OUTDIR}
 sample_name=$1; shift
-fq1=$1
-fq2=$2
+fq1=$1; shift
+fq2=$1
 
+mkdir -p ${OUTDIR}/${sample_name} && cd ${OUTDIR}/${sample_name}
 
 STAR --genomeDir $GENOME \
 	--readFilesCommand zcat \
@@ -30,5 +30,4 @@ STAR --genomeDir $GENOME \
 	--outSAMtype BAM SortedByCoordinate \
 	--runThreadN ${NCPU} \
 	&& samtools index Aligned.sortedByCoord.out.bam 
-	
 	
