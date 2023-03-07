@@ -11,10 +11,8 @@
 set -eux
 
 module load fastqc
-#DATA=/datastore/NGSF001/projects/23-1MILE-001/Analysis/Fastq
-#OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/fastqc
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/fastq_trimmed
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/fastqc_trimmed
+DATA=/datastore/NGSF001/projects/23-1MILE-001/Analysis/Fastq
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/fastqc
 
 mkdir -p ${OUTDIR}
 
