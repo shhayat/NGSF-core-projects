@@ -1,5 +1,3 @@
-
-
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
