@@ -28,3 +28,22 @@ do
               -O ${OUTDIR}/${sample_name}_R2_001.fastq.gz \
               -h ${OUTDIR}/${sample_name}.fastp.html
 done
+
+wait
+
+module load fastqc
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/fastq_trimmed
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/fastqc_trimmed
+
+mkdir -p ${OUTDIR}
+
+for fq in $DATA/R23*.fastq.gz
+do
+   fastqc -o ${OUTDIR} --extract ${fq}
+   
+done 
+
+wait 
+
+cd /globalhome/hxo752/HPC/tools/
+multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}
