@@ -22,5 +22,9 @@ do
         path="${i%_R1*}";
         sample_name=${path##*/};
    
-        fastp -i ${DATA}/${sample_name}_R1_001.fastq.gz -I ${DATA}/${sample_name}_R2_001.fastq.gz -o ${OUTDIR}/${sample_name}_R1_001.fastq.gz -O ${OUTDIR}/${sample_name}_R2_001.fastq.gz
+        fastp -i ${DATA}/${sample_name}_R1_001.fastq.gz \
+              -I ${DATA}/${sample_name}_R2_001.fastq.gz \
+              -o ${OUTDIR}/${sample_name}_R1_001.fastq.gz \
+              -O ${OUTDIR}/${sample_name}_R2_001.fastq.gz \
+              -h ${OUTDIR}/${sample_name}.fastp.html
 done
