@@ -20,7 +20,7 @@ mkdir -p ${OUTDIR}
 
 for fq in $DATA/R23*.fastq.gz
 do
-   fastqc -o ${OUTDIR}/fastqc --extract ${fq}
+   fastqc -o ${OUTDIR} --extract ${fq}
    
 done 
 
