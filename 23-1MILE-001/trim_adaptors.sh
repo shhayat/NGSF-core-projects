@@ -4,8 +4,8 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=fastp
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=4
-#SBATCH --time=02:00:00
+#SBATCH --cpus-per-task=2
+#SBATCH --time=00:40:00
 #SBATCH --mem=6G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
@@ -17,12 +17,10 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/ana
 
 mkdir -p ${OUTDIR}
 
-for fq in $DATA/R23*_R1.fastq.gz
+for i in $DATA/R23*_R1_001.fastq.gz
 do
-        path="${i%_R*}";
+        path="${i%_R1*}";
         sample_name=${path##*/};
    
-        fastp -i ${OUTDIR}/${sample_name}_S2_L001_R1_001.fastq.gz -I ${OUTDIR}/${sample_name}_S2_L001_R2_001.fastq.gz -o ${OUTDIR}/${sample_name}_S2_L001_R1_001.fastq.gz -O ${OUTDIR}/${sample_name}_S2_L001_R2_001.fastq.gz
-
-   
-done 
+        fastp -i ${DATA}/${sample_name}_R1_001.fastq.gz -I ${DATA}/${sample_name}_R2_001.fastq.gz -o ${OUTDIR}/${sample_name}_R1_001.fastq.gz -O ${OUTDIR}/${sample_name}_R2_001.fastq.gz
+done
