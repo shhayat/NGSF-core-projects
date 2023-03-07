@@ -26,5 +26,6 @@ do
               -I ${DATA}/${sample_name}_R2_001.fastq.gz \
               -o ${OUTDIR}/${sample_name}_R1_001.fastq.gz \
               -O ${OUTDIR}/${sample_name}_R2_001.fastq.gz \
+              -U \
               -h ${OUTDIR}/${sample_name}.fastp.html
 done
