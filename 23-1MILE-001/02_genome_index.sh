@@ -3,7 +3,7 @@
 #SBATCH --account=hpc_p_anderson
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=8
 #SBATCH --time=03:00:00
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
