@@ -19,8 +19,8 @@ bam_file=$1
 #run following python code on GTF file
 #python collaspe_annotation.py /datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf genes_mod.gtf
 
-GTF=
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1BETO-001B/analysis/rnaseqc
+GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/genes.gtf
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/rnaseqc
 
 mkdir -p ${OUTDIR}
 
