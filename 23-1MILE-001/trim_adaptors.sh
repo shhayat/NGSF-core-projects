@@ -13,14 +13,16 @@ set -eux
 module load fastp
 
 DATA=/datastore/NGSF001/projects/23-1MILE-001/Analysis/Fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/fastq_trimmed
 
-mkdir -p ${OUTDIR}/fastq_trimmed
+mkdir -p ${OUTDIR}
 
-for fq in $DATA/R23*.fastq.gz
+for fq in $DATA/R23*_R1.fastq.gz
 do
+        path="${i%_R*}";
+        sample_name=${path##*/};
    
-   fastp -i in.R1.fq.gz -I in.R2.fq.gz -o out.R1.fq.gz -O out.R2.fq.gz
+        fastp -i ${OUTDIR}/${sample_name}_S2_L001_R1_001.fastq.gz -I ${OUTDIR}/${sample_name}_S2_L001_R2_001.fastq.gz -o ${OUTDIR}/${sample_name}_S2_L001_R1_001.fastq.gz -O ${OUTDIR}/${sample_name}_S2_L001_R2_001.fastq.gz
 
    
 done 
