@@ -27,4 +27,4 @@ done
 wait 
 
 cd /globalhome/hxo752/HPC/tools/
-multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}/fastqc
+multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}
