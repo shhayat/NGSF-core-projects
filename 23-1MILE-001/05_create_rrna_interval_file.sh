@@ -1,16 +1,22 @@
 
-#Create conda enviornments for the following tools
-#/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n gtfToGenePred -c bioconda ucsc-gtftogenepred
-#/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n genepredtobed -c bioconda ucsc-genepredtobed
 
+#loading required modules for bedtools
+module load nixpkgs/16.09 
+module load gcc/5.4.0
+module load intel/2016.4
+module load intel/2017.1
+module load bedtools
 
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/rrna_intervals
-
 mkdir -p {OUTDIR}
 
 #grep rRNA from gtf file
 grep 'rRNA' ${GTF} > ${OUTDIR}/rRNA_transcripts.gtf
+
+#Create conda enviornments for the following tools
+#/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n gtfToGenePred -c bioconda ucsc-gtftogenepred
+#/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n genepredtobed -c bioconda ucsc-genepredtobed
 
 #convert the GTF file to genePred format
 /globalhome/hxo752/HPC/anaconda3/envs/gtfToGenePred/bin/gtfToGenePred ${OUTDIR}/rRNA_transcripts.gtf ${OUTDIR}/rRNA_transcripts.genePred
