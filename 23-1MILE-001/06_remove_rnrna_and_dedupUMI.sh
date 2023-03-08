@@ -15,7 +15,7 @@ set -eux
 module load samtools
 
 umi_tools=/globalhome/hxo752/HPC/anaconda3/bin
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001
 RRNA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/rrna_intervals/rRNA_intervals_merged.bed
 
 NCPU=2
