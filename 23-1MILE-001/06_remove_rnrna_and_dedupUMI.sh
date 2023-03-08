@@ -39,7 +39,7 @@ samtools view -@ ${NCPU} \
               && samtools index ${sample_name}.no-rRNA.primary-aln.bam
 
 
-#Create conda enviornments for the following tools
+#deduplication
 /globalhome/hxo752/HPC/.local/bin/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
                 --log="${sample_name}.umi.log" \
                 --umi-separator=":" \
