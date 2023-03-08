@@ -1,4 +1,12 @@
+#!/bin/bash
 
+#SBATCH --job-name=rrna_intervals
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:20:00
+#SBATCH --mem=6G
+#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+set -eux
 
 #loading required modules for bedtools
 module load nixpkgs/16.09 
