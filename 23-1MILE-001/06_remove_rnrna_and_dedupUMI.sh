@@ -46,4 +46,3 @@ samtools view -@ ${NCPU} \
                 --unpaired-reads="discard" \
                 --paired --chimeric-pairs="discard" > ${sample_name}.no-rRNA.primary-aln.dedup.bam
 
-
