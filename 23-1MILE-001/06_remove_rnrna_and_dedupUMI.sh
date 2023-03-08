@@ -40,8 +40,9 @@ samtools view -@ ${NCPU} \
               && samtools index ${sample_name}.no-rRNA.primary-aln.bam
 
 
-
-umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
+#Create conda enviornments for the following tools
+#/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n umi_tools -c bioconda umi_tools
+/globalhome/hxo752/HPC/anaconda3/envs/umi_tools/bin/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
                 --log="${sample_name}.umi.log" \
                 --umi-separator=":" \
                 --unpaired-reads="discard" \
