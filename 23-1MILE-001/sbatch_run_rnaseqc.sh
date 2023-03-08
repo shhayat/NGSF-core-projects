@@ -1,9 +1,9 @@
 
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/star_alignment
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/umi_deduplication
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001
 
 
-for i in ${DATA}/*/*.bam
+for i in ${DATA}//*.bam
 do
         path="${i%/Aligned*}";
 	      sample_name="${path##*/}"
