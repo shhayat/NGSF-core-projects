@@ -31,3 +31,5 @@ STAR --genomeDir $GENOME \
 	--runThreadN ${NCPU} \
 	&& samtools index Aligned.sortedByCoord.out.bam 
 	
+#cd /globalhome/hxo752/HPC/tools/
+#multiqc -d ${OUTDIR}/*/Log.final.out -o ${OUTDIR} -n "multiqc_original_alignment"
