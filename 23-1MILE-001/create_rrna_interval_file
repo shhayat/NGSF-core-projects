@@ -1,7 +1,7 @@
 
 #Create conda enviornments for the following tools
 #/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n gtfToGenePred -c bioconda ucsc-gtftogenepred
-#/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n gtfToGenePred -c bioconda ucsc-genepredtobed
+#/globalhome/hxo752/HPC/anaconda3/condabin/conda create -n genepredtobed -c bioconda ucsc-genepredtobed
 
 
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
@@ -13,10 +13,10 @@ mkdir -p {OUTDIR}
 grep 'rRNA' ${GTF} > ${OUTDIR}/rRNA_transcripts.gtf
 
 #convert the GTF file to genePred format
-/globalhome/hxo752/HPC/anaconda3/envs/gtfToGenePred/bin ${OUTDIR}/rRNA_transcripts.gtf ${OUTDIR}/rRNA_transcripts.genePred
+/globalhome/hxo752/HPC/anaconda3/envs/gtfToGenePred/bin/gtfToGenePred ${OUTDIR}/rRNA_transcripts.gtf ${OUTDIR}/rRNA_transcripts.genePred
 
 #create interval bed file
-genePredToBed ${OUTDIR}/rRNA_transcripts.genePred ${OUTDIR}/rRNA_intervals.bed
+/globalhome/hxo752/HPC/anaconda3/envs/genepredtobed/bin/genePredToBed ${OUTDIR}/rRNA_transcripts.genePred ${OUTDIR}/rRNA_intervals.bed
 
 #removing overlapping intervals
 bedtools merge -i ${OUTDIR}/rRNA_intervals.bed > ${OUTDIR}/rRNA_intervals_merged.bed
