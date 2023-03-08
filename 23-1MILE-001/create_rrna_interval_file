@@ -1,0 +1,16 @@
+
+
+#grep rRNA from gtf file
+grep 'rRNA' my_file.gtf > rRNA_transcripts.gtf
+
+#convert the GTF file to genePred format
+gtfToGenePred rRNA_transcripts.gtf rRNA_transcripts.genePred
+
+#create interval bed file
+genePredToBed rRNA_transcripts.genePred rRNA_intervals.bed
+
+#removing overlapping intervals
+bedtools merge -i rRNA_intervals.bed > rRNA_intervals_merged.bed
+
+
+
