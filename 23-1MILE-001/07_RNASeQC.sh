@@ -19,12 +19,13 @@ bam_file=$1
 #run following python code on GTF file
 #python collaspe_annotation.py /datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf genes_mod.gtf
 
-GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/NCBI/GRCm38/Annotation/Genes/genes.gtf
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/umi_deduplication/
+GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/rnaseqc
 
 mkdir -p ${OUTDIR}
 
 ${SLURM_TMPDIR}/rnaseqc.v2.4.2.linux ${GTF} \
-                        ${bam_file} \
+                        ${DIR}/${sample_name}/${bam_file} \
                         ${OUTDIR} \
                         --sample=${sample_name}
