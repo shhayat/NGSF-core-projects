@@ -8,5 +8,5 @@ do
         path="${i%_L001*}";
         sample_name=${path##*/};
         bam='Aligned.sortedByCoord.out.bam'
-        sbatch 06_remove_rnrna_and_dedupUMI.sh {sample_name} ${bam}
+        sbatch 06_remove_rnrna_and_dedupUMI.sh ${sample_name} ${bam}
 done
