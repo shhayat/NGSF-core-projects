@@ -4,6 +4,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --time=00:20:00
 #SBATCH --mem=5G
+#SBATCH  --output=%j.out
 
 set -eux
 
