@@ -1,17 +1,20 @@
 
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/rrna_intervals
+
+mkdir -p {OUTDIR}
 
 #grep rRNA from gtf file
-grep 'rRNA' ${GTF} > rRNA_transcripts.gtf
+grep 'rRNA' ${GTF} > ${OUTDIR}/rRNA_transcripts.gtf
 
 #convert the GTF file to genePred format
-gtfToGenePred rRNA_transcripts.gtf rRNA_transcripts.genePred
+gtfToGenePred ${OUTDIR}/rRNA_transcripts.gtf ${OUTDIR}/rRNA_transcripts.genePred
 
 #create interval bed file
-genePredToBed rRNA_transcripts.genePred rRNA_intervals.bed
+genePredToBed ${OUTDIR}/rRNA_transcripts.genePred ${OUTDIR}/rRNA_intervals.bed
 
 #removing overlapping intervals
-bedtools merge -i rRNA_intervals.bed > rRNA_intervals_merged.bed
+bedtools merge -i ${OUTDIR}/rRNA_intervals.bed > ${OUTDIR}/rRNA_intervals_merged.bed
 
 
 
