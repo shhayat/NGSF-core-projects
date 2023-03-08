@@ -8,8 +8,8 @@ for i in ${DATA}/R23*_L001_R1_001.fastq.gz
 do
         path="${i%_L001*}";
         sample_name=${path##*/};
-	bam=
+	bam=${sample_name}.no-rRNA.primary-aln.dedup.bam
       
-  sbatch ${SCRIPT_DIR}/07_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
+  sbatch ${SCRIPT_DIR}/07_RNASeQC.sh "${sample_name}" "${bam}"
  sleep 0.5
 done 
