@@ -16,21 +16,20 @@ module load samtools
 
 umi_tools=/globalhome/hxo752/HPC/anaconda3/bin
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/
-#RRNA=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/rRNA_intervals.bed
-RRNA=
+RRNA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/rrna_intervals/rRNA_intervals_merged.bed
 
 NCPU=4
 sample_name=$1; shift
 BAM=$1;
 
-mkdir -p ${DIR}/deduplication/${sample_name} && cd ${DIR}/deduplication/${sample_name}
+mkdir -p ${DIR}/umi_deduplication/${sample_name} && cd ${DIR}/umi_deduplication/${sample_name}
 
 echo "Dropping ribosomal RNA reads"
 samtools view -@ ${NCPU} \
               -U ${sample_name}.no-rRNA.bam \
               -O BAM \
               -L ${RRNA} \
-              ${DIR}/alignment/${sample_name}/${BAM}
+              ${DIR}/star_alignment/${sample_name}/${BAM}
 
 
 # keep only primary alignments
