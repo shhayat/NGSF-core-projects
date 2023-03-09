@@ -44,7 +44,7 @@ awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat
 
 
 #step3: select 2 bases upstream and downstream of bases in step2
-bedtools flank -i ${CLONE_ID}_${COND}_concat_base_conversion.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed
+bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_base_conversion.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed
 
 #step4: extract flanked bases for file in step3. tab delimited bed file is produced which is written as text file
 bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed -tab > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt
