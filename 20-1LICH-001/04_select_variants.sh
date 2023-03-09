@@ -39,8 +39,8 @@ grep -P '\tC\tT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '
 grep -P '\tCC\tTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
 grep -P '\tCC\tGT' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
 
-grep -P '\tCCC\t' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
-grep -P '\tCCC\t' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+grep -P '\tCCC\tGTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
+grep -P '\tCCC\tGTG' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_CtoTorG.bed
 
 
 #step3: select 2 bases upstream and downstream of bases in step2
