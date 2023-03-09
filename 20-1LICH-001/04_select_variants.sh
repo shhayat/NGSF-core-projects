@@ -28,23 +28,25 @@ CLONE_ID=$1
 COND=$2
  
 gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
-
+echo "convert vcf to bed file"
 #step1: Convert vcf to bed file
 /globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed
 
+echo "Base Conversions"
 ##step2: Extract C to T or G conversions and select first 3 columns (chrom, start, end position, ref allele and alternate allele)
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | grep -P '\tC\tG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_base_conversion.bed
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | grep -P '\tC\tT$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_base_conversion.bed
 #only select CC as REF
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | grep -P '\tCC\tTG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_base_conversion.bed
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | grep -P '\tCC\tGT$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_base_conversion.bed
-
+#only select CCC as REF
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | grep -P '\tCCC\tGTG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_base_conversion.bed
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed | grep -P '\tCCC\tGGG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_base_conversion.bed
 
-
+echo "select 2 bases upstream and downstream of bases"
 #step3: select 2 bases upstream and downstream of bases in step2
 bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_concat_base_conversion.bed -g /datastore/NGSF001/analysis/references/human/gencode-30/chrom.sizes -b 2 > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed
 
+echo "extract flanked bases from fasta file"
 #step4: extract flanked bases for file in step3. tab delimited bed file is produced which is written as text file
 bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed -tab > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt
