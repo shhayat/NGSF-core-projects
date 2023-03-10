@@ -47,6 +47,26 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 ##########################
 #STEP4 : SELECT VARIANTS
 ##########################
+#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
+#myarr=()
+#while read line
+#do 
+#   myarr+=("$line")
+#done < ${SCRIPT_DIR}/sample_IDs.txt
+
+#for i in 0 2 4 6 8 10
+#do
+#   set ${myarr[i]}
+#   CLONE_ID=$1 
+#   COND=$3
+   
+#   sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${COND}
+#   sleep 0.5
+# done
+ 
+##########################
+#CREATE PANEL OF NORMALS
+##########################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
 myarr=()
 while read line
@@ -54,16 +74,20 @@ do
    myarr+=("$line")
 done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 0 2 4 6 8 10
+for i in 2 6 10
 do
-   set ${myarr[i]}
-   CLONE_ID=$1 
-   COND=$3
+  set ${myarr[i]}
+  UNINDUCED_SAMPLE1=$2
    
-   sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${COND}
+  set ${myarr[i+1]}
+  UNINDUCED_SAMPLE2=$2
+   
+   #$1 is CLONE_ID
+    sbatch ${SCRIPT_DIR}/PON.sh $1 ${UNINDUCED_SAMPLE1} ${UNINDUCED_SAMPLE2}
    sleep 0.5
  done
- 
+
+
 ###########################################
 #STEP3 : MERGE UNINDUCED SAMPLES PER PROTEIN
 ###########################################
@@ -108,5 +132,3 @@ do
 #   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${INDUCED_SAMPLE}
 #   sleep 0.5
 # done
-
- 
