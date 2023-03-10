@@ -67,25 +67,25 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 ##########################
 #CREATE PANEL OF NORMALS
 ##########################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
-myarr=()
-while read line
-do 
-   myarr+=("$line")
-done < ${SCRIPT_DIR}/sample_IDs.txt
+#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
+#myarr=()
+#while read line
+#do 
+#   myarr+=("$line")
+#done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 2 6 10
-do
-  set ${myarr[i]}
-  UNINDUCED_SAMPLE1=$2
+#for i in 2 6 10
+#do
+#  set ${myarr[i]}
+#  UNINDUCED_SAMPLE1=$2
    
-  set ${myarr[i+1]}
-  UNINDUCED_SAMPLE2=$2
+#  set ${myarr[i+1]}
+#  UNINDUCED_SAMPLE2=$2
    
    #$1 is CLONE_ID
-    sbatch ${SCRIPT_DIR}/PON.sh $1 ${UNINDUCED_SAMPLE1} ${UNINDUCED_SAMPLE2}
-   sleep 0.5
- done
+ #   sbatch ${SCRIPT_DIR}/PON.sh $1 ${UNINDUCED_SAMPLE1} ${UNINDUCED_SAMPLE2}
+ #  sleep 0.5
+ #done
 
 
 ###########################################
