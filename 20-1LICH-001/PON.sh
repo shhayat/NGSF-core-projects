@@ -23,8 +23,7 @@ SAMPLE1=$2
 SAMPLE2=$3
 COND=$4 #INDUCED OR UNINDUCED
 
-
 gatk CreateSomaticPanelOfNormals \
-   -vcfs ${OUTDIR}/${CLONE_ID}_${COND}_concat.vcf.gz \
-   -vcfs ${OUTDIR}/${CLONE_ID}_${COND}_concat.vcf.gz
-   -O ${CLONE_ID}_${COND}_pon.vcf.gz
+   -vcfs ${INPUT_DIR}/${SAMPLE1}/${SAMPLE1}.vcf.gz \
+   -vcfs ${INPUT_DIR}/${SAMPLE2}/${SAMPLE2}.vcf.gz \
+   -O ${OUTDIR}/${CLONE_ID}_${COND}_pon.vcf.gz
