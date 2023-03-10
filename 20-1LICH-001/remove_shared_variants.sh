@@ -28,7 +28,7 @@ bcftools isec -C \
               -c none \
               -O z \
               -w 1 \
-              -o ${OUTDIR}${CLONE_ID}.vcf.gz \
+              -o ${OUTDIR}${CLONE_ID}_I.vcf.gz \
               ${INPUT_DIR}${PREP1}_${PREP2}.vcf.gz \
               ${INPUT_DIR}${CLONE_ID}_uninduced_concat.vcf.gz
 
