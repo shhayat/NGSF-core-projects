@@ -28,7 +28,7 @@ bcftools isec -C \
               -O z \
               -w 1 \
               -o ${OUTDIR}/${CLONE_ID}_I.vcf.gz \
-              ${INPUT_DIR}/${CLONE_ID}_I_concat.vcf \
-              ${INPUT_DIR}/${CLONE_ID}_U_concat.vcf
+              ${INPUT_DIR}/${CLONE_ID}_I_concat.vcf.gz \
+              ${INPUT_DIR}/${CLONE_ID}_U_concat.vcf.gz
 
 bcftools index -t ${OUTDIR}/${CLONE_ID}_I.vcf.gz
