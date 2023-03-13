@@ -30,7 +30,7 @@ CLONE_ID=$1
 COND=$2
  
 #gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
-#gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}.vcf.gz
+gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}.vcf.gz
 echo "convert vcf to bed file"
 #step1: Convert vcf to bed file
 #/globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed
