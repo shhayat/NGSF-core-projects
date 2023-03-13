@@ -47,22 +47,22 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 ##########################
 #STEP4 : SELECT VARIANTS
 ##########################
-#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
-#myarr=()
-#while read line
-#do 
-#   myarr+=("$line")
-#done < ${SCRIPT_DIR}/sample_IDs.txt
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
+myarr=()
+while read line
+do 
+   myarr+=("$line")
+done < ${SCRIPT_DIR}/sample_IDs.txt
 
-#for i in 0 2 4 6 8 10
-#do
-#   set ${myarr[i]}
-#   CLONE_ID=$1 
-#   COND=$3
+for i in 0 2 4 6 8 10
+do
+   set ${myarr[i]}
+   CLONE_ID=$1 
+   COND=$3
    
-#   sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${COND}
-#   sleep 0.5
-# done
+   sbatch ${SCRIPT_DIR}/04_select_variants.sh ${CLONE_ID} ${COND}
+   sleep 0.5
+ done
 
 #########################################################################
 #STEP : REMOVE SHARED VARIANTS BETWEEN INDUCED AND UNINDUCED PER PROTEINS
