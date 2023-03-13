@@ -18,11 +18,10 @@ module load bcftools/1.13
 
 INPUT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_samples_per_protein/removed_shared_varaints_between_uninduced_induced
+mkdir -p ${OUTDIR}
 
 CLONE_ID=$1
 COND=$2
-
-mkdir -p ${OUTDIR}
 
 bcftools isec -C \
               -c none \
