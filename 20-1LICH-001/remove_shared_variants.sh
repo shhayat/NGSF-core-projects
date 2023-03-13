@@ -24,7 +24,7 @@ CLONE_ID=$1
 COND=$2
 
 bcftools isec -C \
-              -c none \
+              -c all \
               -O z \
               -w 1 \
               -o ${OUTDIR}/${CLONE_ID}_I.vcf.gz \
