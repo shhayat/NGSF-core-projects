@@ -8,8 +8,6 @@
 #SBATCH --mem=2G
 #SBATCH  --output=%j.out
 
-set -eux
-
 ##loading required modules for bedtools
 
 #module load bedtools
