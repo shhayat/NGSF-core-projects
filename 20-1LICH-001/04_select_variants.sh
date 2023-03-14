@@ -64,3 +64,10 @@ bedtools flank -i ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed -g /data
 echo "extract flanked bases from fasta file"
 #step4: extract flanked bases for file in step3. tab delimited bed file is produced which is written as text file
 bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed -tab > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt
+
+echo "add each second line to first line"
+awk '{printf "%s%s",$0,NR%2?"\t":RS}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt
+
+echo "join C to T/G conversions with their 2upstream and downtream base pairs"
+paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
+
