@@ -14,7 +14,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/ana
 mkdir -p ${OUTDIR}
 
 sample_name=$1; shift
-BAM=$2
+BAM=$1
 
 /globalhome/hxo752/HPC/anaconda3/envs/htseq/bin/htseq-count -f ${BAM} \
                                                             -s yes \
@@ -22,6 +22,3 @@ BAM=$2
                                                             -i gene_id \
                                                             --additional-attr gene_name \
                                                             ${GTF} > ${OUTDIR|/${sample_name}_htseq_counts.txt
-                                                            
-                                                            
-                                                            
