@@ -6,4 +6,6 @@ for BAM in $DATA/*/Aligned.sortedByCoord.out.bam
 /globalhome/hxo752/HPC/anaconda3/envs/htseq/bin/htseq-count -f ${BAM} \
                                                             -s yes \
                                                             -t exon \
-                                                            -
+                                                            --additional-attr gene_name \
+                                                            
+                                                            
