@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=star-align
+#SBATCH --job-name=htseq_count
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=1:00:00
