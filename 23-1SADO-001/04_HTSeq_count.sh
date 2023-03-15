@@ -21,4 +21,4 @@ BAM=$1
                                                             -t exon \
                                                             -i gene_id \
                                                             --additional-attr gene_name \
-                                                            ${GTF} > ${OUTDIR|/${sample_name}_htseq_counts.txt
+                                                            ${GTF} > ${OUTDIR/${sample_name}_htseq_counts.txt
