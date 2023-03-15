@@ -11,7 +11,7 @@
 set -eux
 
 module load fastqc
-DATA=/datastore/NGSF001/NB551711/230314_NB551711_0067_AH2VMJBGXM/Alignment_1/20230315_045627/Fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/Fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis
 
 mkdir -p ${OUTDIR}/fastqc
