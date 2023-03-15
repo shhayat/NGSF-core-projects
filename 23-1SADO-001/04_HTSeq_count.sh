@@ -16,9 +16,10 @@ mkdir -p ${OUTDIR}
 sample_name=$1; shift
 BAM=$1
 
-/globalhome/hxo752/HPC/anaconda3/envs/htseq/bin/htseq-count -f ${BAM} \
+/globalhome/hxo752/HPC/anaconda3/envs/htseq/bin/htseq-count -f bam \
                                                             -s yes \
                                                             -t exon \
                                                             -i gene_id \
                                                             --additional-attr gene_name \
+                                                            ${BAM} \
                                                             ${GTF} > ${OUTDIR}/${sample_name}_htseq_counts.txt
