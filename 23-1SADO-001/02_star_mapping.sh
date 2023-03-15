@@ -13,7 +13,7 @@ module load star/2.7.9a
 module load samtools
 
 
-DATA=/datastore/NGSF001/NB551711/230314_NB551711_0067_AH2VMJBGXM/Alignment_1/20230315_045627/Fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/Fastq
 GENOME=/datastore/NGSF001/analysis/indices/human/gencode-40
 GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/star_alignment
