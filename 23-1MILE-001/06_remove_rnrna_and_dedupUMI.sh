@@ -11,7 +11,6 @@
 
 set -eux
 
-#work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
 module load samtools
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis
