@@ -12,4 +12,4 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001
 
 module load r/4.1.2
 
-R CMD BATCH ${SCRIPT_DIR}/06_feature_count.R
+R CMD BATCH ${SCRIPT_DIR}/05_feature_count.R
