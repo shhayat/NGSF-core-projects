@@ -27,5 +27,5 @@ htseq_annotation <- htseq_count %>% lapply(function(x) x) %>%
 
 feature_count <- cbind(htseq_annotation,htseq_count1)
 
-write.table(feature_count, '/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/htseq_counts/htseq_count.txt', sep="\t", row.names=FALSE)
+write.table(feature_count, '/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/htseq_counts/htseq_count.txt', sep="\t", row.names=FALSE, quote=FALSE)
 #save(feature_count, file = 'feature_count.RData', compress = 'xz')
