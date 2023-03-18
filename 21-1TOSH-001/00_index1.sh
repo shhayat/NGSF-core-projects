@@ -23,7 +23,7 @@ cd ${OUTDIR}
 STAR --runThreadN ${NCPU} \
      --runMode genomeGenerate \
      --genomeDir star-index \
-     --limitGenomeGenerateRAM 791032727477 \
+     --limitGenomeGenerateRAM 80G \
      --genomeFastaFiles ${GENOME}/Bison_bison_bison.Bison_UMD1.0.dna.toplevel.fa \
      --sjdbGTFfile ${GTF} \
      --sjdbOverhang 99
