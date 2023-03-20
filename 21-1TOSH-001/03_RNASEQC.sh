@@ -16,7 +16,7 @@ bam_file=$1
 
 
 #GTF file needs to be modified for running RNASeQC
-GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation_mod.gtf
+GTF=Bison_bison_bison.Bison_UMD1.0.109_mod.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/analysis/rnaseqc
 
 mkdir -p ${OUTDIR}
