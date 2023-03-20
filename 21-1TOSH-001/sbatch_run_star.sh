@@ -1,4 +1,4 @@
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/new_analysis/Trimming
+DATA=/datastore/NGSF001/projects/21-1TOSH-001/new_analysis/Trimming
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001
 
 
