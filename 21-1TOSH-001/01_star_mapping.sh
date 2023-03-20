@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=star-align
+#SBATCH --constraint=skylake
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --time=1:25:00
