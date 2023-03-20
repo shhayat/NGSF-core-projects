@@ -15,7 +15,7 @@ module load samtools
 
 DATA=/datastore/NGSF001/projects/21-1TOSH-001/new_analysis/Trimming
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/indices/star-index
-OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/Alignment_v109
+OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/analysis/Alignment_v109
 
 sample_name=$1; shift
 fq1=$1; shift
