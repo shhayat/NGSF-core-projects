@@ -5,7 +5,7 @@
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=40
-#SBATCH --time=10:00:00
+#SBATCH --time=24:00:00
 #SBATCH --mem=375G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
