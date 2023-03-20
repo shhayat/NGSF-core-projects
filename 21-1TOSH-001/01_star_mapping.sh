@@ -20,6 +20,7 @@ sample_name=$1; shift
 fq1=$1; shift
 fq2=$1;
 
+mkdir -p ${OUTDATA}/${sample_name}
 cd ${OUTDATA}/${sample_name}
 
 STAR --genomeDir $GENOME \
