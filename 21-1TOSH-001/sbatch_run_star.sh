@@ -2,7 +2,7 @@ DATA=/datastore/NGSF001/projects/21-1TOSH-001/new_analysis/Trimming
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001
 
 
-for i in $DATA/R20*R1*.fastq.gz
+#for i in $DATA/*/R20*R1*.fastq.gz
 do
         path="${i%_R*}";
         sample_name=${path##*/};
