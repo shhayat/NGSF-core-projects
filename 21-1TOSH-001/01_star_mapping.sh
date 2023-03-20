@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #SBATCH --job-name=star-align
-#SBATCH --constraint=IvyBridge
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=1:25:00
