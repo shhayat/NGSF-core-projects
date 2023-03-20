@@ -1,1 +1,1 @@
-ascp -i /globalhome/hxo752/HPC/aspera.openssh -QT -l100m -k1 -d /datastore/NGSF001/projects/20-1JOHO-001/fastq/fastq\ analysed\ for\ males/ subasp@upload.ncbi.nlm.nih.gov:uploads/danieludenze_gmail.com_Wm6JG4Hv
+ascp -QT -l100m -k1 -d /datastore/NGSF001/projects/2020/20-1JOHO-001/fastq/fastq_analysed_for_males/ subasp@upload.ncbi.nlm.nih.gov:uploads/danieludenze_gmail.com_Wm6JG4Hv
