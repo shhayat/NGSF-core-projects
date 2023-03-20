@@ -1,10 +1,11 @@
 #!/bin/bash
 
 #SBATCH --job-name=star-align
+#SBATCH --constraint=skylake
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=1:25:00
-#SBATCH --mem=30G
+#SBATCH --mem=80G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
