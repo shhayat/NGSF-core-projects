@@ -1,0 +1,34 @@
+#For converting gff file to gtf AGAT tool was used (https://github.com/NBISweden/AGAT)
+
+#Following steps were used
+#step1: Docker image was pulled for agat version 0.9.1
+> docker pull quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 
+
+#step:2 - keep bison.liftoff.gff in /tmp directory
+
+> cp bison.liftoff.gff /tmp
+
+
+docker exec --workdir /tmp quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 pwd
+
+
+#step:3 - bison.liftoff.gff was load/mount within container agat:0.9.1 and the conversion was done using agat_convert_sp_gff2gtf.pl function. The 
+#output is stored in 
+> cd /tmp
+
+> docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o agat/bison.liftoff.gtf
+
+#step3 was crashing after parsing 59% of the file. This was because all memeory was comsumed (4GB) while pasrsing file. In order to increase memory go to docker Preferences -> Resources -> Advanced and increase CPU 6 , MEMORY 8GB, DISK IMAGE SIZE 120GB -> apply and reset and then run step step 3 with new settings
+
+> docker run -v ${PWD}:/agat quay.io/biocontainers/agat:0.9.1--pl5321hdfd78af_0 agat_convert_sp_gff2gtf.pl --gff agat/bison.liftoff.gff -o agat/bison.liftoff.gtf
+
+#after running above command without any error I checked the output file and it was empty. not sure why it is empty.
+
+#In Next try I pulled AGAT pacakge from git and set it up for running by isntalling all dependecies and used following command under installed AGAT directory
+
+> agat_convert_sp_gff2gtf.pl --gff bison.liftoff.gff -o bison.liftoff.agat.gff
+
+#bison.liftoff.agat.gff was in gff3 format and it was not a gtf file. In order to convert it into GTF file function from cufflink pacakge was used
+
+> gffread bison.liftoff.agat.gff -T -o bison.liftoff.gffread.gtf
+
