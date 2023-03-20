@@ -1,11 +1,12 @@
 #!/bin/sh
 
 #SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
+#SBATCH --cpus-per-task=40
 #SBATCH --time=10:00:00
-#SBATCH --mem=80G
+#SBATCH --mem=375G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load star/2.7.9a 
@@ -23,7 +24,7 @@ cd ${OUTDIR}
 STAR --runThreadN ${NCPU} \
      --runMode genomeGenerate \
      --genomeDir star-index \
-     --limitGenomeGenerateRAM 800000000000 \
+     --limitGenomeGenerateRAM 375000000000 \
      --genomeFastaFiles ${GENOME}/Bison_bison_bison.Bison_UMD1.0.dna.toplevel.fa \
      --sjdbGTFfile ${GTF} \
      --sjdbOverhang 99
