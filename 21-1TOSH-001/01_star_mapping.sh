@@ -33,9 +33,11 @@ cd ${OUTDATA}/${sample_name}
 #	--runThreadN 4 \
 #	&& samtools index Aligned.sortedByCoord.out.bam
 
-STAR --runMode alignReads \
+
+
+STAR --genomeDir $GENOME \
+	--readFilesCommand zcat \
 	--runThreadN 8 \
-	--genomeDir $GENOME \
 	--readFilesIn ${fq1} ${fq2} \
 	--outFilterType BySJout \
 	--outFilterMultimapNmax 20 \
