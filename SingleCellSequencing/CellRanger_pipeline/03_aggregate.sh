@@ -19,5 +19,5 @@ mkdir -p ${OUTPUT}/agreggate
 cd ${OUTPUT}
 
 CSV_FILE=$1;
-/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger aggr --id=aggregated \
+/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger aggr --id="aggregated" \
                                                                   --csv=${CSV_FILE}
