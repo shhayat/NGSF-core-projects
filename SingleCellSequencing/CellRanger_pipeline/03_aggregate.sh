@@ -13,5 +13,7 @@
 
 export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 
+CSV_FILE=$1;
+
 /globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger aggr --id=AGG123 \
-                                                                  --csv=AGG123_libraries.csv
+                                                                  --csv=${CSV_FILE}
