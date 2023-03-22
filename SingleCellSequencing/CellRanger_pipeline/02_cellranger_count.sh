@@ -21,13 +21,15 @@ REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencin
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/count_files
 mkdir -p ${OUTPUT}
 cd ${OUTPUT}
-for i in $(seq -w 1 2);
-do
-SAMPLE_NAME="R230000${i}"
+SAMPLE_NAME=$1;
+
+#for i in $(seq -w 1 2);
+#do
+#SAMPLE_NAME="R230000${i}"
 /globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger count --id=${SAMPLE_NAME} \
                  --transcriptome=${REF} \
                  --fastqs=${FASTQS} \
                  --sample=${SAMPLE_NAME} \
                  --localcores=${NCPUS} \
                  --localmem=${RAM_MEMORY}
-done
+#done
