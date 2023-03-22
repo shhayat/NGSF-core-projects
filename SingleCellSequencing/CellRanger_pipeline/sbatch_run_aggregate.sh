@@ -9,5 +9,4 @@ done
 #add header to csv file
 sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info.csv
 
-
-sbatch ${SCRIPT_DIR}/02_cellranger_count.sh "${SAMPLE_NAME}"
+sbatch ${SCRIPT_DIR}/02_cellranger_count.sh "${DIR}/sample_info.csv"
