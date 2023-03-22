@@ -17,16 +17,15 @@ export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/CellRanger_pipeline/refdata-gex-GRCh38-2020-A/
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/count_files
+mkdir -p ${OUTPUT}
 
 NCPUS=16
 RAM_MEMORY=128
 #OUTPUT_FOLDER="Brain_Tumor_3p_separate_lanes"
-#SAMPLE_NAME="Brain_Tumor_3p"
 SAMPLE_NAME=1;
-mkdir -p ${OUTPUT}/${SAMPLE_NAME}
-cd ${OUTPUT}/${SAMPLE_NAME}
 
-/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger count --id=${OUTPUT} \
+cd ${OUTPUT}
+/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger count --id=${SAMPLE_NAME} \
                  --transcriptome=${REF} \
                  --fastqs=${FASTQS} \
                  --sample=${SAMPLE_NAME} \
