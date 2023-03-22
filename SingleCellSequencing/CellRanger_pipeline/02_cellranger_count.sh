@@ -21,9 +21,10 @@ mkdir -p ${OUTPUT}
 NCPUS=16
 RAM_MEMORY=128
 #OUTPUT_FOLDER="Brain_Tumor_3p_separate_lanes"
-SAMPLE_NAME=1;
-
+#SAMPLE_NAME=1;
 cd ${OUTPUT}
+
+for sample_name 
 /globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger count --id=${SAMPLE_NAME} \
                  --transcriptome=${REF} \
                  --fastqs=${FASTQS} \
