@@ -13,7 +13,7 @@
 
 export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 
-FASTQS=/datastore/NGSF001/datasets/singlecell/Brain_Tumor_3p_fastqs
+FASTQS=/datastore/NGSF001/projects/23-1ANLE-001/Analysis/fastq
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/CellRanger_pipeline/refdata-gex-GRCh38-2020-A/
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/count_files
 mkdir -p ${OUTPUT}
