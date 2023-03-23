@@ -13,12 +13,13 @@
 
 export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/count_files/
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis
 
 mkdir -p ${OUTPUT}/agreggate
 cd ${OUTPUT}
 
 #CSV_FILE=$1;
-CSV_FILE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/count_files/sample_info.csv
+
 /globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger aggr --id="agreggate" \
-                                                                  --csv=${CSV_FILE}
+                                                                  --csv=${DIR}/sample_info.csv
