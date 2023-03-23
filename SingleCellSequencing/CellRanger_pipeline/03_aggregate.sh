@@ -20,5 +20,5 @@ cd ${OUTPUT}
 
 #CSV_FILE=$1;
 CSV_FILE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/count_files/sample_info.csv
-/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger aggr --id="1ANLE_aggr" \
+/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger aggr --id="agreggate" \
                                                                   --csv=${CSV_FILE}
