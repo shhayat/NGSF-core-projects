@@ -1,8 +1,6 @@
 library("DESeq2")
 library("ggplot2")
 
-
-
 setwd("/Users/shahina/Projects/21-1TOSH-001")
 dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 
@@ -67,5 +65,5 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 write.csv(resDF1,file=sprintf("DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
 
 }
-DEG_analysis(c(3:8),"cond","ctrl","ctrl",8,3)
+DEG_analysis(c(3:13),"cond","ctrl","ctrl",8,3)
                    
