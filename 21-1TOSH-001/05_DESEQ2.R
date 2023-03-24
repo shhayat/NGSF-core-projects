@@ -3,7 +3,7 @@ library("ggplot2")
 
 
 
-setwd("/Users/shahina/Projects/22-1BETO-001")
+setwd("/Users/shahina/Projects/21-1TOSH-001")
 dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 
 load("feature_count.RData")
@@ -14,7 +14,7 @@ feature_count1 <- as.data.frame(feature_count)
 #your first columns which are gene id and gene name
 feature_annotation <- feature_count1[1:2]
 
-setwd("/Users/shahina/Projects/22-1BETO-001/DESEQ2")
+setwd("/Users/shahina/Projects/21-1TOSH-001/DESEQ2")
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 {
@@ -67,6 +67,5 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 write.csv(resDF1,file=sprintf("DEG_%s_vs_%s_filter_on_pval.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
 
 }
-DEG_analysis(c(3:8),"ABN","AB4","ABN",3,3)
-DEG_analysis(c(9:14),"DN","D4","DN",3,3)
+DEG_analysis(c(3:8),"cond","ctrl","ctrl",8,3)
                    
