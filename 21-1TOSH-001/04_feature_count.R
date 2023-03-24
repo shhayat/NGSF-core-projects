@@ -1,7 +1,7 @@
 library(Rsubread)
 library(magrittr)
 setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/analysis/")
-result_dir="star_alignment"
+result_dir="Alignment_v109"
 sample_names <- list.files(result_dir, "R2")
 
 
