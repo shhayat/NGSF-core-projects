@@ -2,3 +2,7 @@
 
 
 /datastore/NGSF001/software/tools/txg-linux-v1.3.0/txg fastqs upload --project-id wxwwR6qKS7m90ZZ90f99ueIRw /datastore/NGSF001/datasets/singlecell/Brain_Tumor_3p_fastqs/
+
+
+
+/datastore/NGSF001/software/tools/txg-linux-v1.3.0/txg fastqs upload --project-id 90gbi7DtHTMWxZFtFUQSdsg /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/R2300001_S1_L001_R*
