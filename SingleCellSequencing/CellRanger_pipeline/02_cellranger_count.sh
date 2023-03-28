@@ -17,7 +17,7 @@ NCPUS=16
 RAM_MEMORY=128
 
 FASTQS=/datastore/NGSF001/projects/23-1ANLE-001/Analysis/fastq
-REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/CellRanger_pipeline/refdata-gex-mm10-2020-A/
+REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-mm10-2020-A/
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/analysis/count_files
 mkdir -p ${OUTPUT}
 cd ${OUTPUT}
