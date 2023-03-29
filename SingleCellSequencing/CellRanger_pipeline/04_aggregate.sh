@@ -22,5 +22,4 @@ cd ${OUTPUT}
 #CSV_FILE=$1;
 
 /globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger aggr --id="agreggate" \
-                                                                  --csv=${DIR}/sample_info.csv \
-                                                                  --normalize="none"
+                                                                  --csv=${DIR}/sample_info.csv
