@@ -53,7 +53,9 @@ awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | 
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGG\tCA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
 #only select CCC as REF
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tACA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tGGG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tAAA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tCAC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tCCC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
 
 
 echo "select 2 bases upstream and downstream of bases"
