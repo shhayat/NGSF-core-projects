@@ -68,22 +68,16 @@ echo "extract flanked bases from fasta file"
 #step4: extract flanked bases for file in step3. tab delimited bed file is produced which is written as text file
 bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed -tab > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt
 
-echo "find reverse compliments"
-
-awk '{gsub("C","G",$2); gsub("G","C",$2); print $2}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt
-awk '{gsub("T","A",$2); gsub("A","T",$2); print $2}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt
-
-
 echo "add each second line to first line"
 awk '{printf "%s%s",$0,NR%2?"\t":RS}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt
 
+echo "find reverse compliments"
+awk '{gsub("C","G"); gsub("G","C"); print $2,$4}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt
+awk '{gsub("T","A"); gsub("A","T"); print $1,$2}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v1.txt
 
 #echo "join C to T/G conversions with their 2upstream and downtream base pairs"
 #paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
 
 echo "join G to A/C conversions with their 2upstream and downtream base pairs and reverse compliments of flanking bases"
-paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
-
-
-
+paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
 
