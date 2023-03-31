@@ -36,7 +36,6 @@ echo "convert vcf to bed file"
 echo "Base Conversions"
 
 ##step2: Extract C to T or G conversions and select first 3 columns (chrom, start, end position, ref allele and alternate allele)
-##step2: Extract G to A or C conversions and select first 3 columns (chrom, start, end position, ref allele and alternate allele)
 
 #awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tC\tG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
 #awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tC\tT$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
@@ -46,16 +45,18 @@ echo "Base Conversions"
 #only select CCC as REF
 #awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tCCC\tGTG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
 #awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tCCC\tGGG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tG\tA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tG\tC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+
+##step2: Extract G to A or C conversions and select first 3 columns (chrom, start, end position, ref allele and alternate allele)
+#awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tG\tA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+#awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tG\tC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
 #only select CC as REF
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGG\tAC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGG\tCA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+#awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGG\tAC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+#awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGG\tCA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
 #only select CCC as REF
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tACA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tAAA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tCAC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tCCC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+#awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tACA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+#awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tAAA$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+#awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tCAC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
+#awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tGGG\tCCC$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
 
 
 echo "select 2 bases upstream and downstream of bases"
@@ -67,9 +68,22 @@ echo "extract flanked bases from fasta file"
 #step4: extract flanked bases for file in step3. tab delimited bed file is produced which is written as text file
 bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2bp_upstream_downstream.bed -tab > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt
 
+echo "find reverse compliments"
+
+awk '{gsub("C","G",$2); gsub("G","C",$2); print $2}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt
+awk '{gsub("T","A",$2); gsub("A","T",$2); print $2}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt
+
+
 echo "add each second line to first line"
 awk '{printf "%s%s",$0,NR%2?"\t":RS}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt
 
-echo "join C to T/G conversions with their 2upstream and downtream base pairs"
+
+#echo "join C to T/G conversions with their 2upstream and downtream base pairs"
+#paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
+
+echo "join G to A/C conversions with their 2upstream and downtream base pairs and reverse compliments of flanking bases"
 paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
+
+
+
 
