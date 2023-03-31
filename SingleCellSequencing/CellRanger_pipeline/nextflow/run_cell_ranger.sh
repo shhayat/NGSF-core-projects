@@ -17,6 +17,7 @@ module load singularity/3.9.2
                               
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/CellRanger_pipeline/nextflow
 
+cd $DIR
 
 nextflow run nf-core/scrnaseq --input 'samplesheet.csv' \
                               --aligner cellranger \
