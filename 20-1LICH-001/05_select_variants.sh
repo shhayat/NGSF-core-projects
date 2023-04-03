@@ -78,7 +78,7 @@ sed -e 's/AT/TA/g;s/TA/AT/g;s/AA/TT/g;s/TT/AA/g;s/GC/CG/g;s/CG/GC/g;s/CC/GG/g;s/
 #paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
 
 echo "join G to A/C conversions with their 2upstream and downtream base pairs and reverse compliments of flanking bases"
-paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
+paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
 
 rm ${OUTPUT_DIR}/${CLONE_ID}_${COND}.vcf
 rm ${OUTPUT_DIR}/${CLONE_ID}_${COND}.bed
