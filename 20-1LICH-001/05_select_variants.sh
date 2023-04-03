@@ -71,12 +71,12 @@ bedtools getfasta -fi ${GENOME} -bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_2
 echo "add each second line to first line"
 awk '{printf "%s%s",$0,NR%2?"\t":RS}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt
 
-echo "find reverse compliments"
-awk '{gsub("C","G",$2); gsub("G","C",$2); print $2,$4}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt
-awk '{gsub("C","G",$2); gsub("G","C",$2); print $1,$2}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v1.txt
+echo "find reverse compliments" 
+sed -e 's/AT/TA/g;s/TA/AT/g;s/AA/TT/g;s/TT/AA/g;s/GC/CG/g;s/CG/GC/g;s/CC/GG/g;s/GG/CC/g;s/AG/TC/g;s/GA/CT/g;s/AC/TG/g;s/CA/GT/g;s/TG/AC/g;s/GT/CA/;s/TC/AG/g;s/CT/GA/g; ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt
 
-awk '{gsub("T","A",$1); gsub("A","T",$1); print $1,$2}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v2.txt
-awk '{gsub("T","A",$2); gsub("A","T",$2); print $1,$2}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v2.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v3.txt
+
+
+awk '{gsub("C","G",$1); gsub("G","C",$1); print $2,$4}' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments.txt
 
 #echo "join C to T/G conversions with their 2upstream and downtream base pairs"
 #paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
