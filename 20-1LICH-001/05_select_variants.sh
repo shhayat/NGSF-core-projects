@@ -85,3 +85,4 @@ echo "join G to A/C conversions with their 2upstream and downtream base pairs an
 paste --delimiters='\t' ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_v1.txt ${OUTPUT_DIR}/${CLONE_ID}_${COND}_flanked_bases_reverse_compliments_v1.txt > ${OUTPUT_DIR}/${CLONE_ID}_${COND}.txt
 
 rm ${OUTPUT_DIR}/${CLONE_ID}_${COND}.vcf
+rm ${OUTPUT_DIR}/${CLONE_ID}_${COND}.bed
