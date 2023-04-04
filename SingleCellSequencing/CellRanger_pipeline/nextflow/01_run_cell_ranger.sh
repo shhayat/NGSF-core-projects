@@ -20,7 +20,7 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencin
 mkdir -p ${DIR}/analysis/results
 
 nextflow run nf-core/scrnaseq -profile singularity \
-                              --input ${DIR}/samplesheet.csv \
+                              --input ${DIR}/sample_info.csv \
                               --aligner cellranger \
                               --outdir ${DIR}/analysis/results \
                               --genome GRCh38
