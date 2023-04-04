@@ -22,4 +22,4 @@ cd $DIR
 nextflow run nf-core/scrnaseq --input '$DIR/samplesheet.csv' \
                               --aligner cellranger \
                               --genome GRCh38 \ 
-                              -profile docker
+                              -profile singularity
