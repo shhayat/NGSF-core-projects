@@ -17,11 +17,11 @@ module load singularity/3.9.2
                               
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/CellRanger_pipeline/nextflow
 
-cd $DIR
+mkdir -p ${DIR}/analysis/results
+cd ${DIR}/analysis/results
 
 nextflow run nf-core/scrnaseq -profile singularity \
                               --input '$DIR/samplesheet.csv' \
                               --aligner cellranger \
-                              --genome GRCh38 \ 
-                              -profile singularity
-                              --outdir ${DIR}
+                              --outdir ${DIR}/analysis/results \
+                              --genome GRCh38
