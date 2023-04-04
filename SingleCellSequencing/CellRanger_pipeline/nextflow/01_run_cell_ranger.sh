@@ -10,7 +10,7 @@
 
 module --force purge
 module load StdEnv/2020
-module load nextflow/22.04.3
+module load nextflow/22.10.6
 module load gentoo/2020
 module load singularity/3.9.2
 
