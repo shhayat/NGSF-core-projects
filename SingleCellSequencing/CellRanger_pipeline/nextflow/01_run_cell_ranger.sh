@@ -23,7 +23,8 @@ mkdir -p ${DIR}/analysis/results
 
 nextflow run nf-core/scrnaseq -profile singularity \
                               --input ${DIR}/sample_info.csv \
+                              --skip_fastqc 'TRUE' \
                               --aligner cellranger \
                               --outdir ${DIR}/analysis/results \
-                              --genome_fasta ${REF} \
+                              --fasta ${REF} \
                               --gtf ${gtf}
