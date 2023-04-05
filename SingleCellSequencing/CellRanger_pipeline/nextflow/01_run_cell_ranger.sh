@@ -16,6 +16,8 @@ module load singularity/3.9.2
 
                               
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/CellRanger_pipeline/nextflow
+REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-mm10-2020-A/fasta/genome.fa
+gtf=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/refdata-gex-mm10-2020-A/genes/genes.gtf
 
 mkdir -p ${DIR}/analysis/results
 
@@ -23,5 +25,5 @@ nextflow run nf-core/scrnaseq -profile singularity \
                               --input ${DIR}/sample_info.csv \
                               --aligner cellranger \
                               --outdir ${DIR}/analysis/results \
-                              --genome_fasta \
-                              --gtf 
+                              --genome_fasta ${REF} \
+                              --gtf ${gtf}
