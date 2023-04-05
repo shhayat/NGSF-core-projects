@@ -24,7 +24,8 @@ mkdir -p ${DIR}/analysis/results
 nextflow run nf-core/scrnaseq -profile singularity \
                               --input ${DIR}/sample_info.csv \
                               --skip_fastqc 'TRUE' \
-                              --aligner cellranger \
+                              #--aligner cellranger \
+                              --aligner star \
                               --outdir ${DIR}/analysis/results \
                               --fasta ${REF} \
                               --gtf ${gtf}
