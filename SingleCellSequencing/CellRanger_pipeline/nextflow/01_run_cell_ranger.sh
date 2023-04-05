@@ -23,4 +23,5 @@ nextflow run nf-core/scrnaseq -profile singularity \
                               --input ${DIR}/sample_info.csv \
                               --aligner cellranger \
                               --outdir ${DIR}/analysis/results \
-                              --genome GRCh38
+                              --genome_fasta \
+                              --gtf 
