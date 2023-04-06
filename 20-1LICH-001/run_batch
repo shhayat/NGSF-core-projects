@@ -60,7 +60,7 @@ do
    CLONE_ID=$1 
    INDUCED_SAMPLE=$2
    
-   sbatch ${SCRIPT_DIR}/remove_shared_variants.sh ${CLONE_ID} ${INDUCED_SAMPLE}
+   sbatch ${SCRIPT_DIR}/04_remove_shared_variants.sh ${CLONE_ID} ${INDUCED_SAMPLE}
    sleep 0.5
  done
 
