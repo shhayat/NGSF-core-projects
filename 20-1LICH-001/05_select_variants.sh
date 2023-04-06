@@ -63,13 +63,14 @@ echo "add each second line to first line"
 awk '{printf "%s%s",$0,NR%2?"\t":RS}' ${OUTPUT_DIR1}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases.txt > ${OUTPUT_DIR1}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_v1.txt
 awk '{printf "%s%s",$0,NR%2?"\t":RS}' ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases.txt > ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_v1.txt
 
-echo "find reverse compliments" 
-sed -e 's/AT/TA/g;s/TA/AT/g;s/AA/TT/g;s/TT/AA/g;s/GC/CG/g;s/CG/GC/g;s/CC/GG/g;s/GG/CC/g;s/AG/TC/g;s/GA/CT/g;s/AC/TG/g;s/CA/GT/g;s/TG/AC/g;s/GT/CA/;s/TC/AG/g;s/CT/GA/g' ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_v1.txt > ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_reverse_compliments.txt
+#echo "find reverse compliments" 
+#sed -e 's/AT/TA/g;s/TA/AT/g;s/AA/TT/g;s/TT/AA/g;s/GC/CG/g;s/CG/GC/g;s/CC/GG/g;s/GG/CC/g;s/AG/TC/g;s/GA/CT/g;s/AC/TG/g;s/CA/GT/g;s/TG/AC/g;s/GT/CA/;s/TC/AG/g;s/CT/GA/g' ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_v1.txt > ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_reverse_compliments.txt
 
 echo "join C to T/G conversions with their 2upstream and downtream base pairs"
 paste --delimiters='\t' ${OUTPUT_DIR1}/${CLONE_ID}_${SAMPLE_ID}_base_conversion.bed ${OUTPUT_DIR1}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_v1.txt > ${OUTPUT_DIR1}/${CLONE_ID}_${SAMPLE_ID}.txt
 
-echo "join G to A/C conversions with their 2upstream and downtream base pairs and reverse compliments of flanking bases"
-paste --delimiters='\t' ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_base_conversion.bed ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_v1.txt ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_reverse_compliments.txt > ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_v1.txt
+echo "join G to A/C conversions with their 2upstream and downtream base pairs"
+paste --delimiters='\t' ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_base_conversion.bed ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_flanked_bases_v1.txt > ${OUTPUT_DIR2}/${CLONE_ID}_${SAMPLE_ID}_v1.txt
+
 
 
