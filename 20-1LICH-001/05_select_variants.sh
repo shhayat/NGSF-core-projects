@@ -31,7 +31,7 @@ gunzip -k ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_ID}_I.vcf.gz
 echo "convert vcf to bed file"
 #step1: Convert vcf to bed file
 #/globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed
-/globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${COND}.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${COND}.bed
+/globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_ID}.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${COND}.bed
 echo "Base Conversions"
 
 #step2: Extract C to T or G conversions and select first 3 columns (chrom, start, end position, ref allele and alternate allele)
