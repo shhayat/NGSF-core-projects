@@ -22,8 +22,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/ana
 mkdir -p ${OUTDIR}
 
 CLONE_ID=$1
-COND=$2
-SAMPLE_ID=$3
+SAMPLE_ID=$2
 
 bcftools isec -C \
               -c all \
@@ -31,6 +30,6 @@ bcftools isec -C \
               -w 1 \
               -o ${OUTDIR}/${CLONE_ID}_${SAMPLE_ID}_I.vcf.gz \
               ${INDUCED_SAMPLE_DIR}/${SAMPLE_ID}/${SAMPLE_ID}.vcf.gz \
-              ${INPUT_DIR}/${CLONE_ID}_U_concat.vcf.gz
+              ${UNINDUCED_SAMPLE_DIR}/${CLONE_ID}_U_concat.vcf.gz
 
-bcftools index -t ${OUTDIR}/${CLONE_ID}_I.vcf.gz
+bcftools index -t ${OUTDIR}/${CLONE_ID}_${SAMPLE_ID}_I.vcf.gz
