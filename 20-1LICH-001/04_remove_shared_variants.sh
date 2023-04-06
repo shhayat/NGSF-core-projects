@@ -16,19 +16,21 @@ module load StdEnv/2020
 module load gcc/9.3.0
 module load bcftools/1.13
 
-INPUT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_samples_per_protein
+INDUCED_SAMPLE_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis
+UNINDUCED_SAMPLE_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_samples_per_protein
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/removed_shared_varaints_between_uninduced_induced
 mkdir -p ${OUTDIR}
 
 CLONE_ID=$1
 COND=$2
+SAMPLE_ID=$3
 
 bcftools isec -C \
               -c all \
               -O z \
               -w 1 \
-              -o ${OUTDIR}/${CLONE_ID}_I.vcf.gz \
-              ${INPUT_DIR}/${CLONE_ID}_I.vcf.gz \
+              -o ${OUTDIR}/${CLONE_ID}_${SAMPLE_ID}_I.vcf.gz \
+              ${INDUCED_SAMPLE_DIR}/${SAMPLE_ID}/${SAMPLE_ID}.vcf.gz \
               ${INPUT_DIR}/${CLONE_ID}_U_concat.vcf.gz
 
 bcftools index -t ${OUTDIR}/${CLONE_ID}_I.vcf.gz
