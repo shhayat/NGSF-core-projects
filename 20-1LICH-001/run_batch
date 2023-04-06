@@ -22,7 +22,7 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
  #done
 
 ###############################################################
-#STEP3 : MERGE UNINDUCED AND INDUCED SAMPLES PER PROTEIN
+#STEP3 : MERGE UNINDUCED AND SAMPLES PER PROTEIN
 ###############################################################
 #SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 #myarr=()
@@ -54,7 +54,7 @@ do
    myarr+=("$line")
 done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 0 4 8
+for i in 0 1 4 5 8 9
 do
    set ${myarr[i]}
    CLONE_ID=$1 
