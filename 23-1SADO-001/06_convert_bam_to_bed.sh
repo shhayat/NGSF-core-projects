@@ -17,8 +17,7 @@ module load intel/2016.4
 module load intel/2017.1
 module load bedtools
 
-DIR=
-OUTDIR=
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/star_alignment
 
 SAMPLE_NAME=$1;
 BAM=$2;
