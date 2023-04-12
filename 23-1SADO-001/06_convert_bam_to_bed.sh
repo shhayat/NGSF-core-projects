@@ -17,4 +17,9 @@ module load intel/2016.4
 module load intel/2017.1
 module load bedtools
 
+DIR=
 
+SAMPLE_NAME=$1;
+BAM=$2;
+
+bedtools bamtobed -i ${DIR}/${SAMPLE_NAME}/$BAM
