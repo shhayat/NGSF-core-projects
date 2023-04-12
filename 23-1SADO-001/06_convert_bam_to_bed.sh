@@ -18,8 +18,9 @@ module load intel/2017.1
 module load bedtools
 
 DIR=
+OUTDIR=
 
 SAMPLE_NAME=$1;
 BAM=$2;
 
-bedtools bamtobed -i ${DIR}/${SAMPLE_NAME}/$BAM
+bedtools bamtobed -i ${DIR}/${SAMPLE_NAME}/${BAM} > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}.bed
