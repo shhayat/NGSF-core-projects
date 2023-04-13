@@ -9,14 +9,17 @@
 #SBATCH  --output=%j.out
 
 ##loading required modules for bedtools
-
-#module load bedtools
 module load nixpkgs/16.09 
 module load gcc/5.4.0
 module load intel/2016.4
 module load intel/2017.1
 module load bedtools
-module load tabix
+
+##loading required modules for tabix
+module load StdEnv/2020
+module load nixpkgs/16.09  
+module load intel/2016.4
+module load tabix/0.2.6
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/star_alignment
 
