@@ -31,7 +31,7 @@ BAM=$2;
 #bedtools sort ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
 #tabix -pbed ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
 
-deeptools --bam ${DIR}/${SAMPLE_NAME}/${BAM} \
+${deeptools}/bamCoverage --bam ${DIR}/${SAMPLE_NAME}/${BAM} \
           --outFileName ${SAMPLE_NAME} \
           --outFileFormat bedgraph
           
