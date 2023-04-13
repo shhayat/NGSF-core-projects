@@ -28,5 +28,5 @@ BAM=$2;
 
 #bedtools bamtobed -i ${DIR}/${SAMPLE_NAME}/${BAM} > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}.bed
 bedtools genomecov -ibam ${DIR}/${SAMPLE_NAME}/${BAM} -bg ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed
-bedtools sort -k 1,1 -k 2,2n -k 3,3n ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
+bedtools sort ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
 tabix -pbed ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
