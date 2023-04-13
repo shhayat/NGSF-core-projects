@@ -22,11 +22,16 @@ module load intel/2016.4
 module load tabix/0.2.6
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/star_alignment
-
+deeptools=/globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 SAMPLE_NAME=$1;
 BAM=$2;
 
 #bedtools bamtobed -i ${DIR}/${SAMPLE_NAME}/${BAM} > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}.bed
-bedtools genomecov -ibam ${DIR}/${SAMPLE_NAME}/${BAM} -bg ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed
-bedtools sort ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
-tabix -pbed ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
+#bedtools genomecov -ibam ${DIR}/${SAMPLE_NAME}/${BAM} -bg ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed
+#bedtools sort ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
+#tabix -pbed ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
+
+deeptools --bam ${DIR}/${SAMPLE_NAME}/${BAM} \
+          --outFileName ${SAMPLE_NAME} \
+          --outFileFormat bedgraph
+          
