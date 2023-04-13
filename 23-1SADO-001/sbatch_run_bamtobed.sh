@@ -6,6 +6,6 @@ do
         path="${i%/Aligned*}";
 	      sample_name="${path##*/}"
       
-  sbatch ${SCRIPT_DIR}/06_convert_bem_to_bed.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
+  sbatch ${SCRIPT_DIR}/06_convert_bam_to_bed.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
  sleep 0.5
 done 
