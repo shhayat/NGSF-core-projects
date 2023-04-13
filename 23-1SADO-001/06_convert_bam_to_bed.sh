@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=select_variants
+#SBATCH --job-name=bamcoverage
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:30:00
