@@ -31,7 +31,7 @@ BAM=$2;
 #bedtools sort ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov.bed > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
 #tabix -pbed ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_cov_sorted.bed
 
-${deeptools}/bamCoverage --bam ${DIR}/${SAMPLE_NAME}/${BAM} \
-          --outFileName ${SAMPLE_NAME} \
-          --outFileFormat bedgraph
+/globalhome/hxo752/HPC/anaconda3/envs/deeptools/bin --bam ${DIR}/${SAMPLE_NAME}/${BAM} \
+                                                    --outFileName ${SAMPLE_NAME} \
+                                                    --outFileFormat bedgraph
           
