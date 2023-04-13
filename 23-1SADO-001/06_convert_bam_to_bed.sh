@@ -22,4 +22,4 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analys
 SAMPLE_NAME=$1;
 BAM=$2;
 
-bedtools bamtobed -i ${SAMPLE_NAME}/${BAM} > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}.bed
+bedtools bamtobed -i ${DIR}/${SAMPLE_NAME}/${BAM} > ${DIR}/${SAMPLE_NAME}/${SAMPLE_NAME}.bed
