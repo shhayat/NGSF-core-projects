@@ -4,7 +4,7 @@
 #SBATCH --job-name=bamcoverage
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --time=00:30:00
+#SBATCH --time=02:00:00
 #SBATCH --mem=2G
 #SBATCH  --output=%j.out
 
