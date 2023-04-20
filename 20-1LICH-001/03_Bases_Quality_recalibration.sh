@@ -19,3 +19,7 @@ java -jar GenomeAnalysisTK.jar \
     -knownSites gold_indels.vcf \ 
     -BQSR recal_data.table \ 
     -o post_recal_data.table 
+
+
+
+check this https://learn.gencore.bio.nyu.edu/variant-calling/pre-processing/
