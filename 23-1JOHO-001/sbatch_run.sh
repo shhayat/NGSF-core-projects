@@ -12,10 +12,17 @@ do
       path="${i%_R*}";
       sample_name=${path##*/};
       fq1=${DATA}/${sample_name}_R1.fastq.gz;
-	    fq2=${DATA}/${sample_name}_R2.fastq.gz;
-      
+      fq2=${DATA}/${sample_name}_R2.fastq.gz;
       jid3=$(sbatch  --dependency=afterok:$jid2 ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}")
  sleep 0.5
 done
 
 #run rnaseqc
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/star_alignment
+for i in ${DATA}/*/*.bam
+do
+        path="${i%/Aligned*}";
+	sample_name="${path##*/}
+        jid4=$(sbatch --dependency=afterok:$jid3 ${SCRIPT_DIR}/04_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
+ sleep 0.5
+done 
