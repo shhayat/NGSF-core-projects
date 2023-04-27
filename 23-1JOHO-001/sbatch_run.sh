@@ -17,12 +17,15 @@ do
  sleep 0.5
 done
 
-#run rnaseqc
+#submit rnaseqc job
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/star_alignment
 for i in ${DATA}/*/*.bam
 do
         path="${i%/Aligned*}";
 	sample_name="${path##*/}
-        jid4=$(sbatch --dependency=afterok:$jid3 ${SCRIPT_DIR}/04_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
- sleep 0.5
+        jid4=$(sbatch --dependency=afterok:$jid3 ${SCRIPT_DIR}/04_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam")
+	sleep 0.5
 done 
+
+#run feature count
+sbatch --dependency=afterok:$jid4 ${SCRIPT_DIR}/sbatch_run_feature_count.sh
