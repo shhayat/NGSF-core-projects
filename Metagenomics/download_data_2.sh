@@ -20,5 +20,5 @@ do
   ${sratoolkit}/prefetch $i -O $OUTPUT/fastq/inulin_fl --progress;
   
   echo "Generating fastq for: ${i}";
-  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq/inulin_fl --gzip --clip $OUTPUT/fastq/inulin_fl/${i}/${i}.sra;
+  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq/inulin_fl --gzip --split-3 --clip $OUTPUT/fastq/inulin_fl/${i}/${i}.sra;
 done
