@@ -23,15 +23,3 @@ do
   echo "Generating fastq for: ${i}";
   ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq/control_fl --gzip --clip $OUTPUT/fastq/control_fl/${i}/${i}.sra;
 done
-
-
-mkdir -p $OUTPUT/fastq/inulin_fl
-
-for i in SRR17156289 SRR17156290
-do
-  echo "Generating sra file for: ${i}";
-  ${sratoolkit}/prefetch $i -O $OUTPUT --progress;
-  
-  echo "Generating fastq for: ${i}";
-  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq/inulin_fl --gzip --clip $OUTPUT/fastq/inulin_fl/${i}/${i}.sra;
-done
