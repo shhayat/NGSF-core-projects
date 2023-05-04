@@ -13,7 +13,7 @@ do
       sample_name=${path##*/};
       fq1=${DATA}/${sample_name}_R1.fastq.gz;
       fq2=${DATA}/${sample_name}_R2.fastq.gz;
-      jid3=$(sbatch  --dependency=afterok:$jid2 ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}")
+      jid3=$(sbatch --dependency=afterok:$jid2 ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}")
  sleep 0.5
 done
 
