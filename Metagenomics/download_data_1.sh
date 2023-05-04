@@ -21,5 +21,5 @@ do
   ${sratoolkit}/prefetch $i -O $OUTPUT/fastq/control_fl --progress;
   
   echo "Generating fastq for: ${i}";
-  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq/control_fl --gzip --clip $OUTPUT/fastq/control_fl/${i}/${i}.sra;
+  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq/control_fl --gzip --split-3 --clip $OUTPUT/fastq/control_fl/${i}/${i}.sra;
 done
