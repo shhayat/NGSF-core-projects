@@ -21,8 +21,11 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Metagenomics/
 
 mkdir -p ${DIR}/analysis/results
 
+#--input ${DIR}/sample_info.tsv \
+fasta_file=1;
+
 nextflow run nf-core/ampliseq -profile singularity \
-                              --input ${DIR}/sample_info.tsv \
+                              --input $fasta_file \
                               --metadata ${DIR}/metadata.tsv \
                               --skip_cutadapt 'TRUE' \
                               --metadata_category "Control_FL,Inulin_FL" \
