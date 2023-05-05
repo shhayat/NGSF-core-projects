@@ -22,10 +22,7 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Metagenomics/
 mkdir -p ${DIR}/analysis/results
 
 nextflow run nf-core/ampliseq -profile singularity \
-                              --input ${DIR}/sample_info.tsv \
-                              --metadata ${DIR}/metadata.tsv \
-                              --skip_fastqc 'TRUE' \
-                              --aligner cellranger \
-                              --outdir ${DIR}/analysis/results \
-                              --fasta ${REF} \
-                              --gtf ${gtf}
+                              --input "${DIR}/sample_info.tsv" \
+                              --metadata "${DIR}/metadata.tsv" \
+                              --FW_primer GTGCCAGCMGCCGCGGTAA \
+                              --outdir ${DIR}/analysis/results
