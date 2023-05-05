@@ -22,8 +22,8 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/Metagenomics/
 mkdir -p ${DIR}/analysis/results
 
 nextflow run nf-core/ampliseq -profile singularity \
-                              --input "${DIR}/sample_info.tsv" \
-                              --metadata "${DIR}/metadata.tsv" \
+                              --input ${DIR}/sample_info.tsv \
+                              --metadata ${DIR}/metadata.tsv \
                               --skip_cutadapt 'TRUE' \
                               --metadata_category "Control_FL,Inulin_FL" \
                               --max_cpus 40 \
