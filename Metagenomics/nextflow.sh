@@ -25,6 +25,7 @@ nextflow run nf-core/ampliseq -profile singularity \
                               --input "${DIR}/sample_info.tsv" \
                               --metadata "${DIR}/metadata.tsv" \
                               --FW_primer GTGCCAGCMGCCGCGGTAA \
+                              --RV_primer GGACTACHVGGGTWTCTAAT \
                               --metadata_category "Control_FL,Inulin_FL" \
                               --max_cpus 40 \
                               --max_memory '185GB' \
