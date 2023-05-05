@@ -15,11 +15,11 @@ mkdir -p $OUTPUT
 mkdir -p $OUTPUT/fastq/control_fl
 
 #control FL 
-for i in SRR17156294 SRR17156293
+for i in SRR17156294 SRR17156293 
 do
   echo "Generating sra file for: ${i}";
-  ${sratoolkit}/prefetch $i -O $OUTPUT/fastq/control_fl --progress;
+  ${sratoolkit}/prefetch $i -O $OUTPUT/fastq/ --progress;
   
   echo "Generating fastq for: ${i}";
-  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq/control_fl --split-3 --clip $OUTPUT/fastq/control_fl/${i}/${i}.sra;
+  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq/ --split-3 --clip $OUTPUT/fastq/${i}/${i}.sra;
 done
