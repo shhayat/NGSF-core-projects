@@ -25,7 +25,7 @@ do
       sample_name1=${path1##*/};
       fq1=${DATA}/${sample_name1}_R1_001.fastq.gz;
       fq2=${DATA}/${sample_name1}_R2_001.fastq.gz;
-      jid3=$(sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name1}" "${fq1}" "${fq2}")
+      jid3=$(sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}")
  sleep 0.5
 done
 
