@@ -1,7 +1,7 @@
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001
 
 #submit concatenate job
-jid1=$(sbatch ${SCRIPT_DIR}/00_concatenate_lanes_from_each_folder.sh)
+jid1=$(sbatch ${SCRIPT_DIR}/01_concatenate_lanes_from_each_folder.sh)
 
 #submit fastqc job
 jid2=$(sbatch --dependency=afterok:$jid1 ${SCRIPT_DIR}/01_FastQC.sh)
