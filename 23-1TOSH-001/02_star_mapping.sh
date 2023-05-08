@@ -1,10 +1,11 @@
 #!/bin/bash
 
 #SBATCH --job-name=star-align
+#SBATCH --constraint=skylake
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --time=1:00:00
-#SBATCH --mem=40G
+#SBATCH --time=3:00:00
+#SBATCH --mem=375G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
@@ -12,32 +13,28 @@ set -eux
 module load star/2.7.9a 
 module load samtools
 
-DATA=/datastore/NGSF001/projects/23-1TOSH-001/fastq
-GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/depletion_test/human/indices/gencode-40
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1LICH-001/analysis/star_alignment
-NCPU=8
+GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/analysis/indices/star-index
+OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/analysis/alignment
 
-rsync -avzP /datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf ${SLURM_TMPDIR}/
-
-mkdir -p ${OUTDIR}
 sample_name=$1; shift
 fq1=$1; shift
-fq2=$1
+fq2=$1;
 
-rsync -v $fq1 ${SLURM_TMPDIR}
-rsync -v $fq2 ${SLURM_TMPDIR}
-
-mkdir -p ${SLURM_TMPDIR}/${sample_name} && cd ${SLURM_TMPDIR}/${sample_name}
+mkdir -p ${OUTDATA}/${sample_name}
+cd ${OUTDATA}/${sample_name}
 
 STAR --genomeDir $GENOME \
 	--readFilesCommand zcat \
+	--runThreadN 8 \
 	--readFilesIn ${fq1} ${fq2} \
-	--outSAMstrandField intronMotif \
+	--outFilterType BySJout \
+	--outFilterMultimapNmax 20 \
+	--alignSJoverhangMin 8 \
+	--alignSJDBoverhangMin 1 \
+	--outFilterMismatchNmax 999 \
+	--outFilterMismatchNoverReadLmax 0.04 \
+	--alignIntronMin 20 \
+	--alignIntronMax 1000000 \
+	--alignMatesGapMax 1000000 \
 	--outSAMtype BAM SortedByCoordinate \
-	--outFilterIntronMotifs RemoveNoncanonical \
-	--sjdbGTFfile ${SLURM_TMPDIR}/gencode.v40.annotation.gtf \
-	--runThreadN ${NCPU} \
-	&& samtools index Aligned.sortedByCoord.out.bam 
-	
-	
-rsync -rvzP ${SLURM_TMPDIR}/${sample_name} ${OUTDIR}
+	&& samtools index Aligned.sortedByCoord.out.bam
