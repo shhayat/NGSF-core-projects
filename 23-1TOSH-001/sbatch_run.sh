@@ -1,20 +1,23 @@
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001
 
 #submit concatenate job
-jid1=$(sbatch ${SCRIPT_DIR}/01_concatenate_lanes_from_each_folder.sh)
+#jid1=$(sbatch ${SCRIPT_DIR}/01_concatenate_lanes_from_each_folder.sh)
 
 #submit fastqc job
-jid2=$(sbatch --dependency=afterok:$jid1 ${SCRIPT_DIR}/02_FastQC.sh)
+#jid2=$(sbatch --dependency=afterok:$jid1 ${SCRIPT_DIR}/02_FastQC.sh)
+jid2=$(sbatch ${SCRIPT_DIR}/02_FastQC.sh)
 
 #submit star alignment job
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/analysis/fastq
-for i in $DATA/R*_R1.fastq.gz
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/fastq
+for i in $DATA/R*_R1_001.fastq.gz
 do
-      path="${i%_R*}";
+      path="${i%_R1*}";
       sample_name=${path##*/};
-      fq1=${DATA}/${sample_name}_R1.fastq.gz;
-      fq2=${DATA}/${sample_name}_R2.fastq.gz;
-      jid3=$(sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}")
+      path1="${i%_R*}";
+      sample_name1=${path1##*/};
+      fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
+      fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
+      jid3=$(sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name1}" "${fq1}" "${fq2}")
  sleep 0.5
 done
 
