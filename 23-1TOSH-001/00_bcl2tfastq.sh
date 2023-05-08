@@ -1,10 +1,12 @@
 #!/bin/bash 
 
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
 #SBATCH --job-name=bcl2fastq_umi
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --time=0-02:00:00
-#SBATCH --mem=36G
+#SBATCH --cpus-per-task=20
+#SBATCH --time=24:00:00
+#SBATCH --mem=80G
 
 set -eux
 
