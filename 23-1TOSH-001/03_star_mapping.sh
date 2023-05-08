@@ -25,16 +25,11 @@ cd ${OUTDATA}/${sample_name}
 
 STAR --genomeDir $GENOME \
 	--readFilesCommand zcat \
-	--runThreadN 8 \
 	--readFilesIn ${fq1} ${fq2} \
-	--outFilterType BySJout \
-	--outFilterMultimapNmax 20 \
-	--alignSJoverhangMin 8 \
-	--alignSJDBoverhangMin 1 \
-	--outFilterMismatchNmax 999 \
-	--outFilterMismatchNoverReadLmax 0.04 \
-	--alignIntronMin 20 \
-	--alignIntronMax 1000000 \
-	--alignMatesGapMax 1000000 \
+	--outSAMstrandField intronMotif \
 	--outSAMtype BAM SortedByCoordinate \
+	--outFilterIntronMotifs RemoveNoncanonical \
+	--sjdbGTFfeatureExon exon \
+	--runThreadN 8 \
 	&& samtools index Aligned.sortedByCoord.out.bam
+
