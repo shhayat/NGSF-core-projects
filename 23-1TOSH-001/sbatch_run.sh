@@ -5,11 +5,19 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001
 
 #submit fastqc job
 #jid2=$(sbatch --dependency=afterok:$jid1 ${SCRIPT_DIR}/02_FastQC.sh)
-jid2=$(sbatch ${SCRIPT_DIR}/02_FastQC.sh)
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/fastq
+for i in $DATA/R23*_001.fastq.gz
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+      fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
+      fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
+      jid2=$(sbatch ${SCRIPT_DIR}/02_FastQC.sh "${fq1}" "${fq2}")
+done
 
 #submit star alignment job
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/fastq
-for i in $DATA/R*_R1_001.fastq.gz
+for i in $DATA/R23*_001.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
