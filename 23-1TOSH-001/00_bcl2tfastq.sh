@@ -16,12 +16,9 @@ module load nixpkgs/16.09
 module load gcc/7.3.0
 module load bcl2fastq2/2.20.0
 
-OUTDIR=/datastore/NGSF001/projects/23-1TOSH-001
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001
 
 mkdir -p ${SLURM_TMPDIR}/fastq
 bcl2fastq --runfolder-dir /datastore/NGSF001/NB551711/230505_NB551711_0069_AHLJGJBGXM/ \
-            -o ${SLURM_SUBMIT_DIR}/fastq \
+            -o ${OUTDIR}/fastq \
             --no-lane-splitting
-
-
-rsync -rvzP ${SLURM_TMPDIR}/fastq ${OUTDIR}
