@@ -17,6 +17,6 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/ana
 mkdir -p ${OUTDIR}/fastqc
 
 fq1=$1; shift
-fq2=$1;
+fq2=$1
 fastqc -o ${OUTDIR}/fastqc --extract ${fq1}
 fastqc -o ${OUTDIR}/fastqc --extract ${fq2}
