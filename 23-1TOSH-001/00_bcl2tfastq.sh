@@ -20,5 +20,5 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001
 
 mkdir -p ${SLURM_TMPDIR}/fastq
 bcl2fastq --runfolder-dir /datastore/NGSF001/NB551711/230505_NB551711_0069_AHLJGJBGXM/ \
-            -o ${OUTDIR}/fastq
-           # --no-lane-splitting
+            -o ${OUTDIR}/fastq \
+            --no-lane-splitting
