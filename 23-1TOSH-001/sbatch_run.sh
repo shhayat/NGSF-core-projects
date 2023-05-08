@@ -4,10 +4,10 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001
 jid1=$(sbatch ${SCRIPT_DIR}/01_concatenate_lanes_from_each_folder.sh)
 
 #submit fastqc job
-jid2=$(sbatch --dependency=afterok:$jid1 ${SCRIPT_DIR}/01_FastQC.sh)
+jid2=$(sbatch --dependency=afterok:$jid1 ${SCRIPT_DIR}/02_FastQC.sh)
 
 #submit star alignment job
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/analysis/Fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/analysis/fastq
 for i in $DATA/R*_R1.fastq.gz
 do
       path="${i%_R*}";
