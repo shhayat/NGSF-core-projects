@@ -3,9 +3,9 @@
 #SBATCH --job-name=star-align
 #SBATCH --constraint=skylake
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=20
+#SBATCH --cpus-per-task=4
 #SBATCH --time=3:00:00
-#SBATCH --mem=375G
+#SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
@@ -30,6 +30,6 @@ STAR --genomeDir $GENOME \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
 	--sjdbGTFfeatureExon exon \
-	--runThreadN 20 \
+	--runThreadN 4 \
 	&& samtools index Aligned.sortedByCoord.out.bam
 
