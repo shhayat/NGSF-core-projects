@@ -16,7 +16,7 @@ do
 done
 
 #submit star alignment job
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/fastq
+DATA=/datastore/NGSF001/projects/23-1TOSH-001/fastq
 for i in $DATA/R23*_R1_001.fastq.gz;
 #for i in $(seq -w 66 121)
 do
