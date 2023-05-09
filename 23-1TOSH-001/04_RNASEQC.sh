@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ivybridge
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=00:20:00
