@@ -6,7 +6,7 @@
 
 set -eux
 
-rnaseqc=/datastore/NGSF001/software/src/rnaseqc.v2.4.2.linux
+rnaseqc=/datastore/NGSF001/software/src/
 
 sample_name=$1; shift
 bam_file=$1
