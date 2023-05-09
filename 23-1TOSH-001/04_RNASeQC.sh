@@ -1,6 +1,4 @@
 #!/bin/bash
-#SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=ivybridge
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=00:30:00
