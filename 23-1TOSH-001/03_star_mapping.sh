@@ -13,7 +13,7 @@ set -eux
 module load star/2.7.9a 
 module load samtools
 
-GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/21-1TOSH-001/analysis/indices/star-index
+GENOME=/datastore/NGSF001/analysis/indices/bison/ensembl.105/star/fasta_greater10000/star
 OUTDATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/analysis/star_alignment
 
 sample_name=$1; shift
