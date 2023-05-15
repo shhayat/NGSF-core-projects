@@ -12,4 +12,4 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/mri_imaging_
 
 module load r/4.1.2
 
-R CMD BATCH ${SCRIPT_DIR}/05_download_tcga.R
+R CMD BATCH ${SCRIPT_DIR}/download_tcga.R
