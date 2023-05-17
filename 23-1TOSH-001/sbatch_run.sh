@@ -1,5 +1,11 @@
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001
 
+#submit bcl2fastq job
+for i in /datastore/NGSF001/NB551711/2305*
+do
+    sbatch ${i} ${SCRIPT_DIR}/00_bcl2tfastq.sh
+done	
+
 #submit concatenate job
 #jid1=$(sbatch ${SCRIPT_DIR}/01_concatenate_lanes_from_each_folder.sh)
 
