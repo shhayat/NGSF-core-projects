@@ -39,10 +39,12 @@ mkdir -p ${OUTDIR}
 folders=("230505_NB551711_0069_AHLJGJBGXM" "230511_NB551711_0072_AH5HTFBGXN" "230516_NB551711_0074_AHV2N3BGXN" "230510_NB551711_0071_AH5J3TBGXN" "230512_NB551711_0073_AHV2MWBGXN")
 
 # Loop through each folder
-for folder in "${folders[@]}"
+for folder in ${folders[@]}
+do
+for i in $(seq -w 53 121);
 do
   # Concatenate the files using cat
   cat ${FASTQ_FOLDER}/${folder}/R23000${i}_*_R1_001.fastq.gz >> "${OUTDIR}/R23000${i}_R1.fastq.gz"
   cat ${FASTQ_FOLDER}/${folder}/R23000${i}_*_R2_001.fastq.gz >> "${OUTDIR}/R23000${i}_R2.fastq.gz"
 done
-
+done
