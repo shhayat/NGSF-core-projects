@@ -44,7 +44,7 @@ do
 for i in $(seq -w 53 121);
 do
   # Concatenate the files using cat
-  cat ${FASTQ_FOLDER}/${folder}/R23000${i}_*_R1_001.fastq.gz >> "${OUTDIR}/R23000${i}_R1.fastq.gz"
-  cat ${FASTQ_FOLDER}/${folder}/R23000${i}_*_R2_001.fastq.gz >> "${OUTDIR}/R23000${i}_R2.fastq.gz"
+  cat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R1_001.fastq.gz >> "${OUTDIR}/R23000${i}_R1.fastq.gz"
+  cat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R2_001.fastq.gz >> "${OUTDIR}/R23000${i}_R2.fastq.gz"
 done
 done
