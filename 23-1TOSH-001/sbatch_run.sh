@@ -8,7 +8,7 @@ do
 done	
 
 #submit concatenate job
-#jid1=$(sbatch ${SCRIPT_DIR}/01_concatenate_lanes_from_each_folder.sh)
+sbatch ${SCRIPT_DIR}/01_concatenate_lanes_from_each_folder.sh
 
 #submit fastqc job
 #jid2=$(sbatch --dependency=afterok:$jid1 ${SCRIPT_DIR}/02_FastQC.sh)
