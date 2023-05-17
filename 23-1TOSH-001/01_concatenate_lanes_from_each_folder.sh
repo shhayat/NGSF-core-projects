@@ -21,10 +21,7 @@ folders=("230505_NB551711_0069_AHLJGJBGXM" "230511_NB551711_0072_AH5HTFBGXN" "23
 # Loop through each folder
 for folder in ${folders[@]}
 do
-for i in $(seq -w 53 121);
-do
   # Concatenate the files using cat
-  cat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R1_001.fastq.gz >> "${OUTDIR}/R23000${i}_R1.fastq.gz"
-  cat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R2_001.fastq.gz >> "${OUTDIR}/R23000${i}_R2.fastq.gz"
-done
+  cat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R1_* >> "${OUTDIR}/R23000${i}_R1.fastq.gz"
+  cat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R2_* >> "${OUTDIR}/R23000${i}_R2.fastq.gz"
 done
