@@ -18,7 +18,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/ana
 
 folder_name=$1;
 
-mkdir -p ${OUTDIR}/fastq/${folder_name}
+mkdir -p ${OUTDIR}/fastq_folders
 bcl2fastq --runfolder-dir ${folder_name}/ \
-            -o ${OUTDIR}/${folder_name}/ \
+            -o ${OUTDIR}/fastq_folders/${folder_name} \
             --no-lane-splitting
