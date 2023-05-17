@@ -3,7 +3,7 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001
 #submit bcl2fastq job
 for i in /datastore/NGSF001/NB551711/2305*
 do
-    sbatch ${i} ${SCRIPT_DIR}/00_bcl2tfastq.sh
+    sbatch ${SCRIPT_DIR}/00_bcl2tfastq.sh ${i}
 done	
 
 #submit concatenate job
