@@ -12,9 +12,9 @@ set -eux
 	
 mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/Fastq 
 
-FASTQ_FOLDER=/datastore/NGSF001/NB551711/230208_NB551711_0063_AHT2WGBGXN/Alignment_1/20230208_231511/Fastq
+FASTQ_FOLDER=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/analysis/fastq_folders
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/Fastq
-	
+
 
 for i in $(seq -w 03 18)
 do
