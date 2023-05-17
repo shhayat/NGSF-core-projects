@@ -11,7 +11,7 @@
 set -eux
 	
 FASTQ_FOLDER=/datastore/NGSF001/projects/23-1TOSH-001/fastq_folders
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/Fastq
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/analysis/Fastq
 
 mkdir -p ${OUTDIR}
 
