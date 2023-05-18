@@ -39,7 +39,7 @@ do
       fq1=${DATA}/"R2300${i}"_R1.fastq.gz;
       fq2=${DATA}/"R2300${i}"_R2.fastq.gz;
       #jid3=$(sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}")
-      sbatch ${SCRIPT_DIR}/03_star_mapping.sh "R23000${i}" "${fq1}" "${fq2}"
+      sbatch ${SCRIPT_DIR}/03_star_mapping.sh "R2300${i}" "${fq1}" "${fq2}"
 done
 
 #submit rnaseqc job
