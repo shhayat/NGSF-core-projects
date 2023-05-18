@@ -22,8 +22,8 @@ mkdir -p ${OUTDIR}
 #for folder in ${folders[@]}
 #do
   # Concatenate the files using cat
-  #cat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R1_* >> "${OUTDIR}/R23000${i}_R1.fastq.gz"
-  #cat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R2_* >> "${OUTDIR}/R23000${i}_R2.fastq.gz"
+  #zcat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R1_* >> "${OUTDIR}/R23000${i}_R1.fastq.gz"
+  #zcat ${FASTQ_FOLDER}/${folder}/R2300${i}_*_R2_* >> "${OUTDIR}/R23000${i}_R2.fastq.gz"
 #done
 
 for i in $(seq -w 53 121);
