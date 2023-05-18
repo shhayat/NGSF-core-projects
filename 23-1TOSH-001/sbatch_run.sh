@@ -28,18 +28,18 @@ do
 DATA=/datastore/NGSF001/projects/23-1TOSH-001/Fastq
 for i in $DATA/R23*_R1.fastq.gz 
 #for i in $(seq -w 76 99);
-for i in $(seq -w 100 121);
+#for i in $(seq -w 100 121);
 do
-      #path="${i%_R1*}";
-      #sample_name=${path##*/};
-      #path1="${i%_R1*}";
-      #sample_name1=${path1##*/};
-      #fq1=${DATA}/${sample_name1}_R1.fastq.gz;
-      #fq2=${DATA}/${sample_name1}_R2.fastq.gz;
-      fq1=${DATA}/"R2300${i}"_R1.fastq.gz;
-      fq2=${DATA}/"R2300${i}"_R2.fastq.gz;
-      #jid3=$(sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}")
-      sbatch ${SCRIPT_DIR}/03_star_mapping.sh "R2300${i}" "${fq1}" "${fq2}"
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+      path1="${i%_R1*}";
+      sample_name1=${path1##*/};
+      fq1=${DATA}/${sample_name1}_R1.fastq.gz;
+      fq2=${DATA}/${sample_name1}_R2.fastq.gz;
+      #fq1=${DATA}/"R2300${i}"_R1.fastq.gz;
+      #fq2=${DATA}/"R2300${i}"_R2.fastq.gz;
+      jid3=$(sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}")
+      #sbatch ${SCRIPT_DIR}/03_star_mapping.sh "R2300${i}" "${fq1}" "${fq2}"
 done
 
 #submit rnaseqc job
