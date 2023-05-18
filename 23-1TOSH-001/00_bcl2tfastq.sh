@@ -16,8 +16,8 @@ module load bcl2fastq2/2.20.0
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/analysis
 
-folder_name=$1;
-
+#folder_name=$1;
+folder_name="230511_NB551711_0072_AH5HTFBGXN"
 mkdir -p ${OUTDIR}/fastq_folders
 bcl2fastq --runfolder-dir ${folder_name}/ \
             -o ${OUTDIR}/fastq_folders/${folder_name} \
