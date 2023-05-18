@@ -30,6 +30,6 @@ STAR --genomeDir $GENOME \
 	--outSAMtype BAM SortedByCoordinate \
 	--outFilterIntronMotifs RemoveNoncanonical \
 	--sjdbGTFfeatureExon exon \
-	--runThreadN 4 \
+	--runThreadN 2 \
 	&& samtools index Aligned.sortedByCoord.out.bam
 
