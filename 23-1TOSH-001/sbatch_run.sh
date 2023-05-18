@@ -13,7 +13,8 @@ sbatch ${SCRIPT_DIR}/01_concatenate_lanes_from_each_folder.sh
 #submit fastqc job
 #jid2=$(sbatch --dependency=afterok:$jid1 ${SCRIPT_DIR}/02_FastQC.sh)
 DATA=/datastore/NGSF001/projects/23-1TOSH-001/Fastq
-for i in $DATA/R23*_R1.fastq.gz 
+#for i in $DATA/R23*_R1.fastq.gz 
+for i in $(seq -w 54 75);
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
@@ -22,7 +23,7 @@ do
       fq1=${DATA}/${sample_name}_R1.fastq.gz;
       fq2=${DATA}/${sample_name}_R2.fastq.gz;
       jid2=$(sbatch ${SCRIPT_DIR}/02_FastQC.sh "${fq1}" "${fq2}")
-done
+ done
 
 #submit star alignment job
 DATA=/datastore/NGSF001/projects/23-1TOSH-001/Fastq
