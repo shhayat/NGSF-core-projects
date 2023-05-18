@@ -14,6 +14,7 @@ module load nixpkgs/16.09
 module load gcc/7.3.0
 module load bcl2fastq2/2.20.0
 
+sequencing_run=/datastore/NGSF001/NB551711
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1TOSH-001/analysis
 
 #folder_name=$1;
