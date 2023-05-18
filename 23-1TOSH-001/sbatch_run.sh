@@ -27,7 +27,8 @@ do
 #submit star alignment job
 DATA=/datastore/NGSF001/projects/23-1TOSH-001/Fastq
 for i in $DATA/R23*_R1.fastq.gz 
-#for i in $(seq -w 100 121);
+#for i in $(seq -w 76 99);
+for i in $(seq -w 100 121);
 do
       #path="${i%_R1*}";
       #sample_name=${path##*/};
