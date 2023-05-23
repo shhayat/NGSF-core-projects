@@ -8,17 +8,14 @@ dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE)
 load("feature_count.RData")
 feature_count1 <- as.data.frame(feature_count)
 
-geneID <- gsub(".[0-9]*$", "", rownames(feature_count1))
-rownames(feature_count1) <- geneID
-
 #your first columns which are gene id and gene name
 feature_annotation <- cbind(GeneID=rownames(feature_count1),gene_name=feature_count1$gene_name)
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 {
-  #feature_count <- feature_count[colnum]
+ 
   feature_count <- feature_count1[colnum]
   #at least one column has number
-  #feature_count <- feature_count[apply(feature_count,1,function(z) any(z!=0)),]
+  feature_count <- feature_count[apply(feature_count,1,function(z) any(z!=0)),]
   
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
@@ -65,12 +62,12 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   
 }
 #T1 VS T2
-DEG_analysis(c(),"T1","T2","T1",8,6)
+DEG_analysis(c(3:48),"T1","T2","T1",23,23)
 
 #T1 VS T3
-DEG_analysis(c(),"T1","T3","T1",7,2)
+DEG_analysis(c(3:25,49:71),"T1","T3","T1",23,23)
 
 #T1 VS T3
-DEG_analysis(c(),"T1","T3","T1",7,2)
+DEG_analysis(c(3:25,49:71),"T1","T3","T1",23,23)
 
 
