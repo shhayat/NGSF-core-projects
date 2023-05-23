@@ -19,7 +19,9 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
-                        sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))))
+                        #sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2),rep(cond3,rep_cond3)))))
+  
+                        #sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))))
   
   
   
@@ -36,13 +38,14 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   #PCA PLOT
   ##########
   #gernate rlog for PCA
-  #rld <-rlog(dds,blind=FALSE)
-  #pdf(sprintf("DESEQ2/PCA_%s_%s.pdf",cond2,cond1), width=8,height=8)
-  #nudge <- position_nudge(y = 0.5)
-  #p <- plotPCA(rld,intgroup=c("sample_group"))  
-  #p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
-  #print(p)
-  #dev.off()
+  rld <-rlog(dds,blind=FALSE)
+  #pdf(sprintf("DESEQ2/PCA_%s_%s_%s.pdf",cond2,cond1,cond3), width=8,height=8)
+  pdf(sprintf("DESEQ2/PCA_%s_%s.pdf",cond2,cond1), width=8,height=8)
+  nudge <- position_nudge(y = 0.5)
+  p <- plotPCA(rld,intgroup=c("sample_group"))  
+  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
+  print(p)
+  dev.off()
   
   dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
   res <- results(dds_wald, contrast=c("sample_group",cond2,cond1))
@@ -74,6 +77,6 @@ DEG_analysis(c(3:48),"T1","T2","T1",23,23)
 DEG_analysis(c(3:25,49:71),"T1","T3","T1",23,23)
 
 #T1 VS T3
-DEG_analysis(c(26:48,49:71),"T2","T3","T2",23,23)
+#DEG_analysis(c(26:48,49:71),"T2","T3","T2",23,23)
 
-
+DEG_analysis(c(3:71),"T1","T2","T3","T1",23,23,23)
