@@ -2,7 +2,7 @@ library("DESeq2")
 library("ggplot2")
 library("xlsx")
 
-setwd("~/Projects/23-1JOHO-001")
+setwd("~/Projects/23-1TOSH-001")
 dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 
 load("feature_count.RData")
@@ -65,12 +65,12 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   
 }
 #T1 VS T2
-DEG_analysis(c(3:5,16,7:9,18,6,10,12,14,15,17),"T1","T2","T1",8,6)
+DEG_analysis(c(),"T1","T2","T1",8,6)
 
 #T1 VS T3
-DEG_analysis(c(3:5,16,7:9,6,17),"T1","T3","T1",7,2)
+DEG_analysis(c(),"T1","T3","T1",7,2)
 
 #T1 VS T3
-DEG_analysis(c(3:5,16,7:9,6,17),"T1","T3","T1",7,2)
+DEG_analysis(c(),"T1","T3","T1",7,2)
 
 
