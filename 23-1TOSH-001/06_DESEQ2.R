@@ -50,15 +50,20 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   resDF <- data.frame(GeneID=rownames(res),res)
   resDF <- merge(feature_annotation,resDF, by="GeneID")
   
-  resDF1 <- subset(resDF, pvalue <= 0.05)
+  #resDF1 <- subset(resDF, pvalue <= 0.05)
   #order on pvalue
-  resDF1 <- resDF1[order(resDF1$pvalue),]
+  #resDF1 <- resDF1[order(resDF1$pvalue),]
+  #resDF1 <- subset(resDF, pvalue <= 0.05)
+  #order on pvalue
+  resDF1 <- resDF1[order(resDF1$padj),]
+  resDF1 <- resDF1[order(resDF1$padj),]
   log2FC1 <- resDF1$log2FoldChange
   resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
 
   #return(dim(resDF1))
   #All significant
-  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_pval.xlsx",cond2,cond1), row.names = FALSE)
+  #write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_pval.xlsx",cond2,cond1), row.names = FALSE)
+  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_padj.xlsx",cond2,cond1), row.names = FALSE)
   
 }
 #T1 VS T2
@@ -68,6 +73,6 @@ DEG_analysis(c(3:48),"T1","T2","T1",23,23)
 DEG_analysis(c(3:25,49:71),"T1","T3","T1",23,23)
 
 #T1 VS T3
-DEG_analysis(c(3:25,49:71),"T1","T3","T1",23,23)
+DEG_analysis(c(26:48,49:71),"T2","T3","T2",23,23)
 
 
