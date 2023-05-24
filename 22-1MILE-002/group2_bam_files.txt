@@ -1,2 +1,0 @@
-
-/datastore/NGSF001/projects/22-1MILE-002/leafcutter/dedup_star2pass/R2200101.no-rRNA.primary-aln.dedup.bam,/datastore/NGSF001/projects/22-1MILE-002/leafcutter/dedup_star2pass/R2200102.no-rRNA.primary-aln.dedup.bam,/datastore/NGSF001/projects/22-1MILE-002/leafcutter/dedup_star2pass/R2200103.no-rRNA.primary-aln.dedup.bam
