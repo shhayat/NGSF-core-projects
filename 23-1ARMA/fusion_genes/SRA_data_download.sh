@@ -15,11 +15,11 @@ OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_
 
 mkdir -p $OUTPUT/fastq
 
-for i in 4369
+for i in {4369..4422}
 do
   echo "Generating sra file for:  SRR17624${i}";
   ${sratoolkit}/prefetch SRR176243&{i} -O $OUTPUT --progress;
   
   echo "Generating fastq for: SRR${i}";
-  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq --gzip --clip ${OUTPUT}/SRR176243${i}/SRR176243${i}.sra;
+  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq --gzip --clip ${OUTPUT}/SRR17624${i}/SRR17624${i}.sra;
 done
