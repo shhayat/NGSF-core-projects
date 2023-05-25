@@ -16,6 +16,7 @@ module load samtools
 NCPUS=4
 #work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
 DIR=/datastore/NGSF001/projects/23-1MILE-002/fastq
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 INDEX=/datastore/NGSF001/projects/2022/22-1MILE-002/analysis_by_shahina/star-index
 
@@ -23,7 +24,7 @@ sample_name=$1; shift
 fq1=$1; shift
 fq2=$1;
 
-mkdir -p ${DIR}/alignment/${sample_name}
+mkdir -p ${OUTDIR}/alignment/${sample_name}
 
 #star-twopass
 ${star}/STAR --runMode alignReads \
@@ -34,5 +35,5 @@ ${star}/STAR --runMode alignReads \
     --twopassMode Basic \
     --outSAMstrandField intronMotif \
     --outSAMtype BAM SortedByCoordinate \
-    --outFileNamePrefix ${DIR}/alignment/${sample_name}/star_ \
-    && samtools index ${DIR}/alignment/${sample_name}/star_Aligned.sortedByCoord.out.bam
+    --outFileNamePrefix ${OUTDIR}/alignment/${sample_name}/star_ \
+    && samtools index ${OUTDIR}/alignment/${sample_name}/star_Aligned.sortedByCoord.out.bam
