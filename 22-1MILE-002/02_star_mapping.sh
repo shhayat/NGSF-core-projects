@@ -15,7 +15,7 @@ module load samtools
 
 NCPUS=4
 #work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
-DIR=/23-1MILE-002/
+DIR=/datastore/NGSF001/projects/23-1MILE-002/fastq
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 INDEX=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/star-index
 
