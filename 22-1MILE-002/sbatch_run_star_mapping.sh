@@ -10,5 +10,5 @@ do
       fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
       fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
       
-      sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name1}" "${fq1}" "${fq2}"
+      sbatch ${DATA}/02_star_mapping.sh "${sample_name1}" "${fq1}" "${fq2}"
 done
