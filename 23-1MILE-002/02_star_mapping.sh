@@ -23,7 +23,7 @@ sample_name=$1; shift
 fq1=$1; shift
 fq2=$1;
 
-mkdir -p ${OUTDIR}/alignment/${sample_name}
+mkdir -p ${OUTDIR}/star_alignment/${sample_name}
 
 #star-twopass
 ${star}/STAR --runMode alignReads \
