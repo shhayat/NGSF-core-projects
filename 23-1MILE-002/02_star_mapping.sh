@@ -14,7 +14,7 @@ set -eux
 module load star/2.7.9a 
 module load samtools
 
-NCPUS=4
+NCPU=4
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/star_alignment
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
