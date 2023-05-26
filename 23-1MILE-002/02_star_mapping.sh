@@ -17,7 +17,7 @@ NCPUS=4
 #work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
-INDEX=/datastore/NGSF001/projects/2022/22-1MILE-002/analysis_by_shahina/star-index
+INDEX=/datastore/NGSF001/projects/23-1MILE-001/Analysis/indices/star-index
 
 sample_name=$1; shift
 fq1=$1; shift
