@@ -17,7 +17,7 @@ NCPU=4
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/star_alignment
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
-GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/star-index
+GENOME=/datastore/NGSF001/projects/23-1MILE-001/Analysis/indices/star-index
 
 sample_name=$1; shift
 fq1=$1; shift
