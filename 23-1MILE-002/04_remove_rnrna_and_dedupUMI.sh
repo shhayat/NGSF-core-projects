@@ -29,7 +29,7 @@ samtools view -@ ${NCPU} \
               -U ${sample_name}.no-rRNA.bam \
               -O BAM \
               -L ${RRNA} \
-              ${DIR}/alignment/${sample_name}/${BAM}
+              ${DIR}/star_alignment/${sample_name}/${BAM}
 
 
 # keep only primary alignments
