@@ -1,10 +1,10 @@
 DATA=/datastore/NGSF001/projects/23-1MILE-002/fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002
 
-for i in $DATA/R23*_R1.fastq.gz 
+for i in ${DATA}/R23*_R1_001.fastq.gz 
 do
-      path1="${i%_S*_R1*}";
-      sample_name1=${path1##*/};
+      path="${i%_S*_R1*}";
+      sample_name=${path##*/};
       fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
       fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
       
