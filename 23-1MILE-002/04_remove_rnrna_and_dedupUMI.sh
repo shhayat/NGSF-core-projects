@@ -16,7 +16,7 @@ module load samtools
 
 umi_tools=/globalhome/hxo752/HPC/anaconda3/bin
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/analysis
-RRNA=/datastore/NGSF001/projects/23-1MILE-001/rrna_intervals/Analysis/rRNA_intervals_merged.bed
+RRNA=/datastore/NGSF001/projects/23-1MILE-001/Analysis/rrna_intervals/rRNA_intervals_merged.bed
 
 NCPU=4
 sample_name=$1; shift
