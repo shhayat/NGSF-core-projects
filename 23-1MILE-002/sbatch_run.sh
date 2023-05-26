@@ -42,6 +42,6 @@ done
 for i in {122..130}
 do
    bam=star_Aligned.sortedByCoord.out.bam
-   sbatch 02_umitools_UMIdedup.sh "R2300${i}" ${bam}
+   sbatch 04_remove_rnrna_and_dedupUMI.sh "R2300${i}" ${bam}
 done
 
