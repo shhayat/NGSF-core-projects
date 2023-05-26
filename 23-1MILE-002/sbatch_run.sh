@@ -41,7 +41,7 @@ done
 
 for i in {122..130}
 do
-   bam=star_Aligned.sortedByCoord.out.bam
+   bam=Aligned.sortedByCoord.out.bam
    sbatch 04_remove_rnrna_and_dedupUMI.sh "R2300${i}" ${bam}
 done
 
