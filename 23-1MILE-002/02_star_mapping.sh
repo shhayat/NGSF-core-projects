@@ -1,10 +1,9 @@
 #!/bin/sh
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
 #SBATCH --job-name=mapping
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=4
+#BATCH --cpus-per-task=2
 #SBATCH --time=03:00:00
 #SBATCH --mem=60G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
