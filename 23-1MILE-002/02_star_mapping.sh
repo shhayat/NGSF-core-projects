@@ -16,7 +16,7 @@ module load samtools
 
 NCPUS=4
 #work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/star_alignment
 star=/datastore/NGSF001/software/tools/STAR-2.7.4a/bin/Linux_x86_64
 INDEX=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/star-index
 
@@ -24,16 +24,12 @@ sample_name=$1; shift
 fq1=$1; shift
 fq2=$1;
 
-mkdir -p ${OUTDIR}/star_alignment/${sample_name}
+mkdir -p ${OUTDIR}/${sample_name} && cd ${OUTDIR}/${sample_name}
 
-#star-twopass
-${star}/STAR --runMode alignReads \
-    --runThreadN ${NCPUS} \
-    --genomeDir ${INDEX} \
-    --readFilesCommand zcat \
-    --readFilesIn ${fq1} ${fq2} \
-    --twopassMode Basic \
-    --outSAMstrandField intronMotif \
-    --outSAMtype BAM SortedByCoordinate \
-    --outFileNamePrefix ${OUTDIR}/star_alignment/${sample_name}/star_ \
-    && samtools index ${OUTDIR}/star_alignment/${sample_name}/star_Aligned.sortedByCoord.out.bam
+STAR --genomeDir $GENOME \
+	--readFilesCommand zcat \
+	--readFilesIn ${fq1} ${fq2} \
+	--outSAMtype BAM SortedByCoordinate \
+	--runThreadN ${NCPU} \
+	&& samtools index Aligned.sortedByCoord.out.bam 
+	
