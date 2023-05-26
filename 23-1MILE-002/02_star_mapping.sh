@@ -11,6 +11,7 @@
 
 set -eux
 
+module load star/2.7.9a 
 module load samtools
 
 NCPUS=4
