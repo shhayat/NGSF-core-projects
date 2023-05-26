@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=mapping
+#SBATCH --job-name=dedup
 #SBATCH --ntasks=1
 #BATCH --cpus-per-task=4
 #SBATCH --time=03:00:00
