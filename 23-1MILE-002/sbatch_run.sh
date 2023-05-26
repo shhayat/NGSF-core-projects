@@ -38,3 +38,10 @@ do
 	sleep 0.5
 done 
 
+
+for i in {122..130}
+do
+   bam=star_Aligned.sortedByCoord.out.bam
+   sbatch 02_umitools_UMIdedup.sh "R2300${i}" ${bam}
+done
+
