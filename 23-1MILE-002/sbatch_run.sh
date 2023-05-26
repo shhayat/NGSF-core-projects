@@ -13,8 +13,8 @@ do
  
 
 
-DATA=/datastore/NGSF001/projects/23-1MILE-002/fastq
-
+#DATA=/datastore/NGSF001/projects/23-1MILE-002/fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fastq_trimmed
 for i in ${DATA}/R23*_R1_001.fastq.gz 
 do
       path="${i%_R1*}";
