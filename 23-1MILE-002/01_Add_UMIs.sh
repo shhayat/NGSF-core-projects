@@ -8,7 +8,7 @@
 
 fastq=/datastore/NGSF001/projects/23-1MILE-002/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fq_with_umi_header
-
+UMI_TOOLS=
 mkdir -p ${OUTDIR}
 
 sample_name=1;
