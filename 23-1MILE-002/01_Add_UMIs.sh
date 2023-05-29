@@ -21,4 +21,5 @@ ${umitools}/umi_tools extract -I ${fq1} \
                   --read2-in=${fq2} \
                   --read2-out=${OUTDIR}/${sample_name}_R2.fastq.gz \
                   --bc-pattern=NNNNNNNNNNN \
+                  --bc-pattern2=NNNNNNNNNNN \
                   --log=${OUTDIR}/${sample_name}.log
