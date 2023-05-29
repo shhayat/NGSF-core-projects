@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=2:00:00
-#SBATCH --mem=4G
+#SBATCH --mem=40G
 
 #umitool_folder=/globalhome/hxo752/HPC/anaconda3/bin
 umitools=/globalhome/hxo752/HPC/.local/bin
