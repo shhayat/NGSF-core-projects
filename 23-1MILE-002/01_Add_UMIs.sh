@@ -11,8 +11,8 @@ umitools=/globalhome/hxo752/HPC/.local/bin
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fq_with_umi_header
 mkdir -p ${OUTDIR}
 
-sample_name=$1;
-fq1=$1;
+sample_name=$1; shift
+fq1=$1; shift
 fq2=$1;
 
 #Add UMIs to header of Fastq R1 and R2 file
