@@ -7,6 +7,7 @@
 #SBATCH --mem=4G
 
 #umitool_folder=/globalhome/hxo752/HPC/anaconda3/bin
+umitools=/globalhome/hxo752/HPC/.local/bin
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fq_with_umi_header
 mkdir -p ${OUTDIR}
 
@@ -25,7 +26,7 @@ do
       fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
       fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
 #Add UMIs to header of Fastq R1 and R2 file
-umi_tools extract -I ${fq1} \
+${umitools}/umi_tools extract -I ${fq1} \
                   -S ${OUTDIR}/${sample_name1}_R1.fastq.gz \
                   --read2-in=${fq2} \
                   --read2-out=${OUTDIR}/${sample_name1}_R2.fastq.gz \
