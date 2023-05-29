@@ -7,7 +7,6 @@
 #SBATCH --mem=4G
 
 #umitool_folder=/globalhome/hxo752/HPC/anaconda3/bin
-fastq=/datastore/NGSF001/projects/23-1MILE-002/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fq_with_umi_header
 mkdir -p ${OUTDIR}
 
