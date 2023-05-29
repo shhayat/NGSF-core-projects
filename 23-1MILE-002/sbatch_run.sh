@@ -11,7 +11,7 @@ do
       fq1=${DATA}/${sample_name}_R1_001.fastq.gz;
       fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
       
-      sbatch ${SCRIPT_DIR}/01_Add_UMIs.sh ${sample_name} "${fq1}" "${fq2}"
+      sbatch ${SCRIPT_DIR}/01_Add_UMIs.sh "${sample_name1}" "${fq1}" "${fq2}"
  done
  
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fq_with_umi_header
