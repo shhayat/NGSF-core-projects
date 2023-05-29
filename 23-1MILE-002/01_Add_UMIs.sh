@@ -26,6 +26,6 @@ do
       fq2=${DATA}/${sample_name}_R2_001.fastq.gz;
       
 #Add UMIs to header of Fastq R1 and R2 file
-umi_tools extract -p NNNNNNNNNNN -I ${fq1} -S ${OUTDIR}/${sample_name1}_R1.fastq.gz --read2-in=${fq2} --read2-out=${OUTDIR}/${sample_name1}_R2.fastq.gz --log=${OUTDIR}/${sample_name}.log
+umi_tools extract -I ${fq1} -S ${OUTDIR}/${sample_name1}_R1.fastq.gz --read2-in=${fq2} --read2-out=${OUTDIR}/${sample_name1}_R2.fastq.gz  -p NNNNNNNNNNN --log=${OUTDIR}/${sample_name}.log
 
 done
