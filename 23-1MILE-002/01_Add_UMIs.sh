@@ -6,7 +6,7 @@
 #SBATCH --time=2:00:00
 #SBATCH --mem=4G
 
-#Add UMIs to header of Fastq file
+#Add UMIs to header of Fastq R1 and R2 file
 umi_tools extract -p NNNNNNNNNNN \ 
                   -I IN_FASTQ.gz \
                   -S OUT_FASTQ.gz \
