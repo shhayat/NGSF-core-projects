@@ -8,9 +8,9 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/star_alignment
-GTF=
+GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/htseq_counts
-#GLIBC_2.29
+
 mkdir -p ${OUTDIR}
 
 sample_name=$1; shift
