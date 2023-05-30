@@ -43,20 +43,12 @@ do
 done
 
 
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/star_alignment
-for i in ${DATA}/*/*.bam
-do
-        path="${i%/Aligned*}";
-	     sample_name="${path##*/}"
-        sbatch ${SCRIPT_DIR}/04_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
-	sleep 0.5
-done 
 
 
 for i in {122..130}
 do
    bam=Aligned.sortedByCoord.out.bam
-   sbatch ${SCRIPT_DIR}/05_remove_rnrna_and_dedupUMI.sh "R2300${i}" ${bam}
+   sbatch ${SCRIPT_DIR}/04_remove_rnrna_and_dedupUMI.sh "R2300${i}" ${bam}
 done
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/deduplication
@@ -66,7 +58,7 @@ for i in ${DATA}/*/*.no-rRNA.primary-aln.dedup.bam
 do
      path="${i%/*.no-rRNA.primary-aln.dedup.bam}";
      sample_name="${path##*/}"
-     sbatch ${SCRIPT_DIR}/06_HTSeq_count.sh "${sample_name}" "${DATA}/${sample_name}/${sample_name}.no-rRNA.primary-aln.dedup.bam"
+     sbatch ${SCRIPT_DIR}/05_HTSeq_count.sh "${sample_name}" "${DATA}/${sample_name}/${sample_name}.no-rRNA.primary-aln.dedup.bam"
      sleep 0.5
 done 
 
