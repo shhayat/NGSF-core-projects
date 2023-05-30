@@ -6,7 +6,8 @@
 #SBATCH --time=2:00:00
 #SBATCH --mem=40G
 
-#umitool_folder=/globalhome/hxo752/HPC/anaconda3/bin
+
+#
 umitools=/globalhome/hxo752/HPC/.local/bin
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fq_with_umi_header
 mkdir -p ${OUTDIR}
