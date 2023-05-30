@@ -7,7 +7,10 @@
 #SBATCH --mem=40G
 
 
-#
+# This step was added because our orignal files had no UMI information in header of reads due to which when we ran UMI dedup step we got an
+# error AssertionError: not all umis are the same length(!):  4 - 5. To fix this error umi_tools extract was used to add UMIs to the header of 
+#reads
+
 umitools=/globalhome/hxo752/HPC/.local/bin
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fq_with_umi_header
 mkdir -p ${OUTDIR}
