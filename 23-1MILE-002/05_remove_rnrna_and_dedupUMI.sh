@@ -14,7 +14,7 @@ set -eux
 #work adapted from https://github.com/ngsf-usask/scripts/tree/main/RNAseq/22-1MILE-002
 module load samtools
 
-umi_tools=/globalhome/hxo752/HPC/anaconda3/bin
+umitools=/globalhome/hxo752/HPC/.local/bin
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis
 RRNA=/datastore/NGSF001/projects/23-1MILE-001/Analysis/rrna_intervals/rRNA_intervals_merged.bed
 
@@ -40,8 +40,7 @@ samtools view -@ ${NCPU} \
               && samtools index ${sample_name}.no-rRNA.primary-aln.bam
 
 
-
-umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
+${umitools}/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
                 --log="${sample_name}.umi.log" \
                 --umi-separator=":" \
                 --unpaired-reads="discard" \
