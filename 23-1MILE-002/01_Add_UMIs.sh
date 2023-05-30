@@ -19,7 +19,8 @@ sample_name=$1; shift
 fq1=$1; shift
 fq2=$1;
 
-#Add UMIs to header of Fastq R1 and R2 file
+#Add UMIs to header of Fastq R1
+#UMIs are present only in R1 file
 ${umitools}/umi_tools extract -I ${fq1} \
                   -S ${OUTDIR}/${sample_name}_R1.fastq.gz \
                   --read2-in=${fq2} \
