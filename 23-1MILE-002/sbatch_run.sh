@@ -64,7 +64,7 @@ DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analy
 
 for i in ${DATA}/*/*.bam
 do
-     path="${i%/Aligned*}";
+     path="${i%/.no-rRNA.primary-aln.dedup.bam*}";
      sample_name="${path##*/}"
      sbatch ${SCRIPT_DIR}/06_HTSeq_count.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
      sleep 0.5
