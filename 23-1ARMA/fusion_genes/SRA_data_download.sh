@@ -17,7 +17,7 @@ mkdir -p $OUTPUT/fastq
 
 for i in {4369..4422}
 do
-  echo "Generating sra file for:  SRR17624${i}";
+  echo "Generating sra file for:  SRR1762${i}";
   ${sratoolkit}/prefetch SRR176243${i} -O $OUTPUT --progress;
   
   echo "Generating fastq for: SRR${i}";
