@@ -25,7 +25,7 @@ BAM=$1
                                                             ${GTF} > ${OUTDIR}/${sample_name}_htseq_counts.txt
 
 #remove .[0-9] from each line from ffrist columm
-awk '{ gsub(".[0-9]*$", "", $1); print }' ${OUTDIR}/${sample_name}_htseq_counts.txt > ${OUTDIR}/${sample_name}_htseq_counts.tmp && mv ${OUTDIR}/${sample_name}_htseq_counts.tmp ${OUTDIR}/${sample_name}_htseq_counts.txt
+#awk '{ gsub(".[0-9]*$", "", $1); print }' ${OUTDIR}/${sample_name}_htseq_counts.txt > ${OUTDIR}/${sample_name}_htseq_counts.tmp && mv ${OUTDIR}/${sample_name}_htseq_counts.tmp ${OUTDIR}/${sample_name}_htseq_counts.txt
 #Add tabs
 awk -v OFS="\t" '$1=$1' ${OUTDIR}/${sample_name}_htseq_counts.txt > ${OUTDIR}/${sample_name}_htseq_counts.tmp && mv ${OUTDIR}/${sample_name}_htseq_counts.tmp ${OUTDIR}/${sample_name}_htseq_counts.txt
 
