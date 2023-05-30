@@ -62,11 +62,11 @@ done
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/deduplication
 
 
-for i in ${DATA}/*/*.bam
+for i in ${DATA}/*/*.no-rRNA.primary-aln.dedup.bam
 do
-     path="${i%/.no-rRNA.primary-aln.dedup.bam*}";
+     path="${i%/*.no-rRNA.primary-aln.dedup.bam}";
      sample_name="${path##*/}"
-     sbatch ${SCRIPT_DIR}/06_HTSeq_count.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
+     sbatch ${SCRIPT_DIR}/06_HTSeq_count.sh "${sample_name}" "${DATA}/${sample_name}/${sample_name}.no-rRNA.primary-aln.dedup.bam"
      sleep 0.5
 done 
 
