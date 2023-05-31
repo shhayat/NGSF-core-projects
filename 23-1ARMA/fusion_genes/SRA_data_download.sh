@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
@@ -10,7 +9,6 @@
 #SBATCH --output=%j.out
 
 sratoolkit=/globalhome/hxo752/HPC/tools/sratoolkit.3.0.1-ubuntu64/bin
-#Normal Skin Tissue (Paired reads)
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes
 
 mkdir -p $OUTPUT/fastq
