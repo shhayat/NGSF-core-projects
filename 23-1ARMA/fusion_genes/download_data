@@ -1,0 +1,7 @@
+
+
+
+
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR176/069/SRR17624369/SRR17624369_1.fastq.gz
+wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR176/069/SRR17624369/SRR17624369_2.fastq.gz
+
