@@ -13,7 +13,7 @@ OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_
 
 mkdir -p $OUTPUT/fastq
 
-for i in {4369..4422}
+for i in {4369..4389}
 do
   echo "Generating sra file for:  SRR1762${i}";
   ${sratoolkit}/prefetch SRR1762${i} -O $OUTPUT/fastq --progress;
