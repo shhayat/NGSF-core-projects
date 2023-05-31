@@ -9,15 +9,15 @@
 #SBATCH --output=%j.out
 
 sratoolkit=/globalhome/hxo752/HPC/tools/sratoolkit.3.0.1-ubuntu64/bin
-OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes
+OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/fastq
 
-mkdir -p $OUTPUT/fastq
+mkdir -p $OUTPUT
 
 for i in {4369..4389}
 do
   echo "Generating sra file for:  SRR1762${i}";
-  ${sratoolkit}/prefetch SRR1762${i} -O $OUTPUT/fastq --progress;
+  ${sratoolkit}/prefetch SRR1762${i} -O $OUTPUT --progress;
   
   echo "Generating fastq for: SRR1762${i}";
-  ${sratoolkit}/fastq-dump --outdir $OUTPUT/fastq --gzip --clip ${OUTPUT}/fastq/SRR1762${i}/SRR1762${i}.sra;
+  ${sratoolkit}/fastq-dump --split-3 --outdir $OUTPUT --clip ${OUTPUT}/SRR1762${i}/SRR1762${i}.sra;
 done
