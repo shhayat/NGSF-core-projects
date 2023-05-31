@@ -3,8 +3,8 @@
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
 #SBATCH --job-name=sra_download
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=185G
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=100G
 #SBATCH --time=24:00:00
 #SBATCH --output=%j.out
 
