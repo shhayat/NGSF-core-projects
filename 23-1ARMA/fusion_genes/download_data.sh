@@ -11,6 +11,10 @@
 NUM=$1; shift
 SRR=$1;
 
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/fastq
+
+cd $OUTDIR
+
 wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR176/${NUM}/${SRR}/${SRR}_1.fastq.gz
 wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR176/${NUM}/${SRR}/${SRR}_2.fastq.gz
 
