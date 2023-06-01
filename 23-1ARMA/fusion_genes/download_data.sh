@@ -1,20 +1,9 @@
-#!/bin/bash
-
-#SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
-#SBATCH --job-name=download_data
-#SBATCH --cpus-per-task=2
-#SBATCH --mem=40G
-#SBATCH --time=2:00:00
-#SBATCH --output=%j.out
-
-NUM=$1; shift
-SRR=$1;
-
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/fastq
-
-cd $OUTDIR
-
-wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR176/${NUM}/${SRR}/${SRR}_1.fastq.gz
-wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR176/${NUM}/${SRR}/${SRR}_2.fastq.gz
-
+#fastq files for canine hystiocystic sarcoma
+for i in {6..9}
+do
+  #NUM="${i:2}"
+  OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/fq_hystiocystic_sarcoma
+  mkdir $OUTDIR
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/DRR345/DRR34598${i}/DRR34598${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files_R1.txt
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/DRR345/DRR34598${i}/DRR34598${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files_R2.txt
+done
