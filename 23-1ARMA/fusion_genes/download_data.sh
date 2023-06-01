@@ -1,4 +1,5 @@
 #fastq files for canine hystiocystic sarcoma
+#study: Whole exome and transcriptomeanalysis revealed the activation of ERK andAkt signaling pathway in canine histiocytic sarcoma
 for i in {6..9}
 do
   #NUM="${i:2}"
