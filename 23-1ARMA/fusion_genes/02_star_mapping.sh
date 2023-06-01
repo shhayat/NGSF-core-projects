@@ -15,9 +15,9 @@ module load star/2.7.9a
 module load samtools
 
 
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/fq_hystiocystic_sarcoma
-#GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/indices/star-index-m32gencode
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/star_alignment
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/fastq
+GENOME=
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/star_alignment
 NCPU=4
 
 sample_name=$1; shift
@@ -31,4 +31,17 @@ STAR --genomeDir $GENOME \
 	--readFilesIn ${fq1} ${fq2} \
 	--outSAMtype BAM SortedByCoordinate \
 	--runThreadN ${NCPU} \
+        --chimSegmentMin 12 \
+        --chimJunctionOverhangMin 12 \
+        --chimOutJunctionFormat 1 \
+        --alignSJDBoverhangMin 10 \
+        --alignMatesGapMax 1000000 \
+        --alignIntronMax 1000000 \
+        --alignSJstitchMismatchNmax 5 -1 5 5 \
+        --outSAMstrandField intronMotif \
+        --chimMultimapScoreRange 10 \
+        --chimMultimapNmax 10 \
+        --chimNonchimScoreDropMin 10 \
+        --peOverlapNbasesMin 12 \
+        --peOverlapMMp 0.1 \
 	&& samtools index Aligned.sortedByCoord.out.bam 
