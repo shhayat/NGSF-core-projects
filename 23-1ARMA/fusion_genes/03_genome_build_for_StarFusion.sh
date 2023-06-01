@@ -10,16 +10,15 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load perl/5.30.2 
-conda ~anaconda3/envs/star-fusion/star-fusion
+
+star_fusion=/globalhome/hxo752/HPC/anaconda3/envs/star-fusion/bin
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices-star-fusion
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
 
-perl prep_genome_lib.pl --genome_fa ${GENOME} \
-                        --gtf ${GTF} \
-                        --fusion_annot_lib /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices \
-                        --CPU 8 \
-                        --out_dir ${OUTDIR}
-
-conda deactivate
+perl ${star_fusion}/prep_genome_lib.pl --genome_fa ${GENOME} \
+                                       --gtf ${GTF} \
+                                       --fusion_annot_lib /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices \
+                                       --CPU 8 \
+                                       --out_dir ${OUTDIR}
