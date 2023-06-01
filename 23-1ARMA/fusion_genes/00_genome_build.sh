@@ -23,6 +23,6 @@ cd ${OUTDIR}
 STAR --runThreadN ${NCPU} \
      --runMode genomeGenerate \
      --genomeDir indices \
-     --genomeFastaFiles ${GENOME} \
+     --genomeFastaFiles ${GENOME}/genome.fa \
      --sjdbGTFfile ${GTF} \
      --sjdbOverhang 99
