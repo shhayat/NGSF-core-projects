@@ -1,3 +1,4 @@
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes
 #submit fastqc job
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/fastq
 for i in $DATA/*_1.fastq.gz
@@ -6,7 +7,7 @@ do
       sample_name=${path##*/};
       fq1=${DATA}/${sample_name}_1.fastq.gz;
       fq2=${DATA}/${sample_name}_2.fastq.gz;
-      jid2=$(sbatch ${SCRIPT_DIR}/01_FastQC.sh "${fq1}" "${fq2}")
+      sbatch ${SCRIPT_DIR}/01_FastQC.sh "${fq1}" "${fq2}"
  done
 
 #submit star alignment job
