@@ -22,7 +22,7 @@ cd ${OUTDIR}
 
 STAR --runThreadN ${NCPU} \
      --runMode genomeGenerate \
-     --genomeDir star-indice \
+     --genomeDir indices \
      --genomeFastaFiles ${GENOME} \
      --sjdbGTFfile ${GTF} \
      --sjdbOverhang 99
