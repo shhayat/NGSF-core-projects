@@ -10,7 +10,7 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load perl/5.30.2 
-
+module load star
 lib_builder=/globalhome/hxo752/HPC/tools/ctat-genome-lib-builder
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices_for_star_fusion
