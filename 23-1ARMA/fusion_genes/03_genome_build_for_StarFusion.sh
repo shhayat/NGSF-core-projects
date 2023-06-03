@@ -17,6 +17,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
 
+#https://github.com/STAR-Fusion/STAR-Fusion/blob/master/Docker/Dockerfile
 perl ${lib_builder}/prep_genome_lib.pl --genome_fa ${GENOME} \
                                        --gtf ${GTF} \
                                        --dfam_db 'dog' \
