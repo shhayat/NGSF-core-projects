@@ -13,7 +13,7 @@ module load perl/5.30.2
 
 lib_builder=/globalhome/hxo752/HPC/tools/ctat-genome-lib-builder
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices-star-fusion
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices_for_star_fusion
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
 
@@ -21,4 +21,4 @@ perl ${lib_builder}/prep_genome_lib.pl --genome_fa ${GENOME} \
                                        --gtf ${GTF} \
                                        --dfam_db 'dog' \
                                        --CPU 8 \
-                                       --out_dir ${OUTDIR}
+                                      --output_dir ${OUTDIR}
