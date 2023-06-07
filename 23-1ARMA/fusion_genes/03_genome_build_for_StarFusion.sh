@@ -13,7 +13,7 @@
 module load star/2.7.9a 
 module load blast
 export /globalhome/hxo752/HPC/tools/hmmer
-
+/globalhome/hxo752/HPC/anaconda3/condabin/conda activate dfam
 STAR_FUSION_HOME="/globalhome/hxo752/HPC/tools/STAR-Fusion"
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices_for_star_fusion
