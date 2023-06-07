@@ -7,7 +7,7 @@
 #BATCH --cpus-per-task=2
 #SBATCH --time=24:00:00
 #SBATCH --mem=80G
-#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH --output=%j.out
 
 #module load perl/5.30.2 
 module load star/2.7.9a 
