@@ -9,10 +9,9 @@
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module load perl/5.30.2 
-module load star/2.7.9a 
-
-export STAR_FUSION_HOME="/globalhome/hxo752/HPC/tools/STAR-Fusion"
+#module load perl/5.30.2 
+#module load star/2.7.9a 
+STAR_FUSION_HOME="/globalhome/hxo752/HPC/tools/STAR-Fusion"
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices_for_star_fusion
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
