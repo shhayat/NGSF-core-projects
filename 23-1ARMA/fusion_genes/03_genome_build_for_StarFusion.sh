@@ -11,6 +11,7 @@
 
 module load perl/5.30.2 
 module load star
+module load blast/2.2.26 
 lib_builder=/globalhome/hxo752/HPC/tools/ctat-genome-lib-builder
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices_for_star_fusion
