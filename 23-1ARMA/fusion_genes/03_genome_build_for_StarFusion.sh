@@ -23,6 +23,5 @@ GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ense
 #https://github.com/STAR-Fusion/STAR-Fusion/blob/master/Docker/Dockerfile
 ${STAR_FUSION_HOME}/ctat-genome-lib-builder/prep_genome_lib.pl --genome_fa ${GENOME} \
                                                                --gtf ${GTF} \
-                                                               --dfam_db 'dog' \
                                                                --CPU 2 \
                                                                --output_dir ${OUTDIR}
