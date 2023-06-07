@@ -10,8 +10,12 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load perl/5.30.2 
-module load star
+module load star/2.7.9a 
 module load blast/2.2.26 
+
+/globalhome/hxo752/HPC/anaconda3/condabin/conda activate hmmer
+/globalhome/hxo752/HPC/anaconda3/condabin/conda activate dfam
+
 lib_builder=/globalhome/hxo752/HPC/tools/ctat-genome-lib-builder
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices_for_star_fusion
@@ -24,3 +28,5 @@ perl ${lib_builder}/prep_genome_lib.pl --genome_fa ${GENOME} \
                                        --dfam_db 'dog' \
                                        --CPU 8 \
                                       --output_dir ${OUTDIR}
+
+/globalhome/hxo752/HPC/anaconda3/bin/conda deactivate
