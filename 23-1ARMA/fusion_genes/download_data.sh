@@ -16,7 +16,7 @@
 for i in {52..9}
 do
   ##NUM="${i:2}"
-  OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/fq_hystiocystic_sarcoma
+  OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/fq_adrenocorticalt_umor
   mkdir -p $OUTDIR
-  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR178/DRR34598${i}/SRR178829${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files_R1.txt
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR178/0${i}/SRR178829${i}/SRR178829${i}.fastq.gz" >> $OUTDIR/path_to_fastq_files_R1.txt
 done
