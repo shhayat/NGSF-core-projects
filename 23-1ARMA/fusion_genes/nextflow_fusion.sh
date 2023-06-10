@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=nf_singleCell
+#SBATCH --job-name=nf_rnafusion
 #SBATCH --cpus-per-task=40
 #SBATCH --mem=185G
 #SBATCH --time=40:00:00
@@ -15,8 +15,9 @@ module load gentoo/2020
 module load singularity/3.9.2
 
                               
-DIR=/globalhome/hxo752/HPC/tools/
-
+DIR=/globalhome/hxo752/HPC/
+GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
+GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
 
 mkdir -p ${DIR}/analysis/results_star
 
