@@ -15,15 +15,16 @@ module load gentoo/2020
 module load singularity/3.9.2
 
 star_indice=                              
-DIR=/globalhome/hxo752/HPC/
+fastq_dir=/globalhome/hxo752/HPC/
 
 mkdir -p ${DIR}/analysis/results_star
 
 nextflow run nf-core/scrnaseq -profile singularity \
                               --star_fusion \
-                              --genome CanFam3.1 \ 
+                              --genome CanFam3.1 \
+                              --reads ${fastq_dir}/*{1,2}.fastq.gz \
                               --star_index ${star_indice} \
-                              --input ${DIR}/sample_info.csv \
+                              --starfusion_build \
                               --outdir ${DIR}/analysis/star_fusion \
                               --max_memory '185.GB' \
                               --max_cpus 40
