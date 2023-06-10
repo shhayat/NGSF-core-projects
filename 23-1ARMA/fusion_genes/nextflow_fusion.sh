@@ -22,7 +22,7 @@ mkdir -p ${DIR}/analysis/results_star
 nextflow run nf-core/scrnaseq -profile singularity \
                               --star_fusion \
                               --genome CanFam3.1 \
-                              --reads ${fastq_dir}/*{1,2}.fastq.gz \
+                              --input \
                               --star_index ${star_indice} \
                               --starfusion_build 'TRUE' \
                               --outdir ${DIR}/analysis/star_fusion \
