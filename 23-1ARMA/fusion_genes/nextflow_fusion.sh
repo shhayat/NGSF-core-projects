@@ -24,7 +24,7 @@ nextflow run nf-core/scrnaseq -profile singularity \
                               --genome CanFam3.1 \
                               --reads ${fastq_dir}/*{1,2}.fastq.gz \
                               --star_index ${star_indice} \
-                              --starfusion_build \
+                              --starfusion_build 'TRUE' \
                               --outdir ${DIR}/analysis/star_fusion \
                               --max_memory '185.GB' \
                               --max_cpus 40
