@@ -14,17 +14,17 @@ module load nextflow/22.10.6
 module load gentoo/2020
 module load singularity/3.9.2
 
-                              
+star_indice=                              
 DIR=/globalhome/hxo752/HPC/
-GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
-GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
 
 mkdir -p ${DIR}/analysis/results_star
 
 nextflow run nf-core/scrnaseq -profile singularity \
+                              --star_fusion \
+                              --genome CanFam3.1 \ 
+                              --star_index ${star_indice} \
                               --input ${DIR}/sample_info.csv \
-                              --skip_fastqc 'TRUE' \
-                              --aligner star \
-                              --outdir ${DIR}/analysis/results_star \
-                              --fasta ${REF} \
-                              --gtf ${gtf}
+                              --outdir ${DIR}/analysis/star_fusion \
+                              --max_memory '185.GB' \
+                              --max_cpus 40
+                              
