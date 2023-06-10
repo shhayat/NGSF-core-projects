@@ -25,6 +25,7 @@ nextflow run nf-core/scrnaseq -profile singularity \
                               --input \
                               --star_index ${star_indice} \
                               --starfusion_build 'TRUE' \
+                              --fusioninspector_only \
                               --outdir ${DIR}/analysis/star_fusion \
                               --max_memory '185.GB' \
                               --max_cpus 40
