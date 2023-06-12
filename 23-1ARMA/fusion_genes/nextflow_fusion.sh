@@ -3,7 +3,7 @@
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
 #SBATCH --job-name=nf_rnafusion
-#SBATCH --cpus-per-task=40
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=185G
 #SBATCH --time=40:00:00
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
