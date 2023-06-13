@@ -33,5 +33,4 @@ nextflow run nf-core/rnafusion -profile singularity \
                               --starfusion_build 'TRUE' \
                               --max_memory '80.GB' \
                               --max_cpus 16 \
-                              --outdir ${DIR}/analysis/nextflow \
-                              --email 'shahina.hayat@usask.ca'
+                              --outdir ${DIR}/analysis/nextflow
