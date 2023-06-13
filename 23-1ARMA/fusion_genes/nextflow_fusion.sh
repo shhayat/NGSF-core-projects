@@ -28,6 +28,6 @@ nextflow run nf-core/rnafusion -profile singularity \
                               --star_index ${star_indice} \
                               --starfusion_build 'TRUE' \
                               --outdir ${DIR}/analysis/nextflow \
-                              --max_memory '185.GB' \
+                              --max_memory '80.GB' \
                               --max_cpus 16
                               
