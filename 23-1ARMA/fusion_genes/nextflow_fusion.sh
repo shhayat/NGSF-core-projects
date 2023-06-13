@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=185G
 #SBATCH --time=40:00:00
-#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH --output=%j.out
 
 module --force purge
 module load StdEnv/2020
