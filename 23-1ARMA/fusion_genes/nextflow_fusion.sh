@@ -17,14 +17,14 @@ module load singularity/3.9.2
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma
 star_indice=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices                              
 fastq_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/fastq
-
+REF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta
 mkdir -p ${DIR}/analysis/nextflow
 
 nextflow run nf-core/rnafusion -profile singularity \
                               --input ${DIR}/samplesheet.csv \
                               --star_fusion \
                               --fusion_inspector \
-                              --genome CanFam3.1 \
+                              --genomes_base ${REF} \
                               --star_index ${star_indice} \
                               --starfusion_build 'TRUE' \
                               --outdir ${DIR}/analysis/nextflow \
