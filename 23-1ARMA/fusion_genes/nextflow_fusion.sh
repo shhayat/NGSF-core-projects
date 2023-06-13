@@ -20,7 +20,7 @@ fastq_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusi
 
 mkdir -p ${DIR}/analysis/nextflow
 
-nextflow run nf-core/scrnaseq -profile singularity \
+nextflow run nf-core/rnafusion -profile singularity \
                               --input ${DIR}/samplesheet.csv \
                               --star_fusion \
                               --fusion_inspector \
