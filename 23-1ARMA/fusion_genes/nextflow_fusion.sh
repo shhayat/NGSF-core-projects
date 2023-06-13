@@ -19,18 +19,17 @@ star_indice=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fu
 REF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta
 FASTA=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
 #FASTA_FAI=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa.fai
-GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
+#GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 mkdir -p ${DIR}/analysis/nextflow
 
 nextflow run nf-core/rnafusion -profile singularity \
                               --input ${DIR}/samplesheet.csv \
+                              --outdir ${DIR}/analysis/nextflow \
                               --star_fusion \
                               --fusion_inspector \
                               --genomes_base ${REF} \
-                              --fasta ${FASTA} \ 
-                              --gtf ${GTF} \
+                              --fasta ${FASTA} \
                               --star_index ${star_indice} \
                               --starfusion_build 'TRUE' \
                               --max_memory '80.GB' \
                               --max_cpus 16 \
-                              --outdir ${DIR}/analysis/nextflow
