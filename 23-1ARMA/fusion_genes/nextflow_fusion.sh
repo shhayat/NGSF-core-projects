@@ -18,10 +18,10 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_gen
 star_indice=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices                              
 fastq_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/fastq
 
-mkdir -p ${DIR}/analysis/results_star
+mkdir -p ${DIR}
 
 nextflow run nf-core/scrnaseq -profile singularity \
-                              --input ${fastq_dir}/*_{1,2}.fastq.gz \
+                              --input  ${DIR}/fastq_sheet.csv \
                               --star_fusion \
                               --fusion_inspector \
                               --genome CanFam3.1 \
@@ -29,5 +29,5 @@ nextflow run nf-core/scrnaseq -profile singularity \
                               --starfusion_build 'TRUE' \
                               --outdir ${DIR} \
                               --max_memory '185.GB' \
-                              --max_cpus 40
+                              --max_cpus 16
                               
