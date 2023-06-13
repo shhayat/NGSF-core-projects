@@ -21,7 +21,7 @@ fastq_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusi
 mkdir -p ${DIR}/analysis/results_star
 
 nextflow run nf-core/scrnaseq -profile singularity \
-                              --reads ${fastq_dir}/*_{1,2}.fastq.gz \
+                              --input ${fastq_dir}/*_{1,2}.fastq.gz \
                               --star_fusion \
                               --fusion_inspector \
                               --genome CanFam3.1 \
