@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=nf_rnafusion
 #SBATCH --cpus-per-task=16
-#SBATCH --mem=185G
+#SBATCH --mem=80G
 #SBATCH --time=40:00:00
 #SBATCH --output=%j.out
 
