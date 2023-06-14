@@ -25,11 +25,11 @@ mkdir -p ${DIR}/analysis/nextflow
 nextflow run nf-core/rnafusion -profile singularity \
                               --input ${DIR}/samplesheet.csv \
                               --outdir ${DIR}/analysis/nextflow \
-                              --star_fusion \
-                              --fusion_inspector \
                               --genomes_base ${REF} \
                               --fasta ${FASTA} \
                               --star_index ${star_indice} \
+                              --star_fusion \
+                              --fusion_inspector \
                               --starfusion_build 'TRUE' \
                               --max_memory '80.GB' \
-                              --max_cpus 16 \
+                              --max_cpus 16
