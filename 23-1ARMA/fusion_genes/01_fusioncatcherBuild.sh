@@ -7,7 +7,7 @@
 #BATCH --cpus-per-task=16
 #SBATCH --time=10:00:00
 #SBATCH --mem=80G
-#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH --output=%j.out
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis
 fusioncatcher=/globalhome/hxo752/HPC/tools/fusioncatcher/bin
