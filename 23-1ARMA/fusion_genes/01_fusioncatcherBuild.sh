@@ -9,6 +9,7 @@
 #SBATCH --mem=80G
 #SBATCH --output=%j.out
 
+module load python/2.7
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis
 fusioncatcher=/globalhome/hxo752/HPC/tools/fusioncatcher/bin
 
