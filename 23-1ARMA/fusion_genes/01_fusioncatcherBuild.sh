@@ -20,6 +20,6 @@ mkdir -p ${DIR}/fusioncatcher/build
 fusioncatcher-build \
                 -o ${DIR}/fusioncatcher/build \
                 --organism="canis_familiaris" \
-                -w WEB_ENSEMBL="www.ensembl.org" \
+                --web="www.ensembl.org" \
                 --threads=8
 conda deactivate
