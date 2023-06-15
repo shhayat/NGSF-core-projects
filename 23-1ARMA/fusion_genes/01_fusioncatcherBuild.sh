@@ -10,6 +10,7 @@
 #SBATCH --output=%j.out
 
 module load python/2.7
+/globalhome/hxo752/HPC/anaconda3/condabin/conda init bash
 /globalhome/hxo752/HPC/anaconda3/condabin/conda activate biopython
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis
