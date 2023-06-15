@@ -19,7 +19,7 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_gen
 
 mkdir -p ${DIR}/analysis/nextflow
 mkdir -p ${DIR}/analysis/nextflow/work
-nextflow run nf-core/rnafusion -r 2.3.4 \
+nextflow run nf-core/rnafusion \
                               -profile singularity \
                               --input ${DIR}/samplesheet.csv \
                               --outdir ${DIR}/analysis/nextflow \
