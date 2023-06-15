@@ -17,10 +17,7 @@ module load python/3.9
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma
 #star_indice=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices                              
-REF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta
-FASTA=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
-#FASTA_FAI=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa.fai
-#GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
+
 mkdir -p ${DIR}/analysis/nextflow
 mkdir -p ${DIR}/analysis/nextflow/work
 nextflow run nf-core/rnafusion -profile singularity \
@@ -32,8 +29,7 @@ nextflow run nf-core/rnafusion -profile singularity \
                               --fusion_inspector \
                               --starfusion_build 'TRUE' \
                               --max_memory '80.GB' \
-                              --max_cpus 16 \
-                              -resume
+                              --max_cpus 16
 # #  --fasta ${FASTA} \
 #  --genomes_base ${REF} \
 #--star_index ${star_indice} \
