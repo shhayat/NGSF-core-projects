@@ -24,13 +24,14 @@ nextflow run nf-core/rnafusion \
                               --input ${DIR}/samplesheet.csv \
                               --outdir ${DIR}/analysis/nextflow \
                               -w ${DIR}/analysis/nextflow/work \
-                              --genome 'CanFam3.1' \
+                              --genomes_base /datastore/NGSF001/analysis/references/dog/CFAM1.0 \
                               --star_fusion \
                               --fusion_inspector \
                               --starfusion_build 'TRUE' \
                               --max_memory '80.GB' \
                               --max_cpus 16 \
-#                             -resume
+                              -resume
 # #  --fasta ${FASTA} \
 #  --genomes_base ${REF} \
 #--star_index ${star_indice} \
+# --genome 'CanFam3.1' \
