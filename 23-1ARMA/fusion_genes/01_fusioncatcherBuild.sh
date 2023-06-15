@@ -19,7 +19,7 @@ mkdir -p ${DIR}/fusioncatcher/build
 #cd ${fusioncatcher}
 fusioncatcher-build \
                 -o ${DIR}/fusioncatcher/build \
-                --organism="canis_familiaris" \
-                --web="www.ensembl.org" \
+                --organism='canis_familiaris' \
+                --ftp-ensembl='ftp.ensembl.org' \
                 --threads=8
 conda deactivate
