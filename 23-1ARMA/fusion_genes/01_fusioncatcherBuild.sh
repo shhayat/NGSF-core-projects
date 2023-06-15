@@ -20,5 +20,6 @@ mkdir -p ${DIR}/fusioncatcher/build
 fusioncatcher-build \
                 -o ${DIR}/fusioncatcher/build \
                 --organism='canis_familiaris' \
+                --ftp-ensembl-path='https://ftp.ensembl.org/pub/current_fasta/canis_lupus_familiaris/' \
                 --threads=8
 conda deactivate
