@@ -26,6 +26,7 @@ mkdir -p ${DIR}/analysis/nextflow
 nextflow run nf-core/rnafusion -profile singularity \
                               --input ${DIR}/samplesheet.csv \
                               --outdir ${DIR}/analysis/nextflow \
+                              -w ${DIR}/analysis/work \
                               --genome 'CanFam3.1' \
                               --star_fusion \
                               --fusion_inspector \
