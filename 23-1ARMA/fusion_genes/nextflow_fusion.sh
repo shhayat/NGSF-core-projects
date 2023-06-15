@@ -29,8 +29,8 @@ nextflow run nf-core/rnafusion \
                               --fusion_inspector \
                               --starfusion_build 'TRUE' \
                               --max_memory '80.GB' \
-                              --max_cpus 16
-#                              -resume
+                              --max_cpus 16 \
+#                             -resume
 # #  --fasta ${FASTA} \
 #  --genomes_base ${REF} \
 #--star_index ${star_indice} \
