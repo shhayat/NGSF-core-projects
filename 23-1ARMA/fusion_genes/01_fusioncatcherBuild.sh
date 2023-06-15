@@ -17,6 +17,5 @@ mkdir -p ${DIR}/fusioncatcher/build
 ${fusioncatcher}/fusioncatcher-build \
                               -o ${DIR}/fusioncatcher/build \
                               --organism="canis_familiaris" \
-                              --threads=16 \
-                              
-                              
+                              -w WEB_ENSEMBL="www.ensembl.org" \
+                              --threads=16
