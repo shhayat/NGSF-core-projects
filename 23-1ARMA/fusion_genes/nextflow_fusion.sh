@@ -26,9 +26,9 @@ nextflow run nf-core/rnafusion \
                               -w ${DIR}/analysis/nextflow/work \
                               --genome 'CanFam3.1' \
                               --build_references 'TRUE' \
+                              --starfusion_build 'TRUE' \
                               --star_fusion \
                               --fusion_inspector \
-                              --starfusion_build 'TRUE' \
                               --max_memory '80.GB' \
                               --max_cpus 16 \
                               -resume
