@@ -1,3 +1,22 @@
+#!/bin/sh
 
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
+#SBATCH --job-name=genome_index
+#SBATCH --ntasks=1
+#BATCH --cpus-per-task=8
+#SBATCH --time=03:00:00
+#SBATCH --mem=80G
+#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis
 fusioncatcher=/globalhome/hxo752/HPC/tools/fusioncatcher/bin
-${fusioncatcher}/fusioncatcher-build
+
+mkdir -p ${DIR}/fusioncatcher/build
+
+${fusioncatcher}/fusioncatcher-build \
+                              -o ${DIR}/fusioncatcher/build \
+                              --organism="canis_familiaris" \
+                              --threads=16 \
+                              
+                              
