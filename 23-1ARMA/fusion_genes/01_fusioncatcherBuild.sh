@@ -13,14 +13,13 @@ module load python/2.7
 #/globalhome/hxo752/HPC/anaconda3/condabin/conda init bash
 #/globalhome/hxo752/HPC/anaconda3/condabin/conda activate biopython
 
-fusioncatcher=/globalhome/hxo752/HPC/anaconda3/envs/fusioncatcher
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis
 fusioncatcher=/globalhome/hxo752/HPC/tools/fusioncatcher/bin
 
 mkdir -p ${DIR}/fusioncatcher/build
-
-${fusioncatcher}/fusioncatcher-build \
-                              -o ${DIR}/fusioncatcher/build \
-                              --organism="canis_familiaris" \
-                              -w WEB_ENSEMBL="www.ensembl.org" \
-                              --threads=8
+cd ${fusioncatcher}
+./fusioncatcher-build \
+                -o ${DIR}/fusioncatcher/build \
+                --organism="canis_familiaris" \
+                -w WEB_ENSEMBL="www.ensembl.org" \
+                --threads=8
