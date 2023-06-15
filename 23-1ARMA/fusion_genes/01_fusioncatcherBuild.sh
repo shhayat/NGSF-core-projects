@@ -2,10 +2,10 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=genome_index
+#SBATCH --job-name=genome_build
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=8
-#SBATCH --time=03:00:00
+#BATCH --cpus-per-task=16
+#SBATCH --time=10:00:00
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
