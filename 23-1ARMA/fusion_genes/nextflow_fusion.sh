@@ -22,11 +22,11 @@ FASTA=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensem
 #FASTA_FAI=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa.fai
 #GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 mkdir -p ${DIR}/analysis/nextflow
-
+mkdir -p ${DIR}/analysis/nextflow/work
 nextflow run nf-core/rnafusion -profile singularity \
                               --input ${DIR}/samplesheet.csv \
                               --outdir ${DIR}/analysis/nextflow \
-                              -w ${DIR}/analysis/work \
+                              -w ${DIR}/analysis/nextflow/work \
                               --genome 'CanFam3.1' \
                               --star_fusion \
                               --fusion_inspector \
