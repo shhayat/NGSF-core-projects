@@ -15,7 +15,7 @@ module load gentoo/2020
 module load singularity/3.9.2
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma
-#star_indice=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices                              
+star_indice=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices                              
 
 mkdir -p ${DIR}/analysis/nextflow
 mkdir -p ${DIR}/analysis/nextflow/work
@@ -25,7 +25,7 @@ nextflow run nf-core/rnafusion \
                               --outdir ${DIR}/analysis/nextflow \
                               -w ${DIR}/analysis/nextflow/work \
                               --genome 'CanFam3.1' \
-                              --build_references 'TRUE' \
+                              --star_index ${star_indice} \
                               --starfusion_build 'TRUE' \
                               --star_fusion \
                               --fusion_inspector \
