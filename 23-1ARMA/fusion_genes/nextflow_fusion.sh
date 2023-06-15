@@ -25,6 +25,7 @@ nextflow run nf-core/rnafusion \
                               --outdir ${DIR}/analysis/nextflow \
                               -w ${DIR}/analysis/nextflow/work \
                               --genome 'CanFam3.1' \
+                              --build_references 'TRUE' \
                               --star_fusion \
                               --fusion_inspector \
                               --starfusion_build 'TRUE' \
