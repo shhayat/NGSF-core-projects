@@ -27,5 +27,6 @@ GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ense
 #https://github.com/STAR-Fusion/STAR-Fusion/blob/master/Docker/Dockerfile
 prep_genome_lib.pl --genome_fa ${GENOME} \
                        --gtf ${GTF} \
+                       --dfam_db \
                        --CPU 4 \
                        --output_dir ${OUTDIR}
