@@ -24,7 +24,7 @@ GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
 
 #https://github.com/STAR-Fusion/STAR-Fusion/blob/master/Docker/Dockerfile
-bin/prep_genome_lib.pl --genome_fa ${GENOME} \
+prep_genome_lib.pl --genome_fa ${GENOME} \
                        --gtf ${GTF} \
                        --CPU 4 \
                        --output_dir ${OUTDIR}
