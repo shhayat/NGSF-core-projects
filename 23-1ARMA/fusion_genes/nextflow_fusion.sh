@@ -24,6 +24,7 @@ nextflow run nf-core/rnafusion \
                               --input ${DIR}/samplesheet.csv \
                               --outdir ${DIR}/analysis/nextflow \
                               -w ${DIR}/analysis/nextflow/work \
+                              --build_references 'TRUE' \
                               --genome 'CanFam3.1' \
                               --starfusion_build 'TRUE' \
                               --star_fusion \
