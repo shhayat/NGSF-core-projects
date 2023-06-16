@@ -9,13 +9,6 @@
 #SBATCH --mem=80G
 #SBATCH --output=%j.out
 
-#module load perl/5.30.2 
-#module load star/2.7.9a 
-#module load blast
-#export /globalhome/hxo752/HPC/tools/hmmer
-#/globalhome/hxo752/HPC/anaconda3/condabin/conda init bash
-#/globalhome/hxo752/HPC/anaconda3/condabin/conda activate dfam
-#STAR_FUSION_HOME="/globalhome/hxo752/HPC/tools/STAR-Fusion"
 source /globalhome/hxo752/HPC/.bashrc
 conda activate star-fusion
 
