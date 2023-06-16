@@ -23,6 +23,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa
 
+#https://github-wiki-see.page/m/NCIP/ctat-genome-lib-builder/wiki/Building-a-Custom-CTAT-Genome-Lib
 #https://github.com/STAR-Fusion/STAR-Fusion/blob/master/Docker/Dockerfile
 prep_genome_lib.pl --genome_fa ${GENOME} \
                        --gtf ${GTF} \
