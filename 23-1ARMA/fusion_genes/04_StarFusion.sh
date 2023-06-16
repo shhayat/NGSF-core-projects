@@ -19,6 +19,7 @@ CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/2
 mkdir -p ${output_dir}
 STAR-Fusion --left_fq ../Rawfastq/fname.R1 \
             --right_fq ../Rawfastq/fname.R2 \
+            --chimeric_junction \
             --genome_lib_dir CanineStarFusionBuild \
             --output_dir ${output_dir}/fname.code.fusion \
             --CPU 4
