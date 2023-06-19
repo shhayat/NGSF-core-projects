@@ -16,12 +16,10 @@ star_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusio
 output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/starFusion
 CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/ctat_genome_lib_build_dir
 
-fq1=$1;
-fq2=$1;
-sample_name=$1
+chimeric_junction=$1
 
 mkdir -p ${output_dir}
  STAR-Fusion --genome_lib_dir CanineStarFusionBuild \
-             -J ${star_dir}/${sample_name}/Chimeric.out.junction \
+             -J ${chimeric_junction} \
              --output_dir ${output_dir} \
              --CPU 4 
