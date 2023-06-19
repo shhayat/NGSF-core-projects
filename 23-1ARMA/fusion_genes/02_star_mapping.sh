@@ -32,7 +32,6 @@ STAR --genomeDir $GENOME \
 	--readFilesIn ${fq1} ${fq2} \
 	--outReadsUnmapped None \
         --twopassMode Basic \
-	--outSAMtype BAM SortedByCoordinate \
 	--runThreadN ${NCPU} \
 	--outSAMstrandField intronMotif \
         --outSAMunmapped Within \
@@ -53,7 +52,4 @@ STAR --genomeDir $GENOME \
         --alignInsertionFlush Right \
         --alignSplicedMateMapLminOverLmate 0 \
         --alignSplicedMateMapLmin 30
-	&& samtools index Aligned.sortedByCoord.out.bam 
-
-
 conda deactivate
