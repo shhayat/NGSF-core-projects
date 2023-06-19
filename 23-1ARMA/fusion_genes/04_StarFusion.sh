@@ -12,16 +12,19 @@
 source /globalhome/hxo752/HPC/.bashrc
 conda activate star-fusion
 
+
 output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/starFusion
 CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/ctat_genome_lib_build_dir
 
+sample_name=$1; shift
 fq1=$1; shift
-fq2=$1;
+fq2=$1
 
-mkdir -p ${output_dir}
+mkdir -p ${output_dir}/${sample_name}
+
  STAR-Fusion --genome_lib_dir ${CanineStarFusionBuild} \
              --left_fq ${fq1} \
              --right_fq ${fq2} \
-             --output_dir ${output_dir} \
+             --output_dir ${output_dir}/${sample_name} \
              --CPU 4 
 conda deactivate
