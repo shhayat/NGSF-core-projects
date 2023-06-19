@@ -28,3 +28,6 @@ STAR --runThreadN ${NCPU} \
      --genomeFastaFiles ${GENOME}/genome.fa \
      --sjdbGTFfile ${GTF} \
      --sjdbOverhang 99
+
+conda deactivate
+
