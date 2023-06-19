@@ -36,7 +36,7 @@ STAR --genomeDir $GENOME \
 	--runThreadN ${NCPU} \
 	--outSAMstrandField intronMotif \
         --outSAMunmapped Within \
-	--chimSegmentMin 12 \  # ** essential to invoke chimeric read detection & reporting **
+        --chimSegmentMin 12 \  # ** essential to invoke chimeric read detection & reporting **
         --chimJunctionOverhangMin 8 \
         --chimOutJunctionFormat 1 \   # **essential** includes required metadata in Chimeric.junction.out file.
         --alignSJDBoverhangMin 10 \
