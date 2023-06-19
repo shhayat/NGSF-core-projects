@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --time=3:00:00
 #SBATCH --mem=40G
-#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH  --output=%j.out
 set -eux
 
 #activate star-fusion to use STAR version 2.7.10b
