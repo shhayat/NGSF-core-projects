@@ -10,8 +10,8 @@
 #SBATCH --output=%j.out
 
 source /globalhome/hxo752/HPC/.bashrc
-conda activate star-fusion
-#conda activate ame
+#conda activate star-fusion
+conda activate ame
 
 GTF=/datastore/NGSF001/analysis/references/dog/CanFam3.1/Canis_lupus_familiaris.ROS_Cfam_1.0.109.gtf
 GENOME=/datastore/NGSF001/analysis/references/dog/CanFam3.1/Canis_lupus_familiaris.ROS_Cfam_1.0.dna.toplevel.fa
