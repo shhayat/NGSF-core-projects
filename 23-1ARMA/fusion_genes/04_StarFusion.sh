@@ -4,8 +4,8 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=star-fusion
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=80G
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=185G
 #SBATCH --time=10:00:00
 #SBATCH --output=%j.out
 
@@ -26,7 +26,7 @@ mkdir -p ${output_dir}/${sample_name}
              --left_fq ${fq1} \
              --right_fq ${fq2} \
              --output_dir ${output_dir}/${sample_name} \
-             --CPU 4 
+             --CPU 1
 conda deactivate
 
 
