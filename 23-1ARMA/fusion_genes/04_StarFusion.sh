@@ -5,7 +5,7 @@
 #SBATCH --job-name=star-fusion
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=185G
+#SBATCH --mem=80G
 #SBATCH --time=10:00:00
 #SBATCH --output=%j.out
 
