@@ -13,8 +13,6 @@ set -eux
 #activate star-fusion to use STAR version 2.7.10b
 source /globalhome/hxo752/HPC/.bashrc
 conda activate star-fusion
-module load samtools
-
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/fastq
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices
@@ -52,4 +50,5 @@ STAR --genomeDir $GENOME \
         --alignInsertionFlush Right \
         --alignSplicedMateMapLminOverLmate 0 \
         --alignSplicedMateMapLmin 30
+	
 conda deactivate
