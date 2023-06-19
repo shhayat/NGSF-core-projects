@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=star-fusion
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --mem=40G
-#SBATCH --time=06:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=80G
+#SBATCH --time=10:00:00
 #SBATCH --output=%j.out
 
 source /globalhome/hxo752/HPC/.bashrc
