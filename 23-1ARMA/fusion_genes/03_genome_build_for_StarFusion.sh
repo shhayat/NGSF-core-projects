@@ -22,5 +22,5 @@ DFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/
 prep_genome_lib.pl --genome_fa ${GENOME} \
                        --gtf ${GTF} \
                        --dfam_db ${DFAM_DATABASE} \
-                       --CPU 8
+                       --CPU 4
 conda deactivate
