@@ -24,3 +24,4 @@ mkdir -p ${output_dir}
              -J ${chimeric_junction} \
              --output_dir ${output_dir} \
              --CPU 4 
+conda deactivate
