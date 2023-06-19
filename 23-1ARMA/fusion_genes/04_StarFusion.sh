@@ -28,3 +28,12 @@ mkdir -p ${output_dir}/${sample_name}
              --output_dir ${output_dir}/${sample_name} \
              --CPU 4 
 conda deactivate
+
+
+#Extracting the fusion genes that will be used as input for fusion inspector
+
+cut -f1  ${output_dir}/${sample_name}/star-fusion.fusion_predictions.abridged.tsv >  ${output_dir}/${sample_name}/${sample_name}_fusionInspectorInput1.txt
+
+tail -n +2 ${output_dir}/${sample_name}/${sample_name}_fusionInspectorInput1.txt > ${output_dir}/${sample_name}/${sample_name}_fusionInspectorInput.txt
+
+rm ${output_dir}/${sample_name}/${sample_name}_fusionInspectorInput1.txt
