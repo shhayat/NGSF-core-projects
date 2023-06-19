@@ -21,3 +21,6 @@ do
       fq2=${DATA}/${sample_name}_2.fastq.gz;
       sbatch ${SCRIPT_DIR}/02_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
 done
+
+
+STAR=
