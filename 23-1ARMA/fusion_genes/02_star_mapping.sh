@@ -11,6 +11,7 @@
 set -eux
 
 #loading required modules
+module load star/2.7.9a 
 module load samtools
 
 
