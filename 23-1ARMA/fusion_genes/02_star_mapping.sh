@@ -1,14 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
 #SBATCH --job-name=star-align
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --time=3:00:00
+#BATCH --cpus-per-task=4
+#SBATCH --time=03:00:00
 #SBATCH --mem=40G
-#SBATCH  --output=%j.out
-set -eux
+#SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 #activate star-fusion to use STAR version 2.7.10b
 source /globalhome/hxo752/HPC/.bashrc
