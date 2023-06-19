@@ -10,8 +10,9 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
-#loading required modules
-module load star/2.7.9a 
+#activate star-fusion to use STAR version 2.7.10b
+source /globalhome/hxo752/HPC/.bashrc
+conda activate star-fusion
 module load samtools
 
 
@@ -53,3 +54,6 @@ STAR --genomeDir $GENOME \
         --alignSplicedMateMapLminOverLmate 0 \
         --alignSplicedMateMapLmin 30
 	&& samtools index Aligned.sortedByCoord.out.bam 
+
+
+conda deactivate
