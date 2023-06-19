@@ -9,7 +9,6 @@
 #SBATCH --time=06:00:00
 #SBATCH --output=%j.out
 
-module load star/2.7.9a 
 
 source /globalhome/hxo752/HPC/.bashrc
 conda activate star-fusion
