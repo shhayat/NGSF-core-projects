@@ -9,7 +9,9 @@
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module load star/2.7.9a 
+#activate star-fusion to use STAR version 2.7.10b
+source /globalhome/hxo752/HPC/.bashrc
+conda activate star-fusion
 
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf
