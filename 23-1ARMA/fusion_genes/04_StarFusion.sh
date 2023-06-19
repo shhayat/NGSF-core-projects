@@ -17,12 +17,14 @@ output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fus
 CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/ctat_genome_lib_build_dir
 
 fq1=$1;
-fq2=$1
+fq2=$1;
+sample_name=$1
+
 mkdir -p ${output_dir}
 STAR-Fusion --left_fq $fq1 \
             --right_fq $fq2 \
             --chimeric_junction \
             --genome_lib_dir CanineStarFusionBuild \
-            --output_dir ${output_dir}/fname.code.fusion \
+            --output_dir ${output_dir}/${sample_name} \
             --CPU 4
                        
