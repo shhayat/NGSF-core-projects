@@ -19,7 +19,7 @@ CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/2
 chimeric_junction=$1
 
 mkdir -p ${output_dir}
- STAR-Fusion --genome_lib_dir CanineStarFusionBuild \
+ STAR-Fusion --genome_lib_dir ${CanineStarFusionBuild} \
              -J ${chimeric_junction} \
              --output_dir ${output_dir} \
              --CPU 4 
