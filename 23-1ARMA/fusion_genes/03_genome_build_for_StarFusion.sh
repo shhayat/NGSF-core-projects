@@ -23,3 +23,4 @@ prep_genome_lib.pl --genome_fa ${GENOME} \
                        --gtf ${GTF} \
                        --dfam_db ${DFAM_DATABASE} \
                        --CPU 8
+conda deactivate
