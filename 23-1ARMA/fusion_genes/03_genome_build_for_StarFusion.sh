@@ -23,7 +23,7 @@ PFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/
 #https://github.com/STAR-Fusion/STAR-Fusion/blob/master/Docker/Dockerfile
 prep_genome_lib.pl --genome_fa ${GENOME} \
                                   --gtf ${GTF} \
-                                  --pfam_db ${DFAM_DATABASE} \
+                                  --pfam_db current \
                                   --dfam_db ${PFAM_DATABASE} \
                                   --CPU 4
 #conda deactivate
