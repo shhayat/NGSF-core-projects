@@ -9,10 +9,10 @@
 #SBATCH --time=10:00:00
 #SBATCH --output=%j.out
 
-#source /globalhome/hxo752/HPC/.bashrc
-#conda activate star-fusion
+source /globalhome/hxo752/HPC/.bashrc
+conda activate star-fusion
 
-starfusion=/globalhome/hxo752/HPC/tools/STAR-Fusion
+#starfusion=/globalhome/hxo752/HPC/tools/STAR-Fusion
 output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/starFusion
 #CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/ctat_genome_lib_build_dir
 CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/ctat_genome_lib_build_dir
@@ -22,7 +22,7 @@ fq2=$1
 
 mkdir -p ${output_dir}/${sample_name}
 
- ${starfusion}/STAR-Fusion --genome_lib_dir ${CanineStarFusionBuild} \
+STAR-Fusion --genome_lib_dir ${CanineStarFusionBuild} \
              --left_fq ${fq1} \
              --right_fq ${fq2} \
              --output_dir ${output_dir}/${sample_name} \
