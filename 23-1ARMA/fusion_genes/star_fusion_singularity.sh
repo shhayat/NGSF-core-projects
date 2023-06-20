@@ -11,12 +11,14 @@
 
 module load singularity/3.9.2
 
+output_dir=
+
 singularity exec -e -B `pwd` -B /path/to/ctat_genome_lib_build_dir \
-        star-fusion-v$version.simg \
-        STAR-Fusion \
-        --left_fq reads_1.fq.gz \
-        --right_fq reads_2.fq.gz \
-        --genome_lib_dir /path/to/ctat_genome_lib_build_dir \
-        -O StarFusionOut \
-        --FusionInspector validate \
-        --examine_coding_effect \
+                /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
+                STAR-Fusion \
+                --left_fq reads_1.fq.gz \
+                --right_fq reads_2.fq.gz \
+                --genome_lib_dir /path/to/ctat_genome_lib_build_dir \
+                -O ${output_dir} \
+                --FusionInspector validate \
+                --examine_coding_effect \
