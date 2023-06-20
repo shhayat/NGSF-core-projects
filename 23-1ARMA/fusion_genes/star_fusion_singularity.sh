@@ -11,14 +11,21 @@
 
 module load singularity/3.9.2
 
-output_dir=
+output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/starFusion
+CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/ctat_genome_lib_build_dir
 
-singularity exec -e -B `pwd` -B /path/to/ctat_genome_lib_build_dir \
+sample_name=$1; shift
+fq1=$1; shift
+fq2=$1
+
+mkdir -p ${output_dir}/${sample_name}
+
+singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                 STAR-Fusion \
                 --left_fq reads_1.fq.gz \
                 --right_fq reads_2.fq.gz \
-                --genome_lib_dir /path/to/ctat_genome_lib_build_dir \
-                -O ${output_dir} \
+                --genome_lib_dir ${CanineStarFusionBuild} \
+                -O ${output_dir}/${sample_name} \
                 --FusionInspector validate \
                 --examine_coding_effect \
