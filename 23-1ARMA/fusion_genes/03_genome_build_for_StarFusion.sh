@@ -9,8 +9,8 @@
 #SBATCH --time=40:00:00
 #SBATCH --output=%j.out
 
-source /globalhome/hxo752/HPC/.bashrc
-conda activate ame
+#source /globalhome/hxo752/HPC/.bashrc
+#conda activate ame
 
 ctat_genome=/globalhome/hxo752/HPC/tools/STAR-Fusion-v1.12.0/ctat-genome-lib-builder
 GTF=/datastore/NGSF001/analysis/references/dog/CanFam3.1/Canis_lupus_familiaris.ROS_Cfam_1.0.109.gtf
