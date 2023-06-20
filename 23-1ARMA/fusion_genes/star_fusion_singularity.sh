@@ -10,9 +10,12 @@
 #SBATCH --output=%j.out
 
 module load apptainer/1.1
+GTF=/datastore/NGSF001/analysis/references/dog/CanFam3.1/Canis_lupus_familiaris.ROS_Cfam_1.0.109.gtf
+GENOME=/datastore/NGSF001/analysis/references/dog/CanFam3.1/Canis_lupus_familiaris.ROS_Cfam_1.0.dna.toplevel.fa
+DFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/Pfam/Pfam-A.hmm
 
 singularity exec -e /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                     /globalhome/hxo752/HPC/tools/STAR-Fusion-v1.11.0/ctat-genome-lib-builder/prep_genome_lib.pl \
-                 --genome_fa ref_genome.fa \
-                 --gtf ref_annot.gtf \
+                 --genome_fa ${GENOME} \
+                 --gtf ${GTF} \
                  
