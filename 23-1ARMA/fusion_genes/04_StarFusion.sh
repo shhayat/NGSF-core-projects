@@ -27,7 +27,8 @@ STAR-Fusion --genome_lib_dir ${CanineStarFusionBuild} \
              --right_fq ${fq2} \
              --output_dir ${output_dir}/${sample_name} \
              --CPU 1
-#conda deactivate
+
+conda deactivate
 
 
 #Extracting the fusion genes that will be used as input for fusion inspector
