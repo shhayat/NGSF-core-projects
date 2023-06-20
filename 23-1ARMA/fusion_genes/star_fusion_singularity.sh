@@ -18,4 +18,6 @@ singularity exec -e /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                     /globalhome/hxo752/HPC/tools/STAR-Fusion-v1.11.0/ctat-genome-lib-builder/prep_genome_lib.pl \
                  --genome_fa ${GENOME} \
                  --gtf ${GTF} \
+                 --dfam_db ${DFAM_DATABASE} \
+                 --CPU 4
                  
