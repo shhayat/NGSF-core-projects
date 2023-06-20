@@ -21,6 +21,6 @@ apptainer exec -e /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                 --genome_fa ${GENOME} \
                 --gtf ${GTF} \
                 --dfam_db ${DFAM_DATABASE} \
-                --pfam_db ${PFAM_DATABASE} \
+                --pfam_db current \
                 --CPU 4
                  
