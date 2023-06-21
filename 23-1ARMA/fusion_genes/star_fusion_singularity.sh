@@ -23,8 +23,8 @@ mkdir -p ${output_dir}/${sample_name}
 singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                 STAR-Fusion \
-                --left_fq reads_1.fq.gz \
-                --right_fq reads_2.fq.gz \
+                --left_fq ${fq1} \
+                --right_fq ${fq2} \
                 --genome_lib_dir ${CanineStarFusionBuild} \
                 -O ${output_dir}/${sample_name} \
                 --FusionInspector validate \
