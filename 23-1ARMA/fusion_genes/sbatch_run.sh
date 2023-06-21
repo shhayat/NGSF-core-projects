@@ -37,6 +37,6 @@ do
       sample_name=${path##*/};
       fq1=${DATA}/${sample_name}_1.fastq.gz;
       fq2=${DATA}/${sample_name}_2.fastq.gz;
-      sbatch ${SCRIPT_DIR}/star_fusion_genomebuild_singularity.sh "${sample_name}" "${fq1}" "${fq2}"
+      sbatch ${SCRIPT_DIR}/star_fusion_singularity.shh "${sample_name}" "${fq1}" "${fq2}"
 done
 
