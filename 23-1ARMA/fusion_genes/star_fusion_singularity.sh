@@ -28,4 +28,4 @@ singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 --genome_lib_dir ${CanineStarFusionBuild} \
                 -O ${output_dir}/${sample_name} \
                 --FusionInspector validate \
-                --examine_coding_effect \
+                --examine_coding_effect
