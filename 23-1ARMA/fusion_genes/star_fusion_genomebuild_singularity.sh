@@ -5,15 +5,14 @@
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=80G
-#SBATCH --time=06:00:00
+#SBATCH --mem=180G
+#SBATCH --time=40:00:00
 #SBATCH --output=%j.out
 
 module load singularity/3.9.2
 
 GTF=/globalhome/hxo752/HPC/ngsf_git_repos/CanFam3.1/Canis_lupus_familiaris.ROS_Cfam_1.0.109.gtf
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/CanFam3.1/Canis_lupus_familiaris.ROS_Cfam_1.0.dna.toplevel.fa
-#DFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/Pfam/Pfam-A.hmm
 DFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/Dfam/canis_lupus_familiaris_dfam.hmm
 PFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/Pfam/Pfam-A.hmm
 
