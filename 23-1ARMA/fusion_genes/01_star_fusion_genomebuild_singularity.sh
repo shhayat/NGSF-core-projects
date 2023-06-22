@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=180G
-#SBATCH --time=40:00:00
+#SBATCH --time=24:00:00
 #SBATCH --output=%j.out
 
 module load singularity/3.9.2
