@@ -27,7 +27,6 @@ for i in $DATA/*/finspector.FusionInspector.fusions.abridged.tsv
 do
       path="${i%/fin*}";
       sample_name=${path##*/};
-
-      sbatch ${SCRIPT_DIR}/03_NTRK_fusion_genes.sh "${sample_name}"
+      sbatch ${SCRIPT_DIR}/03_NTRK_gene_fusions.sh "${sample_name}"
 done
 
