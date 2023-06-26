@@ -13,11 +13,11 @@
 #study: Genomically Complex Human Angiosarcoma and Canine Hemangiosarcoma Establish Convergent Angiogenic Transcriptional Programs Driven by Novel Gene Fusions
 for i in {10..60}
 do
-  #NUM="${i:2}"
+  NUM="${i:1}"
   OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hemangiosarcoma/fastq
   mkdir -p $OUTDIR
-  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527/000/SRR52780${i}/SRR52780${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files_R1.txt
-  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527/SRR52780${i}/DRR34598${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files_R2.txt
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527/00${NUM}/SRR52780${i}/SRR52780${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files_R1.txt
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527//00${NUM}/SRR52780${i}/DRR34598${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files_R2.txt
 done
 
 
