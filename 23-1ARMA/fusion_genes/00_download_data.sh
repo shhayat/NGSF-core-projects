@@ -17,7 +17,7 @@ do
   OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hemangiosarcoma/fastq
   mkdir -p $OUTDIR
   echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527/00${NUM}/SRR52780${i}/SRR52780${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files_R1.txt
-  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527//00${NUM}/SRR52780${i}/DRR34598${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files_R2.txt
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527/00${NUM}/SRR52780${i}/SRR52780${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files_R2.txt
 done
 
 
