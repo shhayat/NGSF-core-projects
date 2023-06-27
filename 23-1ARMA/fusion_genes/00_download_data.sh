@@ -21,6 +21,8 @@ do
   echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527/00${NUM}/SRR52780${i}/SRR52780${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files_R2.txt
 done
 
+#31934
+#31948
 
 
 
