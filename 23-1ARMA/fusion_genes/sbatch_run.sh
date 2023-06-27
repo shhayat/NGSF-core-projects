@@ -10,7 +10,7 @@ do
       sbatch ${SCRIPT_DIR}/01_FastQC.sh "${fq1}" "${fq2}"
  done
 
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/fastq
+DATA=/datastore/NGSF001/datasets/canine_datasets/hystiocystic_sarcoma
 
 for i in $DATA/*_1.fastq.gz
 do
