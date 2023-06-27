@@ -11,7 +11,8 @@
 
 #fastq files for Canine Hemangiosarcoma
 #study: Genomically Complex Human Angiosarcoma and Canine Hemangiosarcoma Establish Convergent Angiogenic Transcriptional Programs Driven by Novel Gene Fusions
-for i in {11..60}
+#11..60
+for i in {11..20}
 do
   NUM="${i:1}"
   OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hemangiosarcoma/fastq
