@@ -15,6 +15,8 @@ sample_name=$1;
 
 mkdir -p ${dir}/NTRK_fusions
 
-grep "NTRK" ${dir}/starFusion/${sample_name}/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv > \
-                                                                                                              ${dir}/NTRK_fusions/${sample_name}_NTRKfuisons.tsv
+#grep "NTRK" ${dir}/starFusion/${sample_name}/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv > \
+ #                                                                                                             ${dir}/NTRK_fusions/${sample_name}_NTRKfuisons.tsv
 
+grep "NTRK" ${dir}/${sample_name}/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv > \
+                                                                                                             ${dir}/NTRK_fusions/${sample_name}_NTRKfuisons.tsv
