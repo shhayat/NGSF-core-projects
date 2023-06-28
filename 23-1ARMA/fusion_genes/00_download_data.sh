@@ -21,8 +21,19 @@
 #  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR527/00${NUM}/SRR52780${i}/SRR52780${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files_R2.txt
 #done
 
-#31934
-#31948
+
+#fastq files for Canine lymphoma
+#study: RNA-Seq analysis of gene expression in 25 cases of canine lymphoma undergoing CHOP chemotherapy
+
+#for i in {15..39}
+#do
+#  NUM="${i:1}"
+#  OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/lymphoma/fastq
+#  mkdir -p $OUTDIR
+#  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/00${NUM}/SRR90290${i}/SRR90290${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
+#done
+
+
 
 
 #cortisol-secreting adrenocortical tumor
