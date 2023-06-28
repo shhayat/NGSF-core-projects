@@ -24,6 +24,16 @@ done
 #31934
 #31948
 
+#fastq files for canine Urothelial Bladder Carcinoma
+#study: Comprehensive gene analysis of Canine Invasive Urothelial Bladder Carcinoma by RNA-Seq
+for i in {21..33}
+do
+  NUM="${i:2}"
+ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/urothelial_bladder/fastq
+  mkdir -p $OUTDIR
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/DRR093/DRR0935${i}/DRR0935${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files_R1.txt
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/DRR093/DRR0935${i}/DRR0935${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files_R2.txt
+done
 
 
 #cortisol-secreting adrenocortical tumor
