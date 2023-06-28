@@ -27,11 +27,22 @@
 
 #for i in {15..39}
 #do
-#  NUM="${i:1}"
-#  OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/lymphoma/fastq
-#  mkdir -p $OUTDIR
-#  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/00${NUM}/SRR90290${i}/SRR90290${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
+ # NUM="${i:1}"
+ # OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/lymphoma/fastq
+ # mkdir -p $OUTDIR
+ # echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR902/00${NUM}/SRR90290${i}/SRR90290${i}.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
 #done
+
+#fastq files for Canine oral squamous cell carcinomas
+#study:olecular homology between canine spontaneous oral squamous cell carcinomas and human head-and-neck squamous cell carcinomas reveals disease drivers and therapeutic vulnerabilities
+for i in 58 56 54 52 50 48 46 44 42 40
+do
+  NUM="${i:1}"
+  OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/squamous_cell_carcinomas/fastq
+  mkdir -p $OUTDIR
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR350/00${NUM}/ERR350${i}/ERR350${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR350/00${NUM}/ERR350${i}/ERR350${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
+done
 
 
 
