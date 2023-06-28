@@ -40,8 +40,8 @@ do
   NUM="${i:1}"
   OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/squamous_cell_carcinomas/fastq
   mkdir -p $OUTDIR
-  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR35048/00${NUM}/ERR350${i}/ERR35048${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
-  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR3504/00${NUM}/ERR350${i}/ERR35048${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR350/00${NUM}/ERR35048${i}/ERR35048${i}_1.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
+  echo "wget https://ftp.sra.ebi.ac.uk/vol1/fastq/ERR350/00${NUM}/ERR35048${i}/ERR35048${i}_2.fastq.gz" >> $OUTDIR/path_to_fastq_files.sh
 done
 
 
