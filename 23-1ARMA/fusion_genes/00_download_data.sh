@@ -45,7 +45,7 @@ do
 done
 
 
-
+#study: Naturally-occurring canine invasive urothelial carcinoma harbors luminal and basal transcriptional subtypes found in human muscle invasive bladder cancer
 
 #cortisol-secreting adrenocortical tumor
 #study: Transcriptome sequencing reveals two subtypes of cortisol-secreting adrenocortical tumors in dogs and identifies CYP26B1 as a potential new therapeutic target
