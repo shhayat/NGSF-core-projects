@@ -23,7 +23,7 @@ done
 
 #DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/starFusion
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/squamous_cell_carcinomas/analysis/
-for i in $DATA/S*/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv
+for i in $DATA/*/FusionInspector-validate/finspector.FusionInspector.fusions.abridged.tsv
 do
       path="${i%/FusionInspector*}";
       sample_name=${path##*/};
