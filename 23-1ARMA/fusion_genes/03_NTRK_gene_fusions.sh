@@ -10,7 +10,7 @@
 #SBATCH --output=%j.out
 
 
-dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/squamous_cell_carcinomas/analysis/
+dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/
 sample_name=$1;
 
 mkdir -p ${dir}/NTRK_fusions
