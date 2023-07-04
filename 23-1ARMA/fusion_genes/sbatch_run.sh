@@ -11,7 +11,7 @@ do
  done
 
 #DATA=/datastore/NGSF001/datasets/canine_datasets/hystiocystic_sarcoma
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/squamous_cell_carcinomas/fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/fastq
 for i in $DATA/*_1.fastq.gz
 do
       path="${i%_1*}";
