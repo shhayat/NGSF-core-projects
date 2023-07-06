@@ -11,8 +11,8 @@
 
 module load singularity/3.9.2
 
-
-output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/
+output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/lymphoma/analysis/
+#output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/
 #output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hemangiosarcoma/analysis/
 #output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/squamous_cell_carcinomas/analysis/
 CanineStarFusionBuild=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/hystiocystic_sarcoma/analysis/ctat_genome_lib_build_dir
@@ -23,6 +23,16 @@ fq2=$1
 
 mkdir -p ${output_dir}/${sample_name}
 
+#for paired end samples
+#singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
+   #             /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
+   #             STAR-Fusion \
+   #             --left_fq ${fq1} \
+   #             --right_fq ${fq2} \
+    #            --genome_lib_dir ${CanineStarFusionBuild} \
+     #           -O ${output_dir}/${sample_name} \
+      #          --FusionInspector validate \
+       #         --examine_coding_effect
 singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                 STAR-Fusion \
