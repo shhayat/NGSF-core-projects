@@ -11,8 +11,8 @@
 
 module load samtools
 
-DATA=/datastore/NGSF001/datasets/canine_datasets/icdc_data/fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/lymphoma/analysis/fastq
+DATA=/datastore/NGSF001/datasets/canine_datasets/icdc_data/bam
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/icdc_data/analysis/fastq
 mkdir -p ${OUTDIR}
 sample_name=1;
 
