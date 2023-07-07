@@ -16,5 +16,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_
 mkdir -p ${OUTDIR}
 sample_name=$1;
 
-samtools bam2fq ${DATA}/${sample_name}_sorted.bam  > ${OUTDIR}/${sample_name}.fastq
+#samtools bam2fq ${DATA}/${sample_name}_sorted.bam  > ${OUTDIR}/${sample_name}.fastq
+java -Xmx2g -jar Picard/SamToFastq.jar I=SAMPLE.bam F=SAMPLE_r1.fastq F2=SAMPLE_r2.fastq
+
 
