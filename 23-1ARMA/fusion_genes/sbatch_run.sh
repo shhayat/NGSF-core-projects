@@ -35,7 +35,7 @@ do
       sbatch ${SCRIPT_DIR}/03_NTRK_gene_fusions.sh "${sample_name}"
 done
 
-DATA=/datastore/NGSF001/datasets/canine_datasets/icdc_data/fastq
+DATA=/datastore/NGSF001/datasets/canine_datasets/icdc_data/bam
 for i in $DATA/*.bam
 do
       path="${i%/_sorted*}";
