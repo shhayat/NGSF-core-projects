@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=star_fusion
+#SBATCH --job-name=bam2fastq
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=10G
