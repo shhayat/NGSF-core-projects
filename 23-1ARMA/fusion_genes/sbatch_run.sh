@@ -38,7 +38,7 @@ done
 DATA=/datastore/NGSF001/datasets/canine_datasets/icdc_data/bam
 for i in $DATA/*.bam
 do
-      path="${i%/_sorted*}";
+      path="${i%_sorted*}";
       sample_name=${path##*/};
       sbatch ${SCRIPT_DIR}/bam2fastq.sh "${sample_name}"
 done
