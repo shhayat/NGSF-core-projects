@@ -5,8 +5,8 @@
 #SBATCH --job-name=bam2fastq
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=20G
-#SBATCH --time=05:00:00
+#SBATCH --mem=185G
+#SBATCH --time=24:00:00
 #SBATCH --output=%j.out
 
 module load samtools
