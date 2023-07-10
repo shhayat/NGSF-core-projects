@@ -12,9 +12,10 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fus
 
 #DATA=/datastore/NGSF001/datasets/canine_datasets/hystiocystic_sarcoma
 #DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/fastq
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/lymphoma/fastq
-#for i in $DATA/*_1.fastq.gz
-for i in $DATA/*.fastq.gz
+#DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/lymphoma/fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/urothelial_carcinoma/fastq
+for i in $DATA/*_1.fastq.gz
+#for i in $DATA/*.fastq.gz
 do
       path="${i%.fastq.gz*}";
       sample_name=${path##*/};
@@ -35,10 +36,10 @@ do
       sbatch ${SCRIPT_DIR}/03_NTRK_gene_fusions.sh "${sample_name}"
 done
 
-DATA=/datastore/NGSF001/datasets/canine_datasets/icdc_data/bam
-for i in $DATA/*.bam
-do
-      path="${i%_sorted*}";
-      sample_name=${path##*/};
-      sbatch ${SCRIPT_DIR}/bam2fastq.sh "${sample_name}"
-done
+#DATA=/datastore/NGSF001/datasets/canine_datasets/icdc_data/bam
+#for i in $DATA/*.bam
+#do
+#      path="${i%_sorted*}";
+#      sample_name=${path##*/};
+#      sbatch ${SCRIPT_DIR}/bam2fastq.sh "${sample_name}"
+#done
