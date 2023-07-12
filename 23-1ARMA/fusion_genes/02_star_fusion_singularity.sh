@@ -24,22 +24,22 @@ fq2=$1
 mkdir -p ${output_dir}/${sample_name}
 
 #for paired end samples
-#singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
-   #             /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
-   #             STAR-Fusion \
-   #             --left_fq ${fq1} \
-   #             --right_fq ${fq2} \
-    #            --genome_lib_dir ${CanineStarFusionBuild} \
-     #           -O ${output_dir}/${sample_name} \
-      #          --FusionInspector validate \
-       #         --examine_coding_effect
-
-#for single ended samples
 singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                 STAR-Fusion \
-                --left_fq ${fq} \
+                --left_fq ${fq1} \
+                --right_fq ${fq2} \
                 --genome_lib_dir ${CanineStarFusionBuild} \
                 -O ${output_dir}/${sample_name} \
                 --FusionInspector validate \
                 --examine_coding_effect
+
+#for single ended samples
+#singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
+#                /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
+#                STAR-Fusion \
+#                --left_fq ${fq} \
+#                --genome_lib_dir ${CanineStarFusionBuild} \
+#                -O ${output_dir}/${sample_name} \
+#                --FusionInspector validate \
+#                --examine_coding_effect
