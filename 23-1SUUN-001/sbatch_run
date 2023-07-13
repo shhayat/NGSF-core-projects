@@ -12,3 +12,6 @@ do
       sbatch ${SCRIPT_DIR}/02_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
  done
  
+
+#run feature count
+sbatch ${SCRIPT_DIR}/sbatch_run_feature_count.sh
