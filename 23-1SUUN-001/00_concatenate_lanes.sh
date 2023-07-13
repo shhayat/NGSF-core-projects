@@ -14,7 +14,7 @@ mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SUUN-001/a
 
 FASTQ_FOLDER=/datastore/NGSF001/NB551711/230711_NB551711_0076_AH727NBGXT/Alignment_1/20230712_000715/Fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SUUN-001/analysis/fastq
-	R2300131
+	
 
 for i in $(seq -w 131 142)
 do
