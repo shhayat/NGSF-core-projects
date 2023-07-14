@@ -2,7 +2,7 @@ library("DESeq2")
 library("ggplot2")
 library("xlsx")
 
-setwd("~/core-projects/23-1SUUN-001")
+setwd("/Users/shahina/Projects/23-1SUUN-001")
 dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 
 load("feature_count.RData")
@@ -61,5 +61,5 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_pval.xlsx",cond2,cond1), row.names = FALSE)
   
 }
-DEG_analysis(c(1:12),"T0","T100","T0",6,6)
+DEG_analysis(c(3:14),"T0","T100","T0",6,6)
 
