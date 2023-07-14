@@ -61,5 +61,5 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_pval.xlsx",cond2,cond1), row.names = FALSE)
   
 }
-DEG_analysis(c(3:14),"T0","T100","T0",6,6)
+DEG_analysis(c(c(3,6,7,9:11,13)),"T0","T100","T0",3,4)
 
