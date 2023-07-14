@@ -10,7 +10,7 @@ feature_count1 <- as.data.frame(feature_count)
 
 #your first columns which are gene id and gene name
 feature_annotation <- cbind(GeneID=rownames(feature_count1),gene_name=feature_count1$gene_name)
-DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
+DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str)
 {
   #feature_count <- feature_count[colnum]
   feature_count <- feature_count1[colnum]
@@ -58,7 +58,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 
   #return(dim(resDF1))
   #All significant
-  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_pval.xlsx",cond2,cond1), row.names = FALSE)
+  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s_filter_on_pval.xlsx",cond2,cond1,str), row.names = FALSE)
   
 }
 DEG_analysis(c(c(3,6,7,9:11,13)),"T0","T100","T0",3,4, "selected_samples")
