@@ -1,15 +1,3 @@
-#!/bin/sh
-
-#SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
-#SBATCH --job-name=star_fusion
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=5G
-#SBATCH --time=10:00:00
-#SBATCH --output=%j.out
-
-
 #dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/
 dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/urothelial_carcinoma/analysis/
 sample_name=$1;
