@@ -14,7 +14,7 @@ module load python/3.7.7
 cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
 
 NCPUS=4
-DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis"
+DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis"
 bam_files=$1; shift
 labels=$1;
 mkdir -p ${DIR}/QC/deeptools
