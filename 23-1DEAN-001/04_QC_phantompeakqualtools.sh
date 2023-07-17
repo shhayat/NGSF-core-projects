@@ -16,7 +16,7 @@ OUTDIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/an
 mkdir -p ${OUTDIR}/QC/phantompeakqualtools
 sample_name=$1;
 
-#using two QC tools for Quality check
+# Quality check
 #phantompeakqualtools
 cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
