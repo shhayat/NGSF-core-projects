@@ -1,12 +1,20 @@
+#bowtie alignment
 for i in {33..43}
 do
   sbatch 03_bowtie_alignment.sh "D23000${i}" "D23000${i}.fastq.gz"
   sleep 0.2
 done
 
-
+#QC 04_QC_phantompeakqualtools
 for i in {33..43}
 do
   sbatch 04_QC_phantompeakqualtools.sh "D23000${i}"
+  sleep 0.5
+done
+
+#QC Deeptools
+for i in {33..43}
+do
+  sbatch 05_picard_dedup.sh "D23000${i}"
   sleep 0.5
 done
