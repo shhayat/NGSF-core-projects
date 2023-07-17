@@ -19,21 +19,13 @@ do
   sleep 0.3
 done
 
-#QC Deeptools
-for i in {33..43}
-do
-  sbatch 05_picard_dedup.sh "D23000${i}"
-  sleep 0.5
-done
-
-
-DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/alignment"
+DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment"
 labels="G1E_TAL1_rep1 G1E_TAL1_rep2 Input_rep1 Input_rep2"
 bam_files=""
-for sample in $DIR/SRR*/*.aligned_dedup.bam
+for sample in $DIR/D*/*.aligned_dedup.bam
 do  
     bam_files+="${sample}"
     bam_files=$(echo "$bam_files" | sed 's/.bam\//.bam \//g')
  done
   
-sbatch 05_QC_deeptools.sh "${bam_files}" "${labels}"; 
+sbatch 06_QC_deeptools.sh "${bam_files}" "${labels}"; 
