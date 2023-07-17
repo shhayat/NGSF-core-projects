@@ -20,7 +20,7 @@ do
 done
 
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment"
-labels="G1E_TAL1_rep1 G1E_TAL1_rep2 Input_rep1 Input_rep2"
+labels="BT549_control_rep1 BT549_control_rep2 BT549_control_rep3 BT549_CREB3L1_rep2 BT549_CREB3L1_rep3 HCC1806_control_rep1 HCC1806_control_rep2 HCC1806_control_rep3"
 bam_files=""
 for sample in $DIR/D*/*.aligned_dedup.bam
 do  
