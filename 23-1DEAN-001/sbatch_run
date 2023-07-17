@@ -1,1 +1,5 @@
-
+for i in {33..43}
+do
+  sbatch 03_QC_phantompeakqualtools.sh D23000${i}
+  sleep 0.5
+done
