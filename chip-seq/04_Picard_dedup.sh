@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=2:00:00
-#SBATCH --mem=40G
+#SBATCH --mem=80G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 set -eux
@@ -19,7 +19,7 @@ NCPU=2
 
 sample_name=$1
 
-java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
+java -Xmx80G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
 	I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
 	O=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
 	SO=coordinate \
@@ -29,7 +29,7 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
 	RGPU=unit1 \
 	RGSM=20
 
-java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
+java -Xmx80G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
              I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
              O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
              M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
