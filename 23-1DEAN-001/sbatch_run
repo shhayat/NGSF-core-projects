@@ -1,5 +1,12 @@
 for i in {33..43}
 do
-  sbatch 03_QC_phantompeakqualtools.sh D23000${i}
+  sbatch 03_bowtie_alignment.sh D23000${i} D23000${i}.fastq.gz
+  sleep 0.2
+done
+
+
+for i in {33..43}
+do
+  sbatch 04_QC_phantompeakqualtools.sh D23000${i}
   sleep 0.5
 done
