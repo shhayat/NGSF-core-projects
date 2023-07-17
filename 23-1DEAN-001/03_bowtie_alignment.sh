@@ -30,7 +30,7 @@ bowtie2 \
 --very-sensitive \
 --threads ${NCPU} \
 -x ${GENOME} \
--1 ${RAW_DATA}/${fq} \
+-U ${RAW_DATA}/${fq} \
 -S ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/alignment/${sample_name}/${sample_name}_bowtie2.log \
 && samtools view -h -b ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam > ${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam
 
