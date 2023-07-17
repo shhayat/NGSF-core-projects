@@ -15,7 +15,7 @@ done
 #Picard
 for i in {33..43}
 do
-  sbatch 04_Picard.sh "D23000${i}"
+  sbatch 05_picard_dedup.sh "D23000${i}"
   sleep 0.3
 done
 
