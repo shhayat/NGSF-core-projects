@@ -12,6 +12,13 @@ do
   sleep 0.5
 done
 
+#Picard
+for i in {33..43}
+do
+  sbatch 04_Picard.sh "D23000${i}"
+  sleep 0.3
+done
+
 #QC Deeptools
 for i in {33..43}
 do
