@@ -28,7 +28,7 @@ do
     sample=$DIR/D23000${num}/D23000${num}.aligned_dedup.bam
     bam_files+="${sample}"
     bam_files=$(echo "$bam_files" | sed 's/.bam\//.bam \//g')
-echo $bam_files
+#echo $bam_files
  done
   
 sbatch 06_QC_deeptools.sh "${bam_files}" "${label1}"; 
