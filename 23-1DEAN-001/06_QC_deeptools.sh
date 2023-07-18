@@ -15,7 +15,9 @@ cd /globalhome/hxo752/HPC/anaconda3/envs/deeptools/bin
 NCPUS=4
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis"
 bam_files=$1; shift
-labels=$1;
+labels=$1; shift
+cellline=$1;
+
 mkdir -p ${DIR}/QC/deeptools
 
 #cumulative enrichment
@@ -26,18 +28,18 @@ plotFingerprint \
             --skipZeros \
             --plotFile ${DIR}/QC/deeptools/fingerprint.pdf \
             --labels ${labels} \
-            -p ${NCPUS} &> ${DIR}/QC/deeptools/fingerprint.log
+            -p ${NCPUS} &> ${DIR}/QC/deeptools/${cellline}/fingerprint.log
 
 #read coverages for genomic regions for the BAM files
 multiBamSummary bins \
            --bamfiles ${bam_files} \
-           --outFileName ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
+           --outFileName ${DIR}/QC/deeptools/${cellline}/bamCorrelate_coverage.npz \
            --binSize=5000 \
            --labels ${labels} \
-           -p ${NCPUS} &> ${DIR}/QC/deeptools/multiBamSummary.log
+           -p ${NCPUS} &> ${DIR}/QC/deeptools/${cellline}/multiBamSummary.log
 
 #PCA for read coverage
 plotPCA \
-            --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
-            --plotFile ${DIR}/QC/deeptools/pca.pdf \
+            --corData ${DIR}/QC/deeptools/${cellline}/bamCorrelate_coverage.npz \
+            --plotFile ${DIR}/QC/deeptools/${cellline}/pca.pdf \
             --labels ${labels}
