@@ -40,3 +40,14 @@ do
     bam_files=$(echo "$bam_files" | sed 's/.bam\//.bam \//g')
 done
 sbatch 06_QC_deeptools.sh "${bam_files}" "${label2}"; 
+
+
+#MAC3 peakcalling
+filename='samples.txt'
+#echo Start
+#while read p; do 
+for i in $filename
+do
+    echo "$i[1]"
+    sleep 0.2
+done
