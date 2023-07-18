@@ -30,7 +30,6 @@ done
 ###############
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment
 label1="BT549_control_rep1 BT549_control_rep2 BT549_control_rep3 BT549_CREB3L1_rep2 BT549_CREB3L1_rep3"
-label2="HCC1806_control_rep1 HCC1806_control_rep2 HCC1806_control_rep3 HCC1806_CREB3L1_rep1 HCC1806_CREB3L1_rep2 HCC1806_CREB3L1_rep3" 
 bam_files=""
 for num in {33..37}
 do  
@@ -40,6 +39,9 @@ do
 done
 sbatch 06_QC_deeptools.sh "${bam_files}" "${label1}" "BT549"; 
 
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment
+label2="HCC1806_control_rep1 HCC1806_control_rep2 HCC1806_control_rep3 HCC1806_CREB3L1_rep1 HCC1806_CREB3L1_rep2 HCC1806_CREB3L1_rep3" 
+bam_files=""
 for num in {38..43}
 do  
     sample=$DIR/D23000${num}/D23000${num}.aligned_dedup.bam
