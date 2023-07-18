@@ -5,14 +5,13 @@
 #SBATCH --job-name=QC-deeptools
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --time=2:00:00
-#SBATCH --mem=40G
-#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH --time=6:00:00
+#SBATCH --mem=80G
+#SBATCH  --output=%j.out
 
-module load python/3.7.7
 #deeptools
-cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
-
+#cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages/deeptools/
+cd /globalhome/hxo752/HPC/anaconda3/envs/deeptools/bin
 NCPUS=4
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis"
 bam_files=$1; shift
@@ -20,7 +19,7 @@ labels=$1;
 mkdir -p ${DIR}/QC/deeptools
 
 #cumulative enrichment
-python plotFingerprint.py \
+plotFingerprint \
             --bamfiles ${bam_files} \
             --minMappingQuality 30 \
             --binSize=1000 \
@@ -30,7 +29,7 @@ python plotFingerprint.py \
             -p ${NCPUS} &> ${DIR}/QC/deeptools/fingerprint.log
 
 #read coverages for genomic regions for the BAM files
-python multiBamSummary.py bins \
+multiBamSummary bins \
            --bamfiles ${bam_files} \
            --outFileName ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
            --binSize=5000 \
@@ -38,10 +37,7 @@ python multiBamSummary.py bins \
            -p ${NCPUS} &> ${DIR}/QC/deeptools/multiBamSummary.log
 
 #PCA for read coverage
-python plotPCA.py \
+plotPCA \
             --corData ${DIR}/QC/deeptools/bamCorrelate_coverage.npz \
             --plotFile ${DIR}/QC/deeptools/pca.pdf \
-            --labels ${labels}   
-
-module unload python/3.7.7
-
+            --labels ${labels}
