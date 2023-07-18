@@ -21,7 +21,10 @@ sample_name=$1;
 cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
 #cross correlation
-Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_sort.bam -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
+Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_sort.bam \
+                  -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
+                  -tmpdir=/globalhome/hxo752/HPC/tmp \
+                  -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
 
 module unload r/4.2.1
 module unload samtools
