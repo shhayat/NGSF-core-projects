@@ -52,8 +52,6 @@ sbatch 06_QC_deeptools.sh "${bam_files}" "${label2}" "HCC1806";
 #MAC3 Peakcalling
 ##################
 filename='samples.txt'
-#echo Start
-#while read p; do 
 for i in $filename
 do
     echo "$i[1]"
