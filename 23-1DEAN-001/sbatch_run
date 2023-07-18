@@ -31,7 +31,7 @@ do
     bam_files+="${sample}"
     bam_files=$(echo "$bam_files" | sed 's/.bam\//.bam \//g')
 done
-sbatch 06_QC_deeptools.sh "${bam_files}" "${label1}"; 
+sbatch 06_QC_deeptools.sh "${bam_files}" "${label1}" "BT549"; 
 
 for num in {38..43}
 do  
@@ -39,7 +39,7 @@ do
     bam_files+="${sample}"
     bam_files=$(echo "$bam_files" | sed 's/.bam\//.bam \//g')
 done
-sbatch 06_QC_deeptools.sh "${bam_files}" "${label2}"; 
+sbatch 06_QC_deeptools.sh "${bam_files}" "${label2}" "HCC1806"; 
 
 
 #MAC3 peakcalling
