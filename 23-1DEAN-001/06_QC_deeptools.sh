@@ -18,7 +18,7 @@ bam_files=$1; shift
 labels=$1; shift
 cellline=$1;
 
-mkdir -p ${DIR}/QC/deeptools
+mkdir -p ${DIR}/QC/deeptools/${cellline}
 
 #cumulative enrichment
 plotFingerprint \
@@ -26,7 +26,7 @@ plotFingerprint \
             --minMappingQuality 30 \
             --binSize=1000 \
             --skipZeros \
-            --plotFile ${DIR}/QC/deeptools/fingerprint.pdf \
+            --plotFile ${DIR}/QC/deeptools/${cellline}/fingerprint.pdf \
             --labels ${labels} \
             -p ${NCPUS} &> ${DIR}/QC/deeptools/${cellline}/fingerprint.log
 
