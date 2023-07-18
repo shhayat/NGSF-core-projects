@@ -1,11 +1,15 @@
-#bowtie alignment
+###################
+#BOWTIE ALIGNMENT
+###################
 for i in {33..43}
 do
   sbatch 03_bowtie_alignment.sh "D23000${i}" "D23000${i}.fastq.gz"
   sleep 0.2
 done
 
-#Picard
+########
+#PICARD
+########
 for i in {33..43}
 #for i in 41 42
 do
@@ -13,15 +17,17 @@ do
   sleep 0.3
 done
 
-
+#########################
 #QC: phantompeakqualtools
+#########################
 for i in {33..43}
 do
   sbatch 05_QC_phantompeakqualtools.sh "D23000${i}"
   sleep 0.5
 done
-
+###############
 #QC: deeptools
+###############
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment
 label1="BT549_control_rep1 BT549_control_rep2 BT549_control_rep3 BT549_CREB3L1_rep2 BT549_CREB3L1_rep3"
 label2="HCC1806_control_rep1 HCC1806_control_rep2 HCC1806_control_rep3 HCC1806_CREB3L1_rep1 HCC1806_CREB3L1_rep2 HCC1806_CREB3L1_rep3" 
@@ -42,8 +48,9 @@ do
 done
 sbatch 06_QC_deeptools.sh "${bam_files}" "${label2}" "HCC1806"; 
 
-
-#MAC3 peakcalling
+##################
+#MAC3 Peakcalling
+##################
 filename='samples.txt'
 #echo Start
 #while read p; do 
