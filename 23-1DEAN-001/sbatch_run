@@ -5,19 +5,20 @@ do
   sleep 0.2
 done
 
-#QC 04_QC_phantompeakqualtools
-for i in {33..43}
-do
-  sbatch 04_QC_phantompeakqualtools.sh "D23000${i}"
-  sleep 0.5
-done
-
 #Picard
 #for i in {33..43}
 for i in 34 41 42
 do
-  sbatch 05_picard_dedup.sh "D23000${i}"
+  sbatch 04_picard_dedup.sh "D23000${i}"
   sleep 0.3
+done
+
+
+#QC 04_QC_phantompeakqualtools
+for i in {33..43}
+do
+  sbatch 05_QC_phantompeakqualtools.sh "D23000${i}"
+  sleep 0.5
 done
 
 DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment"
