@@ -21,25 +21,33 @@ cellline=$1;
 mkdir -p ${DIR}/QC/deeptools/${cellline}
 
 #cumulative enrichment
-plotFingerprint \
-            --bamfiles ${bam_files} \
-            --minMappingQuality 30 \
-            --binSize=1000 \
-            --skipZeros \
-            --plotFile ${DIR}/QC/deeptools/${cellline}/fingerprint.pdf \
-            --labels ${labels} \
-            -p ${NCPUS} &> ${DIR}/QC/deeptools/${cellline}/fingerprint.log
+#plotFingerprint \
+#            --bamfiles ${bam_files} \
+#            --minMappingQuality 30 \
+#            --binSize=1000 \
+#            --skipZeros \
+#            --plotFile ${DIR}/QC/deeptools/${cellline}/fingerprint.pdf \
+#            --labels ${labels} \
+#            -p ${NCPUS} &> ${DIR}/QC/deeptools/${cellline}/fingerprint.log
 
 #read coverages for genomic regions for the BAM files
-multiBamSummary bins \
-           --bamfiles ${bam_files} \
-           --outFileName ${DIR}/QC/deeptools/${cellline}/bamCorrelate_coverage.npz \
-           --binSize=5000 \
-           --labels ${labels} \
-           -p ${NCPUS} &> ${DIR}/QC/deeptools/${cellline}/multiBamSummary.log
+#multiBamSummary bins \
+#           --bamfiles ${bam_files} \
+#           --outFileName ${DIR}/QC/deeptools/${cellline}/bamCorrelate_coverage.npz \
+#           --binSize=5000 \
+#           --labels ${labels} \
+#           -p ${NCPUS} &> ${DIR}/QC/deeptools/${cellline}/multiBamSummary.log
+
+# correlation plot
+plotCorrelation \
+           --corData ${DIR}/QC/deeptools/${cellline}/bamCorrelate_coverage.npz \
+           --plotFile ${DIR}/QC/deeptools/${cellline}/scatterPlot.png \
+           --corMethod pearson \
+           --whatToPlot scatterplot \
+           --labels ${labels}
 
 #PCA for read coverage
-plotPCA \
-            --corData ${DIR}/QC/deeptools/${cellline}/bamCorrelate_coverage.npz \
-            --plotFile ${DIR}/QC/deeptools/${cellline}/pca.pdf \
-            --labels ${labels}
+#plotPCA \
+#            --corData ${DIR}/QC/deeptools/${cellline}/bamCorrelate_coverage.npz \
+#            --plotFile ${DIR}/QC/deeptools/${cellline}/pca.pdf \
+#            --labels ${labels}
