@@ -53,7 +53,6 @@ sbatch 06_QC_deeptools.sh "${bam_files}" "${label2}" "HCC1806";
 ##################
 #MAC3 Peakcalling
 ##################
-filename='BT549_samples.txt'
 for num in {38..43}
 do
 
