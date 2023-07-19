@@ -40,3 +40,7 @@ java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=/globalhome/hxo752/HPC
 
 module unload picard/2.23.3 
 module unload samtools
+
+
+#Remove reads from *.aligned_dedup.bam which are present in blacklist
+
