@@ -13,8 +13,8 @@ module load nixpkgs/16.09
 module load gcc/7.3.0
 module load bcl2fastq2/2.20.0
 
-sequencing_run=/datastore/NGSF001/NB551711/230518_NB551711_0075_AH2V52BGXT
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/analysis
+sequencing_run=/datastore/NGSF001/NB551711/230718_NB551711_0078_AHL2L5AFX5
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002a/analysis
 
 mkdir -p ${OUTDIR}/fastq
 bcl2fastq --runfolder-dir ${sequencing_run}/ -o ${OUTDIR}/fastq --no-lane-splitting
