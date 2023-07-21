@@ -12,7 +12,7 @@
 #reads
 
 umitools=/globalhome/hxo752/HPC/.local/bin
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fq_with_umi_header
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/fq_with_umi_header
 mkdir -p ${OUTDIR}
 
 sample_name=$1; shift
