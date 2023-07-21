@@ -16,14 +16,14 @@ FASTQ_FOLDER2=/datastore/NGSF001/projects/23-1MILE-002/fastq
 OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/Fastq
 OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/fastq_concatenated	
 
-for i in $(seq -w 122 129)
-do
-	echo Combining library R2300${i}
-	cat ${FASTQ_FOLDER1}/R2300${i}_*_R1_* > ${OUTDIR}/R2300${i}_R1.fastq.gz
-	cat ${FASTQ_FOLDER1}/R2300${i}_*_R2_* > ${OUTDIR}/R2300${i}_R2.fastq.gz
-done
+#for i in $(seq -w 122 129)
+#do
+#	echo Combining library R2300${i}
+#	cat ${FASTQ_FOLDER1}/R2300${i}_*_R1_* > ${OUTDIR}/R2300${i}_R1.fastq.gz
+#	cat ${FASTQ_FOLDER1}/R2300${i}_*_R2_* > ${OUTDIR}/R2300${i}_R2.fastq.gz
+#done
 
-wait
+#wait
 
 #2 samples 127 and 130 are not concatenated because they were not sequenced in second run
 for i in 122 133 124 125 126 128 129
