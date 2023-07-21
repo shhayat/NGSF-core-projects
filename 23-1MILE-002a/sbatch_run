@@ -51,10 +51,9 @@ do
 done
 
 
-BAM_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/star_alignment
 for i in {122..130}
 do
-   bam=${BAM_DIR}/R2300${i}/Aligned.sortedByCoord.out.bam
+   bam=Aligned.sortedByCoord.out.bam
    sbatch ${SCRIPT_DIR}/04_remove_rnrna_and_dedupUMI.sh "R2300${i}" ${bam}
 done
 
