@@ -19,7 +19,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SUUN-001/ana
 for i in $(seq -w 131 142)
 do
 	echo Combining library R2300${i}
-	cat ${FASTQ_FOLDER}/R2300${i}_*_R1_* > ${OUTDIR}/R2300${i}_R1.fastq.gz
-	cat ${FASTQ_FOLDER}/R2300${i}_*_R2_* > ${OUTDIR}/R2300${i}_R2.fastq.gz
+	cat ${FASTQ_FOLDER}/R23000${i}_*_R1_* > ${OUTDIR}/R23000${i}_R1.fastq.gz
+	cat ${FASTQ_FOLDER}/R23000${i}_*_R2_* > ${OUTDIR}/R23000${i}_R2.fastq.gz
 done
   
