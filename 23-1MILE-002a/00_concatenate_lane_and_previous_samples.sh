@@ -27,7 +27,7 @@ OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/a
 #wait
 
 #2 samples 127 and 130 are not concatenated because they were not sequenced in second run
-for i in 122 133 124 125 126 128 129
+for i in 122 123 124 125 126 128 129
 do
 	echo "Combining 23-1MILE-002 fastq samples with 23-1MILE-002a"
 	cat ${OUTDIR1}/R2300${i}_R1.fastq.gz ${FASTQ_FOLDER2}/R2300${i}_*_R1_001.fastq.gz > ${OUTDIR2}/R2300${i}_R1.fastq.gz
