@@ -44,5 +44,5 @@ ${umitools}/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
                 --log="${sample_name}.umi.log" \
                 --umi-separator="_" \
                 --unpaired-reads="discard" \
-                --paired --chimeric-pairs="discard" > ${sample_name}.no-rRNA.primary-aln.dedup.bam
+                --paired --chimeric-pairs="discard" > ${sample_name}.no-rRNA.primary-aln.dedup.bam \
                  && samtools index ${sample_name}.no-rRNA.primary-aln.dedup.bam
