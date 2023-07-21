@@ -19,8 +19,8 @@ for i in ${DATA1}/R23*_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
-      fq1=${DATA}/${sample_name}_R1.fastq.gz;
-      fq2=${DATA}/${sample_name}_R2.fastq.gz;
+      fq1=${DATA1}/${sample_name}_R1.fastq.gz;
+      fq2=${DATA1}/${sample_name}_R2.fastq.gz;
       
       sbatch ${SCRIPT_DIR}/02_FastQC.sh "${fq1}" "${fq2}"
  done
@@ -29,8 +29,8 @@ for i in ${DATA2}/R23*_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
-      fq1=${DATA}/${sample_name}_R1.fastq.gz;
-      fq2=${DATA}/${sample_name}_R2.fastq.gz;
+      fq1=${DATA2}/${sample_name}_R1.fastq.gz;
+      fq2=${DATA2}/${sample_name}_R2.fastq.gz;
       
       sbatch ${SCRIPT_DIR}/02_FastQC.sh "${fq1}" "${fq2}"
  done
@@ -49,8 +49,6 @@ do
       
       sbatch ${SCRIPT_DIR}/03_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
 done
-
-
 
 
 for i in {122..130}
