@@ -8,6 +8,7 @@
 #SBATCH --mem=8G
 
 mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/Fastq 
+mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/fastq_concatenated 
 
 #current samples
 FASTQ_FOLDER1=/datastore/NGSF001/NB551711/230718_NB551711_0078_AHL2L5AFX5/Alignment_1/20230719_041051/Fastq
