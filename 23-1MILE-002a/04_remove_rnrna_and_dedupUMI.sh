@@ -25,19 +25,19 @@ BAM=$1;
 mkdir -p ${DIR}/deduplication/${sample_name} && cd ${DIR}/deduplication/${sample_name}
 
 #echo "Dropping ribosomal RNA reads"
-#samtools view -@ ${NCPU} \
-##              -U ${sample_name}.no-rRNA.bam \
-#              -O BAM \
-#              -L ${RRNA} \
-#              ${DIR}/star_alignment/${sample_name}/${BAM}
+samtools view -@ ${NCPU} \
+              -U ${sample_name}.no-rRNA.bam \
+              -O BAM \
+              -L ${RRNA} \
+              ${DIR}/star_alignment/${sample_name}/${BAM}
 
 
 # keep only primary alignments
-#echo "Keep primary alignments, and reindex"
-#samtools view -@ ${NCPU} \
-#              -F 0x804 \
-#              -O BAM ${sample_name}.no-rRNA.bam > ${sample_name}.no-rRNA.primary-aln.bam \
-#              && samtools index ${sample_name}.no-rRNA.primary-aln.bam
+echo "Keep primary alignments, and reindex"
+samtools view -@ ${NCPU} \
+              -F 0x804 \
+              -O BAM ${sample_name}.no-rRNA.bam > ${sample_name}.no-rRNA.primary-aln.bam \
+              && samtools index ${sample_name}.no-rRNA.primary-aln.bam
 
 
 ${umitools}/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
