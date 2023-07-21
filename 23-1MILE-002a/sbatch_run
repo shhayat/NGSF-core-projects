@@ -6,7 +6,7 @@ do
       sample_name=${path##*/};
       fq1=${DATA}/${sample_name}_R1.fastq.gz;
       fq2=${DATA}/${sample_name}_R2.fastq.gz;   
-      sbatch ${SCRIPT_DIR}/00_Add_UMIs.sh "${sample_name}" "${fq1}" "${fq2}"
+      sbatch ${SCRIPT_DIR}/01_Add_UMIs.sh "${sample_name}" "${fq1}" "${fq2}"
  done
 
 
