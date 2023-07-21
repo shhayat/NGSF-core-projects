@@ -7,9 +7,6 @@
 #SBATCH --time=2:00:00
 #SBATCH --mem=8G
 
-	
-set -eux
-
 mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/Fastq 
 
 FASTQ_FOLDER=/datastore/NGSF001/NB551711/230314_NB551711_0067_AH2VMJBGXM/Alignment_1/20230315_045627/Fastq
