@@ -2,7 +2,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/an
 OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/fastqc_for_23-1MILE-002a_and_23-1MILE-002_with_umi_header
 cd /datastore/NGSF001/software/tools/
 ./multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR} -n fastqc_for_23-1MILE-002a 
-./multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR} -n fastqc_for_23-1MILE-002a_and_23-1MILE-002_with_umi_header
+./multiqc ${OUTDIR1}/*_fastqc.zip -o ${OUTDIR1} -n fastqc_for_23-1MILE-002a_and_23-1MILE-002_with_umi_header
 
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/star_alignment
