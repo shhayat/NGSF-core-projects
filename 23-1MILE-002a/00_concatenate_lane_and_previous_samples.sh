@@ -34,3 +34,8 @@ do
 	cat ${OUTDIR1}/R2300${i}_R2.fastq.gz ${FASTQ_FOLDER2}/R2300${i}_*_R2_001.fastq.gz > ${OUTDIR2}/R2300${i}_R2.fastq.gz
 done
 
+#copy R2300127 and R2300130 from previous run to OUTDIR2
+
+cp ${FASTQ_FOLDER2}/R2300127_*_001.fastq.gz ${OUTDIR2}/
+cp ${FASTQ_FOLDER2}/R2300130_*_001.fastq.gz ${OUTDIR2}/
+
