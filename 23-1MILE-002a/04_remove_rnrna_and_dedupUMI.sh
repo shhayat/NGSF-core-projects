@@ -33,11 +33,11 @@ samtools view -@ ${NCPU} \
 
 
 # keep only primary alignments
-echo "Keep primary alignments, and reindex"
-samtools view -@ ${NCPU} \
-              -F 0x804 \
-              -O BAM ${sample_name}.no-rRNA.bam > ${sample_name}.no-rRNA.primary-aln.bam \
-              && samtools index ${sample_name}.no-rRNA.primary-aln.bam
+#echo "Keep primary alignments, and reindex"
+#samtools view -@ ${NCPU} \
+#              -F 0x804 \
+#              -O BAM ${sample_name}.no-rRNA.bam > ${sample_name}.no-rRNA.primary-aln.bam \
+#              && samtools index ${sample_name}.no-rRNA.primary-aln.bam
 
 
 ${umitools}/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
