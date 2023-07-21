@@ -17,4 +17,4 @@ sequencing_run=/datastore/NGSF001/NB551711/230718_NB551711_0078_AHL2L5AFX5
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis
 
 mkdir -p ${OUTDIR}/fastq
-bcl2fastq --runfolder-dir ${sequencing_run}/ -o ${OUTDIR}/fastq --no-lane-splitting
+bcl2fastq --runfolder-dir ${sequencing_run}/ -o ${OUTDIR}/fastq
