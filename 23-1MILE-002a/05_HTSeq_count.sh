@@ -7,6 +7,8 @@
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+conda activate glibc
+
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/star_alignment
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/htseq_counts
@@ -23,6 +25,8 @@ BAM=$1
                                                             --additional-attr gene_name \
                                                             ${BAM} \
                                                             ${GTF} > ${OUTDIR}/${sample_name}_htseq_counts.txt
+                                                            
+conda deactivate glibc
 
 #remove .[0-9] from each line from ffrist columm
 #awk '{ gsub(".[0-9]*$", "", $1); print }' ${OUTDIR}/${sample_name}_htseq_counts.txt > ${OUTDIR}/${sample_name}_htseq_counts.tmp && mv ${OUTDIR}/${sample_name}_htseq_counts.tmp ${OUTDIR}/${sample_name}_htseq_counts.txt
