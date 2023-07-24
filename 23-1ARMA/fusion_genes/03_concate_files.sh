@@ -1,6 +1,5 @@
 dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/lymphoma
-
-sample_name=$1;
+tumor_type="lymphoma"
 
 mkdir -p ${dir}/NTRK_fusions
 
