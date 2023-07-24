@@ -1,5 +1,5 @@
-dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/lymphoma
-tumor_type="lymphoma"
+dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/urothelial_carcinoma
+tumor_type="urothelial_carcinoma"
 
 for i in ${dir}/*/star-fusion.fusion_predictions.tsv
 do
