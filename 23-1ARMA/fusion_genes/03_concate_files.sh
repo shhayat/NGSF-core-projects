@@ -7,4 +7,4 @@ do
   cat ${dir}/fusion_genes_tmp.txt >> ${dir}/${tumor_type}_fusion_genes.txt
   rm ${dir}/fusion_genes_tmp.txt
 done
-echo -e "FusionName\tJunctionReadCount\tSpanningFragCount\test_J\test_S\tSpliceType\tLeftGene\tLeftBreakpoint\tRightGene\tRightBreakpointJunctionReads\tSpanningFrags\tLargeAnchorSupport\tFFPM\tLeftBreakDinuc\tLeftBreakEntropy\tRightBreakDinuc\tRightBreakEntropy\tannots" > file2 && cat file2 >> ${dir}/${tumor_type}_fusion_genes.txt && rm file2
+echo -e "FusionName\tJunctionReadCount\tSpanningFragCount\test_J\test_S\tSpliceType\tLeftGene\tLeftBreakpoint\tRightGene\tRightBreakpointJunctionReads\tSpanningFrags\tLargeAnchorSupport\tFFPM\tLeftBreakDinuc\tLeftBreakEntropy\tRightBreakDinuc\tRightBreakEntropy\tannots" > file2 && cat ${dir}/${tumor_type}_fusion_genes.txt >> file2 && rm file2
