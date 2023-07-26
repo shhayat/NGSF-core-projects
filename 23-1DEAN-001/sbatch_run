@@ -55,6 +55,7 @@ sbatch 06_QC_deeptools.sh "${bam_files}" "${label2}" "HCC1806";
 ##################
 for num in {38..43}
 do
+    sample=$DIR/D23000${num}/D23000${num}.aligned_dedup.bam
 
 
     sleep 0.2
