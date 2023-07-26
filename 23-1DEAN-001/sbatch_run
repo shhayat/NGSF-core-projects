@@ -66,3 +66,19 @@ do
     sbatch 07_MACS3_peakcalling.sh "$control" "$treat" "$sample_name";
     sleep 0.3
 done < 'samplesheet_HCC1806.txt'
+
+
+
+##################
+# IDR
+##################
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall
+
+peak_files=""
+for peak_file in $DIR/SRR*/*_peaks.sorted.narrowPeak
+do  
+    peak_files+="${peak_file}"
+    peak_files=$(echo "$peak_files" | sed 's/.narrowPeak\//.narrowPeak \//g')
+ done
+ 
+sbatch 08_IDR_handling_replicates.sh  "${peak_files}";
