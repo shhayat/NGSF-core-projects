@@ -53,5 +53,16 @@ sbatch 06_QC_deeptools.sh "${bam_files}" "${label2}" "HCC1806";
 ##################
 #MAC3 Peakcalling
 ##################
-samplesheet_BT549.txt
+#!/bin/sh
+while read control treat sample_name; 
+do
+    sbatch 06_MACS2_peakcalling.sh "$control" "$treat" "$sample_name";
+    sleep 0.3
+done < 'samplesheet_BT549.txt'
 
+#!/bin/sh
+while read control treat sample_name; 
+do
+    sbatch 06_MACS2_peakcalling.sh "$control" "$treat" "$sample_name";
+    sleep 0.3
+done < 'samplesheet_HCC1806.txt'
