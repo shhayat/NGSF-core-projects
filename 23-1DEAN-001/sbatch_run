@@ -57,6 +57,5 @@ for num in {38..43}
 do
 
 
-
     sleep 0.2
 done
