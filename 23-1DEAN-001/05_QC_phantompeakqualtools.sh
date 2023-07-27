@@ -9,6 +9,7 @@
 #SBATCH --mem=20G
 #SBATCH  --output=%j.out
 
+module load StdEnv/2020
 module load r/4.2.1
 module load samtools
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis
