@@ -46,14 +46,14 @@ sample_name=$1
 
 
 #Remove reads from *.aligned_dedup.bam which are present in blacklist
-bedtools intersect -v -a ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-		      -b /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
-
+#bedtools intersect -v -a ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
+#		      -b /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
+#
 samtools sort -T /globalhome/hxo752/HPC/tmp \
-	      -o ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt)sort.bam \
+	      -o ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt_sort.bam \
 	      ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
 
-samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt)sort.bam
+samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt_sort.bam
 
 #module unload picard/2.23.3 
 #module unload samtools
