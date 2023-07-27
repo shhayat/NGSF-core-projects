@@ -33,7 +33,7 @@ label1="BT549_control_rep1 BT549_control_rep2 BT549_control_rep3 BT549_CREB3L1_r
 bam_files=""
 for num in {33..37}
 do  
-    sample=$DIR/D23000${num}/D23000${num}.aligned_dedup.bam
+    sample=$DIR/D23000${num}/D23000${num}.aligned_dedup_filt_sort.bam
     bam_files+="${sample}"
     bam_files=$(echo "$bam_files" | sed 's/.bam\//.bam \//g')
 done
@@ -44,7 +44,7 @@ label2="HCC1806_ctrl_R1 HCC1806_ctrl_R2 HCC1806_ctrl_R3 HCC1806_CREB3L1_R1 HCC18
 bam_files=""
 for num in {38..43}
 do  
-    sample=$DIR/D23000${num}/D23000${num}.aligned_dedup.bam
+    sample=$DIR/D23000${num}/D23000${num}.aligned_dedup_filt_sort.bam
     bam_files+="${sample}"
     bam_files=$(echo "$bam_files" | sed 's/.bam\//.bam \//g')
 done
