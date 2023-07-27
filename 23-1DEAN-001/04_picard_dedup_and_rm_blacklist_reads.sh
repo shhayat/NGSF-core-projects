@@ -44,6 +44,6 @@ module unload samtools
 
 #Remove reads from *.aligned_dedup.bam which are present in blacklist
 /globalhome/hxo752/HPC/anaconda3/envs/bamutil/bin/bam filter \
-			${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-			${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam \
-			-excludebed /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed
+			--in ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
+			--out ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam \
+			--refFile /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed
