@@ -13,6 +13,11 @@ set -eux
 
 module load picard/2.23.3 
 module load samtools
+module load nixpkgs/16.09
+module load gcc/5.4.0
+module load intel/2016.4
+module load bedtools/2.26.0
+
 BAMDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment
 NCPU=4
 
@@ -41,10 +46,8 @@ sample_name=$1
 
 
 #Remove reads from *.aligned_dedup.bam which are present in blacklist
-/globalhome/hxo752/HPC/anaconda3/envs/bamutil/bin/bam filter \
-			--in ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-			--out ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam \
-			--refFile /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed
+bedtools intersect -v -a ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
+		      -b /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
 
 samtools sort -T /globalhome/hxo752/HPC/tmp \
 	      -o ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt)sort.bam \
