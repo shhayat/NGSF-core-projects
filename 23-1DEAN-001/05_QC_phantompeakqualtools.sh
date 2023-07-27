@@ -19,7 +19,7 @@ sample_name=$1;
 
 # Quality check
 #phantompeakqualtools
-cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
+cd /globalhome/hxo752/HPC/tools/phantompeakqualtools_on_dedup_bam
 
 #cross correlation
 Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_dedup.bam \
