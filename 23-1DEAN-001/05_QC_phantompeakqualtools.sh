@@ -11,7 +11,7 @@
 
 module load r/4.2.1
 module load samtools
-OUTDIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis"
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis
 
 mkdir -p ${OUTDIR}/QC/phantompeakqualtools
 sample_name=$1;
@@ -21,11 +21,11 @@ sample_name=$1;
 cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
 #cross correlation
-Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}..aligned_dedup.bam \
+Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_dedup.bam \
                   -s=0:1:500 \
-                  -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}_v1.pdf \
+                  -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
                   -tmpdir=/globalhome/hxo752/HPC/tmp \
-                  -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}_v1.txt
+                  -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
 
 module unload r/4.2.1
 module unload samtools
