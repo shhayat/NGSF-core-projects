@@ -13,36 +13,37 @@ set -eux
 
 module load picard/2.23.3 
 module load samtools
-
+module load bamutils
 BAMDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment
 NCPU=4
 
 sample_name=$1
 
-java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=/globalhome/hxo752/HPC/tmp -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
-	I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
-	O=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
-	SO=coordinate \
-	RGID=4 \
-	RGLB=lib1 \
-	RGPL=ILLUMINA \
-	RGPU=unit1 \
-	RGSM=20
+#java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=/globalhome/hxo752/HPC/tmp -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
+#	I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
+#	O=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
+#	SO=coordinate \
+#	RGID=4 \
+#	RGLB=lib1 \
+#	RGPL=ILLUMINA \
+#	RGPU=unit1 \
+#	RGSM=20
 
-java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=/globalhome/hxo752/HPC/tmp -jar $EBROOTPICARD/picard.jar MarkDuplicates \
-             I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
-             O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-             M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
-             VALIDATION_STRINGENCY=LENIENT \
-             REMOVE_DUPLICATES=true \
-             ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
-	     samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
+#java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=/globalhome/hxo752/HPC/tmp -jar $EBROOTPICARD/picard.jar MarkDuplicates \
+ #            I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
+  #           O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
+   #          M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
+    #         VALIDATION_STRINGENCY=LENIENT \
+     #        REMOVE_DUPLICATES=true \
+      #       ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
+	#     samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
 
 module unload picard/2.23.3 
 module unload samtools
 
 
 #Remove reads from *.aligned_dedup.bam which are present in blacklist
-bamutils filter ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-		${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam \
-		-excludebed /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed
+/globalhome/hxo752/HPC/anaconda3/envs/bamutil/bin/bam filter \
+			${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
+			${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam \
+			-excludebed /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed
