@@ -13,7 +13,6 @@ set -eux
 
 module load picard/2.23.3 
 module load samtools
-module load bamutils
 BAMDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment
 NCPU=4
 
