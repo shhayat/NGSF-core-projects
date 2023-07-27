@@ -24,7 +24,7 @@ cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 #cross correlation
 Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_dedup.bam \
                   -s=0:1:500 \
-                  -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
+                  -savp=${OUTDIR}/QC/phantompeakqualtools_on_dedup_bam/xcor_${sample_name}.pdf \
                   -tmpdir=/globalhome/hxo752/HPC/tmp \
                   -out=${OUTDIR}/QC/phantompeakqualtools_on_dedup_bam/xcor_metrics_${sample_name}.txt
 
