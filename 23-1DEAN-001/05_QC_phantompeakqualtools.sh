@@ -19,14 +19,14 @@ sample_name=$1;
 
 # Quality check
 #phantompeakqualtools
-cd /globalhome/hxo752/HPC/tools/phantompeakqualtools_on_dedup_bam
+cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
 #cross correlation
 Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_dedup.bam \
                   -s=0:1:500 \
                   -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
                   -tmpdir=/globalhome/hxo752/HPC/tmp \
-                  -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
+                  -out=${OUTDIR}/QC/phantompeakqualtools_on_dedup_bam/xcor_metrics_${sample_name}.txt
 
 module unload r/4.2.1
 module unload samtools
