@@ -11,8 +11,8 @@
 
 set -eux
 
-module load picard/2.23.3 
-module load samtools
+#module load picard/2.23.3 
+#module load samtools
 module load nixpkgs/16.09
 module load gcc/5.4.0
 module load intel/2016.4
@@ -55,5 +55,5 @@ samtools sort -T /globalhome/hxo752/HPC/tmp \
 
 samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt)sort.bam
 
-module unload picard/2.23.3 
-module unload samtools
+#module unload picard/2.23.3 
+#module unload samtools
