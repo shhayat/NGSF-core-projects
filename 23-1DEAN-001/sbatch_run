@@ -13,7 +13,7 @@ done
 for i in {33..43}
 #for i in 41 42
 do
-  sbatch 04_picard_dedup.sh "D23000${i}"
+  sbatch 04_picard_dedup_and_rm_blacklist_reads.sh "D23000${i}"
   sleep 0.3
 done
 
