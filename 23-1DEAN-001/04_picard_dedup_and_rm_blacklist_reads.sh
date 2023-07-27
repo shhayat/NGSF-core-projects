@@ -38,8 +38,7 @@ sample_name=$1
       #       ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
 	#     samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
 
-module unload picard/2.23.3 
-module unload samtools
+
 
 
 #Remove reads from *.aligned_dedup.bam which are present in blacklist
@@ -47,3 +46,12 @@ module unload samtools
 			--in ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
 			--out ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam \
 			--refFile /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed
+
+samtools sort -T /globalhome/hxo752/HPC/tmp \
+	      -o ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt)sort.bam \
+	      ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
+
+samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt)sort.bam
+
+module unload picard/2.23.3 
+module unload samtools
