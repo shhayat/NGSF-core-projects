@@ -67,8 +67,6 @@ do
     sleep 0.3
 done < 'samplesheet_HCC1806.txt'
 
-
-
 ##################
 # IDR
 ##################
@@ -81,4 +79,15 @@ do
     peak_files=$(echo "$peak_files" | sed 's/.narrowPeak\//.narrowPeak \//g')
  done
  
-sbatch 08_IDR_handling_replicates.sh  "${peak_files}";
+sbatch 09_IDR_handling_replicates.sh  "${peak_files}";
+
+#############
+#bigwig file
+#############
+DIR=/globalhome/hxo752/HPC/23-1DEAN-001/analysis/alignment
+for i in {33..43}
+do
+  sbatch bigwig.sh ${DIR}/D23000${i}/D23000${i}.aligned_dedup_filt_sort.bam D23000${i}
+  sleep 0.2
+done
+
