@@ -4,8 +4,8 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=QC
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
-#SBATCH --time=2:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --time=3:00:00
 #SBATCH --mem=20G
 #SBATCH  --output=%j.out
 
@@ -23,10 +23,11 @@ cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
 #cross correlation
 Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam \
+                  -p=8 \
                   -s=0:1:1000 \
-                  -savp=${OUTDIR}/QC/phantompeakqualtools_on_dedup_bam/xcor_${sample_name}.pdf \
+                  -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
                   -tmpdir=/globalhome/hxo752/HPC/tmp \
-                  -out=${OUTDIR}/QC/phantompeakqualtools_on_dedup_bam/xcor_metrics_${sample_name}.txt
+                  -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
 
 module unload r/4.2.1
 module unload samtools
