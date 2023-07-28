@@ -5,7 +5,7 @@ dir.create("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-00
 setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/QC")
 
 # reading in the sample information (metadata)
-sampl_info <- read.csv("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/sampleSheet_for_chiqQC.csv")
+sampl_info <- read.csv("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/sampleSheet_for_ChIPQC.csv")
 
 res=dba(sampleSheet=sampl_info, config=data.frame(RunParallel=FALSE))
 
