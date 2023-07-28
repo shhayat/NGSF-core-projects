@@ -26,7 +26,7 @@ Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.b
                   -p=8 \
                   -s=0:1:1000 \
                   -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
-                  -tmpdir=/globalhome/hxo752/HPC/tmp \
+                  -tmpdir=$SLURM_TMPDIR \
                   -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
 
 module unload r/4.2.1
