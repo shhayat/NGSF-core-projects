@@ -1,6 +1,3 @@
-/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300038/D2300038.aligned_dedup_filt_sort.bam /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300041/D2300041.aligned_dedup_filt_sort.bam
-D2300038_D2300041_rep1
-/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300039/D2300039.aligned_dedup_filt_sort.bam /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300042/D2300042.aligned_dedup_filt_sort.bam
-D2300039_D2300042_rep2
-/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300040/D2300040.aligned_dedup_filt_sort.bam /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300043/D2300043.aligned_dedup_filt_sort.bam
-D2300040_D2300043_rep3
+/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300038/D2300038.aligned_dedup_filt_sort.bam /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300041/D2300041.aligned_dedup_filt_sort.bam D2300038_D2300041_rep1
+/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300039/D2300039.aligned_dedup_filt_sort.bam /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300042/D2300042.aligned_dedup_filt_sort.bam D2300039_D2300042_rep2
+/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300040/D2300040.aligned_dedup_filt_sort.bam /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/alignment/D2300043/D2300043.aligned_dedup_filt_sort.bam D2300040_D2300043_rep3
