@@ -10,7 +10,7 @@ sampl_info <- read.csv("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects
 res=dba(sampleSheet=sampl_info, config=data.frame(RunParallel=FALSE))
 
 #Create ChIPQC object
-resQC = ChIPQC(res,annotation="mm10", config=data.frame(RunParallel=FALSE))
+resQC = ChIPQC(res,annotation="hg38", config=data.frame(RunParallel=FALSE))
 
 # Create ChIPQC report
 ChIPQCreport(resQC, reportName="ChIPQC Report", reportFolder="ChIPQC")
