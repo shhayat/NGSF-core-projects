@@ -10,7 +10,6 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 source $HOME/.bashrc 
-conda activate bioconductor-chipqc
+cd /globalhome/hxo752/HPC/anaconda3/envs/bioconductor-chipqc/bin/
 
 Rscript QC_after_peak_calling.R
-conda deactivate 
