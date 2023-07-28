@@ -23,37 +23,32 @@ NCPU=4
 
 sample_name=$1
 
-#java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=/globalhome/hxo752/HPC/tmp -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
-#	I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
-#	O=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
-#	SO=coordinate \
-#	RGID=4 \
-#	RGLB=lib1 \
-#	RGPL=ILLUMINA \
-#	RGPU=unit1 \
-#	RGSM=20
+java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=$SLURM_TMPDIR -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
+	I=${BAMDIR}/${sample_name}/${sample_name}.aligned.bam \
+	O=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
+	SO=coordinate \
+	RGID=4 \
+	RGLB=lib1 \
+	RGPL=ILLUMINA \
+	RGPU=unit1 \
+	RGSM=20
 
-#java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=/globalhome/hxo752/HPC/tmp -jar $EBROOTPICARD/picard.jar MarkDuplicates \
- #            I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
-  #           O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-   #          M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
-    #         VALIDATION_STRINGENCY=LENIENT \
-     #        REMOVE_DUPLICATES=true \
-      #       ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
-	#     samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
-
-
+java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=$SLURM_TMPDIR -jar $EBROOTPICARD/picard.jar MarkDuplicates \
+            I=${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam \
+            O=${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
+            M=${BAMDIR}/${sample_name}/dedup_metrics.txt \
+    	    VALIDATION_STRINGENCY=LENIENT \
+     	    REMOVE_DUPLICATES=true \
+      	    ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
+	    samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
 
 
 #Remove reads from *.aligned_dedup.bam which are present in blacklist
-#bedtools intersect -v -a ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-#		      -b /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
-#
-samtools sort -T /globalhome/hxo752/HPC/tmp \
+bedtools intersect -v -a ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
+		      -b /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
+
+samtools sort -T $SLURM_TMPDIR \
 	      -o ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt_sort.bam \
-	      ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
+	      ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam && \
+	      samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt_sort.bam
 
-samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt_sort.bam
-
-#module unload picard/2.23.3 
-#module unload samtools
