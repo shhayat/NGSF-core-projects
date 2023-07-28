@@ -11,4 +11,4 @@
 
 module load r/4.1.2
 
-Rscript QC_ChipQC_after_peak_calling.R
+Rscript QC_after_peak_calling.R
