@@ -9,6 +9,8 @@
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module load r/4.1.2
+source $HOME/.bashrc 
+conda activate bioconductor-chipqc
 
 Rscript QC_after_peak_calling.R
+conda deactivate 
