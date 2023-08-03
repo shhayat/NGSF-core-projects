@@ -1,11 +1,11 @@
 library(ChIPseeker)
 library(clusterProfiler)
 #library(EnsDb.Mmusculus.v79)
-library(org.Hs.eg.db)
+library(org.Mm.eg.db)
 library(diffloop)
 
-library(TxDb.Hsapiens.UCSC.hg38.knownGene)
-txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene
+library(TxDb.Mmusculus.UCSC.mm10.knownGene)
+txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 
 dir.create("/globalhome/hxo752/HPC/chipseq/analysis/peak_annotation")
 setwd("/globalhome/hxo752/HPC/chipseq/analysis/peak_annotation")
