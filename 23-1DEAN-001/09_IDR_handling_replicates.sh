@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --time=2:00:00
 #SBATCH --mem=40G
-#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH  --output=%j.out
 
 cd /globalhome/hxo752/HPC/tools
 chmod a+x bedtools.static.binary
