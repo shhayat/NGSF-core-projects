@@ -21,7 +21,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/ana
 files=$1;
 
 mkdir -p $OUTDIR
-cd /globalhome/hxo752/HPC/anaconda3/bin
+cd /globalhome/hxo752/HPC/anaconda3/envs/idr/bin
 
 idr --samples ${files} \
       --output-file ${OUTDIR}/idr.bed \
