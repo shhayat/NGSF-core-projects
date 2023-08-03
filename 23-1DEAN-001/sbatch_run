@@ -70,7 +70,7 @@ done < 'samplesheet_HCC1806.txt'
 ##################
 # IDR
 ##################
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05
 
 peak_files=""
 for peak_file in $DIR/D2*/*_peaks.sorted.narrowPeak
