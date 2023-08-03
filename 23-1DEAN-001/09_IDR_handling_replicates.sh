@@ -44,6 +44,6 @@ cut -f 1,2,3 ${OUTDIR}/idr_filtered.bed > ${OUTDIR}/idr_filtered_3_columns.bed
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
 cd /globalhome/hxo752/HPC/tools
 chmod a+x bedtools.static.binary
-bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
+./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
                   -bed ${OUTDIR}/idr_filtered_3_columns.bed \
                   -fo ${OUTDIR}/genome.masked.on.idr_intervals.fa
