@@ -11,6 +11,9 @@
 
 #https://github.com/hbctraining/Intro-to-ChIPseq/blob/master/lessons/07_handling-replicates-idr.md
 #Combining replicates to only get the highly reproducible peaks using the IDR method
+
+source $HOME/.bashrc
+conda activate glibc
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis
 peaks=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/IDR
@@ -27,6 +30,7 @@ idr --samples ${files} \
       --log-output-file ${OUTDIR}/idr.log \
       --verbose
 
+conda deactivate
 #Column 5 contains the scaled IDR value, min(int(log2(-125IDR), 1000) For example, peaks with an IDR of 0 have a score of 1000, 
 #peaks with an IDR of 0.05 have a score of int(-125log2(0.05)) = 540, and IDR of 1.0 has a score of 0.
 #select IDR of 0.05
