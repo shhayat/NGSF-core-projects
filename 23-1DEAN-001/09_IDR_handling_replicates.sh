@@ -41,6 +41,6 @@ cut -f 1,2,3 ${OUTDIR}/idr_filtered.bed > ${OUTDIR}/idr_filtered_3_columns.bed
 
 #for motif discovery step repeat-masked version of the genome is required where all repeat sequences have been replaced with Ns
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
-./bedtools.static.binary getfasta -fi ${DIR}/indices_mouse/genome.fa \
+./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
                   -bed ${OUTDIR}/idr_filtered_3_columns.bed \
                   -fo ${OUTDIR}/genome.masked.on.idr_intervals.fa
