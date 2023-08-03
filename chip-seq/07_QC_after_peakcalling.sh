@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --time=2:00:00
 #SBATCH --mem=40G
-#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+#SBATCH  --output=%j.out
 
 module load r/4.1.2
 
