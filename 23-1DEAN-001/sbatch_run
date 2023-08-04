@@ -76,7 +76,7 @@ peak_files=""
 for peak_file in $DIR/D2*/*_peaks.sorted.narrowPeak
 do  
     peak_files+="${peak_file}"
-    peak_files=$(echo "$peak_files" | sed 's/.narrowPeak\//.narrowPeak \//g')
+    peak_files=$(echo "$peak_files" | sed 's/.narrowPeak\//.narrowPeak  \//g')
  done
  
 sbatch 09_IDR_handling_replicates.sh  "${peak_files}";
