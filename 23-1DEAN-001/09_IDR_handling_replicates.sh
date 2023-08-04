@@ -24,7 +24,6 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/ana
 files=$1;
 
 mkdir -p $OUTDIR
-cd /globalhome/hxo752/HPC/anaconda3/envs/idr/bin
 
 idr --samples ${files} \
       --output-file ${OUTDIR}/idr.bed \
@@ -50,3 +49,5 @@ chmod a+x bedtools.static.binary
 ./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
                                   -bed ${OUTDIR}/idr_filtered_3_columns.bed \
                                   -fo ${OUTDIR}/genome.masked.on.idr_intervals.fa
+
+deactivate
