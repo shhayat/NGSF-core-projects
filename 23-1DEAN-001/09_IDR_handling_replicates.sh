@@ -23,7 +23,7 @@ files=$1;
 mkdir -p $OUTDIR
 cd /globalhome/hxo752/HPC/anaconda3/envs/idr/bin
 
-idr --samples ${files} \
+./idr --samples ${files} \
       --output-file ${OUTDIR}/idr.bed \
       --plot \
       --rank p.value \
