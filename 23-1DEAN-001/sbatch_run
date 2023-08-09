@@ -70,16 +70,11 @@ done < 'samplesheet_HCC1806.txt'
 ##################
 # IDR
 ##################
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05
-
-peak_files=""
-for peak_file in $DIR/D2*/*_peaks.sorted.narrowPeak
-do  
-    peak_files+="${peak_file}"
-    peak_files=$(echo "$peak_files" | sed 's/.narrowPeak\//.narrowPeak  \//g')
- done
- 
-sbatch 09_IDR_handling_replicates.sh  "${peak_files}";
+  
+BT549_FILES="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05/D2300033_D2300036_rep1/D2300033_D2300036_rep1_peaks.sorted.narrowPeak /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05/D2300034_D2300037_rep2/D2300034_D2300037_rep2_peaks.sorted.narrowPeak /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05/D2300035_D2300037_rep3/D2300035_D2300037_rep3_peaks.sorted.narrowPeak"
+HCC1806_FILES="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05/D2300038_D2300041_rep1/D2300038_D2300041_rep1_peaks.sorted.narrowPeak /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05/D2300039_D2300042_rep2/D2300039_D2300042_rep2_peaks.sorted.narrowPeak /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05/D2300040_D2300043_rep3/D2300040_D2300043_rep3_peaks.sorted.narrowPeak" 
+sbatch 09_IDR_handling_replicates.sh ${BT549_FILES} "BT549";
+sbatch 09_IDR_handling_replicates.sh ${HCC1806_FILES} "HCC1806";
 
 #############
 #bigwig file
