@@ -16,6 +16,6 @@ mkdir -p ${OUTDIR}
 files=$1; shift
 cellLine=$1;
 
-./chipr -i ${files} \
+chipr -i ${files} \
       -m 1 \
       -o ${OUTDIR}/${cellLine}  
