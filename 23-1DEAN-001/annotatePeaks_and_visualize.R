@@ -1,16 +1,15 @@
 library(ChIPseeker)
 library(clusterProfiler)
-#library(EnsDb.Mmusculus.v79)
 library(org.Hs.eg.db)
 library(diffloop)
 
 library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene
 
-dir.create("/globalhome/hxo752/HPC/23-1DEAN-001/analysis/peak_annotation")
-setwd("/globalhome/hxo752/HPC/23-1DEAN-001/analysis/peak_annotation")
+dir.create("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peak_annotation")
+setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peak_annotation")
 #list bed files
-samplefiles <- list.files("/globalhome/hxo752/HPC/23-1DEAN-001/analysis/IDR/", pattern= "filtered.bed", full.names=T)
+samplefiles <- list.files("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr/", pattern= "optimal.bed", full.names=T)
 samplefiles <- as.list(samplefiles)
 names(samplefiles) <- c("GE1")
 
