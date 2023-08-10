@@ -21,14 +21,14 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analys
 peaks=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/IDR
 
-files=$1;
+files=$1; shift
 cellline=$1
 mkdir -p $OUTDIR
 idr --samples ${files} \
-      --output-file ${OUTDIR}/idr.bed \
+      --output-file ${OUTDIR}/${cellline}_idr.bed \
       --plot \
       --rank p.value \
-      --log-output-file ${OUTDIR}/idr.log \
+      --log-output-file ${OUTDIR}/${cellline}_idr.log \
       --verbose
 
 #Column 5 contains the scaled IDR value, min(int(log2(-125IDR), 1000) For example, peaks with an IDR of 0 have a score of 1000, 
