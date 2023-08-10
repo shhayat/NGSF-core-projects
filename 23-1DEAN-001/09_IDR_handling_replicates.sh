@@ -22,9 +22,8 @@ peaks=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/anal
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/IDR
 
 files=$1;
-
+cellline=$1
 mkdir -p $OUTDIR
-
 idr --samples ${files} \
       --output-file ${OUTDIR}/idr.bed \
       --plot \
@@ -35,10 +34,10 @@ idr --samples ${files} \
 #Column 5 contains the scaled IDR value, min(int(log2(-125IDR), 1000) For example, peaks with an IDR of 0 have a score of 1000, 
 #peaks with an IDR of 0.05 have a score of int(-125log2(0.05)) = 540, and IDR of 1.0 has a score of 0.
 #select IDR of 0.05
-awk '{if($5 >= 540) print $0}' ${OUTDIR}/${}_idr.bed > ${OUTDIR}/${}_idr_filtered.bed
+awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellline}_idr.bed > ${OUTDIR}/${cellline}_idr_filtered.bed
 
 #prep file for motif discovery
 
-cut -f 1,2,3 ${OUTDIR}/${}_idr_filtered.bed > ${OUTDIR}/${}_idr_filtered_3_columns.bed 
+cut -f 1,2,3 ${OUTDIR}/${cellline}_idr_filtered.bed > ${OUTDIR}/${cellline}_idr_filtered_3_columns.bed 
 
 deactivate
