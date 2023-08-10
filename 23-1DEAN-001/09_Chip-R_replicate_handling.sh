@@ -10,10 +10,12 @@
 #SBATCH  --output=%j.out
 
 cd /globalhome/hxo752/HPC/tools/ChIP-R
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr
+mkdir -p ${OUTDIR}
 
 files=$1; shift
 cellLine=$1;
 
 chipr -i ${files} \
       -m 1 \
-      -o ${cellLine}  
+      -o ${OUTDIR}/${cellLine}  
