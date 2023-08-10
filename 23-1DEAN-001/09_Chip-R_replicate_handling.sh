@@ -9,7 +9,7 @@
 #SBATCH --mem=40G
 #SBATCH  --output=%j.out
 
-cd /globalhome/hxo752/HPC/tools/ChIP-R
+cd /globalhome/hxo752/HPC/tools/ChIP-R/bin
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr
 mkdir -p ${OUTDIR}
 
