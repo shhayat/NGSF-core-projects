@@ -12,7 +12,7 @@
 #https://github.com/hbctraining/Intro-to-ChIPseq/blob/master/lessons/07_handling-replicates-idr.md
 #Combining replicates to only get the highly reproducible peaks using the IDR method
 
-module --force purge
+module purge
 module load python/3.10
 module load scipy-stack/2023a
 source $HOME/venvs/idr/bin/activate
