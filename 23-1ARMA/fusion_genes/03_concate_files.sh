@@ -1,5 +1,5 @@
 #dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/lymphoma
-#dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/hystiocystic_sarcoma/
+dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/hystiocystic_sarcoma
 
 tumor_type="squamous_cell_carcinomas"
 
