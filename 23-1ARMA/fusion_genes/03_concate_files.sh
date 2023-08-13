@@ -1,9 +1,9 @@
 #dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/lymphoma
-#dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/squamous_cell_carcinomas/analysis
+#dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/hystiocystic_sarcoma/
 
 tumor_type="squamous_cell_carcinomas"
 
-for i in ${dir}/*/star-fusion.fusion_predictions.tsv
+for i in ${dir}/*/FusionInspector-validate/finspector.FusionInspector.fusions.tsv
 do
   tail -n +2 ${i} > ${dir}/fusion_genes_tmp.txt
   (cat ${dir}/fusion_genes_tmp.txt; echo '') >> ${dir}/${tumor_type}_fusion_genes.txt
