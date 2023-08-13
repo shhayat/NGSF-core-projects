@@ -1,5 +1,6 @@
 #dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/lymphoma
-dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/squamous_cell_carcinomas/analysis
+#dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/squamous_cell_carcinomas/analysis
+
 tumor_type="squamous_cell_carcinomas"
 
 for i in ${dir}/*/star-fusion.fusion_predictions.tsv
