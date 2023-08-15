@@ -15,14 +15,14 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/an
 mkdir -p ${OUTDIR}
 
 sample_name=$1; shift
-BAM=$1
+BAM=$1;
 
 htseq-count -f bam \
             -r pos \
             -s yes \
             -t exon \
             -i gene_id \
-            --nonunique all
+            --nonunique all \
             --additional-attr gene_name \
             ${BAM} \
             ${GTF} > ${OUTDIR}/${sample_name}_htseq_counts.txt
