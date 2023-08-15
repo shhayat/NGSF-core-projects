@@ -16,13 +16,15 @@ module load samtools
 
 umitools=/globalhome/hxo752/HPC/.local/bin
 #DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis
-/datastore/NGSF001/projects/23-1MILE-002/Analysis_July2023/
+DIR=/datastore/NGSF001/projects/23-1MILE-002/Analysis_July2023/
 RRNA=/datastore/NGSF001/projects/23-1MILE-001/Analysis/rrna_intervals/rRNA_intervals_merged.bed
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/deduplication
 
 NCPU=4
 sample_name=$1; shift
 BAM=$1;
 
+mkdir -p ${OUTDIR}/${sample_name}
 cd ${DIR}/deduplication/${sample_name}/
 #mkdir -p ${DIR}/deduplication/${sample_name} && cd ${DIR}/deduplication/${sample_name}
 
@@ -49,4 +51,7 @@ cd ${DIR}/deduplication/${sample_name}/
 #                --paired --chimeric-pairs="discard" > ${sample_name}.no-rRNA.primary-aln.dedup.bam \
 #                 && samtools index ${sample_name}.no-rRNA.primary-aln.dedup.bam
 
-samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam ${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
+#samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam ${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
+samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
+
+
