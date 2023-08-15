@@ -15,13 +15,15 @@ set -eux
 module load samtools
 
 umitools=/globalhome/hxo752/HPC/.local/bin
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis
+#DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis
+/datastore/NGSF001/projects/23-1MILE-002/Analysis_July2023/
 RRNA=/datastore/NGSF001/projects/23-1MILE-001/Analysis/rrna_intervals/rRNA_intervals_merged.bed
 
 NCPU=4
 sample_name=$1; shift
 BAM=$1;
 
+cd ${DIR}/deduplication/${sample_name}/
 #mkdir -p ${DIR}/deduplication/${sample_name} && cd ${DIR}/deduplication/${sample_name}
 
 #echo "Dropping ribosomal RNA reads"
