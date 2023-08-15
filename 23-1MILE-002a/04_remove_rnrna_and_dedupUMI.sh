@@ -52,6 +52,6 @@ cd ${DIR}/deduplication/${sample_name}/
 #                 && samtools index ${sample_name}.no-rRNA.primary-aln.dedup.bam
 
 #samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam ${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
-samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
+samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam -o ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
 
 
