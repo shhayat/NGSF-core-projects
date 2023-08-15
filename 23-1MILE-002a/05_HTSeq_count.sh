@@ -21,6 +21,7 @@ BAM=$1
 
 cd .local/lib/python3.7/site-packages/
 htseq-count -f bam \
+            -r pos \
             -s yes \
             -t exon \
             -i gene_id \
