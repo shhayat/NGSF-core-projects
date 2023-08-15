@@ -18,7 +18,9 @@ mkdir -p ${OUTDIR}
 sample_name=$1; shift
 BAM=$1
 
-cd .local/lib/python3.7/site-packages/
+
+#cd .local/lib/python3.7/site-packages/
+cd /globalhome/hxo752/HPC/anaconda3/envs/htseq/bin
 htseq-count -f bam \
             -r pos \
             -s yes \
