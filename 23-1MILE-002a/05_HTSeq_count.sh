@@ -25,6 +25,7 @@ htseq-count -f bam \
             -s yes \
             -t exon \
             -i gene_id \
+            --nonunique all
             --additional-attr gene_name \
             ${BAM} \
             ${GTF} > ${OUTDIR}/${sample_name}_htseq_counts.txt
