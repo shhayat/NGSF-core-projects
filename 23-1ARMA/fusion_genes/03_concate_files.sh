@@ -13,3 +13,4 @@ echo -e "FusionName\tJunctionReadCount\tSpanningFragCount\test_J\test_S\tLeftGen
 #echo -e "FusionName\tJunctionReadCount\tSpanningFragCount\test_J\test_S\tSpliceType\tLeftGene\tLeftBreakpoint\tRightGene\tRightBreakpointJunctionReads\tSpanningFrags\tLargeAnchorSupport\tFFPM\tLeftBreakDinuc\tLeftBreakEntropy\tRightBreakDinuc\tRightBreakEntropy\tannots" > ${dir}/file2 && cat ${dir}/file2 ${dir}/${tumor_type}_fusion_genes.txt >> ${dir}/${tumor_type}_fusion_genes_v1.txt
 mv ${outdir}/${tumor_type}_fusion_genes_v2.txt ${outdir}/${tumor_type}_fusion_genes_validated.txt
 rm ${outdir}/file2
+rm ${outdir}/${tumor_type}_fusion_genes.txt
