@@ -1,7 +1,7 @@
 #dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/lymphoma
 dir=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/hystiocystic_sarcoma
 outdir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/analysis
-tumor_type="squamous_cell_carcinomas"
+tumor_type="hystiocystic_sarcoma"
 
 for i in ${dir}/*/FusionInspector-validate/finspector.FusionInspector.fusions.tsv
 do
