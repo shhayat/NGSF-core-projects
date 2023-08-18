@@ -52,11 +52,9 @@ ${umitools}/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
                 --paired --chimeric-pairs="discard" > ${sample_name}.no-rRNA.primary-aln.dedup.bam \
                  && samtools index ${sample_name}.no-rRNA.primary-aln.dedup.bam
 
-#samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam ${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
 #samtools sort by coordinate
-#samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam -o ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
-
+samtools sort ${sample_name}.no-rRNA.primary-aln.dedup.bam -o ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
 #samtool sort by name
-samtools sort -n ${sample_name}.no-rRNA.primary-aln.dedup.bam -o ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
+#samtools sort -n ${sample_name}.no-rRNA.primary-aln.dedup.bam -o ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam && samtools index ${OUTDIR}/${sample_name}.no-rRNA.primary-aln.dedup_sort.bam
 
 
