@@ -10,7 +10,7 @@
 source $HOME/venvs/htseq/bin/activate
 
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/htseq_counts
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/htseq_counts_v3
 
 mkdir -p ${OUTDIR}
 
@@ -19,7 +19,7 @@ BAM=$1;
 
 htseq-count -f bam \
             -r pos \
-            -s yes \
+            -s reverse \
             -t exon \
             -i gene_id \
             --nonunique all \
@@ -28,7 +28,7 @@ htseq-count -f bam \
             ${GTF} > ${OUTDIR}/${sample_name}_htseq_counts.txt
                                                             
 
-#remove .[0-9] from each line from ffrist columm
+#remove .[0-9] from each line from frist columm
 #awk '{ gsub(".[0-9]*$", "", $1); print }' ${OUTDIR}/${sample_name}_htseq_counts.txt > ${OUTDIR}/${sample_name}_htseq_counts.tmp && mv ${OUTDIR}/${sample_name}_htseq_counts.tmp ${OUTDIR}/${sample_name}_htseq_counts.txt
 #Add tabs
 awk -v OFS="\t" '$1=$1' ${OUTDIR}/${sample_name}_htseq_counts.txt > ${OUTDIR}/${sample_name}_htseq_counts.tmp && mv ${OUTDIR}/${sample_name}_htseq_counts.tmp ${OUTDIR}/${sample_name}_htseq_counts.txt
