@@ -32,4 +32,4 @@ feature_annotation <- feature_count %>% lapply(function(x) x$annotation) %>%
 
 feature_count <- cbind(feature_annotation,feature_count1)
 
-save(feature_count, file = 'feature_count_v1.RData', compress = 'xz')
+save(feature_count, file = 'feature_count_reverse_strandness.RData', compress = 'xz')
