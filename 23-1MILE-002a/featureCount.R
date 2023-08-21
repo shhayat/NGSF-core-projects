@@ -10,7 +10,6 @@ feature_count <- sapply(sample_names, function(x)
 			   featureCounts(files = sprintf('%s/%s/%s.no-rRNA.primary-aln.dedup_sort.bam',result_dir, x,x),
 			   annot.ext="/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf",
 			   isGTFAnnotationFile = TRUE,
-			   strandSpecific = 1,
 			   GTF.featureType = 'exon',
 			   GTF.attrType.extra  = c('gene_name'),
 			   nthreads = 8, 
@@ -18,7 +17,7 @@ feature_count <- sapply(sample_names, function(x)
 			   simplify = FALSE, 
 			   USE.NAMES = TRUE)
 
-
+#strandSpecific = 1,
 #convet list to a dataframe
 #COUNTS
 feature_count1 <- feature_count %>% lapply(function(x) x$counts) %>% 
