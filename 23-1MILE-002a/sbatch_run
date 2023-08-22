@@ -58,7 +58,7 @@ do
 done
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/deduplication
-for i in ${DATA}/R2300128/*.no-rRNA.primary-aln.dedup_sort.bam
+for i in ${DATA}/R2*/*.no-rRNA.primary-aln.dedup_sort.bam
 do
      path="${i%/*.no-rRNA.primary-aln.dedup_sort.bam}";
      sample_name="${path##*/}"
