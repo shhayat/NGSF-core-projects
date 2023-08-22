@@ -10,7 +10,7 @@
 source $HOME/venvs/htseq/bin/activate
 
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/htseq_counts_nonunique_all_and_unstarnaded
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/htseq_counts_nonunique_all_and_stranded
 
 mkdir -p ${OUTDIR}
 
@@ -19,7 +19,7 @@ BAM=$1;
 
 htseq-count -f bam \
             -r pos \
-            -s no \
+            -s yes \
             -t exon \
             -i gene_id \
             --nonunique all \
