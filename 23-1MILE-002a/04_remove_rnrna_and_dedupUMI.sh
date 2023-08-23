@@ -26,8 +26,8 @@ sample_name=$1; shift
 BAM=$1;
 
 #mkdir -p ${OUTDIR}/${sample_name}
-cd ${DIR}/deduplication/${sample_name}/
-#mkdir -p ${DIR}/deduplication/${sample_name} && cd ${DIR}/deduplication/${sample_name}
+#cd ${DIR}/deduplication/${sample_name}/
+mkdir -p ${OUTDIR}/deduplication/${sample_name} && cd ${OUTDIR}/deduplication/${sample_name}
 
 #echo "Dropping ribosomal RNA reads"
 #samtools view -@ ${NCPU} \
@@ -45,7 +45,7 @@ cd ${DIR}/deduplication/${sample_name}/
 #              && samtools index ${sample_name}.no-rRNA.primary-aln.bam
 
 
-${umitools}/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
+${umitools}/umi_tools dedup -I ${DIR}/deduplication/${sample_name}.no-rRNA.primary-aln.bam \
                 --log="${sample_name}.umi.log" \
                 --umi-separator=":" \
                 --unpaired-reads="discard" \
