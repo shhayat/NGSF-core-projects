@@ -7,6 +7,8 @@
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+source $HOME/venvs/htseq/bin/activate
+
 GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/htseq_counts
 #GLIBC_2.29
