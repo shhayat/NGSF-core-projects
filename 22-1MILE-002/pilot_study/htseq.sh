@@ -18,7 +18,7 @@ BAM=$1;
 
 htseq-count -f bam \
             -r pos \
-            -s no \
+            -s reverse \
             -t exon \
             -i gene_id \
             --nonunique all \
