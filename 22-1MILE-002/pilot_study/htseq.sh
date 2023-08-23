@@ -14,7 +14,6 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/ana
 
 mkdir -p ${OUTDIR}
 
-sample_name=$1; shift
 BAM=$1;
 
 htseq-count -f bam \
