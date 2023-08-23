@@ -26,7 +26,7 @@ sample_name=$1; shift
 BAM=$1;
 
 #mkdir -p ${OUTDIR}/${sample_name}
-#cd ${DIR}/deduplication/${sample_name}/
+cd ${DIR}/deduplication/${sample_name}/
 #mkdir -p ${DIR}/deduplication/${sample_name} && cd ${DIR}/deduplication/${sample_name}
 
 #echo "Dropping ribosomal RNA reads"
