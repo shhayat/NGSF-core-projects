@@ -16,13 +16,15 @@ mkdir -p ${OUTDIR}
 sample_name=$1; shift
 BAM=$1
 
-/globalhome/hxo752/HPC/anaconda3/envs/htseq/bin/htseq-count -f bam \
-                                                            -s yes \
-                                                            -t exon \
-                                                            -i gene_id \
-                                                            --additional-attr gene_name \
-                                                            ${BAM} \
-                                                            ${GTF} > ${OUTDIR}/${sample_name}_htseq_counts.txt
+htseq-count -f bam \
+            -r pos \
+            -s no \
+            -t exon \
+            -i gene_id \
+            --nonunique all \
+            --additional-attr gene_name \
+            ${BAM} \
+            ${GTF} > ${OUTDIR}/${sample_name}_htseq_counts.txt
 
 #remove .[0-9] from each line from ffrist columm
 awk '{ gsub(".[0-9]*$", "", $1); print }' ${OUTDIR}/${sample_name}_htseq_counts.txt > ${OUTDIR}/${sample_name}_htseq_counts.tmp && mv ${OUTDIR}/${sample_name}_htseq_counts.tmp ${OUTDIR}/${sample_name}_htseq_counts.txt
