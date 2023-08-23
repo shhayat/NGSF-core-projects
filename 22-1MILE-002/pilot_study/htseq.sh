@@ -10,7 +10,7 @@
 source $HOME/venvs/htseq/bin/activate
 
 GTF=/datastore/NGSF001/analysis/references/rat/Rnor_6.0/ncbi-genomes-2020-10-30/GCF_000001895.5_Rnor_6.0/GCF_000001895.5_Rnor_6.0_genomic.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/analysis/htseq_counts_nonunique_all_and_unstranded
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/22-1MILE-002/analysis/htseq_counts_nonunique_all_and_reverse
 
 mkdir -p ${OUTDIR}
 sample_name=$1; shift
