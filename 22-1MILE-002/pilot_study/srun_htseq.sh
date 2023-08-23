@@ -4,6 +4,6 @@ for i in ${DATA}/R2*.no-rRNA.primary-aln.dedup.bam
 do
      path="${i%/deduplication/}";
      sample_name=$(echo "$path" | grep -o 'R[0-9]\+')
-     sbatch ${SCRIPT_DIR}/htseq.sh "${sample_name}", "${DATA}/${sample_name}.no-rRNA.primary-aln.dedup.bam"
+     sbatch ${SCRIPT_DIR}/htseq.sh "${sample_name}" "${DATA}/${sample_name}.no-rRNA.primary-aln.dedup.bam"
      sleep 0.5
 done 
