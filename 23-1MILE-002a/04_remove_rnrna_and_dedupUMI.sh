@@ -45,7 +45,7 @@ mkdir -p ${OUTDIR}/deduplication/${sample_name} && cd ${OUTDIR}/deduplication/${
 #              && samtools index ${sample_name}.no-rRNA.primary-aln.bam
 
 
-${umitools}/umi_tools dedup -I ${DIR}/deduplication/${sample_name}.no-rRNA.primary-aln.bam \
+${umitools}/umi_tools dedup -I ${DIR}/deduplication/${sample_name}/${sample_name}.no-rRNA.primary-aln.bam \
                 --log="${sample_name}.umi.log" \
                 --umi-separator=":" \
                 --unpaired-reads="discard" \
