@@ -1,4 +1,4 @@
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/star_alignment
+DATA=/datastore/NGSF001/projects/23-1SADO-001/Analysis/star_alignment/
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001
 
 for i in ${DATA}/*/*.bam
