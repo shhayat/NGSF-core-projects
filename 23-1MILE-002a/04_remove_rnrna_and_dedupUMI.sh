@@ -16,8 +16,8 @@ module load samtools
 
 umitools=/globalhome/hxo752/HPC/.local/bin
 
-#DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis
-DIR=/datastore/NGSF001/projects/23-1MILE-002/Analysis_July2023/
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis
+#DIR=/datastore/NGSF001/projects/23-1MILE-002/Analysis_July2023/
 RRNA=/datastore/NGSF001/projects/23-1MILE-001/Analysis/rrna_intervals/rRNA_intervals_merged.bed
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002a/analysis/deduplication
 
@@ -29,23 +29,23 @@ BAM=$1;
 #cd ${DIR}/deduplication/${sample_name}/
 mkdir -p ${OUTDIR}/deduplication/${sample_name} && cd ${OUTDIR}/deduplication/${sample_name}
 
-#echo "Dropping ribosomal RNA reads"
-#samtools view -@ ${NCPU} \
-#              -U ${sample_name}.no-rRNA.bam \
-#              -O BAM \
-#              -L ${RRNA} \
-#              ${DIR}/star_alignment/${sample_name}/${BAM}
+echo "Dropping ribosomal RNA reads"
+samtools view -@ ${NCPU} \
+              -U ${sample_name}.no-rRNA.bam \
+              -O BAM \
+              -L ${RRNA} \
+              ${DIR}/star_alignment/${sample_name}/${BAM}
 
 
 # keep only primary alignments
-#echo "Keep primary alignments, and reindex"
-#samtools view -@ ${NCPU} \
-#              -F 0x804 \
-#              -O BAM ${sample_name}.no-rRNA.bam > ${sample_name}.no-rRNA.primary-aln.bam \
-#              && samtools index ${sample_name}.no-rRNA.primary-aln.bam
+echo "Keep primary alignments, and reindex"
+samtools view -@ ${NCPU} \
+              -F 0x804 \
+              -O BAM ${sample_name}.no-rRNA.bam > ${sample_name}.no-rRNA.primary-aln.bam \
+              && samtools index ${sample_name}.no-rRNA.primary-aln.bam
 
 
-${umitools}/umi_tools dedup -I ${DIR}/deduplication/${sample_name}/${sample_name}.no-rRNA.primary-aln.bam \
+${umitools}/umi_tools dedup -I ${sample_name}.no-rRNA.primary-aln.bam \
                 --log="${sample_name}.umi.log" \
                 --umi-separator="_" \
                 --unpaired-reads="discard" \
