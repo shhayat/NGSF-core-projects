@@ -25,7 +25,7 @@ chmod a+x bedtools.static.binary
 source $HOME/.bashrc
 conda activate meme
 
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/IDR
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/chipr
 cd /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/
 
 #select peaks with the strongest signal for motif finding
