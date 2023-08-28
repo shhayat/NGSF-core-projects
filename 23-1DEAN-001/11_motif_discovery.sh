@@ -32,4 +32,4 @@ cd /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
 
 #since we have limited number of peaks we will not select top peaks and proceed with meme-chip
-meme-chip -oc motif_discovery ${DIR}/genome.idr_intervals.fa
+meme-chip -oc motif_discovery ${OUTDIR}/genome.masked.on.idr_intervals.fa
