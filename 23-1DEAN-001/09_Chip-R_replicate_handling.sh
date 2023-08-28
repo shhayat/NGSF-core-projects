@@ -22,8 +22,8 @@ chipr -i ${files} \
       -m 1 \
       -o ${OUTDIR}/${cellLine}  
 
-awk '{if($5 >= 540) print $0}' ${OUTDIR}/BT549_idr.bed > ${OUTDIR}/BT549_idr_filtered.bed
+awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}.bed > ${OUTDIR}/${cellLine}_filtered.bed
 #prep file for motif discovery
-cut -f 1,2,3 ${OUTDIR}/BT549_idr_filtered.bed > ${OUTDIR}/BT549_idr_filtered_3_columns.bed 
+cut -f 1,2,3 ${OUTDIR}/${cellLine}_filtered.bed > ${OUTDIR}/${cellLine}_filtered_3_columns.bed 
 
 
