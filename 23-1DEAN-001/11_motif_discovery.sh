@@ -9,14 +9,18 @@
 #SBATCH --mem=20G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/chipr
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_finding
+
+mkdir -r ${OUTDIR}
 
 #for motif discovery step repeat-masked version of the genome is required where all repeat sequences have been replaced with Ns
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
 cd /globalhome/hxo752/HPC/tools
 chmod a+x bedtools.static.binary
 ./bedtools.static.binary getfasta -fi /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/genome.fa \
-                                  -bed ${OUTDIR}/idr_filtered_3_columns.bed \
-                                  -fo ${OUTDIR}/genome.masked.on.idr_intervals.fa
+                                  -bed ${OUTDIR}/${cellLine}_filtered_3_columns.bed \
+                                  -fo ${DIR}/genome.masked.on.idr_intervals.fa
 
 #there was environment problem while installing meme with conda. 
 #For fixing this issue conda env "meme" was created 
@@ -24,9 +28,6 @@ chmod a+x bedtools.static.binary
 #For activating "meme" env first source .bashrc then activate meme env then use meme commands
 source $HOME/.bashrc
 conda activate meme
-
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/chipr
-cd /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/
 
 #select peaks with the strongest signal for motif finding
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
