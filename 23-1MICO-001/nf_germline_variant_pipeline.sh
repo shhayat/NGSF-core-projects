@@ -26,6 +26,7 @@ nextflow run nf-core/sarek -profile singularity \
                            --genome GATK.GRCh38 \
                            --step mapping \
                            --save_mapped TRUE \
+                           --wes TRUE \
                            --tools HaplotypeCaller,snpEff \
                            --outdir ${DIR}/analysis
                            
