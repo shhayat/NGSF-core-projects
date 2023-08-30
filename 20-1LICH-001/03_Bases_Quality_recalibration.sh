@@ -1,6 +1,6 @@
 Recalibration Base quality score step should be run before calling mutect2. This was part of pre processing step which was missed in this project
 
-
+#https://console.cloud.google.com/storage/browser/gcp-public-data--broad-references/hg38/v0?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false
 java -jar GenomeAnalysisTK.jar \ 
     -T BaseRecalibrator \ 
     -R reference.fa \ 
