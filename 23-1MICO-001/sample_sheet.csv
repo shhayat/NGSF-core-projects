@@ -1,3 +1,3 @@
-patient,sample,lane,fastq_1,fastq_2
-patient1,test_sample,lane_1,test_1.fastq.gz,test_2.fastq.gz
-patient1,test_sample,lane_2,test_1.fastq.gz,test_2.fastq.gz
+patient,status,sample,lane,fastq_1,fastq_2
+patient1,normal,test_sample,lane_1,test_1.fastq.gz,test_2.fastq.gz
+patient2,disease,test_sample,lane_2,test_1.fastq.gz,test_2.fastq.gz
