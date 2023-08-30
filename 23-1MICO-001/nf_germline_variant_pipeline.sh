@@ -25,5 +25,6 @@ nextflow run nf-core/sarek -profile singularity \
                            --input ${DIR}/sample_sheet.csv \
                            --genome GATK.GRCh38 \
                            --step mapping \
+                           --save_mapped TRUE \
                            --outdir ${DIR}/analysis \
                            
