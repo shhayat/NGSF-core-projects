@@ -16,7 +16,7 @@ module load gentoo/2020
 module load singularity/3.9.2
                        
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/
-dbSNP=
+dbSNP=/datastore/NGSF001/analysis/dbsnp/GCF_000001405.40.vcf
 mkdir -p ${DIR}/analysis
 
 nextflow run nf-core/sarek -profile singularity \
