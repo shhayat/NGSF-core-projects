@@ -10,11 +10,10 @@
 	
 set -eux
 	
-mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SADO-001/analysis/Fastq 
 
 FASTQ_FOLDER=/datastore/NGSF001/NB551711/230801_NB551711_0079_AHL2K5AFX5/Alignment_1/20230802_081815/Fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq
-	
+mkdri -p ${OUTDIR}	
 
 for i in $(seq -w 43 44)
 do
