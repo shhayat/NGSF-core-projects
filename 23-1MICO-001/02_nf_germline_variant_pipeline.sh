@@ -26,7 +26,7 @@ nextflow run nf-core/sarek -profile singularity \
                            --save_mapped 'TRUE' \
                            --wes 'TRUE' \
                            --no_intervals 'TRUE' \
-                           --tools HaplotypeCaller,snpEff \
+                           --tools HaplotypeCaller,snpEff,VEP \
                            --known_snps ${dbSNP} \
                            --joint_germline 'TRUE' \
                            --outdir ${DIR}/analysis
