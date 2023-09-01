@@ -19,6 +19,6 @@ for i in {43..44}
 do
 	echo Combining library D230000${i}
 	cat ${FASTQ_FOLDER}/D230000${i}_*_R1_* > ${OUTDIR}/D230000${i}_R1.fastq.gz
-	cat ${FASTQ_FOLDER}/D23000${i}_*_R2_* > ${OUTDIR}/D230000${i}_R2.fastq.gz
+	cat ${FASTQ_FOLDER}/D230000${i}_*_R2_* > ${OUTDIR}/D230000${i}_R2.fastq.gz
 done
   
