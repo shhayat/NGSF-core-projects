@@ -12,7 +12,7 @@
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/chipr
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_finding
 
-mkdir -r ${OUTDIR}
+mkdir ${OUTDIR}
 
 cellLine=1;
 
@@ -22,7 +22,7 @@ cd /globalhome/hxo752/HPC/tools
 chmod a+x bedtools.static.binary
 ./bedtools.static.binary getfasta -fi /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/genome.fa \
                                   -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
-                                  -fo ${OUTDIR}/genome.masked.on.idr_intervals.fa
+                                  -fo ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
 
 #there was environment problem while installing meme with conda. 
 #For fixing this issue conda env "meme" was created 
@@ -35,4 +35,4 @@ conda activate meme
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
 
 #since we have limited number of peaks we will not select top peaks and proceed with meme-chip
-meme-chip -oc motif_discovery ${OUTDIR}/genome.masked.on.idr_intervals.fa
+meme-chip -oc motif_discovery ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
