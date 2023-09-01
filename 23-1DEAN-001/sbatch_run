@@ -81,10 +81,9 @@ sbatch 09_Chip-R_replicate_handling.sh "${HCC1806_FILES}" "HCC1806";
 ##################
 #motif finding
 ##################
-for cellLine in "HCC1806" "BT549"
+for cellLine in "HCC1806" "BT549";
 do
-    sbatch 11_motif_discovery.sh ${cellLine};
-    sleep 0.3
+    sbatch 11_motif_discovery.sh $cellLine;
 done 
 
 
