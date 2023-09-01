@@ -12,7 +12,7 @@
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/chipr
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_finding
 
-mkdir ${OUTDIR}
+mkdir -p ${OUTDIR}
 
 cellLine=1;
 
