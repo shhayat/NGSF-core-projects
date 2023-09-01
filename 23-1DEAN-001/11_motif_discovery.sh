@@ -14,12 +14,14 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/ana
 
 mkdir -r ${OUTDIR}
 
+cellLine=1;
+
 #for motif discovery step repeat-masked version of the genome is required where all repeat sequences have been replaced with Ns
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
 cd /globalhome/hxo752/HPC/tools
 chmod a+x bedtools.static.binary
 ./bedtools.static.binary getfasta -fi /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/genome.fa \
-                                  -bed ${OUTDIR}/${cellLine}_filtered_3_columns.bed \
+                                  -bed ${DIR}/${cellLine}_filtered_3_columns.bed \
                                   -fo ${DIR}/genome.masked.on.idr_intervals.fa
 
 #there was environment problem while installing meme with conda. 
