@@ -21,8 +21,8 @@ cellLine=1;
 cd /globalhome/hxo752/HPC/tools
 chmod a+x bedtools.static.binary
 ./bedtools.static.binary getfasta -fi /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/genome.fa \
-                                  -bed ${DIR}/${cellLine}_filtered_3_columns.bed \
-                                  -fo ${DIR}/genome.masked.on.idr_intervals.fa
+                                  -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
+                                  -fo ${OUTDIR}/genome.masked.on.idr_intervals.fa
 
 #there was environment problem while installing meme with conda. 
 #For fixing this issue conda env "meme" was created 
