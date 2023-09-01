@@ -76,6 +76,18 @@ HCC1806_FILES="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN
 sbatch 09_Chip-R_replicate_handling.sh "${BT549_FILES}" "BT549";
 sbatch 09_Chip-R_replicate_handling.sh "${HCC1806_FILES}" "HCC1806";
 
+
+
+##################
+#motif finding
+##################
+for cellLine in "HCC1806" "BT549"
+do
+    sbatch 11_motif_discovery.sh ${cellLine};
+    sleep 0.3
+done 
+
+
 ##################
 # IDR
 ##################
