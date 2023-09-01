@@ -1,3 +1,3 @@
 patient,status,sample,lane,fastq_1,fastq_2
-patient1,normal,D23000043,L1,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq/D23000043_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq/D23000043_R2.fastq.gz
-patient2,disease,D23000044,L1,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq/D23000044_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq/D23000044_R2.fastq.gz
+patient1,disease,D23000043,L1,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq/D23000043_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq/D23000043_R2.fastq.gz
+patient2,normal,D23000044,L1,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq/D23000044_R1.fastq.gz,/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq/D23000044_R2.fastq.gz
