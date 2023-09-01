@@ -31,4 +31,4 @@ chmod a+x bedtools.static.binary
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
 
 #since we have limited number of peaks we will not select top peaks and proceed with meme-chip
-meme-chip -oc motif_discovery ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc motif_discovery ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
