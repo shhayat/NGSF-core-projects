@@ -16,7 +16,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/ana
 
 mkdir -p ${OUTDIR}
 
-cellLine=1; shift
+cellLine=$1;
 
 #for motif discovery step repeat-masked version of the genome is required where all repeat sequences have been replaced with Ns
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
