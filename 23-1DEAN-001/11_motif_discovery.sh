@@ -9,7 +9,7 @@
 #SBATCH --mem=20G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/chip-seq/analysis/chipr
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_finding
 
 mkdir -p ${OUTDIR}
