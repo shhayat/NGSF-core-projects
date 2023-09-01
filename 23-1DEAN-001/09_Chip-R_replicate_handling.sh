@@ -12,14 +12,14 @@
 #Since IDR tool works with only 2 replicate and we have 3 replicates per cell line. Due to which we choose to work with chipr tool
 set -eux
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr
-mkdir -p ${OUTDIR}
 
 files=$1; shift
 cellLine=$1;
+mkdir -p ${OUTDIR}
 
 /globalhome/hxo752/HPC/tools/ChIP-R/bin/chipr -i ${files} \
       -m 1 \
-      -o ${OUTDIR}/${cellLine}  
+      -o ${OUTDIR} 
 
 awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
 
