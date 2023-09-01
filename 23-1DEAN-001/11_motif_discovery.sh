@@ -26,12 +26,6 @@ chmod a+x bedtools.static.binary
                                   -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
                                   -fo ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
 
-#there was environment problem while installing meme with conda. 
-#For fixing this issue conda env "meme" was created 
-#./globalhome/hxo752/HPC/anaconda3/condabin/conda create -n meme -c bioconda meme 
-#For activating "meme" env first source .bashrc then activate meme env then use meme commands
-source $HOME/.bashrc
-conda activate meme
 
 #select peaks with the strongest signal for motif finding
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
