@@ -11,14 +11,13 @@
 
 #Since IDR tool works with only 2 replicate and we have 3 replicates per cell line. Due to which we choose to work with chipr tool
 set -eux
-cd /globalhome/hxo752/HPC/tools/ChIP-R/bin
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr
 mkdir -p ${OUTDIR}
 
 files=$1; shift
 cellLine=$1;
 
-chipr -i ${files} \
+/globalhome/hxo752/HPC/tools/ChIP-R/bin/chipr -i ${files} \
       -m 1 \
       -o ${OUTDIR}/${cellLine}  
 
