@@ -17,7 +17,7 @@ files=$1; shift
 cellLine=$1;
 mkdir -p ${OUTDIR}
 
-/globalhome/hxo752/HPC/tools/ChIP-R/bin/chipr -i ${files} \
+./globalhome/hxo752/HPC/tools/ChIP-R/bin/chipr -i ${files} \
       -m 1 \
       -o ${OUTDIR} 
 
