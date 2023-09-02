@@ -20,13 +20,9 @@ OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/an
 sample_name=$1
 BAM_FILE=$2
 NCPU=4
-mkdir -p ${OUTDIR}/${sample_name}
-
-
 
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
 #Read Group Added
-#run these commands from E21000* samples
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
                                     I=${BAM_FILE} \
                                     BARCODE_TAG="RX" \
