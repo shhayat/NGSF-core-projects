@@ -24,8 +24,8 @@ for i in ${DATA}/D23*_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
-      fq1=${DATA}/${sample_name}_R1.fastq;
-      fq2=${DATA}/${sample_name}_R2.fastq;
+      fq1=${DATA}/${sample_name}_R1.fastq.gz;
+      fq2=${DATA}/${sample_name}_R2.fastq.gz;
 
       sbatch ${SCRIPT_DIR}/04_bowtie_alignment.sh "${sample_name}" "${fq1}" "${fq2}"
  done
