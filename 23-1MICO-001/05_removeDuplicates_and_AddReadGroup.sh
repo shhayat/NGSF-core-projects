@@ -14,8 +14,6 @@ set -eux
 module load picard
 module load samtools
 
-#reference file
-REF=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 sample_name=$1
 BAM_FILE=$2
