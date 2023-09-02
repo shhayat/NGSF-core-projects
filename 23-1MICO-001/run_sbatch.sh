@@ -15,7 +15,7 @@ do
  done
 
 ########
-#bowtie
+#BOWTIE2
 ########
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
@@ -29,3 +29,16 @@ do
 
       sbatch ${SCRIPT_DIR}/04_bowtie_alignment.sh "${sample_name}" "${fq1}" "${fq2}"
  done
+
+
+############
+
+
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis
+DATA='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/alignment'
+
+for i in $(seq -w 13 24);
+do
+  sbatch ${SCRIPT_DIR}/01_markduplicates_and_add_Read_group.sh E21000${i} "${DATA}/E21000${i}.sorted.bam"
+  sleep 0.2
+done
