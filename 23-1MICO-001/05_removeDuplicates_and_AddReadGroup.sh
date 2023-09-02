@@ -19,10 +19,14 @@ sample_name=$1
 BAM_FILE=$2
 NCPU=4
 
+#sort bam file by coordinate
+
+samtools sort ${BAM_FILE} -o ${OUTDIR}/${sample_name}/${sample_name}_sort.bam && samtools index ${OUTDIR}/${sample_name}/${sample_name}_sort.bam
+
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
 #Read Group Added
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
-                                    I=${BAM_FILE} \
+                                    I=${OUTDIR}/${sample_name}/${sample_name}_sort.bam \
                                     BARCODE_TAG="RX" \
                                     O=${OUTDIR}/${sample_name}/${sample_name}_markduplicates.bam \
                                     M=${OUTDIR}/${sample_name}/${sample_name}_marked_dup_metrics.txt && \
