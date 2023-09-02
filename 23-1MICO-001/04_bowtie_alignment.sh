@@ -24,7 +24,7 @@ fq2=$1
 
 mkdir -p ${OUTDIR}/alignment/${sample_name}
 
-gunzip -c ${fq1} bowtie2 \
+gunzip -c ${fq1} | bowtie2 \
 --phred33 \
 --mm \
 --very-sensitive \
