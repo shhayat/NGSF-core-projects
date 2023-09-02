@@ -14,4 +14,5 @@ module load bowtie2/2.5.1
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/indices
 
+mkdir -p $OUTDIR
 bowtie2-build ${GENOME}/genome.fa ${OUTDIR}/bowtie_index
