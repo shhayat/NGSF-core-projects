@@ -35,11 +35,11 @@ do
 #MARK DUPLICATE AND ADD READ GROUPS
 ####################################
 
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/alignment
 
 for i in {43..44};
 do
-  sbatch ${SCRIPT_DIR}/05_markduplicates_and_add_Read_group.sh D230000${i} "${DATA}/D230000${i}/D230000${i}.aligned.bam"
+  sbatch ${SCRIPT_DIR}/05_removeDuplicates_and_AddReadGroup.sh D230000${i} "${DATA}/D230000${i}/D230000${i}.aligned.bam"
   sleep 0.2
 done
