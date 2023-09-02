@@ -27,5 +27,5 @@ do
       fq1=${DATA}/${sample_name}_R1.fastq.gz;
       fq2=${DATA}/${sample_name}_R2.fastq.gz;
 
-      sbatch ${SCRIPT_DIR}/03_bowtie_alignemnt.sh "${sample_name}" "${fq1}" "${fq2}"
+      sbatch ${SCRIPT_DIR}/03_bowtie_alignment.sh "${sample_name}" "${fq1}" "${fq2}"
  done
