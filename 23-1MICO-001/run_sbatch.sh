@@ -1,3 +1,6 @@
+########
+#FASTQC
+########
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
 
@@ -10,3 +13,7 @@ do
       
       sbatch ${SCRIPT_DIR}/02_FastQC.sh "${fq1}" "${fq2}"
  done
+
+########
+#bowtie
+########
