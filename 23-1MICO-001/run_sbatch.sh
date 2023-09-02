@@ -15,7 +15,7 @@ do
  done
 
 ########
-#BOWTIE2
+#MAPPING
 ########
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/Fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
@@ -31,8 +31,9 @@ do
  done
 
 
-############
-
+####################################
+#MARK DUPLICATE AND ADD READ GROUPS
+####################################
 
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis
 DATA='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/alignment'
