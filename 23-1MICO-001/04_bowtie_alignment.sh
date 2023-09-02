@@ -25,14 +25,14 @@ fq2=$1
 
 mkdir -p ${OUTDIR}/alignment/${sample_name}
 
-bowtie2 \
+gunzip -c ${RAW_DATA}/${fq1} bowtie2 \
 --phred33 \
 --mm \
 --very-sensitive \
 --threads ${NCPU} \
 -x ${GENOME} \
--1 ${RAW_DATA}/${fq1} \
--2 ${RAW_DATA}/${fq2} \
+-1 - \
+-2 <(gunzip -c ${RAW_DATA}/${fq2}) \
 -S ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/alignment/${sample_name}/${sample_name}_bowtie2.log \
 && samtools view -h -b ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam > ${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam
 
