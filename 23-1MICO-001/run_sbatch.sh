@@ -35,7 +35,7 @@ do
 #MARK DUPLICATE AND ADD READ GROUPS
 ####################################
 
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/alignment
 
 for i in {43..44};
