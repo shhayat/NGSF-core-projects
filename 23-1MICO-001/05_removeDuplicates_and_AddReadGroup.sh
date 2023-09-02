@@ -41,4 +41,5 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
                                     RGPL=ILLUMINA \
                                     RGPU=unit1 RGSM=20
 
-samtools index ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg.bam
+#samtools sort by coordinate
+samtools sort ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg.bam -o ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg_sort.bam && samtools index ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg_sort.bam
