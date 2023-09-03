@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=markdup_add_RG
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --time=2:30:00
-#SBATCH --mem=64G
+#SBATCH --cpus-per-task=2
+#SBATCH --time=4:00:00
+#SBATCH --mem=40G
 #SBATCH  --output=recalibrate.out
 
 module laod 
