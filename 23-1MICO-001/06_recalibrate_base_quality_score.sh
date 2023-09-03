@@ -13,13 +13,13 @@ module laod
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
-REF=
+REF=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 sample_name=1; shift
 BAM_FILE=1;
 
 gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms4G -Xmx4G -XX:ParallelGCThreads=2" BaseRecalibrator \
   -I ${DIR}/${sample_name}/${BAM_FILE} \
-  -R /fdb/igenomes/Homo_sapiens/UCSC/hg38/Sequence/WholeGenomeFasta/genome.fa \
+  -R ${REF} \
   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
   --known-sites /fdb/GATK_resource_bundle/hg38/dbsnp_146.hg38.vcf.gz \
   --known-sites /fdb/GATK_resource_bundle/hg38/Homo_sapiens_assembly38.known_indels.vcf.gz \
