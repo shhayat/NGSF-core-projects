@@ -11,12 +11,14 @@
 
 module laod 
 
-DIR=
-OUTDIR=
-sample_name=1
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
+sample_name=1; shift
+BAM_FILE=1;
+
 
 gatk BaseRecalibrator \
-   -I ${DIR}/${sample_name}/${sample_name}_mdup_rg_sort.bam \
+   -I ${DIR}/${sample_name}/${BAM_FILE} \
    -R reference.fasta \
    --known-sites sites_of_variation.vcf \
    --known-sites another/optional/setOfSitesToMask.vcf \
