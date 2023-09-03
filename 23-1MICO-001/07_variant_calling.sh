@@ -7,10 +7,16 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --time=4:00:00
 #SBATCH --mem=40G
-#SBATCH  --output=recalibrate.out
+#SBATCH  --output=variantcalling.out
 
+gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyBQSR \
+  -I ${DIR}/${sample_name}/${BAM_FILE} \
+  -R ${REF} \
+  --bqsr-recal-file ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
+  -O ${OUTDIR}/${sample_name}/${sample_name}_bqsr.bam
+  
 gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms20G -Xmx20G -XX:ParallelGCThreads=2" HaplotypeCaller \
-  -R /fdb/igenomes/Homo_sapiens/UCSC/hg38/Sequence/WholeGenomeFasta/genome.fa \
-  -I NA12891_markdup_bqsr.bam \
-  -O NA12891.g.vcf.gz \
+  -R ${REF} \
+  -I ${OUTDIR}/${sample_name}/${sample_name}_bqsr.bam \
+  -O ${OUTDIR}/${sample_name}/${sample_name}.vcf.gz \
   -ERC GVCF
