@@ -21,20 +21,11 @@ gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms4G -Xmx4G -XX:P
   -I ${DIR}/${sample_name}/${BAM_FILE} \
   -R ${REF} \
   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
-  --known-sites /fdb/GATK_resource_bundle/hg38/dbsnp_146.hg38.vcf.gz \
-  --known-sites /fdb/GATK_resource_bundle/hg38/Homo_sapiens_assembly38.known_indels.vcf.gz \
-  --known-sites /fdb/GATK_resource_bundle/hg38/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
+  --known-sites Homo_sapiens_assembly38.dbsnp138.vcf  \
+  --known-sites 1000G_phase1.snps.high_confidence.hg38.vcf.gz
 
-
-gatk BaseRecalibrator \
-   -I ${DIR}/${sample_name}/${BAM_FILE} \
-   -R reference.fasta \
-   --known-sites sites_of_variation.vcf \
-   --known-sites another/optional/setOfSitesToMask.vcf \
-   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table
-
-  gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyBQSR \
+gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyBQSR \
   -I ${DIR}/${sample_name}/${BAM_FILE} \
-  -R /fdb/igenomes/Homo_sapiens/UCSC/hg38/Sequence/WholeGenomeFasta/genome.fa \
+  -R ${REF} \
   --bqsr-recal-file ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
-  -O NA12891_markdup_bqsr.bam
+  -O ${OUTDIR}/${sample_name}/${sample_name}_bqsr.bam
