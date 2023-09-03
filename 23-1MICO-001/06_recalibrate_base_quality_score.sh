@@ -7,15 +7,20 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --time=2:30:00
 #SBATCH --mem=64G
-#SBATCH  --output=markdup_add_RG.out
+#SBATCH  --output=recalibrate.out
 
 module laod 
+
+DIR=
+OUTDIR=
+sample_name=1
+
 gatk BaseRecalibrator \
-   -I my_reads.bam \
+   -I ${DIR}/${sample_name}/${sample_name}_mdup_rg_sort.bam \
    -R reference.fasta \
    --known-sites sites_of_variation.vcf \
    --known-sites another/optional/setOfSitesToMask.vcf \
-   -O recal_data.table
+   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table
 
   gatk ApplyVQSR \
    -R Homo_sapiens_assembly38.fasta \
