@@ -8,7 +8,7 @@
 #SBATCH --time=4:00:00
 #SBATCH --mem=40G
 #SBATCH  --output=variantcalling.out
-
+#https://hpc.nih.gov/training/gatk_tutorial/haplotype-caller.html
 gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyBQSR \
   -I ${DIR}/${sample_name}/${BAM_FILE} \
   -R ${REF} \
