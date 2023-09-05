@@ -14,6 +14,7 @@ module laod
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 REF=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
+dbsnp=/datastore/NGSF001/analysis/dbsnp
 sample_name=1; shift
 BAM_FILE=1;
 
@@ -21,8 +22,8 @@ gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms4G -Xmx4G -XX:P
   -I ${DIR}/${sample_name}/${BAM_FILE} \
   -R ${REF} \
   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
-  --known-sites Homo_sapiens_assembly38.dbsnp138.vcf  \
-  --known-sites 1000G_phase1.snps.high_confidence.hg38.vcf.gz
+  --known-sites ${dbsnp}/Homo_sapiens_assembly38.dbsnp138.vcf  \
+  --known-sites ${dbsnp}/1000G_phase1.snps.high_confidence.hg38.vcf.gz
 
 gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyBQSR \
   -I ${DIR}/${sample_name}/${BAM_FILE} \
