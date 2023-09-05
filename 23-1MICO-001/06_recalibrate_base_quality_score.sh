@@ -15,8 +15,8 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome.fa
 dbsnp=/datastore/NGSF001/analysis/dbsnp
-sample_name=1; shift
-BAM_FILE=1;
+sample_name=$1; shift
+BAM_FILE=$1;
 
 gatk BaseRecalibrator \
   -I ${DIR}/${sample_name}/${BAM_FILE} \
