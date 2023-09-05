@@ -17,4 +17,5 @@ GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/ana
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/indices
 
 mkdir -p $OUTDIR
-bowtie2-build ${GENOME}/Homo_sapiens_assembly38.fasta${OUTDIR}/bowtie_index_v1
+#bowtie2-build ${GENOME}/Homo_sapiens_assembly38.fasta ${OUTDIR}/bowtie_index
+bowtie2-build ${GENOME}/Homo_sapiens_assembly38.fasta ${OUTDIR}/bowtie_index
