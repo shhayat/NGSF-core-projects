@@ -18,14 +18,14 @@ dbsnp=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/anal
 sample_name=$1; shift
 BAM_FILE=$1;
 
-gatk BaseRecalibrator \
+gatk --java-options "-Xmx2G" BaseRecalibrator \
   -I ${BAM_FILE} \
   -R ${REF} \
   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
   --known-sites ${dbsnp}/Homo_sapiens_assembly38.dbsnp138.vcf.gz \
   --known-sites ${dbsnp}/1000G_phase1.snps.high_confidence.hg38.vcf.gz
 
-gatk ApplyBQSR \
+gatk --java-options "-Xmx2G" ApplyBQSR \
   -I ${BAM_FILE} \
   -R ${REF} \
   --bqsr-recal-file ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
