@@ -18,14 +18,14 @@ dbsnp=/datastore/NGSF001/analysis/dbsnp
 sample_name=1; shift
 BAM_FILE=1;
 
-gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms4G -Xmx4G -XX:ParallelGCThreads=2" BaseRecalibrator \
+gatk --java-options "-Djava.io.tmpdir=$SLURM_JOBID -Xms4G -Xmx4G -XX:ParallelGCThreads=2" BaseRecalibrator \
   -I ${DIR}/${sample_name}/${BAM_FILE} \
   -R ${REF} \
   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
   --known-sites ${dbsnp}/Homo_sapiens_assembly38.dbsnp138.vcf  \
   --known-sites ${dbsnp}/1000G_phase1.snps.high_confidence.hg38.vcf.gz
 
-gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyBQSR \
+gatk --java-options "-Djava.io.tmpdir=$SLURM_JOBID -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyBQSR \
   -I ${DIR}/${sample_name}/${BAM_FILE} \
   -R ${REF} \
   --bqsr-recal-file ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
