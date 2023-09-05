@@ -9,7 +9,7 @@
 #SBATCH --mem=40G
 #SBATCH  --output=recalibrate.out
 
-module laod gatk/4.2.5.0
+module laod gatk
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
