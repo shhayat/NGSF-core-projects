@@ -9,6 +9,8 @@
 #SBATCH --mem=10G
 #SBATCH  --output=%j_CombineGVCFs_jointGenotyping.out
 
+module load gatk/4.2.5.0 
+
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants/
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome/genome.fa
  
