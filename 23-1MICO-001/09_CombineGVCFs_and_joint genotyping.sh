@@ -9,9 +9,14 @@
 #SBATCH --mem=20G
 #SBATCH  --output=%j_variant_quality.out
 
+ REF=
  
- gatk CombineGVCFs \
+ gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" CombineGVCFs \
    -R reference.fasta \
    --variant sample1.g.vcf.gz \
    --variant sample2.g.vcf.gz \
-   -O cohort.g.vcf.gz
+   -O combine.g.vcf.gz
+
+gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" GenotypeGVCFs \
+  -R ${REF} \
+  -V  ${OUTDIR}/${sample_name}.g.vcf.gz -O ${OUTDIR}/
