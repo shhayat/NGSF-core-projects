@@ -24,7 +24,7 @@ mkdir -p ${OUTDIR}
 
 chipr -i ${files} \
       -m 1 \
-      -o ${OUTDIR}/${cellLine}_optimal.bed
+      -o ${OUTDIR}/${cellLine}
 
 awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
 
