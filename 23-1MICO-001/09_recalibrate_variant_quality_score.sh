@@ -17,6 +17,7 @@ gatk_resource=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-
 
 cd ${gatk_resource}
 
+#  select SNP in while variant recalibration
 gatk VariantRecalibrator \
    -R ${REF} \
    -V ${DIR}/genotyped.g.vcf.gz \
@@ -29,3 +30,14 @@ gatk VariantRecalibrator \
    -O ${DIR}/output.recal \
    --tranches-file ${DIR}/output.tranches \
    --rscript-file ${DIR}/output.plots.R
+
+#choose the VQSLOD cutoff to filter VCF file
+gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID \
+  -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyVQSR \
+  -V genotyped.g.vcf.gz \
+  --recal-file output.recal \
+  -mode SNP \
+  --tranches-file output.tranches \
+  --truth-sensitivity-filter-level 99.9 \
+  --create-output-variant-index true \
+  -O SNP.recalibrated_99.9.vcf.gz
