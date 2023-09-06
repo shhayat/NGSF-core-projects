@@ -20,5 +20,5 @@
 
 gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" GenotypeGVCFs \
    -R ${REF} \
-   -V  ${DIR}/combine.g.vcf.gz \
+   -V ${DIR}/combine.g.vcf.gz \
    -O ${DIR}/genotyped.g.vcf.gz
