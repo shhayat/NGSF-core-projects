@@ -18,4 +18,6 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/ana
 
 mkdir -p $OUTDIR
 #bowtie2-build ${GENOME}/Homo_sapiens_assembly38.fasta ${OUTDIR}/bowtie_index
-bowtie2-build ${GENOME}/GCF_000001405.40_GRCh38.p14_genomic.fna -p 8 ${OUTDIR}/bowtie_index
+bowtie2-build ${GENOME}/GCF_000001405.40_GRCh38.p14_genomic.fna \  
+              --threads 8 \
+              ${OUTDIR}/bowtie_index
