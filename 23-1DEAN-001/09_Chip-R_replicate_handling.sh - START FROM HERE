@@ -11,13 +11,18 @@
 
 #Since IDR tool works with only 2 replicate and we have 3 replicates per cell line. Due to which we choose to work with chipr tool
 set -eux
+module purge
+module load python/3.10
+module load scipy-stack/2023a
+source $HOME/venvs/chip-r/bin/activate
+
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr
 
 files=$1; shift
 cellLine=$1;
 mkdir -p ${OUTDIR}
 
-./globalhome/hxo752/HPC/tools/ChIP-R/bin/chipr -i ${files} \
+chipr -i ${files} \
       -m 1 \
       -o ${OUTDIR} 
 
