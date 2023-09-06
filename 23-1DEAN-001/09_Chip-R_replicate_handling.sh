@@ -29,9 +29,9 @@ chipr -i ${files} \
 awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
 
 #sort on -log10(pvalue)
-sort -k 8,8nr ${OUTDIR}/${cellLine}_optimal_filtered.bed > ${DIR}/${cellLine}_optimal_filtered.bed
+sort -k 8,8nr ${OUTDIR}/${cellLine}_optimal_filtered.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
 
 #prep file for motif discovery
-cut -f 1,2,3 ${OUTDIR}/${DIR}/${cellLine}_optimal_filtered.bed > ${OUTDIR}/${cellLine}_optimal_filtered_3_columns.bed 
+cut -f 1,2,3 ${OUTDIR}/${cellLine}_optimal_filtered.bed > ${OUTDIR}/${cellLine}_optimal_filtered_3_columns.bed 
 
 
