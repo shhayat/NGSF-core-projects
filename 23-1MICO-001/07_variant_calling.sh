@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --time=4:00:00
 #SBATCH --mem=20G
-#SBATCH  --output=variantcalling.out
+#SBATCH  --output=%j_variantcalling.out
 #https://hpc.nih.gov/training/gatk_tutorial/haplotype-caller.html
   
 gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" HaplotypeCaller \
