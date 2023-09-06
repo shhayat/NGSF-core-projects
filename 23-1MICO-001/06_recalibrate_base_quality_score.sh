@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=markdup_add_RG
+#SBATCH --job-name=recalibrate
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=4:00:00
