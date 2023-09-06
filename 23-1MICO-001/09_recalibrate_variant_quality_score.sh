@@ -9,6 +9,8 @@
 #SBATCH --mem=20G
 #SBATCH  --output=%j_variant_quality.out
 
+module load gatk/4.2.5.0 
+
 #https://gatk.broadinstitute.org/hc/en-us/articles/360036510892-VariantRecalibrator
  gatk VariantRecalibrator \
    -R Homo_sapiens_assembly38.fasta \
