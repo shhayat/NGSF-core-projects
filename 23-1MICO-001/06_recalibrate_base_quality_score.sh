@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=4:00:00
-#SBATCH --mem=40G
+#SBATCH --mem=10G
 #SBATCH  --output=%j_recalibrate.out
 
 module load gatk/4.2.5.0 
@@ -18,14 +18,14 @@ dbsnp=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/anal
 sample_name=$1; shift
 BAM_FILE=$1;
 
-gatk --java-options "-Xmx2G" BaseRecalibrator \
+gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" BaseRecalibrator \
   -I ${BAM_FILE} \
   -R ${REF} \
   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
   --known-sites ${dbsnp}/Homo_sapiens_assembly38.dbsnp138.vcf \
   --known-sites ${dbsnp}/1000G_phase1.snps.high_confidence.hg38.vcf.gz
 
-gatk --java-options "-Xmx2G" ApplyBQSR \
+gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" ApplyBQSR \
   -I ${BAM_FILE} \
   -R ${REF} \
   --bqsr-recal-file ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
