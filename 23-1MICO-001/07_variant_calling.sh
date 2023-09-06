@@ -22,8 +22,3 @@ gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" HaplotypeCaller \
   -I ${DIR}/${sample_name}/${sample_name}_bqsr.bam \
   -O ${OUTDIR}/${sample_name}.g.vcf.gz \
   -ERC GVCF
- #CombineGVCFs
-#joint genotyping
-gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" GenotypeGVCFs \
-  -R ${REF} \
-  -V  ${OUTDIR}/${sample_name}.g.vcf.gz -O ${OUTDIR}/
