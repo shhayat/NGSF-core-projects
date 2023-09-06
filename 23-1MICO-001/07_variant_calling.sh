@@ -9,6 +9,7 @@
 #SBATCH --mem=20G
 #SBATCH  --output=%j_variantcalling.out
 
+
 #https://hpc.nih.gov/training/gatk_tutorial/haplotype-caller.html
 sample_name=$1;
 
