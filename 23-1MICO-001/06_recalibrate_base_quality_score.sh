@@ -22,7 +22,7 @@ gatk --java-options "-Xmx2G" BaseRecalibrator \
   -I ${BAM_FILE} \
   -R ${REF} \
   -O ${OUTDIR}/${sample_name}/${sample_name}_recal_data.table \
-  --known-sites ${dbsnp}/GCF_000001405.40.gz
+  --known-sites ${dbsnp}/Homo_sapiens_assembly38.dbsnp138.vcf
  # --known-sites ${dbsnp}/1000G_phase1.snps.high_confidence.hg38.vcf.gz
 
 gatk --java-options "-Xmx2G" ApplyBQSR \
