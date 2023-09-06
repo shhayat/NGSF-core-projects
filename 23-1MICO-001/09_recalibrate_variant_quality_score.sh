@@ -5,7 +5,7 @@
 #SBATCH --job-name=variant_quality
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --time=4:00:00
+#SBATCH --time=6:00:00
 #SBATCH --mem=20G
 #SBATCH  --output=%j_variant_quality.out
 
