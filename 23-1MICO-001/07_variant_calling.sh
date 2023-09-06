@@ -20,9 +20,9 @@ mkdir -p ${OUTDIR}
 gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" HaplotypeCaller \
   -R ${REF} \
   -I ${DIR}/${sample_name}/${sample_name}_bqsr.bam \
-  -O ${OUTDIR}/${sample_name}.vcf.gz \
+  -O ${OUTDIR}/${sample_name}.g.vcf.gz \
   -ERC GVCF
-
-gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID -Xms2G -Xmx2G -XX:ParallelGCThreads=2" GenotypeGVCFs \
-  -R /fdb/igenomes/Homo_sapiens/UCSC/hg38/Sequence/WholeGenomeFasta/genome.fa \
-  -V gendb://chr1_gdb -O chr1.vcf.gz
+#joint genotyping
+gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" GenotypeGVCFs \
+  -R ${REF} \
+  -V  ${OUTDIR}/${sample_name}.g.vcf.gz -O ${OUTDIR}/
