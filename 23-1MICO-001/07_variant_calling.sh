@@ -18,5 +18,4 @@ mkdir -p ${OUTDIR}
 gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" HaplotypeCaller \
   -R ${REF} \
   -I ${DIR}/${sample_name}/${sample_name}_bqsr.bam \
-  -O ${OUTDIR}/${sample_name}.vcf.gz \
-  -ERC GVCF
+  -O ${OUTDIR}/${sample_name}.vcf.gz
