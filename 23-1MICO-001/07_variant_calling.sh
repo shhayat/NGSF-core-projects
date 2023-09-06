@@ -10,6 +10,7 @@
 #SBATCH  --output=%j_variantcalling.out
 
 #https://hpc.nih.gov/training/gatk_tutorial/haplotype-caller.html
+sample_name=$1;
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
