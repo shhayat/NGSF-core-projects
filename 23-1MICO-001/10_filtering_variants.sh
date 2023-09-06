@@ -11,11 +11,11 @@
 
 module load gatk/4.2.5.0
 
-REF=
+REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome/genome.fa
 OUTDIR=
 #select only snps from vcf file
 gatk SelectVariants \
-    -R reference.fasta \
+    -R ${REF} \
     -V input.vcf \
     --select-type-to-include SNP \
     -O snps.vcf
