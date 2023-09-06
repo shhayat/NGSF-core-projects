@@ -9,15 +9,16 @@
 #SBATCH --mem=10G
 #SBATCH  --output=%j_CombineGVCFs_jointGenotyping.out
 
- DIR=
+ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants/
  REF=
  
  gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" CombineGVCFs \
-   -R reference.fasta \
+   -R ${REF} \
    --variant /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants/D23000043.g.vcf.gz \
    --variant /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants/D23000044.g.vcf.gz \
-   -O combine.g.vcf.gz
+   -O ${DIR}/combine.g.vcf.gz
 
 gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" GenotypeGVCFs \
-  -R ${REF} \
-  -V  ${OUTDIR}/combine.g.vcf.gz -O ${OUTDIR}/genotyped.g.vcf.gz
+   -R ${REF} \
+   -V  ${OUTDIR}/combine.g.vcf.gz \
+   -O ${OUTDIR}/genotyped.g.vcf.gz
