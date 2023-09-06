@@ -1,3 +1,14 @@
+#!/bin/bash
+
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
+#SBATCH --job-name=variant_quality
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --time=4:00:00
+#SBATCH --mem=20G
+#SBATCH  --output=%j_variant_quality.out
+
 #https://gatk.broadinstitute.org/hc/en-us/articles/360036510892-VariantRecalibrator
  gatk VariantRecalibrator \
    -R Homo_sapiens_assembly38.fasta \
