@@ -11,14 +11,16 @@
 
 #https://gatk.broadinstitute.org/hc/en-us/articles/360036510892-VariantRecalibrator
 module load gatk/4.2.5.0 
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants/
+
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome/genome.fa
 gatk_resource=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/gatk_resource_bundle
 
 cd ${gatk_resource}
+mkdir -p ${DIR}
 
 #  select SNP in while variant recalibration
-gatk VariantRecalibrator \
+gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" VariantRecalibrator \
    -R ${REF} \
    -V ${DIR}/genotyped.g.vcf.gz \
    --resource hapmap,known=false,training=true,truth=true,prior=15.0:hapmap_3.3.hg38.sites.vcf.gz \
@@ -32,12 +34,11 @@ gatk VariantRecalibrator \
    --rscript-file ${DIR}/output.plots.R
 
 #choose the VQSLOD cutoff to filter VCF file
-gatk --java-options "-Djava.io.tmpdir=/lscratch/$SLURM_JOBID \
-  -Xms2G -Xmx2G -XX:ParallelGCThreads=2" ApplyVQSR \
-  -V genotyped.g.vcf.gz \
-  --recal-file output.recal \
+gatk gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" ApplyVQSR \
+  -V ${DIR}/genotyped.g.vcf.gz \
+  --recal-file ${DIR}/output.recal \
   -mode SNP \
-  --tranches-file output.tranches \
+  --tranches-file ${DIR}/output.tranches \
   --truth-sensitivity-filter-level 99.9 \
   --create-output-variant-index true \
-  -O SNP.recalibrated_99.9.vcf.gz
+  -O ${DIR}/SNP.recalibrated_99.9.vcf.gz
