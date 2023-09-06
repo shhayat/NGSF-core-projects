@@ -5,7 +5,7 @@
 #SBATCH --job-name=varaint_calling
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --time=4:00:00
+#SBATCH --time=2:00:00
 #SBATCH --mem=20G
 #SBATCH  --output=%j_variantcalling.out
 
@@ -13,6 +13,7 @@
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
+REF=
 mkdir -p ${OUTDIR}
 
 gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" HaplotypeCaller \
