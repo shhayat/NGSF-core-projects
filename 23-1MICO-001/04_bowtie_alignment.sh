@@ -15,14 +15,14 @@ module load samtools
 module load bowtie2/2.5.1
 
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/indices/bowtie_index
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment_v1
 NCPU=8
 
 sample_name=$1; shift
 fq1=$1; shift
 fq2=$1
 
-mkdir -p ${OUTDIR}/alignment/${sample_name}
+mkdir -p ${OUTDIR}/${sample_name}
 
 gunzip -c ${fq1} | bowtie2 \
 --phred33 \
@@ -32,8 +32,8 @@ gunzip -c ${fq1} | bowtie2 \
 -x ${GENOME} \
 -1 - \
 -2 <(gunzip -c ${fq2}) \
--S ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/alignment/${sample_name}/${sample_name}_bowtie2.log \
-&& samtools view -h -b ${OUTDIR}/alignment/${sample_name}/${sample_name}.sam > ${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam
+-S ${OUTDIR}/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/${sample_name}/${sample_name}_bowtie2.log \
+&& samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
 
 module unload samtools
 module unload bowtie2/2.5.1
