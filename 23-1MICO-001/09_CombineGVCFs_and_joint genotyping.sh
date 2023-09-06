@@ -18,6 +18,6 @@
    --variant sample2.g.vcf.gz \
    -O combine.g.vcf.gz
 
-gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" GenotypeGVCFs \
+gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" GenotypeGVCFs \
   -R ${REF} \
   -V  ${OUTDIR}/combine.g.vcf.gzz -O ${OUTDIR}/
