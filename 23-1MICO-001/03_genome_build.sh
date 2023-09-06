@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=4
-#SBATCH --time=10:00:00
-#SBATCH --mem=60G
+#BATCH --cpus-per-task=8
+#SBATCH --time=72:00:00
+#SBATCH --mem=120G
 #SBATCH --output=%j.out
 set -eux
 
@@ -18,4 +18,4 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/ana
 
 mkdir -p $OUTDIR
 #bowtie2-build ${GENOME}/Homo_sapiens_assembly38.fasta ${OUTDIR}/bowtie_index
-bowtie2-build ${GENOME}/GCF_000001405.40_GRCh38.p14_genomic.fna ${OUTDIR}/bowtie_index
+bowtie2-build ${GENOME}/GCF_000001405.40_GRCh38.p14_genomic.fna -p 8 ${OUTDIR}/bowtie_index
