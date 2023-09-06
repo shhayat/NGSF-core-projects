@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --time=4:00:00
 #SBATCH --mem=40G
-#SBATCH  --output=recalibrate.out
+#SBATCH  --output=%j_recalibrate.out
 
 module load gatk/4.2.5.0 
 
