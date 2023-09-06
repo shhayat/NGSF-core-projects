@@ -10,8 +10,9 @@
 #SBATCH  --output=%j_variant_quality.out
 
 module load gatk/4.2.5.0 
-
 #https://gatk.broadinstitute.org/hc/en-us/articles/360036510892-VariantRecalibrator
+
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants/
  gatk VariantRecalibrator \
    -R Homo_sapiens_assembly38.fasta \
    -V ${sample_name}.vcf.gz \
