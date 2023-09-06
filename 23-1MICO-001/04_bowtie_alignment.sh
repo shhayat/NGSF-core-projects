@@ -15,7 +15,7 @@ module load samtools
 module load bowtie2/2.5.1
 
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/indices/bowtie_index
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment_v1
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 NCPU=8
 
 sample_name=$1; shift
