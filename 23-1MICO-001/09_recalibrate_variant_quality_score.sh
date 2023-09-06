@@ -9,12 +9,16 @@
 #SBATCH --mem=20G
 #SBATCH  --output=%j_variant_quality.out
 
-module load gatk/4.2.5.0 
 #https://gatk.broadinstitute.org/hc/en-us/articles/360036510892-VariantRecalibrator
-gatk_resource=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/gatk_resource_bundle
+module load gatk/4.2.5.0 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants/
- gatk VariantRecalibrator \
-   -R Homo_sapiens_assembly38.fasta \
+REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome/genome.fa
+gatk_resource=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/gatk_resource_bundle
+
+cd ${gatk_resource}
+
+gatk VariantRecalibrator \
+   -R ${REF} \
    -V ${sample_name}.vcf.gz \
    --resource hapmap,known=false,training=true,truth=true,prior=15.0:hapmap_3.3.hg38.sites.vcf.gz \
    --resource omni,known=false,training=true,truth=false,prior=12.0:1000G_omni2.5.hg38.sites.vcf.gz \
@@ -22,6 +26,6 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
    --resource dbsnp,known=true,training=false,truth=false,prior=2.0:Homo_sapiens_assembly38.dbsnp138.vcf.gz \
    -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
    -mode SNP \
-   -O output.recal \
-   --tranches-file output.tranches \
-   --rscript-file output.plots.R
+   -O ${DIR}/output.recal \
+   --tranches-file ${DIR}/output.tranches \
+   --rscript-file ${DIR}/output.plots.R
