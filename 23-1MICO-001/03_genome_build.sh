@@ -8,7 +8,6 @@
 #SBATCH --time=72:00:00
 #SBATCH --mem=120G
 #SBATCH --output=%j.out
-set -eux
 
 module load bowtie2/2.5.1
 
