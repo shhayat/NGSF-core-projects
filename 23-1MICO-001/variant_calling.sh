@@ -21,7 +21,7 @@ REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 mkdir -p ${OUTDIR}
 
 samtools mpileup -B -f ${REF} ${BAM_FILE} | \
-            java -jar VarScan.v2.4.2.jar mpileup2snp \
+            java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp \
             
 
 
