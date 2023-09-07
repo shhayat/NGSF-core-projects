@@ -1,7 +1,8 @@
 library(ChIPseeker)
 library(clusterProfiler)
 library(org.Hs.eg.db)
-#library(diffloop)
+library(ggupset)
+library(ggimage)
 
 library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene
