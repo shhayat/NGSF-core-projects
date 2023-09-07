@@ -30,6 +30,6 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/ana
 
 gatk SelectVariants \
     -R ${REF} \
-    -V ${OUTDIR}/D23000044.g.vcf.gz \
-    --select "AF < 2" \
+    -V ${OUTDIR}/genotyped.g.vcf \
+    --select "AF > 0.6" \
     -O ${OUTDIR}/rare_SNPs.vcf
