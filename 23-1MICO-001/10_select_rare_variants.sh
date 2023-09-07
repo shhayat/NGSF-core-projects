@@ -4,10 +4,10 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=filter_variants
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --time=4:00:00
-#SBATCH --mem=20G
-#SBATCH  --output=%j_variant_quality.out
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:30:00
+#SBATCH --mem=5G
+#SBATCH  --output=%j_filter_variants.out
 
 module load gatk/4.2.5.0
 
