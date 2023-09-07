@@ -12,11 +12,13 @@
 #https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-020-00791-w
 module module load varscan
 
-sample_name=$1;
+BAM_FILE=$1;
+#sample_name=$1;
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome/genome.fa
 mkdir -p ${OUTDIR}
 
-java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar 
+samtools mpileup -B -f ${REF} ${BAM_FILE} | java -jar VarScan.v2.4.2.jar mpileup2snp
+
