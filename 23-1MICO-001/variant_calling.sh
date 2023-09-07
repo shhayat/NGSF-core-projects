@@ -26,7 +26,8 @@ samtools mpileup -B -f ${REF} ${BAM_FILE} | \
             --min-avg-qual 30 \ #base quality
             --min-var-freq 0.01 \
             --variants SNP \
-            --output-vcf ${OUTDIR}/${sample_name}_snps.vcf
+            --p-value 0.05 \
+            --output-vcf > ${OUTDIR}/${sample_name}_snps.vcf
             
             
 
