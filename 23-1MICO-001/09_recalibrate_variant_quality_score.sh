@@ -5,8 +5,8 @@
 #SBATCH --job-name=variant_quality
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --time=6:00:00
-#SBATCH --mem=20G
+#SBATCH --time=1:00:00
+#SBATCH --mem=10G
 #SBATCH  --output=%j_variant_quality.out
 
 #https://gatk.broadinstitute.org/hc/en-us/articles/360036510892-VariantRecalibrator
@@ -19,7 +19,7 @@ gatk_resource=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-
 mkdir -p ${DIR}
 
 #  select SNP in while variant recalibration
-gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" VariantRecalibrator \
+gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" VariantRecalibrator \
    -R ${REF} \
    -V ${DIR}/genotyped.g.vcf.gz \
    --resource:hapmap,known=false,training=true,truth=true,prior=15.0 ${gatk_resource}/hapmap_3.3.hg38.vcf.gz \
@@ -33,7 +33,7 @@ gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" VariantRecalibrato
    --rscript-file ${DIR}/output.plots.R
 
 #choose the VQSLOD cutoff to filter VCF file
-gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" ApplyVQSR \
+gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" ApplyVQSR \
   -V ${DIR}/genotyped.g.vcf.gz \
   --recal-file ${DIR}/output.recal \
   -mode SNP \
