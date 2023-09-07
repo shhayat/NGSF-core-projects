@@ -15,15 +15,15 @@ REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
 
 #select only snps from vcf file
-gatk SelectVariants \
-    -R ${REF} \
-    -V input.vcf \
-    --select-type-to-include SNP \
-    -O snps.vcf
+#gatk SelectVariants \
+#    -R ${REF} \
+#    -V SNP.recalibrated_99.9.vcf.gz \
+#    --select-type-to-include SNP \
+#    -O snps.vcf
 
 #select rare variants
     gatk SelectVariants \
     -R ${REF} \
-    -V ${OUTDIR}/input.vcf \
+    -V ${OUTDIR}/SNP.recalibrated_99.9.vcf.gz \
     --select "AF <= 0.01" \
-    -O ${OUTDIR}/rare_variants.vcf
+    -O ${OUTDIR}/rare_SNPs.vcf
