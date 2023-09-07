@@ -30,7 +30,7 @@ gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" VariantRecalibrato
    -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
    -mode SNP \
    --tranche 100.0 --tranche 99.9 --tranche 99.0 --tranche 90.0 \
-   --target-titv 3.2 \
+   --target-titv 3.2 \ #for human exome
    -O ${DIR}/output.recal \
    --tranches-file ${DIR}/output.tranches \
    --rscript-file ${DIR}/output.plots.R
