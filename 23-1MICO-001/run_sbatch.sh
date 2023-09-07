@@ -88,6 +88,6 @@ DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analy
 
 for i in {43..44};
 do
-  sbatch ${SCRIPT_DIR}/D230000${i} "${DATA}/D230000${i}/D230000${i}_mdup_rg_sort.bam"
+  sbatch ${SCRIPT_DIR}/variant_calling.sh "D230000${i}" "${DATA}/D230000${i}/D230000${i}_mdup_rg_sort.bam"
   sleep 0.2
 done
