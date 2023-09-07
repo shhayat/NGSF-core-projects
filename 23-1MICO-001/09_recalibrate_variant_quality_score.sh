@@ -16,17 +16,16 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome/genome.fa
 gatk_resource=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/gatk_resource_bundle
 
-cd ${gatk_resource}
 mkdir -p ${DIR}
 
 #  select SNP in while variant recalibration
 gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" VariantRecalibrator \
    -R ${REF} \
    -V ${DIR}/genotyped.g.vcf.gz \
-   --resource hapmap,known=false,training=true,truth=true,prior=15.0 hapmap_3.3.hg38.vcf.gz \
-   --resource omni,known=false,training=true,truth=false,prior=12.0 1000G_omni2.5.hg38.vcf.gz \
-   --resource 1000G,known=false,training=true,truth=false,prior=10.0 1000G_phase1.snps.high_confidence.hg38.vcf.gz \
-   --resource dbsnp,known=true,training=false,truth=false,prior=2.0 Homo_sapiens_assembly38.dbsnp138.vcf.gz \
+   --resource hapmap,known=false,training=true,truth=true,prior=15.0:${gatk_resource}/hapmap_3.3.hg38.vcf.gz \
+   --resource omni,known=false,training=true,truth=false,prior=12.0:${gatk_resource}/1000G_omni2.5.hg38.vcf.gz \
+   --resource 1000G,known=false,training=true,truth=false,prior=10.0:${gatk_resource}/1000G_phase1.snps.high_confidence.hg38.vcf.gz \
+   --resource dbsnp,known=true,training=false,truth=false,prior=2.0:${gatk_resource}/Homo_sapiens_assembly38.dbsnp138.vcf.gz \
    -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
    -mode SNP \
    -O ${DIR}/output.recal \
