@@ -38,8 +38,8 @@ annot_df_BT549 <- data.frame(peakAnnoList[[1]]@anno)
 annot_df_HCC1806 <- data.frame(peakAnnoList[[2]]@anno)
 
 #selected columns
-annot_df_BT549=annot_df_BT549[c(1:5,23:33)]
-annot_df_HCC1806=annot_df_HCC1806[c(1:5,23:33)]
+#annot_df_BT549=annot_df_BT549[c(1:5,23:33)]
+#annot_df_HCC1806=annot_df_HCC1806[c(1:5,23:33)]
 
 #add gene name to annot_df
 write.csv(annot_df_BT549, "BT549_peaks_with_annotations.csv")
