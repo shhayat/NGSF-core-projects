@@ -28,6 +28,7 @@ gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" VariantRecalibrato
    --resource:dbsnp,known=true,training=false,truth=false,prior=2.0 ${gatk_resource}/Homo_sapiens_assembly38.dbsnp138.vcf \
    -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
    -mode SNP \
+   --tranche 100.0 --tranche 99.9 --tranche 99.0 --tranche 90.0 \
    -O ${DIR}/output.recal \
    --tranches-file ${DIR}/output.tranches \
    --rscript-file ${DIR}/output.plots.R
