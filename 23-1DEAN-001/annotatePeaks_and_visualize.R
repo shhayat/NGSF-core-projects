@@ -126,7 +126,7 @@ pdf("HCC1806_chip_profile.pdf")
 dev.off()
 
 #annotation plot : there are more plot funtion available for multiple cell line comparisions
-pdf("BHCC1806_annotation_plots.pdf")
+pdf("HCC1806_annotation_plots.pdf")
   #Barchart of genomic feature representation
   plotAnnoBar(peakAnnoList[[2]])
 
