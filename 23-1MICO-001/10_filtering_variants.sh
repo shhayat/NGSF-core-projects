@@ -12,7 +12,8 @@
 module load gatk/4.2.5.0
 
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome/genome.fa
-OUTDIR=
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
+
 #select only snps from vcf file
 gatk SelectVariants \
     -R ${REF} \
@@ -22,7 +23,7 @@ gatk SelectVariants \
 
 #select rare variants
     gatk SelectVariants \
-    -R reference.fasta \
-    -V input.vcf \
+    -R ${REF} \
+    -V ${OUTDIR}/input.vcf \
     --select "AF <= 0.01" \
-    -O rare_variants.vcf
+    -O ${OUTDIR}/rare_variants.vcf
