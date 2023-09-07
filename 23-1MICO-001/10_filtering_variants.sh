@@ -21,9 +21,9 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/ana
 #    --select-type-to-include SNP \
 #    -O snps.vcf
 
-#select rare variants
-    gatk SelectVariants \
+#select rare variants with base quality >=30 && mapping quality >=20 && AF <= 0.01
+gatk SelectVariants \
     -R ${REF} \
     -V ${OUTDIR}/SNP.recalibrated_99.9.vcf.gz \
-    --select "AF <= 0.01" \
+    --select "MQ >= 30.0 && QUAL >= 20.0 && AF <= 0.01" \
     -O ${OUTDIR}/rare_SNPs.vcf
