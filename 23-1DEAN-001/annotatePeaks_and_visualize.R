@@ -67,42 +67,22 @@ pdf("BT549_chip_profile.pdf")
 
 dev.off()
 
-
 #annotation plot : there are more plot funtion available for multiple cell line comparisions
-pdf("HCC1806_annotation_plots.pdf")
+pdf("BT549_annotation_plots.pdf")
   #Barchart of genomic feature representation
-  plotAnnoBar(peakAnnoList$HCC1806)
+  plotAnnoBar(peakAnnoList$BT549)
 
   #To view full annotation overlaps
   #two packages (ggupset,ggimage) were installed separatly for running upsetplot 
-  upsetplot(peakAnnoList$HCC1806, vennpie=TRUE)
+  upsetplot(peakAnnoList$BT549, vennpie=TRUE)
   
   #Distribution of TF-binding loci relative to TSS
-  plotDistToTSS(peakAnnoList$HCC1806, title="Distribution of transcription factor-binding loci \n relative to TSS")
+  plotDistToTSS(peakAnnoList$BT549, title="Distribution of transcription factor-binding loci \n relative to TSS")
 
 dev.off()
 
 
-pdf("BT549_chip_profile.pdf")
- #coverage plot 
- covplot(ReadPeakList$BT549, weightCol="V5")
- #from cov plot we saw most of the peaks are at chr 19. we check cov plot for chr 19
- #covplot(PeakList_with_added_chr_str[[1]], weightCol="V5", chrs=c("chr19"))
 
- #Profile of ChIP peaks binding to TSS regions
-  promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
-  tagMatrix <- getTagMatrix(ReadPeakList$BT549, windows=promoter)
-
-  # preparing tagMatrix list
-  tagMatrixList <- list(BT549=tagMatrix)
-  
-  # plotting tagMatrix heatmap
-  tagHeatmap(tagMatrixList, xlim=c(-2000, 2000), color=NULL)
-
-  # plotting average profile of ChIP peaks 
-  plotAvgProf(tagMatrixList, xlim=c(-2000, 2000), xlab="Genomic Region (5'->3')", ylab = "Read Count Frequency")
-
-dev.off()
 
 pdf("HCC1806_chip_profile.pdf")
  #coverage plot 
