@@ -11,6 +11,7 @@
 
 #https://gatk.broadinstitute.org/hc/en-us/articles/360036510892-VariantRecalibrator
 module load gatk/4.2.5.0 
+module load r/4.2.1
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
 REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/genome/genome.fa
@@ -29,6 +30,7 @@ gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" VariantRecalibrato
    -an QD -an MQ -an MQRankSum -an ReadPosRankSum -an FS -an SOR \
    -mode SNP \
    --tranche 100.0 --tranche 99.9 --tranche 99.0 --tranche 90.0 \
+   --target-titv 3.2 \
    -O ${DIR}/output.recal \
    --tranches-file ${DIR}/output.tranches \
    --rscript-file ${DIR}/output.plots.R
