@@ -48,13 +48,13 @@ write.csv(annot_df_HCC1806, "HCC1806_peaks_with_annotations.csv")
 
 pdf("BT549_chip_profile.pdf")
  #coverage plot 
- covplot(peakAnnoList[[1]], weightCol="V5")
+ covplot(ReadPeakList$BT549, weightCol="V5")
  #from cov plot we saw most of the peaks are at chr 19. we check cov plot for chr 19
  #covplot(PeakList_with_added_chr_str[[1]], weightCol="V5", chrs=c("chr19"))
 
  #Profile of ChIP peaks binding to TSS regions
   promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
-  tagMatrix <- getTagMatrix(peakAnnoList[[1]], windows=promoter)
+  tagMatrix <- getTagMatrix(ReadPeakList$BT549, windows=promoter)
 
   # preparing tagMatrix list
   tagMatrixList <- list(BT549=tagMatrix)
@@ -71,27 +71,27 @@ dev.off()
 #annotation plot : there are more plot funtion available for multiple cell line comparisions
 pdf("HCC1806_annotation_plots.pdf")
   #Barchart of genomic feature representation
-  plotAnnoBar(peakAnnoList)
+  plotAnnoBar(peakAnnoList$HCC1806)
 
   #To view full annotation overlaps
   #two packages (ggupset,ggimage) were installed separatly for running upsetplot 
-  upsetplot(peakAnnoList[[2]] , vennpie=TRUE)
+  upsetplot(peakAnnoList$HCC1806, vennpie=TRUE)
   
   #Distribution of TF-binding loci relative to TSS
-  plotDistToTSS(peakAnnoList, title="Distribution of transcription factor-binding loci \n relative to TSS")
+  plotDistToTSS(peakAnnoList$HCC1806, title="Distribution of transcription factor-binding loci \n relative to TSS")
 
 dev.off()
 
 
 pdf("BT549_chip_profile.pdf")
  #coverage plot 
- covplot(peakAnnoList[[1]], weightCol="V5")
+ covplot(ReadPeakList$BT549, weightCol="V5")
  #from cov plot we saw most of the peaks are at chr 19. we check cov plot for chr 19
  #covplot(PeakList_with_added_chr_str[[1]], weightCol="V5", chrs=c("chr19"))
 
  #Profile of ChIP peaks binding to TSS regions
   promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
-  tagMatrix <- getTagMatrix(peakAnnoList[[1]], windows=promoter)
+  tagMatrix <- getTagMatrix(ReadPeakList$BT549, windows=promoter)
 
   # preparing tagMatrix list
   tagMatrixList <- list(BT549=tagMatrix)
@@ -106,13 +106,13 @@ dev.off()
 
 pdf("HCC1806_chip_profile.pdf")
  #coverage plot 
- covplot(peakAnnoList[[2]], weightCol="V5")
+ covplot(ReadPeakList$HCC1806, weightCol="V5")
  #from cov plot we saw most of the peaks are at chr 19. we check cov plot for chr 19
  #covplot(PeakList_with_added_chr_str[[1]], weightCol="V5", chrs=c("chr19"))
 
  #Profile of ChIP peaks binding to TSS regions
   promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
-  tagMatrix <- getTagMatrix(peakAnnoList[[2]], windows=promoter)
+  tagMatrix <- getTagMatrix(ReadPeakList$HCC1806, windows=promoter)
 
   # preparing tagMatrix list
   tagMatrixList <- list(HCC1806=tagMatrix)
@@ -128,13 +128,12 @@ dev.off()
 #annotation plot : there are more plot funtion available for multiple cell line comparisions
 pdf("HCC1806_annotation_plots.pdf")
   #Barchart of genomic feature representation
-  plotAnnoBar(peakAnnoList[[2]])
-
+  plotAnnoBar(peakAnnoList$HCC1806)
   #To view full annotation overlaps
   #two packages (ggupset,ggimage) were installed separatly for running upsetplot 
-  upsetplot(peakAnnoList[[2]] , vennpie=TRUE)
+  upsetplot(peakAnnoList$HCC1806 , vennpie=TRUE)
   
   #Distribution of TF-binding loci relative to TSS
-  plotDistToTSS(peakAnnoList[[2]], title="Distribution of transcription factor-binding loci \n relative to TSS")
+  plotDistToTSS(peakAnnoList$HCC1806, title="Distribution of transcription factor-binding loci \n relative to TSS")
 
 dev.off()
