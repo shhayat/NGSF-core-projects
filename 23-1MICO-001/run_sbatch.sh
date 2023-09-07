@@ -67,3 +67,16 @@ do
   sbatch ${SCRIPT_DIR}/07_variant_calling.sh D230000${i};
   sleep 0.2
 done
+
+#######################
+#VARIANT RECLAIBRATION
+#######################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
+
+for i in {43..44};
+do
+  sbatch ${SCRIPT_DIR}/08_CombineGVCFs_and_GenotypeGVCFs.sh D230000${i};
+  sleep 0.2
+done
+
