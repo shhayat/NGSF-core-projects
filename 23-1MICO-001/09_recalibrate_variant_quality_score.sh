@@ -34,7 +34,7 @@ gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" VariantRecalibrato
    --rscript-file ${DIR}/output.plots.R
 
 #choose the VQSLOD cutoff to filter VCF file
-gatk gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" ApplyVQSR \
+gatk --java-options "-Xms20G -Xmx20G -XX:ParallelGCThreads=2" ApplyVQSR \
   -V ${DIR}/genotyped.g.vcf.gz \
   --recal-file ${DIR}/output.recal \
   -mode SNP \
