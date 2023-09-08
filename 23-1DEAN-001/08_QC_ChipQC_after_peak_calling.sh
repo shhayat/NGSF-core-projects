@@ -9,4 +9,5 @@
 #SBATCH --mem=40G
 #SBATCH  --output=%j.out
 
+module load r/4.2.1 
 /globalhome/hxo752/HPC/anaconda3/envs/bioconductor-chipqc/bin/Rscript QC_after_peak_calling.R
