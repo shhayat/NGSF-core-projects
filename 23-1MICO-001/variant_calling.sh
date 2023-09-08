@@ -21,8 +21,9 @@ REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 mkdir -p ${OUTDIR}
 
 #base quality > 30 mapping quality > 20
-samtools mpileup -B -f ${REF} ${BAM_FILE} | \
-            java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp \
+samtools mpileup -B -f ${REF} ${BAM_FILE} > ${OUTDIR}/${sample_name}.pileup
+
+java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
             --min-coverage 10 \
             --min-avg-qual 30 \ #base quality
             --min-var-freq 0.01 \
