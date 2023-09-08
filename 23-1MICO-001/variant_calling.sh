@@ -23,7 +23,7 @@ mkdir -p ${OUTDIR}
 #base quality > 30 mapping quality > 20
 #samtools mpileup -B -f ${REF} ${BAM_FILE} > ${OUTDIR}/${sample_name}.pileup
 
-#--min-var-freq 0  menas all vaiants are selected
+#--min-var-freq 0  means all vaiants are selected
 #--min-avg-qual base quality
 #java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
 #            --min-coverage 100 \
