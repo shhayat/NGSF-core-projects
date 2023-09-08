@@ -10,6 +10,10 @@
 #SBATCH  --output=%j.out
 
 set -eux
+module purge
+module load python/3.10
+module load scipy-stack/2023a
+source $HOME/venvs/meme/bin/activate
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_finding
@@ -30,5 +34,6 @@ chmod a+x bedtools.static.binary
 #select peaks with the strongest signal for motif finding
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
 
+cd ${OUTDIR}
 #since we have limited number of peaks we will not select top peaks and proceed with meme-chip
-/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc motif_discovery ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc motif_discovery ${cellLine}_genome.masked.on.idr_intervals.fa
