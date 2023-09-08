@@ -2,6 +2,7 @@
 
 library(ChIPQC)
 library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+library(DiffBind)
 
 dir.create("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/QC/ChIPQC")
 setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/QC")
