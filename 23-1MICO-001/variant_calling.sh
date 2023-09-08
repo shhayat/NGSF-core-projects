@@ -25,10 +25,18 @@ mkdir -p ${OUTDIR}
 
 #--min-var-freq 0  menas all vaiants are selected
 #--min-avg-qual base quality
+#java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
+#            --min-coverage 100 \
+#            --min-avg-qual 40 \
+#            --min-var-freq 0 \
+#            --variants SNP \
+#            --p-value 0.05 \
+#            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps.vcf
+
 java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
-            --min-coverage 100 \
-            --min-avg-qual 40 \
+            --min-coverage 10 \
+            --min-avg-qual 30 \
             --min-var-freq 0 \
             --variants SNP \
             --p-value 0.05 \
-            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps.vcf
+            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_ReadDepth10_BaseQuality30.vcf
