@@ -28,8 +28,7 @@ java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}
             --min-avg-qual 30 \
             --min-var-freq 0.01 \
             --variants SNP \
-            --p-value 0.05 \
-            --output-file ${OUTDIR}/${sample_name}_snps.vcf
+            --p-value 0.05 > ${OUTDIR}/${sample_name}_snps.vcf
             
 
 
