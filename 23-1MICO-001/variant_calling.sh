@@ -56,5 +56,5 @@ java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}
             --min-var-freq 0.0005 \
             --variants SNP \
             --p-value 0.05 \
-            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_AF0.0.005_pval0.01_readDepth30.vcf
+            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_AF0.0005_pval0.01_readDepth30.vcf
           
