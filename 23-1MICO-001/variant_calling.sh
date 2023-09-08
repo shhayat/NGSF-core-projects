@@ -10,7 +10,7 @@
 #SBATCH  --output=%j_variantcalling.out
 
 #https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-020-00791-w
-module module load varscan
+module load varscan
 
 sample_name=$1;shift
 BAM_FILE=$1;
