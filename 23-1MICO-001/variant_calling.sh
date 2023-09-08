@@ -23,38 +23,12 @@ mkdir -p ${OUTDIR}
 #base quality > 30 mapping quality > 20
 #samtools mpileup -B -f ${REF} ${BAM_FILE} > ${OUTDIR}/${sample_name}.pileup
 
+#--min-var-freq 0  menas all vaiants are selected
+#--min-avg-qual base quality
 java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
-            --min-coverage 10 \
-            --min-avg-qual 30 \
-            --min-var-freq 0.01 \
+            --min-coverage 100 \
+            --min-avg-qual 40 \
+            --min-var-freq 0 \
             --variants SNP \
             --p-value 0.05 \
-            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_AF0.01_pval0.05_readDepth10.vcf
-            
-
-java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
-            --min-coverage 30 \
-            --min-avg-qual 30 \
-            --min-var-freq 0.005 \
-            --variants SNP \
-            --p-value 0.01 \
-            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_AF0.005_pval0.01_readDepth30.vcf
-
-
-java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
-            --min-coverage 30 \
-            --min-avg-qual 30 \
-            --min-var-freq 0.001 \
-            --variants SNP \
-            --p-value 0.01 \
-            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_AF0.001_pval0.01_readDepth30.vcf
-            
-
-java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
-            --min-coverage 30 \
-            --min-avg-qual 30 \
-            --min-var-freq 0.0005 \
-            --variants SNP \
-            --p-value 0.05 \
-            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_AF0.0005_pval0.01_readDepth30.vcf
-          
+            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps.vcf
