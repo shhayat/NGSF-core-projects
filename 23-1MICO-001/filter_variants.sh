@@ -18,4 +18,4 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 #bcftools view -i 'INFO/FREQ < 0.01' ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf > ${DIR}/D23000043_snps_AF0.01.vcf
 #bcftools view -i 'INFO/FREQ < 0.01' ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf > ${DIR}/D23000044_snps_AF0.01.vcf
 
-bcftools view -i 'ID/FREQ < 0.4' ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf > ${DIR}/D23000043_snps_AF4pct.vcf
+bcftools view -i 'ID/FREQ < 0.09' ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf > ${DIR}/D23000043_snps_AF4pct.vcf
