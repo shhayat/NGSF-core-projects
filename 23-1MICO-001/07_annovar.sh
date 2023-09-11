@@ -1,3 +1,14 @@
+#!/bin/bash
+
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
+#SBATCH --job-name=varaint_calling
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --time=08:00:00
+#SBATCH --mem=20G
+#SBATCH  --output=%j_annovar.out
+
 #detect low freq variants from general population and annotate variants
 #https://peerj.com/articles/600/
 
