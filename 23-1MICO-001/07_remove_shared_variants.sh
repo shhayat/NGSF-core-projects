@@ -1,12 +1,22 @@
+#!/bin/bash
 
-D23000043=
-D23000044=
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
+#SBATCH --job-name=rm_shared_variants
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --time=02:00:00
+#SBATCH --mem=20G
+#SBATCH  --output=%j_rm_shared_variants.out
+
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
+
 bcftools isec -C \
               -c all \
               -O z \
               -w 1 \
-              -o ${OUTDIR}/${CLONE_ID}_${SAMPLE_ID}_I.vcf.gz \
-              ${INDUCED_SAMPLE_DIR}/${SAMPLE_ID}/${SAMPLE_ID}.vcf.gz \
-              ${UNINDUCED_SAMPLE_DIR}/${CLONE_ID}_U_concat.vcf.gz
+              -o ${DIR}/D23000043_snps_unique.vcf.gz \
+              ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf \
+              ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf
 
-bcftools index -t ${OUTDIR}/${CLONE_ID}_${SAMPLE_ID}_I.vcf.gz
+bcftools index -t ${DIR}/${DIR}/D23000043_snps_unique.vcf.gz.gz
