@@ -16,14 +16,15 @@ module load bcftools/1.13
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
 
-bcftools isec -n=2 -c none -o shared_variants -p shared_dir file1.vcf file2.vcf
+bcftools isec -n=1 \
+-c none \
+-o ${DIR}/unique_variants \
+-p ${DIR} \
+${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf
 
-bcftools isec -C \
-              -c all \
-              -O z \
-              -w 1 \
-              -o ${DIR}/D23000043_snps_unique.vcf.gz \
-              ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf \
-              ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf
+bcftools view -O z \
+-o unique_file1.vcf.gz ${DIR}/0000.vcf
+
+
 
 bcftools index -t ${DIR}/${DIR}/D23000043_snps_unique.vcf.gz.gz
