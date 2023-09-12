@@ -40,3 +40,5 @@ java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}
             --variants SNP \
             --p-value 0.05 \
             --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_ReadDepth10_BaseQuality30.vcf
+
+bgzip -c ${OUTDIR}/${sample_name}_snps_ReadDepth10_BaseQuality30.vcf > ${OUTDIR}/${sample_name}_snps_ReadDepth10_BaseQuality30.vcf.gz
