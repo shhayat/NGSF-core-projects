@@ -20,4 +20,4 @@ ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000043_snps_ReadDepth10_Bas
 ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000044_snps.avinput
 
 #Determining the population frequency for SNPs 
-annotate_variation.pl 
+${annovar}/annotate_variation.pl 
