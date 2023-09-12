@@ -9,7 +9,14 @@
 #SBATCH --mem=20G
 #SBATCH  --output=%j_rm_shared_variants.out
 
+#loading required modules
+module load StdEnv/2020
+module load gcc/9.3.0
+module load bcftools/1.13
+
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
+
+bcftools isec -n=2 -c none -o shared_variants -p shared_dir file1.vcf file2.vcf
 
 bcftools isec -C \
               -c all \
