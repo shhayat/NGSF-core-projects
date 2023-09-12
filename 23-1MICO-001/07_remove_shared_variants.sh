@@ -18,9 +18,17 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 
 bcftools isec -n=1 \
 -c none \
--o ${DIR}/unique_variants \
 -p ${DIR} \
 ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf.gz ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf.gz
 
 bcftools view -O z -o ${DIR}/unique_to_D23000043.vcf.gz ${DIR}/0000.vcf
 bcftools index -t ${DIR}/unique_to_D23000043.vcf.gz
+
+#bcftools isec -C \
+#              -c all \
+#              -O z \
+#              -w 1 \
+#              -o ${DIR}/unique_variants.vcf.gz \
+#              ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf.gz \
+#              ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf.gz
+              
