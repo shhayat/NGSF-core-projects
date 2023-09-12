@@ -20,9 +20,10 @@ annovar=/globalhome/hxo752/HPC/tools/annovar
 #${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000044_snps.avinput
 
 #Download databases for Determining the population frequency for SNPs
-${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad_exome humandb/
-${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar exac03 humandb/
-${annovar}/annotate_variation.pl -buildver hg38 avsnp150 -downdb -webfrom annovar humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad_exome ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar exac03 ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38  -downdb -webfrom annovar avsnp147 ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38  -downdb -webfrom annovar avsnp147 ${annovar}/humandb/
 
 
 #Determining the population frequency
