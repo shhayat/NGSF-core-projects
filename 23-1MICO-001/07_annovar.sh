@@ -16,10 +16,13 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 annovar=/globalhome/hxo752/HPC/tools/annovar
 
 #First convert VCF file to the format accepted by annovar
-${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000043_snps.avinput
-${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000044_snps.avinput
+#${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000043_snps.avinput
+#${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000044_snps.avinput
 
 #Download databases for Determining the population frequency for SNPs
-${annovar}/annotate_variation.pl -buildver hg38 
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad_exome humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar exac03 humandb/
+${annovar}/annotate_variation.pl -buildver hg38 avsnp150 -downdb -webfrom annovar humandb/
+
 
 #Determining the population frequency
