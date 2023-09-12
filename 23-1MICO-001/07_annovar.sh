@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=annovar
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
+#SBATCH --cpus-per-task=1
 #SBATCH --time=08:00:00
-#SBATCH --mem=20G
+#SBATCH --mem=10G
 #SBATCH  --output=%j_annovar.out
 
 #detect low freq variants from general population and annotate variants
