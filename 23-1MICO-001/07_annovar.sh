@@ -26,5 +26,8 @@ annovar=/globalhome/hxo752/HPC/tools/annovar
 #${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar 1000g2015aug ${annovar}/humandb/
 
 #Determining the population frequency
-${annovar}/table_annovar.pl ${DIR}/D23000043_snps.avinput humandb/ -buildver hg38 -out ${DIR}/D23000043_annotation -remove -protocol gnomad_exome,exac03,avsnp147,1000g2015aug -operation f,f,f,f,f -nastring . -csvout -polish
-${annovar}/table_annovar.pl ${DIR}/D23000044_snps.avinput humandb/ -buildver hg38 -out ${DIR}/23000044_annotation -remove -protocol gnomad_exome,exac03,avsnp147,1000g2015aug -operation f,f,f,f,f -nastring . -csvout -polish
+#${annovar}/table_annovar.pl ${DIR}/D23000043_snps.avinput humandb/ -buildver hg38 -out ${DIR}/D23000043_annotation -remove -protocol gnomad_exome,exac03,avsnp147,1000g2015aug -operation f,f,f,f,f -nastring . -csvout -polish
+#${annovar}/table_annovar.pl ${DIR}/D23000044_snps.avinput humandb/ -buildver hg38 -out ${DIR}/23000044_annotation -remove -protocol gnomad_exome,exac03,avsnp147,1000g2015aug -operation f,f,f,f,f -nastring . -csvout -polish
+
+${annovar}/annotate_variation.pl -filter -dbtype 1000g2015aug -buildver hg38 -out ${DIR}/D23000043_annotation_1000g ${DIR}/D23000043_snps.avinput humandb/ -maf 0.05 -reverse
+${annovar}/annotate_variation.pl -filter -dbtype 1000g2015aug -buildver hg38 -out ${DIR}/D23000044_annotation_1000g ${DIR}/D23000044_snps.avinput humandb/ -maf 0.05 -reverse
