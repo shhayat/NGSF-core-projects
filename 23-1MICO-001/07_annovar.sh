@@ -19,5 +19,7 @@ annovar=/globalhome/hxo752/HPC/tools/annovar
 ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000043_snps.avinput
 ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000044_snps.avinput
 
-#Determining the population frequency for SNPs 
-${annovar}/annotate_variation.pl 
+#Download databases for Determining the population frequency for SNPs
+${annovar}/annotate_variation.pl -buildver hg38 
+
+#Determining the population frequency
