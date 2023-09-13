@@ -1,2 +1,2 @@
-/globalhome/hxo752/HPC/tools/txg-linux-v1.3.1/txg fastqs upload --project-id DU4QRJQyQfuKpttTDgP7XQ ~/ngsf_git_repos/NGSF-core-projects/23-1JOHO-002/analysis/Fastq/
+/globalhome/hxo752/HPC/tools/txg-linux-v1.3.1/txg fastqs upload --project-id DU4QRJQyQfuKpttTDgP7XQ ~/ngsf_git_repos/NGSF-core-projects/23-1JOHO-002/analysis/Fastq/SC*
 
