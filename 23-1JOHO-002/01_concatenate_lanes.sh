@@ -19,5 +19,5 @@ for i in $(seq -w 1 4)
 do
 	echo Combining library SC230000${i}
 	cat ${FASTQ_FOLDER}/SC230000${i}_*_R1_* > ${OUTDIR}/SC230000${i}_S1_L001_R1_001.fastq.gz
-	cat ${FASTQ_FOLDER}/SC2300001${i}_*_R2_* > ${OUTDIR}/SC230000${i}S1_L001_R2_001.fastq.gz
+	cat ${FASTQ_FOLDER}/SC230000${i}_*_R2_* > ${OUTDIR}/SC230000${i}S1_L001_R2_001.fastq.gz
 done
