@@ -18,7 +18,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/ana
 
 mkdir -p ${OUTDIR}
 #First convert VCF file to the format accepted by annovar
-${annovar}/convert2annovar.pl -format vcf4 ${DIR}/unique_to_D23000043.vcf.gz > ${OUTDIR}/D23000043_unique_snps.avinput
+${annovar}/convert2annovar.pl -format vcf4 ${DIR}/unique_to_D23000043.vcf > ${OUTDIR}/D23000043_unique_snps.avinput
 
 #Download databases for Determining the population frequency for SNPs
 #${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad_exome ${annovar}/humandb/
