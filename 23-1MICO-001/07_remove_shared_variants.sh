@@ -21,8 +21,9 @@ bcftools isec -n=1 \
 -p ${DIR} \
 ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf.gz ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf.gz
 
-bcftools view -O z -o ${DIR}/unique_to_D23000043.vcf.gz ${DIR}/0000.vcf
-bcftools index -t ${DIR}/unique_to_D23000043.vcf.gz
+mv ${DIR}/0000.vcf ${DIR}/unique_to_D23000043.vcf
+#bcftools view -O z -o ${DIR}/unique_to_D23000043.vcf.gz ${DIR}/0000.vcf
+#bcftools index -t ${DIR}/unique_to_D23000043.vcf.gz
 
 #bcftools isec -C \
 #              -c all \
