@@ -14,10 +14,11 @@
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
 annovar=/globalhome/hxo752/HPC/tools/annovar
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/annovar
+
+mkdir -p ${OUTDIR}
 #First convert VCF file to the format accepted by annovar
-${annovar}/convert2annovar.pl -format vcf4 ${DIR}/unique_to_D23000043.vcf.gz  > ${DIR}/D23000043_unique_snps.avinput
-#${annovar}/convert2annovar.pl -format vcf4 ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf  > ${DIR}/D23000044_snps.avinput
+${annovar}/convert2annovar.pl -format vcf4 ${DIR}/unique_to_D23000043.vcf.gz > ${OUTDIR}/D23000043_unique_snps.avinput
 
 #Download databases for Determining the population frequency for SNPs
 #${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad_exome ${annovar}/humandb/
@@ -26,9 +27,9 @@ ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/unique_to_D23000043.vcf.gz  > 
 #${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar 1000g2015aug ${annovar}/humandb/
 #{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar ensGene41 ${annovar}/humandb/
 #{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad312_genome ${annovar}/humandb/
+
 #Determining the population frequency
-${annovar}/table_annovar.pl ${DIR}/D23000043_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${DIR}/D23000043_annotation -remove -protocol ensGene41,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug -operation g,f,f,f,f,f -nastring . -csvout -polish
-${annovar}/table_annovar.pl ${DIR}/D23000044_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${DIR}/23000044_annotation -remove -protocol ensGene41,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug -operation g,f,f,f,f,f -nastring . -csvout -polish
+${annovar}/table_annovar.pl ${OUTDIR}/D23000043_unique_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${OUTDIR}/D23000043_annotation -remove -protocol ensGene41,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug -operation g,f,f,f,f,f -nastring . -csvout -polish
 
 #${annovar}/annotate_variation.pl -filter -dbtype 1000g2015aug -buildver hg38 -out ${DIR}/D23000043_annotation_1000g ${DIR}/D23000043_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -maf 0.05 -reverse
 #${annovar}/annotate_variation.pl -filter -dbtype 1000g2015aug -buildver hg38 -out ${DIR}/D23000044_annotation_1000g ${DIR}/D23000044_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -maf 0.05 -reverse
