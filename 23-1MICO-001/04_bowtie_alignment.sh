@@ -24,20 +24,16 @@ fq2=$1
 
 mkdir -p ${OUTDIR}/${sample_name}
 
-#gunzip -c ${fq1} | bowtie2 \
-#--phred33 \
-#--mm \
-#--very-sensitive \
-#--threads ${NCPU} \
-#-x ${GENOME} \
-#-1 - \
-#-2 <(gunzip -c ${fq2}) \
-#-S ${OUTDIR}/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/${sample_name}/${sample_name}_bowtie2.log \
-#&& samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
-
-
-#select reads with mapping quality above 20
-#samtools view -q 20 -b -o ${OUTDIR}/${sample_name}/${sample_name}.aligned_mq20.bam ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
+gunzip -c ${fq1} | bowtie2 \
+--phred33 \
+--mm \
+--very-sensitive \
+--threads ${NCPU} \
+-x ${GENOME} \
+-1 - \
+-2 <(gunzip -c ${fq2}) \
+-S ${OUTDIR}/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/${sample_name}/${sample_name}_bowtie2.log \
+&& samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
 
 module unload samtools
 module unload bowtie2/2.5.1
