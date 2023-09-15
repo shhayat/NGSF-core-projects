@@ -37,7 +37,7 @@ mkdir -p ${OUTDIR}/${sample_name}
 
 
 #select reads with mapping quality above 20
-samtools view -q 20 -b -o ${OUTDIR}/${sample_name}/${sample_name}.aligned_mq20.bam ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
+#samtools view -q 20 -b -o ${OUTDIR}/${sample_name}/${sample_name}.aligned_mq20.bam ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
 
 module unload samtools
 module unload bowtie2/2.5.1
