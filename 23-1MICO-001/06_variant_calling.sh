@@ -11,6 +11,7 @@
 
 #https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-020-00791-w
 module load varscan
+module load htslib/1.14
 
 sample_name=$1;shift
 BAM_FILE=$1;
