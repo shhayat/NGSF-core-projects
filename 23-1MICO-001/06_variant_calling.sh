@@ -20,7 +20,7 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/ana
 REF=GENOME=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 mkdir -p ${OUTDIR}
 
-#base quality > 30 mapping quality > 20
+#base quality > 30
 #samtools mpileup -B -f ${REF} ${BAM_FILE} > ${OUTDIR}/${sample_name}.pileup
 
 #--min-var-freq 0  means all vaiants are selected
@@ -33,12 +33,13 @@ mkdir -p ${OUTDIR}
 #            --p-value 0.05 \
 #            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps.vcf
 
+#base quality > 30 and read depth > 20
 java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
-            --min-coverage 10 \
+            --min-coverage 20 \
             --min-avg-qual 30 \
             --min-var-freq 0 \
             --variants SNP \
             --p-value 0.05 \
-            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_ReadDepth10_BaseQuality30.vcf
+            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_ReadDepth20_BaseQuality30.vcf
 
-bgzip -c ${OUTDIR}/${sample_name}_snps_ReadDepth10_BaseQuality30.vcf > ${OUTDIR}/${sample_name}_snps_ReadDepth10_BaseQuality30.vcf.gz
+bgzip -c ${OUTDIR}/${sample_name}_snps_ReadDepth20_BaseQuality30.vcf > ${OUTDIR}/${sample_name}_snps_ReadDepth20_BaseQuality30.vcf.gz
