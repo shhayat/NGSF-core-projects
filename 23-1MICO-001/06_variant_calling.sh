@@ -33,4 +33,8 @@ java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}
             --p-value 0.05 \
             --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_ReadDepth20_BaseQuality30.vcf
 
+#compress vcf file
 bgzip -c ${OUTDIR}/${sample_name}_snps_ReadDepth20_BaseQuality30.vcf > ${OUTDIR}/${sample_name}_snps_ReadDepth20_BaseQuality30.vcf.gz
+
+#create index
+tabix -p vcf ${OUTDIR}/${sample_name}_snps_ReadDepth20_BaseQuality30.vcf.gz
