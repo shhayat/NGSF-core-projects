@@ -47,38 +47,39 @@ done
 ####################
 #BASE RECALIBRATION
 ####################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 
-for i in {43..44};
-do
-  sbatch ${SCRIPT_DIR}/06_recalibrate_base_quality_score.sh D230000${i} "${DATA}/D230000${i}/D230000${i}_mdup_rg_sort.bam"
-  sleep 0.2
-done
+#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
+#DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
+
+#for i in {43..44};
+#do
+#  sbatch ${SCRIPT_DIR}/06_recalibrate_base_quality_score.sh D230000${i} "${DATA}/D230000${i}/D230000${i}_mdup_rg_sort.bam"
+#  sleep 0.2
+#done
 
 #################
 #VARIANT CALLING
 #################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
+#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
+#DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 
-for i in {43..44};
-do
-  sbatch ${SCRIPT_DIR}/07_variant_calling.sh D230000${i};
-  sleep 0.2
-done
+#for i in {43..44};
+#do
+#  sbatch ${SCRIPT_DIR}/07_variant_calling.sh D230000${i};
+#  sleep 0.2
+#done
 
 #######################
 #VARIANT RECLAIBRATION
 #######################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
+#SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
+#DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/variants
 
-for i in {43..44};
-do
-  sbatch ${SCRIPT_DIR}/08_CombineGVCFs_and_GenotypeGVCFs.sh D230000${i};
-  sleep 0.2
-done
+#for i in {43..44};
+#do
+#  sbatch ${SCRIPT_DIR}/08_CombineGVCFs_and_GenotypeGVCFs.sh D230000${i};
+#  sleep 0.2
+#done
 
 ###########
 #varscan2
@@ -88,6 +89,6 @@ DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analy
 
 for i in {43..44};
 do
-  sbatch ${SCRIPT_DIR}/variant_calling.sh "D230000${i}" "${DATA}/D230000${i}/D230000${i}_mdup_rg_sort.bam"
+  sbatch ${SCRIPT_DIR}/variant_calling.sh "D230000${i}" "${DATA}/D230000${i}/D230000${i}.aligned_mdup_rg_mq20_sort.bam"
   sleep 0.2
 done
