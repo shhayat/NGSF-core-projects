@@ -21,23 +21,23 @@ NCPU=4
 
 #sort bam file by coordinate
 
-samtools sort ${BAM_FILE} -o ${OUTDIR}/${sample_name}/${sample_name}_sort.bam && samtools index ${OUTDIR}/${sample_name}/${sample_name}_sort.bam
+#samtools sort ${BAM_FILE} -o ${OUTDIR}/${sample_name}/${sample_name}_sort.bam && samtools index ${OUTDIR}/${sample_name}/${sample_name}_sort.bam
 
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
 #Read Group Added
-java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
-                                    I=${OUTDIR}/${sample_name}/${sample_name}_sort.bam \
-                                    BARCODE_TAG="RX" \
-                                    O=${OUTDIR}/${sample_name}/${sample_name}_markduplicates.bam \
-                                    M=${OUTDIR}/${sample_name}/${sample_name}_marked_dup_metrics.txt && \
-java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
-                                    I=${OUTDIR}/${sample_name}/${sample_name}_markduplicates.bam \
-                                    O=${OUTDIR}/${sample_name}/${sample_name}_mdup_rg.bam \
-                                    SO=coordinate \
-                                    RGID=4 \
-                                    RGLB=lib1 \
-                                    RGPL=ILLUMINA \
-                                    RGPU=unit1 RGSM=20
+#java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
+#                                    I=${OUTDIR}/${sample_name}/${sample_name}_sort.bam \
+#                                    BARCODE_TAG="RX" \
+#                                    O=${OUTDIR}/${sample_name}/${sample_name}_markduplicates.bam \
+#                                    M=${OUTDIR}/${sample_name}/${sample_name}_marked_dup_metrics.txt && \
+#java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
+#                                    I=${OUTDIR}/${sample_name}/${sample_name}_markduplicates.bam \
+#                                    O=${OUTDIR}/${sample_name}/${sample_name}_mdup_rg.bam \
+#                                    SO=coordinate \
+#                                    RGID=4 \
+#                                    RGLB=lib1 \
+#                                    RGPL=ILLUMINA \
+#                                   RGPU=unit1 RGSM=20
 
 #select reads with mapping quality >20
 samtools view -q 20 -b -o ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_rg_mq20.bam ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg.bam 
