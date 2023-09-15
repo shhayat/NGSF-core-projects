@@ -39,5 +39,12 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
                                     RGPL=ILLUMINA \
                                     RGPU=unit1 RGSM=20
 
+#select reads with mapping quality >20
+samtools view -q 20 -b -o ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_rg_mq20.bam ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg.bam 
+
 #samtools sort by coordinate
-samtools sort ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg.bam -o ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg_sort.bam && samtools index ${OUTDIR}/${sample_name}/${sample_name}_mdup_rg_sort.bam
+samtools sort ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_rg_mq20.bam -o ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_rg_mq20_sort.bam && samtools index ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_rg_mq20_sort.bam
+
+
+
+#select reads with mapping quality above 20
