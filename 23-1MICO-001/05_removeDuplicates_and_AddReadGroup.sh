@@ -44,7 +44,3 @@ samtools view -q 20 -b -o ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_r
 
 #samtools sort by coordinate
 samtools sort ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_rg_mq20.bam -o ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_rg_mq20_sort.bam && samtools index ${OUTDIR}/${sample_name}/${sample_name}.aligned_mdup_rg_mq20_sort.bam
-
-
-
-#select reads with mapping quality above 20
