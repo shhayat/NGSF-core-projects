@@ -19,13 +19,14 @@ BAM_FILE=$1;
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
 REF=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
+VarScan=/globalhome/hxo752/HPC/tools/varscan-2.4.6
 mkdir -p ${OUTDIR}
 
 samtools mpileup -B -f ${REF} ${BAM_FILE} > ${OUTDIR}/${sample_name}.pileup
 
 
 #base quality > 30 and read depth > 20, #--min-var-freq 0  means all vaiants are selected
-java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
+java -jar ${VarScan}/VarScan.v2.4.6.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
             --min-coverage 20 \
             --min-avg-qual 30 \
             --min-var-freq 0 \
