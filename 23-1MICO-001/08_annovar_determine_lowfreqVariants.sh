@@ -21,12 +21,12 @@ mkdir -p ${OUTDIR}
 #${annovar}/convert2annovar.pl -format vcf4 ${DIR}/unique_to_D23000043.vcf > ${OUTDIR}/D23000043_unique_snps.avinput
 
 #Download databases for Determining the population frequency for SNPs
-#${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad_exome ${annovar}/humandb/
-#${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar exac03 ${annovar}/humandb/
-#${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar avsnp150 ${annovar}/humandb/
-#${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar 1000g2015aug ${annovar}/humandb/
-#{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar ensGene41 ${annovar}/humandb/
-#{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad312_genome ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad_exome ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar exac03 ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar avsnp150 ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar 1000g2015aug ${annovar}/humandb/
+{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar ensGene41 ${annovar}/humandb/
+{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad312_genome ${annovar}/humandb/
 
 #Determining the population frequency
 ${annovar}/table_annovar.pl ${OUTDIR}/D23000043_unique_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${OUTDIR}/D23000043_annotation -remove -protocol ensGene41,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug_all -operation g,f,f,f,f,f -nastring . -csvout -polish
