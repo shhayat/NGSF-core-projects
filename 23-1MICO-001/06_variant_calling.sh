@@ -18,23 +18,13 @@ BAM_FILE=$1;
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
-REF=GENOME=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
+REF=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 mkdir -p ${OUTDIR}
 
-#base quality > 30
-#samtools mpileup -B -f ${REF} ${BAM_FILE} > ${OUTDIR}/${sample_name}.pileup
+samtools mpileup -B -f ${REF} ${BAM_FILE} > ${OUTDIR}/${sample_name}.pileup
 
-#--min-var-freq 0  means all vaiants are selected
-#--min-avg-qual base quality
-#java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
-#            --min-coverage 100 \
-#            --min-avg-qual 40 \
-#            --min-var-freq 0 \
-#            --variants SNP \
-#            --p-value 0.05 \
-#            --output-vcf 1 > ${OUTDIR}/${sample_name}_snps.vcf
 
-#base quality > 30 and read depth > 20
+#base quality > 30 and read depth > 20, #--min-var-freq 0  means all vaiants are selected
 java -jar $EBROOTVARSCAN/VarScan.v2.4.2.jar mpileup2snp ${OUTDIR}/${sample_name}.pileup \
             --min-coverage 20 \
             --min-avg-qual 30 \
