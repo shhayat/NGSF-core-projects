@@ -17,7 +17,7 @@ module load bcftools/1.13
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
 
 #removed shared variants between D23000043 and D23000044. Selected variants unique to D23000043
-bcftools isec -n=2 \
+bcftools isec \
 -C \
 -c none \
 -o ${DIR}/unique_to_D23000043.vcf \
