@@ -19,12 +19,10 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analys
 #removed shared variants between D23000043 and D23000044. Selected variants unique to D23000043
 bcftools isec -n=2 \
 -c none \
--o ${DIR}/unique_to_D23000043.vcf.gz \
--O z \
+-o ${DIR}/unique_to_D23000043.vcf \
 ${DIR}/D23000043_snps_ReadDepth20_BaseQuality30.vcf.gz ${DIR}/D23000044_snps_ReadDepth20_BaseQuality30.vcf.gz
 
 bcftools isec -n=2 \
 -c all \
--O z \
--o ${DIR}/shared_snps.vcf.gz \
+-o ${DIR}/shared_snps.vcf \
 ${DIR}/D23000043_snps_ReadDepth20_BaseQuality30.vcf.gz ${DIR}/D23000044_snps_ReadDepth20_BaseQuality30.vcf.gz       
