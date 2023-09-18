@@ -7,6 +7,6 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/ana
 cd /globalhome/hxo752/HPC/tools
 multiqc ${OUTDIR}/*/Log.final.out -o ${OUTDIR} -n alignment
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/star_alignment
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/rnaseqc
 cd /globalhome/hxo752/HPC/tools
-multiqc ${OUTDIR}/*/Log.final.out -o ${OUTDIR} -n rnaseqc
+./multiqc ${OUTDIR}/*.metrics.tsv -o ${OUTDIR} -n rnaseqc
