@@ -27,7 +27,8 @@ rm ${DIR}/0001.vcf
 #bcftools index -t ${DIR}/unique_to_D23000043.vcf.gz
 
 bcftools isec -n=2 \
--p ${DIR}/ \
+-c all \
+-p ${DIR} \
 ${DIR}/D23000043_snps_ReadDepth20_BaseQuality30.vcf.gz ${DIR}/D23000044_snps_ReadDepth20_BaseQuality30.vcf.gz
 
 #bcftools isec -C \
