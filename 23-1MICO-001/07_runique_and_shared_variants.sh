@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=rm_shared_variants
+#SBATCH --job-name=rm_\shared_variants
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=02:00:00
