@@ -31,7 +31,7 @@ java -jar ${VarScan}/VarScan.v2.4.6.jar mpileup2snp ${OUTDIR}/${sample_name}.pil
             --min-avg-qual 30 \
             --min-var-freq 0 \
             --variants SNP \
-            --p-value 0.05 \
+            --p-value 0.01 \
             --output-vcf 1 > ${OUTDIR}/${sample_name}_snps_ReadDepth20_BaseQuality30.vcf
 
 #compress vcf file
