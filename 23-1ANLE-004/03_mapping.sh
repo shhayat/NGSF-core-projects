@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=star-align
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=2
 #SBATCH --time=3:00:00
-#SBATCH --mem=60G
+#SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
@@ -16,7 +16,7 @@ module load samtools
 
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/fastq
-GENOME=/datastore/NGSF001/projects/23-1MILE-001/Analysis/indices/gencode-40
+GENOME=/datastore/NGSF001/analysis/indices/human/gencode-40
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/star_alignment
 NCPU=4
 
