@@ -17,25 +17,14 @@ module load bcftools/1.13
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
 
 #removed shared variants between D23000043 and D23000044. Selected variants unique to D23000043
-bcftools isec -n=1 \
+bcftools isec -n=2 \
 -c none \
--p ${DIR} \
+-o ${DIR}/unique_to_D23000043.vcf.gz \
+-O z \
 ${DIR}/D23000043_snps_ReadDepth20_BaseQuality30.vcf.gz ${DIR}/D23000044_snps_ReadDepth20_BaseQuality30.vcf.gz
-
-mv ${DIR}/0000.vcf ${DIR}/unique_to_D23000043.vcf
-rm ${DIR}/0001.vcf
-#bcftools index -t ${DIR}/unique_to_D23000043.vcf.gz
 
 bcftools isec -n=2 \
 -c all \
--p ${DIR} \
-${DIR}/D23000043_snps_ReadDepth20_BaseQuality30.vcf.gz ${DIR}/D23000044_snps_ReadDepth20_BaseQuality30.vcf.gz
-
-#bcftools isec -C \
-#              -c all \
-#              -O z \
-#              -w 1 \
-#              -o ${DIR}/unique_variants.vcf.gz \
-#              ${DIR}/D23000043_snps_ReadDepth10_BaseQuality30.vcf.gz \
-#              ${DIR}/D23000044_snps_ReadDepth10_BaseQuality30.vcf.gz
-              
+-O z \
+-o ${DIR}/shared_snps.vcf.gz \
+${DIR}/D23000043_snps_ReadDepth20_BaseQuality30.vcf.gz ${DIR}/D23000044_snps_ReadDepth20_BaseQuality30.vcf.gz       
