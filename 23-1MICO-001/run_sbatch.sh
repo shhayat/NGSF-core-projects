@@ -85,7 +85,7 @@ done
 #varscan2
 ###########
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/alignment
+DATA=/datastore/NGSF001/projects/23-1MICO-001/Analysis/alignment/
 
 for i in {43..44};
 do
