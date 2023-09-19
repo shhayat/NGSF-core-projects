@@ -19,7 +19,7 @@ sed -i 1i'sample_id,molecule_h5' ${DIR}/SC23000${i}/sample_info.csv
 
 
 
-for i in {06 08};
+for i in {06..08};
 do
       echo "SC23000${i},${DIR}/SC23000${i}/outs/molecule_info.h5" >> ${DIR}/SC23000${i}/sample_info.csv
 done
