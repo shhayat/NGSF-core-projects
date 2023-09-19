@@ -24,7 +24,7 @@ do
 	cat ${FASTQ_FOLDER}/SC23000${i}_*_R2_* > ${OUTDIR}/SC23000${i}_R2.fastq.gz
 done
 
-for fq in $DATA/*.fastq.gz
+for fq in ${OUTDIR}/*.fastq.gz
 do
    fastqc -o ${OUTDIR}/fastqc --extract ${fq}
    
