@@ -35,8 +35,8 @@ SeuratObject<- AddMetaData(SeuratObject, full_new_meta)
 #head(SeuratObject@meta.data)
 de.markers <- FindMarkers(SeuratObject, ident.1 = "2", ident.2 = "1")
 de <- de.markers[de.markers$p_val <= 0.05,] 
-
-write.csv(de,file=sprintf("%s/DEG_%s_vs_%s_filter_on_pval0.05.csv",comparison_name,condition2,condition1),quote=FALSE, row.names = TRUE)
+de1 <- data.frame(gene=rownames(de),de)
+write.csv(de1,file=sprintf("%s/DEG_%s_vs_%s_filter_on_pval0.05.csv",comparison_name,condition2,condition1),quote=FALSE, row.names = FALSE)
 }
 
 DEG("PBS","Scrambled","Scrambled_PBS")
