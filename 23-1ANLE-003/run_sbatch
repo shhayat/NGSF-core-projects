@@ -1,1 +1,14 @@
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-003/analysis/count_files
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-003/analysis/count_files
 
+sample_info=$DIR/sample_info_1.csv
+comparision="Scrambled_PBS"
+sbatch ${SCRIPT_DIR}/04_aggregate.sh "${sample_info}" "${comparision}"
+
+sample_info=$DIR/sample_info_2.csv
+comparision="BLR200_Scrambled"
+sbatch ${SCRIPT_DIR}/04_aggregate.sh "${sample_info}" "${comparision}"
+
+sample_info=$DIR/sample_info_3.csv
+comparision="CCN2_Scrambled"
+sbatch ${SCRIPT_DIR}/04_aggregate.sh "${sample_info}" "${comparision}"
