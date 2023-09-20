@@ -14,9 +14,11 @@ export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-003/analysis/count_files/
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-003/analysis
 
-comparision=$1; 
+sample_info=$1; shift
+comparision=$1;
+
 mkdir -p ${OUTPUT}/agreggate/${comparision}
 cd ${OUTPUT}/agreggate/${comparision}
 
 /globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin/cellranger aggr --id="agreggate" \
-                                                                  --csv=${DIR}/${comparision}/sample_info.csv
+                                                                  --csv=${sample_info}
