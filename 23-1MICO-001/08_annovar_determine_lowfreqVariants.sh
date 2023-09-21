@@ -14,6 +14,8 @@
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
 annovar=/globalhome/hxo752/HPC/tools/annovar
+vt=/globalhome/hxo752/HPC/tools/vt
+GENOME=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/annovar
 
 mkdir -p ${OUTDIR}
@@ -30,11 +32,11 @@ ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/shared_snps.vcf > ${OUTDIR}/sh
 #{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad312_genome ${annovar}/humandb/
 
 #latest clinvar file was downloaded from https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar_20230917.vcf.gz and converted it to format required by annovar
-${annovar}/vt decompose /globalhome/hxo752/HPC/tools/annovar/humandb/clinvar_20230917.vcf.gz -o temp.split.vcf
-${annovar}/prepare_annovar_user.pl   -dbtype clinvar_preprocess2 temp.split.vcf -out temp.split2.vcf
-vt normalize temp.split2.vcf -r ~/project/seqlib/GRCh38/old/GRCh38.fa -o temp.norm.vcf -w 2000000
-prepare_annovar_user.pl -dbtype clinvar2 temp.norm.vcf -out hg38_clinvar_20180603_raw.txt
-index_annovar.pl hg38_clinvar_20180603_raw.txt -out hg38_clinvar_20180603.txt -comment comment_20180708.txt
+${annovar}/vt decompose /globalhome/hxo752/HPC/tools/annovar/humandb/clinvar_20230917.vcf.gz -o ${annovar}/humandb/temp.split.vcf
+${annovar}/prepare_annovar_user.pl -dbtype clinvar_preprocess2 ${annovar}/humandb/temp.split.vcf -out ${annovar}/humandb/temp.split2.vcf
+${vt}/vt normalize ${annovar}/humandb/temp.split2.vcf -r ${GENOME} -o ${annovar}/humandb/temp.norm.vcf -w 2000000
+${annovar}/prepare_annovar_user.pl -dbtype clinvar2 ${annovar}/humandb/temp.norm.vcf -out ${annovar}/humandb/hg38_clinvar_20230917_raw.txt
+${annovar}/index_annovar.pl ${annovar}/humandb/hg38_clinvar_20230917_raw.txt -out ${annovar}/humandb/hg38_clinvar_20230917.txt -comment ${annovar}/humandb/comment_20230917.txt
           
 #Determining the population frequency
 ${annovar}/table_annovar.pl ${OUTDIR}/D23000043_unique_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${OUTDIR}/D23000043_snp_annotation -remove -protocol ensGene41,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug_all -operation g,f,f,f,f,f -nastring . -csvout -polish
