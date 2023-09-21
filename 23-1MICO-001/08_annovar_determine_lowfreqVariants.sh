@@ -30,8 +30,8 @@ ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/shared_snps.vcf > ${OUTDIR}/sh
 #${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar 1000g2015aug ${annovar}/humandb/
 #{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar ensGene41 ${annovar}/humandb/
 #{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad312_genome ${annovar}/humandb/
-{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar clinvar_20221231 ${annovar}/humandb/
-{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar dbnsfp42c ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar clinvar_20221231 ${annovar}/humandb/
+${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar dbnsfp42c ${annovar}/humandb/
 
 #latest clinvar file was downloaded from https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar_20230917.vcf.gz and converted it to format required by annovar 
 #python /globalhome/hxo752/HPC/tools/update_annovar_db/update_resources.py -d clinvar -hp /globalhome/hxo752/HPC/tools/annovar/humandb/ -a /globalhome/hxo752/HPC/tools/annovar -g GRCh38
