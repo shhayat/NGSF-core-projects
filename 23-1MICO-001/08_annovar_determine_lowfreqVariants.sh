@@ -42,8 +42,8 @@ ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/shared_snps.vcf > ${OUTDIR}/sh
 #${annovar}/index_annovar.pl ${annovar}/humandb/hg38_clinvar_20230917_raw.txt -out ${annovar}/humandb/hg38_clinvar_20230917.txt -comment ${annovar}/humandb/comment_20230917.txt
           
 #Determining the population frequency
-${annovar}/table_annovar.pl ${OUTDIR}/D23000043_unique_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${OUTDIR}/D23000043_snp_annotation -remove -protocol ensGene41,clinvar_20221231,dbnsfp42c,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug_all -operation g,f,f,f,f,f -nastring . -csvout -polish
-${annovar}/table_annovar.pl ${OUTDIR}/shared_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${OUTDIR}/shared_snp_annotation -remove -protocol ensGene41,clinvar_20221231,dbnsfp42c,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug_all -operation g,f,f,f,f,f -nastring . -csvout -polish
+${annovar}/table_annovar.pl ${OUTDIR}/D23000043_unique_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${OUTDIR}/D23000043_snp_annotation -remove -protocol ensGene41,clinvar_20221231,dbnsfp42c,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug_all -operation g,f,f,f,f,f,f,f -nastring . -csvout -polish
+${annovar}/table_annovar.pl ${OUTDIR}/shared_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -buildver hg38 -out ${OUTDIR}/shared_snp_annotation -remove -protocol ensGene41,clinvar_20221231,dbnsfp42c,gnomad312_genome,gnomad_exome,exac03,avsnp150,1000g2015aug_all -operation g,f,f,f,f,f,f,f -nastring . -csvout -polish
 
 #${annovar}/annotate_variation.pl -filter -dbtype 1000g2015aug -buildver hg38 -out ${DIR}/D23000043_annotation_1000g ${DIR}/D23000043_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -maf 0.05 -reverse
 #${annovar}/annotate_variation.pl -filter -dbtype 1000g2015aug -buildver hg38 -out ${DIR}/D23000044_annotation_1000g ${DIR}/D23000044_snps.avinput /globalhome/hxo752/HPC/tools/annovar/humandb/ -maf 0.05 -reverse
