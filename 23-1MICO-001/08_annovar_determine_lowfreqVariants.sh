@@ -14,14 +14,13 @@
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/SNPs_using_varscan2
 annovar=/globalhome/hxo752/HPC/tools/annovar
-vt=/globalhome/hxo752/HPC/tools/vt
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MICO-001/analysis/annovar
 
 mkdir -p ${OUTDIR}
 #First convert VCF file to the format accepted by annovar
-${annovar}/convert2annovar.pl -format vcf4 ${DIR}/unique_to_D23000043.vcf > ${OUTDIR}/D23000043_unique_snps.avinput
-${annovar}/convert2annovar.pl -format vcf4 ${DIR}/shared_snps.vcf > ${OUTDIR}/shared_snps.avinput
+#${annovar}/convert2annovar.pl -format vcf4 ${DIR}/unique_to_D23000043.vcf > ${OUTDIR}/D23000043_unique_snps.avinput
+#${annovar}/convert2annovar.pl -format vcf4 ${DIR}/shared_snps.vcf > ${OUTDIR}/shared_snps.avinput
 
 #Download databases for Determining the population frequency for SNPs
 #${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad_exome ${annovar}/humandb/
@@ -30,10 +29,11 @@ ${annovar}/convert2annovar.pl -format vcf4 ${DIR}/shared_snps.vcf > ${OUTDIR}/sh
 #${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar 1000g2015aug ${annovar}/humandb/
 #{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar ensGene41 ${annovar}/humandb/
 #{annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar gnomad312_genome ${annovar}/humandb/
-${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar clinvar_20221231 ${annovar}/humandb/
-${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar dbnsfp42c ${annovar}/humandb/
+#${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar clinvar_20221231 ${annovar}/humandb/
+#${annovar}/annotate_variation.pl -buildver hg38 -downdb -webfrom annovar dbnsfp42c ${annovar}/humandb/
 
 #latest clinvar file was downloaded from https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar_20230917.vcf.gz and converted it to format required by annovar 
+#this didn't work as prepare_annovar_user.pl was missing from annovar folder
 #python /globalhome/hxo752/HPC/tools/update_annovar_db/update_resources.py -d clinvar -hp /globalhome/hxo752/HPC/tools/annovar/humandb/ -a /globalhome/hxo752/HPC/tools/annovar -g GRCh38
 #${vt}/vt decompose /globalhome/hxo752/HPC/tools/annovar/humandb/clinvar_20230917.vcf.gz -o ${annovar}/humandb/temp.split.vcf
 #${annovar}/prepare_annovar_user.pl -dbtype clinvar_preprocess2 ${annovar}/humandb/temp.split.vcf -out ${annovar}/humandb/temp.split2.vcf
