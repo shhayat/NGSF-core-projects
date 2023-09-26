@@ -8,7 +8,6 @@
 #SBATCH --time=1:00:00
 #SBATCH --mem=5G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
-set -eux
 
 module load fastqc
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/Fastq
