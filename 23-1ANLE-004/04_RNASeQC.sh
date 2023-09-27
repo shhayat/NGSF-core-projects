@@ -19,7 +19,7 @@ mkdir -p ${OUTDIR}
 cd /globalhome/hxo752/HPC/tools/rnaseqc/python
 
 python3.9 -m rnaseqc run \
-                        genes_gtf=${GTF} \
-                        bam_file=${bam_file} \
+                        ${GTF} \
+                        ${bam_file} \
                         prefix=${sample_name} \
-                        -o ${OUTDIR}
+                        ${OUTDIR}
