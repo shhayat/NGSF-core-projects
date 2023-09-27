@@ -18,9 +18,9 @@ mkdir -p ${OUTDIR}
 #chmod u+x ${SLURM_TMPDIR}/run.py
 
 #cd ${SLURM_TMPDIR}/rnaseqc
-cd /globalhome/hxo752/HPC/tools/rnaseqc/python/rnaseqc/
-python run.py \
+cd /globalhome/hxo752/HPC/sources/rnaseqc
+./rnaseqc.v2.4.2.linux \
          ${GTF} \
          ${bam_file} \
-         prefix=${sample_name} \
-         -o ${OUTDIR}
+         --sample=${sample_name} \
+         ${OUTDIR}
