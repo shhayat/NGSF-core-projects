@@ -19,7 +19,6 @@ feature_count <- sapply(sample_names, function(x)
 			   simplify = FALSE, 
 			   USE.NAMES = TRUE)
 
-
 #convet list to a dataframe
 #COUNTS
 feature_count1 <- feature_count %>% lapply(function(x) x$counts) %>% 
