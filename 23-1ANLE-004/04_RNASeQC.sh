@@ -22,4 +22,4 @@ python3.9 -m rnaseqc run \
                         ${GTF} \
                         ${bam_file} \
                         prefix=${sample_name} \
-                        ${OUTDIR}
+                        -o ${OUTDIR}
