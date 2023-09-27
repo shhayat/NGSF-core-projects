@@ -1,12 +1,13 @@
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/fastqc
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/fastqc
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/multiqc
 cd /globalhome/hxo752/HPC/tools
-multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR} -n fastqc
+multiqc ${DIR}/*_fastqc.zip -o ${OUTDIR} -n fastqc
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/star_alignment
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/star_alignment
 cd /globalhome/hxo752/HPC/tools
-multiqc ${OUTDIR}/*/Log.final.out -o ${OUTDIR} -n alignment
+multiqc ${DIR}/*/Log.final.out -o ${OUTDIR} -n alignment
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/rnaseqc
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/rnaseqc
 cd /globalhome/hxo752/HPC/tools
-./multiqc ${OUTDIR}/*.metrics.tsv -o ${OUTDIR} -n rnaseqc
+./multiqc ${DIR}/*.metrics.tsv -o ${OUTDIR} -n rnaseqc
