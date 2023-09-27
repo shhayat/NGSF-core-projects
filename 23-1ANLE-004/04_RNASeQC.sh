@@ -5,7 +5,6 @@
 #SBATCH --time=01:00:00
 #SBATCH --mem=5G
 
-set -eux
 module load python/3.9
 
 sample_name=$1; shift
