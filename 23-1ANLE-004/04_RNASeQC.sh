@@ -14,10 +14,11 @@ GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotati
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANLE-004/analysis/rnaseqc
 mkdir -p ${OUTDIR}
 
-cp -r /globalhome/hxo752/HPC/tools/rnaseqc/python/rnaseqc ${SLURM_TMPDIR}
-chmod u+x ${SLURM_TMPDIR}/rnaseqc
+#cp /globalhome/hxo752/HPC/tools/rnaseqc/python/rnaseqc/run.py ${SLURM_TMPDIR}
+#chmod u+x ${SLURM_TMPDIR}/run.py
 
-cd ${SLURM_TMPDIR}/rnaseqc
+#cd ${SLURM_TMPDIR}/rnaseqc
+cd /globalhome/hxo752/HPC/tools/rnaseqc/python/rnaseqc/
 python run.py \
          ${GTF} \
          ${bam_file} \
