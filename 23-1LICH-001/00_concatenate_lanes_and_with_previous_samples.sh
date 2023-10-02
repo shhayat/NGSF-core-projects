@@ -9,14 +9,37 @@
 
 set -eux
 mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq 
-FASTQ_FOLDER=/datastore/NGSF001/NB551711/230919_NB551711_0083_AH2FG5BGXV/Alignment_1/20230920_064527/Fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq
+FASTQ_FOLDER1=/datastore/NGSF001/NB551711/230919_NB551711_0083_AH2FG5BGXV/Alignment_1/20230920_064527/Fastq
+OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq
 
-#/datastore/NGSF001/projects/22-1LICH-001/fastq
-
+#First concatenate Lanes for latest samples
 for i in $(seq -w 143 168)
 do
 	echo Combining library R2300${i}
-	cat ${FASTQ_FOLDER}/R2300${i}_*_R1_* > ${OUTDIR}/R2300${i}_R1.fastq.gz
-	cat ${FASTQ_FOLDER}/R2300${i}_*_R2_* > ${OUTDIR}/R2300${i}_R2.fastq.gz
+	cat ${FASTQ_FOLDER1}/R2300${i}_*_R1_* > ${OUTDIR1}/R2300${i}_R1.fastq.gz
+	cat ${FASTQ_FOLDER1}/R2300${i}_*_R2_* > ${OUTDIR1}/R2300${i}_R2.fastq.gz
 done
+
+FASTQ_FOLDER2=/datastore/NGSF001/projects/22-1LICH-001/fastq
+OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/concatenated_latest_fastq_with_previous_fastq
+mkdir -p ${OUTDIR2}
+
+#Concatenate 22-1LICH-001 with latest samples
+#A3A U6
+cat ${OUTDIR}/R2300143_R1.fastq.gz 
+cat ${OUTDIR}/R2300143_R2.fastq.gz
+#A3A I5
+cat ${OUTDIR}/R2300144_R1.fastq.gz
+cat ${OUTDIR}/R2300144_R2.fastq.gz
+#A3B U2
+cat ${OUTDIR}/R2300145_R1.fastq.gz
+cat ${OUTDIR}/R2300145_R2.fastq.gz
+#A3B I5
+cat ${OUTDIR}/R2300146_R1.fastq.gz
+cat ${OUTDIR}/R2300146_R2.fastq.gz
+#A3B U1
+cat ${OUTDIR}/R2300147_R1.fastq.gz
+cat ${OUTDIR}/R2300147_R2.fastq.gz
+#A3H U2 (1)
+cat ${OUTDIR}/R2300157_R1.fastq.gz
+cat ${OUTDIR}/R2300157_R2.fastq.gz
