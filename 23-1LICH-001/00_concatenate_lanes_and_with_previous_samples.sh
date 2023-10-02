@@ -13,7 +13,7 @@ FASTQ_FOLDER1=/datastore/NGSF001/NB551711/230919_NB551711_0083_AH2FG5BGXV/Alignm
 OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq
 
 #First concatenate Lanes for latest samples
-for i in $(seq -w 143 168)
+for i in $(seq -w 143 147) $(seq -w 149 168)
 do
 	echo Combining library R2300${i}
 	cat ${FASTQ_FOLDER1}/R2300${i}_*_R1_* > ${OUTDIR1}/R2300${i}_R1.fastq.gz
