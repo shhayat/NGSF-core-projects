@@ -47,8 +47,8 @@ cat ${OUTDIR}/R2300151_R2.fastq.gz
 cat ${FASTQ_FOLDER2}/R2300134_R1.fastq.gz ${OUTDIR1}/R2300145_R1.fastq.gz > ${OUTDIR2}/A3B_U2_R1.fastq.gz
 cat ${FASTQ_FOLDER2}/R2300134_R2.fastq.gz ${OUTDIR1}/R2300145_R2.fastq.gz > ${OUTDIR2}/A3B_U2_R2.fastq.gz
 #A3B I5
-cat ${OUTDIR}/R2300146_R1.fastq.gz
-cat ${OUTDIR}/R2300146_R2.fastq.gz
+cat ${FASTQ_FOLDER2}/R2300135_R1.fastq.gz ${OUTDIR}/R2300146_R1.fastq.gz > ${OUTDIR2}/A3B_I5_R1.fastq.gz
+cat ${FASTQ_FOLDER2}/R2300135_R1.fastq.gz ${OUTDIR}/R2300146_R2.fastq.gz > ${OUTDIR2}/A3B_I5_R1.fastq.gz
 #A3B U1 (1)
 cat ${OUTDIR}/R2300153_R1.fastq.gz
 cat ${OUTDIR}/R2300153_R2.fastq.gz
