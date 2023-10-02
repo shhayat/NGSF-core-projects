@@ -4,7 +4,7 @@
 #SBATCH --job-name=combine_fastq
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --time=1:00:00
+#SBATCH --time=3:00:00
 #SBATCH --mem=8G
 
 set -eux
