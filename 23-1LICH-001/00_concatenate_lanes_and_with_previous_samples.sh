@@ -26,11 +26,11 @@ mkdir -p ${OUTDIR2}
 
 #Concatenate 22-1LICH-001 with latest samples
 #A3A U6
-cat ${OUTDIR}/R2300143_R1.fastq.gz 
-cat ${OUTDIR}/R2300143_R2.fastq.gz
+cat ${FASTQ_FOLDER2}/R2300132_R1.fastq.gz ${OUTDIR1}/R2300143_R1.fastq.gz > ${OUTDIR2}/A3A_U6_R1.fastq.gz
+cat ${FASTQ_FOLDER2}/R2300132_R2.fastq.gz ${OUTDIR1}/R2300143_R2.fastq.gz > ${OUTDIR2}/A3A_U6_R2.fastq.gz
 #A3A I5
-cat ${OUTDIR}/R2300144_R1.fastq.gz
-cat ${OUTDIR}/R2300144_R2.fastq.gz
+cat ${FASTQ_FOLDER2}/R2300133_R1.fastq.gz ${OUTDIR1}/R2300144_R1.fastq.gz > ${OUTDIR2}/A3A_I5_R1.fastq.gz
+cat ${FASTQ_FOLDER2}/R2300133_R2.fastq.gz ${OUTDIR1}/R2300144_R2.fastq.gz > ${OUTDIR2}/A3A_I5_R2.fastq.gz
 #A3A I4 (1)
 cat ${OUTDIR}/R2300150_R1.fastq.gz
 cat ${OUTDIR}/R2300150_R2.fastq.gz
@@ -44,8 +44,8 @@ cat ${OUTDIR}/R2300149_R2.fastq.gz
 cat ${OUTDIR}/R2300151_R1.fastq.gz
 cat ${OUTDIR}/R2300151_R2.fastq.gz
 #A3B U2
-cat ${OUTDIR}/R2300145_R1.fastq.gz
-cat ${OUTDIR}/R2300145_R2.fastq.gz
+cat ${FASTQ_FOLDER2}/R2300134_R1.fastq.gz ${OUTDIR1}/R2300145_R1.fastq.gz > ${OUTDIR2}/A3B_U2_R1.fastq.gz
+cat ${FASTQ_FOLDER2}/R2300134_R2.fastq.gz ${OUTDIR1}/R2300145_R2.fastq.gz > ${OUTDIR2}/A3B_U2_R2.fastq.gz
 #A3B I5
 cat ${OUTDIR}/R2300146_R1.fastq.gz
 cat ${OUTDIR}/R2300146_R2.fastq.gz
