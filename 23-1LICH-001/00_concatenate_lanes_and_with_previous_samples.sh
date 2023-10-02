@@ -43,3 +43,7 @@ cat ${OUTDIR}/R2300147_R2.fastq.gz
 #A3H U2 (1)
 cat ${OUTDIR}/R2300157_R1.fastq.gz
 cat ${OUTDIR}/R2300157_R2.fastq.gz
+
+#A3H U2 (2)
+cat ${OUTDIR}/R2300159_R1.fastq.gz
+cat ${OUTDIR}/R2300159_R2.fastq.gz
