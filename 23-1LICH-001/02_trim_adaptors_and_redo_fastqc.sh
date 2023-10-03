@@ -13,23 +13,22 @@ set -eux
 module load fastp
 
 DATA=/datastore/NGSF001/projects/23-1LICH-001/analysis/concatenated_latest_fastq_with_previous_fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
+OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
 
 mkdir -p ${OUTDIR}
 sample_name=$1;
 
-#        fastp -i ${DATA}/${sample_name}_R1.fastq.gz \
-#              -I ${DATA}/${sample_name}_R2.fastq.gz \
-#              -o ${OUTDIR}/${sample_name}_R1.fastq_trimmed.gz \
-#              -O ${OUTDIR}/${sample_name}_R2.fastq_trimmed.gz \
-#              -h ${OUTDIR}/${sample_name}.fastp.html
+       fastp -i ${DATA}/${sample_name}_R1.fastq.gz \
+             -I ${DATA}/${sample_name}_R2.fastq.gz \
+             -o ${OUTDIR}/${sample_name}_R1.trimmed.fastq.gz \
+             -O ${OUTDIR}/${sample_name}_R2.trimmed.fastq.gz \
+             -h ${OUTDIR}/${sample_name}.fastp.html
 
 module load fastqc
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastqc_trimmed
+OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastqc_trimmed
 
 mkdir -p ${OUTDIR}
 
-fastqc -o ${OUTDIR} --extract ${OUTDIR}/${sample_name}_R1.fastq_trimmed.gz
-fastqc -o ${OUTDIR} --extract ${OUTDIR}/${sample_name}_R2.fastq_trimmed.gz
+fastqc -o ${OUTDIR2} --extract ${OUTDIR1}/${sample_name}_R1.trimmed.fastq.gz
+fastqc -o ${OUTDIR2} --extract ${OUTDIR1}/${sample_name}_R2.trimmed.fastq.gz
 
