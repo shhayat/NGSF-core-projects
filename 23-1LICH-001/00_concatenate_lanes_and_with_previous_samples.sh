@@ -44,7 +44,7 @@ cat ${FASTQ_FOLDER2}/R2200134_R1.fastq.gz ${OUTDIR1}/R2300145_R1.fastq.gz > ${OU
 cat ${FASTQ_FOLDER2}/R2200134_R2.fastq.gz ${OUTDIR1}/R2300145_R2.fastq.gz > ${OUTDIR2}/A3B_U2_R2.fastq.gz
 #A3B I5
 cat ${FASTQ_FOLDER2}/R2200135_R1.fastq.gz ${OUTDIR1}/R2300146_R1.fastq.gz > ${OUTDIR2}/A3B_I5_R1.fastq.gz
-cat ${FASTQ_FOLDER2}/R2200135_R1.fastq.gz ${OUTDIR1}/R2300146_R2.fastq.gz > ${OUTDIR2}/A3B_I5_R2.fastq.gz
+cat ${FASTQ_FOLDER2}/R2200135_R2.fastq.gz ${OUTDIR1}/R2300146_R2.fastq.gz > ${OUTDIR2}/A3B_I5_R2.fastq.gz
 #A3B U1 (1)(2)
 cat ${OUTDIR1}/R2300153_R1.fastq.gz ${OUTDIR1}/R2300168_R1.fastq.gz > ${OUTDIR2}/A3B_U1_R1.fastq.gz
 cat ${OUTDIR1}/R2300153_R2.fastq.gz ${OUTDIR1}/R2300168_R2.fastq.gz > ${OUTDIR2}/A3B_U1_R2.fastq.gz
@@ -61,7 +61,7 @@ cat ${OUTDIR1}/R2300157_R1.fastq.gz ${OUTDIR1}/R2300159_R1.fastq.gz > ${OUTDIR2}
 cat ${OUTDIR}/R2300157_R2.fastq.gz ${OUTDIR1}/R2300159_R2.fastq.gz > ${OUTDIR2}/A3H_U2_R2.fastq.gz
 #A3H I4
 cat ${FASTQ_FOLDER2}/R2200137_R1.fastq.gz ${OUTDIR1}/R2300167_R1.fastq.gz > ${OUTDIR2}/A3H_I4_R1.fastq.gz
-cat ${FASTQ_FOLDER2}/R2200137_R1.fastq.gz ${OUTDIR1}/R2300167_R2.fastq.gz > ${OUTDIR2}/A3H_I4_R2.fastq.gz
+cat ${FASTQ_FOLDER2}/R2200137_R2.fastq.gz ${OUTDIR1}/R2300167_R2.fastq.gz > ${OUTDIR2}/A3H_I4_R2.fastq.gz
 #A3H I1
 cat ${OUTDIR1}/R2300158_R1.fastq.gz ${OUTDIR1}/R2300160_R1.fastq.gz > ${OUTDIR2}/A3H_I1_R1.fastq.gz
-cat ${OUTDIR1}/R2300158_R1.fastq.gz ${OUTDIR1}/R2300160_R2.fastq.gz > ${OUTDIR2}/A3H_I1_R2.fastq.gz
+cat ${OUTDIR1}/R2300158_R2.fastq.gz ${OUTDIR1}/R2300160_R2.fastq.gz > ${OUTDIR2}/A3H_I1_R2.fastq.gz
