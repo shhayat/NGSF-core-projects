@@ -1,5 +1,5 @@
-#setwd("/Users/shahina/Projects/23-1ANLE-004")
-setwd("/Users/hxo752/Desktop/core-projects/23-1ANLE-004")
+setwd("/Users/shahina/Projects/23-1ANLE-004")
+#setwd("/Users/hxo752/Desktop/core-projects/23-1ANLE-004")
 
 library("DESeq2")
 library("ggplot2")
