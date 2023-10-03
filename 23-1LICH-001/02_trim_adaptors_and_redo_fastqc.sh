@@ -12,7 +12,7 @@ set -eux
 
 module load fastp
 
-DATA=/datastore/NGSF001/projects/23-1LICH-001/concatenated_latest_fastq_with_previous_fastq
+DATA=/datastore/NGSF001/projects/23-1LICH-001/analysis/concatenated_latest_fastq_with_previous_fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
 
 mkdir -p ${OUTDIR}
