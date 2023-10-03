@@ -46,11 +46,11 @@ mkdir -p ${OUTDIR2}
 #cat ${FASTQ_FOLDER2}/R2200135_R1.fastq.gz ${OUTDIR1}/R2300146_R1.fastq.gz > ${OUTDIR2}/A3B_I5_R1.fastq.gz
 #cat ${FASTQ_FOLDER2}/R2200135_R2.fastq.gz ${OUTDIR1}/R2300146_R2.fastq.gz > ${OUTDIR2}/A3B_I5_R2.fastq.gz
 #A3B U1 (1)(2)
-#cat ${OUTDIR1}/R2300153_R1.fastq.gz ${OUTDIR1}/R2300168_R1.fastq.gz > ${OUTDIR2}/A3B_U1_R1.fastq.gz
-#cat ${OUTDIR1}/R2300153_R2.fastq.gz ${OUTDIR1}/R2300168_R2.fastq.gz > ${OUTDIR2}/A3B_U1_R2.fastq.gz
+cat ${OUTDIR1}/R2300153_R1.fastq.gz ${OUTDIR1}/R2300168_R1.fastq.gz > ${OUTDIR2}/A3B_U1_R1.fastq.gz
+cat ${OUTDIR1}/R2300153_R2.fastq.gz ${OUTDIR1}/R2300168_R2.fastq.gz > ${OUTDIR2}/A3B_U1_R2.fastq.gz
 #A3B I2 (1)(2)
-#cat ${OUTDIR1}/R2300154_R1.fastq.gz ${OUTDIR1}/R2300156_R1.fastq.gz > ${OUTDIR2}/A3B_U2_R1.fastq.gz
-#cat ${OUTDIR1}/R2300154_R2.fastq.gz ${OUTDIR1}/R2300156_R2.fastq.gz > ${OUTDIR2}/A3B_U2_R2.fastq.gz
+cat ${OUTDIR1}/R2300154_R1.fastq.gz ${OUTDIR1}/R2300156_R1.fastq.gz > ${OUTDIR2}/A3B_I2_R1.fastq.gz
+cat ${OUTDIR1}/R2300154_R2.fastq.gz ${OUTDIR1}/R2300156_R2.fastq.gz > ${OUTDIR2}/A3B_I2_R2.fastq.gz
 
 
 #A3H U1
