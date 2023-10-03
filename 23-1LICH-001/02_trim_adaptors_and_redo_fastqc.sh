@@ -20,9 +20,9 @@ sample_name=$1;
 
        fastp -i ${DATA}/${sample_name}_R1.fastq.gz \
              -I ${DATA}/${sample_name}_R2.fastq.gz \
-             -o ${OUTDIR}/${sample_name}_R1.trimmed.fastq.gz \
-             -O ${OUTDIR}/${sample_name}_R2.trimmed.fastq.gz \
-             -h ${OUTDIR}/${sample_name}.fastp.html
+             -o ${OUTDIR1}/${sample_name}_R1.trimmed.fastq.gz \
+             -O ${OUTDIR1}/${sample_name}_R2.trimmed.fastq.gz \
+             -h ${OUTDIR1}/${sample_name}.fastp.html
 
 module load fastqc
 OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastqc_trimmed
