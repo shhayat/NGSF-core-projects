@@ -15,7 +15,7 @@ module load fastp
 DATA=/datastore/NGSF001/projects/23-1LICH-001/analysis/concatenated_latest_fastq_with_previous_fastq
 OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
 
-mkdir -p ${OUTDIR}
+mkdir -p ${OUTDIR1}
 sample_name=$1;
 
        fastp -i ${DATA}/${sample_name}_R1.fastq.gz \
@@ -27,7 +27,7 @@ sample_name=$1;
 module load fastqc
 OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastqc_trimmed
 
-mkdir -p ${OUTDIR}
+mkdir -p ${OUTDIR2}
 
 fastqc -o ${OUTDIR2} --extract ${OUTDIR1}/${sample_name}_R1.trimmed.fastq.gz
 fastqc -o ${OUTDIR2} --extract ${OUTDIR1}/${sample_name}_R2.trimmed.fastq.gz
