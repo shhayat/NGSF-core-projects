@@ -32,12 +32,12 @@ done
 wait
 
 module load fastqc
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fastq_trimmed
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-002/analysis/fastqc_trimmed
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastqc_trimmed
 
 mkdir -p ${OUTDIR}
 
-for fq in $DATA/R23*.fastq.gz
+for fq in $DATA/*.fastq.gz
 do
    fastqc -o ${OUTDIR} --extract ${fq}
    
