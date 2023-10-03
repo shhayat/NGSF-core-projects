@@ -16,20 +16,15 @@ DATA=/datastore/NGSF001/projects/23-1LICH-001/concatenated_latest_fastq_with_pre
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
 
 mkdir -p ${OUTDIR}
+sample_name=$1;
 
-for i in $DATA/*_R1_001.fastq.gz
-do
-        path="${i%_R1*}";
-        sample_name=${path##*/};
-   
-        fastp -i ${DATA}/${sample_name}_R1_001.fastq.gz \
-              -I ${DATA}/${sample_name}_R2_001.fastq.gz \
-              -o ${OUTDIR}/${sample_name}_R1_001.fastq.gz \
-              -O ${OUTDIR}/${sample_name}_R2_001.fastq.gz \
+        fastp -i ${DATA}/${sample_name}_R1.fastq.gz \
+              -I ${DATA}/${sample_name}_R2.fastq.gz \
+              -o ${OUTDIR}/${sample_name}_R1.fastq_trimmed.gz \
+              -O ${OUTDIR}/${sample_name}_R2.fastq_fastq_trimmed.gz \
               -h ${OUTDIR}/${sample_name}.fastp.html
 done
 
-wait
 
 module load fastqc
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
@@ -37,13 +32,6 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/ana
 
 mkdir -p ${OUTDIR}
 
-for fq in $DATA/*.fastq.gz
-do
-   fastqc -o ${OUTDIR} --extract ${fq}
-   
-done 
+fastqc -o ${OUTDIR} --extract ${OUTDIR}/${sample_name}_R1.fastq_trimmed.gz
+fastqc -o ${OUTDIR} --extract ${OUTDIR}/${sample_name}_R2.fastq_fastq_trimmed.gz
 
-wait 
-
-cd /globalhome/hxo752/HPC/tools/
-multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}
