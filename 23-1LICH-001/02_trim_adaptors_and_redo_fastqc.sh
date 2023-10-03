@@ -23,7 +23,6 @@ sample_name=$1;
 #              -o ${OUTDIR}/${sample_name}_R1.fastq_trimmed.gz \
 #              -O ${OUTDIR}/${sample_name}_R2.fastq_trimmed.gz \
 #              -h ${OUTDIR}/${sample_name}.fastp.html
-#done
 
 module load fastqc
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
