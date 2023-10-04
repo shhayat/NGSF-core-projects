@@ -12,7 +12,6 @@ set -eux
 module load star/2.7.9a 
 module load samtools
 
-DATA=/datastore/NGSF001/projects/23-1LICH-001/concatenated_latest_fastq_with_previous_fastq
 GENOME=/datastore/NGSF001/analysis/indices/human/gencode-40
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/star_alignment
 NCPU=4
