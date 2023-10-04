@@ -26,7 +26,7 @@ do
  done
 
 #mapping
-DATA=/datastore/NGSF001/projects/fastq_trimmed
+DATA=/datastore/NGSF001/projects/23-1LICH-001/fastq_trimmed
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001
 
 for i in ${DATA}/*R1.trimmed.fastq.gz
