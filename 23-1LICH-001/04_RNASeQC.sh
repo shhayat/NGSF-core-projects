@@ -14,7 +14,7 @@ GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotati
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/rnaseqc
 mkdir -p ${OUTDIR}
 
-cd /globalhome/hxo752/HPC/sources/rnaseqc
+cd /globalhome/hxo752/HPC/venvs/rnaseqc
 ./rnaseqc.v2.4.2.linux \
          ${GTF} \
          ${bam_file} \
