@@ -62,6 +62,6 @@ for i in ${DATA}/*/*.bam
 do
         path="${i%/Aligned*}";
 	sample_name="${path##*/}"     
-  sbatch ${SCRIPT_DIR}/06_remove_rrna_and_rnaseqc.sh "${sample_name}" "${sample_name}" "Aligned.sortedByCoord.out.bam"
+  sbatch ${SCRIPT_DIR}/06_remove_rrna_and_rnaseqc.sh "${sample_name}" "Aligned.sortedByCoord.out.bam"
  sleep 0.5
 done 
