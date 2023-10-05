@@ -21,21 +21,21 @@ BAM=$1;
 
 echo "Dropping ribosomal RNA reads"
 samtools view -@ ${NCPU} \
-              -U ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam \
+              -U ${DIR}/${sample_name}/Aligned.sortedByCoord.no.rrna.bam\
               -O BAM \
               -L ${RRNA} \
               ${DIR}/${sample_name}/${BAM} && \
-              samtools index ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam
+              samtools index ${DIR}/${sample_name}/Aligned.sortedByCoord.no.rrna.bam
 
 #GTF file needs to be modified for running RNASeQC
 GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation_mod.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/rnaseqc_afteer_rrna_removal
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/rnaseqc_after_rrna_removal
 mkdir -p ${OUTDIR}
 
 cd /globalhome/hxo752/HPC/venvs/rnaseqc
 ./rnaseqc.v2.4.2.linux \
          ${GTF} \
-         ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam \
+         ${DIR}/${sample_name}/Aligned.sortedByCoord.no.rrna.bam \
          --sample=${sample_name} \
          ${OUTDIR}
          
