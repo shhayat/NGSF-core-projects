@@ -10,9 +10,11 @@ multiqc ${DIR}/*.trimmed_fastqc.zip -o ${OUTDIR} -n fastqc_after_trimming
 
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/star_alignment
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/multiqc
 cd /globalhome/hxo752/HPC/tools
-multiqc ${DIR}/*/Log.final.out -o ${OUTDIR} -n alignment
+multiqc ${DIR}/*/Log.final.out -o ${OUTDIR} -n star_alignment
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/rnaseqc
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/multiqc
 cd /globalhome/hxo752/HPC/tools
-./multiqc ${DIR}/*.metrics.tsv -o ${OUTDIR} -n rnaseqc
+multiqc ${DIR}/*.metrics.tsv -o ${OUTDIR} -n rnaseqc
