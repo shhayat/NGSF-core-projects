@@ -22,7 +22,7 @@ BAM=$1;
 
 echo "Dropping ribosomal RNA reads"
 samtools view -@ ${NCPU} \
-              -U ${DIR}/${sample_name}/${BAM} \
+              -U ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam \
               -O BAM \
               -L ${RRNA} \
-              ${DIR}/${sample_name}/${BAM}
+              ${DIR}/${sample_name}/${BAM} & samtools ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam
