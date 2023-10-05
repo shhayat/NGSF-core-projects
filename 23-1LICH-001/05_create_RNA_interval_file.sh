@@ -15,8 +15,8 @@ module load intel/2016.4
 module load intel/2017.1
 module load bedtools
 
-GTF=/datastore/NGSF001/analysis/references/iGenomes/Mouse/Mus_musculus/Ensembl/GRCm38/Annotation/Genes/genes.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1MILE-001/analysis/rrna_intervals
+GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/rrna_intervals
 mkdir -p {OUTDIR}
 
 #grep rRNA from gtf file
