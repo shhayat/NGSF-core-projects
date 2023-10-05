@@ -17,7 +17,7 @@ module load bedtools
 
 GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/rrna_intervals
-mkdir -p {OUTDIR}
+mkdir -p ${OUTDIR}
 
 #grep rRNA from gtf file
 grep 'rRNA' ${GTF} > ${OUTDIR}/rRNA_transcripts.gtf
