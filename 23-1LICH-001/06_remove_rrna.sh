@@ -19,7 +19,6 @@ NCPU=2
 sample_name=$1; shift
 BAM=$1;
 
-
 echo "Dropping ribosomal RNA reads"
 samtools view -@ ${NCPU} \
               -U ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam \
@@ -27,3 +26,16 @@ samtools view -@ ${NCPU} \
               -L ${RRNA} \
               ${DIR}/${sample_name}/${BAM} && \
               samtools index ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam
+
+#GTF file needs to be modified for running RNASeQC
+GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation_mod.gtf
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/rnaseqc_afteer_rrna_removal
+mkdir -p ${OUTDIR}
+
+cd /globalhome/hxo752/HPC/venvs/rnaseqc
+./rnaseqc.v2.4.2.linux \
+         ${GTF} \
+         ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam \
+         --sample=${sample_name} \
+         ${OUTDIR}
+         
