@@ -25,4 +25,5 @@ samtools view -@ ${NCPU} \
               -U ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam \
               -O BAM \
               -L ${RRNA} \
-              ${DIR}/${sample_name}/${BAM} & samtools ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam
+              ${DIR}/${sample_name}/${BAM} && \
+              samtools index ${DIR}/${sample_name}/${sample_name}_rm_rrna.bam
