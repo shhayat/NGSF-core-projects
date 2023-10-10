@@ -19,7 +19,7 @@ mkdir -p ${OUTDIR1}
 sample_name=$1;
 
        fastp -i ${DATA}/${sample_name}_R1.fastq.gz \
-             -I ${DATA}/{sample_name}_R2.fastq.gz \
+             -I ${DATA}/${sample_name}_R2.fastq.gz \
              -o ${OUTDIR1}/${sample_name}_R1.trimmed.fastq.gz \
              -O ${OUTDIR1}/${sample_name}_R2.trimmed.fastq.gz \
              -h ${OUTDIR1}/${sample_name}.fastp.html
