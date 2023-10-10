@@ -17,8 +17,8 @@ OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/an
 mkdir -p ${OUTDIR1}
 sample_name=$1;
 
-       fastp -i ${sample_name}_R1.fastq.gz \
-             -I ${sample_name}_R2.fastq.gz \
+       fastp -i ${DATA}/${sample_name}_R1.fastq.gz \
+             -I ${DATA}/{sample_name}_R2.fastq.gz \
              -o ${OUTDIR1}/${sample_name}_R1.trimmed.fastq.gz \
              -O ${OUTDIR1}/${sample_name}_R2.trimmed.fastq.gz \
              -h ${OUTDIR1}/${sample_name}.fastp.html
