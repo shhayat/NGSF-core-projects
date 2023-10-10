@@ -17,7 +17,7 @@ do
 DATA=/datastore/NGSF001/projects/23-1LICH-001/analysis/fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001
 
-#trim and fastqc
+#trim and fastqc for 23-1LICH-001
 for i in ${DATA}/*_R1.fastq.gz 
 do
       path="${i%_R1*}";
@@ -28,7 +28,7 @@ do
 DATA=/datastore/NGSF001/projects/22-1LICH-001/fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001
 
-#trim and fastqc
+#trim and fastqc for 22-1LICH-001
 for i in ${DATA}/*_R1.fastq.gz 
 do
       path="${i%_R1*}";
