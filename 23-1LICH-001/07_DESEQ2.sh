@@ -60,9 +60,19 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   resDF$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
 
   resDF1 <- resDF[resDF$pvalue <= 0.05,]
-  #All Genes
-  #write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_all_genes.xlsx",cond2,cond1), row.names = FALSE)
   write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
   
 }
-DEG_analysis(c(3,5,7,4,6,8),"CONTROL","DMOG","CONTROL",3,3)
+#A3A_I5 vs A3A_U6 (n=2)
+DEG_analysis(c(3,5,7,4),"A3A_U6","A3A_I5","A3A_U6",2,2)
+#A3B_I5 vs A3B_U5 (n=2)
+DEG_analysis(c(3,5,7,4),"A3B_U5","A3B_I5","A3B_U5",2,2)
+#A3H_I4 vs A3H_U1 (n=2)
+DEG_analysis(c(3,5,7,4),"A3H_U1","A3H_I4","A3H_U1",2,2)
+#A3A_I4 vs A3A_U1 (n=2)
+DEG_analysis(c(3,5,7,4),"A3A_U1","A3A_I4","A3A_U1",2,2)
+#A3B_I2 vs A3B_U1 (n=2)
+DEG_analysis(c(3,5,7,4),"A3B_U1","A3B_I2","A3B_U1",2,2)
+#A3H_I1 vs A3H_U2 (n=2)
+DEG_analysis(c(3,5,7,4),"A3H_U2","A3H_I1","A3H_U2",2,2)
+
