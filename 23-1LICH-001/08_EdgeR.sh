@@ -30,7 +30,7 @@ edgeR_analysis <-  function(colnum,cond1, cond2, ref)
   resDF1 <- merge(feature_annotation,resDF, by="GeneID")
   
   #All genes
-  write.xlsx(resDF1,file=sprintf("DEG_%s_vs_%s.xlsx",cond2,cond1),quote=FALSE, row.names = FALSE)
+  write.xlsx(resDF1,file=sprintf("DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
   
 }
 
