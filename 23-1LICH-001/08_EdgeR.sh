@@ -28,21 +28,21 @@ edgeR_analysis <-  function(colnum,cond1, cond2, ref)
   df <- et$table
   resDF <- data.frame(GeneID=rownames(df),df)
   resDF1 <- merge(feature_annotation,resDF, by="GeneID")
-  
+  resDF2 <- resDF1[resDF1$PValue <= 0.05,]
   #All genes
-  write.xlsx(resDF1,file=sprintf("DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
+  write.xlsx(resDF2,file=sprintf("DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
   
 }
 
 #A3A_I5 vs A3A_U6 (n=2)
 edgeR_analysis(c(6,4),"A3A_U6","A3A_I5","A3A_U6")
 #A3B_I5 vs A3B_U5 (n=2)
-edgeR_analysis(c(8,10),"A3B_U5","A3B_I5","A3B_U5",1,1)
+edgeR_analysis(c(8,10),"A3B_U5","A3B_I5","A3B_U5")
 #A3H_I4 vs A3H_U1 (n=2)
-edgeR_analysis(c(13,12),"A3H_U1","A3H_I4","A3H_U1",1,1)
+edgeR_analysis(c(13,12),"A3H_U1","A3H_I4","A3H_U1")
 #A3A_I4 vs A3A_U1 (n=2)
-edgeR_analysis(c(5,3),"A3A_U1","A3A_I4","A3A_U1",1,1)
+edgeR_analysis(c(5,3),"A3A_U1","A3A_I4","A3A_U1")
 #A3B_I2 vs A3B_U1 (n=2)
-edgeR_analysis(c(9,7),"A3B_U1","A3B_I2","A3B_U1",1,1)
+edgeR_analysis(c(9,7),"A3B_U1","A3B_I2","A3B_U1")
 #A3H_I1 vs A3H_U2 (n=2)
-edgeR_analysis(c(14,11),"A3H_U2","A3H_I1","A3H_U2",1,1)
+edgeR_analysis(c(14,11),"A3H_U2","A3H_I1","A3H_U2")
