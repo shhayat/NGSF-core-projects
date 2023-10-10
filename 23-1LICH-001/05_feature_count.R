@@ -8,7 +8,7 @@ sample_names <- list.files(result_dir, "A3")
 #count features using featureCounts function
 #count features using featureCounts function
 feature_count <- sapply(sample_names, function(x)
-			   featureCounts(files = sprintf('%s/%s/Aligned.sortedByCoord.out.bam',result_dir, x),
+			   featureCounts(files = sprintf('%s/%s/Aligned.sortedByCoord.no.rrna.bam',result_dir, x),
 			   annot.ext="/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf",
 			   isGTFAnnotationFile = TRUE,
 			   strandSpecific = 1,
