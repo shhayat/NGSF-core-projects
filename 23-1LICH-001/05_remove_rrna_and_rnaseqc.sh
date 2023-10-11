@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=dedup
+#SBATCH --job-name=rm_rrna
 #SBATCH --ntasks=1
 #BATCH --cpus-per-task=2
 #SBATCH --time=03:00:00
