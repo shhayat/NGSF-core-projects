@@ -2,7 +2,7 @@ library(Rsubread)
 library(magrittr)
 setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/")
 result_dir="star_alignment"
-sample_names <- list.files(result_dir, "A3")
+sample_names <- list.files(result_dir, "R")
 
 
 #count features using featureCounts function
