@@ -63,7 +63,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 }
 
 #A3A_I5 vs A3A_U6 (n=2)
-DEG_analysis(c(6,4),"A3A_U6","A3A_I5","A3A_U6",2,2)
+DEG_analysis(c(3,9,4,10),"A3A_U6","A3A_I5","A3A_U6",2,2)
 #A3B_I5 vs A3B_U5 (n=2)
 DEG_analysis(c(8,10),"A3B_U5","A3B_I5","A3B_U5",2,2)
 #A3H_I4 vs A3H_U1 (n=2)
