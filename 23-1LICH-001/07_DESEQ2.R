@@ -20,16 +20,16 @@ rownames(feature_count) <- geneID
 feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
 
 
-DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
+DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, batch)
 {
   feature_count <- feature_count[colnum]
   #remove row with sum zero
-  feature_count <- feature_count[rowSums(feature_count[,c(1:ncol(feature_count))])>0, ]
+  feature_count <- feature_count[rowSums(feature_count[,c(1:ncol(feature_count))])> 1, ]
   
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
                         sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))),
-                         batch_number=c("B2","B1","B1","B2","B2","B1","B1","B1","B1","B2","B1","B2"))
+                         batch_number=batch)
 
 group <- data.frame(sample_group=sampleInfo$sample_group,batch_number=sampleInfo$batch_number)
 
@@ -64,10 +64,10 @@ pdf(sprintf("PCA_%s_%s_batch_adjusted_combatseq.pdf",cond2,cond1), width=8,heigh
 #pdf("PCA_batch_adjusted_combatseq.pdf")
 adjusted_counts <- ComBat_seq(feature_count, batch=sampleInfo$batch_number, group=sampleInfo$sample_group)
 #pc_data <- prcomp(combat_data)
-pca_result <- prcomp(t(adjusted_counts), scale. = TRUE)
+pca_result <- prcomp(t(adjusted_counts), scale. = FALSE)
 pc_data <- as.data.frame(pca_result$x)
 
-#pc_standard_deviations <- pca_result$sdev
+pc_standard_deviations <- pca_result$sdev
 pc_variances <- round(100 * (pc_standard_deviations^2 / sum(pc_standard_deviations^2)))
 
 # Add batch information, sample_group, sample_name to the PCA results for visualization
@@ -75,7 +75,7 @@ pc_data$Batch <- sampleInfo$batch_number
 pc_data$sample_group <- sampleInfo$sample_group
 pc_data$sample_name <- sampleInfo$sample_name
 nudge=position_nudge(y = 0.5)
-ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)) +
+p <- ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)) +
   geom_point(size = 3) +
   ggtitle("PCA with ComBat_seq Adjusted Counts") +
   xlab(paste0("PC1: ",pc_variances[1],"% variance")) +
@@ -84,6 +84,7 @@ ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)) +
   scale_shape_discrete(name = "Batch") +
   theme_minimal() + 
   geom_text(aes_string(label = "sample_name"), color="black",  position=nudge , size=2.0)
+  print(p)
 dev.off()
   
  # dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
@@ -98,14 +99,19 @@ dev.off()
 }
 
 #A3A_I5 vs A3A_U6 (n=2)
-DEG_analysis(c(3,9,4,10),"A3A_U6","A3A_I5","A3A_U6",2,2)
+#DEG_analysis(c(3,9,4,10),"A3A_U6","A3A_I5","A3A_U6",2,2)
 #A3B_I5 vs A3B_U5 (n=2)
-DEG_analysis(c(5,11,12,6),"A3B_U2","A3B_I5","A3B_U2",2,2)
+#DEG_analysis(c(5,11,12,6),"A3B_U2","A3B_I5","A3B_U2",2,2)
 #A3H_I4 vs A3H_U1 (n=2)
-DEG_analysis(c(7,13,8,25),"A3H_U1","A3H_I4","A3H_U1",2,2)
+#DEG_analysis(c(7,13,8,25),"A3H_U1","A3H_I4","A3H_U1",2,2)
 #A3A_I4 vs A3A_U1 (n=2)
-DEG_analysis(c(14,16,15,17),"A3A_U1","A3A_I4","A3A_U1",2,2)
+#DEG_analysis(c(14,16,15,17),"A3A_U1","A3A_I4","A3A_U1",2,2)
 #A3B_I2 vs A3B_U1 (n=2)
-DEG_analysis(c(18,26,19,20),"A3B_U1","A3B_I2","A3B_U1",2,2)
+#DEG_analysis(c(18,26,19,20),"A3B_U1","A3B_I2","A3B_U1",2,2)
 #A3H_I1 vs A3H_U2 (n=2)
-DEG_analysis(c(21,23,22,24),"A3H_U2","A3H_I1","A3H_U2",2,2)
+#DEG_analysis(c(21,23,22,24),"A3H_U2","A3H_I1","A3H_U2",2,2)
+DEG_analysis(c(3,9,4,10),"A3A_U6","A3A_I5","A3A_U6",2,2, c("B1","B2","B1","B2"))
+DEG_analysis(c(5,11,12,6),"A3B_U2","A3B_I5","A3B_U2",2,2, c("B1","B2","B2","B1"))
+DEG_analysis(c(7,13,8,25),"A3H_U1","A3H_I4","A3H_U1",2,2, c("B1","B2","B1","B2"))
+
+
