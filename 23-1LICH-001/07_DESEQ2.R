@@ -2,6 +2,8 @@ setwd("/Users/shahina/Projects/23-1LICH-001")
 library("DESeq2")
 library("ggplot2")
 library("xlsx")
+library("sva")
+
 
 dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
 
