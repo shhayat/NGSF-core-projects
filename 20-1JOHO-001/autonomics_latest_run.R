@@ -22,6 +22,13 @@ names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_ma
 res_treated_and_control_male <- data.frame(res[1], res[grep("treated_male",names(res))], res[grep("control_male",names(res))])
 write.table(res_treated_and_control_male, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_male.txt", sep="\t", quote=FALSE,  row.names=FALSE)
 
+res_treated_and_control_female <- data.frame(res[1], res[grep("treated_female",names(res))], res[grep("control_female",names(res))])
+write.table(res_treated_and_control_female, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_female.txt", sep="\t", quote=FALSE,  row.names=FALSE)
+
+
+#####################
+#ANALYSIS FOR MALES
+#####################
 #run autonomics on 20 male samples
 object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_male.txt",pca=TRUE, plot = FALSE)
 object$subgroup <- as.factor(c("treated","treated","treated","treated","treated","treated","treated","treated","treated","treated","treated",
@@ -63,6 +70,45 @@ pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_15male_sa
 biplot(object, pca1, pca2,label=sample_id,color=subgroup)
 dev.off()
 
+#####################
+#ANALYSIS FOR FEMALES
+#####################
+#run autonomics on 20 male samples
+object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_male.txt",pca=TRUE, plot = FALSE)
+object$subgroup <- as.factor(c("treated","treated","treated","treated","treated","treated","treated","treated","treated","treated","treated",
+                               "control","control","control","control","control","control","control","control","control"))
+
+pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_20male_samples.pdf", width=10)
+  biplot(object, pca1, pca2, label=sample_id,color=subgroup)
+dev.off()
+
+object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
+
+fdata1 <- data.frame(fdt(object1))
+fdata1_select <- fdata1[c(2,5,6,7)]
+fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
+#NROW(fdata1_pval)
+#[1] 2101
+names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
+
+#NROW(fdata1_select[fdata1_select[4] <=0.05,])
+#[1] 0
+write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_20male_samples_treated_vs_control.csv")
+
+
+
+
+
+
+
+
+
+
+
+################################
+#ANALYSIS FOR FEMALES AND MALES
+################################
+
 
 object2 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
 
@@ -87,6 +133,9 @@ low <- fdata1_fdr_order[fdata1_fdr_order$effects <= -0.6,]
 high <- fdata1_fdr_order[fdata1_fdr_order$effects >= 0.6,]
 df_effect_0.6 <- rbind(low,high)
 write.csv(df_effect_0.6, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.05_and_log2FC0.6.csv")
+
+
+
 
 
 
