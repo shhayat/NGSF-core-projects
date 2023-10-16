@@ -149,7 +149,7 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
 }
 #A3A_I5 vs A3A_U6 (n=2)
 DEG_analysis(c(3,9,4,10),"A3A_U6","A3A_I5","A3A_U6",2,2)
-#A3B_I5 vs A3B_U5 (n=2)
+#A3B_I5 vs A3B_U2 (n=2)
 DEG_analysis(c(5,11,12,6),"A3B_U2","A3B_I5","A3B_U2",2,2)
 #A3H_I4 vs A3H_U1 (n=2)
 DEG_analysis(c(7,13,8,25),"A3H_U1","A3H_I4","A3H_U1",2,2)
