@@ -113,6 +113,10 @@ pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_40male_fe
   biplot(object, pca1, pca2,color=subgroup)
 dev.off()
 
+object$subgroup <- as.factor(c("treated","treated","control","treated_male","control","control","treated","control","treated","control","treated","control",
+                               "control","control","control","treated","control","control","treated","control","treated","control","treated","treated",
+                              "treated","treated","treated","control", "treated","treated","treated","control","treated","control","control","treated","control","treated","treated","treated"))
+
 object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('treated - control'), plot = FALSE)
 
 fdata(object1) %<>% cbind(limma(object1))
@@ -120,7 +124,7 @@ fdata1_select <- fdata(object1)[c("feature_name","treated - control.effect","tre
 fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
 names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
 
-write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_20male_samples_treated_vs_control.csv")
+write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_40male_female_samples_treated_vs_control.csv")
 
 
 
