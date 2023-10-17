@@ -19,6 +19,9 @@ names(res) <-c("gene_name","treated_female_R25","treated_female_R26","control_ma
                "control_male_R61","treated_female_R62","treated_male_R63","treated_male_R64")
 
 
+write.table(res, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_40_male_female.txt", sep="\t", quote=FALSE,  row.names=FALSE)
+
+
 res_treated_and_control_male <- data.frame(res[1], res[grep("treated_male",names(res))], res[grep("control_male",names(res))])
 write.table(res_treated_and_control_male, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_male.txt", sep="\t", quote=FALSE,  row.names=FALSE)
 
@@ -38,17 +41,13 @@ pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_20male_sa
   biplot(object, pca1, pca2,color=subgroup)
 dev.off()
 
-object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('treated - control'), plot = TRUE)
+object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('treated - control'), plot = FALSE)
 
-fdata1 <- data.frame(fdt(object1))
-fdata1_select <- fdata1[c(2,5,6,7)]
+fdata(object1) %<>% cbind(limma(object1))
+fdata1_select <- fdata(object1)[c("feature_name","treated - control.effect","treated - control.p","treated - control.fdr")]
 fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
-#NROW(fdata1_pval)
-#[1] 2101
 names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
 
-#NROW(fdata1_select[fdata1_select[4] <=0.05,])
-#[1] 0
 write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_20male_samples_treated_vs_control.csv")
 
 
@@ -70,11 +69,19 @@ pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_15male_sa
  biplot(object, pca1, pca2,label=sample_id,color=subgroup)
 dev.off()
 
+object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('treated - control'), plot = FALSE)
+
+fdata(object1) %<>% cbind(limma(object1))
+fdata1_select <- fdata(object1)[c("feature_name","treated - control.effect","treated - control.p","treated - control.fdr")]
+fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
+names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
+write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control.csv")
+
 #####################
 #ANALYSIS FOR FEMALES
 #####################
 #run autonomics on 20 male samples
-object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_female.txt",pca=TRUE, plot = FALSE)
+object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_female.txt",pca=TRUE, plot = TRUE)
 object$subgroup <- as.factor(c("treated","treated","treated","treated","treated","treated","treated","treated","treated","treated","treated",
                                "control","control","control","control","control","control","control","control","control"))
 
@@ -82,57 +89,38 @@ pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_20female_
   biplot(object, pca1, pca2,color=subgroup)
 dev.off()
 
-object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
+object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('treated - control'), plot = FALSE)
 
-fdata1 <- data.frame(fdt(object1))
-fdata1_select <- fdata1[c(2,5,6,7)]
+fdata(object1) %<>% cbind(limma(object1))
+fdata1_select <- fdata(object1)[c("feature_name","treated - control.effect","treated - control.p","treated - control.fdr")]
 fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
-#NROW(fdata1_pval)
-#[1] 2101
 names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
 
-#NROW(fdata1_select[fdata1_select[4] <=0.05,])
-#[1] 0
 write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_20female_samples_treated_vs_control.csv")
-
-
-
-
-
-
-
-
-
 
 
 ################################
 #ANALYSIS FOR FEMALES AND MALES
 ################################
 
+object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_40_male_female.txt",pca=TRUE, plot = TRUE)
+#object$subgroup <- as.factor(c("treated","treated","control","control","control","treated","control","treated","control","treated","control",
+#                               "control","control","control","treated","control","control","treated","control","treated","control","treated","treated",
+#                              "treated","treated","treated","control", "treated","treated","treated","control","treated","control","control","treated","control","treated","treated","treated"))
 
-object2 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
 
-fdata1 <- data.frame(fdt(object2))
-fdata1_select <- fdata1[c(2,5,6,7)]
+pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_40male_female_samples.pdf", width=10)
+  biplot(object, pca1, pca2,color=subgroup)
+dev.off()
+
+object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('treated - control'), plot = FALSE)
+
+fdata(object1) %<>% cbind(limma(object1))
+fdata1_select <- fdata(object1)[c("feature_name","treated - control.effect","treated - control.p","treated - control.fdr")]
 fdata1_pval=fdata1_select[fdata1_select[3] <=0.05,]
-#NROW(fdata1_pval)
 names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
-#[1] 7966
-fdata1_fdr=fdata1_select[fdata1_select[4] <=0.05,]
-names(fdata1_fdr) <- c("gene_name","effects","pvalue", "fdr")
-fdata1_fdr_order <- fdata1_fdr[order(fdata1_fdr$fdr),]
-#NROW(fdata1_fdr)
-#[1] 6660
 
-fdata1_fdr_order$GeneID <- mapIds(org.Rn.eg.db, keys=fdata1_fdr_order$gene_name, column="ENSEMBL", keytype="SYMBOL", multiVals="first")
-
-fdata1_fdr_order <- fdata1_fdr_order[c(5,1:4)]
-write.csv(fdata1_fdr_order, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.05.csv")
-
-low <- fdata1_fdr_order[fdata1_fdr_order$effects <= -0.6,]
-high <- fdata1_fdr_order[fdata1_fdr_order$effects >= 0.6,]
-df_effect_0.6 <- rbind(low,high)
-write.csv(df_effect_0.6, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_15male_samples_treated_vs_control_at_fdr0.05_and_log2FC0.6.csv")
+write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_20male_samples_treated_vs_control.csv")
 
 
 
