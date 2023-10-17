@@ -38,7 +38,7 @@ pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_20male_sa
   biplot(object, pca1, pca2,color=subgroup)
 dev.off()
 
-object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
+object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('treated - control'), plot = TRUE)
 
 fdata1 <- data.frame(fdt(object1))
 fdata1_select <- fdata1[c(2,5,6,7)]
