@@ -35,7 +35,7 @@ object$subgroup <- as.factor(c("treated","treated","treated","treated","treated"
                                "control","control","control","control","control","control","control","control","control"))
 
 pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_20male_samples.pdf", width=10)
-  biplot(object, pca1, pca2, label=sample_id,color=subgroup)
+  biplot(object, pca1, pca2,color=subgroup)
 dev.off()
 
 object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
@@ -67,19 +67,19 @@ object$subgroup <- as.factor(c("treated","treated","treated","treated","treated"
 object <- object %>% filter_samples(!sample_id %in% c("control_male_R56","control_male_R59","treated_male_R28","treated_male_R40","treated_male_R63"))
 
 pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_15male_samples.pdf", width=10)
-biplot(object, pca1, pca2,label=sample_id,color=subgroup)
+ biplot(object, pca1, pca2,label=sample_id,color=subgroup)
 dev.off()
 
 #####################
 #ANALYSIS FOR FEMALES
 #####################
 #run autonomics on 20 male samples
-object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_male.txt",pca=TRUE, plot = FALSE)
+object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_female.txt",pca=TRUE, plot = FALSE)
 object$subgroup <- as.factor(c("treated","treated","treated","treated","treated","treated","treated","treated","treated","treated","treated",
                                "control","control","control","control","control","control","control","control","control"))
 
-pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_20male_samples.pdf", width=10)
-  biplot(object, pca1, pca2, label=sample_id,color=subgroup)
+pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_20female_samples.pdf", width=10)
+  biplot(object, pca1, pca2,color=subgroup)
 dev.off()
 
 object1 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
@@ -93,7 +93,7 @@ names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
 
 #NROW(fdata1_select[fdata1_select[4] <=0.05,])
 #[1] 0
-write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_20male_samples_treated_vs_control.csv")
+write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_20female_samples_treated_vs_control.csv")
 
 
 
