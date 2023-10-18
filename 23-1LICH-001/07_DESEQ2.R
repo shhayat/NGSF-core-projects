@@ -1,5 +1,5 @@
-#setwd("/Users/shahina/Projects/23-1LICH-001")
-setwd("/Users/hxo752/Desktop/core-projects/23-1LICH-001/")
+setwd("/Users/shahina/Projects/23-1LICH-001")
+#setwd("/Users/hxo752/Desktop/core-projects/23-1LICH-001/")
 library("DESeq2")
 library("ggplot2")
 #library("xlsx")
@@ -104,8 +104,6 @@ feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
 
 
 
-
-
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 {
   feature_count <- feature_count[colnum]
@@ -131,7 +129,7 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
    resDF <- resDF[resDF$pvalue <= 0.05,]
    resDF <- resDF[order(resDF$pvalue),]
    resDF$Fold_Change = ifelse(resDF$log2FoldChange > 0, 2 ^ resDF$log2FoldChange, -1 / (2 ^ resDF$log2FoldChange))
-  # write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
+   write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
   
   ##########
   #PCA PLOT
@@ -145,10 +143,14 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
    print(p)
   dev.off()
 }
-#A3A_I5 vs A3A_U6 (n=2)
-DEG_analysis(c(3,9,4,10),"A3A_U6","A3A_I5","A3A_U6",1,1)
+
 #A3B_I5 vs A3B_U2 (n=2)
 #DEG_analysis(c(5,11,12,6),"A3B_U2","A3B_I5","A3B_U2",2,2)
 #A3H_I4 vs A3H_U1 (n=2)
 #DEG_analysis(c(7,13,8,25),"A3H_U1","A3H_I4","A3H_U1",2,2)
+
+
+
+#use EdgeR for #A3A_I5 vs A3A_U6 (For R2 only)
+#DEG_analysis(c(9,10),"A3A_U6","A3A_I5","A3A_U6",1,1)
 
