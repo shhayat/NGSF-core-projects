@@ -127,10 +127,9 @@ names(fdata1_pval) <- c("gene_name","effects","pvalue", "fdr")
 write.csv(fdata1_pval, "/Users/shahina/Projects/20-1JOHO-001/latest_analysis/DEG_40male_female_samples_treated_vs_control.csv")
 
 
-
-
-
-
+##########
+#JUNK CODE
+##########
 #CALCULATE cpm for 15 males
 object <-  read_rnaseq_counts(file ="/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_htseq_counts_treated_control_20_male.txt",pca=FALSE, plot = FALSE, cpm=FALSE)
 object$subgroup <- as.factor(c("treated","treated","treated","treated","treated","treated","treated","treated","treated","treated","treated",
