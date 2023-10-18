@@ -149,8 +149,43 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
 #A3H_I4 vs A3H_U1 (n=2)
 #DEG_analysis(c(7,13,8,25),"A3H_U1","A3H_I4","A3H_U1",2,2)
 
+library("edgeR")
 
+load("feature_count.RData")
+feature_count <- as.data.frame(feature_count)
+geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
+rownames(feature_count) <- geneID
+
+
+feature_annotation <- feature_count[1:2]
+feature_annotation$GeneID <-  gsub(".[0-9]*$", "", feature_annotation$GeneID)
 
 #use EdgeR for #A3A_I5 vs A3A_U6 (For R2 only)
-#DEG_analysis(c(9,10),"A3A_U6","A3A_I5","A3A_U6",1,1)
+#paired comparisions
+edgeR_analysis <-  function(colnum,cond1, cond2, ref)
+{
+  feature_count <- feature_count[colnum]
+  
+  #at least one column has number
+  feature_count <- feature_count[apply(feature_count,1,function(z) any(z!=0)),]
+  
+  y <- DGEList(counts=feature_count, group=1:2)
+  
+  bcv <- 0.01
+  et <- exactTest(y, dispersion=bcv^2)
+  df <- et$table
+  resDF <- data.frame(GeneID=rownames(df),df)
+  resDF1 <- merge(feature_annotation,resDF, by="GeneID")
+  
+  #resDF1$Fold_Change = ifelse(resDF1$logFC > 0, 2 ^ resDF1$logFC, -1 / (2 ^ resDF1$logFC))
+  res1 <- resDF1[resDF1$logFC <= -1.5,]
+  res2 <-  resDF1[resDF1$logFC >= 1.5,]
+  
+  res <- rbind(res1,res2)
+  #All genes
+  #write.csv(res,file=sprintf("%s_vs_%s_logFC1.5.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
+  write.csv(res,file=sprintf("DESEQ2/DEG_%s_vs_%s_1.5logfc.xlsx",cond2,cond1), row.names = FALSE)
+
+}
+edgeR_analysis(c(9,10),"A3A_U6","A3A_I5","A3A_U6")
 
