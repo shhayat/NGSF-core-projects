@@ -185,7 +185,7 @@ edgeR_analysis <-  function(colnum,cond1, cond2, ref)
   res <- rbind(res1,res2)
   #All genes
   #write.csv(res,file=sprintf("%s_vs_%s_logFC1.5.csv",cond2,cond1),quote=FALSE, row.names = FALSE)
-  write.csv(res,file=sprintf("DESEQ2/DEG_%s_vs_%s_1.5logfc.xlsx",cond2,cond1), row.names = FALSE)
+  write.xlsx(res,file=sprintf("DESEQ2/DEG_%s_vs_%s_1.5logfc_R2_only.xlsx",cond2,cond1), row.names = FALSE)
 
 }
 edgeR_analysis(c(9,10),"A3A_U6","A3A_I5","A3A_U6")
