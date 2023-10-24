@@ -98,7 +98,7 @@ DEG_analysis(c(6,8,12,?,29,31,35,?),"T0","T3","T0",4,4,"control")
 
 #BCG GROUP
 DEG_analysis(c(4,5,13,14,15,19,20,22,),"T0","T1","T0",8,8,"BCG")
-DEG_analysis(c(3:48),"T0","T2","T0",4,4,"BCG")
+DEG_analysis(c(5,13,),"T0","T2","T0",4,4,"BCG")
 DEG_analysis(c(3:48),"T0","T3","T0",4,4,"BCG")        
 
 #HIMB GROUP
