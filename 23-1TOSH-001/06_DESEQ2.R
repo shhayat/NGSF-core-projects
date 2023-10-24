@@ -71,12 +71,11 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   
 }
 #T1 VS T2
-DEG_analysis(c(3:48),"T1","T2","T1",23,23)
-
+#DEG_analysis(c(3:48),"T1","T2","T1",23,23)
 #T1 VS T3
-DEG_analysis(c(3:25,49:71),"T1","T3","T1",23,23)
-
+#DEG_analysis(c(3:25,49:71),"T1","T3","T1",23,23)
 #T1 VS T3
-#DEG_analysis(c(26:48,49:71),"T2","T3","T2",23,23)
-
-DEG_analysis(c(3:71),"T1","T2","T3","T1",23,23,23)
+#DEG_analysis(c(3:71),"T1","T2","T3","T1",23,23,23)
+#T0 VS T1
+DEG_analysis(c(3:48),"T1","T2","T1",23,23)                        
+                        
