@@ -58,16 +58,14 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_n
   #resDF1 <- resDF1[order(resDF1$pvalue),]
 
   #order on fdr
-  resDF1 <- resDF[order(resDF$padj),]
-  resDF1 <- subset(resDF1, padj <= 0.05)
+  resDF1 <- resDF[order(resDF$pvalue),]
+  resDF1 <- subset(resDF1, pvalue <= 0.05)
 
   log2FC1 <- resDF1$log2FoldChange
   resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
-
-  #return(dim(resDF1))
-  #All significant
-  #write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_filter_on_pval.xlsx",cond2,cond1), row.names = FALSE)
-  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s_filter_on_padj.xlsx",cond2,cond1,group_name), row.names = FALSE)
+                        
+ write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s_filter_on_pval.xlsx",cond2,cond1,group_name), row.names = FALSE)
+ # write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s_filter_on_padj.xlsx",cond2,cond1,group_name), row.names = FALSE)
   
 }
 #T1 VS T2
