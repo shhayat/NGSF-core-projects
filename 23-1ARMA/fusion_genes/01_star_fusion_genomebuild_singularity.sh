@@ -15,9 +15,10 @@ module load singularity/3.9.2
 #GENOME=/datastore/NGSF001/analysis/references/ROS_Cfam_1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.dna.toplevel.fa
 GTF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/Cfam3.1_NCBI/genomic.gtf
 GENOME=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/Cfam3.1_NCBI/GCF_000002285.3_CanFam3.1_genomic.fna
-DFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/Dfam/canis_lupus_familiaris_dfam.hmm
-PFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/Pfam/Pfam-A.hmm
-
+#DFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/Dfam/canis_lupus_familiaris_dfam.hmm
+#PFAM_DATABASE=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/Pfam/Pfam-A.hmm
+DFAM_DATABASE=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/genome_build_and_required_databases/Dfam/canis_lupus_familiaris_dfam.hmm
+PFAM_DATABASE=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/Fusion_events/genome_build_and_required_databases/Pfam/Pfam-A.hmm
 singularity exec -e /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                     /globalhome/hxo752/HPC/tools/STAR-Fusion-v1.11.0/ctat-genome-lib-builder/prep_genome_lib.pl \
                 --genome_fa ${GENOME} \
