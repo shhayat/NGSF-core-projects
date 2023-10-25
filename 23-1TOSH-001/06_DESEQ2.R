@@ -102,7 +102,7 @@ DEG_analysis(c(5,13,20,22,28,36,43,45),"T0","T2","T0",4,4,"BCG")
 DEG_analysis(c(4,14,15,19,27,37,38,42),"T0","T3","T0",4,4,"BCG")        
 
 #HIMB GROUP
-DEG_analysis(c(3:48),"T0","T1","T0",8,8,"HIMB")
+DEG_analysis(c(7,10,17,18,21,23,24,25,30,33,40,41,44,46,47,48),"T0","T1","T0",8,8,"HIMB")
 DEG_analysis(c(3:48),"T0","T2","T0",4,4,"HIMB")
 DEG_analysis(c(3:48),"T0","T3","T0",4,4,"HIMB")                       
                         
