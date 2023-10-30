@@ -10,7 +10,7 @@ feature_count1 <- as.data.frame(feature_count)
 
 #your first columns which are gene id and gene name
 feature_annotation <- cbind(GeneID=rownames(feature_count1),gene_name=feature_count1$gene_name)
-DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_name)
+DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_name)
 {
  
   feature_count <- feature_count1[colnum]
@@ -27,9 +27,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_n
   
   group <- data.frame(sample_group=sampleInfo$sample_group)
   
-  dds <- DESeqDataSetFromMatrix(countData=feature_count,
-                                colData=group,
-                                design=~sample_group)
+  dds <- DESeqDataSetFromMatrix(countData=feature_count,colData=group,design=~sample_group)
   
   
   dds$sample_group <-relevel(dds$sample_group,ref=ref)
