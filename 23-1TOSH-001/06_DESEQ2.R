@@ -53,13 +53,10 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_n
   resDF <- data.frame(GeneID=rownames(res),res)
   resDF <- merge(feature_annotation,resDF, by="GeneID")
   
-  #resDF1 <- subset(resDF, pvalue <= 0.05)
-  #order on pvalue
-  #resDF1 <- resDF1[order(resDF1$pvalue),]
 
-  #order on fdr
-  resDF1 <- resDF[order(resDF$pvalue),]
-  resDF1 <- subset(resDF1, pvalue <= 0.05)
+  resDF1 <- subset(resDF, pvalue <= 0.05)
+  #order on pvalue
+  resDF1 <- resDF1[order(resDF1$pvalue),]
 
   log2FC1 <- resDF1$log2FoldChange
   resDF1$Fold_Change = ifelse(log2FC1 > 0, 2 ^ log2FC1, -1 / (2 ^ log2FC1))
