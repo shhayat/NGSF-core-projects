@@ -89,10 +89,10 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_n
 [67] "R2300117"  "R2300118"  "R2300119"  "R2300120"  "R2300121" 
 
 #CONTROL GROUP sample 33 is missing                       
-DEG_analysis(c(3,6,8,9,11,12,16,?,26,29,31,32,34,35,39,?),"T0","T1","T0",8,8,"control")
+DEG_analysis(c(3,6,8,9,11,12,16,26,29,31,32,34,35,39),"T0","T1","T0",7,7,"control")
 DEG_analysis(c(3,9,11,16,26,32,34,39),"T0","T2","T0",4,4,"control")
 #sample 33 missing
-DEG_analysis(c(6,8,12,?,29,31,35,?),"T0","T3","T0",4,4,"control")
+DEG_analysis(c(6,8,12,29,31,35),"T0","T3","T0",3,3,"control")
 
 #BCG GROUP
 DEG_analysis(c(4,5,13,14,15,19,20,22,27,28,36,37,38,42,43,45),"T0","T1","T0",8,8,"BCG")
