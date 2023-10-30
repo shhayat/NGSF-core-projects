@@ -19,10 +19,9 @@ DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_na
   
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
+                        sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))))
+
                         #sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2),rep(cond3,rep_cond3)))))
-  
-                        #sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))))
-  
   
   
   group <- data.frame(sample_group=sampleInfo$sample_group)
