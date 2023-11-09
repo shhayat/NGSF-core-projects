@@ -15,7 +15,7 @@ module load singularity/3.9.2
 #output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/
 output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/analysis/hemangiosarcoma
 #output_dir=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/squamous_cell_carcinomas/analysis/
-#CanineStarFusionBuild=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/ctat_genome_lib_build_dir
+#CanineStarFusionBuild=/datastore/NGSF001/projects/ARMA_NTRK_Fusion/ctat_genome_lib_build_dir_ROS_Cfam_1.0
 CanineStarFusionBuild=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/ctat_genome_lib_build_dir_Cfam3.1_NCBI
 
 sample_name=$1; shift
