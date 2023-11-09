@@ -29,4 +29,7 @@ singularity exec -e /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                 --dfam_db ${DFAM_DATABASE} \
                 --pfam_db ${PFAM_DATABASE} \
                 --CPU 4
-                 
+wait
+
+#mv ctat_genome_lib_build_dir ctat_genome_lib_build_dir_ROS_Cfam_1.0
+mv ctat_genome_lib_build_dir ctat_genome_lib_build_dir_Cfam3.1_NCBI
