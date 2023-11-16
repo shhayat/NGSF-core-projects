@@ -32,9 +32,11 @@ singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 --right_fq ${fq2} \
                 --genome_lib_dir ${CanineStarFusionBuild} \
                 -O ${output_dir}/${sample_name} \
+                --min_FFPM 0 \
+                --no_filter \
+                --no_single_fusion_per_breakpoint \
                 --FusionInspector validate \
-                --examine_coding_effect \
-                --min_FFPM 0
+                --examine_coding_effect
 
 #for single ended samples
 #singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
