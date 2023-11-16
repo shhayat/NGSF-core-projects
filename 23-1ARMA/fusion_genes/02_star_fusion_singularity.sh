@@ -31,7 +31,7 @@ singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 --left_fq ${fq1} \
                 --right_fq ${fq2} \
                 --genome_lib_dir ${CanineStarFusionBuild} \
-                -O ${output_dir}/${sample_name} \
+                -O ${output_dir}/${sample_name}_latest \
                 --min_FFPM 0 \
                 --no_filter \
                 --no_single_fusion_per_breakpoint \
