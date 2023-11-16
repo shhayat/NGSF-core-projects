@@ -15,7 +15,8 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fus
 #DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/lymphoma/fastq
 #DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/urothelial_carcinoma/fastq
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/fastq
-for i in $DATA/*_1.fastq.gz
+#for i in $DATA/*_1.fastq.gz
+for i in $DATA/SRR5278034_1.fastq.gz $DATA/SRR5278034_1.fastq.gz
 do
       path="${i%_1*}";
       sample_name=${path##*/};
