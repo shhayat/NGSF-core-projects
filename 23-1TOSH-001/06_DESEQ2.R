@@ -67,12 +67,14 @@ DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_na
 #HEATMAP 
 #########                                      
 select <- order(rowMeans(counts(dds_wald,normalized=TRUE)),decreasing=FALSE)[1:nrow(counts(dds_wald))]
+
 nt <- normTransform(dds_wald)
 log2.norm.counts <- assay(nt)[select,]
 log2.norm.counts<- as.data.frame(log2.norm.counts)
                      
 log2.norm.counts1 <- data.frame(GeneID=rownames(log2.norm.counts), log2.norm.counts)
-
+colnames(log2.norm.counts1) <- c("GeneID",)
+                                       
 up <- resDF1[order(resDF1$Fold_Change,decreasing=TRUE),]
 select_up_rows <- up[1:200,]
 select_up_cols <- select_up_rows[,c(1,2)]
@@ -115,14 +117,14 @@ pheatmap(
 #T0 VS T1
 
 #CONTROL GROUP sample 33 is missing                       
-DEG_analysis(c(3,6,8,9,11,12,16,26,29,31,32,34,35,39),"T0","T1","T0",7,7,"control")
-DEG_analysis(c(3,9,11,16,26,32,34,39),"T0","T2","T0",4,4,"control")
+DEG_analysis(c(3,6,8,9,11,12,16,26,29,31,32,34,35,39),"T0","T1","T0",7,7,"control", c("TO_3","TO_6","TO_8","TO_9","TO_11","TO_12","TO_16","T1_26","T1_29","T1_31","T1_32","T1_34","T1_35","T1_39"))
+DEG_analysis(c(3,9,11,16,26,32,34,39),"T0","T2","T0",4,4,"control",c("T0_3","T0_9","T0_11","T0_16","T2_26","T2_32","T2_34","T2_39"))
 #sample 33 missing
-DEG_analysis(c(6,8,12,29,31,35),"T0","T3","T0",3,3,"control")
+DEG_analysis(c(6,8,12,29,31,35),"T0","T3","T0",3,3,"control",c("T0_6","T0_8","T0_12","T3_29","T3_31","T3_35"))
 
 #BCG GROUP
-DEG_analysis(c(4,5,13,14,15,19,20,22,27,28,36,37,38,42,43,45),"T0","T1","T0",8,8,"BCG")
-DEG_analysis(c(5,13,20,22,28,36,43,45),"T0","T2","T0",4,4,"BCG")
+DEG_analysis(c(4,5,13,14,15,19,20,22,27,28,36,37,38,42,43,45),"T0","T1","T0",8,8,"BCG",c("T0_4","T0_5","T0_13","T0_14","T0_15","T0_19","T0_20","T0_22","T1_27","T1_28","T1_36","T1_37","T1_38","T1_42","T1_43","T1_45"))
+DEG_analysis(c(5,13,20,22,28,36,43,45),"T0","T2","T0",4,4,"BCG", c("T0_5","T0_13","T0_20","T0_22","T2_28","T2_36","T2_43","T2_45"))
 DEG_analysis(c(4,14,15,19,27,37,38,42),"T0","T3","T0",4,4,"BCG")        
 
 #HIMB GROUP
