@@ -42,7 +42,7 @@ DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_na
   pdf(sprintf("DESEQ2/PCA_%s_%s_%s.pdf",cond2,cond1,group_name), width=8,height=8)
   nudge <- position_nudge(y = 0.5)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
-  p + geom_text(aes_string(label = "names"), color="black", position = nudge, size=2.8)
+  p <- p + geom_text(aes_string(label = "names"), color="black", position = nudge, size=2.8)
   print(p)
   dev.off()
   
@@ -125,7 +125,7 @@ DEG_analysis(c(6,8,12,29,31,35),"T0","T3","T0",3,3,"control",c("T0_6","T0_8","T0
 #BCG GROUP
 DEG_analysis(c(4,5,13,14,15,19,20,22,27,28,36,37,38,42,43,45),"T0","T1","T0",8,8,"BCG",c("T0_4","T0_5","T0_13","T0_14","T0_15","T0_19","T0_20","T0_22","T1_27","T1_28","T1_36","T1_37","T1_38","T1_42","T1_43","T1_45"))
 DEG_analysis(c(5,13,20,22,28,36,43,45),"T0","T2","T0",4,4,"BCG", c("T0_5","T0_13","T0_20","T0_22","T2_28","T2_36","T2_43","T2_45"))
-DEG_analysis(c(4,14,15,19,27,37,38,42),"T0","T3","T0",4,4,"BCG")        
+DEG_analysis(c(4,14,15,19,27,37,38,42),"T0","T3","T0",4,4,"BCG",c("T0_4","T0_14","T0_15","T0_19","T3_27","T3_37","T3_38","T3_42"))        
 
 #HIMB GROUP
 DEG_analysis(c(7,10,17,18,21,23,24,25,30,33,40,41,44,46,47,48),"T0","T1","T0",8,8,"HIMB", c("T0_7","T0_10","T0_17","T0_18","T0_21","T0_23","T0_24","T0_25","T1_30","T1_33","T1_40","T1_41","T1_44","T1_46","T1_47","T1_48"))
