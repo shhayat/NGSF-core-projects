@@ -12,7 +12,7 @@ feature_count1 <- as.data.frame(feature_count)
 
 #your first columns which are gene id and gene name
 feature_annotation <- cbind(GeneID=rownames(feature_count1),gene_name=feature_count1$gene_name)
-DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_name)
+DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_name, sample_names)
 {
  
   feature_count <- feature_count1[colnum]
@@ -73,7 +73,7 @@ log2.norm.counts <- assay(nt)[select,]
 log2.norm.counts<- as.data.frame(log2.norm.counts)
                      
 log2.norm.counts1 <- data.frame(GeneID=rownames(log2.norm.counts), log2.norm.counts)
-colnames(log2.norm.counts1) <- c("GeneID",)
+colnames(log2.norm.counts1) <- c("GeneID",sample_names)
                                        
 up <- resDF1[order(resDF1$Fold_Change,decreasing=TRUE),]
 select_up_rows <- up[1:200,]
@@ -128,7 +128,7 @@ DEG_analysis(c(5,13,20,22,28,36,43,45),"T0","T2","T0",4,4,"BCG", c("T0_5","T0_13
 DEG_analysis(c(4,14,15,19,27,37,38,42),"T0","T3","T0",4,4,"BCG")        
 
 #HIMB GROUP
-DEG_analysis(c(7,10,17,18,21,23,24,25,30,33,40,41,44,46,47,48),"T0","T1","T0",8,8,"HIMB")
-DEG_analysis(c(18,23,24,25,55,58,59,60),"T0","T2","T0",4,4,"HIMB")
-DEG_analysis(c(7,10,17,21,63,65,69,71),"T0","T3","T0",4,4,"HIMB")                       
+DEG_analysis(c(7,10,17,18,21,23,24,25,30,33,40,41,44,46,47,48),"T0","T1","T0",8,8,"HIMB", c("T0_7","T0_10","T0_17","T0_18","T0_21","T0_23","T0_24","T0_25","T1_30","T1_33","T1_40","T1_41","T1_44","T1_46","T1_47","T1_48"))
+DEG_analysis(c(18,23,24,25,55,58,59,60),"T0","T2","T0",4,4,"HIMB", c("T0_18","T0_23","T0_24","T0_25","T2_55","T2_58","T2_59","T2_60"))
+DEG_analysis(c(7,10,17,21,63,65,69,71),"T0","T3","T0",4,4,"HIMB", c("T0_7","T0_10","T0_17","T0_21","T3_63","T3_65","T3_69","T3_71"))                       
                         
