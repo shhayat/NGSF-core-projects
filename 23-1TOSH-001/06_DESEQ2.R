@@ -37,11 +37,10 @@ DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_na
                          
   #gernate rlog for PCA
   rld <-rlog(dds,blind=FALSE)
-  #pdf(sprintf("DESEQ2/PCA_%s_%s_%s.pdf",cond2,cond1,cond3), width=8,height=8)
   pdf(sprintf("DESEQ2/PCA_%s_%s_%s.pdf",cond2,cond1,group_name), width=8,height=8)
   nudge <- position_nudge(y = 0.5)
-  p <- plotPCA(rld,intgroup=c("sample_group"))  
- # p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
+#p <- plotPCA(rld,intgroup=c("sample_group"))  
+  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
   print(p)
   dev.off()
   
@@ -61,7 +60,49 @@ DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_na
                         
  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s_filter_on_pval.xlsx",cond2,cond1,group_name), row.names = FALSE)
  # write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s_filter_on_padj.xlsx",cond2,cond1,group_name), row.names = FALSE)
-  
+
+#########
+#HEATMAP 
+#########                                      
+select <- order(rowMeans(counts(dds_wald,normalized=TRUE)),decreasing=FALSE)[1:nrow(counts(dds_wald))]
+nt <- normTransform(dds_wald)
+log2.norm.counts <- assay(nt)[select,]
+log2.norm.counts<- as.data.frame(log2.norm.counts)
+                     
+log2.norm.counts1 <- data.frame(GeneID=rownames(log2.norm.counts), log2.norm.counts)
+
+up <- resDF1[order(resDF1$Fold_Change,decreasing=TRUE),]
+select_up_rows <- up[1:200,]
+select_up_cols <- select_up_rows[,c(1,2)]
+
+down <- resDF1[order(resDF1$Fold_Change,decreasing=FALSE),]
+select_down_rows <- down[1:200,]
+select_down_cols <- select_down_rows[,c(1,2)]
+ 
+DF <- rbind(select_up_cols,select_down_cols)
+DF <- DF[complete.cases(DF), ]
+
+log2.norm.counts1 <- merge(DF,log2.norm.counts1, by=c("GeneID"))
+log2.norm.counts2 <- log2.norm.counts1[,-1]
+
+rownames(log2.norm.counts2) <-  make.names(log2.norm.counts2[,1],TRUE)
+log2.norm.counts3 <- log2.norm.counts2[,-1]
+#colnames(log2.norm.counts3) <- colname
+
+bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
+pheatmap(
+      log2.norm.counts3,
+      filename   = sprintf("DESEQ2/Heatmap_%s_vs_%s_%s.pdf",cond2,cond1,group_name),
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col        = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
 }
 #T1 VS T2
 #DEG_analysis(c(3:48),"T1","T2","T1",23,23)
