@@ -1,6 +1,8 @@
 library("DESeq2")
 library("ggplot2")
 library("xlsx")
+library("pheatmap")
+
 
 setwd("~/Projects/23-1TOSH-001")
 dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
@@ -39,8 +41,8 @@ DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_na
   rld <-rlog(dds,blind=FALSE)
   pdf(sprintf("DESEQ2/PCA_%s_%s_%s.pdf",cond2,cond1,group_name), width=8,height=8)
   nudge <- position_nudge(y = 0.5)
-#p <- plotPCA(rld,intgroup=c("sample_group"))  
-  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
+  p <- plotPCA(rld,intgroup=c("sample_group"))  
+  p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
   print(p)
   dev.off()
   
