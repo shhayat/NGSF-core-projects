@@ -31,7 +31,7 @@ singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 --left_fq ${fq1} \
                 --right_fq ${fq2} \
                 --genome_lib_dir ${CanineStarFusionBuild} \
-                --max_sensitivity \
+                --min_pct_MM_nonspecific 10 \
                 -O ${output_dir}/${sample_name}_latest \
                 --FusionInspector validate \
                 --examine_coding_effect
