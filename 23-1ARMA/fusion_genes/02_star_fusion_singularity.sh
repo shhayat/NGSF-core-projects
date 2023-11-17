@@ -31,13 +31,13 @@ singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 --left_fq ${fq1} \
                 --right_fq ${fq2} \
                 --genome_lib_dir ${CanineStarFusionBuild} \
+                --full_Monty \
                 -O ${output_dir}/${sample_name}_latest \
-                --min_FFPM 0 \
-                --no_filter \
-                --no_single_fusion_per_breakpoint \
                 --FusionInspector validate \
                 --examine_coding_effect
-
+                #--min_FFPM 0 \
+                #--no_filter \
+                #--no_single_fusion_per_breakpoint \
 #for single ended samples
 #singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
 #                /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
