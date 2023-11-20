@@ -9,7 +9,6 @@ dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE)
 
 load("feature_count.RData")
 feature_count1 <- as.data.frame(feature_count)
-colnames(feature_count1) <- c("GeneID","gene_name","TO_19","T0_20b","T0_21","TO_22","T0_23","T0_24")
 #your first columns which are gene id and gene name
 feature_annotation <- cbind(GeneID=rownames(feature_count1),gene_name=feature_count1$gene_name)
 
@@ -44,8 +43,7 @@ DEG_analysis <- function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, group_na
   pdf(sprintf("DESEQ2/PCA_%s_%s_%s.pdf",cond2,cond1,group_name), width=8,height=8)
   nudge <- position_nudge(y = 0.5)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
-  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
-  print(p)
+  p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
   dev.off()
   
   dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
