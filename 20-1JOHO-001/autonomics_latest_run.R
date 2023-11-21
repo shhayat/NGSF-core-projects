@@ -67,12 +67,20 @@ object$subgroup <- as.factor(c("treated","treated","treated","treated","treated"
 #drop samples
 object <- object %>% filter_samples(!sample_id %in% c("control_male_R56","control_male_R59","treated_male_R28","treated_male_R40","treated_male_R63"))
 
-pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_15male_samples.pdf", width=10)
-biplot(object, pca1, pca2,color=subgroup)
+tiff("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_15male_samples.tiff", width = 10, height = 10, units = 'in', res = 500)
+#pdf("/Users/shahina/Projects/20-1JOHO-001/latest_analysis/20-1JOHO-001_15male_samples.pdf", width=10)
+biplot(object, pca1, pca2,color=subgroup, fixed = list(shape = 15, size = 5)) +
+    ggtitle("Males") +
+    theme(axis.text=element_text(size=40), 
+        axis.title=element_text(size=25,face="bold"),
+        legend.text = element_text(size=20), 
+        legend.title = element_text(size=20,face="bold"),
+        plot.title = element_text(size=25,face="bold",hjust = 0.5),
+        panel.grid.major = element_line(color = "dark gray"),
+        panel.grid.minor = element_line(color = "dark gray"))
 dev.off()
 
 object2 <- fit_limma(object, formula = ~ 0 + subgroup, contrastdefs = c('subgrouptreated - subgroupcontrol'), plot = TRUE)
-
 
 fdata1 <- data.frame(fdt(object2))
 fdata1_select <- fdata1[c(2,5,6,7)]
