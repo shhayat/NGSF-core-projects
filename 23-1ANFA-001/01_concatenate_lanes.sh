@@ -1,3 +1,12 @@
+#!/bin/bash
+	
+#SBATCH --job-name=combine_fastq
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=2:00:00
+#SBATCH --mem=8G
+#SBATCH --account=hpc_p_anderson
+
 ngsf1=/datastore/NGSF001/NB551711/230927_NB551711_0084_AH2FGFBGXV/Alignment_1/20230928_022021/Fastq
 ngsf2=/datastore/NGSF001/NB551711/230928_NB551711_0085_AH2KFHBGXV/Alignment_1/20230929_024416/Fastq
 
