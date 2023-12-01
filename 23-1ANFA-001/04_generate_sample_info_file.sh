@@ -29,14 +29,14 @@ sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_3.csv
 
 for i in 17 11
 do
-      echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_3.csv
+      echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_4.csv
 done
 #add header to csv file
 sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_4.csv
 
 for i in 15 13
 do
-      echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_3.csv
+      echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_5.csv
 done
 #add header to csv file
 sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_5.csv
