@@ -20,8 +20,8 @@ mkdir -p $OUTDIR
 for i in 15 16 17 18
 do
 
-	cat ${ngsf1}/SC23000${i}_S1_*_R1_001.fastq.gz ${ngsf2}/SC23000${i}_S1_*_R1_001.fastq.gz > ${OUTDIR}/SC23000${i}_R1.fastq.gz
-	cat ${ngsf1}/SC23000${i}_S1_*_R2_001.fastq.gz ${ngsf2}/SC23000${i}_S1_*_R2_001.fastq.gz > ${OUTDIR}/SC23000${i}_R2.fastq.gz
+	cat ${ngsf1}/SC23000${i}_*_R1_001.fastq.gz ${ngsf2}/SC23000${i}_*_R1_001.fastq.gz > ${OUTDIR}/SC23000${i}_R1.fastq.gz
+	cat ${ngsf1}/SC23000${i}_*_R2_001.fastq.gz ${ngsf2}/SC23000${i}_*_R2_001.fastq.gz > ${OUTDIR}/SC23000${i}_R2.fastq.gz
 done
 
 cat ${opal1}/OS010364_r1.fastq.gz ${opal2}/OS01036A_r1.fastq.gz > ${OUTDIR}/SC2300009_R1.fastq.gz
