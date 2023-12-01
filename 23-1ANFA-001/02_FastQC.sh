@@ -10,7 +10,7 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 module load fastqc
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/fastq
+DATA=/datastore/NGSF001/projects/23-1ANFA-001/Work/fastq_concatenated
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis
 mkdir -p ${OUTDIR}/fastqc
 
