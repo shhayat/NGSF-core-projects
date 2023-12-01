@@ -6,7 +6,7 @@ do
       echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_1.csv
 done
 #add header to csv file
-sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_1.csv
+sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_1.csv
 
 
 for i in 06 07
@@ -14,7 +14,7 @@ do
       echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_2.csv
 done
 #add header to csv file
-sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_2.csv
+sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_2.csv
 
 
 for i in 06 08
