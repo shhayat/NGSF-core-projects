@@ -14,7 +14,7 @@ GENOME=/datastore/NGSF001/analysis/references/iGenomes/Bos_taurus/Ensembl/UMD3.1
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Bos_taurus/Ensembl/UMD3.1/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/indices
 
-NCPU=10
+NCPUS=10
 
 mkdir -p $OUTDIR
 cd ${OUTDIR}
