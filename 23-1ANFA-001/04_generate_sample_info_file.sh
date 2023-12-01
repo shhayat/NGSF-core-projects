@@ -9,43 +9,43 @@ done
 sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_1.csv
 
 
-for i in 06 07
+for i in 15 16
 do
       echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_2.csv
 done
 #add header to csv file
-sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_2.csv
+sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_2.csv
 
 
-for i in 06 08
+for i in 17 18
 do
       echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_3.csv
 done
 #add header to csv file
-sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_3.csv
+sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_3.csv
 
-for i in 06 08
+for i in 17 11
 do
       echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_3.csv
 done
 #add header to csv file
-sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_4.csv
+sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_4.csv
 
-for i in 06 08
+for i in 15 13
 do
       echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_3.csv
 done
 #add header to csv file
-sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_5.csv
+sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_5.csv
 
-for i in 06 08
+for i in 15 17 09 11 13
 do
       echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_3.csv
 done
 #add header to csv file
 sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_6.csv
 
-for i in 06 08
+for i in 09 11 13 10 12 14
 do
       echo "SC23000${i},${DIR}/SC23000${i}/molecule_info.h5" >> ${DIR}/sample_info_3.csv
 done
