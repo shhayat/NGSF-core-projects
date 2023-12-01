@@ -1,6 +1,8 @@
 
-DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastqc
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/multiqc
+
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/fastqc
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/multiqc
+mkdir ${OUTDIR} 
 cd /globalhome/hxo752/HPC/tools
 multiqc ${DIR}/*_fastqc.zip -o ${OUTDIR} -n fastqc
 
