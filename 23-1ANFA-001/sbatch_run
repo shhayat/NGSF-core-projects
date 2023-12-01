@@ -12,3 +12,13 @@ do
       
       sbatch ${SCRIPT_DIR}/02_FastQC.sh "${fq1}" "${fq2}"
  done
+
+
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/SingleCellSequencing/CellRanger_pipeline
+
+for i in $(seq -w 9 10 11 12 13 14 15 16 17 18);
+do
+      SAMPLE_NAME="SC23000${i}"
+      sbatch ${SCRIPT_DIR}/02_cellranger_count.sh "${SAMPLE_NAME}"
+ sleep 0.5
+done
