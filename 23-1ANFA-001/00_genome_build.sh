@@ -12,15 +12,13 @@ export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 
 GENOME=/datastore/NGSF001/analysis/references/iGenomes/Bos_taurus/Ensembl/UMD3.1/Sequence/WholeGenomeFasta/genome.fa
 GTF=/datastore/NGSF001/analysis/references/iGenomes/Bos_taurus/Ensembl/UMD3.1/Annotation/Genes/genes.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/indices
-
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/Bos_taurus_genome_index
 NCPUS=10
-
-mkdir -p $OUTDIR
+mkdir ${OUTDIR}
 cd ${OUTDIR}
 
 cellranger mkref \
          --nthreads=${NCPUS} \
-         --genome=${OUTDIR} \
+         --genome=${GENOME_NAME} \
          --fasta=${GENOME} \
          --genes=${GTF}
