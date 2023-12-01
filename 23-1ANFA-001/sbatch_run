@@ -15,7 +15,7 @@ do
 
 
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001
-for i in $(seq -w 9 10 11 12 13 14 15 16 17 18);
+for i in $(seq -w 9 18);
 do
       SAMPLE_NAME="SC23000${i}"
       sbatch ${SCRIPT_DIR}/03_cellranger_count.sh "${SAMPLE_NAME}"
