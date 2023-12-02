@@ -38,7 +38,7 @@ sbatch ${SCRIPT_DIR}/05_aggregate.sh "${sample_info}" "${comparision}"
 
 sample_info=$DIR/sample_info_3.csv
 comparision="Comparision3"
-sbatch ${SCRIPT_DIR}/04_aggregate.sh "${sample_info}" "${comparision}"
+sbatch ${SCRIPT_DIR}/05_aggregate.sh "${sample_info}" "${comparision}"
 
 sample_info=$DIR/sample_info_4.csv
 comparision="Comparision4"
