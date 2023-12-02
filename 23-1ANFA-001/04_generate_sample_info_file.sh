@@ -53,16 +53,16 @@ sed -i 1i'sample_id,molecule_h5' ${DIR}/sample_info_5.csv
 #add header to csv file
 sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_6.csv
 
-for i in 09 11 13 10 12 14
-do
-      echo "SC23000${i},${DIR}/SC23000${i}/outs/molecule_info.h5,DPP1" >> ${DIR}/sample_info_7.csv
-      echo "SC23000${i},${DIR}/SC23000${i}/outs/molecule_info.h5DPP1" >> ${DIR}/sample_info_7.csv
-      echo "SC23000${i},${DIR}/SC23000${i}/outs/molecule_info.h5,DPP1" >> ${DIR}/sample_info_7.csv
-      echo "SC23000${i},${DIR}/SC23000${i}/outs/molecule_info.h5,CPP1" >> ${DIR}/sample_info_7.csv
-      echo "SC23000${i},${DIR}/SC23000${i}/outs/molecule_info.h5,CPP1" >> ${DIR}/sample_info_7.csv
-      echo "SC23000${i},${DIR}/SC23000${i}/outs/molecule_info.h5,CPP1" >> ${DIR}/sample_info_7.csv
+#for i in 09 11 13 10 12 14
+#do
+      echo "SC2300009,${DIR}/SC2300009/outs/molecule_info.h5,DPP1" >> ${DIR}/sample_info_7.csv
+      echo "SC2300011,${DIR}/SC2300011/outs/molecule_info.h5,DPP1" >> ${DIR}/sample_info_7.csv
+      echo "SC2300013,${DIR}/SC2300013/outs/molecule_info.h5,DPP1" >> ${DIR}/sample_info_7.csv
+      echo "SC2300010,${DIR}/SC2300010/outs/molecule_info.h5,CPP1" >> ${DIR}/sample_info_7.csv
+      echo "SC2300012,${DIR}/SC2300012/outs/molecule_info.h5,CPP1" >> ${DIR}/sample_info_7.csv
+      echo "SC2300014,${DIR}/SC2300014/outs/molecule_info.h5,CPP1" >> ${DIR}/sample_info_7.csv
 
-done
+#done
 #add header to csv file
 sed -i 1i'sample_id,molecule_h5,experiment' ${DIR}/sample_info_7.csv
 
