@@ -1,7 +1,8 @@
 ###################
 #BOWTIE ALIGNMENT
 ###################
-for i in {33..43}
+#for i in {33..43}
+for i in 37
 do
   sbatch 03_bowtie_alignment.sh "D23000${i}" "D23000${i}.fastq.gz"
   sleep 0.2
