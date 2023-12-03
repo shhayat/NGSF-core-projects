@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=bowtie2
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --time=4:00:00
-#SBATCH --mem=20G
+#SBATCH --cpus-per-task=8
+#SBATCH --time=24:00:00
+#SBATCH --mem=60G
 #SBATCH  --output=%j.out
 
 set -eux
@@ -19,7 +19,7 @@ cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 RAW_DATA=/datastore/NGSF001/projects/23-1DEAN-001/analysis/fastq
 GENOME=/datastore/NGSF001/projects/23-1DEAN-001/analysis/indices/bowtie_index
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis
-NCPU=4
+NCPU=8
 
 sample_name=$1; shift
 fq=$1
