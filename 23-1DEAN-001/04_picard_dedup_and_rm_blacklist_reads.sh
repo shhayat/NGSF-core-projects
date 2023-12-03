@@ -13,7 +13,7 @@ set -eux
 
 #module load picard/2.23.3 
 #module load samtools
-#module load nixpkgs/16.09
+module load nixpkgs/16.09
 module load picard
 module load gcc/5.4.0
 module load intel/2016.4
