@@ -45,7 +45,7 @@ java -Xmx80G -XX:ParallelGCThreads=$NCPU -Djava.io.tmpdir=$SLURM_TMPDIR -jar $EB
 
 #Remove reads from *.aligned_dedup.bam which are present in blacklist
 bedtools intersect -v -a ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
-		      -b /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
+		      -b /datastore/NGSF001/projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
 
 samtools sort -T $SLURM_TMPDIR \
 	      -o ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt_sort.bam \
