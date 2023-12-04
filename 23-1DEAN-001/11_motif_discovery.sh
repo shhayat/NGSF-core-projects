@@ -36,4 +36,4 @@ cd /globalhome/hxo752/HPC/tools
 
 #cd ${OUTDIR}
 #since we have limited number of peaks we will not select top peaks and proceed with meme-chip
-/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${cellLine}_motif_discovery ${cellLine}_genome.masked.on.idr_intervals.fa
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${cellLine}_motif_discovery ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
