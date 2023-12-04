@@ -22,9 +22,15 @@ sample_name=$1;
 cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 
 #cross correlation
+#Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam \
+#                  -p=8 \
+#                  -s=0:1:1000 \
+#                  -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
+#                  -tmpdir=$SLURM_TMPDIR \
+#                  -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
 Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam \
                   -p=8 \
-                  -s=0:1:1000 \
+                  -s=0:1:500 \
                   -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
                   -tmpdir=$SLURM_TMPDIR \
                   -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
