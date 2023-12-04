@@ -26,7 +26,7 @@ cellLine=$1;
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
 cd /globalhome/hxo752/HPC/tools
 chmod a+x bedtools.static.binary
-./bedtools.static.binary getfasta -fi /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/genome.fa \
+./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
                                  -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
                                   -fo ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
 
