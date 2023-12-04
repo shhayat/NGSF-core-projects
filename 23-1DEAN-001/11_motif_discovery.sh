@@ -25,10 +25,10 @@ cellLine=$1;
 #for motif discovery step repeat-masked version of the genome is required where all repeat sequences have been replaced with Ns
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
 cd /globalhome/hxo752/HPC/tools
-chmod a+x bedtools.static.binary
-./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
-                                 -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
-                                  -fo ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
+#chmod a+x bedtools.static.binary
+#./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
+#                                 -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
+#                                  -fo ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
 
 
 #select peaks with the strongest signal for motif finding
@@ -36,4 +36,4 @@ chmod a+x bedtools.static.binary
 
 #cd ${OUTDIR}
 #since we have limited number of peaks we will not select top peaks and proceed with meme-chip
-#/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${cellLine}_motif_discovery ${cellLine}_genome.masked.on.idr_intervals.fa
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${cellLine}_motif_discovery ${cellLine}_genome.masked.on.idr_intervals.fa
