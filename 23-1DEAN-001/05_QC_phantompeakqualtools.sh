@@ -28,7 +28,7 @@ cd /globalhome/hxo752/HPC/tools/phantompeakqualtools
 #                  -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
 #                  -tmpdir=$SLURM_TMPDIR \
 #                  -out=${OUTDIR}/QC/phantompeakqualtools/xcor_metrics_${sample_name}.txt
-Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned.bam \
+Rscript run_spp.R -c=${OUTDIR}/alignment/${sample_name}/${sample_name}.aligned_dedup_filt_sort.bam \
                   -p=8 \
                   -s=0:1:500 \
                   -savp=${OUTDIR}/QC/phantompeakqualtools/xcor_${sample_name}.pdf \
