@@ -5,7 +5,7 @@ library(Seurat)
 setwd("/Users/shahina/Projects/23-1ANFA-001")
 
 DEG <- function(condition1, condition2, comparison_name){
-data_dir <- paste("/Users/shahina/Projects/23-1ANFA-001",comparison_name,"/filtered_feature_bc_matrix", sep="")
+data_dir <- paste("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/agreggate/",comparison_name,"/agreggate/outs/count/filtered_feature_bc_matrix", sep="")
 expression_matrix <- Read10X(data.dir = data_dir)
 # Create a Seurat object
 SeuratObject <- CreateSeuratObject(counts = expression_matrix,min.cells = 3,names.delim = "-", names.field = 2)
@@ -38,6 +38,10 @@ de1 <- data.frame(gene=rownames(de),de)
 write.csv(de1,file=sprintf("%s/DEG_%s_vs_%s_filter_on_pval0.05.csv",comparison_name,condition2,condition1),quote=FALSE, row.names = FALSE)
 }
 
-DEG("PBS","Scrambled","Scrambled_PBS")
-DEG("Scrambled","BLR200","BLR200_Scrambled")
-DEG("Scrambled","CCN2","CCN2_Scrambled")
+DEG("PBS","Scrambled","Comparision1")
+DEG("Scrambled","BLR200","Comparision2")
+DEG("Scrambled","CCN2","Comparision3")
+DEG("Scrambled","CCN2","Comparision4")
+DEG("Scrambled","CCN2","Comparision5")
+DEG("Scrambled","CCN2","Comparision6")
+DEG("Scrambled","CCN2","Comparision7")
