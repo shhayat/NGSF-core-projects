@@ -2,7 +2,7 @@
 library(Seurat)
 
 # Load the feature barcode matrix (.mtx)
-setwd("/Users/shahina/Projects/23-1ANFA-001/agreggate/")
+setwd("/Users/shahina/Projects/23-1ANFA-001/aggregate/")
 
 DEG <- function(condition1, condition2, comparison_name){
 data_dir <- paste(comparison_name,"/outs/count/filtered_feature_bc_matrix", sep="")
