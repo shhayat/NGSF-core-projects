@@ -1,6 +1,8 @@
 #Finding markers differentailly expressed between conditions
 library(Seurat)
 library(magrittr)
+library(dplyr)
+
 
 # Load the feature barcode matrix (.mtx)
 setwd("/Users/shahina/Projects/23-1ANFA-001/aggregate/")
@@ -10,6 +12,9 @@ data_dir <- paste(comparison_name,"/outs/count/filtered_feature_bc_matrix", sep=
 expression_matrix <- Read10X(data.dir = data_dir)
 # Create a Seurat object
 SeuratObject <- CreateSeuratObject(counts = expression_matrix,min.cells = 3,names.delim = "-", names.field = 2)
+
+#metadata_by_sample <- data.frame(orig.ident = Idents(SeuratObject))
+#metadata$barcodes <- rownames(metadata)
 
 #For creating metadata manually use following steps and then add metadata to seurat object
 # Create dataframe by sample that contains matching orig.ident code
@@ -21,9 +26,15 @@ metadata_by_sample <- tibble::tribble(~orig.ident,  ~sample_name,
 metadata_by_sample$orig.ident <- as.factor(metadata_by_sample$orig.ident)
 
 # Pull existing meta data where samples are specified by orig.ident and remove everything but orig.ident
-OBJ_metadata <- SeuratObject@meta.data %>% 
-  select(orig.ident) %>% 
-  rownames_to_column("barcodes")
+#OBJ_metadata <- SeuratObject@meta.data %>% 
+#  select(orig.ident) %>% 
+#  rownames_to_column("barcodes")
+metadata <- SeuratObject@meta.data  # Access metadata
+
+# Selecting specific columns (e.g., orig.ident) and adding rownames as 'barcodes'
+OBJ_metadata <- data.frame(
+  barcodes = rownames(metadata),
+  orig.ident = metadata$orig.ident)
 
 # Use full join with object meta data in x position so that by sample meta dataframe is propagated across the by cell meta dataframe from the object.  And then remove orig.ident because it's already present in object meta data.
 full_new_meta <- full_join(x = OBJ_metadata, y = metadata_by_sample) %>% 
