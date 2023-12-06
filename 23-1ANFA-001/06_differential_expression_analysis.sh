@@ -2,10 +2,10 @@
 library(Seurat)
 
 # Load the feature barcode matrix (.mtx)
-setwd("/Users/shahina/Projects/23-1ANFA-001")
+setwd("/Users/shahina/Projects/23-1ANFA-001/agreggate/")
 
 DEG <- function(condition1, condition2, comparison_name){
-data_dir <- paste("/agreggate/",comparison_name,"/agreggate/outs/count/filtered_feature_bc_matrix", sep="")
+data_dir <- paste(comparison_name,"/agreggate/outs/count/filtered_feature_bc_matrix", sep="")
 expression_matrix <- Read10X(data.dir = data_dir)
 # Create a Seurat object
 SeuratObject <- CreateSeuratObject(counts = expression_matrix,min.cells = 3,names.delim = "-", names.field = 2)
