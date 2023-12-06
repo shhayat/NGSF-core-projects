@@ -1,5 +1,6 @@
 #Finding markers differentailly expressed between conditions
 library(Seurat)
+library(magrittr)
 
 # Load the feature barcode matrix (.mtx)
 setwd("/Users/shahina/Projects/23-1ANFA-001/aggregate/")
