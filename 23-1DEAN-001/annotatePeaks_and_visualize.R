@@ -47,14 +47,14 @@ write.csv(annot_df_BT549, "BT549_peaks_with_annotations.csv")
 write.csv(annot_df_HCC1806, "HCC1806_peaks_with_annotations.csv")
 
 
-pdf("BT549_chip_profile.pdf")
+pdf("BT549_chip_profile.pdf", width=1000)
  #coverage plot 
- covplot(ReadPeakList$BT549, weightCol="V5",chrs=c("chr1", "chr2","chr3", "chr4","chr5", "chr6","chr7", "chr8","chr9", 
-                                                   "chr10","chr11", "chr12","chr13", "chr14","chr15","chr16", "chr17",
-                                                   "chr18","chr19", "chr20","chr21","chr22","chrX","chrY","chrM"))
+ #covplot(ReadPeakList$BT549, weightCol="V5",chrs=c("chr1", "chr2","chr3", "chr4","chr5", "chr6","chr7", "chr8","chr9", 
+  #                                                 "chr10","chr11", "chr12","chr13", "chr14","chr15","chr16", "chr17",
+   #                                                "chr18","chr19", "chr20","chr21","chr22","chrX","chrY","chrM"))
  #covplot(PeakList_with_added_chr_str[[1]], weightCol="V5", chrs=c("chr19"))
 
-covplot(ReadPeakList$BT549, weightCol="V5",chrs=c("chr1", "chr2","chr3", "chr4","chr5", "chr6","chr7", "chr8","chr9","chr10"))
+covplot(ReadPeakList$BT549, weightCol="V5",chrs=c("chr1", "chr2","chr3", "chr4","chr5", "chr6","chr7", "chr8","chr9","chr10","chr11", "chr12"))
 
  #Profile of ChIP peaks binding to TSS regions
   promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
