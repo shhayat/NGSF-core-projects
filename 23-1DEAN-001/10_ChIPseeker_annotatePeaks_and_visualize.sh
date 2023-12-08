@@ -10,6 +10,6 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
 
-module load r/4.2.1
+module load r/4.3.1 
 
 Rscript annotatePeaks_and_visualize.R
