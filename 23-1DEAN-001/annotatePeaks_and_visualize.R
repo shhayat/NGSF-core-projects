@@ -54,6 +54,8 @@ pdf("BT549_chip_profile.pdf")
                                                    "chr18","chr19", "chr20","chr21","chr22","chrX","chrY","chrM"))
  #covplot(PeakList_with_added_chr_str[[1]], weightCol="V5", chrs=c("chr19"))
 
+covplot(ReadPeakList$BT549, weightCol="V5",chrs=c("chr1", "chr2","chr3", "chr4","chr5", "chr6","chr7", "chr8","chr9","chr10"))
+
  #Profile of ChIP peaks binding to TSS regions
   promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
   tagMatrix <- getTagMatrix(ReadPeakList$BT549, windows=promoter)
@@ -67,6 +69,7 @@ pdf("BT549_chip_profile.pdf")
   # plotting average profile of ChIP peaks 
   plotAvgProf(tagMatrixList, xlim=c(-2000, 2000), xlab="Genomic Region (5'->3')", ylab = "Read Count Frequency")
 
+  plotPeakProf2(peak = ReadPeakList$BT549, upstream = rel(0.2), downstream = rel(0.2),conf = 0.95, by = "gene", type = "body", nbin = 1000, TxDb = txdb, weightCol = "V5",ignore_strand = F)
 dev.off()
 
 #annotation plot : there are more plot funtion available for multiple cell line comparisions
