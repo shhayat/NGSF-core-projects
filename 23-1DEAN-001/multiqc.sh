@@ -19,7 +19,7 @@ multiqc -d ${DIR}/QC/phantompeakqualtools/xcor_*.txt -o ${OUTDIR}/phantompeakqua
 multiqc -d ${DIR}/alignment/*/dedup_metrics.txt  -o ${OUTDIR}/picard -n picard
 
 
-$MACS2
-multiqc -d ${DIR}/peakcall/*/*_peaks.xls -o ${OUTDIR}/MACS2 -n MACS3
+$MACS3
+multiqc -d ${DIR}/peakcall_with_pval0.05/*/*_peaks.xls -o ${OUTDIR}/MACS3_statistics -n MACS3
 #./multiqc -d ${DIR}/peakcall/*/*peaks.narrowPeak -o ${OUTDIR}/MACS3 -n MACS3_narrowPeak
 #./multiqc -d ${DIR}/peakcall/*/*summits.bed -o ${OUTDIR}/MACS3 -n MACS3_bed
