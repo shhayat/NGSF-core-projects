@@ -49,7 +49,9 @@ write.csv(annot_df_HCC1806, "HCC1806_peaks_with_annotations.csv")
 
 pdf("BT549_chip_profile.pdf")
  #coverage plot 
- covplot(ReadPeakList$BT549, weightCol="V5")
+ covplot(ReadPeakList$BT549, weightCol="V5",chrs=c("chr1", "chr2","chr3", "chr4","chr5", "chr6","chr7", "chr8","chr9", 
+                                                   "chr10","chr11", "chr12","chr13", "chr14","chr15","chr16", "chr17",
+                                                   "chr18","chr19", "chr20"))
  #from cov plot we saw most of the peaks are at chr 19. we check cov plot for chr 19
  #covplot(PeakList_with_added_chr_str[[1]], weightCol="V5", chrs=c("chr19"))
 
