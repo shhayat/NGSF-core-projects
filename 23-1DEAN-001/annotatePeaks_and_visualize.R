@@ -12,6 +12,10 @@ txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene
 #list bed files
 #samplefiles <- list.files("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/chipr", pattern= "optimal_filtered.bed", full.names=T)
 
+dir.create("/Users/shahina/Projects/23-1DEAN-001/peak_annotation")
+setwd("/Users/shahina/Projects/23-1DEAN-001/peak_annotation")
+samplefiles <- list.files("/Users/shahina/Projects/23-1DEAN-001/23-1DEAN-001/chipr", pattern= "optimal_filtered.bed", full.names=T)
+
 samplefiles <- as.list(samplefiles)
 names(samplefiles) <- c("BT549","HCC1806")
 
