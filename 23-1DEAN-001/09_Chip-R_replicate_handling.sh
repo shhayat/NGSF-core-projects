@@ -22,20 +22,29 @@ files=$1; shift
 cellLine=$1;
 mkdir -p ${OUTDIR}
 
-#chipr -i ${files} \
-#      -m 1 \
-#      -o ${OUTDIR}/${cellLine}
+
 chipr -i ${files} \
       -m 1 \
       -o ${OUTDIR}/${cellLine}
       --rankmethod qvalue
-
-awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
+awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered_v1.bed
 
 #sort on -log10(pvalue)
-sort -k 8,8nr ${OUTDIR}/${cellLine}_optimal_filtered.bed > ${OUTDIR}/${cellLine}_optimal_filtered_sorted.bed
+sort -k 9,9nr ${OUTDIR}/${cellLine}_optimal_filtered.bed > ${OUTDIR}/${cellLine}_optimal_filtered_sorted_v1.bed
 
 #prep file for motif discovery
-cut -f 1,2,3 ${OUTDIR}/${cellLine}_optimal_filtered_sorted.bed > ${OUTDIR}/${cellLine}_optimal_filtered_3_columns.bed 
+cut -f 1,2,3 ${OUTDIR}/${cellLine}_optimal_filtered_sorted.bed > ${OUTDIR}/${cellLine}_optimal_filtered_3_columns_v1.bed 
+
+
+#chipr -i ${files} \
+#      -m 1 \
+#      -o ${OUTDIR}/${cellLine}
+#awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
+
+#sort on -log10(pvalue)
+#sort -k 8,8nr ${OUTDIR}/${cellLine}_optimal_filtered.bed > ${OUTDIR}/${cellLine}_optimal_filtered_sorted.bed
+
+#prep file for motif discovery
+#cut -f 1,2,3 ${OUTDIR}/${cellLine}_optimal_filtered_sorted.bed > ${OUTDIR}/${cellLine}_optimal_filtered_3_columns.bed 
 
 
