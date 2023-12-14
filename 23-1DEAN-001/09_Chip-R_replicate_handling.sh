@@ -30,7 +30,7 @@ mkdir -p ${OUTDIR}
 awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered_v1.bed
 
 #sort on -log10(qvalue)
-sort -k 9,9nr ${OUTDIR}/${cellLine}_optimal_filtered_v1.bed > ${OUTDIR}/${cellLine}_optimal_filtered_sorted_v1.bed
+sort -k 9,9n ${OUTDIR}/${cellLine}_optimal_filtered_v1.bed > ${OUTDIR}/${cellLine}_optimal_filtered_sorted_v1.bed
 
 #prep file for motif discovery
 cut -f 1,2,3 ${OUTDIR}/${cellLine}_optimal_filtered_sorted_v1.bed > ${OUTDIR}/${cellLine}_optimal_filtered_3_columns_v1.bed 
