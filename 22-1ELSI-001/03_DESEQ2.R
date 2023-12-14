@@ -67,7 +67,7 @@ setwd("~/Desktop/core-projects/22-1ELSI-001/DESEQ2")
 
 #gernate rlog for PCA
 
-pdf("PCA_for_3_groups.pdf")
+tiff("PCA_for_3_groups.tiff",res=600,units="in")
   rld <-rlog(dds,blind=FALSE)
   nudge <- position_nudge(y = 0.5)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
@@ -75,7 +75,7 @@ pdf("PCA_for_3_groups.pdf")
 p
 dev.off()
 
-pdf("PCA_for_3_groups_without_labels.pdf")
+tiff("PCA_for_3_groups_without_labels.tiff",res=600,units="in")
   #rld <-rlog(dds,blind=FALSE)
   nudge <- position_nudge(y = 0.5)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
