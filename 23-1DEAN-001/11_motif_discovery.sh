@@ -30,10 +30,18 @@ cd /globalhome/hxo752/HPC/tools
 #                                 -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
 #                                  -fo ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
 
-
 #select peaks with the strongest signal for motif finding
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
 
 #cd ${OUTDIR}
-#since we have limited number of peaks we will not select top peaks and proceed with meme-chip
-/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${OUTDIR}/${cellLine}_motif_discovery ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
+#proceed with meme-chip
+#/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${OUTDIR}/${cellLine}_motif_discovery ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
+
+./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
+                                  -bed ${DIR}/${cellLine}__promotor_regions.bed \
+                                  -fo ${OUTDIR}/${cellLine}_genome.masked.on.intervals_for_promotor_regions.fa
+                                  
+#meme-chip for promoters
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${OUTDIR}/${cellLine}_motif_discovery_for_promotor_regions ${OUTDIR}/${cellLine}_genome.masked.on.intervals_for_promotor_regions.fa
+
+
