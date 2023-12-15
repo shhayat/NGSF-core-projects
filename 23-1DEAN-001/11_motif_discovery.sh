@@ -5,8 +5,8 @@
 #SBATCH --job-name=motif_discovery
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --time=4:00:00
-#SBATCH --mem=20G
+#SBATCH --time=6:00:00
+#SBATCH --mem=40G
 #SBATCH  --output=%j.out
 
 set -eux
