@@ -27,13 +27,13 @@ chipr -i ${files} \
       -m 2 \
       -o ${OUTDIR}/${cellLine}
       --rankmethod qvalue
-awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered_v1.bed
+awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
 
 #sort on -log10(qvalue)
-sort -k 9,9n ${OUTDIR}/${cellLine}_optimal_filtered_v1.bed > ${OUTDIR}/${cellLine}_optimal_filtered_sorted_v1.bed
+sort -k 9,9n ${OUTDIR}/${cellLine}_optimal_filtered_v1.bed > ${OUTDIR}/${cellLine}_optimal_filtered_sorted.bed
 
 #prep file for motif discovery
-cut -f 1,2,3 ${OUTDIR}/${cellLine}_optimal_filtered_sorted_v1.bed > ${OUTDIR}/${cellLine}_optimal_filtered_3_columns_v1.bed 
+cut -f 1,2,3 ${OUTDIR}/${cellLine}_optimal_filtered_sorted.bed > ${OUTDIR}/${cellLine}_optimal_filtered_3_columns.bed 
 
 
 #chipr -i ${files} \
