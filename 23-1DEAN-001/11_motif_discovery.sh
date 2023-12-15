@@ -38,7 +38,7 @@ cd /globalhome/hxo752/HPC/tools
 #/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${OUTDIR}/${cellLine}_motif_discovery ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
 
 ./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
-                                  -bed ${DIR}/${cellLine}__promotor_regions.bed \
+                                  -bed ${DIR}/${cellLine}_promotor_regions.bed \
                                   -fo ${OUTDIR}/${cellLine}_genome.masked.on.intervals_for_promotor_regions.fa
                                   
 #meme-chip for promoters
