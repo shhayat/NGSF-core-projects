@@ -23,11 +23,11 @@ cellLine=$1;
 mkdir -p ${OUTDIR}
 
 
-#chipr -i ${files} \
-#      -m 2 \
-#      -o ${OUTDIR}/${cellLine}
-#      --rankmethod qvalue
-#awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
+chipr -i ${files} \
+      -m 2 \
+      -o ${OUTDIR}/${cellLine} \
+      --rankmethod 'qvalue'
+awk '{if($5 >= 540) print $0}' ${OUTDIR}/${cellLine}_optimal.bed > ${OUTDIR}/${cellLine}_optimal_filtered.bed
 
 #sort on -log10(qvalue)
 sort -k 9,9n ${OUTDIR}/${cellLine}_optimal_filtered.bed > ${OUTDIR}/${cellLine}_optimal_filtered_sorted.bed
