@@ -13,6 +13,7 @@
 #cd /globalhome/hxo752/HPC/anaconda3/bin
 cd /globalhome/hxo752/HPC/.local/lib/python3.7/site-packages
 
+#OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/peakcall_with_pval0.05_v1
 controlBAM=$1; shift
 treatBAM=$1; shift
