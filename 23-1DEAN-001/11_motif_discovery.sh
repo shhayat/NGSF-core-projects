@@ -26,11 +26,9 @@ cellLine=$1;
 #we will generate masked genome based on peak intervals in idr_filtered.bed 
 cd /globalhome/hxo752/HPC/tools
 #chmod a+x bedtools.static.binary
-./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
-                                  -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
-                                  -fullHeader \
-                                  -name \
-                                  -fo ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
+#./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
+#                                  -bed ${DIR}/${cellLine}_optimal_filtered_3_columns.bed \
+#                                  -fo ${OUTDIR}/${cellLine}_genome.masked.on.idr_intervals.fa
 
 #select peaks with the strongest signal for motif finding
 #sort -k 7,7nr  ${DIR}/${bed_peak} | head -n 200 > ${DIR}/motif_discovery/${sample_name}_top.bed
