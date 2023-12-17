@@ -43,7 +43,8 @@ sample_name=$1
      #	    REMOVE_DUPLICATES=true \
       #	    ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
 	#    samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
-
+ 
+#https://hbctraining.github.io/Intro-to-ChIPseq-flipped/lessons/05_filtering_BAM_files.html
 sambamba view -h -t 2 -f bam -F "[XS] == null and not unmapped and not duplicate" \
            ${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
 	   samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
