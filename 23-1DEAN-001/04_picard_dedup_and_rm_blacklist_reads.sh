@@ -43,7 +43,8 @@ sample_name=$1
      #	    REMOVE_DUPLICATES=true \
       #	    ASSUME_SORTED=true 2> ${BAMDIR}/${sample_name}/${sample_name}_picard.log && \
 	#    samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
- 
+
+ #remove unmapped , multimapped and duplicated reads
 #https://hbctraining.github.io/Intro-to-ChIPseq-flipped/lessons/05_filtering_BAM_files.html
 sambamba view -h -t 2 -f bam -F "[XS] == null and not unmapped and not duplicate" \
            ${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
@@ -53,6 +54,7 @@ sambamba view -h -t 2 -f bam -F "[XS] == null and not unmapped and not duplicate
 bedtools intersect -v -a ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam \
 		      -b /datastore/NGSF001/projects/23-1DEAN-001/analysis/hg38-blacklist.v2.bed > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam
 
+#sort bam files
 samtools sort -T $SLURM_TMPDIR \
 	      -o ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt_sort.bam \
 	      ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup_filt.bam && \
