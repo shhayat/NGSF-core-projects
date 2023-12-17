@@ -45,7 +45,7 @@ sample_name=$1
 	#    samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
 
 sambamba view -h -t 2 -f bam -F "[XS] == null and not unmapped and not duplicate" \
-           ${BAMDIR}/${sample_name}/${sample_name}.aligned.bam > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
+           ${BAMDIR}/${sample_name}/${sample_name}.aligned_sort.bam > ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam && \
 	   samtools index ${BAMDIR}/${sample_name}/${sample_name}.aligned_dedup.bam
 
 #Remove reads from *.aligned_dedup.bam which are present in blacklist
