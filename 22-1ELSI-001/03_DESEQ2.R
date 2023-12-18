@@ -68,7 +68,7 @@ setwd("~/Desktop/core-projects/22-1ELSI-001/DESEQ2")
 #gernate rlog for PCA
 
   rld <-rlog(dds,blind=FALSE)
-tiff("PCA_for_3_groups.tiff",res=600,units="px",width=20,height=20)
+tiff("PCA_for_3_groups.tiff",res=600, width = 50, height = 50, units = 'in')
   nudge <- position_nudge(y = 0.5)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
   p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.4)
