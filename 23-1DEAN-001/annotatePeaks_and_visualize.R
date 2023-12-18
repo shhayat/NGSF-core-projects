@@ -49,8 +49,8 @@ GenomeInfoDb::seqlevels(txdb)
 #PeakList_with_added_chr_str <- lapply(ReadPeakList, diffloop::addchr)
 
 #annotate peaks
-#2000bp = 2Kbp
-peakAnnoList <- lapply(ReadPeakList, annotatePeak, TxDb=txdb,tssRegion=c(-2000, 2000), 
+#4000bp = 4Kbp
+peakAnnoList <- lapply(ReadPeakList, annotatePeak, TxDb=txdb,tssRegion=c(-4000, 0), 
                        verbose=TRUE, annoDb="org.Hs.eg.db")
 
 
