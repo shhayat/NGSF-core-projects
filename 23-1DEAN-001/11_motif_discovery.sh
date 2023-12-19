@@ -39,6 +39,6 @@ cd /globalhome/hxo752/HPC/tools
                                   -fo ${OUTDIR}/${cellLine}_genome.masked.on.intervals_for_promotor_regions_common.fa
                                   
 #meme-chip for promoters
-/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${OUTDIR}/${cellLine}_motif_discovery_for_common_promotor_regions -meme-nmotifs 10 ${OUTDIR}/${cellLine}_genome.masked.on.intervals_for_promotor_regions.fa
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme-chip -oc ${OUTDIR}/${cellLine}_motif_discovery_for_common_promotor_regions -meme-nmotifs 10 ${OUTDIR}/${cellLine}_genome.masked.on.intervals_for_promotor_regions_common.fa
 
 
