@@ -58,6 +58,10 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
                               colData=group,
                               design=~sample_group)
 
+
+
+
+
 ##########
 #PCA PLOT
 ##########
