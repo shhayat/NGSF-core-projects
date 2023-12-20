@@ -59,7 +59,10 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
                               design=~sample_group)
 
 
-
+#get normalized counts
+dds <- estimateSizeFactors(dds)
+norm.expr <- counts(dds, normalized=TRUE)
+norm.expr <- as.data.frame(norm.expr)
 
 
 ##########
