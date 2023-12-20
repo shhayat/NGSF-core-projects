@@ -63,7 +63,10 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
 dds <- estimateSizeFactors(dds)
 norm.expr <- counts(dds, normalized=TRUE)
 norm.expr <- as.data.frame(norm.expr)
-
+norm.expr <- data.frame(rownames(norm.expr),norm.expr)
+colnames(norm.expr) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
+write.csv(norm_counts,file="All_normalized_genes.csv", quote=FALSE, row.names = FALSE)
 
 ##########
 #PCA PLOT
