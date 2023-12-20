@@ -5,8 +5,8 @@ library("ggrepel")
 
 #setwd("~/Desktop/")
 #dir.create("core-projects/22-1ELSI-001/DESEQ2", recursive=TRUE, showWarnings = FALSE) 
-setwd("~/Desktop/core-projects/22-1ELSI-001")
-#setwd("/Users/shahina/Projects/22-1ELSI-001/")
+#setwd("~/Desktop/core-projects/22-1ELSI-001")
+setwd("/Users/shahina/Projects/22-1ELSI-001/")
 
 load("feature_count.RData")
 feature_count1 <- as.data.frame(feature_count)
@@ -61,21 +61,21 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
 ##########
 #PCA PLOT
 ##########
-setwd("~/Desktop/core-projects/22-1ELSI-001/DESEQ2")
+#setwd("~/Desktop/core-projects/22-1ELSI-001/DESEQ2")
 
-#setwd("/Users/shahina/Projects/22-1ELSI-001/DESEQ2")
+setwd("/Users/shahina/Projects/22-1ELSI-001/DESEQ2")
 
 #gernate rlog for PCA
 
   rld <-rlog(dds,blind=FALSE)
-tiff("PCA_for_3_groups.tiff",res=600, width = 50, height = 50, units = 'in')
+tiff("PCA_for_3_groups.tiff",res=600, width = 7, height = 7, units = 'in')
   nudge <- position_nudge(y = 0.5)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
   p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.4)
 p
 dev.off()
 
-tiff("PCA_for_3_groups_without_labels.tiff",res=600,units="in",width=15,height=15)
+tiff("PCA_for_3_groups_without_labels.tiff",res=600, width = 7, height = 7, units = 'in')
   #rld <-rlog(dds,blind=FALSE)
   nudge <- position_nudge(y = 0.5)
   p <- plotPCA(rld,intgroup=c("sample_group"))  
