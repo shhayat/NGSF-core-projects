@@ -26,25 +26,29 @@ feature_count <- feature_count1[c(6,10,8,7,3,13,12,11,5,17,14,9,15,16,4)]
 #feature_count3 <- feature_count2[apply(feature_count2,1,function(z) any(z!=0)),]
 #feature_count3 <- feature_count2[apply(feature_count2, 1,function(x) all(x[1:5] >=1) && all(x[6:10]==0) && all(x[11:15]==0)),]
 
-#f1 <- feature_count %>% 
-#  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . ==0))
+f1 <- feature_count %>% 
+  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . ==0))
 
-#f2 <- feature_count %>% 
-#  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
+f2 <- feature_count %>% 
+  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
 
-#f3 <- feature_count %>% 
-#  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . ==0))
+f3 <- feature_count %>% 
+  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . ==0))
 
-#f4 <- feature_count %>% 
-#  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . >=1))
+f4 <- feature_count %>% 
+  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . >=1))
 
-#f5 <- feature_count %>% 
-#  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . >=1))
+f5 <- feature_count %>% 
+  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . >=1))
 
-#f6 <- feature_count %>% 
-#  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
+f6 <- feature_count %>% 
+  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
 
-#feature_count3 <- rbind(f1,f2,f3,f4,f5,f6)         
+feature_count3 <- rbind(f1,f2,f3,f4,f5,f6)  
+
+colnames(feature_count3) <- c("GeneID","GeneName","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
+write.table(feature_count3, file="",quote=FALSE, row.names = FALSE,sep=",")
+
 #creating SAMPLE INFORMATION VARIABLE with group definition
 sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                       sample_type=dput(as.character(names(feature_count))),
