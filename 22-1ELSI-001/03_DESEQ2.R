@@ -507,14 +507,14 @@ D1 <- rownames(f1)
 D4 <- rownames(f2)
 LPS <- rownames(f3)                                
  
-intersect_D1_D4 <- intersect(D1, D4)
-intersect_D1_LPS <- intersect(D1, LPS)
-intersect_D4_LPS <- intersect(D4, LPS)
+#intersect_D1_D4 <- intersect(D1, D4)
+#intersect_D1_LPS <- intersect(D1, LPS)
+#intersect_D4_LPS <- intersect(D4, LPS)
 
-f1[!(rownames(f1) %in% rownames(f2)),]
-unique_D1= D1[!duplicated(D1, D4)]
-unique_D4= D1[!duplicated(D1, D4)]
-unique_LPS= LPS[!duplicated(D4, LPS)]
+#f1[!(rownames(f1) %in% rownames(f2)),]
+#unique_D1= D1[!duplicated(D1, D4)]
+#unique_D4= D1[!duplicated(D1, D4)]
+#unique_LPS= LPS[!duplicated(D4, LPS)]
 
 
 display_venn <- function(x, ...){
