@@ -27,7 +27,7 @@ feature_count <- feature_count1[c(6,10,8,7,3,13,12,11,5,17,14,9,15,16,4)]
 #feature_count3 <- feature_count2[apply(feature_count2, 1,function(x) all(x[1:5] >=1) && all(x[6:10]==0) && all(x[11:15]==0)),]
 
 #f1 <- feature_count %>% 
-  filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . ==0))
+ # filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . ==0) & if_all(c(11:15), ~ . ==0))
 
 #f2 <- feature_count %>% 
   #filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
@@ -507,6 +507,13 @@ D1 <- rownames(f1)
 D4 <- rownames(f2)
 LPS <- rownames(f3)                                
  
+intersect_D1_D4 <- intersect(D1, D4)
+intersect_D1_LPS <- intersect(D1, LPS)
+intersect_D4_LPS <- intersect(D4, LPS)
+unique_D1= D1[!(duplicated(D1, D4))]
+unique_D4= D1[!intersect(D1, D4)]
+unique_LPS= LPS[!intersect(D4, LPS)]
+
 
 display_venn <- function(x, ...){
   library(VennDiagram)
