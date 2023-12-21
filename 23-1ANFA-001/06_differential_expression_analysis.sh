@@ -57,3 +57,17 @@ DEG("LoopC","DPP1","Comparision4")
 DEG("LoopC","DPP1","Comparision5")
 DEG("LoopC","DPP1","Comparision6")
 DEG("DPP1","CPP1","Comparision7")
+
+
+
+#TEST
+# Load the feature barcode matrix (.mtx)
+setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/agreggate")
+data_dir <- paste("Comparision1","/agreggate/outs/count/filtered_feature_bc_matrix", sep="")
+expression_matrix <- Read10X(data.dir = data_dir)
+# Create a Seurat object
+SeuratObject <- CreateSeuratObject(counts = expression_matrix,min.cells = 3,names.delim = "-", names.field = 2)
+SeuratObject[["RNA"]]@counts<-as.matrix(SeuratObject[["RNA"]]@counts)+1
+#DESEQ2 aanalysis using Seurat
+de.markers <- FindMarkers(SeuratObject, ident.1 = c("3","4"), ident.2 = c("1","2"),   test.use = "DESeq2", slot = "counts")
+
