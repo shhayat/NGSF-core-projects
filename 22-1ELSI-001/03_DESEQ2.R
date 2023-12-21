@@ -44,7 +44,11 @@ f5 <- feature_count %>%
 f6 <- feature_count %>% 
   filter(if_all(c(1:5), ~ . >=1) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . >=1))
 
+f7 <- feature_count %>% 
+  filter(if_all(c(1:5), ~ . ==0) & if_all(c(6:10), ~ . >=1) & if_all(c(11:15), ~ . ==0))
+
 feature_count3 <- rbind(f1,f2,f3,f4,f5,f6)  
+colnames(feature_count3) <- c("GeneID","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
 
 colnames(feature_count3) <- c("GeneID","GeneName","E1L1","E2L1","E3L1","E4L1","E5L1","E1L4","E2L4","E3L4","E4L4","E5L4","L1L1","L3L1","L4L1","L5L1","L6L1")
 write.table(feature_count3, file="",quote=FALSE, row.names = FALSE,sep=",")
