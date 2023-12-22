@@ -61,6 +61,12 @@ DEG("DPP1","CPP1","Comparision7")
 
 
 #TEST
+#Activate conda env
+conda activate /globalhome/hxo752/HPC/anaconda3/envs/r-seurat
+#Start R in terminal
+R
+library(Seurat)
+
 # Load the feature barcode matrix (.mtx)
 setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/agreggate")
 data_dir <- paste("Comparision1","/agreggate/outs/count/filtered_feature_bc_matrix", sep="")
