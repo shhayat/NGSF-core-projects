@@ -1,4 +1,4 @@
-setwd("/Users/shahina/Projects/23-1CHXI-001")
+setwd("/Users/shahina/Projects/23-1SCWI-001")
 #setwd("/Users/hxo752/Desktop/core-projects/23-1ANLE-004")
 
 library("DESeq2")
