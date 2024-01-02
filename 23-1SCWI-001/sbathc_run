@@ -1,0 +1,56 @@
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/fastq
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001
+
+for i in ${DATA}/R2300*_R1.fastq.gz 
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+
+      fq1=${DATA}/${sample_name}_R1.fastq.gz;
+      fq2=${DATA}/${sample_name}_R2.fastq.gz;
+      
+      sbatch ${SCRIPT_DIR}/01_FastQC.sh "${fq1}" "${fq2}"
+ done
+
+
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/fastq
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001
+
+for i in ${DATA}/R2300*_R1.fastq.gz 
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+
+      fq1=${DATA}/${sample_name}_R1.fastq.gz;
+      fq2=${DATA}/${sample_name}_R2.fastq.gz;
+      
+      sbatch ${SCRIPT_DIR}/02_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
+ done
+
+
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/star_alignment
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001
+
+for i in ${DATA}/*/*.bam
+do
+        path="${i%/Aligned*}";
+	sample_name="${path##*/}"
+      
+  sbatch ${SCRIPT_DIR}/03_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
+ sleep 0.5
+done 
+
+#!/bin/bash
+
+#SBATCH --job-name=feature-count
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --time=3:00:00
+#SBATCH --mem=40G
+#SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
+set -eux
+
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001
+module load r/4.1.2
+
+R CMD BATCH ${SCRIPT_DIR}/04_feature_count.R
