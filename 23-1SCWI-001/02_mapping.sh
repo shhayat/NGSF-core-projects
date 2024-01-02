@@ -15,7 +15,7 @@ module load star/2.7.9a
 module load samtools
 
 
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//23-1SCWI-001/fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/fastq
 GENOME=/datastore/NGSF001/analysis/indices/mouse/star-index-m32gencode
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/analysis/star_alignment
 NCPU=4
