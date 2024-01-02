@@ -11,7 +11,7 @@
 
 module load fastqc
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//23-1SCWI-001/analysis/Fastq
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects//23-1SCWI-001/analysis
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/analysis
 mkdir -p ${OUTDIR}/fastqc
 
 fq1=$1; shift
