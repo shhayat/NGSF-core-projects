@@ -14,7 +14,7 @@ do
 
 
 #trim and fastqc
-DATA=/datastore/NGSF001/projects/23-1LICH-001/analysis/fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/Fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001
 
 for i in ${DATA}/*_R1.fastq.gz 
