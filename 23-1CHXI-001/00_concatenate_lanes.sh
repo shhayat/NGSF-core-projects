@@ -12,13 +12,13 @@ set -eux
 	
 mkdir -p /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/Fastq 
 
-FASTQ_FOLDER=/datastore/NGSF001/NB551711/230208_NB551711_0063_AHT2WGBGXN/Alignment_1/20230208_231511/Fastq
+FASTQ_FOLDER=/datastore/NGSF001/NB551711/231025_NB551711_0086_AHGC7TBGXV/Alignment_1/20231026_002823/Fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/Fastq
 	
 
-for i in $(seq -w 03 18)
+for i in $(seq -w 169 180)
 do
-	echo Combining library R22000${i}
-	cat ${FASTQ_FOLDER}/R23000${i}_*_R1_* > ${OUTDIR}/R23000${i}_R1.fastq.gz
-	cat ${FASTQ_FOLDER}/R23000${i}_*_R2_* > ${OUTDIR}/R23000${i}_R2.fastq.gz
+	echo Combining library R2300${i}
+	cat ${FASTQ_FOLDER}/R2300${i}_*_R1_* > ${OUTDIR}/R2300${i}_R1.fastq.gz
+	cat ${FASTQ_FOLDER}/R2300${i}_*_R2_* > ${OUTDIR}/R2300${i}_R2.fastq.gz
 done
