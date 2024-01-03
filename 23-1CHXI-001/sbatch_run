@@ -21,7 +21,7 @@ for i in ${DATA}/*_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
-      sbatch ${SCRIPT_DIR}/02_Trim_adaptors_and_redo_fastqc.sh "${DATA}/${sample_name}"
+      sbatch ${SCRIPT_DIR}/02_Trim_and_redo_fastqc.sh "${DATA}/${sample_name}"
  done
 
 
