@@ -10,7 +10,7 @@ module load python/3.9
 sample_name=$1; shift
 bam_file=$1
 #GTF file needs to be modified for running RNASeQC
-GTF=/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation_mod.gtf
+GTF=/datastore/NGSF001/analysis/references/iGenomes/Rat/Rattus_norvegicus/Ensembl/Rnor_6.0/Annotation/Genes/genes.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/rnaseqc
 mkdir -p ${OUTDIR}
 
