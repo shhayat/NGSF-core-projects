@@ -13,7 +13,7 @@ do
  done
 
 
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/analysis/Fastq
+DATA=/datastore/NGSF001/projects/23-1SCWI-001/Fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001
 
 for i in ${DATA}/R2300*_R1.fastq.gz 
@@ -28,6 +28,7 @@ do
  done
 
 
+#DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/analysis/star_alignment
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/analysis/star_alignment
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001
 
