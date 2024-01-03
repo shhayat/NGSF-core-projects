@@ -13,7 +13,7 @@ set -eux
 module load fastp
 
 DATA=/datastore/NGSF001/projects/22-1LICH-001/fastq
-OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastq_trimmed
+OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/fastq_trimmed
 
 mkdir -p ${OUTDIR1}
 sample_name=$1;
@@ -25,7 +25,7 @@ sample_name=$1;
              -h ${OUTDIR1}/${sample_name}.fastp.html
 
 module load fastqc
-OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001/analysis/fastqc_trimmed
+OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/fastqc_trimmed
 
 mkdir -p ${OUTDIR2}
 
