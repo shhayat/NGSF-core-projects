@@ -13,6 +13,17 @@ do
  done
 
 
+#trim and fastqc
+DATA=/datastore/NGSF001/projects/23-1LICH-001/analysis/fastq
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1LICH-001
+
+for i in ${DATA}/*_R1.fastq.gz 
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+      sbatch ${SCRIPT_DIR}/02_trim_adaptors_and_redo_fastqc.sh "${DATA}/${sample_name}"
+ done
+
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/Fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001
 
@@ -24,8 +35,9 @@ do
       fq1=${DATA}/${sample_name}_R1.fastq.gz;
       fq2=${DATA}/${sample_name}_R2.fastq.gz;
       
-      sbatch ${SCRIPT_DIR}/02_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
+      sbatch ${SCRIPT_DIR}/03_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
  done
+
 
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1CHXI-001/analysis/star_alignment
@@ -36,6 +48,6 @@ do
         path="${i%/Aligned*}";
 	sample_name="${path##*/}"
       
-  sbatch ${SCRIPT_DIR}/03_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
+  sbatch ${SCRIPT_DIR}/04_RNASeQC.sh "${sample_name}" "${DATA}/${sample_name}/Aligned.sortedByCoord.out.bam"
  sleep 0.5
 done 
