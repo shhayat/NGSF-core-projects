@@ -9,7 +9,7 @@ sample_names <- list.files(result_dir, "R2")
 #count features using featureCounts function
 feature_count <- sapply(sample_names, function(x)
 			   featureCounts(files = sprintf('%s/%s/Aligned.sortedByCoord.out.bam',result_dir, x),
-			   annot.ext="/datastore/NGSF001/analysis/references/human/gencode-40/gencode.v40.annotation.gtf",
+			   annot.ext="/datastore/NGSF001/analysis/references/iGenomes/Rat/Rattus_norvegicus/Ensembl/Rnor_6.0/Annotation/Genes/genes.gtf",
 			   isGTFAnnotationFile = TRUE,
 			   strandSpecific = 1,
 			   GTF.featureType = 'exon',
