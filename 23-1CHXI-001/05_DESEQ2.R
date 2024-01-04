@@ -10,12 +10,9 @@ dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE)
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
 
-#remove number after decimal point from ensembl ID
-geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
-rownames(feature_count) <- geneID
 
 #your first columns which are gene id and gene name
-feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
+feature_annotation <- data.frame(GeneID=feature_count$GeneID,gene_name=feature_count[2])
 
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
