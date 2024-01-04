@@ -66,4 +66,5 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   #write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_all_genes.xlsx",cond2,cond1), row.names = FALSE)
 
 }
-DEG_analysis(c(3,),"CONTROL","DMOG","CONTROL",3,3)
+DEG_analysis(c(3,),"GFP","CRE","GFP",3,3)
+DEG_analysis(c(4,6,9,12,),"GFP","HnRF1","GFP",3,3)
