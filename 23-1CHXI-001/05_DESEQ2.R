@@ -11,9 +11,9 @@ feature_count <- as.data.frame(feature_count)
 
 #your first columns which are gene id and gene name
 feature_annotation <- data.frame(GeneID=feature_count$GeneID,gene_name=feature_count[2])
-colnames(feature_count) <- c("GeneID","gene_name","H17","H18","H19","H20","H21","H22","","C18","C19","C20","C21","C22","C23")
+colnames(feature_count) <- c("GeneID","gene_name","H17","H18","H19","H20","H21","H22","C18","C19","C20","C21","C22","C23")
 
-DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
+DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2,str)
 {
   feature_count <- feature_count[colnum]
   #remove row with sum zero
@@ -39,7 +39,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
   ##########
   #gernate rlog for PCA
   rld <-rlog(dds,blind=FALSE)
-  pdf(sprintf("PCA_%s_%s.pdf",cond2,cond1), width=8,height=8)
+  pdf(sprintf("PCA_%s_%s_%s.pdf",cond2,cond1,str), width=8,height=8)
     nudge <- position_nudge(y = 0.5)
     p <- plotPCA(rld,intgroup=c("sample_group"))  
     p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
@@ -57,6 +57,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2)
 
   resDF1 <- resDF[resDF$pvalue <= 0.05,]
   
-  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
+  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s.xlsx",cond2,cond1, str), row.names = FALSE)
 }
-DEG_analysis(c(9,10,11,12,13,14,3,4,5,6,7,8),"CONTROL","HFD","CONTROL",6,6)
+DEG_analysis(c(9,10,11,12,13,14,3,4,5,6,7,8),"CONTROL","HFD","CONTROL",6,6, "all_sample")
+DEG_analysis(c(10,11,13,14,4,5,6,7,8),"CONTROL","HFD","CONTROL",4,5,"filtered_sample")
