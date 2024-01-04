@@ -46,7 +46,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str)
   #gernate rlog for PCA
   rld <-rlog(dds,blind=FALSE)
   pdf(sprintf("PCA_%s_%s_%s.pdf",cond2,cond1,str), width=8,height=8)
-   nudge <- position_nudge(y = 0.5)
+   nudge <- position_nudge(y = 0.8)
    p <- plotPCA(rld,intgroup=c("sample_group"))  
    p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
    print(p)
