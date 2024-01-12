@@ -73,7 +73,7 @@ DEG_analysis(c(4,7,10,13,3,6,9,12),"GFP","CRE","GFP",4,4,"Males","all_samples")
 DEG_analysis(c(16,19,22,25,15,18,21,24),"GFP","CRE","GFP",4,4,"Females","all_samples")
 
 #DEG_analysis(c(4,7,10,13,5,8,11,14),"GFP","HnRF1","GFP",4,4,"Males","all_samples")
-DEG_analysis(c(4,7,10,13,5,8,14),"GFP","HnRF1","GFP",4,3,"Males","filtered")
+DEG_analysis(c(7,10,13,5,14),"GFP","HnRF1","GFP",3,2,"Males","filtered")
 DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_samples")
 
 
