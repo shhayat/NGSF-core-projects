@@ -87,15 +87,15 @@ geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
 
 feature_count <- feature_count[c(3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
-feature_count <- feature_count[rowSums(feature_count[,c(1:ncol(feature_count))])>3, ]
+feature_count1 <- feature_count[rowSums(feature_count[,c(1:ncol(feature_count))])>3, ]
 
- sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
-                        sample_type=dput(as.character(names(feature_count))),
+ sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count1))),
+                        sample_type=dput(as.character(names(feature_count1))),
                         sample_group=dput(as.character(c(rep("CRE",8),rep("GFP",8),rep("HnRF1",8)))))  
   
 group <- data.frame(sample_group=sampleInfo$sample_group)
   
-dds <- DESeqDataSetFromMatrix(countData=feature_count,colData=group,design=~sample_group)
+dds <- DESeqDataSetFromMatrix(countData=feature_count1,colData=group,design=~sample_group)
   
 dds$sample_group <-relevel(dds$sample_group,ref="GFP")
   
@@ -107,7 +107,7 @@ nt <- normTransform(dds_wald)
 log2.norm.counts <- assay(nt)[select,]
 log2.norm.counts<- as.data.frame(log2.norm.counts)
                      
-log2.norm.counts1 <- data.frame(GeneID=rownames(log2.norm.counts), log2.norm.counts)
+log2.norm.counts1 <- data.frame(Gene=feature_count$, log2.norm.counts)
 colnames(log2.norm.counts1) <- c("GeneID",sample_names)
                                        
 DF <- rbind(select_up_cols,select_down_cols)
