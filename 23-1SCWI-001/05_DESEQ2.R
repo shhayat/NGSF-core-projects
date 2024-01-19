@@ -126,7 +126,7 @@ log2.norm.counts5 <- log2.norm.counts2[10175:15175,]
 log2.norm.counts6 <- log2.norm.counts2[15176:20694,]
 
 library(gplots)
-pdf("DESEQ2/Heatmap1.pdf")
+pdf("DESEQ2/Heatmap.pdf")
   heatmap.2(
     as.matrix(log2.norm.counts3),
     Colv = FALSE,               # Do not cluster columns
