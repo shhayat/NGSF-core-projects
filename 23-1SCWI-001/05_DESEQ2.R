@@ -107,9 +107,9 @@ nt <- normTransform(dds_wald)
 log2.norm.counts <- assay(nt)[select,]
 log2.norm.counts<- as.data.frame(log2.norm.counts)
                      
-log2.norm.counts1 <- data.frame(Gene=feature_count$, log2.norm.counts)
-colnames(log2.norm.counts1) <- c("Gene",sample_names)
-                                       
+log2.norm.counts1 <- data.frame(Gene=feature_count1$gene_name, log2.norm.counts)
+colnames(log2.norm.counts1) <- c("Gene",names(feature_count1[,2:25]))
+
 DF <- rbind(select_up_cols,select_down_cols)
 DF <- DF[complete.cases(DF), ]
 
@@ -122,7 +122,7 @@ log2.norm.counts3 <- log2.norm.counts2[,-1]
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
 pheatmap(
       log2.norm.counts3,
-      filename   = sprintf("DESEQ2/Heatmap_%s_vs_%s_%s.pdf",cond1,cond2,cond3,group_name),
+      filename   = "DESEQ2/Heatmap.pdf",
       clustering_dist_rows = "correlation",
       scale      = 'row',
       cellheight = 8,
