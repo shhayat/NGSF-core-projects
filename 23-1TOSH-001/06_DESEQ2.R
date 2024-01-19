@@ -108,15 +108,6 @@ pheatmap(
       cluster_cols = FALSE,
       border_color = NA)
 }
-#T1 VS T2
-#DEG_analysis(c(3:48),"T1","T2","T1",23,23)
-#T1 VS T3
-#DEG_analysis(c(3:25,49:71),"T1","T3","T1",23,23)
-#T1 VS T3
-#DEG_analysis(c(3:71),"T1","T2","T3","T1",23,23,23)
-#T0 VS T1
-
-
 
 #CONTROL GROUP sample 33 is missing                       
 DEG_analysis(c(3,6,8,9,11,12,16,26,29,31,32,34,35,39),"T0","T1","T0",7,7,"control",c("TO_19","TO_22","TO_24","TO_25","TO_27","TO_28","TO_33","T1_19","T1_22","T1_24","T1_25","T1_27","T1_28","T1_33")) 
