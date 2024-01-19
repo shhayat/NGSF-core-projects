@@ -77,6 +77,7 @@ DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",
 
 
 
+library(pheatmap)
 #HEATMAP
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
