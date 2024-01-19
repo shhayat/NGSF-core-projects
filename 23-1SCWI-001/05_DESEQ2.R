@@ -76,20 +76,23 @@ DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",
 #DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_samples")
 
 
+setwd("/Users/shahina/Projects/23-1SCWI-001")
 
-library(pheatmap)
+library("pheatmap")
+library("DESeq2")
+
 #HEATMAP
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
+feature_count <- feature_count[c(2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
+feature_count1 <- feature_count[rowSums(feature_count[,c(2:ncol(feature_count))])>3, ]
+
 colnames(feature_count) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M_CRE","5M_CRE","6M_CRE","7M_CRE","8M_CRE",
                              "9M_GFP","10M_GFP","11M_GFP","12M_GFP","1F_GFP","2F_GFP","3F_GFP","4F_GFP",
                              "5F_HnRF1","6F_HnRF1","7F_HnRF1","8F_HnRF1","9F_HnRF1","10F_HnRF1","11F_HnRF1","12F_HnRF1")
 #remove number after decimal point from ensembl ID
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
-
-feature_count <- feature_count[c(2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
-feature_count1 <- feature_count[rowSums(feature_count[,c(2:ncol(feature_count))])>3, ]
 
  sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count1[2:25]))),
                         sample_type=dput(as.character(names(feature_count1[2:25]))),
@@ -111,26 +114,67 @@ log2.norm.counts<- as.data.frame(log2.norm.counts)
                      
 log2.norm.counts1 <- data.frame(Gene=feature_count1$gene_name, log2.norm.counts)
 colnames(log2.norm.counts1) <- c("Gene",names(feature_count1[,2:25]))
-
 #DF <- rbind(select_up_cols,select_down_cols)
 #DF <- DF[complete.cases(DF), ]
-
 #log2.norm.counts1 <- merge(DF,log2.norm.counts1, by=c("GeneID"))
 log2.norm.counts2 <- log2.norm.counts1[,-1]
-
 rownames(log2.norm.counts2) <-  make.names(log2.norm.counts1[,1],TRUE)
-
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
+5173
 pheatmap(
-      log2.norm.counts2,
-      filename   = "DESEQ2/Heatmap.pdf",
+      log2.norm.counts2[1:200],
       clustering_dist_rows = "correlation",
+      filename="DESEQ2/Heatmap.pdf",
       scale      = 'row',
-      cellheight = 4,
+      cellheight = 8,
       cellwidth =  8,
       fontsize   = 6,
-      col        = bwcolor(50),
+      col= bwcolor(50),
       treeheight_row = 0,
       treeheight_col = 0,
       cluster_cols = FALSE,
       border_color = NA)
+
+pheatmap(
+      log2.norm.counts2[5174:10174,],
+      filename="DESEQ2/Heatmap2.pdf",
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
+
+pheatmap(
+      log2.norm.counts2[10174:15174,],
+      filename="DESEQ2/Heatmap3.pdf",
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
+
+pheatmap(
+      log2.norm.counts2[15174:20694,],
+      filename="DESEQ2/Heatmap4.pdf",
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
+
+#20694
