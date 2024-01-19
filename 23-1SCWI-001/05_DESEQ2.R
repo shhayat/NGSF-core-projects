@@ -111,18 +111,17 @@ log2.norm.counts<- as.data.frame(log2.norm.counts)
 log2.norm.counts1 <- data.frame(Gene=feature_count1$gene_name, log2.norm.counts)
 colnames(log2.norm.counts1) <- c("Gene",names(feature_count1[,2:25]))
 
-DF <- rbind(select_up_cols,select_down_cols)
-DF <- DF[complete.cases(DF), ]
+#DF <- rbind(select_up_cols,select_down_cols)
+#DF <- DF[complete.cases(DF), ]
 
-log2.norm.counts1 <- merge(DF,log2.norm.counts1, by=c("GeneID"))
+#log2.norm.counts1 <- merge(DF,log2.norm.counts1, by=c("GeneID"))
 log2.norm.counts2 <- log2.norm.counts1[,-1]
 
-rownames(log2.norm.counts2) <-  make.names(log2.norm.counts2[,1],TRUE)
-log2.norm.counts3 <- log2.norm.counts2[,-1]
+rownames(log2.norm.counts2) <-  make.names(log2.norm.counts1[,1],TRUE)
 
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
 pheatmap(
-      log2.norm.counts3,
+      log2.norm.counts2,
       filename   = "DESEQ2/Heatmap.pdf",
       clustering_dist_rows = "correlation",
       scale      = 'row',
