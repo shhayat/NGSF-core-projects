@@ -80,10 +80,43 @@ DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",
 #HEATMAP
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
-colnames(feature_count) <- c("geneID","gene_name","1M","2M","3M","4M","5M","6M","7M","8M","9M","10M","11M","12M",
-                            "1F","2F","3F","4F","5F","6F","7F","8F","9F","10F","11F","12F")
+colnames(feature_count) <- c("geneID","gene_name","1M","2M","3M","4M","5M","6M","7M","8M","9M","10M","11M","12M","1F","2F","3F","4F",
+                             "5F","6F","7F","8F","9F","10F","11F","12F")
 #remove number after decimal point from ensembl ID
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
 
+select <- order(rowMeans(counts(dds_wald,normalized=TRUE)),decreasing=FALSE)[1:nrow(counts(dds_wald))]
+
+nt <- normTransform(dds_wald)
+log2.norm.counts <- assay(nt)[select,]
+log2.norm.counts<- as.data.frame(log2.norm.counts)
+                     
+log2.norm.counts1 <- data.frame(GeneID=rownames(log2.norm.counts), log2.norm.counts)
+colnames(log2.norm.counts1) <- c("GeneID",sample_names)
+                                       
+DF <- rbind(select_up_cols,select_down_cols)
+DF <- DF[complete.cases(DF), ]
+
+log2.norm.counts1 <- merge(DF,log2.norm.counts1, by=c("GeneID"))
+log2.norm.counts2 <- log2.norm.counts1[,-1]
+
+rownames(log2.norm.counts2) <-  make.names(log2.norm.counts2[,1],TRUE)
+log2.norm.counts3 <- log2.norm.counts2[,-1]
+
+bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
+pheatmap(
+      log2.norm.counts3,
+      filename   = sprintf("DESEQ2/Heatmap_%s_vs_%s_%s.pdf",cond1,cond2,cond3,group_name),
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col        = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
+}
 3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26
