@@ -130,6 +130,7 @@ pdf("DESEQ2/Heatmap.pdf")
   heatmap.2(
     as.matrix(log2.norm.counts3),
     Colv = FALSE,               # Do not cluster columns
+    Rowv = FALSE,
     scale = "row",              # Scale rows
     key = TRUE,                 # Display color key
     keysize = 1.0,              # Size of the color key
@@ -143,6 +144,7 @@ pdf("DESEQ2/Heatmap.pdf")
 heatmap.2(
     as.matrix(log2.norm.counts4),
     Colv = FALSE,               # Do not cluster columns
+    Rowv = FALSE,
     scale = "row",              # Scale rows
     key = TRUE,                 # Display color key
     keysize = 1.0,              # Size of the color key
@@ -156,6 +158,7 @@ heatmap.2(
 heatmap.2(
     as.matrix(log2.norm.counts5),
     Colv = FALSE,               # Do not cluster columns
+    Rowv = FALSE,
     scale = "row",              # Scale rows
     key = TRUE,                 # Display color key
     keysize = 1.0,              # Size of the color key
@@ -168,6 +171,7 @@ heatmap.2(
 )
 heatmap.2(
     as.matrix(log2.norm.counts6),
+    Rowv = FALSE, 
     Colv = FALSE,               # Do not cluster columns
     scale = "row",              # Scale rows
     key = TRUE,                 # Display color key
