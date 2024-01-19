@@ -126,77 +126,75 @@ log2.norm.counts5 <- log2.norm.counts2[10175:15175,]
 log2.norm.counts6 <- log2.norm.counts2[15176:20694,]
 
 library(gplots)
-pdf("DESEQ2/Heatmap_alternative.pdf")
-
+pdf("DESEQ2/Heatmap1.pdf")
+  heatmap.2(
+    as.matrix(log2.norm.counts3),
+    Colv = FALSE,               # Do not cluster columns
+    scale = "row",              # Scale rows
+    key = TRUE,                 # Display color key
+    keysize = 1.0,              # Size of the color key
+    key.title = "Log2 Counts",  # Title for the color key
+    trace = "none",             # Do not display trace lines
+    col = bwcolor(50),          # Color palette
+    cellwidth = 8,              # Width of each cell
+    cellheight = 8,             # Height of each cell
+    margins = c(5, 5),          # Margins around the heatmap
+)
 heatmap.2(
-  as.matrix(log2.norm.counts2),
-  Colv = FALSE,               # Do not cluster columns
-  scale = "row",              # Scale rows
-  key = TRUE,                 # Display color key
-  keysize = 1.0,              # Size of the color key
-  key.title = "Log2 Counts",  # Title for the color key
-  trace = "none",             # Do not display trace lines
-  col = bwcolor(50),          # Color palette
-  cellwidth = 8,              # Width of each cell
-  cellheight = 8,             # Height of each cell
-  margins = c(5, 5),          # Margins around the heatmap
+    as.matrix(log2.norm.counts4),
+    Colv = FALSE,               # Do not cluster columns
+    scale = "row",              # Scale rows
+    key = TRUE,                 # Display color key
+    keysize = 1.0,              # Size of the color key
+    key.title = "Log2 Counts",  # Title for the color key
+    trace = "none",             # Do not display trace lines
+    col = bwcolor(50),          # Color palette
+    cellwidth = 8,              # Width of each cell
+    cellheight = 8,             # Height of each cell
+    margins = c(5, 5),          # Margins around the heatmap
+)
+heatmap.2(
+    as.matrix(log2.norm.counts5),
+    Colv = FALSE,               # Do not cluster columns
+    scale = "row",              # Scale rows
+    key = TRUE,                 # Display color key
+    keysize = 1.0,              # Size of the color key
+    key.title = "Log2 Counts",  # Title for the color key
+    trace = "none",             # Do not display trace lines
+    col = bwcolor(50),          # Color palette
+    cellwidth = 8,              # Width of each cell
+    cellheight = 8,             # Height of each cell
+    margins = c(5, 5),          # Margins around the heatmap
+)
+heatmap.2(
+    as.matrix(log2.norm.counts6),
+    Colv = FALSE,               # Do not cluster columns
+    scale = "row",              # Scale rows
+    key = TRUE,                 # Display color key
+    keysize = 1.0,              # Size of the color key
+    key.title = "Log2 Counts",  # Title for the color key
+    trace = "none",             # Do not display trace lines
+    col = bwcolor(50),          # Color palette
+    cellwidth = 8,              # Width of each cell
+    cellheight = 8,             # Height of each cell
+    margins = c(5, 5),          # Margins around the heatmap
 )
 dev.off()
 
-pheatmap(
-      as.matrix(log2.norm.counts3),
-      clustering_dist_rows = "correlation",
-      filename="DESEQ2/Heatmap.pdf",
-      scale = 'row',
-      cellheight = 8,
-      cellwidth =  8,
-      fontsize   = 6,
-      col= bwcolor(50),
-      treeheight_row = 0,
-      treeheight_col = 0,
-      cluster_cols = FALSE,
-      border_color = NA)
 
-pheatmap(
-      log2.norm.counts4,
-      filename="DESEQ2/Heatmap2.pdf",
-      clustering_dist_rows = "correlation",
-      scale      = 'row',
-      cellheight = 8,
-      cellwidth =  8,
-      fontsize   = 6,
-      col = bwcolor(50),
-      treeheight_row = 0,
-      treeheight_col = 0,
-      cluster_cols = FALSE,
-      border_color = NA)
 
-pheatmap(
-      log2.norm.counts5,
-      filename="DESEQ2/Heatmap3.pdf",
-      clustering_dist_rows = "correlation",
-      scale      = 'row',
-      cellheight = 8,
-      cellwidth =  8,
-      fontsize   = 6,
-      col = bwcolor(50),
-      treeheight_row = 0,
-      treeheight_col = 0,
-      cluster_cols = FALSE,
-      border_color = NA)
-
-pheatmap(
-      log2.norm.counts6,
-      filename="DESEQ2/Heatmap4.pdf",
-      clustering_dist_rows = "correlation",
-      scale      = 'row',
-      cellheight = 8,
-      cellwidth =  8,
-      fontsize   = 6,
-      col = bwcolor(50),
-      treeheight_row = 0,
-      treeheight_col = 0,
-      cluster_cols = FALSE,
-      border_color = NA)
+#pheatmap(
+#      log2.norm.counts6,
+#      filename="DESEQ2/Heatmap4.pdf",
+#      clustering_dist_rows = "correlation",
+#      scale      = 'row',
+#      cellheight = 8,
+#      cellwidth =  8,
+#      fontsize   = 6,
+#      col = bwcolor(50),
+#      treeheight_row = 0,
+#      treeheight_col = 0,
+#      cluster_cols = FALSE,
+#      border_color = NA)
 
 #20694
