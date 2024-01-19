@@ -78,8 +78,10 @@ DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",
 
 setwd("/Users/shahina/Projects/23-1SCWI-001")
 
-library("pheatmap")
+library("gplots")
 library("DESeq2")
+
+setwd("/Users/shahina/Projects/23-1SCWI-001")
 
 #HEATMAP
 load("feature_count.RData")
@@ -125,7 +127,6 @@ log2.norm.counts4 <- log2.norm.counts2[5174:10174,]
 log2.norm.counts5 <- log2.norm.counts2[10175:15175,]
 log2.norm.counts6 <- log2.norm.counts2[15176:20694,]
 
-library(gplots)
 pdf("DESEQ2/Heatmap.pdf")
   heatmap.2(
     as.matrix(log2.norm.counts3),
