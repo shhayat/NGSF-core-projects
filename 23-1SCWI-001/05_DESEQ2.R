@@ -84,23 +84,23 @@ library("DESeq2")
 #HEATMAP
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
-feature_count <- feature_count[c(2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
-feature_count1 <- feature_count[rowSums(feature_count[,c(2:ncol(feature_count))])>3, ]
+feature_count <- feature_count[c(1,2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
+feature_count1 <- feature_count[rowSums(feature_count[,c(3:ncol(feature_count))])>3, ]
 
-colnames(feature_count) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M_CRE","5M_CRE","6M_CRE","7M_CRE","8M_CRE",
+colnames(feature_count1) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M_CRE","5M_CRE","6M_CRE","7M_CRE","8M_CRE",
                              "9M_GFP","10M_GFP","11M_GFP","12M_GFP","1F_GFP","2F_GFP","3F_GFP","4F_GFP",
                              "5F_HnRF1","6F_HnRF1","7F_HnRF1","8F_HnRF1","9F_HnRF1","10F_HnRF1","11F_HnRF1","12F_HnRF1")
 #remove number after decimal point from ensembl ID
-geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
-rownames(feature_count) <- geneID
+geneID <- gsub(".[0-9]*$", "", rownames(feature_count1))
+rownames(feature_count1) <- geneID
 
- sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count1[2:25]))),
-                        sample_type=dput(as.character(names(feature_count1[2:25]))),
+ sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count1[3:26]))),
+                        sample_type=dput(as.character(names(feature_count1[3:26]))),
                         sample_group=dput(as.character(c(rep("CRE",8),rep("GFP",8),rep("HnRF1",8)))))  
   
 group <- data.frame(sample_group=sampleInfo$sample_group)
   
-dds <- DESeqDataSetFromMatrix(countData=feature_count1[2:25],colData=group,design=~sample_group)
+dds <- DESeqDataSetFromMatrix(countData=feature_count1[3:26],colData=group,design=~sample_group)
   
 dds$sample_group <-relevel(dds$sample_group,ref="GFP")
   
@@ -113,24 +113,24 @@ log2.norm.counts <- assay(nt)[select,]
 log2.norm.counts<- as.data.frame(log2.norm.counts)
                      
 log2.norm.counts1 <- data.frame(Gene=feature_count1$gene_name, log2.norm.counts)
-colnames(log2.norm.counts1) <- c("Gene",names(feature_count1[,2:25]))
+colnames(log2.norm.counts1) <- c("Gene",names(feature_count1[,3:26]))
 #DF <- rbind(select_up_cols,select_down_cols)
 #DF <- DF[complete.cases(DF), ]
 #log2.norm.counts1 <- merge(DF,log2.norm.counts1, by=c("GeneID"))
 log2.norm.counts2 <- log2.norm.counts1[,-1]
 rownames(log2.norm.counts2) <-  make.names(log2.norm.counts1[,1],TRUE)
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
-log2.norm.counts3 <- log2.norm.counts2[,1:5173]
-log2.norm.counts4 <- log2.norm.counts2[,5174:10174]
-log2.norm.counts5 <- log2.norm.counts2[,10175:20694]
-log2.norm.counts6 <- log2.norm.counts2[,20695:20694]
+log2.norm.counts3 <- log2.norm.counts2[1:5173,]
+log2.norm.counts4 <- log2.norm.counts2[5174:10174,]
+log2.norm.counts5 <- log2.norm.counts2[10175:15175,]
+log2.norm.counts6 <- log2.norm.counts2[15176:20694,]
 
 
 pheatmap(
-      log2.norm.counts3,
+      as.data.frame(log2.norm.counts3),
       clustering_dist_rows = "correlation",
       filename="DESEQ2/Heatmap.pdf",
-      scale      = 'row',
+      scale = 'row',
       cellheight = 8,
       cellwidth =  8,
       fontsize   = 6,
