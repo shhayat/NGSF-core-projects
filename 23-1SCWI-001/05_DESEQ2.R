@@ -123,10 +123,10 @@ rownames(log2.norm.counts2) <-  make.names(log2.norm.counts1[,1],TRUE)
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
 pheatmap(
       log2.norm.counts2,
-      filename   = "DESEQ2/Heatmap.pdf",
+      filename   = "DESEQ2/Heatmap.jpeg",
       clustering_dist_rows = "correlation",
       scale      = 'row',
-      cellheight = 8,
+      cellheight = 4,
       cellwidth =  8,
       fontsize   = 6,
       col        = bwcolor(50),
@@ -134,4 +134,3 @@ pheatmap(
       treeheight_col = 0,
       cluster_cols = FALSE,
       border_color = NA)
-}
