@@ -78,10 +78,8 @@ DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",
 
 setwd("/Users/shahina/Projects/23-1SCWI-001")
 
-library("gplots")
 library("DESeq2")
 library("pheatmap")
-
 
 #HEATMAP
 load("feature_count.RData")
@@ -122,14 +120,14 @@ colnames(log2.norm.counts1) <- c("Gene",names(feature_count1[,3:26]))
 log2.norm.counts2 <- log2.norm.counts1[,-1]
 rownames(log2.norm.counts2) <-  make.names(log2.norm.counts1[,1],TRUE)
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
-log2.norm.counts3 <- log2.norm.counts2[1:2000,]
+log2.norm.counts3 <- log2.norm.counts2[1:5173,]
 log2.norm.counts4 <- log2.norm.counts2[5174:10174,]
 log2.norm.counts5 <- log2.norm.counts2[10175:15175,]
 log2.norm.counts6 <- log2.norm.counts2[15176:20694,]
 
     #  filename="DESEQ2/Heatmap4.jpeg"
-
-
+tiff("Heatmap4.tiff",res=600, width = 200, height = 1000, units = 'in')
+#png("Heatmap4.png", width = 300, height = 1000)
 pheatmap(
       log2.norm.counts3,
       clustering_dist_rows = "correlation",
@@ -142,6 +140,7 @@ pheatmap(
       treeheight_col = 0,
       cluster_cols = FALSE,
       border_color = NA)
+dev.off()
 
 pheatmap(
       log2.norm.counts4,
