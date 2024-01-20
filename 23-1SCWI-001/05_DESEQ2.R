@@ -80,8 +80,8 @@ setwd("/Users/shahina/Projects/23-1SCWI-001")
 
 library("gplots")
 library("DESeq2")
+library("pheatmap")
 
-setwd("/Users/shahina/Projects/23-1SCWI-001")
 
 #HEATMAP
 load("feature_count.RData")
@@ -122,10 +122,69 @@ colnames(log2.norm.counts1) <- c("Gene",names(feature_count1[,3:26]))
 log2.norm.counts2 <- log2.norm.counts1[,-1]
 rownames(log2.norm.counts2) <-  make.names(log2.norm.counts1[,1],TRUE)
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
-log2.norm.counts3 <- log2.norm.counts2[1:5173,]
+log2.norm.counts3 <- log2.norm.counts2[1:2000,]
 log2.norm.counts4 <- log2.norm.counts2[5174:10174,]
 log2.norm.counts5 <- log2.norm.counts2[10175:15175,]
 log2.norm.counts6 <- log2.norm.counts2[15176:20694,]
+
+    #  filename="DESEQ2/Heatmap4.jpeg"
+
+
+pheatmap(
+      log2.norm.counts3,
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
+
+pheatmap(
+      log2.norm.counts4,
+      filename="DESEQ2/Heatmap4.pdf",
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
+
+pheatmap(
+      log2.norm.counts5,
+      filename="DESEQ2/Heatmap4.pdf",
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
+
+pheatmap(
+      log2.norm.counts6,
+      filename="DESEQ2/Heatmap4.pdf",
+      clustering_dist_rows = "correlation",
+      scale      = 'row',
+      cellheight = 8,
+      cellwidth =  8,
+      fontsize   = 6,
+      col = bwcolor(50),
+      treeheight_row = 0,
+      treeheight_col = 0,
+      cluster_cols = FALSE,
+      border_color = NA)
+dev.off()
 
 pdf("DESEQ2/Heatmap.pdf")
   heatmap.2(
@@ -188,18 +247,5 @@ dev.off()
 
 
 
-#pheatmap(
-#      log2.norm.counts6,
-#      filename="DESEQ2/Heatmap4.pdf",
-#      clustering_dist_rows = "correlation",
-#      scale      = 'row',
-#      cellheight = 8,
-#      cellwidth =  8,
-#      fontsize   = 6,
-#      col = bwcolor(50),
-#      treeheight_row = 0,
-#      treeheight_col = 0,
-#      cluster_cols = FALSE,
-#      border_color = NA)
 
 #20694
