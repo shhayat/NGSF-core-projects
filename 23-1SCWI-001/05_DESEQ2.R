@@ -126,8 +126,8 @@ log2.norm.counts5 <- log2.norm.counts2[10175:15175,]
 log2.norm.counts6 <- log2.norm.counts2[15176:20694,]
 
     #  filename="DESEQ2/Heatmap4.jpeg"
-tiff("Heatmap4.tiff",res=600, width = 200, height = 1000, units = 'in')
-#png("Heatmap4.png", width = 300, height = 1000)
+#tiff("Heatmap4.tiff",res=600, width = 200, height = 1000, units = 'in')
+pdf("Heatmap4.pdf", height=1500)
 pheatmap(
       log2.norm.counts3,
       clustering_dist_rows = "correlation",
