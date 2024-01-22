@@ -17,7 +17,6 @@ rownames(feature_count) <- geneID
 #your first columns which are gene id and gene name
 feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
 
-
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str1)
 {
   feature_count <- feature_count[colnum]
@@ -27,8 +26,6 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
                         sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))))
-  
-  
   
   group <- data.frame(sample_group=sampleInfo$sample_group)
   
@@ -67,12 +64,11 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str
 }
 #DEG_analysis(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females","all_samples")
 #DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",8,8,"Males_Females","all_samples")
+#DEG_analysis(c(7,10,13,5,14),"GFP","HnRF1","GFP",3,2,"Males","filtered")
 
 DEG_analysis(c(4,7,10,13,3,6,9,12),"GFP","CRE","GFP",4,4,"Males","all_samples")
 DEG_analysis(c(16,19,22,25,15,18,21,24),"GFP","CRE","GFP",4,4,"Females","all_samples")
-
 DEG_analysis(c(4,7,10,13,5,8,11,14),"GFP","HnRF1","GFP",4,4,"Males","all_samples")
-#DEG_analysis(c(7,10,13,5,14),"GFP","HnRF1","GFP",3,2,"Males","filtered")
 DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_samples")
 
 
