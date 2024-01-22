@@ -62,7 +62,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str
 
   #resDF1 <- resDF[resDF$pvalue <= 0.05,]
   #All Genes
-  write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_all_genes.xlsx",cond2,cond1), row.names = FALSE)
+  write.xlsx(resDF,file=sprintf("DESEQ2/%s_DEG_%s_vs_%s_all_genes.xlsx",str,cond2,cond1), row.names = FALSE)
 
 }
 #DEG_analysis(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females","all_samples")
