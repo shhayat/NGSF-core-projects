@@ -120,14 +120,16 @@ colnames(log2.norm.counts1) <- c("Gene",names(feature_count1[,3:26]))
 log2.norm.counts2 <- log2.norm.counts1[,-1]
 rownames(log2.norm.counts2) <-  make.names(log2.norm.counts1[,1],TRUE)
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
-log2.norm.counts3 <- log2.norm.counts2[1:5173,]
+#log2.norm.counts3 <- log2.norm.counts2[1:5173,]
+log2.norm.counts3 <- log2.norm.counts2[1:3000,]
+
 log2.norm.counts4 <- log2.norm.counts2[5174:10174,]
 log2.norm.counts5 <- log2.norm.counts2[10175:15175,]
 log2.norm.counts6 <- log2.norm.counts2[15176:20694,]
 
     #  filename="DESEQ2/Heatmap4.jpeg"
 #tiff("Heatmap4.tiff",res=600, width = 200, height = 1000, units = 'in')
-pdf("Heatmap4.pdf", height=1500)
+pdf("Heatmap4.pdf", height=1000)
 pheatmap(
       log2.norm.counts3,
       clustering_dist_rows = "correlation",
