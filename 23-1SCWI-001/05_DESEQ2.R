@@ -73,6 +73,12 @@ DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_s
 
 
 
+
+
+
+##############
+#BATCH CORRECTION
+##############
 library("DESeq2")
 library("xlsx")
 library("ggplot2")
@@ -94,19 +100,12 @@ sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                       sample_type=dput(as.character(names(feature_count))),
                       sample_group=dput(as.character(c(rep("GFP",8),rep("CRE",8)))),
                       batch_number=c("B1","B1","B2","B1","B2","B2","B3","B3","B1","B1","B2","B1","B2","B2","B3","B2"))
-
-sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
-                      sample_type=dput(as.character(names(feature_count))),
-                      sample_group=dput(as.character(c(rep("GFP",8),rep("CRE",8)))),
-                      batch_number=c("1","1","2","1","2","2","3","3","1","1","2","1","2","2","3","2"))
-
-                                        
-                      
+                    
                   
 group <- data.frame(sample_group=sampleInfo$sample_group,batch_number=sampleInfo$batch_number )
 
 
-pdf("PCA_batch_adjusted_combatseq.pdf")
+pdf("PCA_batch_adjusted_combatseq_8SAMPLES.pdf")
 adjusted_counts <- ComBat_seq(as.matrix(feature_count), batch=sampleInfo$batch_number, group=sampleInfo$sample_group)
 #pc_data <- prcomp(combat_data)
 
@@ -135,6 +134,51 @@ dev.off()
 
 
 
+load("feature_count.RData")
+feature_count <- as.data.frame(feature_count)
+colnames(feature_count) <- c("geneID","gene_name","1M","2M","3M","4M","5M","6M","7M","8M","9M","10M","11M","12M",
+                            "1F","2F","3F","4F","5F","6F","7F","8F","9F","10F","11F","12F")
+#remove number after decimal point from ensembl ID
+geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
+rownames(feature_count) <- geneID
+
+feature_count <- feature_count[c(4,7,10,13,3,6,9,12)]
+feature_count <- feature_count[rowSums(feature_count[])>1,]
+
+sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
+                      sample_type=dput(as.character(names(feature_count))),
+                      sample_group=dput(as.character(c(rep("GFP",8),rep("CRE",8)))),
+                      batch_number=c("B1","B1","B2","B1","B1","B2","B1"))
+                    
+
+group <- data.frame(sample_group=sampleInfo$sample_group,batch_number=sampleInfo$batch_number )
+
+
+pdf("PCA_batch_adjusted_combatseq_4SAMPLES.pdf")
+adjusted_counts <- ComBat_seq(as.matrix(feature_count), batch=sampleInfo$batch_number, group=sampleInfo$sample_group)
+#pc_data <- prcomp(combat_data)
+
+pca_result <- prcomp(t(adjusted_counts), scale. = TRUE)
+pc_data <- as.data.frame(pca_result$x)
+
+pc_standard_deviations <- pca_result$sdev
+pc_variances <- round(100 * (pc_standard_deviations^2 / sum(pc_standard_deviations^2)))
+
+# Add batch information, sample_group, sample_name to the PCA results for visualization
+pc_data$Batch <- sampleInfo$batch_number
+pc_data$sample_group <- sampleInfo$sample_group
+pc_data$sample_name <- sampleInfo$sample_name
+nudge=position_nudge(y = 0.5)
+ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)) +
+  geom_point(size = 3) +
+  ggtitle("PCA with ComBat_seq Adjusted Counts") +
+  xlab(paste0("PC1: ",pc_variances[1],"% variance")) +
+  ylab(paste0("PC2: ",pc_variances[2],"% variance")) +
+  scale_color_discrete(name = "TimePoint") +
+  scale_shape_discrete(name = "Batch") +
+  theme_minimal() + 
+  geom_text(aes_string(label = "sample_name"), color="black",  position=nudge , size=2.0)
+dev.off()
 
 
 
