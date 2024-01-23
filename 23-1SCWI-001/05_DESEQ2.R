@@ -113,7 +113,7 @@ adjusted_counts <- ComBat_seq(as.matrix(feature_count), batch=sampleInfo$batch_n
 pca_result <- prcomp(t(adjusted_counts), scale. = TRUE)
 pc_data <- as.data.frame(pca_result$x)
 
-#pc_standard_deviations <- pca_result$sdev
+pc_standard_deviations <- pca_result$sdev
 pc_variances <- round(100 * (pc_standard_deviations^2 / sum(pc_standard_deviations^2)))
 
 # Add batch information, sample_group, sample_name to the PCA results for visualization
