@@ -95,11 +95,19 @@ sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                       sample_group=dput(as.character(c(rep("GFP",8),rep("CRE",8)))),
                       batch_number=c("B1","B1","B2","B1","B2","B2","B3","B3","B1","B1","B2","B1","B2","B2","B3","B2"))
 
+sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
+                      sample_type=dput(as.character(names(feature_count))),
+                      sample_group=dput(as.character(c(rep("GFP",8),rep("CRE",8)))),
+                      batch_number=c("1","1","2","1","2","2","3","3","1","1","2","1","2","2","3","2"))
+
+                                        
+                      
+                  
 group <- data.frame(sample_group=sampleInfo$sample_group,batch_number=sampleInfo$batch_number )
 
 
 pdf("PCA_batch_adjusted_combatseq.pdf")
-adjusted_counts <- ComBat_seq(feature_count, batch=sampleInfo$batch_number, group=sampleInfo$sample_group)
+adjusted_counts <- ComBat_seq(as.matrix(feature_count), batch=sampleInfo$batch_number, group=sampleInfo$sample_group)
 #pc_data <- prcomp(combat_data)
 
 pca_result <- prcomp(t(adjusted_counts), scale. = TRUE)
