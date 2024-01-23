@@ -76,9 +76,9 @@ DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_s
 
 
 
-##############
+#####################
 #BATCH CORRECTION
-##############
+#####################
 library("DESeq2")
 library("xlsx")
 library("ggplot2")
@@ -132,8 +132,7 @@ ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)) +
 dev.off()
 
 
-
-
+#4samples
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
 colnames(feature_count) <- c("geneID","gene_name","1M","2M","3M","4M","5M","6M","7M","8M","9M","10M","11M","12M",
@@ -147,8 +146,8 @@ feature_count <- feature_count[rowSums(feature_count[])>1,]
 
 sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                       sample_type=dput(as.character(names(feature_count))),
-                      sample_group=dput(as.character(c(rep("GFP",8),rep("CRE",8)))),
-                      batch_number=c("B1","B1","B2","B1","B1","B2","B1"))
+                      sample_group=dput(as.character(c(rep("GFP",4),rep("CRE",4)))),
+                      batch_number=c("B1","B1","B2","B1","B1","B1","B2","B1"))
                     
 
 group <- data.frame(sample_group=sampleInfo$sample_group,batch_number=sampleInfo$batch_number )
