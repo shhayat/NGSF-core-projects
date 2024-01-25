@@ -96,8 +96,6 @@ colnames(feature_count) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
 
-feature_count <- feature_count[2:26,]
-
 write.xlsx(feature_count,file="DESEQ2/raw_counts.xlsx", row.names = FALSE)
 
 
