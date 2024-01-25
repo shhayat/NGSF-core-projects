@@ -95,17 +95,36 @@ write.xlsx(resDF,file="DESEQ2/raw_counts.xlsx", row.names = FALSE)
 
 
 #GET NORMALIZED COUNTS
+Normalized_count <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str1)
+{
+  feature_count <- feature_count[colnum]
+  #keep row with sum greater than 1
+  feature_count <- feature_count[rowSums(feature_count[,c(1:ncol(feature_count))])>1, ]
+  
+  sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
+                        sample_type=dput(as.character(names(feature_count))),
+                        sample_group=dput(as.character(c(rep(cond1,rep_cond1),rep(cond2,rep_cond2)))))
+  
+  group <- data.frame(sample_group=sampleInfo$sample_group)
+  
+  dds <- DESeqDataSetFromMatrix(countData=feature_count,
+                                colData=group,
+                                design=~sample_group)
+  
+  
+  dds$sample_group <-relevel(dds$sample_group,ref=ref)
 
-dds <- estimateSizeFactors(dds)
-norm.expr <- counts(dds, normalized=TRUE)
-norm.expr <- as.data.frame(norm.expr)
-norm.expr <- data.frame(rownames(norm.expr),norm.expr)
+  dds <- estimateSizeFactors(dds)
+  norm.expr <- counts(dds, normalized=TRUE)
+  norm.expr <- as.data.frame(norm.expr)
+  norm.expr <- data.frame(rownames(norm.expr),norm.expr)
 
-norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
-write.csv(norm_counts,file="All_normalized_genes.csv", quote=FALSE, row.names = FALSE)
+ norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
+ write.xlsx(norm_counts,file=sprintf("DESEQ2/normalized_count_%s_vs_%s_%s.xlsx",cond2,cond1,str), row.names = FALSE)
 
-
-
+}
+Normalized_count(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females")
+Normalized_count(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",8,8,"Males_Females")
 
 #####################
 #BATCH CORRECTION
