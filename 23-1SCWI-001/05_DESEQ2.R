@@ -139,7 +139,7 @@ normalized_count <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str
 
   norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
 
-  colnames(norm_counts) c("GeneID","Gene_name",str1)
+  colnames(norm_counts) <- c("GeneID","Gene_name",str1)
   write.table(norm_counts,file=sprintf("DESEQ2/normalized_count_%s_vs_%s_%s.txt",cond2,cond1,str), row.names = FALSE, sep="\t")
 
 }
