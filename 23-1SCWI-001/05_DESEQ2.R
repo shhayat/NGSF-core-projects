@@ -21,7 +21,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str
 {
   feature_count <- feature_count[colnum]
   #keep row with sum greater than 1
-  feature_count <- feature_count[rowSums(feature_count[,c(1:ncol(feature_count))])>1, ]
+  feature_count <- feature_count[rowSums(feature_count[,c(1:ncol(feature_count))])>3, ]
   
   sampleInfo=data.frame(sample_name=dput(as.character(names(feature_count))),
                         sample_type=dput(as.character(names(feature_count))),
