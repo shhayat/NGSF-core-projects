@@ -95,12 +95,12 @@ colnames(feature_count) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M
 #remove number after decimal point from ensembl ID
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
-feature_count <- cbind(geneID,feature_count[,2:26])
+feature_count <- cbind(geneID,feature_count[,2:length(feature_count)])
 write.table(feature_count,file="DESEQ2/raw_counts.txt", row.names = FALSE, sep="\t")
 
 
 #GET NORMALIZED COUNTS
-Normalized_count <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str1)
+Normalized_count <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str)
 {
   feature_count <- feature_count[colnum]
   #keep row with sum greater than 1
@@ -125,6 +125,11 @@ Normalized_count <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str
   norm.expr <- data.frame(rownames(norm.expr),norm.expr)
 
  norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
+  
+ #remove number after decimal point from ensembl ID
+ geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
+ rownames(feature_count) <- geneID
+ feature_count <- cbind(geneID,feature_count[,2:length(feature_count)])
  write.xlsx(norm_counts,file=sprintf("DESEQ2/normalized_count_%s_vs_%s_%s.xlsx",cond2,cond1,str), row.names = FALSE)
 
 }
