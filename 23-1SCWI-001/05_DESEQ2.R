@@ -95,8 +95,8 @@ colnames(feature_count) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M
 #remove number after decimal point from ensembl ID
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
-
-write.xlsx(feature_count,file="DESEQ2/raw_counts.xlsx", row.names = FALSE)
+feature_count <- cbind(geneID,feature_count[,2:26])
+write.table(feature_count,file="DESEQ2/raw_counts.txt", row.names = FALSE, sep="\t")
 
 
 #GET NORMALIZED COUNTS
