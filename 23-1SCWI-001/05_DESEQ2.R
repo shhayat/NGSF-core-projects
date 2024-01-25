@@ -124,13 +124,14 @@ Normalized_count <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str
   norm.expr <- as.data.frame(norm.expr)
   norm.expr <- data.frame(rownames(norm.expr),norm.expr)
 
- norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
+  #remove number after decimal point from ensembl ID
+  geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
+  rownames(feature_count) <- geneID
+  feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
+
+  norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
   
- #remove number after decimal point from ensembl ID
- geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
- rownames(feature_count) <- geneID
- feature_count <- cbind(geneID,feature_count[,2:length(feature_count)])
- write.xlsx(norm_counts,file=sprintf("DESEQ2/normalized_count_%s_vs_%s_%s.xlsx",cond2,cond1,str), row.names = FALSE)
+  write.xlsx(norm_counts,file=sprintf("DESEQ2/normalized_count_%s_vs_%s_%s.xlsx",cond2,cond1,str), row.names = FALSE)
 
 }
 Normalized_count(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females")
