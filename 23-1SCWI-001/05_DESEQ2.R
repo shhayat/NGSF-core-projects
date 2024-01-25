@@ -84,7 +84,7 @@ dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE)
 
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
-feature_count <- feature_count[rowSums(feature_count[,c(3:ncol(feature_count))])>1, ]
+feature_count <- feature_count[rowSums(feature_count[,c(3:ncol(feature_count))])>3, ]
 
 feature_count <- feature_count[c(1,2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
 
