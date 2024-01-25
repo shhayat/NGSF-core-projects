@@ -74,10 +74,19 @@ DEG_analysis(c(7,10,13,16,19,22,25,3,6,12,15,18,21,24),"GFP","CRE","GFP",7,7,"Ma
 
 
 #GET RAW COUNTS
+setwd("/Users/shahina/Projects/23-1SCWI-001")
+
+library("DESeq2")
+library("ggplot2")
+library("xlsx")
+
+dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE) 
+
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
-feature_count <- feature_count[c(1,2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
 feature_count <- feature_count[rowSums(feature_count[,c(3:ncol(feature_count))])>1, ]
+
+feature_count <- feature_count[c(1,2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
 
 colnames(feature_count) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M_CRE","5M_CRE","6M_CRE","7M_CRE","8M_CRE",
                              "9M_GFP","10M_GFP","11M_GFP","12M_GFP","1F_GFP","2F_GFP","3F_GFP","4F_GFP",
@@ -87,9 +96,7 @@ colnames(feature_count) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
 
-#keep row with sum greater than 1
-feature_count <- feature_count[rowSums(feature_count[,c(3:ncol(feature_count))])>1, ]
-feature_count <- feature_count[2:ncol(feature_count),]
+feature_count <- feature_count[2:26,]
 
 write.xlsx(feature_count,file="DESEQ2/raw_counts.xlsx", row.names = FALSE)
 
