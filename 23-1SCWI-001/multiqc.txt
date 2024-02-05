@@ -10,3 +10,6 @@ multiqc ${DIR}/*/Log.final.out -o ${OUTDIR} -n alignment
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/analysis/rnaseqc
 cd /globalhome/hxo752/HPC/tools
 multiqc ${DIR}/*.metrics.tsv -o ${OUTDIR} -n rnaseqc
+
+
+multiqc -o ${OUTDIR} -n multiqc_report_rnaseq /datastore/NGSF001/projects/2023/23-1SCWI-001/analysis/fastqc/*_fastqc.zip /datastore/NGSF001/projects/2023/23-1SCWI-001/analysis/star_alignment/*/Log.final.out /datastore/NGSF001/projects/2023/23-1SCWI-001/analysis/rnaseqc/*.metrics.tsv
