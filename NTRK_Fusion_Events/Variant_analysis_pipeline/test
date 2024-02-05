@@ -1,0 +1,17 @@
+#1-pass mapping with indexed genome
+
+STAR --genomeDir ~/db/hg38/ --readFilesIn sample1.R1.fastq.gz sample1.R2.fastq.gz --readFilesCommand zcat --outSAMunmapped Within --outFileNamePrefix sample1. --runThreadN $NCPU
+
+#Notes:
+#- The same command has been run for multiple samples in the for loop, therefore, it will generate SJ.out.tab file for each sample.
+#- Next, I have copied SJ.out.tab files of all the samples into the a single folder "SJ_out"
+
+
+# Indexing genome with annotations and SJ.out.tab files
+STAR --runMode genomeGenerate --genomeDir ~/db/hg38/SJ_Index/ --genomeFastaFiles ~/db/hg38/SJ_Index/hg38.fa --sjdbGTFfile ~/db/hg38/SJ_Index/hg38.gtf --runThreadN $NCPU --sjdbOverhang 89 --sjdbFileChrStartEnd SJ_out/*.SJ.out.tab
+
+#Note:
+#- Again indexing for maximum read lengh 90 bp.
+
+#2-pass mapping with new indexed genome with annotations and SJ.out.tab files
+STAR --genomeDir ~/db/hg38/SJ_Index/ --readFilesIn sample1.R1.fastq.gz sample1.R2.fastq.gz --readFilesCommand zcat --outSAMunmapped Within --outFileNamePrefix sample1. --runThreadN $NCPU

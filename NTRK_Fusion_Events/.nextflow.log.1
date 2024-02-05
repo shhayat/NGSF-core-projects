@@ -1,0 +1,127 @@
+Jun.-14 12:47:52.051 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/rnafusion -profile singularity --input /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/samplesheet.csv --outdir /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow --genome CanFam3.1 --star_fusion --fusion_inspector --starfusion_build TRUE --max_memory 80.GB --max_cpus 16
+Jun.-14 12:47:52.167 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.10.6
+Jun.-14 12:47:52.200 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/globalhome/hxo752/HPC/.nextflow/plugins; core-plugins: nf-amazon@1.11.3,nf-azure@0.14.2,nf-codecommit@0.1.2,nf-console@1.0.4,nf-ga4gh@1.0.4,nf-google@1.4.5,nf-tower@1.5.6,nf-wave@0.5.3
+Jun.-14 12:47:52.218 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun.-14 12:47:52.219 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun.-14 12:47:52.224 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jun.-14 12:47:52.241 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun.-14 12:47:52.263 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /globalhome/hxo752/HPC/.nextflow/scm
+Jun.-14 12:47:53.779 [main] DEBUG nextflow.scm.AssetManager - Git config: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/rnafusion.git
+Jun.-14 12:47:53.813 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Jun.-14 12:47:53.825 [main] DEBUG nextflow.scm.AssetManager - Git config: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/rnafusion.git
+Jun.-14 12:47:54.883 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/nextflow.config
+Jun.-14 12:47:54.884 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/nextflow.config
+Jun.-14 12:47:54.899 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jun.-14 12:47:56.476 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [cfc_dev, ifb_core, denbi_qbic, alice, mjolnir_globe, uppmax, uge, rosalind_uge, lugh, unibe_ibu, vai, czbiohub_aws, jax, ccga_med, scw, tigem, tubingen_apg, google, ipop_up, googlels, eddie, medair, bi, bigpurple, sbc_sharc, adcra, cedars, vsc_kul_uhasselt, pawsey_nimbus, ucl_myriad, utd_ganymede, charliecloud, icr_davros, ceres, munin, arm, rosalind, hasta, cfc, uzh, ebc, ku_sund_dangpu, ccga_dx, crick, marvin, biohpc_gen, shifter, mana, mamba, wehi, awsbatch, imperial, maestro, genotoul, abims, janelia, nihbiowulf, nu_genomics, googlebatch, oist, sahmri, mpcdf, leicester, vsc_ugent, sage, cambridge, podman, cheaha, xanadu, test, computerome, seg_globe, sanger, dkfz, pasteur, test_full, azurebatch, hki, crukmi, docker, engaging, gis, psmn, eva, fgcz, conda, crg, singularity, prince, utd_sysbio, debug, genouest, cbe, phoenix, gitpod, seawulf, uct_hpc, aws_tower, binac]
+Jun.-14 12:47:56.554 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Jun.-14 12:47:56.555 [main] INFO  nextflow.cli.CmdRun - Launching `https://github.com/nf-core/rnafusion` [hungry_poisson] DSL2 - revision: fb5af65466 [master]
+Jun.-14 12:47:56.555 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun.-14 12:47:56.556 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun.-14 12:47:56.560 [main] DEBUG nextflow.secret.LocalSecretsProvider - Secrets store: /globalhome/hxo752/HPC/.nextflow/secrets/store.json
+Jun.-14 12:47:56.565 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1da53f4f] - activable => nextflow.secret.LocalSecretsProvider@1da53f4f
+Jun.-14 12:47:56.657 [main] DEBUG nextflow.Session - Session UUID: 24ea71aa-f039-4f16-a7de-4e073a91a0a4
+Jun.-14 12:47:56.657 [main] DEBUG nextflow.Session - Run name: hungry_poisson
+Jun.-14 12:47:56.657 [main] DEBUG nextflow.Session - Executor pool size: 16
+Jun.-14 12:47:56.674 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun.-14 12:47:56.712 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.10.6 build 5844
+  Created: 23-01-2023 23:25 UTC (17:25 CDT)
+  System: Linux 3.10.0-1160.36.2.el7.x86_64
+  Runtime: Groovy 3.0.13 on OpenJDK 64-Bit Server VM 11.0.16+8
+  Encoding: UTF-8 (UTF-8)
+  Process: 37971@plato210 [192.168.0.60]
+  CPUs: 16 - Mem: 8 GB (7.4 GB) - Swap: 0 (0)
+Jun.-14 12:47:56.794 [main] DEBUG nextflow.Session - Work-dir: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/work [nfs]
+Jun.-14 12:47:56.844 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[GoogleLifeSciencesExecutor, AwsBatchExecutor, GoogleBatchExecutor]
+Jun.-14 12:47:56.862 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun.-14 12:47:56.896 [main] DEBUG nextflow.Session - Observer factory: TowerFactory
+Jun.-14 12:47:57.001 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun.-14 12:47:57.019 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 17; maxThreads: 1000
+Jun.-14 12:47:57.302 [main] DEBUG nextflow.Session - Session start
+Jun.-14 12:47:57.310 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/pipeline_info/execution_trace_2023-06-14_12-47-55.txt
+Jun.-14 12:47:57.325 [main] DEBUG nextflow.Session - Using default localLib path: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/lib
+Jun.-14 12:47:57.330 [main] DEBUG nextflow.Session - Adding to the classpath library: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/lib
+Jun.-14 12:47:57.330 [main] DEBUG nextflow.Session - Adding to the classpath library: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/lib/nfcore_external_java_deps.jar
+Jun.-14 12:47:58.569 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun.-14 12:47:58.657 [main] INFO  nextflow.Nextflow - 
+
+-[2m----------------------------------------------------[0m-
+                                        [0;32m,--.[0;30m/[0;32m,-.[0m
+[0;34m        ___     __   __   __   ___     [0;32m/,-._.--~'[0m
+[0;34m  |\ | |__  __ /  ` /  \ |__) |__         [0;33m}  {[0m
+[0;34m  | \| |       \__, \__/ |  \ |___     [0;32m\`-._,-`-,[0m
+                                        [0;32m`._,._,'[0m
+[0;35m  nf-core/rnafusion v2.3.4-gfb5af65[0m
+-[2m----------------------------------------------------[0m-
+[1mCore Nextflow options[0m
+  [0;34mrevision                          : [0;32mmaster[0m
+  [0;34mrunName                           : [0;32mhungry_poisson[0m
+  [0;34mcontainerEngine                   : [0;32msingularity[0m
+  [0;34mlaunchDir                         : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA[0m
+  [0;34mworkDir                           : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/work[0m
+  [0;34mprojectDir                        : [0;32m/globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion[0m
+  [0;34muserName                          : [0;32mhxo752[0m
+  [0;34mprofile                           : [0;32msingularity[0m
+  [0;34mconfigFiles                       : [0;32m/globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/nextflow.config[0m
+
+[1mInput/output options[0m
+  [0;34minput                             : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/samplesheet.csv[0m
+  [0;34moutdir                            : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow[0m
+  [0;34mgenomes_base                      : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references[0m
+  [0;34mensembl_version                   : [0;32m102[0m
+  [0;34mstarfusion_build                  : [0;32mtrue[0m
+  [0;34marriba_ref                        : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba[0m
+  [0;34marriba_ref_blacklist              : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba/blacklist_hg38_GRCh38_v2.3.0.tsv.gz[0m
+  [0;34marriba_ref_cytobands              : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba/cytobands_hg38_GRCh38_v2.3.0.tsv[0m
+  [0;34marriba_ref_known_fusions          : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba/known_fusions_hg38_GRCh38_v2.3.0.tsv.gz[0m
+  [0;34marriba_ref_protein_domain         : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba/protein_domains_hg38_GRCh38_v2.3.0.gff3[0m
+  [0;34mensembl_ref                       : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/ensembl[0m
+  [0;34mfusioncatcher_limitSjdbInsertNsj  : [0;32m2000000[0m
+  [0;34mfusioncatcher_ref                 : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusioncatcher/human_v102[0m
+  [0;34mfusioninspector_limitSjdbInsertNsj: [0;32m1000000[0m
+  [0;34mfusionreport_ref                  : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db[0m
+  [0;34mpizzly_ref                        : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/pizzly/kallisto[0m
+  [0;34msquid_ref                         : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/squid[0m
+  [0;34mstarfusion_ref                    : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/starfusion/ctat_genome_lib_build_dir[0m
+  [0;34mstarindex_ref                     : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/star[0m
+
+[1mRead trimming options[0m
+  [0;34madapter_fasta                     : [0;32m[][0m
+
+[1mAlignment compression options[0m
+  [0;34mcram                              : [0;32m[][0m
+
+[1mReference genome options[0m
+  [0;34mgenome                            : [0;32mCanFam3.1[0m
+  [0;34mfasta                             : [0;32m/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa[0m
+  [0;34mfai                               : [0;32m/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Sequence/WholeGenomeFasta/genome.fa.fai[0m
+  [0;34mgtf                               : [0;32m/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf[0m
+  [0;34mchrgtf                            : [0;32m/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf[0m
+  [0;34mtranscript                        : [0;32m/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf[0m
+  [0;34mrefflat                           : [0;32m/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf[0m
+  [0;34mrrna_intervals                    : [0;32m/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf[0m
+
+[1mMax job request options[0m
+  [0;34mmax_memory                        : [0;32m80.GB[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m----------------------------------------------------[0m-
+If you use nf-core/rnafusion for your analysis please cite:
+
+* The pipeline
+  https://doi.org/10.5281/zenodo.151721952
+
+* The nf-core framework
+  https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+  https://github.com/nf-core/rnafusion/blob/master/CITATIONS.md
+-[2m----------------------------------------------------[0m-
+Jun.-14 12:47:58.952 [main] ERROR nextflow.Nextflow - ERROR: Validation of pipeline parameters failed!
+Jun.-14 12:47:58.966 [main] ERROR nextflow.Nextflow - * --refflat: string [/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf] does not match pattern ^\S+\.refflat?$ (/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf)
+Jun.-14 12:47:58.967 [main] ERROR nextflow.Nextflow - * --transcript: string [/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf] does not match pattern ^\S+\.fn?a(sta)?(\.gz)?$ (/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf)
+Jun.-14 12:47:58.967 [main] ERROR nextflow.Nextflow - * --rrna_intervals: string [/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf] does not match pattern ^\S+\.interval_list?$ (/datastore/NGSF001/analysis/references/iGenomes/Dog/Canis_familiaris/Ensembl/CanFam3.1/Annotation/Genes/genes.gtf)
+Jun.-14 12:47:58.968 [main] WARN  nextflow.Nextflow - Found unexpected parameters:
+* --fusion_inspector: true
+* --star_fusion: true
+Jun.-14 12:47:58.969 [main] INFO  nextflow.Nextflow - - [2mIgnore this warning: params.schema_ignore_params = "fusion_inspector,star_fusion" [0m

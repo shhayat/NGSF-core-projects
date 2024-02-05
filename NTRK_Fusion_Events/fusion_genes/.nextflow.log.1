@@ -1,0 +1,347 @@
+Jun.-15 14:58:46.050 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/rnafusion -profile singularity --input /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/samplesheet.csv --outdir /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow -w /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work --genome CanFam3.1 --star_index /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices --starfusion_build TRUE --star_fusion --fusion_inspector --max_memory 80.GB --max_cpus 16 -resume
+Jun.-15 14:58:46.131 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.10.6
+Jun.-15 14:58:46.151 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/globalhome/hxo752/HPC/.nextflow/plugins; core-plugins: nf-amazon@1.11.3,nf-azure@0.14.2,nf-codecommit@0.1.2,nf-console@1.0.4,nf-ga4gh@1.0.4,nf-google@1.4.5,nf-tower@1.5.6,nf-wave@0.5.3
+Jun.-15 14:58:46.163 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun.-15 14:58:46.164 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun.-15 14:58:46.167 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jun.-15 14:58:46.177 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun.-15 14:58:46.191 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /globalhome/hxo752/HPC/.nextflow/scm
+Jun.-15 14:58:47.005 [main] DEBUG nextflow.scm.AssetManager - Git config: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/rnafusion.git
+Jun.-15 14:58:47.024 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Jun.-15 14:58:47.030 [main] DEBUG nextflow.scm.AssetManager - Git config: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/rnafusion.git
+Jun.-15 14:58:47.733 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/nextflow.config
+Jun.-15 14:58:47.734 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/nextflow.config
+Jun.-15 14:58:47.742 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jun.-15 14:58:48.627 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [cfc_dev, ifb_core, denbi_qbic, alice, mjolnir_globe, uppmax, uge, rosalind_uge, lugh, unibe_ibu, vai, czbiohub_aws, jax, ccga_med, scw, tigem, tubingen_apg, google, ipop_up, googlels, eddie, medair, bi, bigpurple, sbc_sharc, adcra, cedars, vsc_kul_uhasselt, pawsey_nimbus, ucl_myriad, utd_ganymede, charliecloud, icr_davros, ceres, munin, arm, rosalind, hasta, cfc, uzh, ebc, ku_sund_dangpu, ccga_dx, crick, marvin, biohpc_gen, shifter, mana, mamba, wehi, awsbatch, imperial, maestro, genotoul, abims, janelia, nihbiowulf, nu_genomics, googlebatch, oist, sahmri, mpcdf, leicester, vsc_ugent, sage, cambridge, podman, cheaha, xanadu, test, computerome, seg_globe, sanger, dkfz, pasteur, test_full, azurebatch, hki, crukmi, docker, engaging, gis, psmn, eva, fgcz, conda, crg, singularity, prince, utd_sysbio, debug, genouest, cbe, phoenix, gitpod, seawulf, uct_hpc, aws_tower, binac]
+Jun.-15 14:58:48.664 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Jun.-15 14:58:48.664 [main] INFO  nextflow.cli.CmdRun - Launching `https://github.com/nf-core/rnafusion` [wise_morse] DSL2 - revision: fb5af65466 [master]
+Jun.-15 14:58:48.665 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun.-15 14:58:48.665 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun.-15 14:58:48.667 [main] DEBUG nextflow.secret.LocalSecretsProvider - Secrets store: /globalhome/hxo752/HPC/.nextflow/secrets/store.json
+Jun.-15 14:58:48.670 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@1884e671] - activable => nextflow.secret.LocalSecretsProvider@1884e671
+Jun.-15 14:58:48.722 [main] DEBUG nextflow.Session - Session UUID: b115e5e2-f710-4518-8044-e25f1dfbb72b
+Jun.-15 14:58:48.723 [main] DEBUG nextflow.Session - Run name: wise_morse
+Jun.-15 14:58:48.723 [main] DEBUG nextflow.Session - Executor pool size: 16
+Jun.-15 14:58:48.732 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun.-15 14:58:48.752 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.10.6 build 5844
+  Created: 23-01-2023 23:25 UTC (17:25 CDT)
+  System: Linux 3.10.0-1160.36.2.el7.x86_64
+  Runtime: Groovy 3.0.13 on OpenJDK 64-Bit Server VM 11.0.16+8
+  Encoding: UTF-8 (UTF-8)
+  Process: 228770@plato426 [192.168.0.176]
+  CPUs: 16 - Mem: 80 GB (79.3 GB) - Swap: 0 (0)
+Jun.-15 14:58:48.835 [main] DEBUG nextflow.Session - Work-dir: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work [nfs]
+Jun.-15 14:58:48.866 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[GoogleLifeSciencesExecutor, AwsBatchExecutor, GoogleBatchExecutor]
+Jun.-15 14:58:48.877 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun.-15 14:58:48.895 [main] DEBUG nextflow.Session - Observer factory: TowerFactory
+Jun.-15 14:58:48.936 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun.-15 14:58:48.946 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 17; maxThreads: 1000
+Jun.-15 14:58:49.072 [main] DEBUG nextflow.Session - Session start
+Jun.-15 14:58:49.077 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/pipeline_info/execution_trace_2023-06-15_14-58-48.txt
+Jun.-15 14:58:49.088 [main] DEBUG nextflow.Session - Using default localLib path: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/lib
+Jun.-15 14:58:49.091 [main] DEBUG nextflow.Session - Adding to the classpath library: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/lib
+Jun.-15 14:58:49.091 [main] DEBUG nextflow.Session - Adding to the classpath library: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/lib/nfcore_external_java_deps.jar
+Jun.-15 14:58:49.827 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun.-15 14:58:49.877 [main] INFO  nextflow.Nextflow - 
+
+-[2m----------------------------------------------------[0m-
+                                        [0;32m,--.[0;30m/[0;32m,-.[0m
+[0;34m        ___     __   __   __   ___     [0;32m/,-._.--~'[0m
+[0;34m  |\ | |__  __ /  ` /  \ |__) |__         [0;33m}  {[0m
+[0;34m  | \| |       \__, \__/ |  \ |___     [0;32m\`-._,-`-,[0m
+                                        [0;32m`._,._,'[0m
+[0;35m  nf-core/rnafusion v2.3.4-gfb5af65[0m
+-[2m----------------------------------------------------[0m-
+[1mCore Nextflow options[0m
+  [0;34mrevision                          : [0;32mmaster[0m
+  [0;34mrunName                           : [0;32mwise_morse[0m
+  [0;34mcontainerEngine                   : [0;32msingularity[0m
+  [0;34mlaunchDir                         : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes[0m
+  [0;34mworkDir                           : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work[0m
+  [0;34mprojectDir                        : [0;32m/globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion[0m
+  [0;34muserName                          : [0;32mhxo752[0m
+  [0;34mprofile                           : [0;32msingularity[0m
+  [0;34mconfigFiles                       : [0;32m/globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/nextflow.config[0m
+
+[1mInput/output options[0m
+  [0;34minput                             : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/samplesheet.csv[0m
+  [0;34moutdir                            : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow[0m
+  [0;34mgenomes_base                      : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references[0m
+  [0;34mensembl_version                   : [0;32m102[0m
+  [0;34mstarfusion_build                  : [0;32mtrue[0m
+  [0;34marriba_ref                        : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba[0m
+  [0;34marriba_ref_blacklist              : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba/blacklist_hg38_GRCh38_v2.3.0.tsv.gz[0m
+  [0;34marriba_ref_cytobands              : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba/cytobands_hg38_GRCh38_v2.3.0.tsv[0m
+  [0;34marriba_ref_known_fusions          : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba/known_fusions_hg38_GRCh38_v2.3.0.tsv.gz[0m
+  [0;34marriba_ref_protein_domain         : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/arriba/protein_domains_hg38_GRCh38_v2.3.0.gff3[0m
+  [0;34mensembl_ref                       : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/ensembl[0m
+  [0;34mfusioncatcher_limitSjdbInsertNsj  : [0;32m2000000[0m
+  [0;34mfusioncatcher_ref                 : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusioncatcher/human_v102[0m
+  [0;34mfusioninspector_limitSjdbInsertNsj: [0;32m1000000[0m
+  [0;34mfusionreport_ref                  : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db[0m
+  [0;34mpizzly_ref                        : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/pizzly/kallisto[0m
+  [0;34msquid_ref                         : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/squid[0m
+  [0;34mstarfusion_ref                    : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/starfusion/ctat_genome_lib_build_dir[0m
+  [0;34mstarindex_ref                     : [0;32m/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/star[0m
+
+[1mRead trimming options[0m
+  [0;34madapter_fasta                     : [0;32m[][0m
+
+[1mAlignment compression options[0m
+  [0;34mcram                              : [0;32m[][0m
+
+[1mReference genome options[0m
+  [0;34mgenome                            : [0;32mCanFam3.1[0m
+  [0;34mfasta                             : [0;32m/datastore/NGSF001/analysis/references/dog/CFAM1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.dna.toplevel.fa[0m
+  [0;34mfai                               : [0;32m/datastore/NGSF001/analysis/references/dog/CFAM1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.dna.toplevel.fa.fai[0m
+  [0;34mgtf                               : [0;32m/datastore/NGSF001/analysis/references/dog/CFAM1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.109.gtf[0m
+  [0;34mchrgtf                            : [0;32m/datastore/NGSF001/analysis/references/dog/CFAM1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.109.chr.gtf[0m
+  [0;34mtranscript                        : [0;32m/datastore/NGSF001/analysis/references/dog/CFAM1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.cdna.all.fa[0m
+  [0;34mrefflat                           : [0;32m/datastore/NGSF001/analysis/references/dog/CFAM1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.109.chr.gtf.refflat[0m
+  [0;34mrrna_intervals                    : [0;32m/datastore/NGSF001/analysis/references/dog/CFAM1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.interval_list[0m
+
+[1mMax job request options[0m
+  [0;34mmax_memory                        : [0;32m80.GB[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m----------------------------------------------------[0m-
+If you use nf-core/rnafusion for your analysis please cite:
+
+* The pipeline
+  https://doi.org/10.5281/zenodo.151721952
+
+* The nf-core framework
+  https://doi.org/10.1038/s41587-020-0439-x
+
+* Software dependencies
+  https://github.com/nf-core/rnafusion/blob/master/CITATIONS.md
+-[2m----------------------------------------------------[0m-
+Jun.-15 14:58:50.037 [main] WARN  nextflow.Nextflow - Found unexpected parameters:
+* --fusion_inspector: true
+* --star_fusion: true
+* --star_index: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/indices
+Jun.-15 14:58:50.038 [main] INFO  nextflow.Nextflow - - [2mIgnore this warning: params.schema_ignore_params = "fusion_inspector,star_fusion,star_index" [0m
+Jun.-15 14:58:54.940 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK
+Jun.-15 14:58:54.942 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SAMPLESHEET_CHECK` matches process NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK
+Jun.-15 14:58:54.946 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:54.946 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:54.950 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jun.-15 14:58:54.954 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=16; memory=80 GB; capacity=16; pollInterval=100ms; dumpInterval=5m
+Jun.-15 14:58:55.069 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_RNAFUSION:RNAFUSION:CAT_FASTQ
+Jun.-15 14:58:55.071 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.071 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.084 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_RNAFUSION:RNAFUSION:FASTQC
+Jun.-15 14:58:55.084 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FASTQC` matches process NFCORE_RNAFUSION:RNAFUSION:FASTQC
+Jun.-15 14:58:55.085 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.086 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.138 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT
+Jun.-15 14:58:55.139 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FUSIONREPORT` matches process NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT
+Jun.-15 14:58:55.140 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.140 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.150 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name NFCORE_RNAFUSION:RNAFUSION:FUSIONINSPECTOR_WORKFLOW:FUSIONINSPECTOR
+Jun.-15 14:58:55.151 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FUSIONINSPECTOR` matches process NFCORE_RNAFUSION:RNAFUSION:FUSIONINSPECTOR_WORKFLOW:FUSIONINSPECTOR
+Jun.-15 14:58:55.151 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.152 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.159 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_RNAFUSION:RNAFUSION:FUSIONINSPECTOR_WORKFLOW:MEGAFUSION
+Jun.-15 14:58:55.159 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MEGAFUSION` matches process NFCORE_RNAFUSION:RNAFUSION:FUSIONINSPECTOR_WORKFLOW:MEGAFUSION
+Jun.-15 14:58:55.160 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.160 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.167 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:QUALIMAP_RNASEQ
+Jun.-15 14:58:55.168 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:QUALIMAP_RNASEQ` matches process NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:QUALIMAP_RNASEQ
+Jun.-15 14:58:55.168 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.168 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.177 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:SAMTOOLS_INDEX_FOR_QC
+Jun.-15 14:58:55.177 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SAMTOOLS_INDEX_FOR_QC` matches process NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:SAMTOOLS_INDEX_FOR_QC
+Jun.-15 14:58:55.179 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.179 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.188 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:PICARD_COLLECTRNASEQMETRICS
+Jun.-15 14:58:55.189 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PICARD_COLLECTRNASEQMETRICS` matches process NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:PICARD_COLLECTRNASEQMETRICS
+Jun.-15 14:58:55.191 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.191 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.198 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:PICARD_MARKDUPLICATES
+Jun.-15 14:58:55.199 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PICARD_MARKDUPLICATES` matches process NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:PICARD_MARKDUPLICATES
+Jun.-15 14:58:55.200 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.200 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.232 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_RNAFUSION:RNAFUSION:CUSTOM_DUMPSOFTWAREVERSIONS
+Jun.-15 14:58:55.232 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:CUSTOM_DUMPSOFTWAREVERSIONS` matches process NFCORE_RNAFUSION:RNAFUSION:CUSTOM_DUMPSOFTWAREVERSIONS
+Jun.-15 14:58:55.233 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.233 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.278 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name NFCORE_RNAFUSION:RNAFUSION:MULTIQC
+Jun.-15 14:58:55.279 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:MULTIQC` matches process NFCORE_RNAFUSION:RNAFUSION:MULTIQC
+Jun.-15 14:58:55.279 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jun.-15 14:58:55.280 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jun.-15 14:58:55.285 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: SAMTOOLS_VIEW_FOR_STARFUSION, SAMTOOLS_SORT_FOR_ARRIBA, GATK4_BEDTOINTERVALLIST, STAR_FOR_SQUID, STAR_FOR_ARRIBA, STARFUSION_DOWNLOAD, FUSIONCATCHER, FUSIONCATCHER_DOWNLOAD, STAR_FOR_STARFUSION, GATK4_CREATESEQUENCEDICTIONARY, FASTP, NFCORE_RNAFUSION:RNAFUSION:FUSIONINSPECTOR_WORKFLOW:FUSIONINSPECTOR, PICARD_MARKDUPLICATES, FASTQC_FOR_FASTP, NFCORE_RNAFUSION:RNAFUSION:MULTIQC, ENSEMBL_DOWNLOAD, CAT_FASTQ, NFCORE_RNAFUSION:RNAFUSION:CAT_FASTQ, NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:PICARD_MARKDUPLICATES, GTF_TO_REFFLAT, STARFUSION, SQUID, NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT, NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:PICARD_COLLECTRNASEQMETRICS, QUALIMAP_RNASEQ, SAMTOOLS_INDEX_FOR_ARRIBA, CONVERT2BED, ARRIBA_VISUALISATION, FUSIONREPORT_DOWNLOAD, STAR_ALIGN, SAMTOOLS_INDEX_FOR_STARFUSION, PIZZLY_INDEX, SAMTOOLS_INDEX, SQUID_ANNOTATE, FUSIONINSPECTOR, FASTQC, ARRIBA_DOWNLOAD, SAMTOOLS_VIEW_FOR_SQUID_CRAM, NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:SAMTOOLS_INDEX_FOR_QC, SAMTOOLS_INDEX_FOR_SQUID, MULTIQC, NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK, NFCORE_RNAFUSION:RNAFUSION:FASTQC, REFORMAT, MEGAFUSION, SAMTOOLS_SORT, STRINGTIE_MERGE, SAMTOOLS_VIEW_FOR_SQUID_CHIMERIC, SAMTOOLS_VIEW_FOR_ARRIBA, SAMTOOLS_INDEX_FOR_SQUID_CHIMERIC, STARFUSION_BUILD, FASTQC_FOR_TRIM, CAT_CAT, PICARD_COLLECTRNASEQMETRICS, KALLISTO_INDEX, SAMTOOLS_VIEW, SAMTOOLS_FAIDX, FUSIONREPORT, SAMPLESHEET_CHECK, RRNA_TRANSCRIPTS, NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:QUALIMAP_RNASEQ, SAMTOOLS_INDEX_FOR_QC, STRINGTIE_STRINGTIE, SAMTOOLS_VIEW_FOR_SQUID_CRAM_CHIMERIC, ARRIBA, SAMTOOLS_SORT_FOR_SQUID_CHIMERIC, PIZZLY, KALLISTO_QUANT, STAR_GENOMEGENERATE, CUSTOM_DUMPSOFTWAREVERSIONS, NFCORE_RNAFUSION:RNAFUSION:CUSTOM_DUMPSOFTWAREVERSIONS, NFCORE_RNAFUSION:RNAFUSION:FUSIONINSPECTOR_WORKFLOW:MEGAFUSION
+Jun.-15 14:58:55.290 [main] DEBUG nextflow.Session - Igniting dataflow network (43)
+Jun.-15 14:58:55.296 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK
+Jun.-15 14:58:55.297 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:CAT_FASTQ
+Jun.-15 14:58:55.297 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:FASTQC
+Jun.-15 14:58:55.306 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT
+Jun.-15 14:58:55.307 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:FUSIONINSPECTOR_WORKFLOW:FUSIONINSPECTOR
+Jun.-15 14:58:55.307 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:FUSIONINSPECTOR_WORKFLOW:MEGAFUSION
+Jun.-15 14:58:55.307 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:QUALIMAP_RNASEQ
+Jun.-15 14:58:55.308 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:SAMTOOLS_INDEX_FOR_QC
+Jun.-15 14:58:55.308 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:PICARD_COLLECTRNASEQMETRICS
+Jun.-15 14:58:55.308 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:QC_WORKFLOW:PICARD_MARKDUPLICATES
+Jun.-15 14:58:55.308 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:CUSTOM_DUMPSOFTWAREVERSIONS
+Jun.-15 14:58:55.308 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > NFCORE_RNAFUSION:RNAFUSION:MULTIQC
+Jun.-15 14:58:55.308 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun.-15 14:58:55.308 [main] DEBUG nextflow.Session - Session await
+Jun.-15 14:58:55.376 [Actor Thread 9] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=https://depot.galaxyproject.org/singularity/python:3.9--1; path=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work/singularity/depot.galaxyproject.org-singularity-python-3.9--1.img
+Jun.-15 14:58:55.389 [Actor Thread 14] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/bin/check_samplesheet.py
+Jun.-15 14:58:55.411 [Actor Thread 30] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.001 s; external sort time: 0.013 s; total time: 0.014 s
+Jun.-15 14:58:55.411 [Actor Thread 13] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.001 s; external sort time: 0.013 s; total time: 0.014 s
+Jun.-15 14:58:55.412 [Actor Thread 30] DEBUG nextflow.file.FileCollector - >> temp file exists? false
+Jun.-15 14:58:55.412 [Actor Thread 13] DEBUG nextflow.file.FileCollector - >> temp file exists? false
+Jun.-15 14:58:55.412 [Actor Thread 30] DEBUG nextflow.file.FileCollector - Missed collect-file cache -- cause: java.nio.file.NoSuchFileException: /tmp/b7b71bffc3d88f927ecd8d9046cf1fae.collect-file
+Jun.-15 14:58:55.412 [Actor Thread 13] DEBUG nextflow.file.FileCollector - Missed collect-file cache -- cause: java.nio.file.NoSuchFileException: /tmp/ee29eff2555cc1c868ae5062c6f03f0c.collect-file
+Jun.-15 14:58:55.419 [Actor Thread 30] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /tmp/b7b71bffc3d88f927ecd8d9046cf1fae.collect-file
+Jun.-15 14:58:55.420 [Actor Thread 13] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /tmp/ee29eff2555cc1c868ae5062c6f03f0c.collect-file
+Jun.-15 14:58:55.425 [Actor Thread 13] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-14845662958349787628
+Jun.-15 14:58:55.426 [Actor Thread 30] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-6297216998118438465
+Jun.-15 14:58:55.440 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [30/d2383e] Cached process > NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)
+Jun.-15 14:58:55.477 [Actor Thread 14] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun.-15 14:58:55.493 [Actor Thread 26] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://docker.io/clinicalgenomics/fusion-report:2.1.5p2.1; path=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work/singularity/docker.io-clinicalgenomics-fusion-report-2.1.5p2.1.img
+Jun.-15 14:58:55.496 [Actor Thread 26] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=https://depot.galaxyproject.org/singularity/fastqc:0.11.9--0; path=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work/singularity/depot.galaxyproject.org-singularity-fastqc-0.11.9--0.img
+Jun.-15 14:58:55.517 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [e4/233b01] Cached process > NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)
+Jun.-15 14:58:55.524 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [8e/df18f9] Cached process > NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)
+Jun.-15 14:58:55.524 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [1c/c4c63e] Cached process > NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)
+Jun.-15 14:58:55.527 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [0a/bc230f] Cached process > NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)
+Jun.-15 14:58:55.565 [Actor Thread 21] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/assets/dummy_file_arriba.txt
+Jun.-15 14:58:55.566 [Actor Thread 21] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/assets/dummy_file_pizzly.txt
+Jun.-15 14:58:55.567 [Actor Thread 20] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/assets/dummy_file_squid.txt
+Jun.-15 14:58:55.567 [Actor Thread 5] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/assets/dummy_file_starfusion.txt
+Jun.-15 14:58:55.568 [Actor Thread 20] DEBUG nextflow.util.CacheHelper - Hash asset file sha-256: /globalhome/hxo752/HPC/.nextflow/assets/nf-core/rnafusion/assets/dummy_file_fusioncatcher.txt
+Jun.-15 14:58:55.569 [Actor Thread 21] DEBUG nextflow.util.CacheHelper - Unable to get file attributes file: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db -- Cause: java.nio.file.NoSuchFileException: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db
+Jun.-15 14:58:55.569 [Actor Thread 20] DEBUG nextflow.util.CacheHelper - Unable to get file attributes file: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db -- Cause: java.nio.file.NoSuchFileException: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db
+Jun.-15 14:58:55.569 [Actor Thread 5] DEBUG nextflow.util.CacheHelper - Unable to get file attributes file: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db -- Cause: java.nio.file.NoSuchFileException: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db
+Jun.-15 14:58:55.569 [Actor Thread 24] DEBUG nextflow.util.CacheHelper - Unable to get file attributes file: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db -- Cause: java.nio.file.NoSuchFileException: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/references/fusion_report_db
+Jun.-15 14:58:55.638 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jun.-15 14:58:55.639 [Task submitter] INFO  nextflow.Session - [bc/b813a9] Submitted process > NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345988)
+Jun.-15 14:58:55.653 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jun.-15 14:58:55.654 [Task submitter] INFO  nextflow.Session - [fb/01f303] Submitted process > NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345987)
+Jun.-15 14:58:58.173 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345987); status: COMPLETED; exit: 1; error: -; workDir: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work/fb/01f3039430053cf2dc9c9b2f3a3b6f]
+Jun.-15 14:58:58.183 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jun.-15 14:58:58.183 [Task submitter] INFO  nextflow.Session - [c2/1b93f2] Submitted process > NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345986)
+Jun.-15 14:58:58.186 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345987)'
+
+Caused by:
+  Process `NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345987)` terminated with an error exit status (1)
+
+Command executed:
+
+  fusion_report run DRR345987 . fusion_report_db  --allow-multiple-gene-symbols --export csv --tool-cutoff 2
+  
+  mv fusion_list.tsv DRR345987.fusionreport.tsv
+  mv fusion_list_filtered.tsv DRR345987.fusionreport_filtered.tsv
+  [ ! -f fusions.csv ] || mv fusions.csv DRR345987.fusions.csv
+  [ ! -f fusions.json ] || mv fusions.json DRR345987.fusions.json
+  
+  cat <<-END_VERSIONS > versions.yml
+  "NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT":
+      fusion_report: $(fusion_report --version | sed 's/fusion-report //')
+      fusion_report DB retrieval: $(cat fusion_report_db/DB-timestamp.txt)
+  END_VERSIONS
+
+Command exit status:
+  1
+
+Command output:
+  [32mRunning application...[0m
+  [1;31munable to open database file[0m
+  Traceback (most recent call last):
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/common/db.py", line 37, in connect
+      connection = sqlite3.connect(os.path.join(path, database))
+  sqlite3.OperationalError: unable to open database file
+  
+  During handling of the above exception, another exception occurred:
+  
+  Traceback (most recent call last):
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/app.py", line 61, in run
+      self.preprocess(params)
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/app.py", line 83, in preprocess
+      self.enrich(params.db_path)
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/app.py", line 141, in enrich
+      CosmicDB(path).name: CosmicDB(path).get_all_fusions(),
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/common/singleton.py", line 11, in __call__
+      cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/data/cosmic.py", line 15, in __init__
+      super().__init__(path, Settings.COSMIC['NAME'], Settings.COSMIC['SCHEMA'])
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/common/db.py", line 25, in __init__
+      self.connection = self.connect(path, self.database)
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/common/db.py", line 41, in connect
+      raise DbException(ex)
+  fusion_report.common.exceptions.db.DbException: unable to open database file
+  
+  During handling of the above exception, another exception occurred:
+  
+  Traceback (most recent call last):
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/EGG-INFO/scripts/fusion_report", line 13, in <module>
+      app.run()
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/app.py", line 78, in run
+      raise AppException(ex)
+  fusion_report.common.exceptions.app.AppException: unable to open database file
+
+Command error:
+  [32mRunning application...[0m
+  [1;31munable to open database file[0m
+  Traceback (most recent call last):
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/common/db.py", line 37, in connect
+      connection = sqlite3.connect(os.path.join(path, database))
+  sqlite3.OperationalError: unable to open database file
+  
+  During handling of the above exception, another exception occurred:
+  
+  Traceback (most recent call last):
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/app.py", line 61, in run
+      self.preprocess(params)
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/app.py", line 83, in preprocess
+      self.enrich(params.db_path)
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/app.py", line 141, in enrich
+      CosmicDB(path).name: CosmicDB(path).get_all_fusions(),
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/common/singleton.py", line 11, in __call__
+      cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/data/cosmic.py", line 15, in __init__
+      super().__init__(path, Settings.COSMIC['NAME'], Settings.COSMIC['SCHEMA'])
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/common/db.py", line 25, in __init__
+      self.connection = self.connect(path, self.database)
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/common/db.py", line 41, in connect
+      raise DbException(ex)
+  fusion_report.common.exceptions.db.DbException: unable to open database file
+  
+  During handling of the above exception, another exception occurred:
+  
+  Traceback (most recent call last):
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/EGG-INFO/scripts/fusion_report", line 13, in <module>
+      app.run()
+    File "/usr/local/lib/python3.9/site-packages/fusion_report-2.1.5-py3.9.egg/fusion_report/app.py", line 78, in run
+      raise AppException(ex)
+  fusion_report.common.exceptions.app.AppException: unable to open database file
+  unable to open database file
+
+Work dir:
+  /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work/fb/01f3039430053cf2dc9c9b2f3a3b6f
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Jun.-15 14:58:58.193 [Task monitor] INFO  nextflow.Session - Execution cancelled -- Finishing pending tasks before exit
+Jun.-15 14:58:58.206 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun.-15 14:58:58.213 [Actor Thread 15] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 2; slices: 1; internal sort time: 0.003 s; external sort time: 0.0 s; total time: 0.003 s
+Jun.-15 14:58:58.213 [Actor Thread 15] DEBUG nextflow.file.FileCollector - >> temp file exists? false
+Jun.-15 14:58:58.214 [Actor Thread 15] DEBUG nextflow.file.FileCollector - Missed collect-file cache -- cause: java.nio.file.NoSuchFileException: /tmp/5f57b13f1fff793127be1b199304d480.collect-file
+Jun.-15 14:58:58.218 [Actor Thread 15] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /tmp/5f57b13f1fff793127be1b199304d480.collect-file
+Jun.-15 14:58:58.221 [Actor Thread 15] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-9211235286586074831
+Jun.-15 14:58:58.260 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 8; name: NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345988); status: COMPLETED; exit: 1; error: -; workDir: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work/bc/b813a9187fb1b0dcd209c9c5e748e1]
+Jun.-15 14:58:59.698 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 6; name: NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345986); status: COMPLETED; exit: 1; error: -; workDir: /globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA/fusion_genes/hystiocystic_sarcoma/analysis/nextflow/work/c2/1b93f274fb9f37603714fcc3af7036]
+Jun.-15 14:58:59.702 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun.-15 14:58:59.705 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Jun.-15 14:58:59.706 [main] INFO  nextflow.Nextflow - -[0;35m[nf-core/rnafusion][0;31m Pipeline completed with errors[0m-
+Jun.-15 14:58:59.706 [main] INFO  nextflow.Nextflow - -[0;35m[nf-core/rnafusion][0;31m Pipeline completed with errors[0m-
+Jun.-15 14:58:59.710 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=3; ignoredCount=0; cachedCount=5; pendingCount=1; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=38s; cachedDuration=11m 18s;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=12; peakMemory=72 GB; ]
+Jun.-15 14:58:59.710 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Jun.-15 14:58:59.712 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jun.-15 14:58:59.735 [main] DEBUG nextflow.trace.ReportObserver - Execution report summary data:
+  [{"cpuUsage":{"mean":97,"min":97,"q1":97,"q2":97,"q3":97,"max":97,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)"},"process":"SAMPLESHEET_CHECK","mem":{"mean":1634304,"min":1634304,"q1":1634304,"q2":1634304,"q3":1634304,"max":1634304,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)"},"memUsage":{"mean":0.03,"min":0.03,"q1":0.03,"q2":0.03,"q3":0.03,"max":0.03,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)"},"timeUsage":null,"vmem":{"mean":9875456,"min":9875456,"q1":9875456,"q2":9875456,"q3":9875456,"max":9875456,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)"},"reads":{"mean":2114377,"min":2114377,"q1":2114377,"q2":2114377,"q3":2114377,"max":2114377,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)"},"cpu":{"mean":97,"min":97,"q1":97,"q2":97,"q3":97,"max":97,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)"},"time":null,"writes":{"mean":1562,"min":1562,"q1":1562,"q2":1562,"q3":1562,"max":1562,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet.csv)"}},{"cpuUsage":{"mean":34.45,"min":34.1,"q1":34.24,"q2":34.49,"q3":34.71,"max":34.73,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)"},"process":"FASTQC","mem":{"mean":1273856,"min":1273856,"q1":1273856,"q2":1273856,"q3":1273856,"max":1273856,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)"},"memUsage":null,"timeUsage":{"mean":0.1,"min":0.08,"q1":0.09,"q2":0.09,"q3":0.1,"max":0.13,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)"},"vmem":{"mean":11563008,"min":11563008,"q1":11563008,"q2":11563008,"q3":11563008,"max":11563008,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)"},"reads":{"mean":598379206.5,"min":501940559,"q1":545928743.75,"q2":561505282,"q3":613955744.75,"max":768565703,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)"},"cpu":{"mean":206.73,"min":204.6,"q1":205.43,"q2":206.95,"q3":208.25,"max":208.4,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)"},"time":{"mean":28250,"min":24000,"q1":25500,"q2":26500,"q3":29250,"max":36000,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)"},"writes":{"mean":3865985,"min":3842985,"q1":3862080,"q2":3870690,"q3":3874595,"max":3879575,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345987)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345986)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345989)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FASTQC (DRR345988)"}},{"cpuUsage":null,"process":"FUSIONREPORT","mem":null,"memUsage":null,"timeUsage":{"mean":0.01,"min":0,"q1":0.01,"q2":0.01,"q3":0.01,"max":0.01,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345986)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345988)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345986)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345987)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345987)"},"vmem":null,"reads":null,"cpu":null,"time":{"mean":2111.67,"min":1435,"q1":1919.5,"q2":2404,"q3":2450,"max":2496,"minLabel":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345986)","maxLabel":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345988)","q1Label":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345986)","q2Label":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345987)","q3Label":"NFCORE_RNAFUSION:RNAFUSION:FUSIONREPORT_WORKFLOW:FUSIONREPORT (DRR345987)"},"writes":null}]
+Jun.-15 14:59:00.315 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Jun.-15 14:59:00.520 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun.-15 14:59:00.543 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Jun.-15 14:59:00.545 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
