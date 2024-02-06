@@ -73,11 +73,6 @@ DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",
 #DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_samples")
 
 
-colnames(feature_count) <- c("geneID","gene_name","1M_CRE","4M_CRE","7M_CRE","10M_CRE","1F_CRE","4F_CRE",
-                             "7M_CRE","10F_CRE","2M_GFP","5M_GFP","8M_GFP","11M_GFP","2F_GFP","5F_GFP","8F_GFP","11F_GFP",
-                             "3M_HnRF1","6M_HnRF1","9M_HnRF1","12M_HnRF1","3F_HnRF1","6F_HnRF1","9F_HnRF1","12F_HnRF1")
-
-
 #GET RAW COUNTS
 setwd("/Users/shahina/Projects/23-1SCWI-001")
 
@@ -94,7 +89,7 @@ feature_count <- feature_count[rowSums(feature_count[,c(3:ncol(feature_count))])
 feature_count <- feature_count[c(1,2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
 
 colnames(feature_count) <- c("geneID","gene_name","1M_CRE","4M_CRE","7M_CRE","10M_CRE","1F_CRE","4F_CRE",
-                             "7M_CRE","10F_CRE","2M_GFP","5M_GFP","8M_GFP","11M_GFP","2F_GFP","5F_GFP","8F_GFP","11F_GFP",
+                             "7F_CRE","10F_CRE","2M_GFP","5M_GFP","8M_GFP","11M_GFP","2F_GFP","5F_GFP","8F_GFP","11F_GFP",
                              "3M_HnRF1","6M_HnRF1","9M_HnRF1","12M_HnRF1","3F_HnRF1","6F_HnRF1","9F_HnRF1","12F_HnRF1")
 
 
