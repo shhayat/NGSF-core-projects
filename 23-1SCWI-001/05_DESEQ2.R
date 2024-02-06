@@ -62,15 +62,25 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str
   write.xlsx(resDF,file=sprintf("DESEQ2/%s_DEG_%s_vs_%s_%s.xlsx",str,cond2,cond1,str1), row.names = FALSE)
 
 }
-#DEG_analysis(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females","all_samples")
-#DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",8,8,"Males_Females","all_samples")
-DEG_analysis(c(4,7,10,13,16,19,22,25,5,14,17,20,23,26),"GFP","HnRF1","GFP",8,6,"Males_Females","excluded_2samples")
-DEG_analysis(c(7,10,13,16,19,22,25,3,6,12,15,18,21,24),"GFP","CRE","GFP",7,7,"Males_Females","excluded_2samples")
+DEG_analysis(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females","all_samples")
+DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",8,8,"Males_Females","all_samples")
+#DEG_analysis(c(4,7,10,13,16,19,22,25,5,14,17,20,23,26),"GFP","HnRF1","GFP",8,6,"Males_Females","excluded_2samples")
+#DEG_analysis(c(7,10,13,16,19,22,25,3,6,12,15,18,21,24),"GFP","CRE","GFP",7,7,"Males_Females","excluded_2samples")
 
 #DEG_analysis(c(4,7,10,13,3,6,9,12),"GFP","CRE","GFP",4,4,"Males","all_samples")
 #DEG_analysis(c(16,19,22,25,15,18,21,24),"GFP","CRE","GFP",4,4,"Females","all_samples")
 #DEG_analysis(c(4,7,10,13,5,8,11,14),"GFP","HnRF1","GFP",4,4,"Males","all_samples")
 #DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_samples")
+
+c("geneID","gene_name","1M","2M","3M","4M","5M","6M","7M","8M","9M","10M","11M","12M","1F","2F",
+  "3F","4F","5F","6F","7F","8F","9F","10F","11F","12F")
+
+feature_count <- feature_count[c(1,2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
+
+colnames(feature_count) <- c("geneID","gene_name","1M_CRE","4M_CRE","7M_CRE","10M_CRE","1F_CRE","4F_CRE",
+                             "7M_CRE","10F_CRE","2M_GFP","5M_GFP","8M_GFP","11M_GFP"
+                             ,"1F_GFP","2F_GFP","3F_GFP","4F_GFP",
+                             "5F_HnRF1","6F_HnRF1","7F_HnRF1","8F_HnRF1","9F_HnRF1","10F_HnRF1","11F_HnRF1","12F_HnRF1")
 
 
 #GET RAW COUNTS
@@ -145,6 +155,14 @@ normalized_count <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str
 }
 normalized_count(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females",c("9M_GFP","10M_GFP","11M_GFP","12M_GFP","1F_GFP","2F_GFP","3F_GFP","4F_GFP","1M_CRE","2M_CRE","3M_CRE","4M_CRE","5M_CRE","6M_CRE","7M_CRE","8M_CRE"))
 normalized_count(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",8,8,"Males_Females",c("9M_GFP","10M_GFP","11M_GFP","12M_GFP","1F_GFP","2F_GFP","3F_GFP","4F_GFP","5F_HnRF1","6F_HnRF1","7F_HnRF1","8F_HnRF1","9F_HnRF1","10F_HnRF1","11F_HnRF1","12F_HnRF1"))
+
+
+
+
+
+
+
+
 
 #####################
 #BATCH CORRECTION
@@ -248,13 +266,6 @@ ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)) +
   theme_minimal() + 
   geom_text(aes_string(label = "sample_name"), color="black",  position=nudge , size=2.0)
 dev.off()
-
-
-
-
-
-
-
 
 
 
