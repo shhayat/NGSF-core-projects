@@ -72,15 +72,10 @@ DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",
 #DEG_analysis(c(4,7,10,13,5,8,11,14),"GFP","HnRF1","GFP",4,4,"Males","all_samples")
 #DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_samples")
 
-c("geneID","gene_name","1M","2M","3M","4M","5M","6M","7M","8M","9M","10M","11M","12M","1F","2F",
-  "3F","4F","5F","6F","7F","8F","9F","10F","11F","12F")
-
-feature_count <- feature_count[c(1,2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
 
 colnames(feature_count) <- c("geneID","gene_name","1M_CRE","4M_CRE","7M_CRE","10M_CRE","1F_CRE","4F_CRE",
-                             "7M_CRE","10F_CRE","2M_GFP","5M_GFP","8M_GFP","11M_GFP"
-                             ,"1F_GFP","2F_GFP","3F_GFP","4F_GFP",
-                             "5F_HnRF1","6F_HnRF1","7F_HnRF1","8F_HnRF1","9F_HnRF1","10F_HnRF1","11F_HnRF1","12F_HnRF1")
+                             "7M_CRE","10F_CRE","2M_GFP","5M_GFP","8M_GFP","11M_GFP","2F_GFP","5F_GFP","8F_GFP","11F_GFP",
+                             "3M_HnRF1","6M_HnRF1","9M_HnRF1","12M_HnRF1","3F_HnRF1","6F_HnRF1","9F_HnRF1","12F_HnRF1")
 
 
 #GET RAW COUNTS
@@ -98,9 +93,10 @@ feature_count <- feature_count[rowSums(feature_count[,c(3:ncol(feature_count))])
 
 feature_count <- feature_count[c(1,2,3,6,9,12,15,18,21,24,4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26)]
 
-colnames(feature_count) <- c("geneID","gene_name","1M_CRE","2M_CRE","3M_CRE","4M_CRE","5M_CRE","6M_CRE","7M_CRE","8M_CRE",
-                             "9M_GFP","10M_GFP","11M_GFP","12M_GFP","1F_GFP","2F_GFP","3F_GFP","4F_GFP",
-                             "5F_HnRF1","6F_HnRF1","7F_HnRF1","8F_HnRF1","9F_HnRF1","10F_HnRF1","11F_HnRF1","12F_HnRF1")
+colnames(feature_count) <- c("geneID","gene_name","1M_CRE","4M_CRE","7M_CRE","10M_CRE","1F_CRE","4F_CRE",
+                             "7M_CRE","10F_CRE","2M_GFP","5M_GFP","8M_GFP","11M_GFP","2F_GFP","5F_GFP","8F_GFP","11F_GFP",
+                             "3M_HnRF1","6M_HnRF1","9M_HnRF1","12M_HnRF1","3F_HnRF1","6F_HnRF1","9F_HnRF1","12F_HnRF1")
+
 
 #remove number after decimal point from ensembl ID
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
