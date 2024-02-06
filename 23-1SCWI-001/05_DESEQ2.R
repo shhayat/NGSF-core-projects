@@ -145,7 +145,7 @@ normalized_count <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str
 
 }
 normalized_count(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females",c("2M_GFP","5M_GFP","8M_GFP","11M_GFP","2F_GFP","8F_GFP","11F_GFP","11F_GFP","1M_CRE","4M_CRE","7M_CRE","10M_CRE","1F_CRE","4F_CRE","7F_CRE","10F_CRE"))
-normalized_count(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",8,8,"Males_Females",c("9M_GFP","10M_GFP","11M_GFP","12M_GFP","1F_GFP","2F_GFP","3F_GFP","4F_GFP","5F_HnRF1","6F_HnRF1","7F_HnRF1","8F_HnRF1","9F_HnRF1","10F_HnRF1","11F_HnRF1","12F_HnRF1"))
+normalized_count(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",8,8,"Males_Females",c("2M_GFP","5M_GFP","8M_GFP","11M_GFP","2F_GFP","8F_GFP","11F_GFP","3M_HnRF1","6M_HnRF1","9M_HnRF1","12M_HnRF1","3F_HnRF1","6F_HnRF1","9F_HnRF1","12F_HnRF1"))
 
 
 colnames(feature_count) <- c("geneID","gene_name","1M","2M","3M","4M","5M","6M","7M","8M","9M","10M","11M","12M",
