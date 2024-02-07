@@ -1,4 +1,4 @@
- #!/bin/sh
+#!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --job-name=genome_index
@@ -7,6 +7,8 @@
 #SBATCH --time=03:00:00
 #SBATCH --mem=80G
 #SBATCH --output=%j.out
+	
+set -eux
 
 export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 GENOME=/datastore/NGSF001/analysis/references/ROS_Cfam_1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.dna.toplevel.fa
