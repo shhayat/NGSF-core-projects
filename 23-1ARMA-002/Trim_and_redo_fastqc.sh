@@ -22,7 +22,11 @@ sample_name=$1;
              -I ${DATA}/${sample_name}_R2.fastq.gz \
              -o ${OUTDIR1}/${sample_name}_R1.trimmed.fastq.gz \
              -O ${OUTDIR1}/${sample_name}_R2.trimmed.fastq.gz \
-             -h ${OUTDIR1}/${sample_name}.fastp.html
+             -h ${OUTDIR1}/${sample_name}.fastp.html \
+             --length_required 20 \
+             --average_qual 20 \
+             --detect_adapter_for_pe \
+             --correction
 
 module load fastqc
 OUTDIR2=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/fastqc_trimmed
