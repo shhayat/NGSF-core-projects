@@ -15,7 +15,7 @@ NCPUS=16
 RAM_MEMORY=128
 
 FASTQS=/datastore/NGSF001/projects/2023/23-1ARMA-002/analysis/Fastq
-REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/CanFam6_index
+REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/CanFam6_index
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/count_files
 mkdir -p ${OUTPUT}
 cd ${OUTPUT}
