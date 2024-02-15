@@ -13,8 +13,10 @@ set -eux
 export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 #GENOME=/datastore/NGSF001/analysis/references/ROS_Cfam_1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.dna.toplevel.fa
 #GTF=/datastore/NGSF001/analysis/references/ROS_Cfam_1.0/Canis_lupus_familiaris.ROS_Cfam_1.0.109.gtf
-GENOME=/datastore/NGSF001/analysis/references/CanFam6/GCF_000002285.5_Dog10K_Boxer_Tasha_rna.fna
-GTF=/datastore/NGSF001/analysis/references/CanFam6/GCF_000002285.5_Dog10K_Boxer_Tasha_genomic.gtf
+#GENOME=/datastore/NGSF001/analysis/references/CanFam6/GCF_000002285.5_Dog10K_Boxer_Tasha_rna.fna
+#GTF=/datastore/NGSF001/analysis/references/CanFam6/GCF_000002285.5_Dog10K_Boxer_Tasha_genomic.gtf
+GENOME=/datastore/NGSF001/analysis/references/CanFam6/Canis_lupus_familiarisboxer.Dog10K_Boxer_Tasha.dna.toplevel.fa.gz
+GTF=/datastore/NGSF001/analysis/references/CanFam6/Canis_lupus_familiarisboxer.Dog10K_Boxer_Tasha.111.chr.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/
 GENOME_FOLDER_NAME="CanFam6_index"
 NCPUS=10
