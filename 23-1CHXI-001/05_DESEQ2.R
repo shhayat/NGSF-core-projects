@@ -61,3 +61,31 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2,str)
 }
 DEG_analysis(c(9,10,11,12,13,14,3,4,5,6,7,8),"CONTROL","HFD","CONTROL",6,6, "all_sample")
 DEG_analysis(c(10,11,13,14,4,5,6,7,8),"CONTROL","HFD","CONTROL",4,5,"filtered_sample")
+
+
+
+#################
+#volcano plot
+#################
+library(ggplot2)
+res <- read.csv("DESEQ2/DEG_HFD_vs_CONTROL_all_sample.csv")
+res1 <- as.data.frame(res)
+
+#assign up and down regulation and non signif based on log2fc
+res1$direction <- ifelse(res1$effects < -1, "down_regulated", 
+                         ifelse(res1$effects > 1, "up_regulated", "signif" ))
+
+png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot_0.5log2FC.png", width=1300, height=500, res=120)
+ggplot(res1, aes(effects, -log10(fdr))) +
+  geom_point(aes(col=direction),
+             size=0.5,
+             show.legend = FALSE) +
+  scale_color_manual(values=c("blue", "gray", "red")) +
+  theme(axis.text.x = element_text(size=11),
+        axis.text.y = element_text(size=11),
+        text = element_text(size=11)) +
+  annotate("text",x=2.2,y=1.7,hjust = 0,label=" Total (FDR <=0.05) = 6678 \n Total Upregulated = 3138 \n Total Down Regulated = 3540 \n Log2FC > 1 = 120 \n Log2FC < -1 = 90", size = 3)  +
+  xlab("log2(FC)") +
+  ylab("-log10(FDR)") 
+  
+dev.off()
