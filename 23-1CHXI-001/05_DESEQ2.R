@@ -75,7 +75,9 @@ res1 <- as.data.frame(res)
 res1$direction <- ifelse(res1$effects < -1, "down_regulated", 
                          ifelse(res1$effects > 1, "up_regulated", "signif" ))
 
-png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot_0.5log2FC.png", width=1300, height=500, res=120)
+tiff("Volcano_plot.tiff",res=600, width = 7, height = 7, units = 'in')
+
+#png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot.png", width=1300, height=500, res=120)
 ggplot(res1, aes(effects, -log10(fdr))) +
   geom_point(aes(col=direction),
              size=0.5,
