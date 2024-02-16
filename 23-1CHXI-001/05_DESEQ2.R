@@ -38,13 +38,13 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2,str)
   #PCA PLOT
   ##########
   #gernate rlog for PCA
-  rld <-rlog(dds,blind=FALSE)
-  pdf(sprintf("PCA_%s_%s_%s.pdf",cond2,cond1,str), width=8,height=8)
-    nudge <- position_nudge(y = 0.5)
-    p <- plotPCA(rld,intgroup=c("sample_group"))  
-    p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
-    print(p)
-  dev.off()
+  #rld <-rlog(dds,blind=FALSE)
+  #pdf(sprintf("PCA_%s_%s_%s.pdf",cond2,cond1,str), width=8,height=8)
+  #  nudge <- position_nudge(y = 0.5)
+  #  p <- plotPCA(rld,intgroup=c("sample_group"))  
+  #  p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
+  #  print(p)
+  #dev.off()
   
   dds_wald <- DESeq(dds, betaPrior=FALSE, minReplicatesForReplace=Inf)
   res <- results(dds_wald, contrast=c("sample_group",cond2,cond1))
@@ -57,7 +57,8 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2,str)
 
   resDF1 <- resDF[resDF$pvalue <= 0.05,]
   
-  write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s.xlsx",cond2,cond1, str), row.names = FALSE)
+  #write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s.xlsx",cond2,cond1, str), row.names = FALSE)
+  write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s_all_genes.xlsx",cond2,cond1, str), row.names = FALSE)
 }
 DEG_analysis(c(9,10,11,12,13,14,3,4,5,6,7,8),"CONTROL","HFD","CONTROL",6,6, "all_sample")
 DEG_analysis(c(10,11,13,14,4,5,6,7,8),"CONTROL","HFD","CONTROL",4,5,"filtered_sample")
@@ -70,7 +71,8 @@ DEG_analysis(c(10,11,13,14,4,5,6,7,8),"CONTROL","HFD","CONTROL",4,5,"filtered_sa
 setwd("/Users/shahina/Projects/2023_projects/23-1CHX1-001/")
 
 library(ggplot2)
-res <- read.csv("DESEQ2/DEG_HFD_vs_CONTROL_all_sample.csv")
+#res <- read.csv("DESEQ2/DEG_HFD_vs_CONTROL_all_sample.csv")
+res <- read.csv("DESEQ2/DEG_HFD_vs_CONTROL_all_sample_all_genes.csv")
 res1 <- as.data.frame(res)
 
 #assign up and down regulation and non signif based on log2fc
@@ -81,16 +83,37 @@ res1 <- res1[!is.na(res1$pvalue), ]
 
 tiff("Volcano_plot_with_pvalue.tiff",res=600, width = 7, height = 7, units = 'in')
 #png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot_with_pvalue.png", width=1300, height=500, res=120)
-ggplot(res1, aes(log2FoldChange, -log10(pvalue))) +
+
+ggplot(res1, aes(log2FoldChange, -log10(as.numeric(as.numeric(pvalue))))) +
   geom_point(aes(col=direction),
-             size=0.5,
+             size=0.8,
              show.legend = FALSE) +
   scale_color_manual(values=c("blue", "gray", "red")) +
   theme(axis.text.x = element_text(size=11),
         axis.text.y = element_text(size=11),
         text = element_text(size=11)) +
-        xlab("log2(FC)") +
-        ylab("-log10(Pvalue)") 
+        xlab("log2(Fold Change)") +
+        ylab("-log10(Pvalue)") + theme_bw() +
+        theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
+  #annotate("text",x=2.2,y=1.7,hjust = 0,label=" Total (FDR <=0.05) = 6678 \n Total Upregulated = 3138 \n Total Down Regulated = 3540 \n Log2FC > 1 = 120 \n Log2FC < -1 = 90", size = 3)  +
+dev.off()
+
+
+res2 <- res2[!(res2$padj=="#N/A"),]
+tiff("Volcano_plot_with_fdr.tiff",res=600, width = 7, height = 7, units = 'in')
+#png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot_with_pvalue.png", width=1300, height=500, res=120)
+
+ggplot(res2, aes(log2FoldChange, -log10(as.numeric(padj)))) +
+  geom_point(aes(col=direction),
+             size=0.8,
+             show.legend = FALSE) +
+  scale_color_manual(values=c("blue", "gray", "red")) +
+  theme(axis.text.x = element_text(size=11),
+        axis.text.y = element_text(size=11),
+        text = element_text(size=11)) +
+        xlab("log2(Fold Change)") +
+        ylab("-log10(fdr)") + theme_bw() +
+        theme(panel.border = element_blank(), panel.grid.major = element_blank(),panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
   #annotate("text",x=2.2,y=1.7,hjust = 0,label=" Total (FDR <=0.05) = 6678 \n Total Upregulated = 3138 \n Total Down Regulated = 3540 \n Log2FC > 1 = 120 \n Log2FC < -1 = 90", size = 3)  +
 dev.off()
 
