@@ -77,10 +77,11 @@ res1 <- as.data.frame(res)
 res1$direction <- ifelse(res1$log2FoldChange < -1, "down_regulated", 
                          ifelse(res1$log2FoldChange > 1, "up_regulated", "signif" ))
 
-tiff("Volcano_plot.tiff",res=600, width = 7, height = 7, units = 'in')
+res1 <- res1[!is.na(res1$pvalue), ]
 
-#png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot.png", width=1300, height=500, res=120)
-ggplot(res1, aes(effects, -log10(padj))) +
+tiff("Volcano_plot_with_pvalue.tiff",res=600, width = 7, height = 7, units = 'in')
+#png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot_with_pvalue.png", width=1300, height=500, res=120)
+ggplot(res1, aes(log2FoldChange, -log10(pvalue))) +
   geom_point(aes(col=direction),
              size=0.5,
              show.legend = FALSE) +
@@ -89,6 +90,10 @@ ggplot(res1, aes(effects, -log10(padj))) +
         axis.text.y = element_text(size=11),
         text = element_text(size=11)) +
         xlab("log2(FC)") +
-        ylab("-log10(FDR)") 
+        ylab("-log10(Pvalue)") 
   #annotate("text",x=2.2,y=1.7,hjust = 0,label=" Total (FDR <=0.05) = 6678 \n Total Upregulated = 3138 \n Total Down Regulated = 3540 \n Log2FC > 1 = 120 \n Log2FC < -1 = 90", size = 3)  +
 dev.off()
+
+
+
+
