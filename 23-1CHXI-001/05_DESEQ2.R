@@ -84,7 +84,7 @@ res1 <- res1[!is.na(res1$pvalue), ]
 tiff("Volcano_plot_with_pvalue.tiff",res=600, width = 7, height = 7, units = 'in')
 #png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot_with_pvalue.png", width=1300, height=500, res=120)
 
-ggplot(res1, aes(log2FoldChange, -log10(as.numeric(as.numeric(pvalue))))) +
+ggplot(res1, aes(log2FoldChange, -log10(as.numeric(pvalue)))) +
   geom_point(aes(col=direction),
              size=0.8,
              show.legend = FALSE) +
@@ -99,7 +99,7 @@ ggplot(res1, aes(log2FoldChange, -log10(as.numeric(as.numeric(pvalue))))) +
 dev.off()
 
 
-res2 <- res2[!(res2$padj=="#N/A"),]
+res2 <- res1[!(res1$padj=="#N/A"),]
 tiff("Volcano_plot_with_fdr.tiff",res=600, width = 7, height = 7, units = 'in')
 #png("/Users/shahina/Projects/20-1JOHO-001/plots/Volcano_plot_with_pvalue.png", width=1300, height=500, res=120)
 
