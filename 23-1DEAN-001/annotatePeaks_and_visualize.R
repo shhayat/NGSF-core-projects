@@ -29,9 +29,9 @@ names(BT549_df) <- NULL
 write.table(HCC1806_df,"/Users/shahina/Projects/23-1DEAN-001/chipr/HCC1806_optimal_filtered_v1.bed", row.names = FALSE, quote=FALSE, sep="\t")
 write.table(BT549_df,"/Users/shahina/Projects/23-1DEAN-001/chipr/BT549_optimal_filtered_v1.bed", row.names = FALSE, quote=FALSE, sep="\t")
 
-dir.create("/Users/shahina/Projects/23-1DEAN-001/peak_annotation")
-setwd("/Users/shahina/Projects/23-1DEAN-001/peak_annotation")
-samplefiles <- list.files("/Users/shahina/Projects/23-1DEAN-001/chipr", pattern="optimal_filtered_v1.bed", full.names=T)
+dir.create("/Users/shahina/Projects/2023_projects/23-1DEAN-001/peak_annotation")
+setwd("/Users/shahina/Projects/2023_projects/23-1DEAN-001/peak_annotation")
+samplefiles <- list.files("/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr", pattern="optimal_filtered_v1.bed", full.names=T)
 
 samplefiles <- as.list(samplefiles)
 names(samplefiles) <- c("BT549","HCC1806")
