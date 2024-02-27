@@ -14,7 +14,7 @@ export PATH=/globalhome/hxo752/HPC/tools/cellranger-7.1.0/bin:$PATH
 NCPUS=16
 RAM_MEMORY=128
 
-FASTQS=/datastore/NGSF001/projects/23-1ANFA-001/fastq_concatenated
+FASTQS=/datastore/NGSF001/projects/2023/23-1ANFA-001/fastq_concatenated
 REF=/datastore/NGSF001/analysis/references/cell_ranger_genome_builds/Bos_taurus_genome_index/
 OUTPUT=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/count_files
 mkdir -p ${OUTPUT}
