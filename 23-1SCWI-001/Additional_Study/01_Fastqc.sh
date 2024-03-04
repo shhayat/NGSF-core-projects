@@ -14,7 +14,5 @@ DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Addit
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/analysis
 mkdir -p ${OUTDIR}/fastqc
 
-fq1=$1; shift
-fq2=$1;
+fq1=$1; 
 fastqc -o ${OUTDIR}/fastqc --extract ${fq1}
-fastqc -o ${OUTDIR}/fastqc --extract ${fq2}
