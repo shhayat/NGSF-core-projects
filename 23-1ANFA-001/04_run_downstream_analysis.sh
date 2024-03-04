@@ -9,7 +9,7 @@
 set -eux
 
 module load r/4.3.1
-conda init bash
+source $HOME/.bashrc
 conda activate /globalhome/hxo752/HPC/anaconda3/envs/r-seurat
 
 #R CMD BATCH ${SCRIPT_DIR}/1_filter_low_Quality_reads.R
