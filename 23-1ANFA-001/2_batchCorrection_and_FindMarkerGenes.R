@@ -1,4 +1,4 @@
-setwd("/Users/shahina/Projects/23-1ANFA-001/")
+setwd("/datastore/NGSF001/projects/2023/23-1ANFA-001/analysis/")
 library(Seurat)
 library(harmony)
 
@@ -45,6 +45,7 @@ load("seuratobject_SC2300018.RData")
 SC2300018 <- seuratobject 
 SC2300018@meta.data$sample_name <- "loopM"
 
+setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/")
 
 #Check if there is batch effect by integrating different conditions/samples
 check_batch_effect_and_find_markers_per_cluster <- function(seuratList,condition_names, conds){
@@ -72,6 +73,10 @@ dev.off()
 
 #Find differentially Expressed genes per cluster
 markers <- FindAllMarkers(object = merged_seurat,logfc.threshold = 0.25)  
+
+  sprintf("UMAP_%s.pdf",conds)
+  write.table(markers, "/")
+  
 }
 #for these samples no batch correction was needed as the conditions were integrating well in UMAP 
 check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300016,SC2300018),c("loopC","loopC","loopM","loopM"),"LoopC_LoopM")
