@@ -74,8 +74,7 @@ dev.off()
 #Find differentially Expressed genes per cluster
 markers <- FindAllMarkers(object = merged_seurat,logfc.threshold = 0.25)  
 
-  sprintf("UMAP_%s.pdf",conds)
-  write.table(markers, "/")
+write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE)
   
 }
 #for these samples no batch correction was needed as the conditions were integrating well in UMAP 
