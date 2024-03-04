@@ -8,7 +8,7 @@ do
 
       fq1=${DATA}/${sample_name}.fastq.gz;
       
-      sbatch ${SCRIPT_DIR}/01_FastQC.sh "${fq1}"
+      sbatch ${SCRIPT_DIR}/01_Fastqc.sh "${fq1}"
  done
 
 
