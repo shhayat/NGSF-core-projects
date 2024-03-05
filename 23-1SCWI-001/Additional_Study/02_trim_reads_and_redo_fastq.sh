@@ -19,7 +19,7 @@ mkdir -p ${OUTDIR}
 
 for i in $DATA/SRR*.fastq.gz
 do
-        path="${i%*}";
+        path="${i%.fastq*}";
         sample_name=${path##*/};
    
         fastp -i ${DATA}/${sample_name}.fastq.gz \
