@@ -3,6 +3,12 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Add
 cd /globalhome/hxo752/HPC/tools
 multiqc ${DIR}/*_fastqc.zip -o ${OUTDIR} -n fastqc
 
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/analysis/fastqc_trimmed
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/analysis/multiqc
+cd /globalhome/hxo752/HPC/tools
+multiqc ${DIR}/*_fastqc.zip -o ${OUTDIR} -n fastqc_trimmed
+
+
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/analysis/star_alignment
 cd /globalhome/hxo752/HPC/tools
 multiqc ${DIR}/*/Log.final.out -o ${OUTDIR} -n alignment
