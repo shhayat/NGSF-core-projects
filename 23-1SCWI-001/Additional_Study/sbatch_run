@@ -4,9 +4,9 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001
 for i in ${DATA}/SRR*.fastq.gz 
 do
       path="${i%*}";
-      fq1=${path##*/};
+      sample_name=${path##*/};
 
-     #fq1=${DATA}/${sample_name}.fastq.gz;
+     fq1=${DATA}/${sample_name}.fastq.gz;
       
       sbatch ${SCRIPT_DIR}/01_Fastqc.sh "${fq1}"
  done
