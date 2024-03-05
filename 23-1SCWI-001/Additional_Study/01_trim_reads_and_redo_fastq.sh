@@ -15,7 +15,7 @@ conda activate trimmomatic
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq_trimmed
-
+#https://www-sciencedirect-com.cyber.usask.ca/science/article/pii/S0092867419301138?via%3Dihub
 trimmomatic SE \
           -phred33 input.fq.gz output.fq.gz \
           ILLUMINACLIP:TruSeq3-SE:2:30:10 \
