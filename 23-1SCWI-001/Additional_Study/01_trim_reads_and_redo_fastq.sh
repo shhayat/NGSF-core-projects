@@ -15,22 +15,22 @@ module load fastp
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq_trimmed
 
-mkdir -p ${OUTDIR}
+#mkdir -p ${OUTDIR}
 
-for i in $DATA/SRR*.fastq.gz
-do
-        path="${i%.fastq*}";
-        sample_name=${path##*/};
+#for i in $DATA/SRR*.fastq.gz
+#do
+     #   path="${i%.fastq*}";
+    #    sample_name=${path##*/};
    
-        fastp -i ${DATA}/${sample_name}.fastq.gz \
-              -o ${OUTDIR}/${sample_name}.fastq.gz \
-              -h ${OUTDIR}/${sample_name}.fastp.html
-done
+   #     fastp -i ${DATA}/${sample_name}.fastq.gz \
+  #            -o ${OUTDIR}/${sample_name}.fastq.gz \
+ #             -h ${OUTDIR}/${sample_name}.fastp.html
+#done
 
 wait
 
 module load fastqc
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/analysis/fastq_trimmed
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq_trimmed
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/analysis/fastqc_trimmed
 
 mkdir -p ${OUTDIR}
