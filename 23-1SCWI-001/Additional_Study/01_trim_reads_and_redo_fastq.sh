@@ -10,11 +10,19 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
-module load fastp
+source $HOME/bashrc
+conda activate trimmomatic
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq_trimmed
 
+trimmomatic SE \
+          -phred33 input.fq.gz output.fq.gz \
+          ILLUMINACLIP:TruSeq3-SE:2:30:10 \
+          LEADING:3 \
+          TRAILING:3 \
+          SLIDINGWINDOW:4:15 \
+          MINLEN:36
 #mkdir -p ${OUTDIR}
 
 #for i in $DATA/SRR*.fastq.gz
