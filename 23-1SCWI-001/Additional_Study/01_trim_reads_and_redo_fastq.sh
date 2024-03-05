@@ -5,7 +5,7 @@
 #SBATCH --job-name=fastp
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --time=00:40:00
+#SBATCH --time=02:00:00
 #SBATCH --mem=6G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
