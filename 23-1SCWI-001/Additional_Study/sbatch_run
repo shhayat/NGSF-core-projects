@@ -6,7 +6,7 @@ do
       path="${i%*}";
       sample_name=${path##*/};
 
-     fq1=${DATA}/${sample_name}.fastq.gz;
+     fq1=${DATA}/${sample_name}
       
       sbatch ${SCRIPT_DIR}/01_Fastqc.sh "${fq1}"
  done
