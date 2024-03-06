@@ -21,23 +21,23 @@ mkdir -p ${OUTDIR}
 mkdir -p ${OUTDIR1}
 NCPU=2
 
-conda activate cutadapt
+#conda activate cutadapt
 #remove polyA tails from reads
-for i in $DATA/SRR*.fastq.gz
-do
-         path="${i%.fastq*}";
-         sample_name=${path##*/};
-         cutadapt -a "A{7}" \
-                  -o ${OUTDIR}/${sample_name}_clipped.fastq.gz \
-                   ${DATA}/${sample_name}.fastq.gz
- done                  
-conda deactivate
+#for i in $DATA/SRR*.fastq.gz
+#do
+#         path="${i%.fastq*}";
+#         sample_name=${path##*/};
+#         cutadapt -a "A{7}" \
+#                  -o ${OUTDIR}/${sample_name}_clipped.fastq.gz \
+#                   ${DATA}/${sample_name}.fastq.gz
+# done                  
+#conda deactivate
 
 conda activate trimmomatic
 #quality trimming of reads
 for i in $OUTDIR/SRR*_clipped.fastq.gz
 do
-         path="${i%_clippedfastq*}";
+         path="${i%_clipped*}";
          sample_name=${path##*/};
           trimmomatic SE \
                      -threads $NCPU \
