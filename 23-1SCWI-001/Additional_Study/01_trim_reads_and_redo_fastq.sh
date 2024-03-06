@@ -32,7 +32,7 @@ do
                      TRAILING:15 \
                      MINLEN:35
 done
-
+conda deactivate
 wait
 
 module load fastqc
