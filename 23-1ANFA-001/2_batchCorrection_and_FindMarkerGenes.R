@@ -82,13 +82,15 @@ check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC23000
 #no batch correction needed
 check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300016),c("loopC","loopM"), "49_loopC_loopM")
 #no batch correction needed
+check_batch_effect_and_find_markers_per_cluster(list(SC2300017,SC2300018),c("loopC","loopM"), "48_loopC_loopM")
+#no batch correction needed
 check_batch_effect_and_find_markers_per_cluster(list(SC2300011,SC2300017),c("DPP1","loopC"), "48DPP1_49loopC")
 #no batch correction needed
 check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300013),c("loopC","DPP1"), "49_DPP1_loopC")
 #no batch correction needed
 check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300009,SC2300011,SC2300013),c("loopC","loopC","DPP1","DPP1","DPP1"),"LoopC_DPP1" )
 #batch correction needed
-check_batch_effect(list(SC2300009,SC2300011,SC2300013,SC2300010,SC2300012,SC2300014),c("DPP1","DPP1","DPP1","CPP1","CPP1","CPP1"), "DPP1_CPP1")
+#check_batch_effect(list(SC2300009,SC2300011,SC2300013,SC2300010,SC2300012,SC2300014),c("DPP1","DPP1","DPP1","CPP1","CPP1","CPP1"), "DPP1_CPP1")
 
 
 ############################################################################################################
