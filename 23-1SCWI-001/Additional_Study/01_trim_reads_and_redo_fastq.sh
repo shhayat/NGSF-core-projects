@@ -10,14 +10,16 @@
 #SBATCH --output=%j.out
 set -eux
 
-source $HOME/.bashrc
+#used parameter setting from paper sent by sccot https://www-sciencedirect-com.cyber.usask.ca/science/article/pii/S0092867419301138?via%3Dihub
 
+source $HOME/.bashrc
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq_trimmed
-#used parameter setting from paper sent by sccot https://www-sciencedirect-com.cyber.usask.ca/science/article/pii/S0092867419301138?via%3Dihub
-mkdir -p ${OUTDIR}
-NCPU=2
+OUTDIR1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/analysis/fastqc_trimmed
 
+mkdir -p ${OUTDIR}
+mkdir -p ${OUTDIR1}
+NCPU=2
 
 conda activate cutadapt
 #remove polyA tails from reads
@@ -33,9 +35,9 @@ conda deactivate
 
 conda activate trimmomatic
 #quality trimming of reads
-for i in $DATA/SRR*.fastq.gz
+for i in $OUTDIR/SRR*_clipped.fastq.gz
 do
-         path="${i%.fastq*}";
+         path="${i%_clippedfastq*}";
          sample_name=${path##*/};
           trimmomatic SE \
                      -threads $NCPU \
@@ -48,22 +50,25 @@ do
 done
 conda deactivate
 
-#adaptor_trimming of reads
-wait
+#wait
 
+#remove adaptors
+#module load fastp
+#for i in $DATA/SRR*.fastq.gz
+#do
+ #        path="${i%.fastq*}";
+  #       sample_name=${path##*/};
+   #    fastp -i ${OUTDIR}/${sample_name}_clipped_trimmed.fastq.gz \
+    #         -o ${OUTDIR}/${sample_name}_rm_adaptor.fastq.gz \
+     #        -h ${OUTDIR}/${sample_name}.fastp.html
+#done
+
+#wait
+
+#run fastqc
 module load fastqc
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq_trimmed
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/analysis/fastqc_trimmed
-
-mkdir -p ${OUTDIR}
-
-for fq in $DATA/SRR*.fastq.gz
+for fq in $OUTDIR/SRR*_clipped_trimmed.fastq.gz
 do
-   fastqc -o ${OUTDIR} --extract ${fq}
+   fastqc -o ${OUTDIR1} --extract ${fq}
    
 done 
-
-#wait 
-
-#cd /globalhome/hxo752/HPC/tools/
-#multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}
