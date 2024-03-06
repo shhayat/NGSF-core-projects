@@ -53,15 +53,15 @@ conda deactivate
 #wait
 
 #remove adaptors
-#module load fastp
-#for i in $DATA/SRR*.fastq.gz
-#do
- #        path="${i%.fastq*}";
-  #       sample_name=${path##*/};
-   #    fastp -i ${OUTDIR}/${sample_name}_clipped_trimmed.fastq.gz \
-    #         -o ${OUTDIR}/${sample_name}_rm_adaptor.fastq.gz \
-     #        -h ${OUTDIR}/${sample_name}.fastp.html
-#done
+module load fastp
+for i in $DATA/SRR*_clipped_trimmed.fastq.gz
+do
+         path="${i%_clipped_trimmed*}";
+         sample_name=${path##*/};
+         fastp -i ${OUTDIR}/${sample_name}_clipped_trimmed.fastq.gz \
+               -o ${OUTDIR}/${sample_name}_rm_adaptor.fastq.gz \
+               -h ${OUTDIR}/${sample_name}.fastp.html
+done
 
 #wait
 
