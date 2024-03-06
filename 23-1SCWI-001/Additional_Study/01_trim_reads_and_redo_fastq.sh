@@ -10,30 +10,25 @@
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
-source $HOME/bashrc
+source $HOME/.bashrc
 conda activate trimmomatic
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq_trimmed
-#https://www-sciencedirect-com.cyber.usask.ca/science/article/pii/S0092867419301138?via%3Dihub
-trimmomatic SE \
-          -phred33 input.fq.gz output.fq.gz \
-          ILLUMINACLIP:TruSeq3-SE:2:30:10 \
-          LEADING:3 \
-          TRAILING:3 \
-          SLIDINGWINDOW:4:15 \
-          MINLEN:36
-#mkdir -p ${OUTDIR}
-
-#for i in $DATA/SRR*.fastq.gz
-#do
-     #   path="${i%.fastq*}";
-    #    sample_name=${path##*/};
-   
-   #     fastp -i ${DATA}/${sample_name}.fastq.gz \
-  #            -o ${OUTDIR}/${sample_name}.fastq.gz \
- #             -h ${OUTDIR}/${sample_name}.fastp.html
-#done
+#used parameter setting from paper sent by sccot https://www-sciencedirect-com.cyber.usask.ca/science/article/pii/S0092867419301138?via%3Dihub
+mkdir -p ${OUTDIR}
+for i in $DATA/SRR*.fastq.gz
+do
+         path="${i%.fastq*}";
+         sample_name=${path##*/};
+          trimmomatic SE \
+                     -phred33 ${DATA}/${sample_name}.fastq.gz \
+                     ${OUTDIR}/${sample_name}.fastq.gz \
+                     ILLUMINACLIP:TruSeq3-SE:2:30:10 \
+                     LEADING:15 \
+                     TRAILING:15 \
+                     MINLEN:35
+done
 
 wait
 
