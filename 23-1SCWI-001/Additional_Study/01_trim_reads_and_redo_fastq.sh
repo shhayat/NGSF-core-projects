@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=fastp
+#SBATCH --job-name=trimmomatic
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --time=02:00:00
