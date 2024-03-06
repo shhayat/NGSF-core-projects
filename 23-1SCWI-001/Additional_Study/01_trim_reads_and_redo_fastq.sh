@@ -33,22 +33,22 @@ NCPU=2
 # done                  
 #conda deactivate
 
-conda activate trimmomatic
+#conda activate trimmomatic
 #quality trimming of reads
-for i in $OUTDIR/SRR*_clipped.fastq.gz
-do
-         path="${i%_clipped*}";
-         sample_name=${path##*/};
-          trimmomatic SE \
-                     -threads $NCPU \
-                     -phred33 \
-                     ${OUTDIR}/${sample_name}_clipped.fastq.gz \
-                     ${OUTDIR}/${sample_name}_clipped_trimmed.fastq.gz \
-                     LEADING:15 \
-                     TRAILING:15 \
-                     MINLEN:35
-done
-conda deactivate
+#for i in $OUTDIR/SRR*_clipped.fastq.gz
+#do
+ #        path="${i%_clipped*}";
+  #       sample_name=${path##*/};
+  #        trimmomatic SE \
+   #                  -threads $NCPU \
+   #                  -phred33 \
+   #                  ${OUTDIR}/${sample_name}_clipped.fastq.gz \
+   #                  ${OUTDIR}/${sample_name}_clipped_trimmed.fastq.gz \
+   #                  LEADING:15 \
+   #                  TRAILING:15 \
+   #                  MINLEN:35
+#done
+#conda deactivate
 
 #wait
 
@@ -63,11 +63,11 @@ do
                -h ${OUTDIR}/${sample_name}.fastp.html
 done
 
-#wait
+wait
 
 #run fastqc
 module load fastqc
-for fq in $OUTDIR/SRR*_clipped_trimmed.fastq.gz
+for fq in $OUTDIR/SRR*_rm_adaptor.fastq.gz
 do
    fastqc -o ${OUTDIR1} --extract ${fq}
    
