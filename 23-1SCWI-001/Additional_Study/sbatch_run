@@ -3,7 +3,7 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001
 
 for i in ${DATA}/SRR*.fastq.gz 
 do
-      path="${i%*}";
+      path="${i%.*}";
       sample_name=${path##*/};
 
      fq1=${DATA}/${sample_name}
@@ -12,12 +12,12 @@ do
  done
 
 
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study/fastq_trimmed
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1SCWI-001/Additional_Study
 
 for i in ${DATA}/SRR*.fastq.gz 
 do
-      path="${i%*}";
+      path="${i%.*}";
       sample_name=${path##*/};
 
       fq1=${DATA}/${sample_name}.fastq.gz;
