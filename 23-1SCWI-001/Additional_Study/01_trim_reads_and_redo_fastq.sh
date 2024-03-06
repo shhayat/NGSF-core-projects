@@ -24,7 +24,7 @@ for i in $DATA/SRR*.fastq.gz
 do
          path="${i%.fastq*}";
          sample_name=${path##*/};
-         cutadapt -a "A{7,}" \
+         cutadapt -a "A{7}" \
                   -o ${OUTDIR}/${sample_name}_clipped.fastq.gz \
                    ${DATA}/${sample_name}.fastq.gz
  done                  
