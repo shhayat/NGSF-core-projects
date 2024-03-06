@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=feature-count
+#SBATCH --job-name=seurat_run
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=15:00:00
