@@ -61,7 +61,7 @@ do
    
 done 
 
-wait 
+#wait 
 
-cd /globalhome/hxo752/HPC/tools/
-multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}
+#cd /globalhome/hxo752/HPC/tools/
+#multiqc ${OUTDIR}/*_fastqc.zip -o ${OUTDIR}
