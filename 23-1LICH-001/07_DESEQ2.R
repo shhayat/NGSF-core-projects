@@ -76,7 +76,7 @@ dev.off()
   
    resDF <- data.frame(GeneID=rownames(res),res)
    resDF <- merge(feature_annotation,resDF, by="GeneID")
-   resDF <- resDF[resDF$pvalue <= 0.05,]
+   #resDF <- resDF[resDF$pvalue <= 0.05,]
    resDF <- resDF[order(resDF$pvalue),]
    resDF$Fold_Change = ifelse(resDF$log2FoldChange > 0, 2 ^ resDF$log2FoldChange, -1 / (2 ^ resDF$log2FoldChange))
    write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_batch_adjusted_combatseq.xlsx",cond2,cond1), row.names = FALSE)
@@ -122,7 +122,7 @@ dds <- DESeqDataSetFromMatrix(countData=feature_count,
   
    resDF <- data.frame(GeneID=rownames(res),res)
    resDF <- merge(feature_annotation,resDF, by="GeneID")
-   resDF <- resDF[resDF$pvalue <= 0.05,]
+  # resDF <- resDF[resDF$pvalue <= 0.05,]
    resDF <- resDF[order(resDF$pvalue),]
    resDF$Fold_Change = ifelse(resDF$log2FoldChange > 0, 2 ^ resDF$log2FoldChange, -1 / (2 ^ resDF$log2FoldChange))
    write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
