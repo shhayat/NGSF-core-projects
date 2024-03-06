@@ -27,7 +27,7 @@ do
                      -phred33 \
                      ${DATA}/${sample_name}.fastq.gz \
                      ${OUTDIR}/${sample_name}.fastq.gz \
-                     ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 \
+                     ILLUMINACLIP:/globalhome/hxo752/HPC/anaconda3/envs/trimmomatic/share/trimmomatic/adapters/TruSeq3-SE.fa:2:30:10 \
                      LEADING:15 \
                      TRAILING:15 \
                      MINLEN:35
