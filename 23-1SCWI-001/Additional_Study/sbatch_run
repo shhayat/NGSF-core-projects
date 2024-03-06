@@ -20,7 +20,7 @@ do
       path="${i%.*}";
       sample_name=${path##*/};
 
-      fq1=${DATA}/${sample_name}.fastq.gz;
+      fq1=${DATA}/${sample_name}_clipped_trimmed.fastq.gz 
       sbatch ${SCRIPT_DIR}/02_mapping.sh "${sample_name}" "${fq1}"
  done
 
