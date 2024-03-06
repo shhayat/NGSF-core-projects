@@ -54,7 +54,7 @@ NCPU=2
 
 #remove adaptors
 module load fastp
-for i in $DATA/SRR*_clipped_trimmed.fastq.gz
+for i in $OUTDIR/SRR*_clipped_trimmed.fastq.gz
 do
          path="${i%_clipped_trimmed*}";
          sample_name=${path##*/};
