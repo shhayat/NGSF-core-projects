@@ -8,7 +8,8 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
-module load r/4.3.1
+module load r/4.3.2
+#module load r/4.3.1
 source $HOME/.bashrc
 conda activate /globalhome/hxo752/HPC/anaconda3/envs/r-seurat
 
