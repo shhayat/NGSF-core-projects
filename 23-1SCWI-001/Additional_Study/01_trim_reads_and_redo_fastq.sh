@@ -20,6 +20,7 @@ NCPU=2
 
 
 conda activate cutadapt
+#remove polyA tails
 for i in $DATA/SRR*.fastq.gz
 do
          path="${i%.fastq*}";
