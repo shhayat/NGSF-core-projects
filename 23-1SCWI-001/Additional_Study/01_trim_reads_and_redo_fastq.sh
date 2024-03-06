@@ -10,6 +10,7 @@
 #SBATCH --output=%j.out
 set -eux
 
+NCPU=2
 source $HOME/.bashrc
 conda activate trimmomatic
 
@@ -22,9 +23,11 @@ do
          path="${i%.fastq*}";
          sample_name=${path##*/};
           trimmomatic SE \
-                     -phred33 ${DATA}/${sample_name}.fastq.gz \
+                     -threads $NCPU \
+                     -phred33 \
+                     ${DATA}/${sample_name}.fastq.gz \
                      ${OUTDIR}/${sample_name}.fastq.gz \
-                     ILLUMINACLIP:TruSeq3-SE:2:30:10 \
+                     ILLUMINACLIP:TruSeq3-SE.fa:2:30:10 \
                      LEADING:15 \
                      TRAILING:15 \
                      MINLEN:35
