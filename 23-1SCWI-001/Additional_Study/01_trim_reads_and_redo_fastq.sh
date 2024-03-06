@@ -20,7 +20,7 @@ NCPU=2
 
 
 conda activate cutadapt
-#remove polyA tails
+#remove polyA tails from reads
 for i in $DATA/SRR*.fastq.gz
 do
          path="${i%.fastq*}";
@@ -32,7 +32,7 @@ do
 conda deactivate
 
 conda activate trimmomatic
-
+#quality trimming of reads
 for i in $DATA/SRR*.fastq.gz
 do
          path="${i%.fastq*}";
@@ -48,6 +48,7 @@ do
 done
 conda deactivate
 
+#adaptor_trimming of reads
 wait
 
 module load fastqc
