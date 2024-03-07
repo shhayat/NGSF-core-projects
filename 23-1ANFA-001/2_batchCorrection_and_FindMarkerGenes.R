@@ -127,6 +127,8 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
                                reduction = "harmony", 
                                assay = "SCT", dims = 1:40)
   
+  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
+
   harmonized_seurat <- FindNeighbors(object = harmonized_seurat, 
                                      reduction = "harmony")
   harmonized_seurat <- FindClusters(harmonized_seurat, 
