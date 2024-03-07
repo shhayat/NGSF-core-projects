@@ -133,8 +133,15 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
                                     resolution = c(0.2, 0.4, 0.6, 0.8, 1.0, 1.2))
   
   after <- DimPlot(harmonized_seurat, group.by="sample_name")
+  
+  pdf(sprintf("UMAP_before_and_after_%s.pdf",conds))
+  par(mfrow = c(1, 2))
+  before 
+  after
+  dev.off()
+  
   pdf(sprintf("UMAP_%s.pdf",conds))
-  DimPlot(merged_seurat, group.by="sample_name")
+  DimPlot(harmonized_seurat, group.by="sample_name")
   dev.off()
   save(harmonized_seurat, file="harmonized_seurat_object.RData")
   
