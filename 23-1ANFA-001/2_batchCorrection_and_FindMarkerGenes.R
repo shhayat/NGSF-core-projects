@@ -99,7 +99,7 @@ check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC23000
 #Batch correction was done for list(SC2300009,SC2300011,SC2300013,SC2300010,SC2300012,SC2300014)
 ############################################################################################################
 #Check if there is batch effect by integrating different conditions/samples
-batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_names){
+batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_names, conds){
   seurat_list1=seuratList
   
   #First merge samples which needs to be compared
@@ -145,7 +145,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   pdf(sprintf("UMAP_%s.pdf",conds))
   DimPlot(harmonized_seurat, group.by="sample_name")
   dev.off()
-  save(harmonized_seurat, file="harmonized_seurat_object.RData")
+  #save(harmonized_seurat, file="harmonized_seurat_object.RData")
 
   harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
 
