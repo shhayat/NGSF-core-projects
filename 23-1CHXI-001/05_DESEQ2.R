@@ -59,9 +59,28 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2,str)
   
   #write.xlsx(resDF1,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s.xlsx",cond2,cond1, str), row.names = FALSE)
   write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_%s_all_genes.xlsx",cond2,cond1, str), row.names = FALSE)
+
+  dds <- estimateSizeFactors(dds)
+  norm.expr <- counts(dds, normalized=TRUE)
+  norm.expr <- as.data.frame(norm.expr)
+  norm.expr <- data.frame(rownames(norm.expr),norm.expr)
+  colnames(norm.expr) <- c("GeneID","gene_name","H17","H18","H19","H20","H21","H22","C18","C19","C20","C21","C22","C23")
+  norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
+  write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s_normalized_counts.xlsx",cond2,cond1), row.names = FALSE)
+
 }
 DEG_analysis(c(9,10,11,12,13,14,3,4,5,6,7,8),"CONTROL","HFD","CONTROL",6,6, "all_sample")
-DEG_analysis(c(10,11,13,14,4,5,6,7,8),"CONTROL","HFD","CONTROL",4,5,"filtered_sample")
+#DEG_analysis(c(10,11,13,14,4,5,6,7,8),"CONTROL","HFD","CONTROL",4,5,"filtered_sample")
+
+
+
+
+
+
+
+
+
+
 
 
 
