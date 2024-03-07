@@ -39,9 +39,9 @@ group <- data.frame(sample_group=sampleInfo$sample_group,batch_number=sampleInfo
 #COMBAT_SEQ (batch adjusted and plotted pca)
 ############################################
 pdf(sprintf("PCA_%s_%s_batch_adjusted_combatseq.pdf",cond2,cond1), width=8,height=8)
-
-adjusted_counts <- ComBat_seq(feature_count, batch=sampleInfo$batch_number, group=sampleInfo$sample_group)
+adjusted_counts <- ComBat_seq(as.matrix(feature_count), batch=sampleInfo$batch_number, group=sampleInfo$sample_group)
 #pc_data <- prcomp(combat_data)
+
 pca_result <- prcomp(t(adjusted_counts), scale. = FALSE)
 pc_data <- as.data.frame(pca_result$x)
 
@@ -53,7 +53,7 @@ pc_data$Batch <- sampleInfo$batch_number
 pc_data$sample_group <- sampleInfo$sample_group
 pc_data$sample_name <- sampleInfo$sample_name
 nudge=position_nudge(y = 0.5)
-p <- ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)) +
+ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)) +
   geom_point(size = 3) +
   ggtitle("PCA with ComBat_seq Adjusted Counts") +
   xlab(paste0("PC1: ",pc_variances[1],"% variance")) +
@@ -62,8 +62,8 @@ p <- ggplot(pc_data, aes(x = PC1 , y = PC2, color = sample_group, shape = Batch)
   scale_shape_discrete(name = "Batch") +
   theme_minimal() + 
   geom_text(aes_string(label = "sample_name"), color="black",  position=nudge , size=2.0)
-  print(p)
 dev.off()
+
 
   dds <- DESeqDataSetFromMatrix(countData=adjusted_counts,
                                 colData=group,
