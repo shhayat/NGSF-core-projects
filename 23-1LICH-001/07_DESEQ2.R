@@ -1,4 +1,4 @@
-setwd("/Users/shahina/Projects/23-1LICH-001")
+setwd("/Users/shahina/Projects/2023_projects/23-1LICH-001")
 #setwd("/Users/hxo752/Desktop/core-projects/23-1LICH-001/")
 library("DESeq2")
 library("ggplot2")
