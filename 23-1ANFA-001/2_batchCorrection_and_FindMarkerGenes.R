@@ -71,6 +71,8 @@ pdf(sprintf("UMAP_%s.pdf",conds))
 DimPlot(merged_seurat, group.by="sample_name")
 dev.off()
 
+merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
+
 #Find differentially Expressed genes per cluster
 markers <- FindAllMarkers(object = merged_seurat,logfc.threshold = 0.25)  
 
@@ -127,8 +129,6 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
                                reduction = "harmony", 
                                assay = "SCT", dims = 1:40)
   
-  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
-
   harmonized_seurat <- FindNeighbors(object = harmonized_seurat, 
                                      reduction = "harmony")
   harmonized_seurat <- FindClusters(harmonized_seurat, 
@@ -146,8 +146,12 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   DimPlot(harmonized_seurat, group.by="sample_name")
   dev.off()
   save(harmonized_seurat, file="harmonized_seurat_object.RData")
+
+  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
+
+  #Find differentially Expressed genes per cluster
+  markers <- FindAllMarkers(object = harmonized_seurat, logfc.threshold = 0.25)  
+  write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE)
   
 }
 batch_correction_and_find_markers_per_cluster(list(SC2300009,SC2300011,SC2300013,SC2300010,SC2300012,SC2300014),c("DPP1","DPP1","DPP1","CPP1","CPP1","CPP1"), "DPP1_CPP1")
-
-#load("harmonized_seurat_object.RData")
