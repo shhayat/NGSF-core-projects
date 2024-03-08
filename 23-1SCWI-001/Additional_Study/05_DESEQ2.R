@@ -1,4 +1,4 @@
-setwd("/Users/shahina/Projects/23-1SCWI-001/Additional_Study")
+setwd("/Users/shahina/Projects/2023_projects/23-1SCWI-001/Additional_Analysis/")
 
 library("DESeq2")
 library("ggplot2")
