@@ -8,8 +8,9 @@ dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE)
 
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
-colnames(feature_count) <- c("geneID","gene_name","1M","2M","3M","4M","5M","6M","7M","8M","9M","10M","11M","12M",
-                            "1F","2F","3F","4F","5F","6F","7F","8F","9F","10F","11F","12F")
+colnames(feature_count) <- ccolnames(feature_count) <- c("geneID","gene_name","RT_0_1", "RT_0_2", "RT_0_3","RT_0_4","RT_4_1","RT_4_2",
+                                                         "RT_4_3","RT_4_4","RT_12_1","RT_12_2","RT_12_3","RT_12_4","RT_12_5","RT_24_1",
+                                                         "RT_24_2","RT_24_3","RT_24_4","RT_24_5"))
 #remove number after decimal point from ensembl ID
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
