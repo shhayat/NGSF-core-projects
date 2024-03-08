@@ -74,10 +74,13 @@ dev.off()
 
 merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
-#Find differentially Expressed genes per cluster
-markers <- FindAllMarkers(object = merged_seurat,logfc.threshold = 0.25)  
-
+#Find differentially Expressed genes per cluster p val <=0.05
+markers <- FindAllMarkers(object = merged_seurat, logfc.threshold = 0.25,return.thresh=0.05)  
 write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE)
+
+#calculate AUC
+markers <- FindAllMarkers(object = merged_seurat, logfc.threshold = 0.25, test.use="roc")  
+write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE)
   
 }
 #for these samples no batch correction was needed as the conditions were integrating well in UMAP 
@@ -150,9 +153,14 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
 
   harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
 
-  #Find differentially Expressed genes per cluster
-  markers <- FindAllMarkers(object = harmonized_seurat, logfc.threshold = 0.25)  
+  #Find differentially Expressed genes per cluster p val <=0.05
+  markers <- FindAllMarkers(object = harmonized_seurat, logfc.threshold = 0.25,return.thresh=0.05)  
   write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE)
-  
+
+  #calculate AUC
+  markers <- FindAllMarkers(object = harmonized_seurat, logfc.threshold = 0.25, test.use="roc")  
+  write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE)
+
+
 }
 batch_correction_and_find_markers_per_cluster(list(SC2300009,SC2300011,SC2300013,SC2300010,SC2300012,SC2300014),c("DPP1","DPP1","DPP1","CPP1","CPP1","CPP1"), "DPP1_CPP1")
