@@ -12,9 +12,9 @@ feature_count <- as.data.frame(feature_count)
 #your first columns which are gene id and gene name
 feature_annotation <- data.frame(GeneID=feature_count$GeneID,gene_name=feature_count[2])
 colnames(feature_count) <- c("GeneID","gene_name","H17","H18","H19","H20","H21","H22","C18","C19","C20","C21","C22","C23")
-  write.xlsx(feature_count,file="DESEQ2/raw_counts.xlsx", row.names = FALSE)
+feature_count <- feature_count[rowSums(feature_count[,c(3:ncol(feature_count))])>0, ]
 
-write.xlsx(feature_count,file=sprintf("DESEQ2/DEG_%s_vs_%s_normalized_counts.xlsx",cond2,cond1), row.names = FALSE)
+  write.xlsx(feature_count,file="DESEQ2/raw_counts.xlsx", row.names = FALSE)
 
 DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2,str)
 {
@@ -67,9 +67,9 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2,str)
   norm.expr <- counts(dds, normalized=TRUE)
   norm.expr <- as.data.frame(norm.expr)
   norm.expr <- data.frame(rownames(norm.expr),norm.expr)
-  colnames(norm.expr) <- c("GeneID","gene_name","H17","H18","H19","H20","H21","H22","C18","C19","C20","C21","C22","C23")
+  colnames(norm.expr) <- c("GeneID","H17","H18","H19","H20","H21","H22","C18","C19","C20","C21","C22","C23")
   norm_counts <- merge(feature_annotation,norm.expr, by="GeneID")
-  write.xlsx(resDF,file="DESEQ2/DEG_normalized_counts.xlsx", row.names = FALSE)
+  write.xlsx(norm_counts,file="DESEQ2/DEG_normalized_counts.xlsx", row.names = FALSE)
 
 }
 DEG_analysis(c(9,10,11,12,13,14,3,4,5,6,7,8),"CONTROL","HFD","CONTROL",6,6, "all_sample")
