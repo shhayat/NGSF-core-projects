@@ -64,6 +64,8 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref,rep_cond1,rep_cond2)
 
 }
 DEG_analysis(c(3:6,7:10),"0hrs","4hrs","0hrs",4,4)
+DEG_analysis(c(3:6,11:15),"0hrs","12hrs","0hrs",4,5)
+DEG_analysis(c(3:6,16:20),"0hrs","24hrs","0hrs",4,5)
 
 
 
