@@ -18,7 +18,7 @@ rownames(feature_count) <- geneID
 #your first columns which are gene id and gene name
 feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
 
-DEG_analysis <-  function(colnum,cond1, cond2, ref)
+DEG_analysis <-  function(colnum,cond1, cond2, ref,rep_cond1,rep_cond2)
 {
   feature_count <- feature_count[colnum]
   #keep row with sum greater than 1
