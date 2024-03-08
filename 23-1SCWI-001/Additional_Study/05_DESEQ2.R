@@ -42,7 +42,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref,rep_cond1,rep_cond2)
   ##########
 #gernate rlog for PCA
   rld <-rlog(dds,blind=FALSE)
-  pdf(sprintf("PCA_%s_%s_%s_%s.pdf",cond2,cond1), width=8,height=8)
+  pdf(sprintf("PCA_%s_vs_%s.pdf",cond2,cond1), width=8,height=8)
    nudge <- position_nudge(y = 0.8)
    p <- plotPCA(rld,intgroup=c("sample_group"))  
    p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
@@ -60,7 +60,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref,rep_cond1,rep_cond2)
 
  # resDF <- resDF[resDF$pvalue <= 0.05,]
   #All Genes
-  write.xlsx(resDF,file=sprintf("DESEQ2/%s_DEG_%s_vs_%s_%s.xlsx",str,cond2,cond1), row.names = FALSE)
+  write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
 
 }
 DEG_analysis(c(3:6,7:10),"0hrs","4hrs","0hrs",4,4)
