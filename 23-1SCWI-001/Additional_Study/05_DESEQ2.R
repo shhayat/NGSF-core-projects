@@ -8,9 +8,9 @@ dir.create("DESEQ2", recursive=TRUE, showWarnings = FALSE)
 
 load("feature_count.RData")
 feature_count <- as.data.frame(feature_count)
-colnames(feature_count) <- ccolnames(feature_count) <- c("geneID","gene_name","RT_0_1", "RT_0_2", "RT_0_3","RT_0_4","RT_4_1","RT_4_2",
+colnames(feature_count) <- c("geneID","gene_name","RT_0_1", "RT_0_2", "RT_0_3","RT_0_4","RT_4_1","RT_4_2",
                                                          "RT_4_3","RT_4_4","RT_12_1","RT_12_2","RT_12_3","RT_12_4","RT_12_5","RT_24_1",
-                                                         "RT_24_2","RT_24_3","RT_24_4","RT_24_5"))
+                                                         "RT_24_2","RT_24_3","RT_24_4","RT_24_5")
 #remove number after decimal point from ensembl ID
 geneID <- gsub(".[0-9]*$", "", rownames(feature_count))
 rownames(feature_count) <- geneID
@@ -18,7 +18,7 @@ rownames(feature_count) <- geneID
 #your first columns which are gene id and gene name
 feature_annotation <- data.frame(GeneID=geneID,gene_name=feature_count[2])
 
-DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str1)
+DEG_analysis <-  function(colnum,cond1, cond2, ref)
 {
   feature_count <- feature_count[colnum]
   #keep row with sum greater than 1
@@ -42,7 +42,7 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str
   ##########
 #gernate rlog for PCA
   rld <-rlog(dds,blind=FALSE)
-  pdf(sprintf("PCA_%s_%s_%s_%s.pdf",cond2,cond1,str,str1), width=8,height=8)
+  pdf(sprintf("PCA_%s_%s_%s_%s.pdf",cond2,cond1), width=8,height=8)
    nudge <- position_nudge(y = 0.8)
    p <- plotPCA(rld,intgroup=c("sample_group"))  
    p <- p + geom_text(aes_string(label = "name"), color="black", position = nudge, size=2.8)
@@ -58,20 +58,14 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref, rep_cond1,rep_cond2, str,str
   log2FC <- resDF$log2FoldChange
   resDF$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
 
-  #resDF1 <- resDF[resDF$pvalue <= 0.05,]
+ # resDF <- resDF[resDF$pvalue <= 0.05,]
   #All Genes
-  write.xlsx(resDF,file=sprintf("DESEQ2/%s_DEG_%s_vs_%s_%s.xlsx",str,cond2,cond1,str1), row.names = FALSE)
+  write.xlsx(resDF,file=sprintf("DESEQ2/%s_DEG_%s_vs_%s_%s.xlsx",str,cond2,cond1), row.names = FALSE)
 
 }
-DEG_analysis(c(4,7,10,13,16,19,22,25,3,6,9,12,15,18,21,24),"GFP","CRE","GFP",8,8,"Males_Females","all_samples")
-DEG_analysis(c(4,7,10,13,16,19,22,25,5,8,11,14,17,20,23,26),"GFP","HnRF1","GFP",8,8,"Males_Females","all_samples")
-#DEG_analysis(c(4,7,10,13,16,19,22,25,5,14,17,20,23,26),"GFP","HnRF1","GFP",8,6,"Males_Females","excluded_2samples")
-#DEG_analysis(c(7,10,13,16,19,22,25,3,6,12,15,18,21,24),"GFP","CRE","GFP",7,7,"Males_Females","excluded_2samples")
+DEG_analysis(c(3:6,7:10),"0hrs","4hrs","0hrs",4,4)
 
-#DEG_analysis(c(4,7,10,13,3,6,9,12),"GFP","CRE","GFP",4,4,"Males","all_samples")
-#DEG_analysis(c(16,19,22,25,15,18,21,24),"GFP","CRE","GFP",4,4,"Females","all_samples")
-#DEG_analysis(c(4,7,10,13,5,8,11,14),"GFP","HnRF1","GFP",4,4,"Males","all_samples")
-#DEG_analysis(c(16,19,22,25,17,20,23,26),"GFP","HnRF1","GFP",4,4,"Females","all_samples")
+
 
 
 #GET RAW COUNTS
