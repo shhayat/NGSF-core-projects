@@ -148,7 +148,7 @@ DEG_analysis(c(7,13,8,25),"A3H_U1","A3H_I4","A3H_U1",2,2)
 
 
 #A3B_I2 vs A3B_U1 (n=4)
-DEG_analysis(c(),"A3B_U1","A3B_I2","A3B_U1",2,2)
+DEG_analysis(c(18,26,19,20),"A3B_U1","A3B_I2","A3B_U1",2,2)
 
 
 
