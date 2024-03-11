@@ -28,10 +28,9 @@ edgeR_analysis <-  function(colnum,cond1, cond2, ref)
   df <- et$table
   resDF <- data.frame(GeneID=rownames(df),df)
   resDF1 <- merge(feature_annotation,resDF, by="GeneID")
-  resDF2 <- resDF1[resDF1$PValue <= 0.05,]
-  #All genes
-  write.xlsx(resDF2,file=sprintf("DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
-  
+ # resDF2 <- resDF1[resDF1$PValue <= 0.05,]
+  #write.xlsx(resDF2,file=sprintf("DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
+  write.xlsx(resDF1,file=sprintf("DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
 }
 
 #A3A_I5 vs A3A_U6 (n=2)
