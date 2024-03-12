@@ -54,11 +54,12 @@ DEG_analysis <-  function(colnum,cond1, cond2, ref,rep_cond1,rep_cond2)
   
   resDF <- data.frame(GeneID=rownames(res),res)
   resDF <- merge(feature_annotation,resDF, by="GeneID")
-  resDF <- resDF[order(resDF$pvalue),]
   log2FC <- resDF$log2FoldChange
   resDF$Fold_Change = ifelse(log2FC > 0, 2 ^ log2FC, -1 / (2 ^ log2FC))
 
- # resDF <- resDF[resDF$pvalue <= 0.05,]
+  resDF <- resDF[resDF$pvalue <= 0.05,]
+  resDF <- resDF[order(resDF$pvalue),]
+
   #All Genes
   write.xlsx(resDF,file=sprintf("DESEQ2/DEG_%s_vs_%s.xlsx",cond2,cond1), row.names = FALSE)
 
