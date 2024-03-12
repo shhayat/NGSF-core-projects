@@ -2,6 +2,7 @@ setwd("/datastore/NGSF001/projects/2023/23-1ANFA-001/analysis/")
 library(Seurat)
 library(harmony)
 library(presto)
+library(xlsx)
 
 load("seuratobject_SC2300009.RData")
 SC2300009 <- seuratobject 
