@@ -76,11 +76,11 @@ dev.off()
 merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
 #Find differentially Expressed genes per cluster p val <=0.05
-markers <- FindAllMarkers(object = merged_seurat, logfc.threshold = 0.25,return.thresh=0.05)  
+markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
 write.xlsx(markers,file=sprintf("%s_marker_genes.xlsx",conds), row.names = FALSE)
 
 #calculate AUC
-markers <- FindAllMarkers(object = merged_seurat, logfc.threshold = 0.25, test.use="roc")  
+markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
 write.xlsx(markers,file=sprintf("%s_marker_genes_auc_calculated.xlsx",conds), row.names = FALSE)
 
   
@@ -156,11 +156,11 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
 
   #Find differentially Expressed genes per cluster p val <=0.05
-  markers <- FindAllMarkers(object = harmonized_seurat, logfc.threshold = 0.25,return.thresh=0.05)  
+  markers <- FindAllMarkers(object = harmonized_seurat,return.thresh=0.05)  
   write.xlsx(markers,file=sprintf("%s_marker_genes.xlsx",conds), row.names = FALSE)
 
   #calculate AUC
-  markers <- FindAllMarkers(object = harmonized_seurat, logfc.threshold = 0.25, test.use="roc")  
+  markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
   write.xlsx(markers,file=sprintf("%s_marker_genes_auc_calculated.xlsx",conds), row.names = FALSE)
 
 
