@@ -157,7 +157,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
 
   #Find differentially Expressed genes per cluster p val <=0.05
-  markers <- FindAllMarkers(object = harmonized_seurat,return.thresh=0.05)  
+  markers <- FindAllMarkers(object = harmonized_seurat)  
   write.xlsx(markers,file=sprintf("%s_marker_genes.xlsx",conds), row.names = FALSE)
 
   #calculate AUC
