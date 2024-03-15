@@ -202,6 +202,7 @@ setwd("/Users/shahina/Projects/23-1CHXI-001")
 library("DESeq2")
 library("ggplot2")
 library("xlsx")
+library("pheatmap")
 
 
 load("feature_count.RData")
@@ -229,18 +230,18 @@ feature_count1 <- feature_count[c(9,10,11,12,13,14,3,4,5,6,7,8)]
 norm.expr <- data.frame(Gene=feature_count$gene_name, norm.expr)
 colnames(norm.expr) <- c("Gene",names(feature_count1[,1:12]))
 
-norm.expr <- norm.expr[grep("^(acox2|ddlr)$", norm.expr$Gene,ignore.case = TRUE), ]
+norm.expr <- norm.expr[grep("^(AP2M1|APOA4|APOC2|CLTA|CLTC|CREB3L3|CUBN|HDLBP|LDLR|LIPA|MTTP|P4HB|RPS27A|SAR1B|UBC|ACOX1|ACOX2|ALDH3A2|HSD17B4|SCP2|ACAA1|ACAA2|ACSL3|CPT1A|PLIN2|PLIN3)$", norm.expr$Gene,ignore.case = TRUE), ]
   
-norm.expr1 <- norm.expr[,-1]
-rownames(norm.expr1) <-  make.names(norm.expr1[,1],TRUE)
+rownames(norm.expr) <-  make.names(norm.expr[,1],TRUE)
+colnames(norm.expr) <- c("Gene","C18","C19","C20","C21","C22","C23","H17","H18","H19","H20","H21","H22")  
+norm.expr <- norm.expr[,-1]
 
-  
 bwcolor = grDevices::colorRampPalette(c("yellow","grey", "blue"))
 
   
 pdf("Heatmap.pdf")
 pheatmap(
-      norm.expr1,
+      norm.expr,
       clustering_dist_rows = "correlation",
       scale      = 'row',
       cellheight = 8,
