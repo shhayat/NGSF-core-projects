@@ -76,7 +76,8 @@ dev.off()
 merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
 #Find differentially Expressed genes per cluster p val <=0.05
-markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
+#markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
+markers <- FindAllMarkers(object = merged_seurat)  
 write.xlsx(markers,file=sprintf("%s_marker_genes.xlsx",conds), row.names = FALSE)
 
 #calculate AUC
