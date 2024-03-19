@@ -81,8 +81,9 @@ markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)
 write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE)
 
 #calculate AUC
-#markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
-#write.xlsx(markers,file=sprintf("%s_marker_genes_auc_calculated.xlsx",conds), row.names = FALSE)
+markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
+write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE, quote=FALSE)
+
 
   
 }
@@ -157,8 +158,8 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE)
 
   #calculate AUC
-  #markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
-  #write.xlsx(markers,file=sprintf("%s_marker_genes_auc_calculated.xlsx",conds), row.names = FALSE)
+  markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
+  write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE, quote=FALSE)
 
 
 }
