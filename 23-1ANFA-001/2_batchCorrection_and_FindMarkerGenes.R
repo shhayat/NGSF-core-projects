@@ -78,7 +78,7 @@ merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 #Find differentially Expressed genes per cluster p val <=0.05
 #markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
 markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
-write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE)
+write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE)
 
 #calculate AUC
 #markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
@@ -154,7 +154,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
 
   #Find differentially Expressed genes per cluster p val <=0.05
   markers <- FindAllMarkers(object = harmonized_seurat,return.thresh=0.05)  
-  write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE)
+  write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE)
 
   #calculate AUC
   #markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
