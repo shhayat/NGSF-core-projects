@@ -1,4 +1,4 @@
-setwd("/Users/shahina/Projects/23-1ARMA-002/")
+setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis")
 #scType for annotating https://github.com/IanevskiAleksandr/sc-type?tab=readme-ov-file
 
 library(Seurat)
@@ -7,9 +7,8 @@ library(magrittr)
 library(glmGamPoi)
 library(ggplot2)
 
-
 #Load SC2300019
-patient.data <- Read10X(data.dir = "Count_files/SC2300019/filtered_feature_bc_matrix/")
+patient.data <- Read10X(data.dir = "count_files/SC2300019/filtered_feature_bc_matrix/")
 
 # Initialize the Seurat object with the raw (non-normalized data).
 seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.cells = 3, min.features = 200)
@@ -174,7 +173,7 @@ percentage_table <- prop.table(cluster_table) * 100
 ############################################################################################################################
 
 #Load SC2300020
-patient.data <- Read10X(data.dir = "Count_files/SC2300020/filtered_feature_bc_matrix/")
+patient.data <- Read10X(data.dir = "count_files/SC2300020/filtered_feature_bc_matrix/")
 
 # Initialize the Seurat object with the raw (non-normalized data).
 seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.cells = 3, min.features = 200)
@@ -333,7 +332,7 @@ tissue_guess = auto_detect_tissue_type(path_to_db_file = db_, seuratObject = seu
 ############################################################################################################################
 
 #Load SC2300021
-patient.data <- Read10X(data.dir = "Count_files/SC2300021/filtered_feature_bc_matrix/")
+patient.data <- Read10X(data.dir = "count_files/SC2300021/filtered_feature_bc_matrix/")
 
 # Initialize the Seurat object with the raw (non-normalized data).
 seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.cells = 3, min.features = 200)
@@ -490,7 +489,7 @@ dev.off()
 
 ###################################################################################################################################
 #Load SC2300022
-patient.data <- Read10X(data.dir = "Count_files/SC2300022/filtered_feature_bc_matrix/")
+patient.data <- Read10X(data.dir = "count_files/SC2300022/filtered_feature_bc_matrix/")
 
 # Initialize the Seurat object with the raw (non-normalized data).
 seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.cells = 3, min.features = 200)
