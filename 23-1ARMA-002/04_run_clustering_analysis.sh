@@ -10,5 +10,4 @@ set -eux
 
 module load r/4.3.1
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002
-R CMD BATCH ${SCRIPT_DIR}/Clustering_Analysis.R
-conda deactivate
+R CMD BATCH ${SCRIPT_DIR}/Cluster_Analysis.R
