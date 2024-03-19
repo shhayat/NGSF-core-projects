@@ -68,10 +68,10 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 #Perform dimensional reduction by UMAP
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
 #plot UMAP
-pdf(sprintf("UMAP_%s.pdf",conds))
-  p1 <- DimPlot(merged_seurat, group.by="sample_name")
-  print(p1)
-dev.off()
+#pdf(sprintf("UMAP_%s.pdf",conds))
+#  p1 <- DimPlot(merged_seurat, group.by="sample_name")
+#  print(p1)
+#dev.off()
 
 merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
@@ -143,11 +143,11 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   
   after <- DimPlot(harmonized_seurat, group.by="sample_name")
   
-  pdf(sprintf("UMAP_%s_before_and_after_batch_correction.pdf",conds))
-    par(mfrow = c(1, 2))
-    print(before) 
-    print(after)
-  dev.off()
+ # pdf(sprintf("UMAP_%s_before_and_after_batch_correction.pdf",conds))
+ #   par(mfrow = c(1, 2))
+ #   print(before) 
+ #   print(after)
+ # dev.off()
   
 
   harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
