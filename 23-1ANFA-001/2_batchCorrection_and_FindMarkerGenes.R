@@ -69,7 +69,7 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
 #plot UMAP
 pdf(sprintf("UMAP_%s.pdf",conds))
-  p1 <- DimPlot(merged_seurat, group.by="sample_name",do.label=TRUE)
+  p1 <- DimPlot(merged_seurat, group.by="sample_name",label=TRUE)
   print(p1)
 dev.off()
 
@@ -136,7 +136,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   harmonized_seurat <- FindClusters(harmonized_seurat, 
                                     resolution = c(0.2, 0.4, 0.6, 0.8, 1.0, 1.2))
 
-  after <- DimPlot(harmonized_seurat, group.by="sample_name",do.label=TRUE)
+  after <- DimPlot(harmonized_seurat, group.by="sample_name",label=TRUE)
   
  pdf(sprintf("UMAP_%s_before_and_after_batch_correction.pdf",conds))
     par(mfrow = c(1, 2))
