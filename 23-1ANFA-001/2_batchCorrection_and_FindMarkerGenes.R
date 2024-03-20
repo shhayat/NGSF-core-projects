@@ -68,12 +68,12 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 #Perform dimensional reduction by UMAP
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
 #plot UMAP
-#pdf(sprintf("UMAP_%s.pdf",conds))
-#  p1 <- DimPlot(merged_seurat, group.by="sample_name")
-#  print(p1)
-#dev.off()
+pdf(sprintf("UMAP_%s.pdf",conds))
+  p1 <- DimPlot(merged_seurat, group.by="sample_name",do.label=TRUE)
+  print(p1)
+dev.off()
 
-merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
+#merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
 #Find differentially Expressed genes per cluster p val <=0.05
 #markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
@@ -81,8 +81,8 @@ merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 #write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
 #calculate AUC
-markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
-write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
+#markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
+#write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
 
   
@@ -120,7 +120,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   #Perform dimensional reduction by UMAP
   merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
   #plot UMAP
-#  before <- DimPlot(merged_seurat, group.by="sample_name")
+  before <- DimPlot(merged_seurat, group.by="sample_name",do.label=TRUE))
   
   #RunHarmony
   harmonized_seurat <- RunHarmony(merged_seurat, 
@@ -135,25 +135,25 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
                                      reduction = "harmony")
   harmonized_seurat <- FindClusters(harmonized_seurat, 
                                     resolution = c(0.2, 0.4, 0.6, 0.8, 1.0, 1.2))
+
+  after <- DimPlot(harmonized_seurat, group.by="sample_name",do.label=TRUE)
   
- # after <- DimPlot(harmonized_seurat, group.by="sample_name")
-  
- # pdf(sprintf("UMAP_%s_before_and_after_batch_correction.pdf",conds))
- #   par(mfrow = c(1, 2))
- #   print(before) 
- #   print(after)
- # dev.off()
+ pdf(sprintf("UMAP_%s_before_and_after_batch_correction.pdf",conds))
+    par(mfrow = c(1, 2))
+    print(before) 
+    print(after)
+ dev.off()
   
 
-  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
+#  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
 
   #Find differentially Expressed genes per cluster p val <=0.05
 #  markers <- FindAllMarkers(object = harmonized_seurat,return.thresh=0.05)  
 #  write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
   #calculate AUC
-  markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
-  write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
+ # markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
+ # write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
 
 }
