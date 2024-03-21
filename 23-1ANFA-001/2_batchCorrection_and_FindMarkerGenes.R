@@ -68,7 +68,7 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 #Perform dimensional reduction by UMAP
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
 #plot UMAP
-pdf(sprintf("UMAP_%s.pdf",conds))
+png(sprintf("UMAP_%s.png",conds))
   p1 <- DimPlot(merged_seurat, group.by="sample_name",label=TRUE)
   print(p1)
 dev.off()
@@ -120,7 +120,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   #Perform dimensional reduction by UMAP
   merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
   #plot UMAP
-  before <- DimPlot(merged_seurat, group.by="sample_name",label=TRUE))
+  before <- DimPlot(merged_seurat, group.by="sample_name",label=TRUE)
   
   #RunHarmony
   harmonized_seurat <- RunHarmony(merged_seurat, 
@@ -138,7 +138,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
 
   after <- DimPlot(harmonized_seurat, group.by="sample_name",label=TRUE)
   
- pdf(sprintf("UMAP_%s_before_and_after_batch_correction.pdf",conds))
+ png(sprintf("UMAP_%s_before_and_after_batch_correction.png",conds))
     par(mfrow = c(1, 2))
     print(before) 
     print(after)
