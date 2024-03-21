@@ -68,8 +68,8 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 #Perform dimensional reduction by UMAP
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
 #plot UMAP
-png(sprintf("UMAP_%s.png",conds))
-  p1 <- DimPlot(merged_seurat, group.by="sample_name",label=TRUE)
+png(sprintf("Integrated_UMAP_%s.png",conds))
+  p1 <- DimPlot(merged_seurat, group.by="sample_name", title=conds)
   print(p1)
 dev.off()
 
@@ -120,7 +120,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   #Perform dimensional reduction by UMAP
   merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
   #plot UMAP
-  before <- DimPlot(merged_seurat, group.by="sample_name",label=TRUE)
+  before <- DimPlot(merged_seurat, group.by="sample_name",title="Before Batch Correction")
   
   #RunHarmony
   harmonized_seurat <- RunHarmony(merged_seurat, 
@@ -136,9 +136,9 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   harmonized_seurat <- FindClusters(harmonized_seurat, 
                                     resolution = c(0.2, 0.4, 0.6, 0.8, 1.0, 1.2))
 
-  after <- DimPlot(harmonized_seurat, group.by="sample_name",label=TRUE)
+  after <- DimPlot(harmonized_seurat, group.by="sample_name",title="After Batch Correction")
   
- png(sprintf("UMAP_%s_before_and_after_batch_correction.png",conds))
+ png(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.png",conds))
     par(mfrow = c(1, 2))
     print(before) 
     print(after)
