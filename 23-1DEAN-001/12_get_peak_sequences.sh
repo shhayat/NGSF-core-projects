@@ -10,8 +10,7 @@
 #SBATCH  --output=%j.out
 
 set -eux
-module load bedtools
-
+source 
 ./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
                                   -bed ${DIR}/${cellLine}_promotor_regions_common.bed \
                                   -fo ${OUTDIR}/${cellLine}_genome.masked.on.intervals_for_promotor_regions_common.fa
