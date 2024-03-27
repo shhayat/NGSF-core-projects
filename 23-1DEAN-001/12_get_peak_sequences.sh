@@ -10,7 +10,9 @@
 #SBATCH  --output=%j.out
 
 set -eux
-source 
+cd /globalhome/hxo752/HPC/tools
+
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/
 ./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
-                                  -bed ${DIR}/${cellLine}_promotor_regions_common.bed \
-                                  -fo ${OUTDIR}/${cellLine}_genome.masked.on.intervals_for_promotor_regions_common.fa
+                                  -bed ${DIR}/common_peaks_regions.bed \
+                                  -fo ${OUTDIR}/common_peak_sequences.fa
