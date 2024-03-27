@@ -20,7 +20,7 @@ DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analys
                                   -fo ${DIR}/common_peak_sequences.fa
 
 #extract peak sequences and 2000bp region upstream downstream of peak
-./bedtools.static.binary flank -i ${DIR}/common_peaks_regions.bed 
+./bedtools.static.binary slop -i ${DIR}/common_peaks_regions.bed 
                               -g /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
                               -b 2000 |
 ./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
