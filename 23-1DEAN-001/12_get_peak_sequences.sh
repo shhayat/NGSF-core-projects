@@ -14,6 +14,12 @@ cd /globalhome/hxo752/HPC/tools
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/
 
+#extract peak sequences
 ./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
                                   -bed ${DIR}/common_peaks_regions.bed \
                                   -fo ${DIR}/common_peak_sequences.fa
+
+#extract peak sequences and 2000bp region upstream downstream of peak
+./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
+                                  -bed ${DIR}/common_peaks_regions_with_2000bp_upstream_and_downstream.bed \
+                                  -fo ${DIR}/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa
