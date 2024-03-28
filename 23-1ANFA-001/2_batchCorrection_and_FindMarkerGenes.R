@@ -122,7 +122,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   #Perform dimensional reduction by UMAP
   merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
   #plot UMAP
-  before <- DimPlot(merged_seurat, group.by="sample_name",title="Before Batch Correction")
+  before <- DimPlot(merged_seurat, group.by="sample_name") + plot_annotation(title = "Before Batch Correction")
   
   #RunHarmony
   harmonized_seurat <- RunHarmony(merged_seurat, 
@@ -138,7 +138,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   harmonized_seurat <- FindClusters(harmonized_seurat, 
                                     resolution = c(0.2, 0.4, 0.6, 0.8, 1.0, 1.2))
 
-  after <- DimPlot(harmonized_seurat, group.by="sample_name",title="After Batch Correction")
+  after <- DimPlot(harmonized_seurat, group.by="sample_name") + plot_annotation(title = "After Batch Correction")
   
  png(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.png",conds))
     par(mfrow = c(1, 2))
@@ -167,7 +167,7 @@ batch_correction_and_find_markers_per_cluster(list(SC2300009,SC2300011,SC2300013
 #Create UMAP per sample with cluster numnbers
  UMAP_per_condition <- function(seuratList,condition_names, cond){
    png(sprintf("UMAP_%s.png",cond))
-      p1 <- DimPlot(seuratobject, reduction = 'umap', label = TRUE, title=conds)
+      p1 <- DimPlot(seuratobject, reduction = 'umap', label = TRUE) + plot_annotation(title = conds)
       print(p1)
    dev.off()
 }
