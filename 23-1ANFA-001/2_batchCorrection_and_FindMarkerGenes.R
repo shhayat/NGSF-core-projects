@@ -92,13 +92,13 @@ dev.off()
   
 }
 #for these samples no batch correction was needed as the conditions were integrating well in UMAP 
-check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300016,SC2300018),c("loopC","loopC","loopM","loopM"),"LoopC_LoopM")
+#check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300016,SC2300018),c("loopC","loopC","loopM","loopM"),"LoopC_LoopM")
 #no batch correction needed
-check_batch_effect_and_find_markers_per_cluster(list(SC2300017,SC2300018),c("loopC","loopM"), "48_loopC_loopM")
+#check_batch_effect_and_find_markers_per_cluster(list(SC2300017,SC2300018),c("loopC","loopM"), "48_loopC_loopM")
 #no batch correction needed
-check_batch_effect_and_find_markers_per_cluster(list(SC2300011,SC2300017),c("DPP1","loopC"), "48DPP1_49loopC")
+#check_batch_effect_and_find_markers_per_cluster(list(SC2300011,SC2300017),c("DPP1","loopC"), "48DPP1_49loopC")
 #no batch correction needed
-check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300013),c("loopC","DPP1"), "49_DPP1_loopC")
+#check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300013),c("loopC","DPP1"), "49_DPP1_loopC")
 
 
 ############################################################################################################
@@ -168,7 +168,8 @@ batch_correction_and_find_markers_per_cluster(list(SC2300009,SC2300011,SC2300013
  UMAP_per_condition <- function(seuratList,condition_names, cond){
    pdf(sprintf("UMAP_%s.pdf",cond))
       p1 <- DimPlot(seuratobject, reduction = 'umap') + ggtitle(NULL) + plot_annotation(title = cond)
-      print(p1)
+      plt <- LabelClusters(plot = p1, id = 'ident')
+      print(plt)
    dev.off()
 }
 
