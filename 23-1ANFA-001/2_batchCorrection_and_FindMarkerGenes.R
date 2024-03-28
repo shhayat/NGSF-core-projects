@@ -142,7 +142,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
 
   after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = "After Batch Correction")
   
- pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds))
+ pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds), width=30)
     p3 <- plot_grid(before, after)
     print(p3) 
  dev.off()
@@ -167,7 +167,7 @@ batch_correction_and_find_markers_per_cluster(list(SC2300009,SC2300011,SC2300013
 #Create UMAP per sample with cluster numnbers
  UMAP_per_condition <- function(seuratList,condition_names, cond){
    pdf(sprintf("UMAP_%s.pdf",cond))
-      p1 <- DimPlot(seuratobject, reduction = 'umap', label = TRUE) + ggtitle(NULL) + plot_annotation(title = conds)
+      p1 <- DimPlot(seuratobject, reduction = 'umap') + ggtitle(NULL) + plot_annotation(title = conds)
       print(p1)
    dev.off()
 }
