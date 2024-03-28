@@ -71,12 +71,20 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 
 #Perform dimensional reduction by UMAP
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
-#plot UMAP
-pdf(sprintf("Integrated_UMAP_%s.pdf",conds))
-  p1 <- DimPlot(merged_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = conds)
-  print(p1)
-dev.off()
 
+#plot Integrated UMAP
+#pdf(sprintf("Integrated_UMAP_%s.pdf",conds))
+ # p1 <- DimPlot(merged_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = conds)
+ # print(p1)
+#dev.off()
+  
+#plot Integrated UMAP with cluster numbers
+ pdf(sprintf("Integrated_UMAP_%s.pdf",conds))
+  p1 <- DimPlot(merged_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = conds)
+  plt <- LabelClusters(plot = p1, id = 'ident')
+  print(plt)
+dev.off()
+  
 #merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
 #Find differentially Expressed genes per cluster p val <=0.05
@@ -92,13 +100,11 @@ dev.off()
   
 }
 #for these samples no batch correction was needed as the conditions were integrating well in UMAP 
-#check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300016,SC2300018),c("loopC","loopC","loopM","loopM"),"LoopC_LoopM")
+check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300016,SC2300018),c("loopC","loopC","loopM","loopM"),"LoopC_LoopM")
 #no batch correction needed
-#check_batch_effect_and_find_markers_per_cluster(list(SC2300017,SC2300018),c("loopC","loopM"), "48_loopC_loopM")
+check_batch_effect_and_find_markers_per_cluster(list(SC2300017,SC2300018),c("loopC","loopM"), "48_loopC_loopM")
 #no batch correction needed
-#check_batch_effect_and_find_markers_per_cluster(list(SC2300011,SC2300017),c("DPP1","loopC"), "48DPP1_49loopC")
-#no batch correction needed
-#check_batch_effect_and_find_markers_per_cluster(list(SC2300015,SC2300013),c("loopC","DPP1"), "49_DPP1_loopC")
+check_batch_effect_and_find_markers_per_cluster(list(SC2300011,SC2300017),c("DPP1","loopC"), "48DPP1_49loopC")
 
 
 ############################################################################################################
@@ -140,11 +146,12 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   harmonized_seurat <- FindClusters(harmonized_seurat, 
                                     resolution = c(0.2, 0.4, 0.6, 0.8, 1.0, 1.2))
 
-  after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = "After Batch Correction")
+after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = "After Batch Correction")
   
  pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds), width=20,height=20)
-    p3 <- plot_grid(before, after)
-    print(p3) 
+    p1 <- plot_grid(before, after)
+    plt <- LabelClusters(plot = p1, id = 'ident')
+    print(plt) 
  dev.off()
   
 #  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
@@ -159,21 +166,22 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
 
 
 }
-batch_correction_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300009,SC2300011,SC2300013),c("loopC","loopC","DPP1","DPP1","DPP1"),"LoopC_DPP1" )
+batch_correction_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300009,SC2300011,SC2300013),c("loopC","loopC","DPP1","DPP1","DPP1"),"LoopC_DPP1")
 batch_correction_and_find_markers_per_cluster(list(SC2300015,SC2300016),c("loopC","loopM"), "49_loopC_loopM")
+batch_correction_and_find_markers_per_cluster(list(SC2300015,SC2300013),c("loopC","DPP1"), "49_DPP1_loopC")
 batch_correction_and_find_markers_per_cluster(list(SC2300009,SC2300011,SC2300013,SC2300010,SC2300012,SC2300014),c("DPP1","DPP1","DPP1","CPP1","CPP1","CPP1"), "DPP1_CPP1")
 
 
 #Create UMAP per sample with cluster numnbers
- UMAP_per_condition <- function(seuratList,condition_names, cond){
-   pdf(sprintf("UMAP_%s.pdf",cond))
-      p1 <- DimPlot(seuratobject, reduction = 'umap') + ggtitle(NULL) + plot_annotation(title = cond)
-      plt <- LabelClusters(plot = p1, id = 'ident')
-      print(plt)
-   dev.off()
-}
+# UMAP_per_condition <- function(seuratList,condition_names, cond){
+#   pdf(sprintf("UMAP_%s.pdf",cond))
+#      p1 <- DimPlot(seuratobject, reduction = 'umap') + ggtitle(NULL) + plot_annotation(title = cond)
+#      plt <- LabelClusters(plot = p1, id = 'ident')
+#      print(plt)
+#   dev.off()
+#}
 
-UMAP_per_condition(list(SC2300015,SC2300017),"48_49_loopC")
-UMAP_per_condition(list(SC2300016,SC2300018),"48_49_loopM")
-UMAP_per_condition(list(SC2300009,SC2300011,SC2300013),"47_48_49_DPP1")
-UMAP_per_condition(list(SC2300010,SC2300012,SC2300014), "47_48_49_CPP1")
+#UMAP_per_condition(list(SC2300015,SC2300017),"48_49_loopC")
+#UMAP_per_condition(list(SC2300016,SC2300018),"48_49_loopM")
+#UMAP_per_condition(list(SC2300009,SC2300011,SC2300013),"47_48_49_DPP1")
+#UMAP_per_condition(list(SC2300010,SC2300012,SC2300014), "47_48_49_CPP1")
