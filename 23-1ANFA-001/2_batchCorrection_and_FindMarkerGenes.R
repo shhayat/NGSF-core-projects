@@ -78,11 +78,14 @@ merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
  # print(p1)
 #dev.off()
   
-#plot Integrated UMAP with cluster numbers
  pdf(sprintf("Integrated_UMAP_%s.pdf",conds))
+  #plot Integrated UMAP
   p1 <- DimPlot(merged_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = conds)
-  plt <- LabelClusters(plot = p1, id = 'ident')
-  print(plt)
+  #plot Integrated UMAP with cluster numbers
+  Idents(merged_seurat) <- "seurat_clusters"
+  p2 <- DimPlot(merged_seurat, group.by="seurat_clusters", label=T) + ggtitle(NULL) + plot_annotation(title = conds)
+  print(p1)
+  print(p2)
 dev.off()
   
 #merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
@@ -150,8 +153,12 @@ after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + pl
   
  pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds), width=20,height=20)
     p1 <- plot_grid(before, after)
-    plt <- LabelClusters(plot = p1, id = 'ident')
-    print(plt) 
+    print(p1)   
+  
+    #plot Integrated UMAP with cluster numbers
+    Idents(harmonized_seurat) <- "seurat_clusters"
+    p2 <- DimPlot(harmonized_seurat, group.by="seurat_clusters", label=T) + ggtitle(NULL) + plot_annotation(title = conds)
+    print(p2)  
  dev.off()
   
 #  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
