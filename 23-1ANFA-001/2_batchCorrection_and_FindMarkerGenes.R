@@ -71,7 +71,7 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
 #plot UMAP
 png(sprintf("Integrated_UMAP_%s.png",conds))
-  p1 <- DimPlot(merged_seurat, group.by="sample_name", title=conds)
+  p1 <- DimPlot(merged_seurat, group.by="sample_name")  + plot_annotation(title = conds)
   print(p1)
 dev.off()
 
