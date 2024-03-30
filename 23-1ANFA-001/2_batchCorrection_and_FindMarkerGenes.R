@@ -151,7 +151,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
 
 after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = "After Batch Correction")
   
- pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds), width=30,height=20)
+ pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds), width=25,height=10)
     p1 <- plot_grid(before, after)
     print(p1)   
   
