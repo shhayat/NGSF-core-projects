@@ -149,7 +149,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
 
 after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = "After Batch Correction")
   
- pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds), width=18,height=10)
+ pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds), width=15,height=10)
     p1 <- plot_grid(before, after)
     print(p1)   
   
@@ -159,11 +159,11 @@ after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + pl
     print(p2)  
  dev.off()
   
-#  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
+  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
 
   #Find differentially Expressed genes per cluster p val <=0.05
-#  markers <- FindAllMarkers(object = harmonized_seurat,return.thresh=0.05)  
-#  write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
+  markers <- FindAllMarkers(object = harmonized_seurat,return.thresh=0.05)  
+  write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
   #calculate AUC
  # markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
