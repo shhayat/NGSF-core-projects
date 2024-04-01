@@ -88,12 +88,12 @@ merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
   print(p2)
 dev.off()
   
-#merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
+merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
 #Find differentially Expressed genes per cluster p val <=0.05
 #markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
-#markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
-#write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
+markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
+write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
 #calculate AUC
 #markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
