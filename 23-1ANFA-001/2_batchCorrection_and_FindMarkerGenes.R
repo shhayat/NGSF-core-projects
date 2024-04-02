@@ -85,10 +85,10 @@ merged_seurat <- RunTSNE(merged_seurat, dims = 1:15, verbose = FALSE)
   #plot Integrated UMAP
   p1 <- DimPlot(merged_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = conds)
   #plot Integrated UMAP with cluster numbers
-  Idents(merged_seurat) <- "seurat_clusters"
-  p2 <- DimPlot(merged_seurat, group.by="seurat_clusters", label=T) + ggtitle(NULL) + plot_annotation(title = conds)
+ # Idents(merged_seurat) <- "seurat_clusters"
+ # p2 <- DimPlot(merged_seurat, group.by="seurat_clusters", label=T) + ggtitle(NULL) + plot_annotation(title = conds)
   print(p1)
-  print(p2)
+ # print(p2)
 dev.off()
   
 
@@ -163,9 +163,9 @@ after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + pl
     print(p1)   
   
     #plot Integrated UMAP with cluster numbers
-    Idents(harmonized_seurat) <- "seurat_clusters"
-    p2 <- DimPlot(harmonized_seurat, group.by="seurat_clusters", label=T) + ggtitle(NULL) + plot_annotation(title = conds)
-    print(p2)  
+   # Idents(harmonized_seurat) <- "seurat_clusters"
+   # p2 <- DimPlot(harmonized_seurat, group.by="seurat_clusters", label=T) + ggtitle(NULL) + plot_annotation(title = conds)
+   # print(p2)  
  dev.off()
 
   #create loupe file from seurat obj
@@ -188,18 +188,3 @@ batch_correction_and_find_markers_per_cluster(list(SC2300015,SC2300016),c("loopC
 batch_correction_and_find_markers_per_cluster(list(SC2300017,SC2300018),c("loopC","loopM"), "48_loopC_loopM")
 batch_correction_and_find_markers_per_cluster(list(SC2300015,SC2300013),c("loopC","DPP1"), "49_DPP1_loopC")
 batch_correction_and_find_markers_per_cluster(list(SC2300009,SC2300011,SC2300013,SC2300010,SC2300012,SC2300014),c("DPP1","DPP1","DPP1","CPP1","CPP1","CPP1"), "DPP1_CPP1")
-
-
-#Create UMAP per sample with cluster numnbers
-# UMAP_per_condition <- function(seuratList,condition_names, cond){
-#   pdf(sprintf("UMAP_%s.pdf",cond))
-#      p1 <- DimPlot(seuratobject, reduction = 'umap') + ggtitle(NULL) + plot_annotation(title = cond)
-#      plt <- LabelClusters(plot = p1, id = 'ident')
-#      print(plt)
-#   dev.off()
-#}
-
-#UMAP_per_condition(list(SC2300015,SC2300017),"48_49_loopC")
-#UMAP_per_condition(list(SC2300016,SC2300018),"48_49_loopM")
-#UMAP_per_condition(list(SC2300009,SC2300011,SC2300013),"47_48_49_DPP1")
-#UMAP_per_condition(list(SC2300010,SC2300012,SC2300014), "47_48_49_CPP1")
