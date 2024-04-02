@@ -74,7 +74,7 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
 
 #Perform dimensional reduction by tSNE
-merged_seurat <- RunTSNE(merged_seurat, dims = 1:5, verbose = FALSE) 
+merged_seurat <- RunTSNE(merged_seurat, dims = 1:15, verbose = FALSE) 
 #plot Integrated UMAP
 #pdf(sprintf("Integrated_UMAP_%s.pdf",conds))
  # p1 <- DimPlot(merged_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = conds)
