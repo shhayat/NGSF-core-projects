@@ -73,6 +73,8 @@ merged_seurat <- RunPCA(merged_seurat, assay = "SCT", npcs = 50)
 #Perform dimensional reduction by UMAP
 merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
 
+#Perform dimensional reduction by tSNE
+merged_seurat <- RunTSNE(merged_seurat, dims = 1:5, verbose = FALSE) 
 #plot Integrated UMAP
 #pdf(sprintf("Integrated_UMAP_%s.pdf",conds))
  # p1 <- DimPlot(merged_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = conds)
@@ -88,6 +90,7 @@ merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
   print(p1)
   print(p2)
 dev.off()
+  
 
 #create loupe file from seurat obj
 create_loupe_from_seurat(merged_seurat, output_name=conds)
@@ -143,7 +146,10 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
   
   harmonized_seurat <- RunUMAP(harmonized_seurat, 
                                reduction = "harmony", 
-                               assay = "SCT", dims = 1:40)
+                               assay = "SCT", dims = 1:15)
+
+  #Perform dimensional reduction by tSNE
+  harmonized_seurat <- RunTSNE(harmonized_seurat, dims = 1:15) 
   
   harmonized_seurat <- FindNeighbors(object = harmonized_seurat, 
                                      reduction = "harmony")
