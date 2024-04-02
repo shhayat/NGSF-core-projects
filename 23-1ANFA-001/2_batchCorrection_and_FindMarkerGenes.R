@@ -88,13 +88,15 @@ merged_seurat <- RunUMAP(merged_seurat, dims = 1:15, verbose = FALSE)
   print(p1)
   print(p2)
 dev.off()
+
+#create loupe file from seurat obj
+create_loupe_from_seurat(merged_seurat, output_name=conds)
   
-merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
+#merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
 #Find differentially Expressed genes per cluster p val <=0.05
 #markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
-markers <- FindAllMarkers(object = merged_seurat,return.thresh=0.05)  
-write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
+#write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
 #calculate AUC
 #markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
@@ -159,12 +161,15 @@ after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + pl
     p2 <- DimPlot(harmonized_seurat, group.by="seurat_clusters", label=T) + ggtitle(NULL) + plot_annotation(title = conds)
     print(p2)  
  dev.off()
-  
-  harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
+
+  #create loupe file from seurat obj
+  create_loupe_from_seurat(harmonized_seurat, output_name=conds)
+
+  #harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
 
   #Find differentially Expressed genes per cluster p val <=0.05
-  markers <- FindAllMarkers(object = harmonized_seurat,return.thresh=0.05)  
-  write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
+ # markers <- FindAllMarkers(object = harmonized_seurat,return.thresh=0.05)  
+ # write.table(markers,file=sprintf("%s_marker_genes.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
   #calculate AUC
  # markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
