@@ -5,6 +5,7 @@ library(presto)
 library(ggplot2)
 library(patchwork)
 library(cowplot)
+library(loupeR)
 
 load("seuratobject_SC2300009.RData")
 SC2300009 <- seuratobject 
