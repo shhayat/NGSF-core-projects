@@ -31,11 +31,11 @@ mkdir -p $OUTDIR
 #MEME
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/ChIPMunk/MEME
 mkdir -p $OUTDIR
-/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa \
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $OUTDIR/common_peaks_sequences_with_2000bp_upstream_and_downstream \
                                                     -meme-nmotifs 10 \
-                                                    $OUTDIR/genome.masked.on.intervals_for_promotor_regions_common.fa
+                                                    $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream
 
-/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa \
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $OUTDIR/common_peak_sequences \
                                                     -meme-nmotifs 10 \
-                                                    $OUTDIR/genome.masked.on.intervals_for_promotor_regions_common.fa
+                                                    $OUTDIR/common_peak_sequences.fa
                                                     
