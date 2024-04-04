@@ -43,8 +43,10 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/ana
 mkdir -p $OUTDIR                                                    
 #GLAM2
 /globalhome/hxo752/HPC/anaconda3/envs/meme/bin/glam2 $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa \
+                                                    -r 10 \
                                                     -o $OUTDIR/common_peaks_sequences_with_2000bp_upstream_and_downstream
 
 /globalhome/hxo752/HPC/anaconda3/envs/meme/bin/glam2 $DATA/common_peak_sequences.fa \
+                                                    -r 10 \
                                                     -o $OUTDIR/common_peak_sequences
                                                 
