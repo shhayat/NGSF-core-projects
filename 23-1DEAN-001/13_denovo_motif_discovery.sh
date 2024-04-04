@@ -10,7 +10,7 @@
 #SBATCH  --output=%j.out
 
 set -eux
-$NCPU=2
+NCPU=2
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis
 
