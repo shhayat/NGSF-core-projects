@@ -29,7 +29,7 @@ mkdir -p $OUTDIR
 #                                          s:$DATA/common_peak_sequences.fa > $OUTDIR/results_common_peak_sequences.txt
                                   
 #MEME
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/ChIPMunk/MEME
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/MEME
 mkdir -p $OUTDIR
 /globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $OUTDIR/common_peaks_sequences_with_2000bp_upstream_and_downstream \
                                                     -meme-nmotifs 10 \
@@ -39,7 +39,7 @@ mkdir -p $OUTDIR
                                                     -meme-nmotifs 10 \
                                                     $OUTDIR/common_peak_sequences.fa
 
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/ChIPMunk/GLAM2
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/GLAM2
 mkdir -p $OUTDIR                                                    
 #GLAM2
 /globalhome/hxo752/HPC/anaconda3/envs/meme/bin/glam2 $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa \
