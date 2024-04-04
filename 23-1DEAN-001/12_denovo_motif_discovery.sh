@@ -33,12 +33,12 @@ OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/ana
 mkdir -p $OUTDIR
 /globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $OUTDIR/common_peaks_sequences_with_2000bp_upstream_and_downstream \
                                                     -nmotifs 10 \
-                                                    -maxsize 200000 \
+                                                    -maxsize 800000 \
                                                     $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa
 
 /globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $OUTDIR/common_peak_sequences \
                                                     -nmotifs 10 \
-                                                    -maxsize 200000 \
+                                                    -maxsize 800000 \
                                                     $DATA/common_peak_sequences.fa
 
 #GLAM2
