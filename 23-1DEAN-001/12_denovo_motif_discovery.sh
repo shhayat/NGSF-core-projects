@@ -36,5 +36,7 @@ mkdir -p $OUTDIR
                                                     -meme-nmotifs 10 \
                                                     $OUTDIR/genome.masked.on.intervals_for_promotor_regions_common.fa
 
-
+/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa \
+                                                    -meme-nmotifs 10 \
+                                                    $OUTDIR/genome.masked.on.intervals_for_promotor_regions_common.fa
                                                     
