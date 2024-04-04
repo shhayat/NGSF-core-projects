@@ -17,14 +17,10 @@ DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analy
 java -Xms512M -XX:ParallelGCThreads=$NCPU /globalhome/hxo752/HPC/tools/chipmunk_v8_src.jar \
                                                                       -cp chipmunk.jar \
                                                                       ru.autosome.ChIPMunk \
-                                                                      s:$DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa \
-                                                                      1> $DATA/results_common_peaks_sequences_with_2000bp_upstream_and_downstream.txt \
-                                                                      2> $DATA/log1.txt
+                                                                      s:$DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa 1> $DATA/results_common_peaks_sequences_with_2000bp_upstream_and_downstream.txt 2> $DATA/log1.txt
 
 
 java -Xms512M -XX:ParallelGCThreads=$NCPU /globalhome/hxo752/HPC/tools/chipmunk_v8_src.jar \
                                                                       -cp chipmunk.jar \
                                                                       ru.autosome.ChIPMunk \
-                                                                      s:$DATA/common_peak_sequences.fa \
-                                                                      1> $DATA/results_common_peak_sequences.txt \
-                                                                      2> $DATA/log2.txt
+                                                                      s:$DATA/common_peak_sequences.fa 1> $DATA/results_common_peak_sequences.txt 2> $DATA/log2.txt
