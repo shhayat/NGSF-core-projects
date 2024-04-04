@@ -14,13 +14,11 @@ NCPU=2
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis
 
-java -Xms512M -XX:ParallelGCThreads=$NCPU /globalhome/hxo752/HPC/tools/chipmunk_v8_src.jar \
-                                                                      -cp chipmunk.jar \
-                                                                      ru.autosome.ChIPMunk \
-                                                                      s:$DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa > $DATA/results_common_peaks_sequences_with_2000bp_upstream_and_downstream.txt
+java -Xms512M -XX:ParallelGCThreads=$NCPU -cp /globalhome/hxo752/HPC/tools/chipmunk_v8_src.jar \
+                                          ru.autosome.ChIPMunk \
+                                          s:$DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa > $DATA/results_common_peaks_sequences_with_2000bp_upstream_and_downstream.txt
 
 
-java -Xms512M -XX:ParallelGCThreads=$NCPU /globalhome/hxo752/HPC/tools/chipmunk_v8_src.jar \
-                                                                      -cp chipmunk.jar \
-                                                                      ru.autosome.ChIPMunk \
-                                                                      s:$DATA/common_peak_sequences.fa > $DATA/results_common_peak_sequences.txt
+java -Xms512M -XX:ParallelGCThreads=$NCPU -cp /globalhome/hxo752/HPC/tools/chipmunk_v8_src.jar \
+                                          ru.autosome.ChIPMunk \
+                                          s:$DATA/common_peak_sequences.fa > $DATA/results_common_peak_sequences.txt
