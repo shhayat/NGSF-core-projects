@@ -13,8 +13,8 @@ set -eux
 NCPU=2
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery
-mkdir -p $OUTDIR/ChIPMunk
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/ChIPMunk
+mkdir -p $OUTDIR
 
 #peaks located in promoter region of the gene were extracted from the peak annotation files and sequences were retrived 
 #In this step the sequneces will be passed through different denovo motif discovery tools to find the motif that is conseverd across sequences
@@ -22,15 +22,16 @@ mkdir -p $OUTDIR/ChIPMunk
 #ChIPMunk
 #java -Xms512M -XX:ParallelGCThreads=$NCPU -cp /globalhome/hxo752/HPC/tools/chipmunk.jar \
 #                                          ru.autosome.ChIPMunk \
-#                                          s:$DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa > $DATA/results_common_peaks_sequences_with_2000bp_upstream_and_downstream.txt
+#                                          s:$DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa > $OUTDIR/results_common_peaks_sequences_with_2000bp_upstream_and_downstream.txt
 
 #java -Xms512M -XX:ParallelGCThreads=$NCPU -cp /globalhome/hxo752/HPC/tools/chipmunk.jar \
 #                                          ru.autosome.ChIPMunk \
-#                                          s:$DATA/common_peak_sequences.fa > $DATA/results_common_peak_sequences.txt
+#                                          s:$DATA/common_peak_sequences.fa > $OUTDIR/results_common_peak_sequences.txt
 
 
 #MEME
-mkdir -p $OUTDIR/MEME
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/ChIPMunk/MEME
+mkdir -p $OUTDIR
 /globalhome/hxo752/HPC/anaconda3/envs/meme/bin/meme -oc $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa \
                                                     -meme-nmotifs 10 \
-                                                    ${OUTDIR}/genome.masked.on.intervals_for_promotor_regions_common.fa
+                                                    $OUTDIR/genome.masked.on.intervals_for_promotor_regions_common.fa
