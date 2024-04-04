@@ -27,10 +27,6 @@ mkdir -p $OUTDIR
 #java -Xms512M -XX:ParallelGCThreads=$NCPU -cp /globalhome/hxo752/HPC/tools/chipmunk.jar \
 #                                          ru.autosome.ChIPMunk \
 #                                          s:$DATA/common_peak_sequences.fa > $OUTDIR/results_common_peak_sequences.txt
-
-./bedtools.static.binary getfasta -fi /datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa \
-                                  -bed $DATA/common_peaks_regions.bed \
-                                  -fo $OUTDIR/${cellLine}_genome.masked.on.intervals_for_promotor_regions_common.fa
                                   
 #MEME
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/ChIPMunk/MEME
