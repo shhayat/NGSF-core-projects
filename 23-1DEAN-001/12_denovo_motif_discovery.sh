@@ -42,6 +42,8 @@ DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analy
 #                                                    $DATA/common_peak_sequences.fa
 
 #GLAM2
+#For glam2 html file is not produced as it give an error related to syntax in glam2 function. Instead the results can be
+#viewd in glam2.txt file
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1DEAN-001/analysis/motif_discovery/GLAM2
 #/globalhome/hxo752/HPC/anaconda3/envs/meme/bin/glam2 n $DATA/common_peaks_sequences_with_2000bp_upstream_and_downstream.fa \
                    #                                 -r 10 \
