@@ -10,45 +10,60 @@ library(loupeR)
 load("seuratobject_SC2300009.RData")
 SC2300009 <- seuratobject 
 SC2300009@meta.data$sample_name <- "DPP1"
+SC2300009@meta.data$sample_id <- "SC2300009"
 
 load("seuratobject_SC2300010.RData")
 SC2300010 <- seuratobject 
 SC2300010@meta.data$sample_name <- "CPP1"
-
+SC2300010@meta.data$sample_id <- "SC2300010"
 
 load("seuratobject_SC2300011.RData")
 SC2300011 <- seuratobject 
 SC2300011@meta.data$sample_name <- "DPP1"
+SC2300011@meta.data$sample_id <- "SC2300011"
+
 
 load("seuratobject_SC2300012.RData")
 SC2300012 <- seuratobject 
 SC2300012@meta.data$sample_name <- "CPP1"
+SC2300012@meta.data$sample_id <- "SC2300012"
 
 
 load("seuratobject_SC2300013.RData")
 SC2300013 <- seuratobject 
 SC2300013@meta.data$sample_name <- "DPP1"
+SC2300013@meta.data$sample_id <- "SC2300013"
+
 
 load("seuratobject_SC2300014.RData")
 SC2300014 <- seuratobject 
 SC2300014@meta.data$sample_name <- "CPP1"
+SC2300014@meta.data$sample_id <- "SC2300014"
 
 
 load("seuratobject_SC2300015.RData")
 SC2300015 <- seuratobject 
 SC2300015@meta.data$sample_name <- "loopC"
+SC2300015@meta.data$sample_id <- "SC2300015"
+
 
 load("seuratobject_SC2300016.RData")
 SC2300016 <- seuratobject 
 SC2300016@meta.data$sample_name <- "loopM"
+SC2300016@meta.data$sample_id <- "SC2300016"
+
 
 load("seuratobject_SC2300017.RData")
 SC2300017 <- seuratobject 
 SC2300017@meta.data$sample_name <- "loopC"
+SC2300017@meta.data$sample_id <- "SC2300017"
+
 
 load("seuratobject_SC2300018.RData")
 SC2300018 <- seuratobject 
 SC2300018@meta.data$sample_name <- "loopM"
+SC2300018@meta.data$sample_id <- "SC2300018"
+
 
 setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ANFA-001/analysis/")
 
