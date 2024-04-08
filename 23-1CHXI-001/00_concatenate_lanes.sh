@@ -11,7 +11,7 @@
 set -eux
 	
 FASTQ_FOLDER=/datastore/TumorBiobank/4.\ Projects/Project\ 3\ -\ Dr\ Hopkins\ -\ TFRI\ -\ PR2C\ Cohortes/Terry\ Fox\ Research\ Institute/RNA
-OUTDIR=/datastore/TumorBiobank/4. Projects/Project 3 - Dr Hopkins - TFRI - PR2C Cohortes/Terry Fox Research Institute/Analysis/RNA/Fastq
+OUTDIR=/datastore/TumorBiobank/4.\ Projects/Project\ 3\ -\ Dr\ Hopkins\ -\ TFRI\ -\ PR2C\ Cohortes/Terry\ Fox\ Research\ Institute/RNA/Fastq
 mkdir -p $OUTDIR	
 
 for i in $(seq -w 688 706)
