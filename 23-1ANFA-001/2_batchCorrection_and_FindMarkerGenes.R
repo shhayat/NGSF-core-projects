@@ -120,11 +120,11 @@ dev.off()
 #removing assays not which are not required in loupe browser
 merged_seurat[['orig.ident']] <- NULL
   
-# Get the names of assays starting with 'DF.classifications'
-assay_names_to_remove <- grep("^DF\\.classifications", names(Assays(merged_seurat)), value = TRUE)
+# Get the names starting with 'DF.classifications'
+string_to_remove <- grep("^DF\\.classifications", names(merged_seurat@meta.data), value = TRUE)
 
-# Remove assays starting with 'DF.classifications'
-merged_seurat <- merged_seurat[, !names(merged_seurat) %in% assay_names_to_remove]
+# Remove  starting with 'DF.classifications'
+merged_seurat@meta.data <- merged_seurat@meta.data[, !string_to_remove]
 
 #create loupe file from seurat obj
 create_loupe_from_seurat(merged_seurat, output_name=conds)
@@ -202,8 +202,8 @@ after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + pl
 #removing assays not which are not required in loupe browser
 harmonized_seurat[['orig.ident']] <- NULL
   
-# Get the names of assays starting with 'DF.classifications'
-assay_names_to_remove <- grep("^DF\\.classifications", names(Assays(harmonized_seurat)), value = TRUE)
+# Get the names starting with 'DF.classifications'
+string_to_remove <- grep("^DF\\.classifications", names(harmonized_seurat@meta.data), value = TRUE)
 
 # Remove assays starting with 'DF.classifications'
 harmonized_seurat <- harmonized_seurat[, !names(harmonized_seurat) %in% assay_names_to_remove]
