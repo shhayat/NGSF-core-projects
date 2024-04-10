@@ -105,10 +105,7 @@ merged_seurat <- RunTSNE(merged_seurat, dims = 1:15, verbose = FALSE)
   print(p1)
  # print(p2)
 dev.off()
-  
 
-#create loupe file from seurat obj
-create_loupe_from_seurat(merged_seurat, output_name=conds)
   
 #merged_seurat <- PrepSCTFindMarkers(object = merged_seurat)
 
@@ -120,7 +117,14 @@ create_loupe_from_seurat(merged_seurat, output_name=conds)
 #markers <- FindAllMarkers(object = merged_seurat, test.use="roc")  
 #write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
 
+#removing assays not which are not required in loupe browser
+merged_seurat[['orig.ident']] <- NULL
+merged_seurat[['DF.classifications.0.25_0.13_140']] <- NULL
+merged_seurat[['DF.classifications.0.25_0.02_258']] <- NULL
 
+
+#create loupe file from seurat obj
+create_loupe_from_seurat(merged_seurat, output_name=conds)
   
 }
 #for these samples no batch correction was needed as the conditions were integrating well in UMAP 
