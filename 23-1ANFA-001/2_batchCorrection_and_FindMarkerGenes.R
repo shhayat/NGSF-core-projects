@@ -119,8 +119,11 @@ dev.off()
 
 #removing assays not which are not required in loupe browser
 merged_seurat[['orig.ident']] <- NULL
-merged_seurat[['DF.classifications.0.25_0.13_140']] <- NULL
-merged_seurat[['DF.classifications.0.25_0.02_258']] <- NULL
+  
+# Get names of assays starting with 'DF.classifications'
+assay_names_to_remove <- names(merged_seurat)[grepl("^DF\\.classifications", names(merged_seurat))]
+# Remove assays starting with 'DF.classifications'
+merged_seurat[assay_names_to_remove] <- NULL
 
 
 #create loupe file from seurat obj
@@ -187,9 +190,6 @@ after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + pl
    # print(p2)  
  dev.off()
 
-  #create loupe file from seurat obj
-  create_loupe_from_seurat(harmonized_seurat, output_name=conds)
-
   #harmonized_seurat <- PrepSCTFindMarkers(object = harmonized_seurat)
 
   #Find differentially Expressed genes per cluster p val <=0.05
@@ -199,7 +199,16 @@ after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + pl
   #calculate AUC
  # markers <- FindAllMarkers(object = harmonized_seurat, test.use="roc")  
  # write.table(markers,file=sprintf("%s_marker_genes_auc_calculated.txt",conds), row.names = FALSE, quote=FALSE, sep="\t")
+#removing assays not which are not required in loupe browser
+harmonized_seurat[['orig.ident']] <- NULL
+  
+# Get names of assays starting with 'DF.classifications'
+assay_names_to_remove <- names(harmonized_seurat)[grepl("^DF\\.classifications", names(harmonized_seurat))]
+# Remove assays starting with 'DF.classifications'
+harmonized_seurat[assay_names_to_remove] <- NULL
 
+#create loupe file from seurat obj
+create_loupe_from_seurat(harmonized_seurat, output_name=conds)
 
 }
 batch_correction_and_find_markers_per_cluster(list(SC2300015,SC2300017,SC2300009,SC2300011,SC2300013),c("loopC","loopC","DPP1","DPP1","DPP1"),"LoopC_DPP1")
