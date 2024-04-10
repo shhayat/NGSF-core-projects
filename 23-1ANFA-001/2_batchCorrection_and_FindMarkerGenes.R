@@ -124,7 +124,7 @@ merged_seurat[['orig.ident']] <- NULL
 assay_names_to_remove <- grep("^DF\\.classifications", names(Assays(merged_seurat)), value = TRUE)
 
 # Remove assays starting with 'DF.classifications'
-merged_seurat <- subset(merged_seurat, select = -assay_names_to_remove)
+merged_seurat <- merged_seurat[, !names(merged_seurat) %in% assay_names_to_remove]
 
 #create loupe file from seurat obj
 create_loupe_from_seurat(merged_seurat, output_name=conds)
@@ -206,7 +206,7 @@ harmonized_seurat[['orig.ident']] <- NULL
 assay_names_to_remove <- grep("^DF\\.classifications", names(Assays(harmonized_seurat)), value = TRUE)
 
 # Remove assays starting with 'DF.classifications'
-harmonized_seurat <- subset(harmonized_seurat, select = -assay_names_to_remove)
+harmonized_seurat <- harmonized_seurat[, !names(harmonized_seurat) %in% assay_names_to_remove]
 
 #create loupe file from seurat obj
 create_loupe_from_seurat(harmonized_seurat, output_name=conds)
