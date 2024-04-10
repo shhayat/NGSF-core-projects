@@ -206,12 +206,11 @@ after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + pl
 harmonized_seurat[['orig.ident']] <- NULL
   
 # Get the names starting with 'DF.classifications'
-string_to_remove <- grep("^DF\\.classifications", names(harmonized_seurat@meta.data), value = TRUE)
+#string_to_remove <- grep("^DF\\.classifications", names(harmonized_seurat@meta.data), value = TRUE)
 
 # Remove string starting with 'DF.classifications'
-harmonized_seurat <- harmonized_seurat@meta.data[, -which(colnames(harmonized_seurat@meta.data) %in% string_to_remove)]
-harmonized_seurat <- JoinLayers(harmonized_seurat, assay = "RNA")
-harmonized_seurat <- JoinLayers(harmonized_seurat, assay = "SCT")
+#harmonized_seurat <- harmonized_seurat@meta.data[, -which(colnames(harmonized_seurat@meta.data) %in% string_to_remove)]
+
 #create loupe file from seurat obj
 create_loupe_from_seurat(harmonized_seurat, output_name=conds)
 
