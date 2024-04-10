@@ -123,8 +123,8 @@ merged_seurat[['orig.ident']] <- NULL
 # Get the names starting with 'DF.classifications'
 string_to_remove <- grep("^DF\\.classifications", names(merged_seurat@meta.data), value = TRUE)
 
-# Remove  starting with 'DF.classifications'
-merged_seurat@meta.data <- merged_seurat@meta.data[, !string_to_remove]
+# Remove string starting with 'DF.classifications'
+merged_seurat <- merged_seurat@meta.data[, -which(colnames(merged_seurat@meta.data) %in% string_to_remove)
 
 #create loupe file from seurat obj
 create_loupe_from_seurat(merged_seurat, output_name=conds)
@@ -205,9 +205,9 @@ harmonized_seurat[['orig.ident']] <- NULL
 # Get the names starting with 'DF.classifications'
 string_to_remove <- grep("^DF\\.classifications", names(harmonized_seurat@meta.data), value = TRUE)
 
-# Remove assays starting with 'DF.classifications'
-harmonized_seurat <- harmonized_seurat[, !names(harmonized_seurat) %in% assay_names_to_remove]
-
+# Remove string starting with 'DF.classifications'
+harmonized_seurat <- harmonized_seurat@meta.data[, -which(colnames(harmonized_seurat@meta.data) %in% string_to_remove)
+                    
 #create loupe file from seurat obj
 create_loupe_from_seurat(harmonized_seurat, output_name=conds)
 
