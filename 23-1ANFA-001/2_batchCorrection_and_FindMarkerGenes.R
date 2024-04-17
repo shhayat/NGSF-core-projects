@@ -96,7 +96,7 @@ merged_seurat <- RunTSNE(merged_seurat, dims = 1:15, verbose = FALSE)
  # print(p1)
 #dev.off()
   
- pdf(sprintf("Integrated_UMAP_%s.pdf",conds))
+ pdf(sprintf("UMAP_%s.pdf",conds))
   #plot Integrated UMAP
   p1 <- DimPlot(merged_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = conds)
   #plot Integrated UMAP with cluster numbers
@@ -183,7 +183,7 @@ batch_correction_and_find_markers_per_cluster <- function(seuratList,condition_n
 
 after <- DimPlot(harmonized_seurat, group.by="sample_name") + ggtitle(NULL) + plot_annotation(title = "After Batch Correction")
   
- pdf(sprintf("Integrated_UMAP_%s_before_and_after_batch_correction.pdf",conds), width=15,height=10)
+ pdf(sprintf("UMAP_%s_before_and_after_batch_correction.pdf",conds), width=15,height=10)
     p1 <- plot_grid(before, after)
     print(p1)   
   
