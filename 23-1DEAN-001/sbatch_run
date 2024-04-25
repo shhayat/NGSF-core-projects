@@ -8,13 +8,13 @@ do
   sleep 0.2
 done
 
-########
-#PICARD
-########
+#######################
+#SAMBAMBA AND BEDTOOLS
+######################
 #for i in {33..43}
 for i in {33..43}
 do
-  sbatch 04_picard_dedup_and_rm_blacklist_reads.sh "D23000${i}"
+  sbatch 04_dedup_and_rm_blacklist_reads.sh "D23000${i}"
   sleep 0.3
 done
 
