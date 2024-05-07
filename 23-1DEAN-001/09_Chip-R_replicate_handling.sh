@@ -13,6 +13,7 @@
 set -eux
 module purge
 module load python/3.10
+module load StdEnv/2020
 module load scipy-stack/2023a
 source $HOME/venvs/chip-r/bin/activate
 
