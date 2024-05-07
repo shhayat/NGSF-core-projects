@@ -1,4 +1,3 @@
-#https://github.com/YuLab-SMU/ChIPseeker/issues/23
 library(ChIPseeker)
 library(clusterProfiler)
 library(org.Hs.eg.db)
@@ -50,7 +49,7 @@ GenomeInfoDb::seqlevels(txdb)
 #PeakList_with_added_chr_str <- lapply(ReadPeakList, diffloop::addchr)
 
 #annotate peaks
-#4000bp = 4Kbp
+#select 4kbp upstream (-4000) to TSS (0)
 peakAnnoList <- lapply(ReadPeakList, annotatePeak, TxDb=txdb,tssRegion=c(-4000, 0), 
                        verbose=TRUE, annoDb="org.Hs.eg.db")
 
@@ -63,15 +62,22 @@ annot_df_HCC1806 <- data.frame(peakAnnoList[[2]]@anno)
 #annot_df_BT549=annot_df_BT549[c(1:5,23:33)]
 #annot_df_HCC1806=annot_df_HCC1806[c(1:5,23:33)]
 
+BT549_promotor <- annot_df_BT549[grepl("Promoter",annot_df_BT549$annotation),][-c(6,7,8,9,10,11)]
+HCC1806_promotor <- annot_df_HCC1806[grepl("Promoter",annot_df_HCC1806$annotation),][-c(6,7,8,9,10,11)]
+
 #add gene name to annot_df
-write.csv(annot_df_BT549, "BT549_peaks_with_annotations.csv")
-write.csv(annot_df_HCC1806, "HCC1806_peaks_with_annotations.csv")
+write.csv(BT549_promotor, "BT549_peaks_with_annotations_for_promoters.csv")
+write.csv(HCC1806_promotor, "HCC1806_peaks_with_annotations_for_promoters.csv")
+
+#common peaks between BT549 and HCC1806
+common <- merge(HCC1806_promotor,BT549_promotor, by=c("geneId"), suffix=c(".HCC1806",".BT549"))
+write.csv(common, "common_peaks_with_annotations_for_promoters.csv")
 
 
 pdf("BT549_chip_profile.pdf")
 
 #Profile of ChIP peaks binding to TSS regions
-promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
+promoter <- getPromoters(TxDb=txdb, upstream=4000, downstream=4000)
 tagMatrix <- getTagMatrix(ReadPeakList$BT549, windows=promoter)
 # preparing tagMatrix list
 tagMatrixList <- list(BT549=tagMatrix)
@@ -79,10 +85,10 @@ tagMatrixList <- list(BT549=tagMatrix)
 #tagHeatmap(tagMatrixList)
 
 #profile
-peakHeatmap(peak = ReadPeakList$BT549, TxDb = txdb,upstream = 2000, downstream = 2000)
+peakHeatmap(peak = ReadPeakList$BT549, TxDb = txdb,upstream = 4000, downstream = 4000)
 
 # plotting average profile of ChIP peaks 
-plotAvgProf(tagMatrixList, xlim=c(-2000, 2000), xlab="Genomic Region (5'->3')", ylab = "Read Count Frequency")
+plotAvgProf(tagMatrixList, xlim=c(-4000, 4000), xlab="Genomic Region (5'->3')", ylab = "Read Count Frequency")
 
 
 #plot heatmap and peak profiling together
@@ -114,7 +120,7 @@ dev.off()
 pdf("HCC1806_chip_profile.pdf")
 #coverage plot 
 #Profile of ChIP peaks binding to TSS regions
-promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
+promoter <- getPromoters(TxDb=txdb, upstream=4000, downstream=4000)
 tagMatrix <- getTagMatrix(ReadPeakList$HCC1806, windows=promoter)
 # preparing tagMatrix list
 tagMatrixList <- list(HCC1806=tagMatrix)
@@ -122,10 +128,10 @@ tagMatrixList <- list(HCC1806=tagMatrix)
 #tagHeatmap(tagMatrixList)
 
 #profile
-peakHeatmap(peak = ReadPeakList$HCC1806, TxDb = txdb,upstream = 2000, downstream = 2000)
+peakHeatmap(peak = ReadPeakList$HCC1806, TxDb = txdb,upstream =4000, downstream =4000)
 
 # plotting average profile of ChIP peaks 
-plotAvgProf(tagMatrixList, xlim=c(-2000, 2000), xlab="Genomic Region (5'->3')", ylab = "Read Count Frequency")
+plotAvgProf(tagMatrixList, xlim=c(-4000, 4000), xlab="Genomic Region (5'->3')", ylab = "Read Count Frequency")
 
 
 #plot heatmap and peak profiling together
@@ -154,11 +160,34 @@ dev.off()
 ####################
 #COMPARISION PLOTS
 ####################
-#venn diagram
-pdf("venn_diagram.pdf")
-  genes= lapply(peakAnnoList, function(i) as.data.frame(i)$geneId)
-  vennplot(genes)
+
+#Venn Diagram for BT549 and HCC1806 promoters
+library(VennDiagram)
+library(RColorBrewer)
+
+myCol <- brewer.pal(2, "Pastel2")
+#venn diagram on raw data (three conditions)
+
+HCC1806_df <- HCC1806_promotor$geneId
+BT549_df <- BT549_promotor$geneId
+
+
+display_venn <- function(x, ...){
+  library(VennDiagram)
+  grid.newpage()
+  venn_object <- venn.diagram(x, filename = NULL, ...)
+  grid.draw(venn_object)
+}                                  
+
+pdf("VennDiagram.pdf")                                  
+display_venn(
+  list(HCC1806=HCC1806_df,BT549=BT549_df ),
+  category.names = c("HCC1806" , "BT549"),
+  fill = c("#999999", "#E69F00")
+)                                 
 dev.off()
+
+
 
 #compare their genomic annotation of two cell lines
 pdf("compare_genomic_annotations.pdf")
@@ -172,7 +201,7 @@ dev.off()
 
 #compare peak heatmaps
 pdf("compare_Peak_heatmaps.pdf", width=200, height=400)
-  promoter <- getPromoters(TxDb=txdb, upstream=2000, downstream=2000)
+  promoter <- getPromoters(TxDb=txdb, upstream=4000, downstream=4000)
   tagMatrix1 <- getTagMatrix(ReadPeakList$BT549, windows=promoter)
   tagMatrix2 <- getTagMatrix(ReadPeakList$HCC1806, windows=promoter)
   # preparing tagMatrix list
@@ -182,7 +211,7 @@ dev.off()
 
 #plot average profile
 pdf("compare_avg_profile.pdf")
-  plotAvgProf(tagMatrixList, xlim=c(-2000, 2000), conf=0.95,resample=500, facet="row")
+  plotAvgProf(tagMatrixList, xlim=c(-4000, 4000), conf=0.95,resample=500, facet="row")
 dev.off()
 
 
@@ -194,3 +223,36 @@ pdf("coveragePlot.pdf", width=20)
   p1 + facet_grid(chr ~ .id) + scale_color_manual(values=col) + scale_fill_manual(values=col)
   p2 + facet_grid(chr ~ .id) + scale_color_manual(values=col) + scale_fill_manual(values=col)
 dev.off()
+
+
+
+##############################################
+#select promoter regions for Motif Discovery
+##############################################
+
+BT549_promotor <- annot_df_BT549[grepl("Promoter",annot_df_BT549$annotation),][,1:3]
+HCC1806_promotor <- annot_df_HCC1806[grepl("Promoter",annot_df_HCC1806$annotation),][,1:3]
+
+names(BT549_promotor) <- NULL
+names(HCC1806_promotor) <- NULL
+write.table(BT549_promotor,"/Users/shahina/Projects/23-1DEAN-001/chipr/BT549_promotor_regions.bed", row.names = FALSE, quote=FALSE, sep="\t")
+write.table(HCC1806_promotor,"/Users/shahina/Projects/23-1DEAN-001/chipr/HCC1806_promotor_regions.bed", row.names = FALSE, quote=FALSE, sep="\t")
+
+##############################################
+#select common promoter regions for Motif Discovery
+##############################################
+
+BT549_promotor <- annot_df_BT549[grepl("Promoter",annot_df_BT549$annotation),][,c(1:3,18)]
+HCC1806_promotor <- annot_df_HCC1806[grepl("Promoter",annot_df_HCC1806$annotation),][,c(1:3,18)]
+
+
+HCC1806_common <- HCC1806_promotor[HCC1806_promotor$geneId %in% BT549_promotor$geneId,][,c(1:3)]
+BT549_common <- BT549_promotor[BT549_promotor$geneId %in% HCC1806_promotor$geneId,][,c(1:3)]
+
+
+names(HCC1806_common) <- NULL
+names(BT549_common) <- NULL
+
+write.table(BT549_common,"/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/BT549_promotor_regions_common.bed", row.names = FALSE, quote=FALSE, sep="\t")
+write.table(HCC1806_common,"/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/HCC1806_promotor_regions_common.bed", row.names = FALSE, quote=FALSE, sep="\t")
+
