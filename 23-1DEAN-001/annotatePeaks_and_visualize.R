@@ -14,8 +14,8 @@ txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene
 
 #first remove random chr regions from file
 
-BT549_df <- read.table("/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/BT549_optimal_filtered.bed")
-HCC1806_df <- read.table("/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/HCC1806_optimal_filtered.bed")
+BT549_df <- read.table("/Users/shahina/Projects/23-1DEAN-001/chipr/BT549_optimal_filtered.bed")
+HCC1806_df <- read.table("/Users/shahina/Projects/23-1DEAN-001/chipr/HCC1806_optimal_filtered.bed")
 
 BT549_df<- BT549_df[!grepl("_random",BT549_df$V1),]
 BT549_df<- BT549_df[!grepl("chrUn",BT549_df$V1),]
@@ -26,12 +26,12 @@ HCC1806_df <- HCC1806_df[!grepl("chrUn",HCC1806_df$V1),]
 names(HCC1806_df) <- NULL
 names(BT549_df) <- NULL
 
-write.table(HCC1806_df,"/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/HCC1806_optimal_filtered_v1.bed", row.names = FALSE, quote=FALSE, sep="\t")
-write.table(BT549_df,"/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/BT549_optimal_filtered_v1.bed", row.names = FALSE, quote=FALSE, sep="\t")
+write.table(HCC1806_df,"/Users/shahina/Projects/23-1DEAN-001/chipr/HCC1806_optimal_filtered_v1.bed", row.names = FALSE, quote=FALSE, sep="\t")
+write.table(BT549_df,"/Users/shahina/Projects/23-1DEAN-001/chipr/BT549_optimal_filtered_v1.bed", row.names = FALSE, quote=FALSE, sep="\t")
 
-dir.create("/Users/shahina/Projects/2023_projects/23-1DEAN-001/peak_annotation")
-setwd("/Users/shahina/Projects/2023_projects/23-1DEAN-001/peak_annotation")
-samplefiles <- list.files("/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr", pattern="optimal_filtered_v1.bed", full.names=T)
+dir.create("/Users/shahina/Projects/23-1DEAN-001/peak_annotation")
+setwd("/Users/shahina/Projects/23-1DEAN-001/peak_annotation")
+samplefiles <- list.files("/Users/shahina/Projects/23-1DEAN-001/chipr", pattern="optimal_filtered_v1.bed", full.names=T)
 
 samplefiles <- as.list(samplefiles)
 names(samplefiles) <- c("BT549","HCC1806")
@@ -235,8 +235,8 @@ HCC1806_promotor <- annot_df_HCC1806[grepl("Promoter",annot_df_HCC1806$annotatio
 
 names(BT549_promotor) <- NULL
 names(HCC1806_promotor) <- NULL
-write.table(BT549_promotor,"/Users/shahina/Projects/23-1DEAN-001/chipr/BT549_promotor_regions.bed", row.names = FALSE, quote=FALSE, sep="\t")
-write.table(HCC1806_promotor,"/Users/shahina/Projects/23-1DEAN-001/chipr/HCC1806_promotor_regions.bed", row.names = FALSE, quote=FALSE, sep="\t")
+write.table(BT549_promotor,"/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/BT549_promotor_regions.bed", row.names = FALSE, quote=FALSE, sep="\t")
+write.table(HCC1806_promotor,"/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/HCC1806_promotor_regions.bed", row.names = FALSE, quote=FALSE, sep="\t")
 
 ##############################################
 #select common promoter regions for Motif Discovery
@@ -255,4 +255,3 @@ names(BT549_common) <- NULL
 
 write.table(BT549_common,"/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/BT549_promotor_regions_common.bed", row.names = FALSE, quote=FALSE, sep="\t")
 write.table(HCC1806_common,"/Users/shahina/Projects/2023_projects/23-1DEAN-001/chipr/HCC1806_promotor_regions_common.bed", row.names = FALSE, quote=FALSE, sep="\t")
-
