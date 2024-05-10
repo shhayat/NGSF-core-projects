@@ -1,4 +1,4 @@
-setwd("/datastore/NGSF001/projects/2023/23-1ARMA-002/analysis/count_files_using_ROS_Cfam_1.0")
+setwd("/datastore/NGSF001/projects/2023/23-1ARMA-002/analysis/count_files_using_ROS_Cfam_1.0/")
 #setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis")
 #scType for annotating https://github.com/IanevskiAleksandr/sc-type?tab=readme-ov-file
 
@@ -9,7 +9,7 @@ library(glmGamPoi)
 library(ggplot2)
 
 #Load SC2300019
-patient.data <- Read10X(data.dir = "count_files_using_ROS_Cfam_1.0/SC2300019/outs/filtered_feature_bc_matrix/")
+patient.data <- Read10X(data.dir ="SC2300019/outs/filtered_feature_bc_matrix/")
 
 # Initialize the Seurat object with the raw (non-normalized data).
 seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.cells = 3, min.features = 200)
@@ -125,7 +125,7 @@ save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-project
 ############################################################################################################################
 
 #Load SC2300020
-patient.data <- Read10X(data.dir = "count_files_using_ROS_Cfam_1.0/SC2300020/out/filtered_feature_bc_matrix/")
+patient.data <- Read10X(data.dir ="SC2300020/out/filtered_feature_bc_matrix/")
 
 # Initialize the Seurat object with the raw (non-normalized data).
 seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.cells = 3, min.features = 200)
@@ -237,7 +237,7 @@ save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-project
 ############################################################################################################################
 
 #Load SC2300021
-patient.data <- Read10X(data.dir = "count_files_using_ROS_Cfam_1.0/SC2300021/out/filtered_feature_bc_matrix/")
+patient.data <- Read10X(data.dir ="SC2300021/out/filtered_feature_bc_matrix/")
 
 # Initialize the Seurat object with the raw (non-normalized data).
 seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.cells = 3, min.features = 200)
@@ -348,7 +348,7 @@ save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-project
 
 ###################################################################################################################################
 #Load SC2300022
-patient.data <- Read10X(data.dir = "count_files_using_ROS_Cfam_1.0/SC2300022/out/filtered_feature_bc_matrix/")
+patient.data <- Read10X(data.dir ="SC2300022/out/filtered_feature_bc_matrix/")
 
 # Initialize the Seurat object with the raw (non-normalized data).
 seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.cells = 3, min.features = 200)
