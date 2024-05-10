@@ -3,7 +3,7 @@
 #SBATCH --job-name=seurat_run
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --time=15:00:00
+#SBATCH --time=24:00:00
 #SBATCH --mem=40G
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
