@@ -31,7 +31,7 @@ seurate.obj[["percent.mt"]] <- PercentageFeatureSet(seurate.obj, pattern = "^MT"
 plot1 <- FeatureScatter(seurate.obj, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 plot2 <- FeatureScatter(seurate.obj, feature1 = "nCount_RNA", feature2 = "percent.mt")
 
-plot2 + plot1
+#plot2 + plot1
 
 #filter cell after viewing plot1
 filtered_seurat <- subset(seurate.obj, subset = nFeature_RNA > 200 & nFeature_RNA < 5000 & percent.mt < 5)
