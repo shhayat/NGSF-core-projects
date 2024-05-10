@@ -25,7 +25,7 @@ seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.c
 seurate.obj[["percent.mt"]] <- PercentageFeatureSet(seurate.obj, pattern = "^MT")
 
 # Visualize QC metrics as a violin plot
-VlnPlot(seurate.obj, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+#VlnPlot(seurate.obj, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
 
 ## FeatureScatter is typically used to visualize feature-feature relationships
 plot1 <- FeatureScatter(seurate.obj, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
@@ -63,15 +63,15 @@ seuratobject <- RunPCA(seuratobject, verbose = FALSE)
 # Examine and visualize PCA results a few different ways
 print(seuratobject[["pca"]], dims = 1:5, nfeatures = 5)
 
-VizDimLoadings(seuratobject, dims = 1:2, reduction = "pca")
+#VizDimLoadings(seuratobject, dims = 1:2, reduction = "pca")
 
 #allows for easy exploration of the primary sources of heterogeneity in a dataset, and can be useful 
 #When trying to decide which PCs to include for further downstream analyses
-DimHeatmap(seuratobject, dims = 1:15, cells = 500, balanced = TRUE)
+#DimHeatmap(seuratobject, dims = 1:15, cells = 500, balanced = TRUE)
 
 
 #we can observe an ‘elbow’ around PC14-15, suggesting that the majority of true signal is captured in the first 15 PCs.
-ElbowPlot(seuratobject)
+#ElbowPlot(seuratobject)
 
 #Cluster the cells
 seuratobject <- FindNeighbors(seuratobject, dims = 1:15, verbose = FALSE)
@@ -89,7 +89,7 @@ seuratobject <- RunUMAP(seuratobject, dims = 1:15, verbose = FALSE)
 #https://rpubs.com/kenneditodd/doublet_finder_example
 # pK Identification (no ground-truth) ------------------------------------------
 sweep.res.list <- paramSweep(seuratobject, PCs = 1:15, sct = TRUE)
-save(sweep.res.list, file="sweep.res_SC2300019.RData")
+#save(sweep.res.list, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/sweep.res_SC2300019.RData")
 #load("sweep.res_SC2300019.RData")
 sweep.stats <- summarizeSweep(sweep.res.list, GT = FALSE)
 bcmvn <- find.pK(sweep.stats)
@@ -119,7 +119,7 @@ seuratobject <- subset(seuratobject, subset = DF.classifications_0.25_0.11_494 =
 
 #DimPlot(seuratobject, reduction = 'umap', label = TRUE)
 
-save(seuratobject, file="seurat_object_SC2300019.RData")
+save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/seurat_object_SC2300019.RData")
 
 
 ############################################################################################################################
@@ -138,7 +138,7 @@ seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.c
 seurate.obj[["percent.mt"]] <- PercentageFeatureSet(seurate.obj, pattern = "^MT")
 
 # Visualize QC metrics as a violin plot
-VlnPlot(seurate.obj, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+#VlnPlot(seurate.obj, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
 
 ## FeatureScatter is typically used to visualize feature-feature relationships
 plot1 <- FeatureScatter(seurate.obj, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
@@ -176,15 +176,15 @@ seuratobject <- RunPCA(seuratobject, verbose = FALSE)
 # Examine and visualize PCA results a few different ways
 #print(seuratobject[["pca"]], dims = 1:5, nfeatures = 5)
 
-VizDimLoadings(seuratobject, dims = 1:2, reduction = "pca")
+#VizDimLoadings(seuratobject, dims = 1:2, reduction = "pca")
 
 #allows for easy exploration of the primary sources of heterogeneity in a dataset, and can be useful 
 #When trying to decide which PCs to include for further downstream analyses
-DimHeatmap(seuratobject, dims = 1:15, cells = 500, balanced = TRUE)
+#DimHeatmap(seuratobject, dims = 1:15, cells = 500, balanced = TRUE)
 
 
 #we can observe an ‘elbow’ around PC14-15, suggesting that the majority of true signal is captured in the first 15 PCs.
-ElbowPlot(seuratobject)
+#ElbowPlot(seuratobject)
 
 #Cluster the cells
 seuratobject <- FindNeighbors(seuratobject, dims = 1:15, verbose = FALSE)
@@ -195,7 +195,7 @@ seuratobject <- RunUMAP(seuratobject, dims = 1:15, verbose = FALSE)
 #plot UMAP
 #DimPlot(seuratobject, label = TRUE)
 
-save(seuratobject, file="seurat_object_SC2300020.RData")
+save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/seurat_object_SC2300020.RData")
 #load("seurat_object_SC2300020.RData")
 
 #DoubletFinder
@@ -232,7 +232,7 @@ seuratobject <- subset(seuratobject, subset = DF.classifications_0.25_0.1_245 ==
 
 #DimPlot(seuratobject, reduction = 'umap', label = TRUE)
 
-save(seuratobject, file="seurat_object_SC2300020.RData")
+save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/seurat_object_SC2300020.RData")
 
 ############################################################################################################################
 
@@ -250,7 +250,7 @@ seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.c
 seurate.obj[["percent.mt"]] <- PercentageFeatureSet(seurate.obj, pattern = "^MT")
 
 # Visualize QC metrics as a violin plot
-VlnPlot(seurate.obj, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+#VlnPlot(seurate.obj, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
 
 ## FeatureScatter is typically used to visualize feature-feature relationships
 plot1 <- FeatureScatter(seurate.obj, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
@@ -287,15 +287,15 @@ seuratobject <- RunPCA(seuratobject, verbose = FALSE)
 # Examine and visualize PCA results a few different ways
 print(seuratobject[["pca"]], dims = 1:5, nfeatures = 5)
 
-VizDimLoadings(seuratobject, dims = 1:2, reduction = "pca")
+#VizDimLoadings(seuratobject, dims = 1:2, reduction = "pca")
 
 #allows for easy exploration of the primary sources of heterogeneity in a dataset, and can be useful 
 #When trying to decide which PCs to include for further downstream analyses
-DimHeatmap(seuratobject, dims = 1:15, cells = 500, balanced = TRUE)
+#DimHeatmap(seuratobject, dims = 1:15, cells = 500, balanced = TRUE)
 
 
 #we can observe an ‘elbow’ around PC14-15, suggesting that the majority of true signal is captured in the first 15 PCs.
-ElbowPlot(seuratobject)
+#ElbowPlot(seuratobject)
 
 #Cluster the cells
 seuratobject <- FindNeighbors(seuratobject, dims = 1:15, verbose = FALSE)
@@ -306,14 +306,14 @@ seuratobject <- RunUMAP(seuratobject, dims = 1:15, verbose = FALSE)
 #plot UMAP
 #DimPlot(seuratobject, label = TRUE)
 
-save(seuratobject, file="seurat_object_SC2300021.RData")
+save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/seurat_object_SC2300021.RData")
 #load("seurat_object_SC2300021.RData")
 
 #DoubletFinder
 #https://rpubs.com/kenneditodd/doublet_finder_example
 # pK Identification (no ground-truth) ------------------------------------------
 sweep.res.list <- paramSweep(seuratobject, PCs = 1:15, sct = TRUE)
-save(sweep.res.list, file="sweep.res.object_SC2300021.RData")
+#save(sweep.res.list, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/sweep.res.object_SC2300021.RData")
 #load("sweep.res.object_SC2300021.RData")
 sweep.stats <- summarizeSweep(sweep.res.list, GT = FALSE)
 bcmvn <- find.pK(sweep.stats)
@@ -343,7 +343,7 @@ seuratobject <- subset(seuratobject, subset = DF.classifications_0.25_0.21_461 =
 
 #DimPlot(seuratobject, reduction = 'umap', label = TRUE)
 
-save(seuratobject, file="seurat_object_SC2300021.RData")
+save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/seurat_object_SC2300021.RData")
 
 
 ###################################################################################################################################
@@ -361,7 +361,7 @@ seurate.obj <- CreateSeuratObject(counts = patient.data, project="canine", min.c
 seurate.obj[["percent.mt"]] <- PercentageFeatureSet(seurate.obj, pattern = "^MT")
 
 # Visualize QC metrics as a violin plot
-VlnPlot(seurate.obj, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
+#VlnPlot(seurate.obj, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"), ncol = 3)
 
 ## FeatureScatter is typically used to visualize feature-feature relationships
 plot1 <- FeatureScatter(seurate.obj, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
@@ -398,15 +398,15 @@ seuratobject <- RunPCA(seuratobject, verbose = FALSE)
 # Examine and visualize PCA results a few different ways
 print(seuratobject[["pca"]], dims = 1:5, nfeatures = 5)
 
-VizDimLoadings(seuratobject, dims = 1:2, reduction = "pca")
+#VizDimLoadings(seuratobject, dims = 1:2, reduction = "pca")
 
 #allows for easy exploration of the primary sources of heterogeneity in a dataset, and can be useful 
 #When trying to decide which PCs to include for further downstream analyses
-DimHeatmap(seuratobject, dims = 1:15, cells = 500, balanced = TRUE)
+#DimHeatmap(seuratobject, dims = 1:15, cells = 500, balanced = TRUE)
 
 
 #we can observe an ‘elbow’ around PC14-15, suggesting that the majority of true signal is captured in the first 15 PCs.
-ElbowPlot(seuratobject)
+#ElbowPlot(seuratobject)
 
 #Cluster the cells
 seuratobject <- FindNeighbors(seuratobject, dims = 1:15, verbose = FALSE)
@@ -454,4 +454,4 @@ seuratobject <- subset(seuratobject, subset = DF.classifications_0.25_0.14_379 =
 
 #DimPlot(seuratobject, reduction = 'umap', label = TRUE)
 
-save(seuratobject, file="seurat_object_SC2300022.RData")
+save(seuratobject, file="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/seurat_object_SC2300022.RData")
