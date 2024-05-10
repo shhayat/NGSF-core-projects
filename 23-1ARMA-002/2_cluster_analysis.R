@@ -22,7 +22,7 @@ source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/sct
 # DB file
 #db_ = "https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/ScTypeDB_full.xlsx";
 #tissue = c("Muscle") # e.g. Immune system,Pancreas,Liver,Eye,Kidney,Brain,Lung,Adrenal,Heart,Intestine,Muscle,Placenta,Spleen,Stomach,Thymus 
-db_ = "/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/ScType - canine STS final.xlsx";
+db_ = "/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis/ScType_canine_STS_final.xlsx";
 tissue = c("Soft tissue sarcoma")
 # prepare gene sets
 gs_list = gene_sets_prepare(db_, tissue)
