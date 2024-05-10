@@ -51,7 +51,7 @@ cluster_analysis <- function(seuratobject, sample_name){
     seuratobject@meta.data$customclassif[seuratobject@meta.data$seurat_clusters == j] = as.character(cl_type$type[1])
 }
 
-  pdf(sprintf("Cluster_annotation_%s.pdf",sample_name), width=10, height=10))
+  pdf(sprintf("Cluster_annotation_%s.pdf",sample_name), width=10, height=10)
      DimPlot(seuratobject, reduction = "umap", label = TRUE, repel = TRUE, group.by = 'customclassif')
   dev.off()
 }
