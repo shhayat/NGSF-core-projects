@@ -1,6 +1,7 @@
 #Cluster Annotation using SC-TYPE
 
-setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis")
+#setwd("/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1ARMA-002/analysis")
+setwd("/datastore/NGSF001/projects/2023/23-1ARMA-002/analysis/count_files_using_ROS_Cfam_1.0")
 
 load("seurat_object_SC2300019.RData")
 SC2300019 <- seuratobject 
