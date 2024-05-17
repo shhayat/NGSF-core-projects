@@ -25,7 +25,7 @@ fq2=$1
 
 mkdir -p ${output_dir}/${sample_name}
 
-#for paired end samples
+#run star fustion for paired end samples
 singularity exec -e -B `pwd` -B ${CanineStarFusionBuild} \
                 /globalhome/hxo752/HPC/tools/star-fusion.v1.11.0.simg \
                 STAR-Fusion \
