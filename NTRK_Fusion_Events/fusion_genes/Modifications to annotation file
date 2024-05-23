@@ -1,0 +1,37 @@
+#Remove column 9 and 10
+awk '{$9=$10=""; print $0}' genomic.gtf > genomic_1.gtf
+
+#rename db_xref to gene_id
+sed -i 's/db_xref/gene_id/g' genomic_1.gtf
+
+sed -i 's/ gene "/ gene_name "/g’ genomic_1.gtf
+
+#Remove transcript_id column
+sed -i 's/transcript_id "XM_[^"]*"; //g' genomic_1.gtf
+
+#remove spaces
+#sed -i 's/   / /g' genomic_2.gtf
+
+#add tabs
+#sed -i 's/ /\t/g' genomic_2.gtf
+
+sed -i 's/GeneID://g' genomic_2.gtf
+
+
+Modified two files 
+Replace gene_id coordinate from 8 to 10 /globalhome/hxo752/HPC/tools/STAR-Fusion-v1.11.0/ctat-genome-lib-builder/util/gtf_to_exon_gene_records.pl
+Change regular expression for gene_id /globalhome/hxo752/HPC/tools/STAR-Fusion-v1.11.0/ctat-genome-lib-builder/util/../lib/GTF_utils.pm
+
+
+In Vim following modification were done for genomics.gtf
+#Delete line
+:g/gene_name ""; /d
+:g/gene_name ""; /d
+:g/transcript_id \"unknown_transcript_1\"/d
+
+#Replace
+:%s/gene_id/gene_name/g
+:%s/db_xref/gene_id/g
+
+#delete string
+:%s/transcript_id "XM_\(\d\+\.\d\+\)"; //g 
