@@ -18,6 +18,8 @@ gatk_resource=/datastore/NGSF001/analysis/gatk_resource_bundle
 sample_name=$1; shift
 BAM_FILE=$1;
 
+mkdir -p $OUTDIR/$sample_name
+
 gatk --java-options "-Xms10G -Xmx10G -XX:ParallelGCThreads=2" BaseRecalibrator \
   -I ${BAM_FILE} \
   -R ${REF} \
