@@ -9,7 +9,7 @@
 #SBATCH --mem=10G
 #SBATCH  --output=%j_recalibrate.out
 
-module load gatk/4.2.5.0 
+module load gatk/4.2.2.0
 
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/alignment
 REF=/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa
