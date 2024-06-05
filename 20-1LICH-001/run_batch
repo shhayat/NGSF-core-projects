@@ -12,8 +12,15 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 #######################
 #STEP2: RECALIBRATION
 #######################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
+DATA=/datastore/NGSF001/projects/2020/20-1LICH-001/reanalysis_mutect2/
 
-E2100024_mdup_rg.bam
+for i in {13..24};
+do
+  sbatch ${SCRIPT_DIR}/03_recalibrate_base_quality_score.sh E21000${i} "${DATA}/E21000${i}/E21000${i}_mdup_rg.bam"
+  sleep 0.2
+done
+
 
 #####################
 #STEP2 : MUTECT2 CALL
