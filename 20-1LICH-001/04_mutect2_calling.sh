@@ -28,7 +28,7 @@ OUTDIR_NAME=$1;
 #Run Mutect2 on induced and uninduced samples to generate VCFs
 gatk Mutect2 \
      -R ${REF} \
-     -I ${INPUT_DIR}/${OUTDIR_NAME}/${OUTDIR_NAME}_mdup_rg.bam \
+     -I ${INPUT_DIR}/${OUTDIR_NAME}/${sample_name}_bqsr.bam \
      -L ${INTERVALS} \
      -O ${INPUT_DIR}/${OUTDIR_NAME}/${OUTDIR_NAME}.vcf.gz
 #https://gatk.broadinstitute.org/hc/en-us/articles/360035531132--How-to-Call-somatic-mutations-using-GATK4-Mutect2
