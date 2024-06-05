@@ -17,7 +17,7 @@ DATA=/datastore/NGSF001/projects/2020/20-1LICH-001/reanalysis_mutect2/
 
 for i in {13..24};
 do
-  sbatch ${SCRIPT_DIR}/03_Bases_Quality_recalibration.shh E21000${i} "${DATA}/E21000${i}/E21000${i}_mdup_rg.bam"
+  sbatch ${SCRIPT_DIR}/03_Bases_Quality_recalibration.sh E21000${i} "${DATA}/E21000${i}/E21000${i}_mdup_rg.bam"
   sleep 0.2
 done
 
@@ -27,11 +27,11 @@ done
 #####################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
  
-#for i in $(seq -w 13 24)
-#do
-   #sbatch 03_mutect2_calling.sh E21000${i}
-   #sleep 0.5
- #done
+for i in $(seq -w 13 24)
+do
+   sbatch 03_mutect2_calling.sh E21000${i}
+   sleep 0.5
+done
 
 ###############################################################
 #STEP3 : MERGE UNINDUCED SAMPLES PER PROTEIN
