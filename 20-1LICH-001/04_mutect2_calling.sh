@@ -10,7 +10,9 @@
 #SBATCH  --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 set -eux
 
+
 #loading required modules
+module load StdEnv/2020
 module load gatk/4.2.2.0
 
 #reference file
