@@ -17,7 +17,7 @@ DATA=/datastore/NGSF001/projects/2020/20-1LICH-001/reanalysis_mutect2/
 
 for i in {13..24};
 do
-  sbatch ${SCRIPT_DIR}/03_recalibrate_base_quality_score.sh E21000${i} "${DATA}/E21000${i}/E21000${i}_mdup_rg.bam"
+  sbatch ${SCRIPT_DIR}/03_Bases_Quality_recalibration.shh E21000${i} "${DATA}/E21000${i}/E21000${i}_mdup_rg.bam"
   sleep 0.2
 done
 
