@@ -11,10 +11,10 @@
 
 module load gatk/4.2.5.0 
 
-#DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/alignment
-REF=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/genome/genome.fa
-gatk_resource=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/gatk_resource_bundle
+REF=/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa
+gatk_resource=/datastore/NGSF001/analysis/gatk_resource_bundle
+
 sample_name=$1; shift
 BAM_FILE=$1;
 
