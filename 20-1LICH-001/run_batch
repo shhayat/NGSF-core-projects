@@ -51,7 +51,7 @@ do
    set ${myarr[i+1]}
       SAMPLE2=$2
    
-   #$1 is CLONE_ID and $4 is conditions for sample
+   #$1 is CLONE_ID and $3 is conditions for sample
     sbatch ${SCRIPT_DIR}/04_concat_uninduced.sh $1 ${SAMPLE1} ${SAMPLE2} $3
    sleep 0.5
  done
@@ -71,7 +71,7 @@ do
    set ${myarr[i+1]}
       SAMPLE2=$2
    
-   #$1 is CLONE_ID and $4 is conditions for sample
+   #$1 is CLONE_ID and $3 is conditions for sample
     sbatch ${SCRIPT_DIR}/04_concat_uninduced.sh $1 ${SAMPLE1} ${SAMPLE2} $3
    sleep 0.5
  done
