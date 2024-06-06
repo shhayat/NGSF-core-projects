@@ -63,7 +63,7 @@ do
    myarr+=("$line")
 done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 2 6 10
+for i in 0 4 8
 do
   set ${myarr[i]}
       SAMPLE1=$2
