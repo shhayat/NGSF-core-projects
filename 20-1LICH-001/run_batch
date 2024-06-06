@@ -86,7 +86,7 @@ do
    myarr+=("$line")
 done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 0 1 4 5 8 9
+for i in {0..11}
 do
    set ${myarr[i]}
    CLONE_ID=$1 
