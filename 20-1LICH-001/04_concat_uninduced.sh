@@ -15,7 +15,7 @@ module load StdEnv/2020
 module load gcc/9.3.0
 module load bcftools/1.13
 
-INPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
+INPUT_DIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/alignment'
 OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_uninduced_samples'
 
 mkdir -p ${OUTDIR}
