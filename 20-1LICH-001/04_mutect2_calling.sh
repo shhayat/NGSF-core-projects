@@ -30,7 +30,7 @@ sample_name=$1;
 #Run Mutect2 on induced and uninduced samples to generate VCFs
 gatk Mutect2 \
      -R ${REF} \
-     -I ${INPUT_DIR}/${sample_name}_bqsr.bam \
+     -I ${INPUT_DIR}/${sample_name}/${sample_name}_bqsr.bam \
      -L ${INTERVALS} \
-     -O ${INPUT_DIR}/${sample_name}.vcf.gz
+     -O ${INPUT_DIR}/${sample_name}/${sample_name}.vcf.gz
 #https://gatk.broadinstitute.org/hc/en-us/articles/360035531132--How-to-Call-somatic-mutations-using-GATK4-Mutect2
