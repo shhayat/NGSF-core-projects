@@ -92,7 +92,7 @@ do
    CLONE_ID=$1 
    SAMPLE_ID=$2
    
-   sbatch ${SCRIPT_DIR}/05_select_variants.sh ${CLONE_ID} ${SAMPLE_ID}
+   sbatch ${SCRIPT_DIR}/05_select_variants.sh ${CLONE_ID} ${SAMPLE_INFO}
    sleep 0.5
  done
 
