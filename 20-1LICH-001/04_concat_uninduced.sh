@@ -21,16 +21,20 @@ OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/an
 mkdir -p ${OUTDIR}
 
 CLONE_ID=$1;
-UNINDUCED_1=$2;
-UNINDUCED_2=$3
+sample_1=$2;
+sample_2=$3;
+sample_info=$4
 
-echo "${INPUT_DIR}/${UNINDUCED_1}/${UNINDUCED_1}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_uniduced_vcf.txt
-echo "${INPUT_DIR}/${UNINDUCED_2}/${UNINDUCED_2}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_uniduced_vcf.txt
+echo "${INPUT_DIR}/${sample_1}/${sample_1}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${sample_info}_vcf.txt
+echo "${INPUT_DIR}/${sample_2}/${sample_2}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${sample_info}_vcf.txt
 
 bcftools concat -a \
                 -d all \
                 -O z \
-                -f ${OUTDIR}/${CLONE_ID}_uniduced_vcf.txt \
-                -o ${OUTDIR}/${CLONE_ID}_uninduced_concat.vcf.gz 
+                -f ${OUTDIR}/${CLONE_ID}_${sample_info}_vcf.txt \
+                -o ${OUTDIR}/${CLONE_ID}_${sample_info}_concat.vcf.gz 
                 
-bcftools index -t ${OUTDIR}/${CLONE_ID}_uninduced_concat.vcf.gz 
+bcftools index -t ${OUTDIR}/${CLONE_ID}_${sample_info}_concat.vcf.gz 
+
+
+
