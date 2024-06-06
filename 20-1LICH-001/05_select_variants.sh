@@ -17,7 +17,7 @@ module load intel/2016.4
 module load intel/2017.1
 module load bedtools
 
-INPUT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/removed_shared_varaints_between_uninduced_induced
+INPUT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_induced_uninduced_samples
 OUTPUT_DIR1='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/filtered_v1'
 OUTPUT_DIR2='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/filtered_v2'
 GENOME='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
@@ -25,9 +25,10 @@ mkdir -p ${OUTPUT_DIR1}
 mkdir -p ${OUTPUT_DIR2}
 CLONE_ID=$1
 SAMPLE_ID=$2
+SAMPLE_INFO=$3
  
 #gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
-gunzip -k ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_ID}_I.vcf.gz
+gunzip -k ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_ID}_${SAMPLE_INFO}.vcf.gz
 echo "convert vcf to bed file"
 #step1: Convert vcf to bed file
 #/globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.bed
