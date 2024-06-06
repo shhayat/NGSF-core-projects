@@ -27,7 +27,6 @@ CLONE_ID=$1
 SAMPLE_ID=$2
 SAMPLE_INFO=$3
 
- concat.vcf.gz
 #gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
 gunzip -k ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_ID}_${SAMPLE_INFO}_concat.vcf.gz
 echo "convert vcf to bed file"
