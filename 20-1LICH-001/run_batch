@@ -56,8 +56,28 @@ do
    sleep 0.5
  done
 
+##########################
+#STEP4 : SELECT VARIANTS
+##########################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
+myarr=()
+while read line
+do 
+   myarr+=("$line")
+done < ${SCRIPT_DIR}/sample_IDs.txt
+
+for i in 0 1 4 5 8 9
+do
+   set ${myarr[i]}
+   CLONE_ID=$1 
+   SAMPLE_ID=$2
+   
+   sbatch ${SCRIPT_DIR}/06_select_variants.sh ${CLONE_ID} ${SAMPLE_ID}
+   sleep 0.5
+ done
+
 #########################################################################
-#STEP4 : REMOVE SHARED VARIANTS BETWEEN INDUCED AND UNINDUCED PER PROTEINS
+#REMOVE SHARED VARIANTS BETWEEN INDUCED AND UNINDUCED PER PROTEINS
 #########################################################################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
 myarr=()
@@ -77,25 +97,7 @@ do
  done
 
 
-##########################
-#STEP5 : SELECT VARIANTS
-##########################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
-myarr=()
-while read line
-do 
-   myarr+=("$line")
-done < ${SCRIPT_DIR}/sample_IDs.txt
 
-for i in 0 1 4 5 8 9
-do
-   set ${myarr[i]}
-   CLONE_ID=$1 
-   SAMPLE_ID=$2
-   
-   sbatch ${SCRIPT_DIR}/06_select_variants.sh ${CLONE_ID} ${SAMPLE_ID}
-   sleep 0.5
- done
 
 
 ##########################
