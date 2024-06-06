@@ -17,12 +17,12 @@ module load gatk/4.2.2.0
 
 #reference file
 REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
-INPUT_DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis"
+INPUT_DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/alignment"
 INTERVALS='/datastore/NGSF001/analysis/references/human/hg38/agilent_sureselect_human_all_exon_v8_hg38/S33266340_Covered.noheader.noAlt.bed'
 OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/'
 mkdir -p ${OUTDIR}
 
-OUTDIR_NAME=$1;
+sample_name=$1;
 
 
 #Run Mutect2 in tumor only mode (https://gatk.broadinstitute.org/hc/en-us/articles/360035531132--How-to-Call-somatic-mutations-using-GATK4-Mutect2
@@ -30,7 +30,7 @@ OUTDIR_NAME=$1;
 #Run Mutect2 on induced and uninduced samples to generate VCFs
 gatk Mutect2 \
      -R ${REF} \
-     -I ${INPUT_DIR}/${OUTDIR_NAME}/${sample_name}_bqsr.bam \
+     -I ${INPUT_DIR}/${sample_name}_bqsr.bam \
      -L ${INTERVALS} \
-     -O ${INPUT_DIR}/${OUTDIR_NAME}/${OUTDIR_NAME}.vcf.gz
+     -O ${INPUT_DIR}/${sample_name}.vcf.gz
 #https://gatk.broadinstitute.org/hc/en-us/articles/360035531132--How-to-Call-somatic-mutations-using-GATK4-Mutect2
