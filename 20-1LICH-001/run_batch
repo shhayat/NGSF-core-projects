@@ -52,14 +52,14 @@ do
       SAMPLE2=$2
    
    #$1 is CLONE_ID and $4 is conditions for sample
-    sbatch 04_concatenate_uninduced_samples_per_protein.sh $1 ${SAMPLE1} ${SAMPLE2} $3
+    sbatch 04_concat_uninduced.sh $1 ${SAMPLE1} ${SAMPLE2} $3
    sleep 0.5
  done
 
 ##########################
 #STEP4 : SELECT VARIANTS
 ##########################
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 myarr=()
 while read line
 do 
@@ -72,7 +72,7 @@ do
    CLONE_ID=$1 
    SAMPLE_ID=$2
    
-   sbatch ${SCRIPT_DIR}/06_select_variants.sh ${CLONE_ID} ${SAMPLE_ID}
+   sbatch ${SCRIPT_DIR}/05_select_variants.sh ${CLONE_ID} ${SAMPLE_ID}
    sleep 0.5
  done
 
