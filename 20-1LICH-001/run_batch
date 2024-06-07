@@ -33,8 +33,20 @@ do
    sleep 0.5
 done
 
+
+##########################
+#STEP4 : SELECT VARIANTS
+##########################
+for i in {13..24};
+do
+  sbatch ${SCRIPT_DIR}/04_ E21000${i} "${DATA}/E21000${i}/E21000${i}_mdup_rg.bam"
+  sleep 0.2
+done
+
+${sample_name}/${sample_name}.vcf.gz
+
 ###############################################################
-#STEP4 : MERGE UNINDUCED INDUCED SAMPLES PER PROTEIN
+ MERGE UNINDUCED INDUCED SAMPLES PER PROTEIN
 ###############################################################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 myarr=()
