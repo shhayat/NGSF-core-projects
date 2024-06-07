@@ -37,13 +37,14 @@ done
 ##########################
 #STEP4 : SELECT VARIANTS
 ##########################
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/alignment
 for i in {13..24};
 do
-  sbatch ${SCRIPT_DIR}/04_ E21000${i} "${DATA}/E21000${i}/E21000${i}_mdup_rg.bam"
-  sleep 0.2
-done
 
-${sample_name}/${sample_name}.vcf.gz
+  sbatch ${SCRIPT_DIR}/04_select_variants.sh "E21000${i}"
+  sleep  0.5
+
+done
 
 ###############################################################
  MERGE UNINDUCED INDUCED SAMPLES PER PROTEIN
