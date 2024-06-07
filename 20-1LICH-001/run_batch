@@ -80,6 +80,17 @@ do
 #STEP4 : SELECT VARIANTS
 ##########################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_induced_uninduced_samples
+
+for i in $DATA/*_concat.vcf.gz 
+do
+  sbatch ${SCRIPT_DIR}/05_select_variants.sh $i
+done
+
+##########################
+#STEP4 : SELECT VARIANTS
+##########################
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 myarr=()
 while read line
 do 
