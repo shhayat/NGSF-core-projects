@@ -24,24 +24,19 @@ GENOME='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_a
 mkdir -p ${OUTPUT_DIR1}
 mkdir -p ${OUTPUT_DIR2}
 
-ZIPPED_FILE=$1;
-UNZIPPED_FILE=$2;
+CLONE_ID=$1; shift
+SAMPLE_INFO=$1;
 
 
-#gunzip -k ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.vcf.gz
-#gunzip -k ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.vcf.gz
-gunzip -k $SAMPLE_FILE
+gunzip -k ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.vcf.gz
 
 echo "convert vcf to bed file"
 #step1: Convert vcf to bed file
-#/globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.bed
 /globalhome/hxo752/HPC/tools/bedops/convert2bed -i vcf < ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.vcf -d >  ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.bed
-
 
 echo "Base Conversions"
 
 #step2: Extract C to T or G conversions and select first 3 columns (chrom, start, end position, ref allele and alternate allele)
-
 #awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.bed | grep -P '\tC\tG$' >> ${OUTPUT_DIR1}/${CLONE_ID}_${SAMPLE_INFO}_base_conversion.bed
 awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.bed | grep -P '\tC\tT$' >> ${OUTPUT_DIR1}/${CLONE_ID}_${SAMPLE_INFO}_base_conversion.bed
 #only select CC as REF
