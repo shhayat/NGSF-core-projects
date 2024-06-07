@@ -90,7 +90,7 @@ for i in 0 4 8 2 6 10
 do
    set ${myarr[i]}
    CLONE_ID=$1 
-   SAMPLE_ID=$3
+   SAMPLE_INFO=$3
    
    sbatch ${SCRIPT_DIR}/05_select_variants.sh ${CLONE_ID} ${SAMPLE_INFO}
    sleep 0.5
