@@ -20,10 +20,10 @@ OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/an
 
 mkdir -p ${OUTDIR}
 
-CLONE_ID=$1;
-sample_1=$2;
-sample_2=$3;
-sample_info=$4
+CLONE_ID=$1; shift
+sample_1=$1; shift
+sample_2=$1; shift
+sample_info=$1
 
 echo "${INPUT_DIR}/${sample_1}/${sample_1}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${sample_info}_vcf.txt
 echo "${INPUT_DIR}/${sample_2}/${sample_2}.vcf.gz" >> ${OUTDIR}/${CLONE_ID}_${sample_info}_vcf.txt
