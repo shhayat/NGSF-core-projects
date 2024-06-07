@@ -89,10 +89,8 @@ done < ${SCRIPT_DIR}/sample_IDs.txt
 for i in 0 4 8 2 6 10
 do
    set ${myarr[i]}
-   CLONE_ID=$1 
-   SAMPLE_INFO=$3
-   
-   sbatch ${SCRIPT_DIR}/05_select_variants.sh ${CLONE_ID} ${SAMPLE_INFO}
+#1 is clone id and $3 is sample info
+   sbatch ${SCRIPT_DIR}/05_select_variants.sh $1 $3
    sleep 0.5
  done
 
