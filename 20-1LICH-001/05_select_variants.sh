@@ -24,7 +24,7 @@ GENOME='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_a
 mkdir -p ${OUTPUT_DIR1}
 mkdir -p ${OUTPUT_DIR2}
 
-CLONE_ID=$1; shift
+CLONE_ID=$1;
 SAMPLE_INFO=$2;
 
 #gunzip -k ${INPUT_DIR}/${CLONE_ID}_${COND}_concat.vcf.gz
