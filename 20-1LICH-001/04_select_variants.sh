@@ -26,7 +26,7 @@ mkdir -p ${OUTPUT_DIR2}
 
 #CLONE_ID=$1; shift
 #SAMPLE_INFO=$1;
-sample_name=$1
+sample_name=$1;
 
 gunzip -k ${INPUT_DIR}/${sample_name}/${sample_name}.vcf.gz
 #gunzip -k ${INPUT_DIR}/${CLONE_ID}_${SAMPLE_INFO}_concat.vcf.gz
