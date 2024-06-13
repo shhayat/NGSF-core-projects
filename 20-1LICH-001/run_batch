@@ -19,18 +19,17 @@ do
    sleep 0.5
  done
 
-
-#################
-#STEP2 : FASTQC
-#################
-
-
-
 ####################
 #STEP3 : ALIGNMENT
 ####################
-#BWA
+DATA_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_fastq
 
+for i in $DATA_DIR/*R1*.fastq.gz
+do
+
+  sbatch ${SCRIPT_DIR}/01_markduplicates_and_add_Read_group.sh E21000${i} "${DATA_DIR}/E21000${i}.sorted.bam"
+  sleep 0.5
+done
 
 
 ##########################################
