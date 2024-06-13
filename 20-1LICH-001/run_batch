@@ -1,5 +1,23 @@
+############################
+#STEP1 : CONCATENATE PREPS
+############################
+
+
+#################
+#STEP2 : FASTQC
+#################
+
+
+
+####################
+#STEP3 : ALIGNMENT
+####################
+#BWA
+
+
+
 ##########################################
-#STEP1 : MARKDUPLICATES AND ADD READ GROUP
+#STEP4 : MARKDUPLICATES AND ADD READ GROUP
 ##########################################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
 #DATA_DIR='/datastore/NGSF001/projects/2020/20-1LICH-001/alignment'
@@ -10,7 +28,7 @@ SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
 #done
 
 #######################
-#STEP2: RECALIBRATION
+#STEP5: RECALIBRATION
 #######################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
 DATA=/datastore/NGSF001/projects/2020/20-1LICH-001/reanalysis_mutect2/
