@@ -26,8 +26,12 @@ DATA_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/a
 
 for i in $DATA_DIR/*R1*.fastq.gz
 do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+      fq1=${DATA_DIR}/${sample_name}_R1.fastq.gz;
+      fq2=${DATA_DIR}/${sample_name}_R2.fastq.gz;
 
-  sbatch ${SCRIPT_DIR}/01_markduplicates_and_add_Read_group.sh E21000${i} "${DATA_DIR}/E21000${i}.sorted.bam"
+      sbatch ${SCRIPT_DIR}/04_bowtie_alignment.sh "${sample_name}" "${fq1}" "${fq2}"
   sleep 0.5
 done
 
