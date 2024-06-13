@@ -1,6 +1,28 @@
 ############################
 #STEP1 : CONCATENATE PREPS
 ############################
+fastq_file="/datastore/APOBECMiSeq/NGS Core Files/NGS Core 2020-1LICH-001/fastq"
+
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
+myarr=()
+while read line
+do 
+   myarr+=("$line")
+done < ${SCRIPT_DIR}/sample_IDs.txt
+
+for i in 2 6 10
+do
+  set ${myarr[i]}
+      SAMPLE1=$2
+   
+   set ${myarr[i+1]}
+      SAMPLE2=$2
+   
+   #$1 is CLONE_ID and $3 is conditions for sample
+    sbatch ${SCRIPT_DIR}/04_concat_induced_uninduced.sh $1 ${SAMPLE1} ${SAMPLE2} $3
+   sleep 0.5
+ done
+
 
 
 #################
