@@ -20,12 +20,6 @@ for fq in $DATA/MCF7_A3H*.fastq.gz
 do
    fastqc -o ${OUTDIR}/fastqc --extract ${fq}
    
-done 
-
-wait 
-
-cd /globalhome/hxo752/HPC/tools
-./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
-
+done
 
 
