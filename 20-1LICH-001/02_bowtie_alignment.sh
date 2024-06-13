@@ -12,6 +12,7 @@
 set -eux
 
 module load samtools
+module load StdEnv/2020
 module load bowtie2/2.5.1
 
 GENOME=/datastore/NGSF001/analysis/indices/human/GRCh38_Bowtie2_build
