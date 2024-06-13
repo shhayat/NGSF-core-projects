@@ -22,7 +22,7 @@ do
 ####################
 #STEP3 : ALIGNMENT
 ####################
-DATA_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_fastq
+DATA_DIR=/datastore/NGSF001/projects/2020/20-1LICH-001/concatenated_fastq
 
 for i in $DATA_DIR/*R1*.fastq.gz
 do
