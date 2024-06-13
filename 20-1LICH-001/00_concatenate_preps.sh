@@ -18,7 +18,7 @@ mkdir -p $output
 CLONE_ID=$1; shift
 SAMPLE_PREP1=$2; shift
 SAMPLE_PREP2=$3; shift
-CONDITION=$4;
+CONDITION=$4
 
 cat ${fastq_file}/${SAMPLE_PREP1}*R1_001.fastq.gz ${fastq_file}/${SAMPLE_PREP2}*R1_001.fastq.gz > ${output}/${CLONE_ID}_${CONDITION}_R1.fastq.gz
 cat ${fastq_file}/${SAMPLE_PREP1}*R2_001.fastq.gz ${fastq_file}/${SAMPLE_PREP2}*R2_001.fastq.gz > ${output}/${CLONE_ID}_${CONDITION}_R2.fastq.gz
