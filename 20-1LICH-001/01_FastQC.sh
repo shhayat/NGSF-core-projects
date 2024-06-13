@@ -24,7 +24,7 @@ done
 
 wait 
 
-cd /datastore/NGSF001/software/tools/
+cd /globalhome/hxo752/HPC/tools
 ./multiqc ${OUTDIR}/fastqc/*_fastqc.zip -o ${OUTDIR}/fastqc
 
 
