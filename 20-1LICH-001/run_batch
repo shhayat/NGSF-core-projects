@@ -12,7 +12,7 @@ for i in {0..11}
 do
   set ${myarr[i]}
       SAMPLE1=$2
-      SAMPLE1=$3
+      SAMPLE2=$3
    
    #$1 is CLONE_ID and $4 is conditions for sample
     sbatch ${SCRIPT_DIR}/00_concatenate_preps.sh $1 ${SAMPLE1} ${SAMPLE2} $4
