@@ -15,7 +15,7 @@ module load samtools
 module load StdEnv/2020
 module load bowtie2/2.5.1
 
-GENOME=/datastore/NGSF001/analysis/indices/human/GRCh38_Bowtie2_build
+GENOME=/datastore/NGSF001/analysis/indices/human/GRCh38_Bowtie2_build/bowtie_index
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/alignment
 NCPU=8
 
