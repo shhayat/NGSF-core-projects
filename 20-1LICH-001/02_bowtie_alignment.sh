@@ -5,7 +5,7 @@
 #SBATCH --job-name=bowtie2
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --time=6:00:00
+#SBATCH --time=10:00:00
 #SBATCH --mem=80G
 #SBATCH  --output=%j.out
 
@@ -25,18 +25,20 @@ fq2=$1
 
 mkdir -p ${OUTDIR}/${sample_name}
 
-#gunzip -c ${fq1} | bowtie2 \
-#--phred33 \
-#--mm \
-#--very-sensitive \
-#--threads ${NCPU} \
-#-x ${GENOME} \
-#-1 - \
-#-2 <(gunzip -c ${fq2}) \
-#-S ${OUTDIR}/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/${sample_name}/${sample_name}_bowtie2.log \
-#&& samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
+gunzip -c ${fq1} | bowtie2 \
+--phred33 \
+--mm \
+--very-sensitive \
+--threads ${NCPU} \
+-x ${GENOME} \
+-1 - \
+-2 <(gunzip -c ${fq2}) \
+-S ${OUTDIR}/${sample_name}/${sample_name}.sam 2> ${OUTDIR}/${sample_name}/${sample_name}_bowtie2.log \
+&& samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
 
-samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
+#samtools view -h -b ${OUTDIR}/${sample_name}/${sample_name}.sam > ${OUTDIR}/${sample_name}/${sample_name}.aligned.bam
+
+rm ${OUTDIR}/${sample_name}/${sample_name}.sam
 
 module unload samtools
 module unload bowtie2/2.5.1
