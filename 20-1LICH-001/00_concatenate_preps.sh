@@ -13,10 +13,10 @@ set -eux
 fq
 fastq_file="/datastore/APOBECMiSeq/NGS Core Files/NGS Core 2020-1LICH-001/fastq"
 
-$CLONE_ID=1; SHIFT
-$SAMPLE_PREP1=2; SHIFT
-$SAMPLE_PREP2=3; SHIFT
+$CLONE_ID=1; shift
+$SAMPLE_PREP1=2; shift
+$SAMPLE_PREP2=3; shift
 $CONDITION=4;
 
-for i in 
-cat 
+cat $fastq_file/$SAMPLE_PREP1*R1_001.fastq.gz $fastq_file/$SAMPLE_PREP2*R1_001.fastq.gz >>
+cat $fastq_file/$SAMPLE_PREP1*R1_001.fastq.gz $fastq_file/$SAMPLE_PREP2*R1_001.fastq.gz >>
