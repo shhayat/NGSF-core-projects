@@ -20,7 +20,7 @@ OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/an
 SAMPLE_NAME=$1
 BAM_FILE=$2
 NCPU=4
-mkdir -p ${OUTDIR}/${OUTDIR_NAME}
+mkdir -p ${OUTDIR}/${SAMPLE_NAME}
 
 
 
