@@ -12,3 +12,6 @@ set -eux
 
 fq
 fastq_file="/datastore/APOBECMiSeq/NGS Core Files/NGS Core 2020-1LICH-001/fastq"
+
+
+for i in $fastq_file/
