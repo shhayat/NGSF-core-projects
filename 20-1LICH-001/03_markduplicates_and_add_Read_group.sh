@@ -16,7 +16,7 @@ module load samtools
 
 #reference file
 REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
-OUTDIR='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis'
+OUTDIR='/project/anderson/alignment'
 SAMPLE_NAME=$1
 BAM_FILE=$2
 NCPU=4
