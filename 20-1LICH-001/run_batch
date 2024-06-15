@@ -41,7 +41,7 @@ done
 #STEP4 : MARKDUPLICATES AND ADD READ GROUP
 ##########################################
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/
-DATA_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/concatenated_fastq
+DATA_DIR=/project/anderson/alignment
 
 for i in $DATA_DIR/*R1*.fastq.gz
 do
