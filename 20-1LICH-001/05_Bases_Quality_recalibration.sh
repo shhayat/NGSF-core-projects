@@ -5,7 +5,7 @@
 #SBATCH --job-name=recalibrate
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
-#SBATCH --time=4:00:00
+#SBATCH --time=10:00:00
 #SBATCH --mem=10G
 #SBATCH  --output=%j_recalibrate.out
 
