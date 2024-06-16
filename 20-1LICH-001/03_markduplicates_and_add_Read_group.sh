@@ -24,7 +24,7 @@ NCPU=4
 mkdir -p ${OUTDIR}/${SAMPLE_NAME}
 
 #sort bam file
-samtools sort -o ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam ${BAM_FILE}
+#samtools sort -o ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam ${BAM_FILE}
 
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
 #Read Group Added
