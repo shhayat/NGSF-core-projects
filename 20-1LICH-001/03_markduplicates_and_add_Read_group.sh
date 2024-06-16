@@ -20,15 +20,16 @@ OUTDIR='/project/anderson/alignment'
 SAMPLE_NAME=$1
 BAM_FILE=$2
 NCPU=4
+
 mkdir -p ${OUTDIR}/${SAMPLE_NAME}
 
-
+#sort bam file
+samtools sort -o ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam ${BAM_FILE}
 
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
 #Read Group Added
-#run these commands from E21000* samples
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
-                                    I=${BAM_FILE} \
+                                    I=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam \
                                     BARCODE_TAG="RX" \
                                     O=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam \
                                     M=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_marked_dup_metrics.txt && \
