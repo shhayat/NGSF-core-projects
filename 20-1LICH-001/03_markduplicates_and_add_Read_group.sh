@@ -5,7 +5,7 @@
 #SBATCH --job-name=markdup_add_RG
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --time=2:30:00
+#SBATCH --time=10:30:00
 #SBATCH --mem=64G
 #SBATCH  --output=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/markdup_add_RG.out
 set -eux
