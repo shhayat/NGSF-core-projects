@@ -24,7 +24,7 @@ do
 ####################
 DATA_DIR=/datastore/NGSF001/projects/2020/20-1LICH-001/concatenated_fastq
 
-for i in $DATA_DIR/*R1*.fastq.gz
+for i in $DATA_DIR/MCF7_A3B_U2*R1*.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
