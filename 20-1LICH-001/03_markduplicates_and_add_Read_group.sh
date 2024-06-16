@@ -44,3 +44,7 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
 
 samtools index ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_mdup_rg.bam
 
+
+rm ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam
+rm ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam 
+
