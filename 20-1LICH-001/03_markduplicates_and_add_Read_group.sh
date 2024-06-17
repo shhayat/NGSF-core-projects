@@ -33,7 +33,11 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDupli
                                     BARCODE_TAG="RX" \
                                     O=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam \
                                     M=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_marked_dup_metrics.txt \
-                                    TMP_DIR=/globalhome/hxo752/HPC/tmpDir && \
+                                    TMP_DIR=/globalhome/hxo752/HPC/tmpDir
+
+rm -r /globalhome/hxo752/HPC/tmpDir/
+mkdir /globalhome/hxo752/HPC/tmpDir/
+
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
                                     I=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam \
                                     O=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_mdup_rg.bam \
