@@ -31,7 +31,7 @@ mkdir -p ${OUTDIR}/${SAMPLE_NAME}
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
                                     I=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam \
                                     BARCODE_TAG="RX" \
-                                    --TMP_DIR /project/anderson/alignment/tmpdir \
+                                    --TMP_DIR=/project/anderson/alignment/tmpdir \
                                     O=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam \
                                     M=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_marked_dup_metrics.txt && \
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
