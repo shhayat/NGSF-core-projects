@@ -31,7 +31,6 @@ mkdir -p ${OUTDIR}/${SAMPLE_NAME}
 java -Xmx80G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
                                     I=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam \
                                     BARCODE_TAG="RX" \
-                                    TMP_DIR=/project/anderson/alignment/tmpdir \
                                     O=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam \
                                     M=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_marked_dup_metrics.txt && \
 java -Xmx80G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
@@ -41,11 +40,9 @@ java -Xmx80G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
                                     RGID=4 \
                                     RGLB=lib1 \
                                     RGPL=ILLUMINA \
-                                    RGPU=unit1 RGSM=20 \
-                                    TMP_DIR=/project/anderson/alignment/tmpdir \
-
+                                    RGPU=unit1 RGSM=20
+                                    
 samtools index ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_mdup_rg.bam
-
 
 rm ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam
 rm ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam 
