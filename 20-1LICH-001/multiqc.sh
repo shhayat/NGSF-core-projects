@@ -1,5 +1,6 @@
 OUTDIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/multiqc"
-DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis"
+#DIR="/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis"
+DIR="/project/anderson"
 mkdir -p ${OUTDIR}
 
 cd /globalhome/hxo752/HPC/tools/
