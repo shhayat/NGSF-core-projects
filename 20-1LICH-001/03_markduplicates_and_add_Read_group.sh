@@ -19,18 +19,19 @@ REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_asse
 OUTDIR='/project/anderson/alignment'
 SAMPLE_NAME=$1
 BAM_FILE=$2
-NCPU=4
+NCPU=1
 
 mkdir -p ${OUTDIR}/${SAMPLE_NAME}
 
 #sort bam file
-samtools sort -o ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam ${BAM_FILE}
+#samtools sort -o ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam ${BAM_FILE}
 
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
 #Read Group Added
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
                                     I=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam \
                                     BARCODE_TAG="RX" \
+                                    --TMP_DIR /project/anderson/alignment/tmpdir \
                                     O=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam \
                                     M=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_marked_dup_metrics.txt && \
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
@@ -40,7 +41,8 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
                                     RGID=4 \
                                     RGLB=lib1 \
                                     RGPL=ILLUMINA \
-                                    RGPU=unit1 RGSM=20
+                                    RGPU=unit1 RGSM=20 \
+                                    --TMP_DIR /project/anderson/alignment/tmpdir \
 
 samtools index ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_mdup_rg.bam
 
