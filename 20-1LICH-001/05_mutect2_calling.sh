@@ -18,7 +18,7 @@ module load gatk/4.2.2.0
 REF='/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa'
 INPUT_DIR="/project/anderson/alignment/"
 INTERVALS='/datastore/NGSF001/analysis/references/human/hg38/agilent_sureselect_human_all_exon_v8_hg38/S33266340_Covered.noheader.noAlt.bed'
-OUTDIR='/project/anderson/'
+OUTDIR='/project/anderson/variant_calling'
 mkdir -p ${OUTDIR}
 
 sample_name=$1;
@@ -30,5 +30,5 @@ gatk Mutect2 \
      -R ${REF} \
      -I ${INPUT_DIR}/${sample_name}/${sample_name}_bqsr.bam \
      -L ${INTERVALS} \
-     -O ${INPUT_DIR}/${sample_name}/${sample_name}.vcf.gz
+     -O ${INPUT_DIR}/${sample_name}.vcf.gz
 #https://gatk.broadinstitute.org/hc/en-us/articles/360035531132--How-to-Call-somatic-mutations-using-GATK4-Mutect2
