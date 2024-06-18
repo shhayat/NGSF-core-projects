@@ -21,7 +21,7 @@ module load bedtools
 INPUT_DIR='/project/anderson/alignment'
 OUTPUT_DIR1='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/filtered_v1'
 OUTPUT_DIR2='/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/filtered_v2'
-GENOME='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
+GENOME='/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa'
 mkdir -p ${OUTPUT_DIR1}
 mkdir -p ${OUTPUT_DIR2}
 
