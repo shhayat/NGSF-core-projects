@@ -6,6 +6,7 @@ mkdir -p ${OUTDIR}
 cd /globalhome/hxo752/HPC/tools/
 
 #FASTQC
+DIR="/datastore/NGSF001/projects/2020/20-1LICH-001/fastqc"
 multiqc -d ${DIR}/fastqc/*_fastqc -o ${OUTDIR}/fastqc -n fastqc
 
 #BOWTIE ALIGNMENT
