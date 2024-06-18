@@ -88,7 +88,9 @@ done
 ##########################
 #STEP4 : SELECT VARIANTS
 ##########################
-DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001/analysis/alignment
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/20-1LICH-001
+DATA_DIR=/datastore/NGSF001/projects/2020/20-1LICH-001/concatenated_fastq
+
 for i in $DATA_DIR/*R1*.fastq.gz
 do
       path="${i%_R1*}";
