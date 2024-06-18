@@ -26,6 +26,7 @@ mkdir -p ${OUTDIR}/${SAMPLE_NAME}
 #sort bam file
 samtools sort -o ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_sorted.bam ${BAM_FILE}
 
+mkdir $OUTDIR/${SAMPLE_NAME}/tmdir
 #Run MarkDeduplication MarkDuplicates (https://gatk.broadinstitute.org/hc/en-us/articles/4405451219355-MarkDuplicatesSpark)
 #Read Group Added
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDuplicates \
@@ -33,10 +34,11 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar MarkDupli
                                     BARCODE_TAG="RX" \
                                     O=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam \
                                     M=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_marked_dup_metrics.txt \
-                                    TMP_DIR=/globalhome/hxo752/HPC/tmpDir
+                                    TMP_DIR=$OUTDIR/${SAMPLE_NAME}/tmdir
 
-rm -r /globalhome/hxo752/HPC/tmpDir/
-mkdir /globalhome/hxo752/HPC/tmpDir/
+rm -r $OUTDIR/${SAMPLE_NAME}/tmdir
+
+mkdir $OUTDIR/${SAMPLE_NAME}/tmdir
 
 java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrReplaceReadGroups \
                                     I=${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_markduplicates.bam \
@@ -46,7 +48,7 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
                                     RGLB=lib1 \
                                     RGPL=ILLUMINA \
                                     RGPU=unit1 RGSM=20 \
-                                    TMP_DIR=/globalhome/hxo752/HPC/tmpDir
+                                    TMP_DIR=$OUTDIR/${SAMPLE_NAME}/tmdir
                                     
 samtools index ${OUTDIR}/${SAMPLE_NAME}/${SAMPLE_NAME}_mdup_rg.bam
 
