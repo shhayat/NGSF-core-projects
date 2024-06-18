@@ -15,7 +15,7 @@ module load StdEnv/2020
 module load gatk/4.2.2.0
 
 #reference file
-REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
+REF='/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa'
 INPUT_DIR="/project/anderson/alignment/"
 INTERVALS='/datastore/NGSF001/analysis/references/human/hg38/agilent_sureselect_human_all_exon_v8_hg38/S33266340_Covered.noheader.noAlt.bed'
 OUTDIR='/project/anderson/'
