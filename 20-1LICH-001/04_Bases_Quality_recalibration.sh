@@ -13,7 +13,7 @@ module load StdEnv/2020
 module load gatk/4.2.2.0
 
 OUTDIR=/project/anderson/alignment
-REF=genome.fa
+REF=/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa
 gatk_resource=/datastore/NGSF001/analysis/gatk_resource_bundle
 
 sample_name=$1; shift
