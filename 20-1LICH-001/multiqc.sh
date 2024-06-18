@@ -3,10 +3,10 @@ mkdir -p ${OUTDIR}
 
 cd /globalhome/hxo752/HPC/tools/
 
-DIR1="/datastore/NGSF001/projects/2020/20-1LICH-001/fastqc"
+DIR1="/datastore/NGSF001/projects/2020/20-1LICH-001"
 DIR2="/project/anderson"
 
 multiqc -o ${OUTDIR} -n multiqc_report ${DIR1}/fastqc/*_fastqc \
                                        ${DIR2}/alignment/*/*bowtie2.log \
                                        ${DIR2}/alignment/*/*_dup_metrics.txt \
-                                       ${DIR}/alignment/*/*.table
+                                       ${DIR2}/alignment/*/*.table
