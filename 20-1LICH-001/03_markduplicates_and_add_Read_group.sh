@@ -15,7 +15,7 @@ module load picard
 module load samtools
 
 #reference file
-REF='/datastore/NGSF001/analysis/references/human/gencode-30/GRCh38.primary_assembly.genome.fa'
+REF='/datastore/NGSF001/analysis/references/iGenomes/Homo_sapiens/NCBI/GRCh38/Sequence/WholeGenomeFasta/genome.fa'
 OUTDIR='/project/anderson/alignment'
 SAMPLE_NAME=$1
 BAM_FILE=$2
