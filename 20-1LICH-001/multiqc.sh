@@ -10,10 +10,12 @@ DIR="/datastore/NGSF001/projects/2020/20-1LICH-001/fastqc"
 multiqc -d ${DIR}/fastqc/*_fastqc -o ${OUTDIR}/fastqc -n fastqc
 
 #BOWTIE ALIGNMENT
-multiqc -d ${DIR}/alignment/*/*bowtie2.log  -o ${OUTDIR}/bowtie2 -n bowtie2
 
 #PICARD
-multiqc -d ${DIR}/alignment/*/*_dup_metrics.txt  -o ${OUTDIR}/picard -n picard
+#multiqc -d ${DIR}/alignment/*/*_dup_metrics.txt  -o ${OUTDIR}/picard -n picard
 
-
+#RECALIBRATION
+multiqc -d ${DIR}/alignment/*/*bowtie2.log  -o ${OUTDIR}/align_dedup_and_recalibrate -n align_dedup_and_recalibrate
+multiqc -d ${DIR}/alignment/*/*_dup_metrics.txt -o ${OUTDIR}/align_dedup_and_recalibrate -n align_dedup_and_recalibrate
+multiqc -d ${DIR}/alignment/*/*.table  -o ${OUTDIR}/align_dedup_and_recalibrate -n align_dedup_and_recalibrate
 
