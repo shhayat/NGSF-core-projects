@@ -38,8 +38,8 @@ echo "convert vcf to bed file"
 echo "Base Conversions"
 
 #step2: Extract C to T or G conversions and select first 3 columns (chrom, start, end position, ref allele and alternate allele)
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep -P '\tC\tG$' >> ${OUTPUT_DIR1}/${sample_name}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep -P '\tC\tT$' >> ${OUTPUT_DIR1}/${sample_name}_base_conversion.bed
+awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep -P '\tC\tG$' > ${OUTPUT_DIR1}/${sample_name}_base_conversion.bed
+awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep -P '\tC\tT$' > ${OUTPUT_DIR1}/${sample_name}_base_conversion.bed
 #only select CC as REF
 #awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tCC\tTG$' >> ${OUTPUT_DIR1}/${CLONE_ID}_${COND}_base_conversion.bed
 #awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tCC\tGT$' >> ${OUTPUT_DIR1}/${CLONE_ID}_${COND}_base_conversion.bed
@@ -48,8 +48,8 @@ awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep 
 #awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${CLONE_ID}_${COND}.bed | grep -P '\tCCC\tGGG$' >> ${OUTPUT_DIR}/${CLONE_ID}_${COND}_base_conversion.bed
 
 ##step2: Extract G to A or C conversions and select first 3 columns (chrom, start, end position, ref allele and alternate allele)
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep -P '\tG\tA$' >> ${OUTPUT_DIR2}/${sample_name}_base_conversion.bed
-awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep -P '\tG\tC$' >> ${OUTPUT_DIR2}/${sample_name}_base_conversion.bed
+awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep -P '\tG\tA$' > ${OUTPUT_DIR2}/${sample_name}_base_conversion.bed
+awk -v OFS='\t' '{print $1,$2,$3,$6,$7}' ${INPUT_DIR}/${sample_name}.bed | grep -P '\tG\tC$' > ${OUTPUT_DIR2}/${sample_name}_base_conversion.bed
 
 echo "select 2 bases upstream and downstream of bases"
 #step3: select 2 bases upstream and downstream of bases in step2
