@@ -12,20 +12,20 @@ picard=$tools/picard.jar
 hisat2=$tools/hisat2-2.1.0
 samtools=$tools/samtools-1.10
 bcftools=$tools/bcftools-1.10.2
-fasta_ref=$reference/
-gtf_ref=$reference/
+fasta_ref=$reference/GRCh38.d1.vd1.fa
+gtf_ref=$reference/gencode.v36.annotation.gtf
 genelist_ref=$reference/
 dbsnp_ref=$reference/
-hisat_ref=$reference/
+hisat_ref=$reference/hisat2_GRCh38
 germline_ref=$reference/
 PON_ref=$reference/
-igg_ref=$reference/
-hla_ref=$reference/
-pseudo_ref=$reference/
+igg_ref=$reference/IGG.gtf
+hla_ref=$reference/HLA.gtf
+pseudo_ref=$reference/pseudoGene.gtf
 tcga_PON_ref=$reference/
-radar_ref=$reference/
-darned_ref=$reference/
-REDI_ref=$reference/
+radar_ref=$reference/Radar_38.bed
+darned_ref=$reference/Darned_38.bed
+REDI_ref=$reference/RNA-EDI_38.bed
 
 
 mkdir -p $out_folder
