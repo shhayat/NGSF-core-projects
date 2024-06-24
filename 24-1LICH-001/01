@@ -4,12 +4,17 @@ module load perl/5.36.1
 IMAPR=/globalhome/hxo752/HPC/tools/IMAPR
 tools=/globalhome/hxo752/HPC/tools/IMAPR/tools
 reference=/globalhome/hxo752/HPC/tools/IMAPR/reference
+out_folder1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/detect_variants
 
+mkdir -p $out_folder1
 
+sample_name=1; shift
+tumor_input=1; shift
+normal_input=1;
 
 perl ${IMAPR}/detect_variants.pl \
                 -ID $sample_name \
-                -mode $input_format \
+                -mode RNA/RNA \
                 -T $tumor_input \
                 -N $normal_input \
                 -R $fasta_ref \
