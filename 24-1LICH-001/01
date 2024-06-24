@@ -4,9 +4,29 @@ module load perl/5.36.1
 IMAPR=/globalhome/hxo752/HPC/tools/IMAPR
 tools=/globalhome/hxo752/HPC/tools/IMAPR/tools
 reference=/globalhome/hxo752/HPC/tools/IMAPR/reference
-out_folder1=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/detect_variants
+out_folder=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/detect_variants
+gatk=$tools/gatk-4.1.8.1
+picard=$tools/picard.jar
+hisat2=$tools/hisat2-2.1.0
+samtools=$tools/samtools-1.10
+bcftools=$tools/bcftools-1.10.2
+fasta_ref=$reference/
+gtf_ref=$reference/
+genelist_ref=$reference/
+dbsnp_ref=$reference/
+hisat_ref=$reference/
+germline_ref=$reference/
+PON_ref=$reference/
+igg_ref=$reference/
+hla_ref=$reference/
+pseudo_ref=$reference/
+tcga_PON_ref=$reference/
+radar_ref=$reference/
+darned_ref=$reference/
+REDI_ref=$reference/
 
-mkdir -p $out_folder1
+
+mkdir -p $out_folder
 
 sample_name=1; shift
 tumor_input=1; shift
@@ -18,7 +38,7 @@ perl ${IMAPR}/detect_variants.pl \
                 -T $tumor_input \
                 -N $normal_input \
                 -R $fasta_ref \
-                -O $out_prefix \ 
+                -O $out_folder \ 
                 -gatk $gatk \
                 -picard $picard \ 
                 -hisat2 $hisat2 \
@@ -29,9 +49,10 @@ perl ${IMAPR}/detect_variants.pl \
                 -germline $germline_ref \
                 -pon $PON_ref
 
-perl ${${IMAPR}}/filter_variants.pl \
+
+perl ${IMAPR}/filter_variants.pl \
                 -ID $sample_name \
-                -O $out_prefix \
+                -O $out_folder \
                 -R $fasta_ref \
                 -igg $igg_ref \
                 -hla $hla_ref \
@@ -44,7 +65,8 @@ perl ${${IMAPR}}/filter_variants.pl \
                 -bcftools $bcftools
 
 
-perl ${${IMAPR}}/machine_learning.pl \
+
+perl ${IMAPR}/machine_learning.pl \
                 -ID $sample_name \
-                -O $out_prefix \
+                -O $out_folder \
                 -gtf $gtf_ref
