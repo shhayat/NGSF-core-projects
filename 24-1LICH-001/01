@@ -1,3 +1,5 @@
+
+#this analysis pipeline is implemented using https://github.com/wang-lab/IMAPR
 module load python/3.11.5
 module load perl/5.36.1
 
