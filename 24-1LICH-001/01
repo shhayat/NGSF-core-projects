@@ -1,2 +1,4 @@
 module load python/3.11.5
-module load gatk/4.4.0.0
+
+tools=/globalhome/hxo752/HPC/tools/IMAPR/tools
+
