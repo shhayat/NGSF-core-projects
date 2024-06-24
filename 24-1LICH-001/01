@@ -1,5 +1,45 @@
 module load python/3.11.5
+module load perl/5.36.1
 
+IMAPR=/globalhome/hxo752/HPC/tools/IMAPR
 tools=/globalhome/hxo752/HPC/tools/IMAPR/tools
 reference=/globalhome/hxo752/HPC/tools/IMAPR/reference
 
+
+
+perl ${IMAPR}/detect_variants.pl \
+                -ID $sample_name \
+                -mode $input_format \
+                -T $tumor_input \
+                -N $normal_input \
+                -R $fasta_ref \
+                -O $out_prefix \ 
+                -gatk $gatk \
+                -picard $picard \ 
+                -hisat2 $hisat2 \
+                -gtf $gtf_ref \ 
+                -gene $genelist_ref \
+                -dbsnp $dbsnp_ref \ 
+                -hisat2_reference $hisat_ref \ 
+                -germline $germline_ref \
+                -pon $PON_ref
+
+perl ${${IMAPR}}/filter_variants.pl \
+                -ID $sample_name \
+                -O $out_prefix \
+                -R $fasta_ref \
+                -igg $igg_ref \
+                -hla $hla_ref \
+                -pseudo $pseudo_ref \
+                -tcga $tcga_PON_ref \
+                -radar $radar_ref \
+                -darned $darned_ref \
+                -redi $REDI_ref \
+                -samtools $samtools \
+                -bcftools $bcftools
+
+
+perl ${${IMAPR}}/machine_learning.pl \
+                -ID $sample_name \
+                -O $out_prefix \
+                -gtf $gtf_ref
