@@ -9,7 +9,7 @@
 #SBATCH --mem=80G
 #SBATCH --output=/globalhome/hxo752/HPC/slurm_logs/%j.out
 
-module load star/2.7.9a 
+module load star/2.7.11a
 
 GENOME=/globalhome/hxo752/HPC/tools/IMAPR/reference/GRCh38.d1.vd1.fa
 GTF=/globalhome/hxo752/HPC/tools/IMAPR/reference/gencode.v36.annotation.gtf
