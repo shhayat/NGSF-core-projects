@@ -3,5 +3,11 @@ data=/datastore/NGSF001/projects/2023/23-1LICH-001/analysis/fastq_trimmed
 
 for i in $data/*_R1.trimmed.fastq.gz
 do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
 
+      fq1=${DATA}/${sample_name}_R1.trimmed.fastq.gz
+      fq2=${DATA}/${sample_name}_R2.trimmed.fastq.gz
+      
+      sbatch ${SCRIPT_DIR}/01_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
 done
