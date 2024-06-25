@@ -1,4 +1,3 @@
-
 star
 --alignIntronMax 1000000
 --alignIntronMin 20
