@@ -11,9 +11,9 @@
 
 module load star/2.7.9a 
 
-GENOME=/datastore/NGSF001/analysis/references/mouse/gencode-m32/GRCm39.primary_assembly.genome.fa
-GTF=/datastore/NGSF001/analysis/references/mouse/gencode-m32/gencode.vM32.primary_assembly.annotation.gtf
-OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/23-1JOHO-001/analysis/indices
+GENOME=/globalhome/hxo752/HPC/tools/IMAPR/reference/GRCh38.d1.vd1.fa
+GTF=/globalhome/hxo752/HPC/tools/IMAPR/reference/gencode.v36.annotation.gtf
+OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/indices
 
 NCPU=8
 
