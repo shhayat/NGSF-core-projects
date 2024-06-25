@@ -1,0 +1,21 @@
+
+star
+--alignIntronMax 1000000
+--alignIntronMin 20
+--alignMatesGapMax 1000000
+--alignSJDBoverhangMin 1
+--alignSJoverhangMin 8
+--alignSoftClipAtReferenceEnds Yes
+--chimJunctionOverhangMin 15
+--chimMainSegmentMultNmax 1
+--chimOutJunctionFormat 1
+--chimSegmentMin 15
+--limitSjdbInsertNsj 1200000
+--outFilterIntronMotifs None
+--outFilterMatchNminOverLread 0.33
+--outFilterMismatchNmax 999
+--outFilterMismatchNoverLmax 0.1
+--outFilterMultimapNmax 20
+--outFilterScoreMinOverLread 0.33
+--twopassMode Basic
+--outSAMmapqUnique 60
