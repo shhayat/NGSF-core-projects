@@ -14,7 +14,7 @@ module load star/2.7.9a
 GENOME=/globalhome/hxo752/HPC/tools/IMAPR/reference/GRCh38.d1.vd1.fa
 GTF=/globalhome/hxo752/HPC/tools/IMAPR/reference/gencode.v36.annotation.gtf
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/
-GENOME_FOLDER_NAME="GRCh38.d1.vd1"
+GENOME_FOLDER_NAME="GRCh38.d1.vd1_star_genomebuild"
 
 NCPU=8
 
