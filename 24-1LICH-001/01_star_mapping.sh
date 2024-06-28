@@ -9,7 +9,7 @@
 set -eux
 
 #loading required modules
-module load star/2.7.9a 
+module load star/2.7.11a
 module load samtools
 
 GENOME=/datastore/NGSF001/analysis/indices/human/GRCh38.d1.vd1_star_genomebuild
