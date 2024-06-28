@@ -49,4 +49,4 @@ STAR --genomeDir $GENOME \
      --twopassMode Basic \
      --outSAMmapqUnique 60 \
      --outFileNamePrefix ${sample_name}_
-     && samtools index ${sample_name}_Aligned.sortedByCoord.out.bam 
+     && samtools index ${OUTDIR}/${sample_name}_Aligned.sortedByCoord.out.bam 
