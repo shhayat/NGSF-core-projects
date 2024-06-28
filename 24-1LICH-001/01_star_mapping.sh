@@ -12,7 +12,7 @@ set -eux
 module load star/2.7.9a 
 module load samtools
 
-GENOME=/datastore/NGSF001/analysis/indices/human/gencode-40
+GENOME=/datastore/NGSF001/analysis/indices/human/GRCh38.d1.vd1_star_genomebuild
 OUTDIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
 NCPU=4
 
