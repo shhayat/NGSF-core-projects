@@ -1,7 +1,7 @@
-data=/datastore/NGSF001/projects/2023/23-1LICH-001/analysis/fastq_trimmed
+DATA=/datastore/NGSF001/projects/2023/23-1LICH-001/analysis/fastq_trimmed
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001
 
-for i in $data/*_R1.trimmed.fastq.gz
+for i in $DATA/*_R1.trimmed.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
