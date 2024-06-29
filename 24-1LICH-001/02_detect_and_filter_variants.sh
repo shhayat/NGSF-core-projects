@@ -1,5 +1,16 @@
 
+#!/bin/bash
+
+#SBATCH --job-name=star-align
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=1:00:00
+#SBATCH --mem=40G
+#SBATCH  --output=%j.out
+set -eux
+
 #this analysis pipeline is implemented using https://github.com/wang-lab/IMAPR
+#loading required modules
 module load python/3.11.5
 module load perl/5.36.1
 
@@ -28,9 +39,7 @@ genelist_ref=$reference/gg.list
 tcga_PON_ref=$reference/
 
 
-
 mkdir -p $out_folder
-
 sample_name=1; shift
 tumor_input=1; shift
 normal_input=1;
