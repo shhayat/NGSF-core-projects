@@ -1,8 +1,9 @@
-A3A_U6  uninduced
-A3A_I5  induced
-A3B_U2  uninduced
-A3B_I5  induced
-A3H_U1  uninduced
-A3H_I4  induced
-A3B_U1  uninduced  
-A3B_I2  induced
+SAMPLE_ID  SAMPLE_NAME  CONDITION
+  A3A_U6  uninduced
+  A3A_I5  induced
+  A3B_U2  uninduced
+  A3B_I5  induced
+  A3H_U1  uninduced
+  A3H_I4  induced
+  A3B_U1  uninduced  
+  A3B_I2  induced
