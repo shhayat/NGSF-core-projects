@@ -1,8 +1,8 @@
-A3A_U6
-A3A_I5
-A3B_U2
-A3B_I5
-A3H_U1
-A3H_I4
-A3B_U1
-A3B_I2
+A3A_U6  uninduced
+A3A_I5  induced
+A3B_U2  uninduced
+A3B_I5  induced
+A3H_U1  uninduced
+A3H_I4  induced
+A3B_U1  uninduced  
+A3B_I2  induced
