@@ -16,11 +16,7 @@ done
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
 for i in $DATA/*Aligned.sortedByCoord.out.bam
 do
-      path="${i%_R1*}";
-      sample_name=${path##*/};
-
-      fq1=${DATA}/${sample_name}_R1.trimmed.fastq.gz
-      fq2=${DATA}/${sample_name}_R2.trimmed.fastq.gz
-      
-      sbatch ${SCRIPT_DIR}/01_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
+      path="${i%_Aligned.sortedByCoord.out.bam}";
+      sample_name="${path##*/}"      
+      sbatch ${SCRIPT_DIR}/01_star_mapping.sh "${sample_name}"
 done
