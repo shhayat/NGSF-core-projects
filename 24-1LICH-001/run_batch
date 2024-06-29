@@ -18,5 +18,5 @@ for i in $DATA/*Aligned.sortedByCoord.out.bam
 do
       path="${i%_Aligned.sortedByCoord.out.bam}";
       sample_name="${path##*/}"      
-      sbatch ${SCRIPT_DIR}/01_star_mapping.sh "${sample_name}"
+      sbatch ${SCRIPT_DIR}/01_star_mapping.sh "${sample_name}" "${tumor_sample}" "${normal_sample}"
 done
