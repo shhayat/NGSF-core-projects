@@ -22,7 +22,11 @@ NCPU=4
 Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
 
 #create sample sheet for fastq files
-perl Prepare_Input.pl <path-to-fastq-files> <number e.g 12>
+perl Prepare_Input.pl $path to fastq files #number of files
 
-
+#denovo assembly
+perl WGS_SIBP_P2.pl /home/user/Desktop/Test_DATA/Input Trimming trimmed 2 --cov-cutoff auto --careful --kmer 21335571
+spades.py --cov-cutoff auto \
+          --careful \
+          --kmer 21,33,55,71
 
