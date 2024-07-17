@@ -1,1 +1,3 @@
-module load raxml-ng/1.2.0
+/globalhome/hxo752/HPC/tools/raxml-ng/bin/
+
+raxml-ng
