@@ -62,6 +62,9 @@ perl ${IMAPR}/detect_variants.pl \
                 -pon $PON_ref
 
 
+#.bashrc was added because one of the perl module for filter_variants.pl was not installed and it was manually installed under local perl directory
+source /globalhome/hxo752/HPC/.bashrc
+
 perl ${IMAPR}/filter_variants.pl \
                 -ID $sample_name \
                 -O $out_folder \
