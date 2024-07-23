@@ -24,11 +24,11 @@ done
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
 
 #!/bin/sh
-while read SAMPLE_ID SAMPLE_NAME CONDITION;
+while read SAMPLE_ID_1 SAMPLE_NAME_1 SAMPLE_ID_2 SAMPLE_NAME_2;
 do
-    sample1="${DATA}/${SAMPLE_ID}_Aligned.sortedByCoord.out.bam";
-    sample1="${DATA}/${SAMPLE_ID}_Aligned.sortedByCoord.out.bam";
+    uninduced_sample="${DATA}/${SAMPLE_ID_1}_Aligned.sortedByCoord.out.bam";
+    induced_sample="${DATA}/${SAMPLE_ID_2}_Aligned.sortedByCoord.out.bam";
 
-    sbatch ${SCRIPT_DIR}/02_detect_and_filter_variants.sh "$control" "$treat" "$sample_name";
+    sbatch ${SCRIPT_DIR}/02_detect_and_filter_variants.sh "$uninduced_sample" "$induced_sample" "$sample_name";
     sleep 0.3
 done < 'sample_sheet.txt'
