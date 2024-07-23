@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=star-align
+#SBATCH --job-name=variant_analysis
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --time=48:00:00
