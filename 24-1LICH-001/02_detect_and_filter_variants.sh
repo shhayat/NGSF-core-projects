@@ -49,7 +49,8 @@ perl ${IMAPR}/detect_variants.pl \
                 -T $induced \
                 -N $unindued \
                 -R $fasta_ref \
-                -O $out_folder \ 
+                -O $out_folder \
+                -thread 4 \
                 -gatk $gatk \
                 -picard $picard \ 
                 -hisat2 $hisat2 \
