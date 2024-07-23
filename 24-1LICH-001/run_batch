@@ -21,10 +21,14 @@ do
       sbatch ${SCRIPT_DIR}/01_star_mapping.sh "${sample_name}" "${tumor_sample}" "${normal_sample}"
 done
 
+DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
 
 #!/bin/sh
-while read control treat sample_name; 
+while read SAMPLE_ID SAMPLE_NAME CONDITION;
 do
-    sbatch 02_detect_and_filter_variants.sh "$control" "$treat" "$sample_name";
+    sample1="${DATA}/${SAMPLE_ID}_Aligned.sortedByCoord.out.bam";
+    sample1="${DATA}/${SAMPLE_ID}_Aligned.sortedByCoord.out.bam";
+
+    sbatch ${SCRIPT_DIR}/02_detect_and_filter_variants.sh "$control" "$treat" "$sample_name";
     sleep 0.3
 done < 'sample_sheet.txt'
