@@ -29,6 +29,6 @@ do
     uninduced_sample="${DATA}/${SAMPLE_ID_1}_Aligned.sortedByCoord.out.bam";
     induced_sample="${DATA}/${SAMPLE_ID_2}_Aligned.sortedByCoord.out.bam";
 
-    sbatch ${SCRIPT_DIR}/02_detect_and_filter_variants.sh "$uninduced_sample" "$induced_sample" "$sample_name";
+    sbatch ${SCRIPT_DIR}/02_detect_and_filter_variants.sh "$uninduced_sample" "$induced_sample" "$SAMPLE_NAME_1" "$SAMPLE_NAME_2";
     sleep 0.3
 done < 'sample_sheet.txt'
