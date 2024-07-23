@@ -8,10 +8,14 @@
 #SBATCH  --output=%j.out
 set -eux
 
+
 #this analysis pipeline is implemented using https://github.com/wang-lab/IMAPR
 #loading required modules
 module load python/3.11.5
 module load perl/5.36.1
+
+NCPU=4
+RAM=40
 
 IMAPR=/globalhome/hxo752/HPC/tools/IMAPR
 tools=/globalhome/hxo752/HPC/tools/IMAPR/tools
@@ -37,7 +41,6 @@ PON_ref=$reference/1000g_pon.hg38.vcf.gz
 genelist_ref=$reference/gg.list
 tcga_PON_ref=$reference/MuTect2.PON.5210.vcf.tar
 
-
 mkdir -p $out_folder
 unindued=$1; shift
 induced=$1; shift
@@ -45,11 +48,10 @@ sample_name=$1;
 
 perl ${IMAPR}/detect_variants.pl \
             -ID $sample_name -mode RNA/RNA -T $induced -N $unindued -O $out_folder \
-            -thread 4 -ram 40 \
-            -gatk $gatk -picard $picard -hisat2 $hisat2 -samtools $samtools \ 
-            -R $fasta_ref -gtf $gtf_ref -gene $genelist_ref -dbsnp $dbsnp_ref -hisat2_reference $hisat_ref -germline $germline_ref -pon $PON_ref
+            -thread $NCPU -ram $RAM \
+            -gatk $gatk -picard $picard -hisat2 $hisat2 -samtools $samtools -R $fasta_ref -gtf $gtf_ref -gene $genelist_ref -dbsnp $dbsnp_ref -hisat2_reference $hisat_ref -germline $germline_ref -pon $PON_ref
 
-
+  
 #.bashrc was added because one of the perl module for filter_variants.pl was not installed and it was manually installed under local perl directory
 source /globalhome/hxo752/HPC/.bashrc
 
