@@ -12,7 +12,6 @@ set -eux
 #loading required modules
 module load python/3.11.5
 module load perl/5.36.1
-module load hisat2/2.2.1
 
 IMAPR=/globalhome/hxo752/HPC/tools/IMAPR
 tools=/globalhome/hxo752/HPC/tools/IMAPR/tools
@@ -20,7 +19,7 @@ reference=/globalhome/hxo752/HPC/tools/IMAPR/reference
 out_folder=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/detect_variants
 gatk=$tools/gatk-4.1.8.1/gatk
 picard=$tools/picard.jar
-#hisat2=$tools/hisat2-2.1.0/hisat2
+hisat2=$tools/hisat2-2.1.0/hisat2
 samtools=$tools/samtools-1.10/samtools
 bcftools=$tools/bcftools-1.10.2/bcftools
 fasta_ref=$reference/GRCh38.d1.vd1.fa
@@ -45,22 +44,9 @@ induced=$1; shift
 sample_name=$1;
 
 perl ${IMAPR}/detect_variants.pl \
-                -ID $sample_name \
-                -mode RNA/RNA \
-                -T $induced \
-                -N $unindued \
-                -R $fasta_ref \
-                -O $out_folder \
-                -thread 4 \
-                -gatk $gatk \
-                -picard $picard \ 
-                -hisat2 hisat2 \
-                -gtf $gtf_ref \ 
-                -gene $genelist_ref \
-                -dbsnp $dbsnp_ref \ 
-                -hisat2_reference $hisat_ref \ 
-                -germline $germline_ref \
-                -pon $PON_ref
+                -ID $sample_name -mode RNA/RNA -T $induced -N $unindued -R $fasta_ref -O $out_folder -thread 4 \
+                -gatk $gatk -picard $picard -hisat2 $hisat2 -samtools $samtools -gtf $gtf_ref \ 
+                -gene $genelist_ref -dbsnp $dbsnp_ref -hisat2_reference $hisat_ref -germline $germline_ref -pon $PON_ref
 
 
 #.bashrc was added because one of the perl module for filter_variants.pl was not installed and it was manually installed under local perl directory
