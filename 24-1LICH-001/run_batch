@@ -25,6 +25,6 @@ done
 #!/bin/sh
 while read control treat sample_name; 
 do
-    sbatch 07_MACS3_peakcalling.sh "$control" "$treat" "$sample_name";
+    sbatch 02_detect_and_filter_variants.sh "$control" "$treat" "$sample_name";
     sleep 0.3
 done < 'sample_sheet.txt'
