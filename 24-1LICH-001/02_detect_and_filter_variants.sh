@@ -3,7 +3,7 @@
 #SBATCH --job-name=star-align
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --time=1:00:00
+#SBATCH --time=48:00:00
 #SBATCH --mem=40G
 #SBATCH  --output=%j.out
 set -eux
