@@ -39,7 +39,7 @@ dbsnp_ref=$reference/common_all_20180418.vcf.gz
 germline_ref=$reference/af-only-gnomad.hg38.vcf.gz 
 PON_ref=$reference/1000g_pon.hg38.vcf.gz
 genelist_ref=$reference/gg.list
-tcga_PON_ref=$reference/MuTect2.PON.5210.vcf.tar
+tcga_PON_ref=$reference/MuTect2.PON.5210.vcf.gz
 
 mkdir -p $out_folder
 unindued=$1; shift
