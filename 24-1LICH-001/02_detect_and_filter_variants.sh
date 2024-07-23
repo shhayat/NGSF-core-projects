@@ -44,7 +44,7 @@ induced=$1; shift
 sample_name=$1;
 
 perl ${IMAPR}/detect_variants.pl \
-                -ID $sample_name -mode RNA/RNA -T $induced -N $unindued -R $fasta_ref -O $out_folder -thread 4 \
+                -ID $sample_name -mode RNA/RNA -T $induced -N $unindued -R $fasta_ref -O $out_folder -thread 4 -ram 40GB \
                 -gatk $gatk -picard $picard -hisat2 $hisat2 -samtools $samtools -gtf $gtf_ref \ 
                 -gene $genelist_ref -dbsnp $dbsnp_ref -hisat2_reference $hisat_ref -germline $germline_ref -pon $PON_ref
 
