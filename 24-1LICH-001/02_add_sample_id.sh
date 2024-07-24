@@ -8,13 +8,15 @@
 #SBATCH  --output=%j.out
 set -eux
 
+module load samtools
+
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
 cd ${DIR}
 
 sample_name=$1; shift
 bam_file=$1; 
 
-gatk-4.1.8.1/gatk AddOrReplaceReadGroups \
+/gatk-4.1.8.1/gatk AddOrReplaceReadGroups \
     I=$DIR/${sample_name}_Aligned.sortedByCoord.out.bam \
     O=$DIR/${sample_name}_Aligned.sortedByCoord.RG.bam \
     RGID=1 \
