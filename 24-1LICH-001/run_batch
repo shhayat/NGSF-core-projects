@@ -34,4 +34,4 @@ do
 
     sbatch ${SCRIPT_DIR}/03_detect_and_filter_variants.sh "$uninduced_sample" "$induced_sample" "$SAMPLE_NAME";
     sleep 0.3
-done < 'sample_sheet.txt'
+done < 'sample_sheet1.txt'
