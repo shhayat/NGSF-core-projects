@@ -16,12 +16,12 @@ cd ${DIR}
 sample_name=$1; shift
 bam_file=$1; 
 
-/gatk-4.1.8.1/gatk AddOrReplaceReadGroups \
-    I=$DIR/${sample_name}_Aligned.sortedByCoord.out.bam \
-    O=$DIR/${sample_name}_Aligned.sortedByCoord.RG.bam \
-    RGID=1 \
-    RGLB=lib1 \
-    RGPL=illumina \
-    RGPU=unit1 \
-    RGSM=${sample_name} \
-    && samtools index ${OUTDIR}/${sample_name}_Aligned.sortedByCoord.RG.bam
+/globalhome/hxo752/HPC/tools/IMAPR/tools/gatk-4.1.8.1/gatk AddOrReplaceReadGroups \
+                                                            I=$DIR/${sample_name}_Aligned.sortedByCoord.out.bam \
+                                                            O=$DIR/${sample_name}_Aligned.sortedByCoord.RG.bam \
+                                                            RGID=1 \
+                                                            RGLB=lib1 \
+                                                            RGPL=illumina \
+                                                            RGPU=unit1 \
+                                                            RGSM=${sample_name} \
+                                                            && samtools index ${OUTDIR}/${sample_name}_Aligned.sortedByCoord.RG.bam
