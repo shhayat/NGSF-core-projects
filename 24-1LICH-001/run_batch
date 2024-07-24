@@ -14,13 +14,16 @@ done
 
 
 
+
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
 for i in $DATA/*Aligned.sortedByCoord.out.bam
 do
       path="${i%_Aligned.sortedByCoord.out.bam}";
       sample_name="${path##*/}"      
-      sbatch ${SCRIPT_DIR}/01_star_mapping.sh "${sample_name}"
+      sbatch ${SCRIPT_DIR}/02_add_sample_id.sh "${sample_name}"
 done
+
+
 
 DATA=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
 #!/bin/sh
