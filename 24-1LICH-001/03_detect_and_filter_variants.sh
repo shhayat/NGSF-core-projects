@@ -45,7 +45,6 @@ induced=$1; shift
 sample_name=$1;
 
 mkdir -p $out_folder/$sample_name 
-cd $out_folder/$sample_name
 
 perl ${IMAPR}/detect_variants.pl \
             -ID $sample_name -mode RNA/RNA -T $induced -N $unindued -O $out_folder/$sample_name \
@@ -69,8 +68,6 @@ perl ${IMAPR}/filter_variants.pl \
                 -redi $REDI_ref \
                 -samtools $samtools \
                 -bcftools $bcftools
-
-
 
 perl ${IMAPR}/machine_learning.pl \
                 -ID $sample_name \
