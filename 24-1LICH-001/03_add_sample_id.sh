@@ -1,5 +1,12 @@
+#!/bin/bash
 
-
+#SBATCH --job-name=AddOrReplaceReadGroups
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=03:00:00
+#SBATCH --mem=40G
+#SBATCH  --output=%j.out
+set -eux
 
 
 gatk AddOrReplaceReadGroups \
