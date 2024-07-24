@@ -11,6 +11,7 @@ set -eux
 module load picard
 module load samtools
 
+NCPU=4
 sample_name=$1;
 
 DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
