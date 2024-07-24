@@ -16,7 +16,6 @@ module load perl/5.36.1
 
 NCPU=4
 RAM=40
-
 IMAPR=/globalhome/hxo752/HPC/tools/IMAPR
 tools=/globalhome/hxo752/HPC/tools/IMAPR/tools
 reference=/globalhome/hxo752/HPC/tools/IMAPR/reference
@@ -41,10 +40,12 @@ PON_ref=$reference/1000g_pon.hg38.vcf.gz
 genelist_ref=$reference/gg.list
 tcga_PON_ref=$reference/MuTect2.PON.5210.vcf.gz
 
-mkdir -p $out_folder
 unindued=$1; shift
 induced=$1; shift
 sample_name=$1;
+
+mkdir -p $out_folder/$sample_name 
+cd $out_folder/$sample_name
 
 perl ${IMAPR}/detect_variants.pl \
             -ID $sample_name -mode RNA/RNA -T $induced -N $unindued -O $out_folder \
