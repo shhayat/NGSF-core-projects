@@ -29,5 +29,5 @@ java -Xmx64G -XX:ParallelGCThreads=$NCPU -jar $EBROOTPICARD/picard.jar AddOrRepl
                                     RGSM=${sample_name} \
                                     TMP_DIR=$DIR/${sample_name}_tmdir
                                     
-samtools index ${OUTDIR}/${sample_name}_Aligned.sortedByCoord.RG.bam
+samtools index ${DIR}/${sample_name}_Aligned.sortedByCoord.RG.bam
 rm -r $DIR/${sample_name}_tmdir
