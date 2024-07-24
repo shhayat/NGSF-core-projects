@@ -8,10 +8,15 @@
 #SBATCH  --output=%j.out
 set -eux
 
+DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment
+cd ${DIR}
+
+sample_name=$1; shift
+bam_file=$1; 
 
 gatk AddOrReplaceReadGroups \
-    I=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001/analysis/star_alignment/R2200133_Aligned.sortedByCoord.out.bam \
-    O=/path/to/output/R2200133_Aligned.sortedByCoord.withRG.bam \
+    I=$DIR/${sample_name}_Aligned.sortedByCoord.out.bam \
+    O=$DIR/${sample_name}_Aligned.sortedByCoord.RG.bam \
     RGID=1 \
     RGLB=lib1 \
     RGPL=illumina \
