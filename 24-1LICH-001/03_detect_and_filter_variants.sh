@@ -44,10 +44,10 @@ unindued=$1; shift
 induced=$1; shift
 sample_name=$1;
 
-mkdir -p $out_folder/$sample_name 
+#mkdir -p $out_folder/$sample_name 
 
 perl ${IMAPR}/detect_variants.pl \
-            -ID $sample_name -mode RNA/RNA -T $induced -N $unindued -O $out_folder/$sample_name \
+            -ID $sample_name -mode RNA/RNA -T $induced -N $unindued -O $out_folder \
             -thread $NCPU -ram $RAM \
             -gatk $gatk -picard $picard -hisat2 $hisat2 -samtools $samtools -R $fasta_ref -gtf $gtf_ref -gene $genelist_ref -dbsnp $dbsnp_ref -hisat2_reference $hisat_ref -germline $germline_ref -pon $PON_ref
 
@@ -57,7 +57,7 @@ source /globalhome/hxo752/HPC/.bashrc
 
 perl ${IMAPR}/filter_variants.pl \
                 -ID $sample_name \
-                -O $out_folder/$sample_name \
+                -O $out_folder \
                 -R $fasta_ref \
                 -igg $igg_ref \
                 -hla $hla_ref \
@@ -71,5 +71,5 @@ perl ${IMAPR}/filter_variants.pl \
 
 perl ${IMAPR}/machine_learning.pl \
                 -ID $sample_name \
-                -O $out_folder/$sample_name \
+                -O $out_folder \
                 -gtf $gtf_ref
