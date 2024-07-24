@@ -21,4 +21,5 @@ gatk AddOrReplaceReadGroups \
     RGLB=lib1 \
     RGPL=illumina \
     RGPU=unit1 \
-    RGSM=R2200133
+    RGSM=${sample_name} \
+    && samtools index ${OUTDIR}/${sample_name}_Aligned.sortedByCoord.RG.bam
