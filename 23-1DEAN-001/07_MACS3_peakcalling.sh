@@ -40,4 +40,4 @@ mkdir -p ${OUTDIR}/${sample_name}
 
 #two samples were not having peak calls at qvalue 0.05 D2300038_D2300041_rep1 and D2300035_D2300037_rep3
 
-bedtools coverage -a ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak_selected_columns.bed -b BAM_DIR/ > coverage.bed
+bedtools coverage -a ${OUTDIR}/${sample_name}/${sample_name}_peaks.sorted.narrowPeak_selected_columns.bed -b BAM_DIR/${treatBAM}/${sample_name}.aligned_dedup_filt_sort.bam > ${OUTDIR}/${sample_name}.coverage.bed
