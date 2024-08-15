@@ -1,12 +1,13 @@
-DATA=/project/anderson/fastq
-SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1LICH-001
+DATA1=/project/anderson/TB_DATA/Sask_Alberta
+DATA2=/project/anderson/TB_DATA/PHO
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
-for i in $DATA/*_R1.trimmed.fastq.gz
+for i in $DATA1/*_R1.fastq.gz $DATA2/*_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
 
-      fq1=${DATA}/${sample_name}_R1.trimmed.fastq.gz
+      fq1=${DATA}/${sample_name}_R1.
       fq2=${DATA}/${sample_name}_R2.trimmed.fastq.gz
       
       sbatch ${SCRIPT_DIR}/01_star_mapping.sh "${sample_name}" "${fq1}" "${fq2}"
