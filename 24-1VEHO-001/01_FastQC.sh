@@ -12,7 +12,7 @@
 module load fastqc
 #DATA=/project/anderson/concatenated_fastq
 #OUTDIR=/project/anderson/FastQC
-DATA=/datastore/ChamberlainLab/trimmed_fastqs
+DATA=/project/anderson/fastqs
 OUTDIR=/project/anderson/FastQC_after_trimming
 mkdir -p ${OUTDIR}
 
