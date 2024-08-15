@@ -10,10 +10,9 @@
 #SBATCH --output=/project/anderson/%j.out
 
 module load fastqc
-#DATA=/project/anderson/concatenated_fastq
-#OUTDIR=/project/anderson/FastQC
-DATA=/project/anderson/fastqs
-OUTDIR=/project/anderson/FastQC_after_trimming
+
+DATA=/project/anderson/fastq
+OUTDIR=/project/anderson/FastQC
 mkdir -p ${OUTDIR}
 
 fq1=$1; shift
