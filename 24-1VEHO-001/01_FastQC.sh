@@ -16,5 +16,5 @@ mkdir -p ${OUTDIR}
 
 fq1=$1; shift
 fq2=$1;
-fastqc -o ${OUTDIR} --extract ${fq1}
+#fastqc -o ${OUTDIR} --extract ${fq1}
 fastqc -o ${OUTDIR} --extract ${fq2}
