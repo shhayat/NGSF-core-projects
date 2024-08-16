@@ -25,7 +25,7 @@ Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
 fastq_file_path=/project/anderson/trimmed_fastq
 
 #create sample sheet for fastq files
-perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${fastq_file_path} 358
+perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${fastq_file_path} 179
 
 
 
