@@ -38,7 +38,7 @@ do
       fq1=${DATA1}/${sample_name}_R1.fastq.gz
       fq2=${DATA1}/${sample_name}_R2.fastq.gz
 
-      sbatch ${SCRIPT_DIR}/02_adaptor_trimming.sh ${fq1} ${fq2}
+      sbatch ${SCRIPT_DIR}/02_adaptor_trimming.sh ${sample_name} ${fq1} ${fq2}
 done
 
 for i in ${DATA2}/*_R1.fastq.gz
@@ -49,5 +49,5 @@ do
       fq1=${DATA2}/${sample_name}_R1.fastq.gz
       fq2=${DATA2}/${sample_name}_R2.fastq.gz
 
-      sbatch ${SCRIPT_DIR}/02_adaptor_trimming.sh ${fq1} ${fq2}
+      sbatch ${SCRIPT_DIR}/02_adaptor_trimming.sh ${sample_name} ${fq1} ${fq2}
 done
