@@ -9,17 +9,30 @@
 #SBATCH --mem=5G
 #SBATCH --output=/project/anderson/%j.out
 
-fq1=$1; shift
-fq2=$1; shift
+module purge
+module load python/3.10
+module load StdEnv/2020
+module load scipy-stack/2023a
+module load fastp/0.23.4
+
+OUTDIR=/project/anderson/trimmed_fastq
 
 NCPU=1
 
-OUTDIR=/project/anderson/trimmed_fastq
-mkdir -p $OUTDIR
-cd $OUTDIR
+sample_name=$1; shift
+fq1=$1; shift
+fq2=$1;
 
-trim_galore=/$HOME/venvs/trim-glore/TrimGalore-0.6.10
-${trim_galore}/trim_galore \
-                           --paired ${fq1} ${fq2} \
-                           --cores ${NCPU} \
-                           --illumina
+mkdir -p ${OUTDIR} && cd ${OUTDIR}
+
+ fastp -i ${fq1} \
+       -I ${fq2} \
+       -o ${sample_name}_R1.fastq.gz \
+       -O ${sample_name}_R2.fastq.gz \
+       -h ${OUTDIR}/${sample_name}.fastp.html \
+       --thread $NCPU \
+       --length_required 100 \
+       --average_qual 20 \
+       --trim_poly_x \
+       --trim_poly_g \
+       --detect_adapter_for_pe
