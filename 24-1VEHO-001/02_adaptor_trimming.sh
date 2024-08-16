@@ -9,10 +9,13 @@
 #SBATCH --mem=5G
 #SBATCH --output=/project/anderson/%j.out
 
-sample_name=$1;
+fq1=$1; shift
+fq2=$1; shift
+
+NCPU=1
 
 trim_galore=/$HOME/venvs/trim-glore/TrimGalore-0.6.10
 ${trim_galore}/trim_galore \
-                           --paired ${sample_name}_R1_read_trimmed.fq.gz ${sample_name}_R2_read_trimmed.fq.gz \
+                           --paired ${fq1} ${fq2} \
                            --cores ${NCPU} \
                            --illumina
