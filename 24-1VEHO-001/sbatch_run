@@ -24,3 +24,30 @@ do
       sbatch ${SCRIPT_DIR}/01_FastQC.sh "${fq1}" "${fq2}"
 done
 
+
+#removing adaptors
+DATA1=/project/anderson/TB_DATA/Sask_Alberta
+DATA2=/project/anderson/TB_DATA/PHO
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
+
+for i in ${DATA1}/*_R1.fastq.gz
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+
+      fq1=${DATA1}/${sample_name}_R1.fastq.gz
+      fq2=${DATA1}/${sample_name}_R2.fastq.gz
+
+      sbatch ${SCRIPT_DIR}/03_trim_reads_and_rm_adapters.sh ${sample_name} ${fq1} ${fq2}
+done
+
+for i in ${DATA2}/*_R1.fastq.gz
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+
+      fq1=${DATA2}/${sample_name}_R1.fastq.gz
+      fq2=${DATA2}/${sample_name}_R2.fastq.gz
+
+      sbatch ${SCRIPT_DIR}/03_trim_reads_and_rm_adapters.sh ${sample_name} ${fq1} ${fq2}
+done
