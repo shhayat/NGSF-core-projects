@@ -11,7 +11,6 @@
 
 module load fastqc
 
-DATA=/project/anderson/fastq
 OUTDIR=/project/anderson/FastQC
 mkdir -p ${OUTDIR}
 
