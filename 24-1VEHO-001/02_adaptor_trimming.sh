@@ -14,6 +14,10 @@ fq2=$1; shift
 
 NCPU=1
 
+OUTDIR=/project/anderson/trimmed_fastq
+mkdir -p $OUTDIR
+cd $OUTDIR
+
 trim_galore=/$HOME/venvs/trim-glore/TrimGalore-0.6.10
 ${trim_galore}/trim_galore \
                            --paired ${fq1} ${fq2} \
