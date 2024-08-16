@@ -11,7 +11,8 @@
 
 module load fastqc
 
-OUTDIR=/project/anderson/FastQC
+#OUTDIR=/project/anderson/FastQC
+OUTDIR=/project/anderson/FastQC_trimmed
 mkdir -p ${OUTDIR}
 
 fq1=$1; shift
