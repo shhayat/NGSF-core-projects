@@ -23,12 +23,12 @@ sample_name=$1; shift
 fq1=$1; shift
 fq2=$1;
 
-mkdir -p ${OUTDIR} && cd ${OUTDIR}
+mkdir -p ${OUTDIR}
 
  fastp -i ${fq1} \
        -I ${fq2} \
-       -o ${sample_name}_R1.fastq.gz \
-       -O ${sample_name}_R2.fastq.gz \
+       -o ${OUTDIR}/${sample_name}_R1.fastq.gz \
+       -O ${OUTDIR}/${sample_name}_R2.fastq.gz \
        -h ${OUTDIR}/${sample_name}.fastp.html \
        --thread $NCPU \
        --length_required 100 \
