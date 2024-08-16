@@ -2,7 +2,7 @@ DIR=/project/anderson/FastQC
 OUTDIR=/project/anderson/multiqc
 mkdir -p $OUTDIR
 cd /globalhome/hxo752/HPC/tools
-multiqc ${DIR}/*_fastqc.zip -o ${OUTDIR} -n FastQC
+multiqc ${DIR}/*_fastqc.zip -o ${OUTDIR} --interactive -n FastQC1 
 
 
 
