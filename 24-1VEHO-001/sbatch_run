@@ -1,3 +1,4 @@
+#Fastqc
 DATA1=/project/anderson/TB_DATA/Sask_Alberta
 DATA2=/project/anderson/TB_DATA/PHO
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
@@ -50,4 +51,19 @@ do
       fq2=${DATA2}/${sample_name}_R2.fastq.gz
 
       sbatch ${SCRIPT_DIR}/02_adaptor_trimming.sh ${sample_name} ${fq1} ${fq2}
+done
+
+#Trimmed FastQC
+DATA=/project/anderson/trimmed_fastq
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
+
+for i in ${DATA}/*_R1.fastq.gz
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+
+      fq1=${DATA}/${sample_name}_R1.fastq.gz
+      fq2=${DATA}/${sample_name}_R2.fastq.gz
+
+      sbatch ${SCRIPT_DIR}/02_adaptor_trimming.sh ${fq1} ${fq2}
 done
