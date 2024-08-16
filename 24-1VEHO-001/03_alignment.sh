@@ -27,6 +27,7 @@ fastq_file_path=/project/anderson/trimmed_fastq
 #create sample sheet for fastq files
 perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${fastq_file_path} 179
 
-
+#read mapping
+perl ${Gen2Epi_Scripts}/ReadMapping.pl 
 
 
