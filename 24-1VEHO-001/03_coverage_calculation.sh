@@ -22,4 +22,4 @@ OUTDIR=/project/anderson/coverage_calculation
 mkdir -p ${OUTDIR}
 cd ${OUTDIR}
 
-${tool}/fastqinfo-2.0.sh ${fq1} ${fq2} ${fasta_assembly} ${insert_size}
+${tool}/fastqinfo-2.0.sh -r ${insert_size} ${fq1} ${fq2} ${fasta_assembly}
