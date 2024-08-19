@@ -15,11 +15,11 @@ fq2=$1; shift
 insert_size=$1;
 
 
-fastq-info=/globalhome/hxo752/HPC/tools/fastq-info-2.0/bin
+tool=/globalhome/hxo752/HPC/tools/fastq-info-2.0/bin
 fasta_assembly=/project/anderson/genome/sequence.fasta
 OUTDIR=/project/anderson/coverage_calculation
 
-midir -p ${OUTDIR}
+mkdir -p ${OUTDIR}
 cd ${OUTDIR}
 
-${fastq-info}/fastqinfo-2.0.sh ${fq1} ${fq2} ${fasta_assembly} ${insert_size}
+${tool}/fastqinfo-2.0.sh ${fq1} ${fq2} ${fasta_assembly} ${insert_size}
