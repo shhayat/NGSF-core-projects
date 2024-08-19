@@ -19,6 +19,7 @@ fastq-info=/globalhome/hxo752/HPC/tools/fastq-info-2.0/bin
 fasta_assembly=/project/anderson/genome/sequence.fasta
 OUTDIR=/project/anderson/coverage_calculation
 
+midir -p ${OUTDIR}
 cd ${OUTDIR}
 
 ${fastq-info}/fastqinfo-2.0 ${fq1} ${fq2} ${fasta_assembly} ${insert_size}
