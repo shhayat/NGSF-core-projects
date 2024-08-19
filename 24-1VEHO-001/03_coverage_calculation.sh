@@ -12,7 +12,9 @@
 
 fq1=$1; shift
 fq2=$1; shift
-insert_size=$1;
+insert_size=$1; shift
+sample_name=$1;
+
 
 
 tool=/globalhome/hxo752/HPC/tools/fastq-info-2.0/bin
@@ -22,4 +24,4 @@ OUTDIR=/project/anderson/coverage_calculation
 mkdir -p ${OUTDIR}
 cd ${OUTDIR}
 
-${tool}/fastqinfo-2.0.sh -r ${insert_size} ${fq1} ${fq2} ${fasta_assembly}
+${tool}/fastqinfo-2.0.sh -r ${insert_size} ${fq1} ${fq2} ${fasta_assembly} ${sample_name}
