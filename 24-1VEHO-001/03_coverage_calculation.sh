@@ -19,4 +19,4 @@ OUTDIR=/project/anderson/coverage_calculation
 
 cd ${OUTDIR}
 
-./${fastq-info}/fastqinfo-2.0. ${fq1} ${fq2} ${fasta_assembly}
+./${fastq-info}/fastqinfo-2.0 ${fq1} ${fq2} ${fasta_assembly}
