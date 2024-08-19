@@ -75,6 +75,20 @@ done
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
+for i in ${DATA}/NS*_R1.fastq.gz
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+
+      fq1=${DATA}/${sample_name}_R1.fastq.gz
+      fq2=${DATA}/${sample_name}_R2.fastq.gz
+      insert_size=215
+      sbatch ${SCRIPT_DIR}/03_coverage_calculation.sh ${fq1} ${fq2} ${insert_size}
+done
+
+DATA=/project/anderson/trimmed_fastq
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
+
 for i in ${DATA}/*_R1.fastq.gz
 do
       path="${i%_R1*}";
@@ -82,7 +96,6 @@ do
 
       fq1=${DATA}/${sample_name}_R1.fastq.gz
       fq2=${DATA}/${sample_name}_R2.fastq.gz
-
-      sbatch ${SCRIPT_DIR}/03_coverage_calculation.sh ${fq1} ${fq2}
+      insert_size=eval(zcat $i | head -n 2 | tail -n 2 | wc -c)
+      sbatch ${SCRIPT_DIR}/03_coverage_calculation.sh ${fq1} ${fq2} ${insert_size}
 done
-
