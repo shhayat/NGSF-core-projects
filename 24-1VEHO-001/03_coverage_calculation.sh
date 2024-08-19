@@ -7,7 +7,7 @@
 #BATCH --cpus-per-task=1
 #SBATCH --time=1:00:00
 #SBATCH --mem=5G
-#SBATCH --output=/project/anderson/%j.out
+#SBATCH --output=/project/anderson/coverage_calculation/%j.out
 
 
 fq1=$1; shift
