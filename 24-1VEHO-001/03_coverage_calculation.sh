@@ -22,6 +22,5 @@ fasta_assembly=/project/anderson/genome/sequence.fasta
 OUTDIR=/project/anderson/coverage_calculation
 
 mkdir -p ${OUTDIR}
-cd ${OUTDIR}
 
 ${tool}/fastqinfo-2.0.sh -r ${insert_size} ${fq1} ${fq2} ${fasta_assembly} ${sample_name}
