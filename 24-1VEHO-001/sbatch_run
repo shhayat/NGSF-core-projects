@@ -83,5 +83,5 @@ do
       fq2=${DATA}/${sample_name}_R2.fastq.gz
       insert_size=$(zcat "$i" | head -n 2 | tail -n 2 | wc -c)
 
-      sbatch ${SCRIPT_DIR}/03_coverage_calculation.sh ${fq1} ${fq2} ${insert_size}
+      sbatch ${SCRIPT_DIR}/03_coverage_calculation.sh ${fq1} ${fq2} ${insert_size} ${sample_name}
 done
