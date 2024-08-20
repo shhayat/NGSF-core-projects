@@ -85,3 +85,7 @@ do
 
       sbatch ${SCRIPT_DIR}/03_coverage_calculation.sh ${fq1} ${fq2} ${insert_size} ${sample_name}
 done
+
+
+
+05_alignment
