@@ -10,9 +10,9 @@
 #SBATCH --output=%j.out
 set -eux
 
-cd /globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
+tool=/globalhome/hxo752/HPC/tools/bowtie2-2.4.5-linux-x86_64
 
 GENOME=/project/anderson/genome
-OUTDIR=/project/anderson/
+OUTDIR=/project/anderson
 
-bowtie2-build ${GENOME}/sequence.fasta ${OUTDIR}/bowtie_index
+${tool}/bowtie2-build ${GENOME}/sequence.fasta ${OUTDIR}/bowtie_index
