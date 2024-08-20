@@ -12,7 +12,7 @@
 source /globalhome/hxo752/HPC/.bashrc
 
 module load perl/5.36.1
-module load python/3.10.13
+module load python/3.11.5
 module load fastqc/0.12.1
 module load trimmomatic/0.39
 module load bowtie2/2.5.2
