@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=alignment
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=1
+#BATCH --cpus-per-task=6
 #SBATCH --time=10:00:00
 #SBATCH --mem=5G
 #SBATCH --output=/project/anderson/%j.out
@@ -25,8 +25,8 @@ sample_name=$1; shift
 fq1=$1;shift
 fq2=$1;
 
-NCPU=4
-Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
+NCPU=6
+#Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
 fastq_file_path=/project/anderson/trimmed_fastq
 index=/project/anderson/index
 OUTDIR=/project/anderson/mapping
