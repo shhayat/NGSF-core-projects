@@ -20,6 +20,8 @@ module load blast/2.2.26
 module load prodigal/2.6.3
 module load bbmap/39.06  
 
+fq1=$1;shift
+fq2=$1;
 
 NCPU=4
 Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
@@ -31,6 +33,6 @@ OUTDIR=/project/anderson/mapping
 mkdir -p ${OUTDIR}
 
 #read mapping
-perl ${Gen2Epi_Scripts}/ReadMapping.pl ${index} ${fastq_file_path} ${OUTDIR}
-
+#perl ${Gen2Epi_Scripts}/ReadMapping.pl ${index} ${fastq_file_path} ${OUTDIR}
+bowtie2 -x $index -1 $fq1 -2 $fq2 -S $OUT/$Ofile.sam --threads 25
 
