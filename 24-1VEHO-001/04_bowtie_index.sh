@@ -13,6 +13,6 @@ set -eux
 module load bowtie2/2.5.2 
 
 GENOME=/project/anderson/genome
-OUTDIR=/project/anderson
+OUTDIR=/project/anderson/index
 
 bowtie2-build ${GENOME}/sequence.fasta ${OUTDIR}/bowtie_index
