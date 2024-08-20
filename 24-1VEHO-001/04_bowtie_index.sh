@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=genome_index
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=4
+#BATCH --cpus-per-task=1
 #SBATCH --time=10:00:00
 #SBATCH --mem=60G
 #SBATCH --output=%j.out
