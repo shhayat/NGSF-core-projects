@@ -2,9 +2,9 @@
 
 #SBATCH --job-name=Gen2Epi
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=20
+#SBATCH --cpus-per-task=25
 #SBATCH --time=240
-#SBATCH --mem=40G
+#SBATCH --mem=100G
 #SBATCH --output=/project/anderson/%j.out
 
 source /globalhome/hxo752/HPC/.bashrc
@@ -18,7 +18,7 @@ module load blast/2.2.26
 module load prodigal/2.6.3
 module load bbmap/39.06  
 
-NCPU=20
+NCPU=25
 Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
 FASTQ_DIR=/project/anderson/trimmed_fastq
 #create sample sheet for fastq files
