@@ -1,10 +1,12 @@
 #!/bin/bash
 
+#SBATCH --account=hpc_p_anderson
+#SBATCH --constraint=skylake
 #SBATCH --job-name=Gen2Epi
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=30
 #SBATCH --time=240
-#SBATCH --mem=100G
+#SBATCH --mem=200G
 #SBATCH --output=/project/anderson/%j.out
 
 source /globalhome/hxo752/HPC/.bashrc
