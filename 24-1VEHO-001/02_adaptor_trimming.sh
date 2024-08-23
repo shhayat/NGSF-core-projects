@@ -50,11 +50,12 @@ module load bbmap/39.06
 
 NCPU=30
 Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
-FASTQ_DIR=/project/anderson/trimmed_fastq
-OUTDIR=/project/anderson/denovo_assembly
+FASTQ_DIR=/project/anderson/fastq_files
+OUTDIR=/project/anderson/trimmed
 mkdir -p $OUTDIR
 cd $OUTDIR
 #create sample sheet for fastq files
 perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${FASTQ_DIR} 179
 
+perl ${Gen2Epi_Scripts}/WGS_SIBP_P1.pl /project/anderson/Prepare_Input.txt both
 
