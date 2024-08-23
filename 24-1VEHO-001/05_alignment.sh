@@ -32,9 +32,6 @@ OUTDIR=/project/anderson/mapping
 
 mkdir -p ${OUTDIR}
 
-#read mapping
-#perl ${Gen2Epi_Scripts}/ReadMapping.pl ${index} ${fastq_file_path} ${OUTDIR}
-
 gunzip -c ${fq1} | bowtie2 \
 --threads ${NCPU} \
 -x ${index} \
