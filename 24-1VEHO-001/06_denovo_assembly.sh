@@ -2,7 +2,7 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=Gen2Epi
+#SBATCH --job-name=denovo
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=30
 #SBATCH --time=240:00:00
