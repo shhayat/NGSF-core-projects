@@ -5,7 +5,7 @@
 #SBATCH --job-name=alignment
 #SBATCH --ntasks=1
 #BATCH --cpus-per-task=6
-#SBATCH --time=10:00:00
+#SBATCH --time=20:00:00
 #SBATCH --mem=5G
 #SBATCH --output=/project/anderson/%j.out
 
