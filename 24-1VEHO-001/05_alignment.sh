@@ -30,8 +30,7 @@ NCPU=6
 fastq_file_path=/project/anderson/trimmed_fastq
 index=/project/anderson/index/bowtie_index
 OUTDIR=/project/anderson/mapping
-#create sample sheet for fastq files
-#perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${fastq_file_path} 179
+
 mkdir -p ${OUTDIR}
 
 #read mapping
