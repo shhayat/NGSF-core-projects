@@ -58,5 +58,5 @@ cd $OUTDIR
 perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${FASTQ_DIR} 109
 
 #quality check and trimming
-perl ${Gen2Epi_Scripts}/WGS_SIBP_P1.pl /project/anderson/Prepare_Input.txt /project/anderson/TB_DATA/PHO both 
+perl ${Gen2Epi_Scripts}/WGS_SIBP_P1.pl /project/anderson/Prepare_Input.txt /project/anderson/TB_DATA/PHO both 3 3 4:15 30
 
