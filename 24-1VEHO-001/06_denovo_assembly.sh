@@ -5,7 +5,7 @@
 #SBATCH --job-name=Gen2Epi
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=30
-#SBATCH --time=240
+#SBATCH --time=240:00:00
 #SBATCH --mem=200G
 #SBATCH --output=/project/anderson/%j.out
 
