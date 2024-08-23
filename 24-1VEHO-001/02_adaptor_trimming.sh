@@ -55,7 +55,7 @@ OUTDIR=/project/anderson/trimmed
 mkdir -p $OUTDIR
 cd $OUTDIR
 #create sample sheet for fastq files
-perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${FASTQ_DIR} 109
+#perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${FASTQ_DIR} 109
 
 #quality check and trimming
 perl ${Gen2Epi_Scripts}/WGS_SIBP_P1.pl Prepare_Input.txt /project/anderson/TB_DATA/PHO both 3 3 4:15 30
