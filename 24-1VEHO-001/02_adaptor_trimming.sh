@@ -25,14 +25,16 @@ fq2=$1;
 
 mkdir -p ${OUTDIR}
 
- fastp -i ${fq1} \
-       -I ${fq2} \
-       -o ${OUTDIR}/${sample_name}_R1.fastq.gz \
-       -O ${OUTDIR}/${sample_name}_R2.fastq.gz \
-       -h ${OUTDIR}/${sample_name}.fastp.html \
-       --thread $NCPU \
-       --length_required 100 \
-       --average_qual 20 \
-       --trim_poly_x \
-       --trim_poly_g \
-       --detect_adapter_for_pe
+ #fastp -i ${fq1} \
+ #      -I ${fq2} \
+ ##      -o ${OUTDIR}/${sample_name}_R1.fastq.gz \
+ #      -O ${OUTDIR}/${sample_name}_R2.fastq.gz \
+ #      -h ${OUTDIR}/${sample_name}.fastp.html \
+ #      --thread $NCPU \
+ #      --length_required 100 \
+ #      --average_qual 20 \
+ #      --trim_poly_x \
+ #      --trim_poly_g \
+ #      --detect_adapter_for_pe
+
+ 
