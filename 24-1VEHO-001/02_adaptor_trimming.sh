@@ -9,21 +9,21 @@
 #SBATCH --mem=5G
 #SBATCH --output=/project/anderson/%j.out
 
-module purge
-module load python/3.10
-module load StdEnv/2020
-module load scipy-stack/2023a
-module load fastp/0.23.4
+#module purge
+#module load python/3.10
+#module load StdEnv/2020
+#module load scipy-stack/2023a
+#module load fastp/0.23.4
 
-OUTDIR=/project/anderson/trimmed_fastq
+#OUTDIR=/project/anderson/trimmed_fastq
 
-NCPU=1
+#NCPU=1
 
-sample_name=$1; shift
-fq1=$1; shift
-fq2=$1;
+#sample_name=$1; shift
+#fq1=$1; shift
+#fq2=$1;
 
-mkdir -p ${OUTDIR}
+#mkdir -p ${OUTDIR}
 
  #fastp -i ${fq1} \
  #      -I ${fq2} \
@@ -36,5 +36,23 @@ mkdir -p ${OUTDIR}
  #      --trim_poly_x \
  #      --trim_poly_g \
  #      --detect_adapter_for_pe
-
  
+source /globalhome/hxo752/HPC/.bashrc
+
+module load perl/5.36.1
+module load python/3.10.13
+module load fastqc/0.12.1
+module load trimmomatic/0.39
+module load bowtie2/2.5.2
+module load blast/2.2.26  
+module load prodigal/2.6.3
+module load bbmap/39.06  
+
+NCPU=30
+Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
+FASTQ_DIR=/project/anderson/trimmed_fastq
+OUTDIR=/project/anderson/denovo_assembly
+mkdir -p $OUTDIR
+cd $OUTDIR
+#create sample sheet for fastq files
+#perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${FASTQ_DIR} 179
