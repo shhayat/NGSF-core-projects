@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=alignment
 #SBATCH --ntasks=1
-#BATCH --cpus-per-task=10
+#BATCH --cpus-per-task=2
 #SBATCH --time=20:00:00
 #SBATCH --mem=5G
 #SBATCH --output=/project/anderson/%j.out
@@ -25,7 +25,7 @@ sample_name=$1; shift
 fq1=$1;shift
 fq2=$1;
 
-NCPU=10
+NCPU=2
 fastq_file_path=/project/anderson/trimmed_fastq
 index=/project/anderson/index/bowtie_index
 OUTDIR=/project/anderson/mapping
