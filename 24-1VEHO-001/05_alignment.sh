@@ -40,7 +40,7 @@ gunzip -c ${fq1} | bowtie2 \
 -S ${OUTDIR}/${sample_name}.sam 2> ${OUTDIR}/${sample_name}_bowtie2.log \
 && samtools view -h -b ${OUTDIR}/${sample_name}.sam > ${OUTDIR}/${sample_name}.aligned.bam
 
-rm ${OUTDIR}/${sample_name}/${sample_name}.sam
+rm ${OUTDIR}/${sample_name}.sam
 
 module unload samtools
 module unload bowtie2/2.5.2
