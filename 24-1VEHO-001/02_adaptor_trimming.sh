@@ -55,4 +55,6 @@ OUTDIR=/project/anderson/denovo_assembly
 mkdir -p $OUTDIR
 cd $OUTDIR
 #create sample sheet for fastq files
-#perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${FASTQ_DIR} 179
+perl ${Gen2Epi_Scripts}/Prepare_Input.pl ${FASTQ_DIR} 179
+
+
