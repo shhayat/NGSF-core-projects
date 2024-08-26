@@ -90,7 +90,7 @@ done
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
-for i in ${DATA}/M*_R1.fastq.gz ${DATA}/C*_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_17---IDT_i5_17.PHO-MTB013_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_146---IDT_i5_146.PHO-MTB040_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_125---IDT_i5_125.PHO-MTB052_A_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_51---IDT_i5_51.PHO-MTB007_A_R1.fastq.gz NS.2152.003.IDT_i7_114---IDT_i5_114.PHO-MTB053_A_R1.fastq.gz
+for i in ${DATA}/NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_185---IDT_i5_185.PHO-MTB047_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_186---IDT_i5_186.PHO-MTB037_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_187---IDT_i5_187.PHO-MTB050_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_28---IDT_i5_28.PHO-MTB010_A_R1.fastq.gz 
 do
        path="${i%_R1*}";
        sample_name=${path##*/};
