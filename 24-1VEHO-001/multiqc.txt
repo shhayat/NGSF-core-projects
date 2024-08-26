@@ -12,11 +12,8 @@ cd /globalhome/hxo752/HPC/tools
 multiqc ${DIR}/*_fastqc.zip -o ${OUTDIR} --interactive -n FastQC_trimmed
 
 
-
+DIR=/project/anderson/mapping
+OUTDIR=/project/anderson/multiqc
+mkdir -p $OUTDIR
 cd /globalhome/hxo752/HPC/tools
-OUTDIR=/project/anderson/SRA_data_analysis/multiqc
-multiqc -o ${OUTDIR} -n QCreport \
-/project/anderson/SRA_data_analysis/trimmed_fastq_sra/*.fastp.html \
-/project/anderson/SRA_data_analysis/trimmed_fastq_sra/*fastq.gz \
-/project/anderson/SRA_data_analysis/alignment/*/Log.final.out \
-/project/anderson/SRA_data_analysis/rnaseqc/*.metrics.tsv
+multiqc ${DIR}/*.log -o ${OUTDIR} --interactive -n bowtie2
