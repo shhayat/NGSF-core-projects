@@ -1,4 +1,5 @@
-Issue with 
+Issues while running coverage calculation for 16 samples and it doesn't calculate coverage for samples
+"(standard_in) 2: syntax error"
 
 Issue with 5 samples while running alignment step
 NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_bowtie2.log:Error, fewer reads in file specified with -2 than in file specified with -1
