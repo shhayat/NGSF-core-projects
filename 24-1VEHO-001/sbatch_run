@@ -43,6 +43,7 @@ do
 done
 
 for i in ${DATA2}/*_R1.fastq.gz
+do
       path="${i%_R1*}";
       sample_name=${path##*/};
 
