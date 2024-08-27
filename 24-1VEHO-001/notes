@@ -1,3 +1,5 @@
+Issue with 
+
 Issue with 5 samples while running alignment step
 NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_bowtie2.log:Error, fewer reads in file specified with -2 than in file specified with -1
 NS.2152.003.IDT_i7_185---IDT_i5_185.PHO-MTB047_A_bowtie2.log:Error, fewer reads in file specified with -1 than in file specified with -2
