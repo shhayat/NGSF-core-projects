@@ -22,7 +22,7 @@ module load bbmap/39.06
 
 NCPU=30
 Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
-FASTQ_DIR=/project/anderson/trimmed_fastq
+FASTQ_DIR=/project/anderson/trimmed_fastq_v1
 OUTDIR=/project/anderson/denovo_assembly
 mkdir -p $OUTDIR
 cd $OUTDIR
