@@ -28,7 +28,7 @@ fq2=$1;
 NCPU=2
 fastq_file_path=/project/anderson/trimmed_fastq_v1
 index=/project/anderson/index/bowtie_index
-OUTDIR=/project/anderson/mapping
+OUTDIR=/project/anderson/mapping_v1
 
 mkdir -p ${OUTDIR}
 
