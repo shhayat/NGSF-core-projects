@@ -30,6 +30,6 @@ cd $OUTDIR
 #python /project/anderson/sample_prep.py > /project/anderson/denovo_assembly/Prepare_Input.txt
 
 #denovo assembly
-perl ${Gen2Epi_Scripts}/WGS_SIBP_P2.pl /project/anderson/Prepare_Input.txt ${FASTQ_DIR} trimmed ${NCPU}
+perl ${Gen2Epi_Scripts}/WGS_SIBP_P2.pl /project/anderson/denovo_assembly/Prepare_Input.txt ${FASTQ_DIR} trimmed ${NCPU}
 
 
