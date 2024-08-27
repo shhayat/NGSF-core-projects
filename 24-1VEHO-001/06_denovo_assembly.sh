@@ -46,7 +46,7 @@ spades.py --pe1-1 $paired_fq1 \
           --cov-cutoff auto \
           --careful \
           --threads $NCPU \
-          -o $$OUTDIR/Chrom_AssemblyTrimmedReads/${sample_name}_
+          -o $$OUTDIR/Chrom_AssemblyTrimmedReads/${sample_name}
 
 
 plasmidspades.py --pe1-1 $paired_fq1 \
@@ -56,7 +56,15 @@ plasmidspades.py --pe1-1 $paired_fq1 \
 --cov-cutoff auto \
 --careful \
 --threads $NCPU \
--o $$OUTDIR/Plasmid_AssemblyTrimmedReads/${sample_name}_
+-o $$OUTDIR/Plasmid_AssemblyTrimmedReads/${sample_name}
+
+stats.sh in=$OUTDIR/Chrom_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+         gchist=$OUTDIR/ChromContigAssemblyTrimmedStat/${sample_name}_GC_hist \
+         shist=$OUTDIR/ChromContigAssemblyTrimmedStat/${sample_name}_length_hist > $OUTDIR/ChromContigAssemblyTrimmedStat/${sample_name}_Assembly_Stat
+
+stats.sh in=$OUTDIR/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+         gchist=$OUTDIR/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
+         shist=$OUTDIR/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > $OUTDIR/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
 
 
 
