@@ -69,7 +69,6 @@ do
 done
 
 
-
 #calculate coverage
 DATA=/project/anderson/trimmed_fastq_v1
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
@@ -101,3 +100,20 @@ do
       sbatch ${SCRIPT_DIR}/05_alignment.sh ${sample_name} ${fq1} ${fq2}
 done
 
+
+#denovo assembly
+DATA=/project/anderson/trimmed_fastq_v1
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
+
+for i in ${DATA}/*_R1.fastq.gz
+do
+      path="${i%_R1*}";
+      sample_name=${path##*/};
+
+      fq1_paired=${DATA}/${sample_name}_R1.fastq.gz
+      fq2_paired=${DATA}/${sample_name}_R2.fastq.gz
+      fq1_unpaired=${DATA}/${sample_name}_R1_unpaired.fastq.gz
+      fq2_unpaired=${DATA}/${sample_name}_R2_unpaired.fastq.gz
+
+      sbatch ${SCRIPT_DIR}/06_denovo_assembly.sh ${sample_name} ${fq1_paired} ${fq2_paired} ${fq1_unpaired} ${fq2_unpaired}
+done
