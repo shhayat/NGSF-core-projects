@@ -38,5 +38,12 @@ mkdir -p $OUTDIR/PlasmidContigAssemblytrimmedStat
 #denovo assembly
 #perl ${Gen2Epi_Scripts}/WGS_SIBP_P2.pl /project/anderson/denovo_assembly/Prepare_Input.txt ${FASTQ_DIR} trimmed ${NCPU}
 
-spades.py --pe1-1 $paired_fq1 --pe1-2 $Ppaired_fq2 --pe1-s $unpaired_fq1 --pe1-s $unpaired_fq2 --cov-cutoff auto --careful -t $th -o $$OUTDIR/Chrom_AssemblyTrimmedReads
+spades.py --pe1-1 $paired_fq1 \
+          --pe1-2 $Ppaired_fq2 \  
+          --pe1-s $unpaired_fq1 \
+          --pe1-s $unpaired_fq2 \
+          --cov-cutoff auto \
+          --careful \
+          --threads $NCPU \
+          -o $$OUTDIR/Chrom_AssemblyTrimmedReads
 
