@@ -20,6 +20,7 @@ source /globalhome/hxo752/HPC/.bashrc
 #module load prodigal/2.6.3
 module load bbmap/39.06  
 
+sample_name=$1; shift
 paired_fq1=$1; shift
 paired_fq2=$1; shift
 unpaired_fq1=$1; shift
@@ -39,11 +40,23 @@ mkdir -p $OUTDIR/PlasmidContigAssemblytrimmedStat
 #perl ${Gen2Epi_Scripts}/WGS_SIBP_P2.pl /project/anderson/denovo_assembly/Prepare_Input.txt ${FASTQ_DIR} trimmed ${NCPU}
 
 spades.py --pe1-1 $paired_fq1 \
-          --pe1-2 $Ppaired_fq2 \  
+          --pe1-2 $paired_fq2 \  
           --pe1-s $unpaired_fq1 \
           --pe1-s $unpaired_fq2 \
           --cov-cutoff auto \
           --careful \
           --threads $NCPU \
-          -o $$OUTDIR/Chrom_AssemblyTrimmedReads
+          -o $$OUTDIR/Chrom_AssemblyTrimmedReads/${sample_name}_
+
+
+plasmidspades.py --pe1-1 $paired_fq1 \
+--pe1-2 $paired_fq2 \
+--pe1-s $unpaired_fq1 \
+--pe1-s $unpaired_fq2 \
+--cov-cutoff auto \
+--careful \
+--threads $NCPU \
+-o $$OUTDIR/Plasmid_AssemblyTrimmedReads/${sample_name}_
+
+
 
