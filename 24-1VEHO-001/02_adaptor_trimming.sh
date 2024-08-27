@@ -31,7 +31,7 @@ fastp -i ${fq1} \
        -O ${OUTDIR}/${sample_name}_R2.fastq.gz \
        -h ${OUTDIR}/${sample_name}.fastp.html \
        --thread $NCPU \
-       --length_required 100 \
+       --length_required 36 \
        --average_qual 20 \
        --trim_poly_x \
        --trim_poly_g \
