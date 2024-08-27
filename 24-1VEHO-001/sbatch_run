@@ -42,8 +42,7 @@ do
       sbatch ${SCRIPT_DIR}/02_adaptor_trimming.sh ${sample_name} ${fq1} ${fq2}
 done
 
-for i in ${DATA2}/NS.2152.003.IDT_i7_116---IDT_i5_116.PHO-MTB054_A_R1.fastq.gz ${DATA2}/NS.2152.003.IDT_i7_117---IDT_i5_117.PHO-MTB055_B_R1.fastq.gz ${DATA2}/NS.2152.003.IDT_i7_150---IDT_i5_150.PHO-MTB032_B_R1.fastq.gz ${DATA2}/NS.2154.001.IDT_i7_53---IDT_i5_53.PHO-MTB015_A_R1.fastq.gz ${DATA2}/NS.2154.001.IDT_i7_86---IDT_i5_86.PHO-MTB004_B_R1.fastq.gz ${DATA2}/NS.2154.001.IDT_i7_87---IDT_i5_87.PHO-MTB008_B_R1.fastq.gz ${DATA2}/NS.2154.001.IDT_i7_89---IDT_i5_89.PHO-MTB016_B_R1.fastq.gz
-do
+for i in ${DATA2}/*_R1.fastq.gz
       path="${i%_R1*}";
       sample_name=${path##*/};
 
