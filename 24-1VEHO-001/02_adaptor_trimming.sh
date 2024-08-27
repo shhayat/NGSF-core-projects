@@ -15,7 +15,7 @@ module load StdEnv/2020
 module load scipy-stack/2023a
 module load fastp/0.23.4
 
-OUTDIR=/project/anderson/trimmed_fastq
+OUTDIR=/project/anderson/trimmed_fastq_v1
 
 NCPU=1
 
