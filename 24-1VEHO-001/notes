@@ -1,4 +1,4 @@
-Issues while running coverage calculation for 16 samples and it doesn't calculate coverage for samples
+Issues while running coverage calculation for 24 samples and it doesn't calculate coverage for samples
 "(standard_in) 2: syntax error"
 
 Issue with 5 samples while running alignment step
