@@ -54,7 +54,7 @@ spades.py --pe1-1 ${paired_fq1} \
 
 
 
-plasmidspades.py --pe1-1 $paired_fq1 \
+plasmidspades.py --pe1-1 ${paired_fq1} \
 --pe1-2 ${paired_fq2} \
 --pe1-s ${unpaired_fq1} \
 --pe1-s ${unpaired_fq2} \
