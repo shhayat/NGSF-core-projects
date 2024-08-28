@@ -106,7 +106,7 @@ done
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
-for i in ${DATA}/*_R1.fastq.gz
+for i in ${DATA}/SKTB027_i7_51_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
