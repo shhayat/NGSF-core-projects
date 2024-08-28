@@ -34,37 +34,42 @@ mkdir -p $OUTDIR/Chrom_AssemblyTrimmedReads
 mkdir -p $OUTDIR/Plasmid_AssemblyTrimmedReads
 mkdir -p $OUTDIR/ChromContigAssemblyTrimmedStat
 mkdir -p $OUTDIR/PlasmidContigAssemblytrimmedStat
+
+mkdir -p ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
+mkdir -p ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
+
 #create sample sheet for fastq files
 #python /project/anderson/sample_prep.py > /project/anderson/denovo_assembly/Prepare_Input.txt
 #denovo assembly
 #perl ${Gen2Epi_Scripts}/WGS_SIBP_P2.pl /project/anderson/denovo_assembly/Prepare_Input.txt ${FASTQ_DIR} trimmed ${NCPU}
 
-spades.py --pe1-1 $paired_fq1 \
-          --pe1-2 $paired_fq2 \  
-          --pe1-s $unpaired_fq1 \
-          --pe1-s $unpaired_fq2 \
+spades.py --pe1-1 ${paired_fq1} \
+          --pe1-2 ${paired_fq2} \  
+          --pe1-s ${unpaired_fq1} \
+          --pe1-s ${unpaired_fq2} \
           --cov-cutoff auto \
           --careful \
-          --threads $NCPU \
-          -o $$OUTDIR/Chrom_AssemblyTrimmedReads/${sample_name}
+          --threads ${NCPU} \
+          -o ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
+
 
 
 plasmidspades.py --pe1-1 $paired_fq1 \
---pe1-2 $paired_fq2 \
---pe1-s $unpaired_fq1 \
---pe1-s $unpaired_fq2 \
+--pe1-2 ${paired_fq2} \
+--pe1-s ${unpaired_fq1} \
+--pe1-s ${unpaired_fq2} \
 --cov-cutoff auto \
 --careful \
---threads $NCPU \
--o $$OUTDIR/Plasmid_AssemblyTrimmedReads/${sample_name}
+--threads ${NCPU} \
+-o ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 
-stats.sh in=$OUTDIR/Chrom_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+stats.sh in=${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
          gchist=$OUTDIR/ChromContigAssemblyTrimmedStat/${sample_name}_GC_hist \
-         shist=$OUTDIR/ChromContigAssemblyTrimmedStat/${sample_name}_length_hist > $OUTDIR/ChromContigAssemblyTrimmedStat/${sample_name}_Assembly_Stat
+         shist=$OUTDIR/ChromContigAssemblyTrimmedStat/${sample_name}_length_hist > ${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_Assembly_Stat
 
-stats.sh in=$OUTDIR/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
-         gchist=$OUTDIR/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
-         shist=$OUTDIR/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > $OUTDIR/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
+stats.sh in=${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+         gchist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
+         shist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > ${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
 
 
 
