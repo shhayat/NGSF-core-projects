@@ -45,33 +45,35 @@ mkdir -p ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 
 
 cd ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
-${spades_tool}/spades.py -1 ${paired_fq1} \
+${spades_tool}/spades.py \
+          -1 ${paired_fq1} \
           -2 ${paired_fq2} \  
-          -s ${unpaired_fq1} \
-          -s ${unpaired_fq2} \
+          --pe-s 1 ${unpaired_fq1} \
+          --pe-s 2 ${unpaired_fq2} \
           --cov-cutoff auto \
           --careful \
           --threads ${NCPU} \
           -o ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
 
 
-cd ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
-${spades_tool}/plasmidspades.py -1 ${paired_fq1} \
--2 ${paired_fq2} \
--s ${unpaired_fq1} \
--s ${unpaired_fq2} \
---cov-cutoff auto \
---careful \
---threads ${NCPU} \
--o ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
+#cd ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
+#${spades_tool}/plasmidspades.py \
+#-1 ${paired_fq1} \
+#-2 ${paired_fq2} \
+#-s ${unpaired_fq1} \
+#-s ${unpaired_fq2} \
+#--cov-cutoff auto \
+#--careful \
+#--threads ${NCPU} \
+#-o ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 
 stats.sh in=${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
          gchist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_GC_hist \
          shist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_length_hist > ${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_Assembly_Stat
 
-stats.sh in=${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
-         gchist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
-         shist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > ${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
+#stats.sh in=${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+#         gchist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
+#         shist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > ${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
 
 
 
