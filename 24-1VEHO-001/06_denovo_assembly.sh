@@ -60,8 +60,8 @@ ${spades_tool}/spades.py \
 #${spades_tool}/plasmidspades.py \
 #-1 ${paired_fq1} \
 #-2 ${paired_fq2} \
-#-s ${unpaired_fq1} \
-#-s ${unpaired_fq2} \
+#--pe-s 1 ${unpaired_fq1} \
+#--pe-s 2 ${unpaired_fq2} \
 #--cov-cutoff auto \
 #--careful \
 #--threads ${NCPU} \
