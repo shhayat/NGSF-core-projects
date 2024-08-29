@@ -103,8 +103,7 @@ done
 
 
 #denovo assembly
-#DATA=/project/anderson/trimmed_fastq
-DATA=/project/anderson/
+DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
 for i in ${DATA}/SKTB027_i7_51_R1.fastq.gz
