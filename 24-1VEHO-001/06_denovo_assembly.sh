@@ -48,8 +48,8 @@ cd ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
 ${spades_tool}/spades.py \
           -1 ${paired_fq1} \
           -2 ${paired_fq2} \  
-          --pe-s 1 ${unpaired_fq1} \
-          --pe-s 2 ${unpaired_fq2} \
+          --s 1 ${unpaired_fq1} \
+          --s 2 ${unpaired_fq2} \
           --cov-cutoff auto \
           --careful \
           --threads ${NCPU} \
