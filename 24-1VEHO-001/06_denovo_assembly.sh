@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=denovo
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
+#SBATCH --cpus-per-task=1
 #SBATCH --time=240:00:00
-#SBATCH --mem=200G
+#SBATCH --mem=100G
 #SBATCH --output=/project/anderson/%j.out
 
 #source /globalhome/hxo752/HPC/.bashrc
@@ -26,7 +26,7 @@ paired_fq2=$1; shift
 unpaired_fq1=$1; shift
 unpaired_fq2=$1;
 
-NCPU=30
+NCPU=1
 spades_tool=/globalhome/hxo752/HPC/tools/spades-4.0.0/bin
 OUTDIR=/project/anderson/denovo_assembly
 
