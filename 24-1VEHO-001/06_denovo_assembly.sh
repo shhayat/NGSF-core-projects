@@ -56,7 +56,6 @@ ${spades_tool}/spades.py \
 -o ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
 
 
-
 #cd ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 #${spades_tool}/plasmidspades.py \
 #-1 ${paired_fq1} \
