@@ -9,7 +9,7 @@
 #SBATCH --mem=200G
 #SBATCH --output=/project/anderson/%j.out
 
-source /globalhome/hxo752/HPC/.bashrc
+#source /globalhome/hxo752/HPC/.bashrc
 
 #module load perl/5.36.1
 #module load python/3.10.13
@@ -27,13 +27,15 @@ unpaired_fq1=$1; shift
 unpaired_fq2=$1;
 
 NCPU=30
-Gen2Epi_Scripts=/globalhome/hxo752/HPC/tools/Gen2Epi/Gen2Epi_Scripts
-FASTQ_DIR=/project/anderson/trimmed_fastq_v1
+spades_tool=/globalhome/hxo752/HPC/tools/spades-4.0.0/bin
+
+FASTQ_DIR=/project/anderson/trimmed_fastq
 OUTDIR=/project/anderson/denovo_assembly
-mkdir -p $OUTDIR/Chrom_AssemblyTrimmedReads
-mkdir -p $OUTDIR/Plasmid_AssemblyTrimmedReads
-mkdir -p $OUTDIR/ChromContigAssemblyTrimmedStat
-mkdir -p $OUTDIR/PlasmidContigAssemblytrimmedStat
+
+mkdir -p ${OUTDIR}/Chrom_AssemblyTrimmedReads
+mkdir -p ${OUTDIR}/Plasmid_AssemblyTrimmedReads
+mkdir -p ${OUTDIR}/ChromContigAssemblyTrimmedStat
+mkdir -p ${OUTDIR}/PlasmidContigAssemblytrimmedStat
 
 mkdir -p ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
 mkdir -p ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
@@ -43,7 +45,9 @@ mkdir -p ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 #denovo assembly
 #perl ${Gen2Epi_Scripts}/WGS_SIBP_P2.pl /project/anderson/denovo_assembly/Prepare_Input.txt ${FASTQ_DIR} trimmed ${NCPU}
 
-spades.py --pe1-1 ${paired_fq1} \
+
+cd ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
+${spades_tool}/spades.py --pe1-1 ${paired_fq1} \
           --pe1-2 ${paired_fq2} \  
           --pe1-s ${unpaired_fq1} \
           --pe1-s ${unpaired_fq2} \
@@ -53,8 +57,8 @@ spades.py --pe1-1 ${paired_fq1} \
           -o ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
 
 
-
-plasmidspades.py --pe1-1 ${paired_fq1} \
+cd ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
+${spades_tool}/plasmidspades.py --pe1-1 ${paired_fq1} \
 --pe1-2 ${paired_fq2} \
 --pe1-s ${unpaired_fq1} \
 --pe1-s ${unpaired_fq2} \
@@ -63,13 +67,13 @@ plasmidspades.py --pe1-1 ${paired_fq1} \
 --threads ${NCPU} \
 -o ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 
-stats.sh in=${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
-         gchist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_GC_hist \
-         shist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_length_hist > ${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_Assembly_Stat
+#${spades_tool}/stats.sh in=${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+#                        gchist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_GC_hist \
+#                        shist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_length_hist > ${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_Assembly_Stat
 
-stats.sh in=${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
-         gchist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
-         shist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > ${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
+#${spades_tool}/stats.sh in=${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+#                        gchist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
+#                        shist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > ${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
 
 
 
