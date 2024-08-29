@@ -23,8 +23,8 @@ module load bbmap/39.06
 sample_name=$1; shift
 paired_fq1=$1; shift
 paired_fq2=$1; shift
-unpaired_fq1=$1; shift
-unpaired_fq2=$1;
+#unpaired_fq1=$1; shift
+#unpaired_fq2=$1;
 
 NCPU=1
 spades_tool=/globalhome/hxo752/HPC/tools/spades-4.0.0/bin
