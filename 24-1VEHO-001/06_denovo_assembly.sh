@@ -47,7 +47,8 @@ mkdir -p ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 cd ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
 ${spades_tool}/spades.py -1 ${paired_fq1} \
           -2 ${paired_fq2} \  
-          -s ${unpaired_fq1} ${unpaired_fq2} \
+          -s ${unpaired_fq1} \
+          -s ${unpaired_fq2} \
           --cov-cutoff auto \
           --careful \
           --threads ${NCPU} \
@@ -57,7 +58,8 @@ ${spades_tool}/spades.py -1 ${paired_fq1} \
 cd ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 ${spades_tool}/plasmidspades.py -1 ${paired_fq1} \
 -2 ${paired_fq2} \
--s ${unpaired_fq1} ${unpaired_fq2} \
+-s ${unpaired_fq1} \
+-s ${unpaired_fq2} \
 --cov-cutoff auto \
 --careful \
 --threads ${NCPU} \
