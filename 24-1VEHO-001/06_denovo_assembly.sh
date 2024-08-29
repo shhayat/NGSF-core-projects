@@ -27,7 +27,7 @@ unpaired_fq1=$1; shift
 unpaired_fq2=$1;
 
 NCPU=1
-spades_tool=/globalhome/hxo752/HPC/tools/spades-3.15.5/assembler
+spades_tool=/globalhome/hxo752/HPC/tools/spades-4.0.0/bin
 OUTDIR=/project/anderson/denovo_assembly
 
 mkdir -p ${OUTDIR}/Chrom_AssemblyTrimmedReads
