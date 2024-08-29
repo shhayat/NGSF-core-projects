@@ -65,13 +65,13 @@ ${spades_tool}/plasmidspades.py --pe-1 1 ${paired_fq1} \
 --threads ${NCPU} \
 -o ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 
-${spades_tool}/stats.sh in=${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
-                        gchist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_GC_hist \
-                        shist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_length_hist > ${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_Assembly_Stat
+stats.sh in=${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+         gchist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_GC_hist \
+         shist=${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_length_hist > ${OUTDIR}/ChromContigAssemblyTrimmedStat/${sample_name}_Assembly_Stat
 
-${spades_tool}/stats.sh in=${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
-                        gchist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
-                        shist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > ${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
+stats.sh in=${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}/contigs.fasta \
+         gchist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_GC_hist \
+         shist=${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_length_hist > ${OUTDIR}/PlasmidContigAssemblytrimmedStat/${sample_name}_Assembly_Stat
 
 
 
