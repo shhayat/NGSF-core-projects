@@ -27,8 +27,8 @@ unpaired_fq1=$1; shift
 unpaired_fq2=$1;
 
 NCPU=1
-#spades_tool=/globalhome/hxo752/HPC/tools/spades-4.0.0/bin
-spades_tool=/globalhome/hxo752/HPC/tools/spades-3.15.5/assembler
+spades_tool=/globalhome/hxo752/HPC/tools/spades-4.0.0/bin
+#spades_tool=/globalhome/hxo752/HPC/tools/spades-3.15.5/assembler
 OUTDIR=/project/anderson/denovo_assembly
 
 mkdir -p ${OUTDIR}/Chrom_AssemblyTrimmedReads
@@ -46,11 +46,19 @@ mkdir -p ${OUTDIR}/Plasmid_AssemblyTrimmedReads/${sample_name}
 
 
 cd ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
+#${spades_tool}/spades.py \
+#          --pe-1 1 ${paired_fq1} \
+#          --pe-2 2 ${paired_fq2} \  
+#          --pe-s 1 ${unpaired_fq1} \
+#          --pe-s 2 ${unpaired_fq2} \
+#          --cov-cutoff auto \
+#          --careful \
+#          --threads ${NCPU} \
+#          -o ${OUTDIR}/Chrom_AssemblyTrimmedReads/${sample_name}
+
 ${spades_tool}/spades.py \
           --pe-1 1 ${paired_fq1} \
-          --pe-2 2 ${paired_fq2} \  
-          --pe-s 1 ${unpaired_fq1} \
-          --pe-s 2 ${unpaired_fq2} \
+          --pe-2 2 ${paired_fq2} \
           --cov-cutoff auto \
           --careful \
           --threads ${NCPU} \
