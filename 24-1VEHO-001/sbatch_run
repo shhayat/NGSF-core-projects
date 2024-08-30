@@ -133,3 +133,26 @@ do
 
      sbatch ${SCRIPT_DIR}/06_denovo_assembly_p2.sh ${sample_name} ${fq1_paired} ${fq2_paired} ${fq1_unpaired} ${fq2_unpaired}
 done
+
+#QC for assembled contigs
+DATA=/project/anderson/denovo_assembly/Chrom_AssemblyTrimmedReads
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
+
+for i in ${DATA}/*/contigs.fasta
+do
+
+      sample_name=$(basename $(dirname "$i"))
+
+      sbatch ${SCRIPT_DIR}/07 ${DATA}/${sample_name}/contigs.fasta ${sample_name} "Chrom_Assembly_QC"
+done
+
+DATA=/project/anderson/denovo_assembly/Plasmid_AssemblyTrimmedReads
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
+
+for i in ${DATA}/*/contigs.fasta
+do
+
+      sample_name=$(basename $(dirname "$i"))
+
+      sbatch ${SCRIPT_DIR}/07 ${DATA}/${sample_name}/contigs.fasta ${sample_name} "Plasmid_Assembly_QC"
+done
