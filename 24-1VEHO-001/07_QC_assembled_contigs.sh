@@ -21,7 +21,7 @@ outdir_info=$1
 
 mkdir ${OUTDIR}/${outdir_info}
 
-${quast_tool}/quast.py $contig \
+${quast_tool}/quast.py ${contig} \
                        -o ${OUTDIR} \
                        -r ${REF} \
                        -g ${GFF} \
