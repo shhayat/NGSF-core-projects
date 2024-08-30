@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
 #SBATCH --time=24:00:00
-#SBATCH --mem=200G
+#SBATCH --mem=80G
 #SBATCH --output=/project/anderson/%j.out
 
 
@@ -18,7 +18,7 @@ paired_fq2=$1; shift
 unpaired_fq1=$1; shift
 unpaired_fq2=$1;
 
-NCPU=1
+NCPU=10
 spades_tool=/globalhome/hxo752/HPC/tools/spades-4.0.0/bin
 OUTDIR=/project/anderson/denovo_assembly
 
