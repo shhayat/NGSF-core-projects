@@ -4,29 +4,26 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=QC
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
-#SBATCH --time=48:00:00
+#SBATCH --cpus-per-task=2
+#SBATCH --time=10:00:00
 #SBATCH --mem=40G
 #SBATCH --output=/project/anderson/%j.out
-
-
 
 quast_tool=/globalhome/hxo752/HPC/tools/quast-quast_5.2.0
 OUTDIR=/project/anderson/QC_for_assembled_contigs
 REF=/project/anderson/genome/sequence.fasta
 GFF=/project/anderson/genome/sequence.gff3
-NCPU=10
+NCPU=2
 
-fq1=$1; shift
-fq2=$1; shift
+contig=$1; shift
 sample_name=$1; shift
+outdir_info=$1
 
+mkdir ${OUTDIR}/${outdir_info}
 
-${quast_tool}/quast.py 
+${quast_tool}/quast.py $contig \
                        -o ${OUTDIR} \
                        -r ${REF} \
                        -g ${GFF} \
-                       -1 ${fq1} \
-                       -2 ${fq2} \
                        --threads ${NCPU}
                        
