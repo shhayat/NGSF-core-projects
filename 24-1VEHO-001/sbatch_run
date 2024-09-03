@@ -105,8 +105,7 @@ done
 #denovo assembly
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
-
-for i in ${DATA}/*_R1.fastq.gz
+for i in ${DATA}/NS.2152.003.IDT_i7_123---IDT_i5_123.PHO-MTB045_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_127---IDT_i5_127.PHO-MTB047_B_R1.fastq.gz ${DATA}//NS.2154.001.IDT_i7_51---IDT_i5_51.PHO-MTB007_A_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
@@ -138,7 +137,7 @@ done
 DATA=/project/anderson/denovo_assembly/Chrom_AssemblyTrimmedReads
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
-for i in ${DATA}/NS.2152.003.IDT_i7_123---IDT_i5_123.PHO-MTB045_B/contigs.fasta ${DATA}/NS.2152.003.IDT_i7_127---IDT_i5_127.PHO-MTB047_B/contigs.fasta ${DATA}/NS.2154.001.IDT_i7_51---IDT_i5_51.PHO-MTB007_A/contigs.fasta 
+for i in ${DATA}/*/contigs.fasta
 do
       sample_name=$(basename $(dirname "$i"))
 
