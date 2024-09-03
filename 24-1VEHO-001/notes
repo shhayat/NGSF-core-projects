@@ -12,6 +12,10 @@ NS.2154.001.IDT_i7_28---IDT_i5_28.PHO-MTB010_A_bowtie2.log:Error, fewer reads in
 Denovo assembly step
 For Chromosome denovo assembly
 #3 files didn't produce stats for chromosome contig assembly step becasue the time limit was over. Reran those 5 samples with extra time
+NS.2152.003.IDT_i7_123---IDT_i5_123.PHO-MTB045_B_R1.fastq.gz 
+NS.2152.003.IDT_i7_127---IDT_i5_127.PHO-MTB047_B_R1.fastq.gz 
+NS.2154.001.IDT_i7_51---IDT_i5_51.PHO-MTB007_A_R1.fastq.gz
+
 
 For Plasmid denovo assembly 
 #38 files didn't produce GC_hist and length_hist file. While checking log files for those samples It was figure out that no plasmid contig was 
