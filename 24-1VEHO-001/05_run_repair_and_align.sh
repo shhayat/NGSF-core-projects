@@ -17,16 +17,16 @@ fq2=$1;
 
 
 DATA=/project/anderson/trimmed_fastq
-OUTDIR=/project/anderson/trimmed_fastq
+#OUTDIR=/project/anderson/trimmed_fastq
 
 mkdir -p $OUTDIR
 
-repair.sh in=${fq1} \
-          in2=${fq2} \
-          out=${OUTDIR}/${sample_name}_R1_repair.fastq.gz \
-          out2=${OUTDIR}/${sample_name}_R2_repair.fastq.gz \
-          outs=${OUTDIR}/${sample_name}_singletons.fastq.gz \
-          repair=t
+#repair.sh in=${fq1} \
+#          in2=${fq2} \
+#          out=${OUTDIR}/${sample_name}_R1_repair.fastq.gz \
+#          out2=${OUTDIR}/${sample_name}_R2_repair.fastq.gz \
+#          outs=${OUTDIR}/${sample_name}_singletons.fastq.gz \
+#          repair=t
 
 
 module load bowtie2/2.5.2
