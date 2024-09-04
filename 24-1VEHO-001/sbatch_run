@@ -141,7 +141,7 @@ for i in ${DATA}/*/contigs.fasta
 do
       sample_name=$(basename $(dirname "$i"))
 
-      sbatch ${SCRIPT_DIR}/07 ${DATA}/${sample_name}/contigs.fasta ${sample_name} "Chrom_Assembly_QC"
+      sbatch ${SCRIPT_DIR}/07_QC_assembled_contigs.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name} "Chrom_Assembly_QC"
 done
 
 DATA=/project/anderson/denovo_assembly/Plasmid_AssemblyTrimmedReads
