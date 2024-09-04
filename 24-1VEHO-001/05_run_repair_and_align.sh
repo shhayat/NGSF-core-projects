@@ -38,11 +38,11 @@ OUTDIR=/project/anderson/mapping
 
 mkdir -p ${OUTDIR}
 
-gunzip -c ${OUTDIR}/${sample_name}_R1_repair.fastq.gz | bowtie2 \
+gunzip -c ${DATA}/${sample_name}_R1_repair.fastq.gz | bowtie2 \
 --threads ${NCPU} \
 -x ${index} \
 -1 - \
--2 <(gunzip -c ${OUTDIR}/${sample_name}_R2_repair.fastq.gz) \
+-2 <(gunzip -c ${DATA}/${sample_name}_R2_repair.fastq.gz) \
 -S ${OUTDIR}/${sample_name}.sam 2> ${OUTDIR}/${sample_name}_bowtie2.log \
 && samtools view -h -b ${OUTDIR}/${sample_name}.sam > ${OUTDIR}/${sample_name}.aligned.bam
 
