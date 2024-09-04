@@ -16,10 +16,9 @@ GFF=/project/anderson/genome/sequence.gff3
 NCPU=2
 
 contig=$1; shift
-sample_name=$1; shift
 outdir_info=$1
 
-mkdir ${OUTDIR}/${outdir_info}
+mkdir -p ${OUTDIR}/${outdir_info}
 
 ${quast_tool}/quast.py ${contig} \
                        -o ${OUTDIR} \
