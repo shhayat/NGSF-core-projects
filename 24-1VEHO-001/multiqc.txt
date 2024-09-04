@@ -17,3 +17,11 @@ OUTDIR=/project/anderson/multiqc
 mkdir -p $OUTDIR
 cd /globalhome/hxo752/HPC/tools
 multiqc ${DIR}/*.log -o ${OUTDIR} --interactive -n bowtie2
+
+
+DIR=/project/anderson/QC_for_assembled_contigs/Chrom_Assembly_QC
+OUTDIR=/project/anderson/multiqc
+mkdir -p $OUTDIR
+cd /globalhome/hxo752/HPC/tools
+multiqc ${DIR}/*/report.tsv -o ${OUTDIR} -n quast
+
