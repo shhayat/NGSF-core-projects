@@ -11,6 +11,11 @@
 
 module load bbmap//39.06
 
+DATA=/project/anderson/trimmed_fastq
+OUTDIR=/project/anderson/trimmed_fastq
+
+mkdir -p $OUTDIR
+
 repair.sh in= \
           in2= \
           out= \
