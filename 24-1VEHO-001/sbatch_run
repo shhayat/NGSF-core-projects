@@ -89,30 +89,26 @@ done
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
-#for i in ${DATA}/NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_185---IDT_i5_185.PHO-MTB047_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_186---IDT_i5_186.PHO-MTB037_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_187---IDT_i5_187.PHO-MTB050_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_28---IDT_i5_28.PHO-MTB010_A_R1.fastq.gz 
 for i in ${DATA}/*_R1.fastq.gz
-#for i in ${DATA}/NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_R1_repair.fastq.gz
 do
        path="${i%_R1*}";
        sample_name=${path##*/};
 
        fq1=${DATA}/${sample_name}_R1.fastq.gz
        fq2=${DATA}/${sample_name}_R2.fastq.gz
-       fq1=${DATA}/${sample_name}_R1_repair.fastq.gz
-       fq2=${DATA}/${sample_name}_R2_repair.fastq.gz
+
 
       sbatch ${SCRIPT_DIR}/05_alignment.sh ${sample_name} ${fq1} ${fq2}
 done
 
-${DATA}/NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_R1.fastq.gz
 #repair 5 samples and align
-for i in ${DATA}/NS.2152.003.IDT_i7_185---IDT_i5_185.PHO-MTB047_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_186---IDT_i5_186.PHO-MTB037_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_187---IDT_i5_187.PHO-MTB050_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_28---IDT_i5_28.PHO-MTB010_A_R1.fastq.gz 
+for i in ${DATA}/NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_185---IDT_i5_185.PHO-MTB047_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_186---IDT_i5_186.PHO-MTB037_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_187---IDT_i5_187.PHO-MTB050_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_28---IDT_i5_28.PHO-MTB010_A_R1.fastq.gz 
 do
        path="${i%_R1*}";
        sample_name=${path##*/};
 
-       fq1=${DATA}/${sample_name}_R1_repair.fastq.gz
-       fq2=${DATA}/${sample_name}_R2_repair.fastq.gz
+       fq1=${DATA}/${sample_name}_R1.fastq.gz
+       fq2=${DATA}/${sample_name}_R2.fastq.gz
 
       sbatch ${SCRIPT_DIR}/05_run_repair_and_align.sh ${sample_name} ${fq1} ${fq2}
 done
