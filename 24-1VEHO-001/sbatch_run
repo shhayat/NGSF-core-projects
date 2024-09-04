@@ -104,16 +104,9 @@ do
       sbatch ${SCRIPT_DIR}/05_alignment.sh ${sample_name} ${fq1} ${fq2}
 done
 
-
-
-NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_bowtie2.log:Error, fewer reads in file specified with -2 than in file specified with -1
-NS.2152.003.IDT_i7_185---IDT_i5_185.PHO-MTB047_A_bowtie2.log:Error, fewer reads in file specified with -1 than in file specified with -2
-NS.2152.003.IDT_i7_186---IDT_i5_186.PHO-MTB037_B_bowtie2.log:Error, fewer reads in file specified with -2 than in file specified with -1
-NS.2152.003.IDT_i7_187---IDT_i5_187.PHO-MTB050_B_bowtie2.log:Error, fewer reads in file specified with -2 than in file specified with -1
-NS.2154.001.IDT_i7_28---IDT_i5_28.PHO-MTB010_A_bowtie2.log:Error, fewer reads in file specified with -2 than in file specified with -1
-
-
-for i in ${DATA}/NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_185---IDT_i5_185.PHO-MTB047_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_186---IDT_i5_186.PHO-MTB037_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_187---IDT_i5_187.PHO-MTB050_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_28---IDT_i5_28.PHO-MTB010_A_R1.fastq.gz 
+${DATA}/NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A_R1.fastq.gz
+#repair 5 samples and align
+for i in ${DATA}/NS.2152.003.IDT_i7_185---IDT_i5_185.PHO-MTB047_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_186---IDT_i5_186.PHO-MTB037_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_187---IDT_i5_187.PHO-MTB050_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_28---IDT_i5_28.PHO-MTB010_A_R1.fastq.gz 
 do
        path="${i%_R1*}";
        sample_name=${path##*/};
@@ -121,7 +114,7 @@ do
        fq1=${DATA}/${sample_name}_R1_repair.fastq.gz
        fq2=${DATA}/${sample_name}_R2_repair.fastq.gz
 
-      sbatch ${SCRIPT_DIR}/05_alignment.sh ${sample_name} ${fq1} ${fq2}
+      sbatch ${SCRIPT_DIR}/05_run_repair_and_align.sh ${sample_name} ${fq1} ${fq2}
 done
 
 
