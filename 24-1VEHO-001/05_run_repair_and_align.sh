@@ -9,6 +9,13 @@
 #SBATCH --mem=5G
 #SBATCH --output=/project/anderson/%j.out
 
-module load bbmap
+module load bbmap//39.06
+
+repair.sh in= \
+          in2= \
+          out= \
+          out2= \
+          outs= \
+          repair=t
 
 
