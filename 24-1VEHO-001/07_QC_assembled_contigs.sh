@@ -19,10 +19,10 @@ contig=$1; shift
 sample_name=$1; shift
 outdir_info=$1
 
-mkdir -p ${OUTDIR}/${outdir_info}
+mkdir -p ${OUTDIR}/${outdir_info}/${sample_name}
 
 ${quast_tool}/quast.py ${contig} \
-                       -o ${OUTDIR}/${sample_name} \
+                       -o ${OUTDIR}/${outdir_info}/${sample_name} \
                        -r ${REF} \
                        -g ${GFF} \
                        --threads ${NCPU}
