@@ -22,7 +22,7 @@ outdir_info=$1
 mkdir -p ${OUTDIR}/${outdir_info}
 
 ${quast_tool}/quast.py ${contig} \
-                       -o ${OUTDIR}/${sample_name}_ \
+                       -o ${OUTDIR}/${sample_name} \
                        -r ${REF} \
                        -g ${GFF} \
                        --threads ${NCPU}
