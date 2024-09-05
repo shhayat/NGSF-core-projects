@@ -10,5 +10,15 @@
 #SBATCH --output=/project/anderson/%j.out
 
 prokka=/globalhome/hxo752/HPC/tools/prokka/bin
+OUTDIR=/project/anderson/assembly_annotation
 
-prokka
+contigs=$1; shift
+sample_name=$1
+
+mkdir ${OUTDIR}
+prokka --compliant \
+       --mincontiglen 200 \
+       --outdir ${OUTDIR}/${sample_name} \
+       ${contigs}
+       
+       
