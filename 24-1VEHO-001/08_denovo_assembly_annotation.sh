@@ -15,7 +15,8 @@ OUTDIR=/project/anderson/assembly_annotation
 contigs=$1; shift
 sample_name=$1
 
-mkdir ${OUTDIR}
+mkdir -p ${OUTDIR}
+
 prokka --compliant \
        --mincontiglen 200 \
        --outdir ${OUTDIR}/${sample_name} \
