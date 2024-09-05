@@ -9,6 +9,7 @@
 #SBATCH --mem=10G
 #SBATCH --output=/project/anderson/%j.out
 
+module load perl/5.36.1
 prokka=/globalhome/hxo752/HPC/tools/prokka/bin
 OUTDIR=/project/anderson/assembly_annotation
 
