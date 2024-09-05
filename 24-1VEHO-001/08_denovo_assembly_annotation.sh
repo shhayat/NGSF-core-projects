@@ -17,7 +17,7 @@ sample_name=$1
 
 mkdir -p ${OUTDIR}
 
-prokka --compliant \
+${prokka}/prokka --compliant \
        --mincontiglen 200 \
        --outdir ${OUTDIR}/${sample_name} \
        ${contigs}
