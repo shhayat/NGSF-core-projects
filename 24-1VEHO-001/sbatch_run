@@ -150,7 +150,7 @@ done
 #annotation for assembled contigs
 DATA=/project/anderson/denovo_assembly/Chrom_AssemblyTrimmedReads
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
-for i in ${DATA}/*/contigs.fasta
+for i in ${DATA}/NS.2152.003.IDT_i7_184---IDT_i5_184.PHO-MTB042_A/contigs.fasta
 do
       sample_name=$(basename $(dirname "$i"))
 
