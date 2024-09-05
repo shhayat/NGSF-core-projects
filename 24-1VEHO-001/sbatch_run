@@ -135,44 +135,25 @@ do
      sbatch ${SCRIPT_DIR}/06_denovo_assembly_p1.sh ${sample_name} ${fq1_paired} ${fq2_paired} ${fq1_unpaired} ${fq2_unpaired}
 done
 
-for i in ${DATA}/*_R1.fastq.gz
-do
-      path="${i%_R1*}";
-      sample_name=${path##*/};
-
-     fq1_paired=${DATA}/${sample_name}_R1.fastq.gz
-     fq2_paired=${DATA}/${sample_name}_R2.fastq.gz
-
-     fq1_unpaired=${DATA}/${sample_name}_R1_unpaired.fastq.gz
-     fq2_unpaired=${DATA}/${sample_name}_R2_unpaired.fastq.gz
-
-     sbatch ${SCRIPT_DIR}/06_denovo_assembly_p2.sh ${sample_name} ${fq1_paired} ${fq2_paired} ${fq1_unpaired} ${fq2_unpaired}
-done
-
-
-
-
 
 #QC for assembled contigs
 DATA=/project/anderson/denovo_assembly/Chrom_AssemblyTrimmedReads
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
 for i in ${DATA}/*/contigs.fasta
-#for i in ${DATA}/SKTB019_i7_3/contigs.fasta
 do
       sample_name=$(basename $(dirname "$i"))
 
       sbatch ${SCRIPT_DIR}/07_QC_assembled_contigs.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name} "Chrom_Assembly_QC"
 done
 
-DATA=/project/anderson/denovo_assembly/Plasmid_AssemblyTrimmedReads
+#annotation for assembled contigs
+DATA=/project/anderson/denovo_assembly/Chrom_AssemblyTrimmedReads
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
-
-
-#for i in ${DATA}/*/contigs.fasta
+for i in ${DATA}/*/contigs.fasta
 do
-
       sample_name=$(basename $(dirname "$i"))
 
-      sbatch ${SCRIPT_DIR}/07 ${DATA}/${sample_name}/contigs.fasta ${sample_name} "Plasmid_Assembly_QC"
+      sbatch ${SCRIPT_DIR}/07_QC_assembled_contigs.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name}
 done
+
