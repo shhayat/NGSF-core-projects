@@ -154,6 +154,6 @@ for i in ${DATA}/*/contigs.fasta
 do
       sample_name=$(basename $(dirname "$i"))
 
-      sbatch ${SCRIPT_DIR}/07_QC_assembled_contigs.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name}
+      sbatch ${SCRIPT_DIR}/08_denovo_assembly_annotation.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name}
 done
 
