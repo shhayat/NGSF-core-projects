@@ -167,6 +167,6 @@ for i in ${DATA}/*_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
-      sbatch ${SCRIPT_DIR}/09_lineage_classification_and_Drug_resistance_prediction.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name}
+      sbatch ${SCRIPT_DIR}/09_lineage_classification_and_Drug_resistance_prediction.sh ${sample_name}
 done
 
