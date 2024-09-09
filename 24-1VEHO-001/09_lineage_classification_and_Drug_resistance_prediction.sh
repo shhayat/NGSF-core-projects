@@ -16,12 +16,13 @@ NCPU=2
 
 mykrobe=/globalhome/hxo752/HPC/tools/mykrobe-0.13.0
 OUTDIR=/project/anderson/assembly_annotation
+DATA=/project/anderson/trimmed_fastq
 
 mkdir -p ${OUTDIR}/${sample_name}
 
 mykrobe predict --sample ${sample_name} \
                 --species tb \
                 --output ${OUTDIR}/${sample_name}/out.json \
-                --format json \
-                --seq ${OUTDIR}/${sample_name}/reads.fq.gz \
+                --format json_and_csv \
+                --seq ${DATA}/${sample_name}_R1.fastq.gz ${DATA}/${sample_name}_R2.fastq.gz \
                 -t ${NCPU}
