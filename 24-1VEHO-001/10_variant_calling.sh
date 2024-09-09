@@ -15,24 +15,24 @@ sample_name=$1;
 NCPU=30
 
 mtbseq=/globalhome/hxo752/HPC/miniconda/bin
-OUTDIR=/project/anderson/variant_calling
+#OUTDIR=/project/anderson/variant_calling
 DATA=/project/anderson/trimmed_fastq
 
-mkdir -p ${OUTDIR}
+#mkdir -p ${OUTDIR}
 
 cd ${DATA}
 ${mtbseq}/MTBseq --step TBfull \
                  --threads ${NCPU} \
                  --ref ${REF}
                   
-mv GATK_Bam/ ${OUTDIR}
-mv Mpileup/ ${OUTDIR}
-mv Position_Tables/ ${OUTDIR}
-mv Statistics/ ${OUTDIR}
-mv Joint/ ${OUTDIR}
-mv Amend/ ${OUTDIR}
-mv Classification/ ${OUTDIR}
-mv Groups/ ${OUTDIR}
-mv Bam/ ${OUTDIR}
+#mv GATK_Bam/ ${OUTDIR}
+#mv Mpileup/ ${OUTDIR}
+#mv Position_Tables/ ${OUTDIR}
+#mv Statistics/ ${OUTDIR}
+#mv Joint/ ${OUTDIR}
+#mv Amend/ ${OUTDIR}
+#mv Classification/ ${OUTDIR}
+#mv Groups/ ${OUTDIR}
+#mv Bam/ ${OUTDIR}
 
 
