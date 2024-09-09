@@ -1,4 +1,6 @@
+##########
 #Fastqc
+##########
 DATA1=/project/anderson/TB_DATA/Sask_Alberta
 DATA2=/project/anderson/TB_DATA/PHO
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
@@ -25,8 +27,9 @@ do
       sbatch ${SCRIPT_DIR}/01_QC.sh "${fq1}" "${fq2}"
 done
 
-
+####################
 #removing adaptors
+####################
 DATA1=/project/anderson/TB_DATA/Sask_Alberta
 DATA2=/project/anderson/TB_DATA/PHO
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
@@ -53,7 +56,9 @@ do
       sbatch ${SCRIPT_DIR}/02_adaptor_trimming.sh ${sample_name} ${fq1} ${fq2}
 done
 
+####################
 #Trimmed FastQC
+####################
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
@@ -68,8 +73,9 @@ do
       sbatch ${SCRIPT_DIR}/01_QC.sh ${fq1} ${fq2}
 done
 
-
+####################
 #calculate coverage
+####################
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
@@ -85,7 +91,9 @@ do
       sbatch ${SCRIPT_DIR}/03_coverage_calculation.sh ${fq1} ${fq2} ${insert_size} ${sample_name}
 done
 
+##########
 #alignment
+##########
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
@@ -117,8 +125,9 @@ done
 
 
 
-
+################
 #denovo assembly
+################
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 for i in ${DATA}/NS.2152.003.IDT_i7_123---IDT_i5_123.PHO-MTB045_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_127---IDT_i5_127.PHO-MTB047_B_R1.fastq.gz ${DATA}//NS.2154.001.IDT_i7_51---IDT_i5_51.PHO-MTB007_A_R1.fastq.gz
@@ -135,8 +144,9 @@ do
      sbatch ${SCRIPT_DIR}/06_denovo_assembly_p1.sh ${sample_name} ${fq1_paired} ${fq2_paired} ${fq1_unpaired} ${fq2_unpaired}
 done
 
-
+########################
 #QC for assembled contigs
+#########################
 DATA=/project/anderson/denovo_assembly/Chrom_AssemblyTrimmedReads
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
@@ -147,7 +157,9 @@ do
       sbatch ${SCRIPT_DIR}/07_QC_assembled_contigs.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name} "Chrom_Assembly_QC"
 done
 
+################################
 #annotation for assembled contigs
+################################
 DATA=/project/anderson/denovo_assembly/Chrom_AssemblyTrimmedReads
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 for i in ${DATA}/*/contigs.fasta
@@ -157,9 +169,9 @@ do
       sbatch ${SCRIPT_DIR}/08_denovo_assembly_annotation.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name}
 done
 
-
-
+################################################
 #lineage classiffication and drug resistance
+################################################
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
