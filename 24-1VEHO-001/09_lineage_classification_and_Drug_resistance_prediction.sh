@@ -14,13 +14,13 @@ source /globalhome/hxo752/HPC/.bashrc
 sample_name=$1;
 NCPU=2
 
-mykrobe=/globalhome/hxo752/HPC/tools/mykrobe-0.13.0
+mykrobe=/globalhome/hxo752/HPC/miniconda/bin
 OUTDIR=/project/anderson/assembly_annotation
 DATA=/project/anderson/trimmed_fastq
 
 mkdir -p ${OUTDIR}/${sample_name}
 
-mykrobe predict --sample ${sample_name} \
+${mykrobe}/mykrobe predict --sample ${sample_name} \
                 --species tb \
                 --output ${OUTDIR}/${sample_name}/out.json \
                 --format json_and_csv \
