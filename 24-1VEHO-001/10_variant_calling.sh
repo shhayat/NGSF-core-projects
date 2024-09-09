@@ -18,6 +18,8 @@ mtbseq=/globalhome/hxo752/HPC/miniconda/bin
 OUTDIR=/project/anderson/variant_calling
 REF=/project/anderson/genome/sequence.fasta
 
+mkdir -p ${OUTDIR}
+
 ${mtbseq}/MTBseq  --step TBfull \
                   --threads 8 \
                   --samples \
