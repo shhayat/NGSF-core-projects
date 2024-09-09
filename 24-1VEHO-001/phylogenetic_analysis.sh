@@ -17,7 +17,10 @@ module load raxml-ng/1.2.0
 
 mkdir -p ${OUTDIR}
 
-raxml-ng --msa \
+#generate multiple sequence alignment file
+
+#run phylogenetic analysis with gamma model
+raxml-ng --msa alignment.fa \
         --model GTR+G \
          --bs-trees 200 \
          --threads ${NCPU}
