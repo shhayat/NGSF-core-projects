@@ -15,7 +15,7 @@ sample_name=$1;
 NCPU=2
 
 mykrobe=/globalhome/hxo752/HPC/miniconda/bin
-OUTDIR=/project/anderson/assembly_annotation
+OUTDIR=/project/anderson/lineage_classification_and_prediction
 DATA=/project/anderson/trimmed_fastq
 
 mkdir -p ${OUTDIR}/${sample_name}
