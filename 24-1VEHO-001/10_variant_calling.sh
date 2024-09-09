@@ -2,17 +2,17 @@
 
 #SBATCH --account=hpc_p_anderson
 #SBATCH --constraint=skylake
-#SBATCH --job-name=mykrobe
+#SBATCH --job-name=variant_call
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --time=120:00:00
-#SBATCH --mem=10G
+#SBATCH --cpus-per-task=30
+#SBATCH --time=480:00:00
+#SBATCH --mem=300G
 #SBATCH --output=/project/anderson/%j.out
 
 
 source /globalhome/hxo752/HPC/.bashrc
 sample_name=$1;
-NCPU=2
+NCPU=30
 
 mtbseq=/globalhome/hxo752/HPC/miniconda/bin
 OUTDIR=/project/anderson/variant_calling
@@ -22,6 +22,6 @@ mkdir -p ${OUTDIR}
 
 cd ${DATA}
 ${mtbseq}/MTBseq --step TBfull \
-                 --threads 8 \
+                 --threads ${NCPU} \
                  --ref ${REF}
                   
