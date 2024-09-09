@@ -16,7 +16,6 @@ NCPU=2
 
 mtbseq=/globalhome/hxo752/HPC/miniconda/bin
 OUTDIR=/project/anderson/variant_calling
-DATA=/project/anderson/trimmed_fastq
 
 ${mtbseq}/MTBseq  --step TBfull \
                   --threads 8
