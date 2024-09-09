@@ -4,7 +4,7 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=mykrobe
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=2
 #SBATCH --time=20:00:00
 #SBATCH --mem=10G
 #SBATCH --output=/project/anderson/%j.out
@@ -12,6 +12,7 @@
 
 source /globalhome/hxo752/HPC/.bashrc
 sample_name=$1;
+NCPU=2
 
 mykrobe=/globalhome/hxo752/HPC/tools/mykrobe-0.13.0
 OUTDIR=/project/anderson/assembly_annotation
@@ -22,4 +23,5 @@ mykrobe predict --sample ${sample_name} \
                 --species tb \
                 --output ${OUTDIR}/${sample_name}/out.json \
                 --format json \
-                --seq ${OUTDIR}/${sample_name}/reads.fq.gz
+                --seq ${OUTDIR}/${sample_name}/reads.fq.gz \
+                -t ${NCPU}
