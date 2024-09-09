@@ -16,7 +16,6 @@ sample_name=$1;
 mykrobe=/globalhome/hxo752/HPC/tools/mykrobe-0.13.0
 OUTDIR=/project/anderson/assembly_annotation
 
-
 mykrobe predict --sample ${sample_name} \
                 --species tb \
                 --output ${OUTDIR}/${sample_name}/out.json \
