@@ -16,13 +16,12 @@ NCPU=2
 
 mtbseq=/globalhome/hxo752/HPC/miniconda/bin
 OUTDIR=/project/anderson/variant_calling
-REF=/globalhome/hxo752/HPC/miniconda/share/mtbseq-1.1.0-0/var/ref/sequence
 DATA=/project/anderson/trimmed_fastq
 
 mkdir -p ${OUTDIR}
 
 cd ${DATA}
-${mtbseq}/MTBseq  --step TBfull \
-                  --threads 8 \
-                  --ref ${REF} \
+${mtbseq}/MTBseq --step TBfull \
+                 --threads 8 \
+                 --ref ${REF}
                   
