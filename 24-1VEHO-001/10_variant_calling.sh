@@ -25,3 +25,14 @@ ${mtbseq}/MTBseq --step TBfull \
                  --threads ${NCPU} \
                  --ref ${REF}
                   
+mv GATK_Bam/ ${OUTDIR}
+mv Mpileup/ ${OUTDIR}
+mv Position_Tables/ ${OUTDIR}
+mv Statistics/ ${OUTDIR}
+mv Joint/ ${OUTDIR}
+mv Amend/ ${OUTDIR}
+mv Classification/ ${OUTDIR}
+mv Groups/ ${OUTDIR}
+mv Bam/ ${OUTDIR}
+
+
