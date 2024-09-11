@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=variant_call
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=25
+#SBATCH --cpus-per-task=20
 #SBATCH --time=240:00:00
-#SBATCH --mem=200G
+#SBATCH --mem=100G
 #SBATCH --output=/project/anderson/%j.out
 
 
