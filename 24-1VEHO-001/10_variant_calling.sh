@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=cooper
+#SBATCH --constraint=skylake
 #SBATCH --job-name=variant_call
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
