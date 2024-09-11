@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=msa
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
+#SBATCH --cpus-per-task=1
 #SBATCH --time=48:00:00
-#SBATCH --mem=60G
+#SBATCH --mem=20G
 #SBATCH --output=/project/anderson/%j.out
 
 
