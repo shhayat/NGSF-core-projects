@@ -4,15 +4,15 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=variant_call
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
-#SBATCH --time=120:00:00
-#SBATCH --mem=100G
+#SBATCH --cpus-per-task=25
+#SBATCH --time=240:00:00
+#SBATCH --mem=200G
 #SBATCH --output=/project/anderson/%j.out
 
 
 source /globalhome/hxo752/HPC/.bashrc
 sample_name=$1;
-NCPU=10
+NCPU=25
 
 mtbseq=/globalhome/hxo752/HPC/miniconda/bin
 #OUTDIR=/project/anderson/variant_calling
