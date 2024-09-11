@@ -109,6 +109,7 @@ do
       sbatch ${SCRIPT_DIR}/05_alignment.sh ${sample_name} ${fq1} ${fq2}
 done
 
+#for some of the files alignment failed for this reason this step was perfomred for those samples which failed
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 #repair 5 samples and align
@@ -157,9 +158,9 @@ do
       sbatch ${SCRIPT_DIR}/07_QC_assembled_contigs.sh ${DATA}/${sample_name}/contigs.fasta ${sample_name} "Chrom_Assembly_QC"
 done
 
-################################
+##################################
 #annotation for assembled contigs
-################################
+##################################
 DATA=/project/anderson/denovo_assembly/Chrom_AssemblyTrimmedReads
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 for i in ${DATA}/*/contigs.fasta
@@ -170,7 +171,7 @@ do
 done
 
 ################################################
-#lineage classiffication and drug resistance
+#lineage classification and drug resistance
 ################################################
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
@@ -180,5 +181,20 @@ do
       path="${i%_R1*}";
       sample_name=${path##*/};
       sbatch ${SCRIPT_DIR}/09_lineage_classification_and_Drug_resistance_prediction.sh ${sample_name}
+done
+
+
+#############################
+#bam to fasta conversion
+#############################
+DATA=/project/anderson/mapping
+SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
+
+for i in ${DATA}/*.aligned.bam
+do
+       path="${i%.aligned.bam*}";
+       sample_name=${path##*/};
+
+      sbatch ${SCRIPT_DIR}/11_bam_to_fasta_conversion.sh ${sample_name}
 done
 
