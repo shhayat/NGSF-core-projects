@@ -8,3 +8,12 @@
 #SBATCH --time=48:00:00
 #SBATCH --mem=20G
 #SBATCH --output=/project/anderson/%j.out
+
+
+
+fasta_files=/project/anderson/fasta_files
+NCPU=10
+
+/globalhome/hxo752/HPC/miniconda/conda-meta/clustalo -i ${fasta_files}/combined_sequences.fasta \
+                                                     -o ${fasta_files}/msa.fa \
+                                                     --threads ${NCPU}
