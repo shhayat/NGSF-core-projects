@@ -195,6 +195,6 @@ do
        path="${i%.aligned.bam*}";
        sample_name=${path##*/};
 
-      sbatch ${SCRIPT_DIR}/11_bam_to_fasta_conversion.sh ${sample_name}
+      sbatch ${SCRIPT_DIR}/11_convert_bam_to_fasta.sh ${sample_name}
 done
 
