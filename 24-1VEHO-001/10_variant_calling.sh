@@ -1,12 +1,12 @@
 #!/bin/bash
 
 #SBATCH --account=hpc_p_anderson
-#SBATCH --constraint=skylake
+#SBATCH --constraint=cooper
 #SBATCH --job-name=variant_call
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=20
+#SBATCH --cpus-per-task=30
 #SBATCH --time=240:00:00
-#SBATCH --mem=100G
+#SBATCH --mem=300G
 #SBATCH --output=/project/anderson/%j.out
 
 
