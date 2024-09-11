@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
 #SBATCH --time=12:00:00
-#SBATCH --mem=200G
+#SBATCH --mem=100G
 #SBATCH --output=/project/anderson/%j.out
 
 
