@@ -5,7 +5,7 @@
 #SBATCH --job-name=variant_call
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
-#SBATCH --time=24:00:00
+#SBATCH --time=12:00:00
 #SBATCH --mem=200G
 #SBATCH --output=/project/anderson/%j.out
 
