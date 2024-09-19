@@ -5,8 +5,8 @@
 #SBATCH --job-name=coverage
 #SBATCH --ntasks=1
 #BATCH --cpus-per-task=1
-#SBATCH --time=1:00:00
-#SBATCH --mem=5G
+#SBATCH --time=30:00:00
+#SBATCH --mem=10G
 #SBATCH --output=/project/anderson/coverage_calculation/%j.out
 
 
