@@ -79,7 +79,8 @@ done
 DATA=/project/anderson/trimmed_fastq
 SCRIPT_DIR=/globalhome/hxo752/HPC/ngsf_git_repos/NGSF-core-projects/24-1VEHO-001
 
-for i in ${DATA}/*_R1.fastq.gz
+#for i in ${DATA}/*_R1.fastq.gz
+for i in ${DATA}/SKTB002_i7_50_R1.fastq.gz ${DATA}/M08MB006630_i7-7_R1.fastq.gz ${DATA}/M95MB016815_i7-89_R1.fastq.gz ${DATA}/M99MB012214_i7-30_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_112---IDT_i5_112.PHO-MTB038_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_128---IDT_i5_128.PHO-MTB035_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_138---IDT_i5_138.PHO-MTB041_A_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_141---IDT_i5_141.PHO-MTB056_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_164---IDT_i5_164.PHO-MTB034_B_R1.fastq.gz ${DATA}/NS.2152.003.IDT_i7_186---IDT_i5_186.PHO-MTB037_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_17---IDT_i5_17.PHO-MTB013_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_19---IDT_i5_19.PHO-MTB021_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_27---IDT_i5_27.PHO-MTB006_A_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_32---IDT_i5_32.PHO-MTB026_A_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_39---IDT_i5_39.PHO-MTB006_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_3---IDT_i5_3.PHO-MTB005_A_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_50---IDT_i5_50.PHO-MTB003_A_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_53---IDT_i5_53.PHO-MTB015_A_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_65---IDT_i5_65.PHO-MTB015_B_R1.fastq.gz ${DATA}/NS.2154.001.IDT_i7_78---IDT_i5_78.PHO-MTB020_A_R1.fastq.gz
 do
       path="${i%_R1*}";
       sample_name=${path##*/};
