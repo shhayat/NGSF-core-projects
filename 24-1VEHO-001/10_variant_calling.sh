@@ -10,22 +10,18 @@
 #SBATCH --output=/project/anderson/%j.out
 
 
-source /globalhome/hxo752/HPC/.bashrc
+#source /globalhome/hxo752/HPC/.bashrc
 sample_name=$1;
 NCPU=10
 
 #mtbseq=/globalhome/hxo752/HPC/miniconda/bin
-#OUTDIR=/project/anderson/variant_calling
 DATA=/project/anderson/trimmed_fastq
-
-#mkdir -p ${OUTDIR}
 cd ${DATA}
 
 module load apptainer
 apptainer exec -B $TMPDIR:/tmp /opt/software/singularity-images/MTBseq.sif \
             ${mtbseq}/MTBseq --step TBfull \
-                 --threads ${NCPU} \
-                 --ref ${REF}
+                 --threads ${NCPU}
                   
 #mv GATK_Bam/ ${OUTDIR}
 #mv Mpileup/ ${OUTDIR}
