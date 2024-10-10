@@ -14,12 +14,11 @@ source /globalhome/hxo752/HPC/.bashrc
 sample_name=$1;
 NCPU=10
 
-mtbseq=/globalhome/hxo752/HPC/miniconda/bin
+#mtbseq=/globalhome/hxo752/HPC/miniconda/bin
 #OUTDIR=/project/anderson/variant_calling
 DATA=/project/anderson/trimmed_fastq
 
 #mkdir -p ${OUTDIR}
-
 cd ${DATA}
 
 module load apptainer
