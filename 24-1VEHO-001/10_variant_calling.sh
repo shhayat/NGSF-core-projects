@@ -21,7 +21,10 @@ DATA=/project/anderson/trimmed_fastq
 #mkdir -p ${OUTDIR}
 
 cd ${DATA}
-${mtbseq}/MTBseq --step TBfull \
+
+module load apptainer
+apptainer exec -B $TMPDIR:/tmp /opt/software/singularity-images/MTBseq.sif \
+            ${mtbseq}/MTBseq --step TBfull \
                  --threads ${NCPU} \
                  --ref ${REF}
                   
