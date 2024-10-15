@@ -11,7 +11,6 @@
 
 
 #source /globalhome/hxo752/HPC/.bashrc
-sample_name=$1;
 NCPU=10
 
 #mtbseq=/globalhome/hxo752/HPC/miniconda/bin
