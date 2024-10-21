@@ -4,8 +4,8 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=variant_call
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=20
-#SBATCH --time=240:00:00
+#SBATCH --cpus-per-task=30
+#SBATCH --time=480:00:00
 #SBATCH --mem=100G
 #SBATCH --output=/project/anderson/%j.out
 
@@ -22,7 +22,7 @@ module load apptainer
 #            ${mtbseq}/MTBseq --step TBfull \
 #                 --threads ${NCPU}
 apptainer exec -B $TMPDIR:/tmp /opt/software/singularity-images/MTBseq.sif \
-           ${mtbseq}/MTBseq --step TBpile \
+           ${mtbseq}/MTBseq --step TBrefine \
                             --step TBpile \
                             --step TBlist \
                             --step TBvariants \
