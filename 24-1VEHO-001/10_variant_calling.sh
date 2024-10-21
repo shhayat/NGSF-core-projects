@@ -11,10 +11,9 @@
 
 
 #source /globalhome/hxo752/HPC/.bashrc
-NCPU=10
 
 #mtbseq=/globalhome/hxo752/HPC/miniconda/bin
-DATA=/project/anderson/trimmed_fastq
+DATA=/project/anderson/trimmed_fastq/BAM
 cd ${DATA}
 
 module load apptainer
