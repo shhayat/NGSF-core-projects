@@ -4,9 +4,9 @@
 #SBATCH --constraint=skylake
 #SBATCH --job-name=denovo
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
-#SBATCH --time=24:00:00
-#SBATCH --mem=40G
+#SBATCH --cpus-per-task=20
+#SBATCH --time=48:00:00
+#SBATCH --mem=80G
 #SBATCH --output=/project/anderson/%j.out
 
 
